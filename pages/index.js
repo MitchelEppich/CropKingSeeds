@@ -19,7 +19,9 @@ class Index extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input))
+  };
 };
 
 export default connect(
