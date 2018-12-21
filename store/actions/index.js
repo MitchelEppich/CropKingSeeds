@@ -14,9 +14,18 @@ const uri = "http://localhost:3000/graphql";
 
 const imports = {};
 
-const actionTypes = {};
+const actionTypes = {
+  SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN"
+};
 
-const actions = {};
+const actions = {
+  setVisibleScreen: input => {
+    return {
+      type: actionTypes.SET_VISIBLE_SCREEN,
+      input: input
+    };
+  }
+};
 
 const query = {};
 
