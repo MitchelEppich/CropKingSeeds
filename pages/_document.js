@@ -18,7 +18,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <html>
+      <html lang="en">
         <Head>
           {/* <meta name="theme-color" content="#79B83E" /> */}
           <title>Base Project</title>
