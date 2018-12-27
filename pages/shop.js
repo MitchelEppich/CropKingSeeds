@@ -1,5 +1,5 @@
 /*******************************************/
-/*Main page, Renders all home videos*/
+/*Shop Page, renders shop products*/
 /******************************************/
 
 import React, { Component } from "react";
@@ -7,21 +7,22 @@ import withData from "../lib/withData";
 import { connect } from "react-redux";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
-import Header from "../components/partials/header" 
-import BannerCarousel from "../components/sections/bannerCarousel" 
-import GenePreview from "../components/sections/genePreview"
-import Post from "../components/sections/post"
-import Footer from "../components/partials/footer"
-
+import Filters from "../components/sections/shop/filters"
+import ProductGrid from "../components/sections/shop/productGrid"
+import FeaturedStrainThumbnails from "../components/sections/shop/featuredStrainThumbnails";
 
 class Index extends Component {
+
   render() {
     return (
       <Layout>
-        {/* <div className="example">Base Project</div> */}
-        <BannerCarousel />
-        <GenePreview />
-        <Post />
+          <div className="flex flex-wrap">
+            <div className="w-1/4">
+              <Filters {...this.props} />
+              <FeaturedStrainThumbnails {...this.props} />
+            </div>
+            <ProductGrid {...this.props} />
+          </div>
       </Layout>
     );
   }

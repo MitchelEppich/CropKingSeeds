@@ -8,9 +8,201 @@
 import actionTypes from "../actions";
 import { combineReducers } from "redux";
 import { updateObject } from "../utility";
+import {TimelineLite} from "gsap";
 
 const initialState = {
-  visibleScreen: [] // When [] show main screen
+  visibleScreen: [], // When [] show main screen
+  products: [
+    {
+      _id : "5be22670c766994440c43c29",
+      price : [ 
+          45, 
+          65, 
+          95
+      ],
+      name : "Rock Candy",
+      "plantIcon" : "",
+      "packageIcon" : "",
+      "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
+      "floweringTime" : "7-9 weeks",
+      "effects" : "Happy, euphoric",
+      "thc" : "15-19%",
+      "type" : "80% Indica / 20% Sativa",
+      "difficulty" : "Easy",
+      "indOut" : "Indoor/Outdoor",
+      "color" : "#8bd5d4",
+      "autoflower" : false,
+      "sotiCode" : "RCF"
+    },
+    {
+      _id : "5be22670c766994440c43c29",
+      price : [ 
+          45, 
+          65, 
+          95
+      ],
+      name : "Rock Candy",
+      "plantIcon" : "",
+      "packageIcon" : "",
+      "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
+      "floweringTime" : "7-9 weeks",
+      "effects" : "Happy, euphoric",
+      "thc" : "15-19%",
+      "type" : "80% Indica / 20% Sativa",
+      "difficulty" : "Easy",
+      "indOut" : "Indoor/Outdoor",
+      "color" : "#8bd5d4",
+      "autoflower" : false,
+      "sotiCode" : "RCF"
+    },
+    {
+      _id : "5be22670c766994440c43c29",
+      price : [ 
+          45, 
+          65, 
+          95
+      ],
+      name : "Rock Candy",
+      "plantIcon" : "",
+      "packageIcon" : "",
+      "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
+      "floweringTime" : "7-9 weeks",
+      "effects" : "Happy, euphoric",
+      "thc" : "15-19%",
+      "type" : "80% Indica / 20% Sativa",
+      "difficulty" : "Easy",
+      "indOut" : "Indoor/Outdoor",
+      "color" : "#8bd5d4",
+      "autoflower" : false,
+      "sotiCode" : "RCF"
+    },
+    {
+      _id : "5be22670c766994440c43c29",
+      price : [ 
+          45, 
+          65, 
+          95
+      ],
+      name : "Rock Candy",
+      "plantIcon" : "",
+      "packageIcon" : "",
+      "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
+      "floweringTime" : "7-9 weeks",
+      "effects" : "Happy, euphoric",
+      "thc" : "15-19%",
+      "type" : "80% Indica / 20% Sativa",
+      "difficulty" : "Easy",
+      "indOut" : "Indoor/Outdoor",
+      "color" : "#8bd5d4",
+      "autoflower" : false,
+      "sotiCode" : "RCF"
+    },
+    {
+      _id : "5be22670c766994440c43c29",
+      price : [ 
+          45, 
+          65, 
+          95
+      ],
+      name : "Rock Candy",
+      "plantIcon" : "",
+      "packageIcon" : "",
+      "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
+      "floweringTime" : "7-9 weeks",
+      "effects" : "Happy, euphoric",
+      "thc" : "15-19%",
+      "type" : "80% Indica / 20% Sativa",
+      "difficulty" : "Easy",
+      "indOut" : "Indoor/Outdoor",
+      "color" : "#8bd5d4",
+      "autoflower" : false,
+      "sotiCode" : "RCF"
+    },
+    {
+      _id : "5be22670c766994440c43c29",
+      price : [ 
+          45, 
+          65, 
+          95
+      ],
+      name : "Rock Candy",
+      "plantIcon" : "",
+      "packageIcon" : "",
+      "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
+      "floweringTime" : "7-9 weeks",
+      "effects" : "Happy, euphoric",
+      "thc" : "15-19%",
+      "type" : "80% Indica / 20% Sativa",
+      "difficulty" : "Easy",
+      "indOut" : "Indoor/Outdoor",
+      "color" : "#8bd5d4",
+      "autoflower" : false,
+      "sotiCode" : "RCF"
+    },
+    {
+      _id : "5be22670c766994440c43c29",
+      price : [ 
+          45, 
+          65, 
+          95
+      ],
+      name : "Rock Candy",
+      "plantIcon" : "",
+      "packageIcon" : "",
+      "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
+      "floweringTime" : "7-9 weeks",
+      "effects" : "Happy, euphoric",
+      "thc" : "15-19%",
+      "type" : "80% Indica / 20% Sativa",
+      "difficulty" : "Easy",
+      "indOut" : "Indoor/Outdoor",
+      "color" : "#8bd5d4",
+      "autoflower" : false,
+      "sotiCode" : "RCF"
+    },
+    {
+      _id : "5be22670c766994440c43c29",
+      price : [ 
+          45, 
+          65, 
+          95
+      ],
+      name : "Rock Candy",
+      "plantIcon" : "",
+      "packageIcon" : "",
+      "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
+      "floweringTime" : "7-9 weeks",
+      "effects" : "Happy, euphoric",
+      "thc" : "15-19%",
+      "type" : "80% Indica / 20% Sativa",
+      "difficulty" : "Easy",
+      "indOut" : "Indoor/Outdoor",
+      "color" : "#8bd5d4",
+      "autoflower" : false,
+      "sotiCode" : "RCF"
+    },
+    {
+      _id : "5be22670c766994440c43c29",
+      price : [ 
+          45, 
+          65, 
+          95
+      ],
+      name : "Rock Candy",
+      "plantIcon" : "",
+      "packageIcon" : "",
+      "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
+      "floweringTime" : "7-9 weeks",
+      "effects" : "Happy, euphoric",
+      "thc" : "15-19%",
+      "type" : "80% Indica / 20% Sativa",
+      "difficulty" : "Easy",
+      "indOut" : "Indoor/Outdoor",
+      "color" : "#8bd5d4",
+      "autoflower" : false,
+      "sotiCode" : "RCF"
+    },
+  ]
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -19,11 +211,16 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         visibleScreen: action.input
       });
+    // case actionTypes.STAGGER_EL:
+    //   return updateObject(state, {
+    //     myTween: state.myTween.staggerTo(state.myElements, 0.5, {y: 0, autoAlpha: 1}, 0.1)
+    //   });
     default:
       return state;
   }
 };
 
-export default indexReducer;
-// export default combineReducers({
-// });
+// export default indexReducer;
+export default combineReducers({
+  misc: indexReducer
+});

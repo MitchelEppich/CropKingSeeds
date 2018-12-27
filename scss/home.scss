@@ -31,6 +31,43 @@
   }
 }
 
+
+.body,
+html {
+  font-family: verdana;
+  color: #252525;
+  font-size: 15px;
+  padding: 0;
+  margin: 0;
+  background: white;
+}
+
+li {
+  list-style: none;  
+}
+
+.preserv-3d {
+  transform-style: preserve-3d;
+}
+
+.test2 {
+  background: #ff0707;
+  height: 90px;
+  width: 100%;
+  overflow-x: hidden;
+  margin-left: -8px;
+  margin-top: -53px;
+  transform: translateZ(-1em) rotate(-3deg)
+}
+
 .example {
   background-color: red;
+}
+
+.absolute-center {
+position: absolute;
+margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
 }
