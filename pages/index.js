@@ -19,12 +19,9 @@ class Index extends Component {
     return (
       <Layout>
         {/* <div className="example">Base Project</div> */}
-        <Header />
         <BannerCarousel />
         <GenePreview />
         <Post />
-
-        <Footer />
       </Layout>
     );
   }

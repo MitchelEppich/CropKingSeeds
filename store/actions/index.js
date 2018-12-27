@@ -15,7 +15,8 @@ const uri = "http://localhost:3000/graphql";
 const imports = {};
 
 const actionTypes = {
-  SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN"
+  SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN",
+  STAGGER_EL: "STAGGER_EL"
 };
 
 const actions = {
@@ -24,7 +25,12 @@ const actions = {
       type: actionTypes.SET_VISIBLE_SCREEN,
       input: input
     };
-  }
+  },
+  // staggerEl: () => {
+  //   return {
+  //     type: actionTypes.STAGGER_EL
+  //   }
+  // }
 };
 
 const query = {};

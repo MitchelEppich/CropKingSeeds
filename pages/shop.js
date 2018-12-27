@@ -17,7 +17,7 @@ class Index extends Component {
     return (
       <Layout>
           <div className="flex flex-wrap">
-            <div className="w-1/5">
+            <div className="w-1/4">
               <Filters {...this.props} />
               <FeaturedStrainThumbnails {...this.props} />
             </div>

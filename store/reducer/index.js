@@ -8,6 +8,7 @@
 import actionTypes from "../actions";
 import { combineReducers } from "redux";
 import { updateObject } from "../utility";
+import {TimelineLite} from "gsap";
 
 const initialState = {
   visibleScreen: [], // When [] show main screen
@@ -201,7 +202,6 @@ const initialState = {
       "autoflower" : false,
       "sotiCode" : "RCF"
     },
-  
   ]
 };
 
@@ -211,6 +211,10 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         visibleScreen: action.input
       });
+    // case actionTypes.STAGGER_EL:
+    //   return updateObject(state, {
+    //     myTween: state.myTween.staggerTo(state.myElements, 0.5, {y: 0, autoAlpha: 1}, 0.1)
+    //   });
     default:
       return state;
   }
