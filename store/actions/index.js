@@ -10,9 +10,13 @@ import { makePromise, execute } from "apollo-link";
 import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
 
+import Cart from "./cart";
+
 const uri = "http://localhost:3000/graphql";
 
-const imports = {};
+const imports = {
+  ...Cart(uri)
+};
 
 const actionTypes = {
   SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN"
