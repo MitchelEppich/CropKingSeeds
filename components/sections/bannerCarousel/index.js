@@ -1,12 +1,17 @@
-import React from "react"
+import Slide from "./slide";
 
 const BannerCarousel = props => {
+    let slides = props.misc.bannerSlides.map((val,index) => {
+        return (
+            <Slide key={index} {...props} position={props.misc.activeBannerSlide} index={index} color={val.color} />
+        );
+    });
+
     return (
-        <div className="w-full h-500 bg-green-light">
-           
-            
+        <div onClick={props.nextBannerSlide} className="h-500 w-full flex relative overflow-hidden">
+           {slides}
         </div>
-    )
+    );
 }
 
 export default BannerCarousel;

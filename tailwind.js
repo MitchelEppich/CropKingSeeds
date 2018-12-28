@@ -499,7 +499,8 @@ module.exports = {
     "700": "700px",
     "800": "800px",
     full: "100%",
-    screen: "100vh",
+    '3full': "300%",
+    screen: "100vw",
     container: "1030px",
   },
 
