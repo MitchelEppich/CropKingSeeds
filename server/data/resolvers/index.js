@@ -1,10 +1,13 @@
+const StrainResolvers = require("./strain");
 
+// const Strain = StrainResolvers.Strain
 
 const resolvers = {
   Query: {
-    sendString:(_, args) => {
-      return args;
-    }
+    ...StrainResolvers.Query
+  },
+  Mutation: {
+    ...StrainResolvers.Mutation
   }
 };
 

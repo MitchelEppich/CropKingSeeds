@@ -24,10 +24,10 @@ const subscriptionsPath = "/subscriptions";
 const subscriptionsEndpoint = `ws://${url}:${port}${subscriptionsPath}`;
 
 mongoose.Promise = global.Promise;
-// mongoose.connect(
-//   process.env.M_URL,
-//   { useNewUrlParser: true }
-// );
+mongoose.connect(
+  process.env.M_URL,
+  { useNewUrlParser: true }
+);
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "Connection error:"));
 db.once("open", () => console.log("We are connected!"));
