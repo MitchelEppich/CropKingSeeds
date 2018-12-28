@@ -129,6 +129,22 @@ right: 0;
 }
 
 
+// CHECKOUT PREVIEW
+
+.item-preview { 
+  border: 1px solid rgba(206, 206, 206, 0.30);
+  box-shadow: 0px 1px 2px rgba(206, 206, 206, 0.3);
+}
+
+.steps-active:before {
+  content: "";
+  border: solid .5em transparent;
+  border-top-color: #222;
+  position: absolute;
+  top: -0.6em;
+  left: 50%;
+  margin-left: -.25em;
+}
 
 // HOME GENE PREVIEW
 .auto {

@@ -5,16 +5,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const CreditCard = props => {
     return (
         <div className="w-full mb-6">
-            <div className="bg-grey text-white h-10 inline-flex w-full">
+            <div onClick={()=>{
+                props.setVisibleScreen("creditCard")
+            }}
+            style={{
+                border: "2px solid #e4e4e4",
+                background: "#ffffff",
+                color: "#191919",
+            }} 
+            className="h-10 inline-flex w-full cursor-pointer">
                 <div className="w-4/5 p-2 flex items-center">
                     <p>Pay with Credit Card</p>
                 </div>
                 <div className="w-1/5 justify-end flex">
-                    <div className="h-10 w-10 text-center py-2 bg-semi-transparent cursor-pointer">
+                    <div className="h-10 w-10 text-center py-2 bg-semi-transparent ">
                         <FontAwesomeIcon icon={faAngleDown} className="justify-end fa-lg" />
                     </div>
                 </div>
-            </div>
+            </div>         
+            {props.misc.visibleScreen == null || !props.misc.visibleScreen.includes("creditCard") ?
             <div className="w-600 mx-auto p-2">
                 <div className="w-full mt-2 text-center opacity-50">
                     <p className="text-sm p-2">Cards Accepted:</p>
@@ -63,6 +72,7 @@ const CreditCard = props => {
                     </div>
                 </div>
             </div>
+            : null }
         </div>
     )
 }

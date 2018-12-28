@@ -22,7 +22,7 @@ class Layout extends Component {
     return (
       <div className="bg-red-dark">
         <Header {...this.props} />
-        <div className="px-12">
+        <div className="w-container mx-auto bg-white">
           {this.props.children}
         </div>
         

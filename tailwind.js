@@ -500,7 +500,8 @@ module.exports = {
     "800": "800px",
     full: "100%",
     screen: "100vh",
-    container: "1030px",
+    container: "80%",
+    main: "85%",
   },
 
   /*

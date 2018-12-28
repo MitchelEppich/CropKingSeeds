@@ -16,6 +16,7 @@ const imports = {};
 
 const actionTypes = {
   SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN",
+  SET_CHECKOUT_SCREEN: "SET_CHECKOUT_SCREEN",
   SET_HOVER_INDEX: "SET_HOVER_INDEX",
   SET_GENE_HOVER_INDEX: "SET_GENE_HOVER_INDEX"
 };
@@ -24,6 +25,12 @@ const actions = {
   setVisibleScreen: input => {
     return {
       type: actionTypes.SET_VISIBLE_SCREEN,
+      input: input
+    };
+  },
+  setCheckoutScreen: input => {
+    return {
+      type: actionTypes.SET_CHECKOUT_SCREEN,
       input: input
     };
   },

@@ -10,7 +10,8 @@ import { combineReducers } from "redux";
 import { updateObject } from "../utility";
 
 const initialState = {
-  visibleScreen: ["dogs"], // When [] show main screen
+  visibleScreen: [], // When [] show main screen
+  checkoutScreen: "productsScreen",
   products: [
     {
       _id : "5be22670c766994440c43c29",
@@ -224,6 +225,10 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.SET_HOVER_INDEX:
       return updateObject(state, {
         hoverIndex: state.hoverIndex == action.index ? null : action.index
+      });
+    case actionTypes.SET_CHECKOUT_SCREEN:
+      return updateObject(state, {
+        checkoutScreen: action.input
       });
     case actionTypes.SET_GENE_HOVER_INDEX:
       return updateObject(state, {
