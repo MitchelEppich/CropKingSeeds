@@ -2,15 +2,13 @@ import actionTypes from "../actions";
 import { updateObject } from "../utility";
 
 const initialState = {
-  cart: {}
+  focusProduct: null
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.CLEAR_CART:
-      return updateObject(state, { cart: {} });
-    case actionTypes.MODIFY_CART:
-      return updateObject(state, { cart: action.input });
+    case actionTypes.FOCUS_PRODUCT:
+      return updateObject(state, { focusProduct: action.input });
     default:
       return state;
   }

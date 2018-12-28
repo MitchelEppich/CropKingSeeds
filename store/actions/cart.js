@@ -11,9 +11,7 @@ import Navigation from "./navigation";
 
 const actionTypes = {
   CLEAR_CART: "CLEAR_CART",
-  REMOVE_FROM_CART: "REMOVE_FROM_CART",
-  ADD_TO_CART: "ADD_TO_CART",
-  UPDATE_CART: "UPDATE_CART"
+  MODIFY_CART: "MODIFY_CART"
 };
 
 const getActions = uri => {
@@ -23,7 +21,7 @@ const getActions = uri => {
         type: actionTypes.CLEAR_CART
       };
     },
-    updateCart: input => {
+    modifyCart: input => {
       let _cart = input.cart;
       let _action = input.action;
 
@@ -45,7 +43,7 @@ const getActions = uri => {
       }
 
       return {
-        type: actionTypes.UPDATE_CART,
+        type: actionTypes.MODIFY_CART,
         input: _cart
       };
     }
