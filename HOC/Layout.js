@@ -6,13 +6,12 @@ component has the navigation menu and footer.*/
 
 import "../scss/home.scss";
 import React, { Component } from "react";
-import DevTools from "../store/DevTools";
 import { connect } from "react-redux";
 import actions from "../store/actions";
 
+import Cart from "../components/sections/cart";
 import Header from "../components/partials/header";
 import Footer from "../components/partials/footer";
-import Cart from "../components/sections/cart";
 
 class Layout extends Component {
   componentDidMount() {}

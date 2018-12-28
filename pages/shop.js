@@ -13,6 +13,7 @@ import FeaturedStrainThumbnails from "../components/sections/shop/featuredStrain
 
 class Index extends Component {
 
+
   render() {
     return (
       <Layout>

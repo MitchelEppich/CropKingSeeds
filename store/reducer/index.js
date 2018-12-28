@@ -8,7 +8,6 @@
 import actionTypes from "../actions";
 import { combineReducers } from "redux";
 import { updateObject } from "../utility";
-import {TimelineLite} from "gsap";
 
 const initialState = {
   visibleScreen: ["dogs"], // When [] show main screen
@@ -204,17 +203,19 @@ const initialState = {
     },
   ],
   hoverIndex: null,
-  geneHoverIndex: null,
-  viewCart: false
+  geneHoverIndex: null
 };
 
 const indexReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_VISIBLE_SCREEN:
       let index = state.visibleScreen.indexOf(action.input);
+      let screens = state.visibleScreen;
       if (index > -1) {
-        state.visibleScreen.splice(index, 1);
-        return state;
+        screens.splice(index, 1);
+        return updateObject(state, {
+          visibleScreen: [...screens]
+        });
       } else {
         return updateObject(state, {
           visibleScreen: [...state.visibleScreen, action.input]
