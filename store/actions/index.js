@@ -22,7 +22,8 @@ const actionTypes = {
   SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN",
   SET_HOVER_INDEX: "SET_HOVER_INDEX",
   SET_GENE_HOVER_INDEX: "SET_GENE_HOVER_INDEX",
-  NEXT_BANNER_SLIDE: "NEXT_BANNER_SLIDE"
+  NEXT_BANNER_SLIDE: "NEXT_BANNER_SLIDE",
+  SET_STRAINS: "SET_STRAINS"
 };
 
 const actions = {
@@ -48,10 +49,53 @@ const actions = {
     return {
       type: actionTypes.NEXT_BANNER_SLIDE
     };
-  }
+  },
+  getStrains: () => {
+    return async dispatch => {
+      const link = new HttpLink({ uri, fetch: fetch });
+      const operation = { query: query.allStrains };
+
+      await makePromise(execute(link, operation))
+        .then(data => {
+            Promise.resolve(
+              dispatch(actions.setStrains(data.data.allStrains))
+            );
+        })
+        .catch(error => console.log(error));
+    };
+  },
+  setStrains: strains => {
+    return {
+      type: actionTypes.SET_STRAINS,
+      strains: strains
+    };
+  },
 };
 
-const query = {};
+const query = {
+  allStrains: gql` 
+    query {
+      allStrains {
+        name
+        price
+        strainImg
+        packageImg
+        description
+        effect
+        genetic
+        yield
+        flowerTime
+        difficulty
+        type
+        og
+        pthc
+        pcbd
+        pcbn
+        country
+        sotiId
+      }
+  }`
+};
 
 const mutation = {};
 

@@ -22,12 +22,12 @@ const menu = props => {
                 </div>
             </div>
 
-      <div
-        onClick={() => console.log(props)}
-        className="cursor-pointer text-center"
-      >
-        <img src="../static/img/cropkingseeds.png" className="w-24" />
-      </div>
+            <div
+                onClick={() => console.log(props)}
+                className="cursor-pointer text-center"
+            >
+                <img src="../static/img/cropkingseeds.png" className="w-24" />
+            </div>
 
             <div className="w-1/2 inline-flex">
                 <div className="w-1/5 mt-2">
@@ -44,29 +44,15 @@ const menu = props => {
                     </ul>  
                 </div>            
             
-            <div className="w-3/5 mt-2 text-center mt-4">
-            <p className="text-grey p-2 mt-2 text-lg">Call: 604-563-0291</p>
-            </div>
+                <div className="w-3/5 mt-2 text-center mt-4">
+                    <p className="text-grey p-2 mt-2 text-lg">Call: 604-563-0291</p>
+                </div>
                 <div onClick={() => {props.setVisibleScreen("viewCart")}} className="bg-red-dark text-white w-1/5 text-center pt-6 cursor-pointer">
                     <FontAwesomeIcon icon={faShoppingCart} className="fa-2x"/>            
                 </div> 
             </div> 
                
-        </div>
-
-        <div className="w-3/5 mt-2 text-center mt-4">
-          <p className="text-grey p-2 mt-2 text-lg">Call: 604-563-0291</p>
-        </div>
-        <div
-          onClick={() => {
-            props.setVisibleScreen("viewCart");
-          }}
-          className="bg-red-dark text-white w-1/5 text-center pt-6 cursor-pointer"
-        >
-          <FontAwesomeIcon icon={faShoppingCart} className="fa-2x" />
-        </div>
       </div>
-    </div>
   );
 };
 

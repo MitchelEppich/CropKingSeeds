@@ -18,7 +18,7 @@ const Post = props => {
             <div className="absolute pin-r pin-t">
                 <img style={{
                     transform: "translateX(55px) translateY(30px)"
-                }} src="../static/img/cannbis.jpg" width="400px" />
+                }} src="../static/img/cannabis.jpg" width="400px" />
             </div>
         </div>
     )

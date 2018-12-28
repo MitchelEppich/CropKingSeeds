@@ -12,14 +12,25 @@ import GenePreview from "../components/sections/genePreview";
 import Post from "../components/sections/post";
 
 class Index extends Component {
+  
+  componentWillMount(){
+    this.props.getStrains();
+  }
 
   render() {
 
     return (
       <Layout>
-        <BannerCarousel {...this.props} />
-        <GenePreview {...this.props} />
-        <Post />
+        {this.props.misc.strains != null ?
+          <React.Fragment>
+            <BannerCarousel {...this.props} />
+            <GenePreview {...this.props} />
+            <Post />
+          </React.Fragment>
+        :
+          <p>Loading...</p>
+        }
+        
       </Layout>
     );
   }
@@ -29,7 +40,8 @@ const mapDispatchToProps = dispatch => {
   return {
     setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
     setGeneHoverIndex: index => dispatch(actions.setGeneHoverIndex(index)),
-    nextBannerSlide: () => dispatch(actions.nextBannerSlide())
+    nextBannerSlide: () => dispatch(actions.nextBannerSlide()),
+    getStrains: () => dispatch(actions.getStrains())
   };
 };
 

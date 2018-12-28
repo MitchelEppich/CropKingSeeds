@@ -175,3 +175,16 @@ right: 0;
   overflow: hidden;
   border: 5px solid #FFF;
 };
+
+
+.bannerBuyNow {
+  position: absolute;
+  width: 14rem;
+  left: calc(50% - 7rem);
+  bottom: 3rem;
+  background-color: rgba(0,0,0,0.5);
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+}

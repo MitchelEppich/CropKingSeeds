@@ -5,13 +5,13 @@ const index = props => {
 
   let hoverIndex = props.misc.hoverIndex;
 
-  let thumbnails = props.misc.products.map((product, index)=> {
+  let thumbnails = props.misc.strains.map((product, index)=> {
     if(index > 2)return null;
     let packageStyle = hoverIndex == index ? 
     {
       height: "200px", width: "120px", position: "absolute", zIndex: 10, margin: "0 50px", transition: "0.5s all ease-in-out",
       transform: "translateX(-30px)",
-      backgroundImage: "url(" + product.package_url + ")",
+      backgroundImage: "url(" + product.packageImg + ")",
       backgroundPosition: "center",
       backgroundSize: "cover"
     } 
@@ -19,7 +19,7 @@ const index = props => {
     {
       height: "200px", width: "120px", position: "absolute", zIndex: 10, margin: "0 50px", transition: "0.5s all ease-in-out",
       transform: "translateX(0)",
-      backgroundImage: "url(" + product.package_url + ")",
+      backgroundImage: "url(" + product.packageImg + ")",
       backgroundPosition: "center",
       backgroundSize: "cover"
     };
@@ -51,7 +51,7 @@ const index = props => {
         <div style={packageStyle}>
           <div style={overlayStyle}>Overlay words</div>
         </div>
-      <img src={product.plant_url} style={plantStyle} />
+      <img src={product.strainImg} style={plantStyle} />
     </div>
     );
   });

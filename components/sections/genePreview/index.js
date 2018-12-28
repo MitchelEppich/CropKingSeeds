@@ -91,7 +91,7 @@ const GenePreview = props => {
                 transform: "translateX(150%)",
             };
             regStyle = {
-                transform: "translateX(225%)",
+                transform: "translateX(227%)",
             };
         break;
     }

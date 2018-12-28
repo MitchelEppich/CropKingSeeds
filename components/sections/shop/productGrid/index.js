@@ -28,13 +28,13 @@ class Index extends Component {
     return (
         <div className="w-3/4 min-h-500 text-white">
           <div className="flex flex-wrap justify-start pt-16">
-            {this.props.misc.products.map((product, index)=> {
+            {this.props.misc.strains.map((product, index)=> {
 
               let packageStyle = hoverIndex == index ? 
               {
                 height: "200px", width: "120px", position: "absolute", zIndex: 10, margin: "0 50px", transition: "0.5s all ease-in-out",
                 transform: "translateX(-30px)",
-                backgroundImage: "url(" + product.package_url + ")",
+                backgroundImage: "url(" + product.packageImg + ")",
                 backgroundPosition: "center",
                 backgroundSize: "cover"
               } 
@@ -42,7 +42,7 @@ class Index extends Component {
               {
                 height: "200px", width: "120px", position: "absolute", zIndex: 10, margin: "0 50px", transition: "0.5s all ease-in-out",
                 transform: "translateX(0)",
-                backgroundImage: "url(" + product.package_url + ")",
+                backgroundImage: "url(" + product.packageImg + ")",
                 backgroundPosition: "center",
                 backgroundSize: "cover"
               };
@@ -74,7 +74,7 @@ class Index extends Component {
                       <div style={packageStyle}>
                         <div style={overlayStyle}>Overlay words</div>
                       </div>
-                      <img src={product.plant_url} style={plantStyle} />
+                      <img src={product.strainImg} style={plantStyle} />
                     </div>
                 );
             })}
