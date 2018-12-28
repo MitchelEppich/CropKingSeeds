@@ -11,7 +11,7 @@ import { updateObject } from "../utility";
 import {TimelineLite} from "gsap";
 
 const initialState = {
-  visibleScreen: [], // When [] show main screen
+  visibleScreen: ["dogs"], // When [] show main screen
   products: [
     {
       _id : "5be22670c766994440c43c29",
@@ -21,8 +21,8 @@ const initialState = {
           95
       ],
       name : "Rock Candy",
-      "plantIcon" : "",
-      "packageIcon" : "",
+      "plant_url" : "../static/img/cannabis-plant.png",
+      "package_url" : "../static/img/cks-package.png",
       "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
       "floweringTime" : "7-9 weeks",
       "effects" : "Happy, euphoric",
@@ -42,8 +42,8 @@ const initialState = {
           95
       ],
       name : "Rock Candy",
-      "plantIcon" : "",
-      "packageIcon" : "",
+      "plant_url" : "../static/img/cannabis-plant.png",
+      "package_url" : "../static/img/cks-package.png",
       "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
       "floweringTime" : "7-9 weeks",
       "effects" : "Happy, euphoric",
@@ -63,8 +63,8 @@ const initialState = {
           95
       ],
       name : "Rock Candy",
-      "plantIcon" : "",
-      "packageIcon" : "",
+      "plant_url" : "../static/img/cannabis-plant.png",
+      "package_url" : "../static/img/cks-package.png",
       "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
       "floweringTime" : "7-9 weeks",
       "effects" : "Happy, euphoric",
@@ -84,8 +84,8 @@ const initialState = {
           95
       ],
       name : "Rock Candy",
-      "plantIcon" : "",
-      "packageIcon" : "",
+      "plant_url" : "../static/img/cannabis-plant.png",
+      "package_url" : "../static/img/cks-package.png",
       "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
       "floweringTime" : "7-9 weeks",
       "effects" : "Happy, euphoric",
@@ -105,8 +105,8 @@ const initialState = {
           95
       ],
       name : "Rock Candy",
-      "plantIcon" : "",
-      "packageIcon" : "",
+      "plant_url" : "../static/img/cannabis-plant.png",
+      "package_url" : "../static/img/cks-package.png",
       "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
       "floweringTime" : "7-9 weeks",
       "effects" : "Happy, euphoric",
@@ -126,8 +126,8 @@ const initialState = {
           95
       ],
       name : "Rock Candy",
-      "plantIcon" : "",
-      "packageIcon" : "",
+      "plant_url" : "../static/img/cannabis-plant.png",
+      "package_url" : "../static/img/cks-package.png",
       "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
       "floweringTime" : "7-9 weeks",
       "effects" : "Happy, euphoric",
@@ -147,8 +147,8 @@ const initialState = {
           95
       ],
       name : "Rock Candy",
-      "plantIcon" : "",
-      "packageIcon" : "",
+      "plant_url" : "../static/img/cannabis-plant.png",
+      "package_url" : "../static/img/cks-package.png",
       "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
       "floweringTime" : "7-9 weeks",
       "effects" : "Happy, euphoric",
@@ -168,8 +168,8 @@ const initialState = {
           95
       ],
       name : "Rock Candy",
-      "plantIcon" : "",
-      "packageIcon" : "",
+      "plant_url" : "../static/img/cannabis-plant.png",
+      "package_url" : "../static/img/cks-package.png",
       "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
       "floweringTime" : "7-9 weeks",
       "effects" : "Happy, euphoric",
@@ -189,8 +189,8 @@ const initialState = {
           95
       ],
       name : "Rock Candy",
-      "plantIcon" : "",
-      "packageIcon" : "",
+      "plant_url" : "../static/img/cannabis-plant.png",
+      "package_url" : "../static/img/cks-package.png",
       "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
       "floweringTime" : "7-9 weeks",
       "effects" : "Happy, euphoric",
@@ -202,19 +202,32 @@ const initialState = {
       "autoflower" : false,
       "sotiCode" : "RCF"
     },
-  ]
+  ],
+  hoverIndex: null,
+  geneHoverIndex: null,
+  viewCart: false
 };
 
 const indexReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_VISIBLE_SCREEN:
+      let index = state.visibleScreen.indexOf(action.input);
+      if (index > -1) {
+        state.visibleScreen.splice(index, 1);
+        return state;
+      } else {
+        return updateObject(state, {
+          visibleScreen: [...state.visibleScreen, action.input]
+        });
+      }
+    case actionTypes.SET_HOVER_INDEX:
       return updateObject(state, {
-        visibleScreen: action.input
+        hoverIndex: state.hoverIndex == action.index ? null : action.index
       });
-    // case actionTypes.STAGGER_EL:
-    //   return updateObject(state, {
-    //     myTween: state.myTween.staggerTo(state.myElements, 0.5, {y: 0, autoAlpha: 1}, 0.1)
-    //   });
+    case actionTypes.SET_GENE_HOVER_INDEX:
+      return updateObject(state, {
+        geneHoverIndex:  state.geneHoverIndex == action.index ? null : action.index
+      });
     default:
       return state;
   }

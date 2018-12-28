@@ -71,3 +71,55 @@ margin-right: auto;
 left: 0;
 right: 0;
 }
+
+.slow {
+  transition: all 0.5s ease-in-out;
+}
+
+
+
+// HOME GENE PREVIEW
+.auto {
+  width: 33%;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+  background-image: url("../static/img/Red.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border: 5px solid #cc1f1a;
+}
+.fem {
+  width: 33%;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+  background-image: url("../static/img/Purple.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border: 5px solid #cc1f1a;
+}
+.cbd {
+  width: 33%;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+  background-image: url("../static/img/White.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border: 5px solid #cc1f1a;
+}
+.reg {
+  width: 33%;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+  background-image: url("../static/img/green.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border: 5px solid #cc1f1a;
+};
