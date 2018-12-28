@@ -17,7 +17,7 @@ class Index extends Component {
 
     return (
       <Layout>
-        <BannerCarousel />
+        <BannerCarousel {...this.props} />
         <GenePreview {...this.props} />
         <Post />
       </Layout>
@@ -28,7 +28,8 @@ class Index extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
-    setGeneHoverIndex: index => dispatch(actions.setGeneHoverIndex(index))
+    setGeneHoverIndex: index => dispatch(actions.setGeneHoverIndex(index)),
+    nextBannerSlide: () => dispatch(actions.nextBannerSlide())
   };
 };
 

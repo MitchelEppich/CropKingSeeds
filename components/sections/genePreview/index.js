@@ -9,7 +9,7 @@ const GenePreview = props => {
                 transform: "translateX(0)",
             };
             femStyle = {
-                transform: "translateX(100%)",
+                transform: "translateX(97%)",
             };
             cbdStyle = {
                 transform: "translateX(170%)",
@@ -18,7 +18,7 @@ const GenePreview = props => {
                 transform: "translateX(235%)",
             };
             femImage = {
-                // transform: "rotateY(90deg)"
+                transform: "translateY(100%)",
                 opacity: 0
             };
             break;
@@ -31,13 +31,14 @@ const GenePreview = props => {
                 transform: "translateX(65%)",
             };
             cbdStyle = {
-                transform: "translateX(160%)",
+                transform: "translateX(163%)",
             };
             regStyle = {
                 transform: "translateX(230%)",
             };
             autoImage = {
-                transform: "rotateY(90deg)"
+                transform: "translateY(100%)",
+                opacity: 0
             };
             break;
 
@@ -52,10 +53,11 @@ const GenePreview = props => {
                 transform: "translateX(130%)",
             };
             regStyle = {
-                transform: "translateX(230%)",
+                transform: "translateX(227%)",
             };
             cbdImage = {
-                transform: "translateY(100%)"
+                transform: "translateY(100%)",
+                opacity: 0
             };
             break;
 
@@ -73,7 +75,8 @@ const GenePreview = props => {
                 transform: "translateX(205%)",
             };
             regImage = {
-                transform: "translateX(100%)"
+                transform: "translateY(100%)",
+                opacity: 0
             };
             break;
 
@@ -96,7 +99,7 @@ const GenePreview = props => {
    
 
     return (
-        <div className="flex w-full my-12 h-500 mx-auto overflow-hidden">
+        <div className="flex w-full my-12 h-500 mx-auto relative overflow-hidden">
             <Link href="/shop#feminized">
                 <div style={autoStyle} onClick={() => window.scroll(0, 0)}
                     onMouseEnter={() => props.setGeneHoverIndex(0)} 

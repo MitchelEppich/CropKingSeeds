@@ -203,16 +203,35 @@ const initialState = {
     },
   ],
   hoverIndex: null,
-  geneHoverIndex: null
+  geneHoverIndex: null,
+  activeBannerSlide: 0,
+  bannerSlides: [
+    {
+      color: "blue"
+    },{
+      color: "orange"
+    },{
+      color: "white"
+    }
+  ],
+  bannerSlidePositions: [
+    // { 'transform': 'translateX(-300%)', 'display': 'none' },
+    { 'transform': 'translateX(-200%)', 'display': 'none', transition: "all 0.5s ease-in-out"  },
+    { 'transform': 'translateX(-100%)', transition: "all 0.5s ease-in-out"},
+    { 'transform': 'translateX(0)', transition: "all 0.5s ease-in-out" },
+    { 'transform': 'translateX(100%)' , transition: "all 0.5s ease-in-out"},
+    { 'transform': 'translateX(200%)', 'display': 'none', transition: "all 0.5s ease-in-out"  },
+    // { 'transform': 'translateX(300%)', 'display': 'none' },
+],
 };
 
 const indexReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_VISIBLE_SCREEN:
-      let index = state.visibleScreen.indexOf(action.input);
+      let screenIndex = state.visibleScreen.indexOf(action.input);
       let screens = state.visibleScreen;
-      if (index > -1) {
-        screens.splice(index, 1);
+      if (screenIndex > -1) {
+        screens.splice(screenIndex, 1);
         return updateObject(state, {
           visibleScreen: [...screens]
         });
@@ -229,12 +248,21 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         geneHoverIndex:  state.geneHoverIndex == action.index ? null : action.index
       });
+    case actionTypes.NEXT_BANNER_SLIDE:
+      let slideIndex = state.activeBannerSlide
+      let slidesLength = state.bannerSlides.length - 1;
+      if (slideIndex === slidesLength) {
+        slideIndex = -1;
+      }
+      ++slideIndex;
+      return updateObject(state, {
+        activeBannerSlide: slideIndex
+      });
     default:
       return state;
   }
 };
 
-// export default indexReducer;
 export default combineReducers({
   misc: indexReducer
 });

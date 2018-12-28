@@ -17,7 +17,8 @@ const imports = {};
 const actionTypes = {
   SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN",
   SET_HOVER_INDEX: "SET_HOVER_INDEX",
-  SET_GENE_HOVER_INDEX: "SET_GENE_HOVER_INDEX"
+  SET_GENE_HOVER_INDEX: "SET_GENE_HOVER_INDEX",
+  NEXT_BANNER_SLIDE: "NEXT_BANNER_SLIDE"
 };
 
 const actions = {
@@ -37,6 +38,11 @@ const actions = {
     return {
       type: actionTypes.SET_GENE_HOVER_INDEX,
       index: index
+    }
+  },
+  nextBannerSlide: () => {
+    return {
+      type: actionTypes.NEXT_BANNER_SLIDE
     }
   }
 };
