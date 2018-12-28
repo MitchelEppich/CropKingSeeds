@@ -13,6 +13,7 @@ import FeaturedStrainThumbnails from "../components/sections/shop/featuredStrain
 
 class Index extends Component {
 
+
   render() {
     return (
       <Layout>
@@ -30,7 +31,8 @@ class Index extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input))
+    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+    setHoverIndex: index => dispatch(actions.setHoverIndex(index))
   };
 };
 

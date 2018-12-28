@@ -3,7 +3,7 @@ import Menu from "./menu"
 const Header = props => {
     return (
         <div className="preserv-3d">
-            <Menu />
+            <Menu {...props}/>
         {/*
             <div 
             className="test2 relative">

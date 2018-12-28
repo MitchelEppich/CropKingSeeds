@@ -32,18 +32,70 @@
 }
 
 
+/* CUSTOM FONTS */
+/*********************/
+
+@font-face {
+  font-family: "Wowi-TypefaceRegular";
+  src: url("../static/fonts/Wowi-Typeface/Wowi-TypefaceRegular.ttf")
+      format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Big John Regular";
+  src: url("../static/fonts/Big-John/big-john-webfont.woff") format("truetype");
+  font-weight: lighter;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Slim Joe Regular";
+  src: url("../static/fonts/Slim-Joe/slim_joe-webfont.woff") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 .body,
 html {
-  font-family: verdana;
+  font-family: "Slim Joe Regular", Helvetica, Arial, sans-serif;
   color: #252525;
   font-size: 15px;
+  font-weight: bolder;
   padding: 0;
   margin: 0;
   background: white;
 }
 
+input, textarea, select {
+  border: 2px solid #ececec;
+  border-radius: 3px;
+  font-weight: bolder;
+}
+
+.checkbox {
+  height: 24px;
+  width: 24px;
+  margin-right: 5px;
+  background-color: #eee;
+  border-radius: 50%;
+  vertical-align: text-top;
+}
+
+.checkbox:checked {
+  background-color: #b8b8b8;
+}
+
 li {
   list-style: none;  
+}
+
+h1, h2, h3, h4 {
+  font-family: "Big John Regular", Helvetica, Arial, sans-serif;
 }
 
 .preserv-3d {
@@ -71,3 +123,55 @@ margin-right: auto;
 left: 0;
 right: 0;
 }
+
+.slow {
+  transition: all 0.5s ease-in-out;
+}
+
+
+
+// HOME GENE PREVIEW
+.auto {
+  width: 33%;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+  background-image: url("../static/img/Red.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border: 5px solid #cc1f1a;
+}
+.fem {
+  width: 33%;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+  background-image: url("../static/img/Purple.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border: 5px solid #cc1f1a;
+}
+.cbd {
+  width: 33%;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+  background-image: url("../static/img/White.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border: 5px solid #cc1f1a;
+}
+.reg {
+  width: 33%;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+  background-image: url("../static/img/green.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border: 5px solid #cc1f1a;
+};

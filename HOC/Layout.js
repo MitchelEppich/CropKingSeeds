@@ -6,10 +6,10 @@ component has the navigation menu and footer.*/
 
 import "../scss/home.scss";
 import React, { Component } from "react";
-import DevTools from "../store/DevTools";
 import { connect } from "react-redux";
 import actions from "../store/actions";
 
+import Cart from "../components/sections/cart";
 import Header from "../components/partials/header";
 import Footer from "../components/partials/footer";
 
@@ -20,9 +20,13 @@ class Layout extends Component {
 
   render() {
     return (
-      <div>
+      <div className="bg-red-dark">
         <Header {...this.props} />
-        {this.props.children}
+        <div className="px-12">
+          {this.props.children}
+        </div>
+        
+        <Cart {...this.props} />
         <Footer {...this.props} />
       </div>
     );
@@ -30,7 +34,9 @@ class Layout extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input))
+  };
 };
 
 export default connect(

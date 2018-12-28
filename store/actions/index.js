@@ -19,8 +19,9 @@ const imports = {
 };
 
 const actionTypes = {
-  SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN"
-  // STAGGER_EL: "STAGGER_EL"
+  SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN",
+  SET_HOVER_INDEX: "SET_HOVER_INDEX",
+  SET_GENE_HOVER_INDEX: "SET_GENE_HOVER_INDEX"
 };
 
 const actions = {
@@ -29,12 +30,19 @@ const actions = {
       type: actionTypes.SET_VISIBLE_SCREEN,
       input: input
     };
+  },
+  setHoverIndex: index => {
+    return {
+      type: actionTypes.SET_HOVER_INDEX,
+      index: index
+    };
+  },
+  setGeneHoverIndex: index => {
+    return {
+      type: actionTypes.SET_GENE_HOVER_INDEX,
+      index: index
+    };
   }
-  // staggerEl: () => {
-  //   return {
-  //     type: actionTypes.STAGGER_EL
-  //   }
-  // }
 };
 
 const query = {};
