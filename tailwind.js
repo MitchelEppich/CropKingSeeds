@@ -167,10 +167,16 @@ module.exports = {
   */
 
   screens: {
-    sm: "576px",
-    md: "768px",
-    lg: "992px",
-    xl: "1200px"
+    // 'sm': {'min': '100px', 'max': '577px'},
+    // 'md': {'min': '578px', 'max': '767px'},
+    // 'lg': {'min': '768px', 'max': '991px'},
+    // 'xl': {'min': '992px', 'max': '1199px'},
+    // '2xl': {'min': '1200px'},
+    'sm': {'min': '100px', 'max': '991px'},
+    // 'md': {'min': '578px', 'max': '767px'},
+    'lg': {'min': '992px', 'max': '1380px'},
+    'xl': {'min': '1381px'},
+    // '2xl': {'min': '1200px'},
   },
 
   /*

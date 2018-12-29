@@ -32,15 +32,15 @@ class Index extends Component {
 
               let packageStyle = hoverIndex == index ? 
               {
-                height: "200px", width: "120px", position: "absolute", zIndex: 10, margin: "0 50px", transition: "0.5s all ease-in-out",
-                transform: "translateX(-30px)",
+                height: "100%", width: "100%", position: "absolute", zIndex: 10, margin: "0 50px", transition: "0.5s all ease-in-out",
+                transform: "translateX(-15px)",
                 backgroundImage: "url(" + product.packageImg + ")",
                 backgroundPosition: "center",
                 backgroundSize: "cover"
               } 
               : 
               {
-                height: "200px", width: "120px", position: "absolute", zIndex: 10, margin: "0 50px", transition: "0.5s all ease-in-out",
+                height: "100%", width: "100%", position: "absolute", zIndex: 10, margin: "0 50px", transition: "0.5s all ease-in-out",
                 transform: "translateX(0)",
                 backgroundImage: "url(" + product.packageImg + ")",
                 backgroundPosition: "center",
@@ -49,29 +49,29 @@ class Index extends Component {
 
               let plantStyle = hoverIndex == index ? 
               {
-                height: "200px", position: "absolute", zIndex: 0, margin: "0 50px", transition: "0.5s all ease-in-out",
-                transform: "translateX(30px)"
+                height: "100%", position: "absolute", zIndex: 0, margin: "0 50px", transition: "0.5s all ease-in-out",
+                transform: "translateX(55px)"
               } 
               : 
               {
-                height: "200px", position: "absolute", zIndex: 0, margin: "0 50px", transition: "0.5s all ease-in-out",
-                transform: "translateX(0)"
+                height: "100%", position: "absolute", zIndex: 0, margin: "0 50px", transition: "0.5s all ease-in-out",
+                transform: "translateX(40px)"
               };
 
               let overlayStyle = hoverIndex == index ? 
               {
-                height: "100%", width: "100%", backgroundColor: "rgba(0,0,0,0.5)", transition: "0.5s all ease-in-out",
+                height: "100%", width: "auto", padding: "20px", backgroundColor: "rgba(0,0,0,0.5)", transition: "0.5s all ease-in-out",
                 color: "rgba(255,255,255,1)"
               } 
               : 
               {
-                height: "100%", width: "100%", backgroundColor: "rgba(0,0,0,0)", transition: "0.5s all ease-in-out",
+                height: "0px", backgroundColor: "rgba(0,0,0,0)", transition: "0.5s all ease-in-out",
                 color: "rgba(255,255,255,0)"
               };
 
                 return(
-                    <div key={index} ref={div => this.myElements[index] = div} onMouseEnter={() => this.props.setHoverIndex(index)} onMouseLeave={() => this.props.setHoverIndex(index)} className="w-64 h-64 m-8 text-white">
-                      <div style={packageStyle}>
+                    <div key={index} ref={div => this.myElements[index] = div} onMouseEnter={() => this.props.setHoverIndex(index)} onMouseLeave={() => this.props.setHoverIndex(index)} className="w-64 h-64 m-4 text-white">
+                      <div style={packageStyle} className="px-12 py-2 mx-4">
                         <div style={overlayStyle}>Overlay words</div>
                       </div>
                       <img src={product.strainImg} style={plantStyle} />

@@ -2,23 +2,16 @@ import Link from "next/link";
 
 const Post = props => {
     return (
-        <div style={{
-            width: "75%",
-            boxShadow: "rgba(45, 44, 44, 0.22) 0px 12px 31px",
-            display: "flex",
-        }} className="mx-auto bg-white relative">
-            <div className="w-500 p-4">
-                <p className="text-center font-bold mt-2">Instructions</p>
-                <h2 className="text-center font-bold text-4xl text-red-dark">Germination</h2>
-                <p className="text-justify p-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div className="mx-auto bg-white flex">
+            <div className="w-1/2 p-4 mt-8 xl:mt-24 h-300 shadow-lg">
+                <h2 className="text-center font-hairline xl:mt-8 text-4xl text-red-dark">Germination</h2>
+                <p className="text-justify p-2 xl:my-4 ">Proper germination is the first step to get your cannabis plants growing successfully. Follow our 5 easy steps, or watch our short video to assure your plants flourish right from the seed.</p>
                 <Link href="/germination">
-                    <div className="bg-red-dark text-white p-2 px-5 flex items-center w-32 text-center rounded-lg h-12 mx-auto cursor-pointer">Read More</div>
+                    <div className="bg-red-dark text-white p-2 px-3 mt-4 flex items-center text-center rounded-lg h-12 w-32 mx-auto cursor-pointer">Read More</div>
                 </Link>
             </div>
-            <div className="absolute pin-r pin-t">
-                <img style={{
-                    transform: "translateX(55px) translateY(30px)"
-                }} src="../static/img/cannabis.jpg" width="400px" />
+            <div className="w-1/2">
+                <img src="../static/img/cannabis.jpg" alt="germination-post" className="w-full" />
             </div>
         </div>
     )

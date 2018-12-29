@@ -10,6 +10,7 @@ import Layout from "../HOC/Layout";
 import BannerCarousel from "../components/sections/bannerCarousel" ;
 import GenePreview from "../components/sections/genePreview";
 import Post from "../components/sections/post";
+import News from "../components/sections/news";
 
 class Index extends Component {
   
@@ -25,10 +26,11 @@ class Index extends Component {
           <React.Fragment>
             <BannerCarousel {...this.props} />
             <GenePreview {...this.props} />
-            <Post />
+            <Post {...this.props} />
+            <News {...this.props} />
           </React.Fragment>
         :
-          <p>Loading...</p>
+          <p className="text-transparent text-4xl h-500 w-full py-32"><span className="text-black">Loading...</span>Mitchel is bad</p>
         }
         
       </Layout>

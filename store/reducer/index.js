@@ -14,7 +14,7 @@ const initialState = {
   strains: null,
   hoverIndex: null,
   geneHoverIndex: null,
-  activeBannerSlide: 0,
+  activeBannerSlide: 6,
   bannerSlides: [
     {
       color: "blue",
