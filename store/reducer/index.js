@@ -12,6 +12,7 @@ import { updateObject } from "../utility";
 const initialState = {
   visibleScreen: [], // When [] show main screen
   checkoutScreen: "productsScreen",
+  context: null,
   products: [
     {
       _id : "5be22670c766994440c43c29",
@@ -229,6 +230,10 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.SET_CHECKOUT_SCREEN:
       return updateObject(state, {
         checkoutScreen: action.input
+      });
+    case actionTypes.SET_CONTEXT:
+      return updateObject(state, {
+        context: action.input
       });
     case actionTypes.SET_GENE_HOVER_INDEX:
       return updateObject(state, {

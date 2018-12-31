@@ -14,10 +14,10 @@ const ProductPreview = props => {
                     <FontAwesomeIcon icon={faTimes} className="fa-lg ml-1" />
                 </div>
                 <div className="w-2/5 text-center cursor-pointer p-1">
-                    <img src="../static/img/package.jpg" width="180px"/>
+                    <img src="../static/img/CKS-Auto-Flower-Fem-Sour-Girl-8018.png" width="280px"/>
                 </div>
                 <div className="mt-12 p-2 w-3/5">
-                    <h3 className="p-2">Tortilas Mexicanas</h3>
+                    <h3 className="p-2">Sour Girl Auto Flower</h3>
                     <p className="p-2 font-bold text-lg">5 Packs</p>
                     <p className="p-2 font-bold text-lg">$35</p>
                     <div className="mt-12 w-full p-2 flex items-center inline-flex h-12">
@@ -35,10 +35,10 @@ const ProductPreview = props => {
                     <FontAwesomeIcon icon={faTimes} className="fa-lg ml-1" />
                 </div>
                 <div className="w-2/5 text-center cursor-pointer p-1">
-                    <img src="../static/img/package.jpg" width="180px"/>
+                    <img src="../static/img/CKS-Feminized-Cali-OG-KushxHaze-Sativa-7997.png" width="280px"/>
                 </div>
                 <div className="mt-12 p-2 w-3/5">
-                    <h3 className="p-2">Tortilas Mexicanas</h3>
+                    <h3 className="p-2">Cali OG Kush x Haze</h3>
                     <p className="p-2 font-bold text-lg">5 Packs</p>
                     <p className="p-2 font-bold text-lg">$35</p>
                     <div className="mt-12 w-full p-2 flex items-center inline-flex h-12">

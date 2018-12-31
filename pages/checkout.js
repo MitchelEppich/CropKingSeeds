@@ -30,7 +30,7 @@ class Index extends Component {
         </div>
         <div className="w-container mx-auto mt-12 bg-white">           
             <Checkout {...this.props} />
-            
+
              {this.props.misc.checkoutScreen == "productsScreen" ? 
              <div>
                 <ProductPreview {...this.props} /> 
@@ -47,14 +47,11 @@ class Index extends Component {
             </div> 
             : null }
 
-            {this.props.misc.checkoutScreen == "paymentScreen" ?                     
-                <Payment {...this.props} />            
+            {this.props.misc.checkoutScreen == "paymentScreen" ?                    <Payment {...this.props} />            
             : null }
 
-            {this.props.misc.checkoutScreen == "confirmationScreen" ?                     
-                <Confirmation {...this.props} />            
+            {this.props.misc.checkoutScreen == "confirmationScreen" ?               <Confirmation {...this.props} />            
             : null }
-
         </div>
       </Layout>
     );
@@ -64,7 +61,8 @@ class Index extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
-    setCheckoutScreen: input => dispatch(actions.setCheckoutScreen(input))
+    setCheckoutScreen: input => dispatch(actions.setCheckoutScreen(input)),
+    setContext: input => dispatch(actions.setContext(input)),
   };
 };
 

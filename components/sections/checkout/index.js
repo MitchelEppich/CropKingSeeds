@@ -8,7 +8,7 @@ const Checkout = props => {
                 <div className={`w-1/4 mx-2 text-center text-black relative ${props.misc.checkoutScreen == "productsScreen" ? 'steps-active' : null }`}>
                     <div onClick={(e)=>{ 
                         e.preventDefault()                       
-                        props.setCheckoutScreen("productsScreen")                        
+                        props.setCheckoutScreen("productsScreen")       
                     }} 
                         className="p-2 cursor-pointer">
                         1. Products Review
@@ -26,7 +26,7 @@ const Checkout = props => {
                 <div className={`w-1/4 mx-2 text-center text-black relative ${props.misc.checkoutScreen == "paymentScreen" ? 'steps-active' : null }`}>
                     <div onClick={(e)=>{ 
                         e.preventDefault()                       
-                        props.setCheckoutScreen("paymentScreen")                        
+                        props.setCheckoutScreen("paymentScreen")       
                     }} 
                         className="p-2 cursor-pointer">
                         3. Payment

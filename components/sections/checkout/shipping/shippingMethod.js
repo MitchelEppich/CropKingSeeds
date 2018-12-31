@@ -5,7 +5,14 @@ const ShippingMethod = props => {
             <div className="w-full inline-flex">
                 <div className="p-2">
                     <div className="inline-flex items-center flex">
-                        <input type="checkbox" className="checkbox"/>
+                        <input 
+                        type="checkbox" 
+                        className="checkbox"
+                        checked={props.misc.context == 0}
+                        onChange={() => {
+                            props.setContext(0);
+                        }}
+                      />                      
                         <h2 className="font-extrabold text-grey ml-2">Regular Shipping</h2>
                         <span className="text-3xl text-grey-light ml-10">$10</span>
                     </div>                    
@@ -15,7 +22,14 @@ const ShippingMethod = props => {
             <div className="w-full inline-flex mt-6 mb-12">
                 <div className="p-2">
                     <div className="inline-flex items-center flex">
-                        <input type="checkbox" className="checkbox"/>
+                        <input 
+                        type="checkbox" 
+                        className="checkbox"
+                        checked={props.misc.context == 1}
+                        onChange={() => {
+                            props.setContext(1);
+                        }}
+                      />
                         <h2 className="font-extrabold text-grey ml-2">Express Shipping</h2>
                         <span className="text-3xl text-grey-light ml-10">$32</span>
                     </div>                    
