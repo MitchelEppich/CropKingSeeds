@@ -25,7 +25,9 @@ const actionTypes = {
   SET_GENE_HOVER_INDEX: "SET_GENE_HOVER_INDEX",
   NEXT_BANNER_SLIDE: "NEXT_BANNER_SLIDE",
   SET_STRAINS: "SET_STRAINS",
-  SET_CONTEXT: "SET_CONTEXT"
+  SET_CONTEXT: "SET_CONTEXT",
+  TOGGLE_FILTER: "TOGGLE_FILTER",
+  CLEAR_FILTERS: "CLEAR_FILTERS"
 };
 
 const actions = {
@@ -81,6 +83,17 @@ const actions = {
       strains: strains
     };
   },
+  toggleFilter: filter => {
+    return {
+      type: actionTypes.TOGGLE_FILTER,
+      filter: filter
+    };
+  },
+  clearFilters: () => {
+    return {
+      type: actionTypes.CLEAR_FILTERS
+    };
+  }
 };
 
 const query = {

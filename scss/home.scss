@@ -127,7 +127,9 @@ right: 0;
 .slow {
   transition: all 0.5s ease-in-out;
 }
-
+.slowish {
+  transition: all 0.2s ease-in-out;
+}
 
 // CHECKOUT PREVIEW
 
@@ -166,6 +168,7 @@ right: 0;
   background-repeat: no-repeat;
   overflow: hidden;
   border: 5px solid #FFF;
+  cursor: pointer;
 }
 .fem {
   width: 33%;
@@ -177,6 +180,7 @@ right: 0;
   background-repeat: no-repeat;
   overflow: hidden;
   border: 5px solid #FFF;
+  cursor: pointer;
 }
 .cbd {
   width: 33%;
@@ -188,6 +192,7 @@ right: 0;
   background-repeat: no-repeat;
   overflow: hidden;
   border: 5px solid #FFF;
+  cursor: pointer;
 }
 .reg {
   width: 33%;
@@ -199,6 +204,7 @@ right: 0;
   background-repeat: no-repeat;
   overflow: hidden;
   border: 5px solid #FFF;
+  cursor: pointer;
 };
 
 
@@ -213,6 +219,18 @@ right: 0;
     background-color: rgba(0,0,0,0.8);
   }
 }
+
+.filter {
+  @include element("hr"){
+    width: 90%;
+    height: 1px;
+    box-shadow: 0 2px 0 0 rgba(204,31,26,0.3);
+  }
+}
+
+
+
+
 
 
 

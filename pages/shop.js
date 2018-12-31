@@ -21,7 +21,7 @@ class Index extends Component {
   render() {
     return (
       <Layout>
-        {this.props.misc.strains.length > 0 ?
+        {this.props.misc.strains && this.props.misc.strains.length > 0 ?
           <React.Fragment>
             <div className="flex flex-wrap">
               <div className="w-1/4">
@@ -44,7 +44,9 @@ const mapDispatchToProps = dispatch => {
   return {
     setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
     setHoverIndex: index => dispatch(actions.setHoverIndex(index)),
-    getStrains: () => dispatch(actions.getStrains())
+    getStrains: () => dispatch(actions.getStrains()),
+    toggleFilter: filter => dispatch(actions.toggleFilter(filter)),
+    clearFilters: () => dispatch(actions.clearFilters())
   };
 };
 

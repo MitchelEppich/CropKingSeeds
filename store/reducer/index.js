@@ -55,7 +55,8 @@ const initialState = {
     // { 'transform': 'translateX(100%)', transition: "all 0.5s ease-in-out"},
     // { 'transform': 'translateX(200%)', display: "none", transition: "all 0.5s ease-in-out"  },
     // { 'transform': 'translateX(-200%)', display: "none", transition: "all 0.5s ease-in-out"  },
-],
+  ],
+  activeFilters: []
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -102,6 +103,23 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.SET_STRAINS:
       return updateObject(state, {
         strains: [...action.strains]
+      });
+    case actionTypes.TOGGLE_FILTER:
+      let filterIndex = state.activeFilters.indexOf(action.filter);
+      let activeFilters = state.activeFilters;
+      if (filterIndex > -1) {
+        activeFilters.splice(filterIndex, 1);
+        return updateObject(state, {
+          activeFilters: [...activeFilters]
+        });
+      } else {
+        return updateObject(state, {
+          activeFilters: [...state.activeFilters, action.filter]
+        });
+      }
+    case actionTypes.CLEAR_FILTERS:
+      return updateObject(state, {
+        activeFilters: []
       });
     default:
       return state;

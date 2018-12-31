@@ -1,6 +1,4 @@
 
-import Thumbnail from "../productGrid/thumbnail";
-
 const index = props => {
 
   let hoverIndex = props.misc.hoverIndex;
@@ -37,13 +35,13 @@ const index = props => {
 
     let overlayStyle = hoverIndex == index ? 
     {
-      height: "100%", width: "100%", backgroundColor: "rgba(0,0,0,0.5)", transition: "0.5s all ease-in-out",
-      color: "rgba(255,255,255,1)"
+      height: "99%", width: "86%", padding: "20px", backgroundColor: "rgba(0,0,0,0.5)", transition: "0.5s all ease-in-out",
+      color: "rgba(255,255,255,1)", transform: "translateX(14px) translateY(1px)"
     } 
     : 
     {
-      height: "100%", width: "100%", backgroundColor: "rgba(0,0,0,0)", transition: "0.5s all ease-in-out",
-      color: "rgba(255,255,255,0)"
+      height: "0px", width: "86%", backgroundColor: "rgba(0,0,0,0.5)", transition: "0.5s all ease-in-out",
+      color: "rgba(255,255,255,0)", transform: "translateX(14px) translateY(1px)"
     };
 
     return(
