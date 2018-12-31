@@ -3,7 +3,7 @@ import Link from "next/link";
 const Post = props => {
     return (
         <div className="mx-auto bg-white flex">
-            <div className="w-1/2 p-4 mt-8 xl:mt-24 h-300 shadow-lg">
+            <div className="w-1/2 p-4 mt-12 xl:mt-24 h-300 shadow-lg">
                 <h2 className="text-center font-hairline xl:mt-8 text-4xl text-red-dark">Germination</h2>
                 <p className="text-justify p-2 xl:my-4 ">Proper germination is the first step to get your cannabis plants growing successfully. Follow our 5 easy steps, or watch our short video to assure your plants flourish right from the seed.</p>
                 <Link href="/germination">

@@ -6,7 +6,6 @@ const slide = props => {
   if(props.position + props.index >= props.misc.bannerSlides.length){
     positionIndex =  (props.position + props.index) - props.misc.bannerSlides.length
   }
-  console.log("ind:" + props.index + ", pos:" + props.position)
   let position = props.misc.bannerSlidePositions[positionIndex];
 
   return (

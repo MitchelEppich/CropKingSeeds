@@ -45,7 +45,7 @@ let colors = {
   transparent: "transparent",
   "semi-transparent": "rgba(250, 250, 250, 0.2)",
   "almost-white": "rgba(255, 255, 255, 0.7)",
-  "almost-black": "rgba(0,0,0,0.9)",
+  "almost-black": "rgba(0,0,0,0.5)",
 
   black: "#000",
   "grey-darkest": "#3d4852",
