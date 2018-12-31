@@ -20,10 +20,12 @@ const imports = {
 
 const actionTypes = {
   SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN",
+  SET_CHECKOUT_SCREEN: "SET_CHECKOUT_SCREEN",
   SET_HOVER_INDEX: "SET_HOVER_INDEX",
   SET_GENE_HOVER_INDEX: "SET_GENE_HOVER_INDEX",
   NEXT_BANNER_SLIDE: "NEXT_BANNER_SLIDE",
-  SET_STRAINS: "SET_STRAINS"
+  SET_STRAINS: "SET_STRAINS",
+  SET_CONTEXT: "SET_CONTEXT"
 };
 
 const actions = {
@@ -33,7 +35,16 @@ const actions = {
       input: input
     };
   },
-  setHoverIndex: index => {
+  setCheckoutScreen: input => {
+    return {
+      type: actionTypes.SET_CHECKOUT_SCREEN,
+      input: input
+    };
+  },
+  setContext: input => {
+    return { type: actionTypes.SET_CONTEXT, input: input };
+  },
+  setHoverIndex: (index) => {
     return {
       type: actionTypes.SET_HOVER_INDEX,
       index: index

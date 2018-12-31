@@ -18,10 +18,9 @@ const menu = props => {
                         <li className="px-2 py-1 mx-2 cursor-pointer text-2xl hover:text-red-dark-dark">Shop</li>
                         <li className="px-2 py-1 mx-2 cursor-pointer text-2xl hover:text-red-dark-dark">Germination</li>
                         <li className="px-2 py-1 mx-2 cursor-pointer text-2xl hover:text-red-dark-dark">Articles</li>
-                    </ul>  
+                    </ul>
                 </div>
             </div>
-
             <div
                 onClick={() => console.log(props)}
                 className="cursor-pointer text-center"
@@ -32,13 +31,13 @@ const menu = props => {
             <div className="w-1/2 inline-flex">
                 <div className="w-1/5 mt-2">
                     <ul className="inline-flex text-red-dark font-bold  justify-around text-lg pt-2">
-                        <li className="px-2 py-1 mx-2 cursor-pointer hover:text-red-dark-dark text-red-dark">
+                        <li className="px-2 py-1 mx-2 cursor-pointer hover:text-red-dark text-red">
                             <FontAwesomeIcon icon={faFacebookF} className="fa-2x" />
                         </li>
-                        <li className="px-2 py-1 mx-2 cursor-pointer hover:text-red-dark-dark text-red-dark">
+                        <li className="px-2 py-1 mx-2 cursor-pointer hover:text-red-dark text-red">
                             <FontAwesomeIcon icon={faTwitter} className="fa-2x" />
                         </li>
-                        <li className="px-2 py-1 mx-2 cursor-pointer hover:text-red-dark-dark text-red-dark">
+                        <li className="px-2 py-1 mx-2 cursor-pointer hover:text-red-dark text-red">
                             <FontAwesomeIcon icon={faInstagram} className="fa-2x" />
                         </li>
                     </ul>  

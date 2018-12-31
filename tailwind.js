@@ -507,7 +507,8 @@ module.exports = {
     full: "100%",
     '3full': "300%",
     screen: "100vw",
-    container: "1030px",
+    container: "80%",
+    main: "85%"
   },
 
   /*

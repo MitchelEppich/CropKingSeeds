@@ -17,34 +17,41 @@ import Coupon from "../components/sections/checkout/coupon";
 import Shipping from "../components/sections/checkout/shipping";
 import ShippingMethod from "../components/sections/checkout/shipping/shippingMethod";
 import Payment from "../components/sections/checkout/payment";
+import Checkout from "../components/sections/checkout";
+import Confirmation from "../components/sections/checkout/confirmation";
 
 
 class Index extends Component {
   render() {
     return (
       <Layout>
-        <div className="text-center mt-24">
-            <h1 className="text-4xl font-bold">Checkout</h1>
+        <div className="text-center pt-10 mt-4 bg-white">
+            <h1 className="text-4xl font-bold text-black">Checkout Preview</h1>
         </div>
-        <div className="w-container mx-auto mt-12">
-            <hr style={{border:"1px solid rgb(228, 228, 228)"}} className="mt-12"/>
-            <h2 className="text-3xl font-extrabold mt-4 mb-6">Products Preview</h2>
-            <ProductPreview />
-            <hr style={{border:"1px solid rgb(228, 228, 228)"}} className="mt-12"/>
-            <h2 className="text-3xl font-extrabold mt-4 mb-6">Coupon Code</h2>
-            <Coupon />
-            <hr style={{border:"1px solid rgb(228, 228, 228)"}} className="mt-12"/>
-            <h2 className="text-3xl font-extrabold mt-4 mb-6">Billing Address</h2>
+        <div className="w-container mx-auto mt-12 bg-white">           
+            <Checkout {...this.props} />
+
+             {this.props.misc.checkoutScreen == "productsScreen" ? 
+             <div>
+                <ProductPreview {...this.props} /> 
+                <hr style={{border:"1px solid rgb(228, 228, 228)"}} className="my-6"/>  
+                <Coupon {...this.props} />
+             </div>
+             : null }          
             
-            <Shipping />
-            <hr style={{border:"1px solid rgb(228, 228, 228)"}} className="mt-12"/>
-            <h2 className="text-3xl font-extrabold mt-4 mb-6">Shipping Method</h2>
-            
-            <ShippingMethod />
-            <hr style={{border:"1px solid rgb(228, 228, 228)"}} className="mt-12"/>
-            <h2 className="text-3xl font-extrabold mt-4 mb-6">Payment</h2>
-            
-            <Payment />
+            {this.props.misc.checkoutScreen == "shippingScreen" ? 
+             <div>             
+                <Shipping {...this.props} />
+                <hr style={{border:"1px solid rgb(228, 228, 228)"}} className="my-6"/>  
+                <ShippingMethod {...this.props} />                
+            </div> 
+            : null }
+
+            {this.props.misc.checkoutScreen == "paymentScreen" ?                    <Payment {...this.props} />            
+            : null }
+
+            {this.props.misc.checkoutScreen == "confirmationScreen" ?               <Confirmation {...this.props} />            
+            : null }
         </div>
       </Layout>
     );
@@ -53,7 +60,9 @@ class Index extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input))
+    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+    setCheckoutScreen: input => dispatch(actions.setCheckoutScreen(input)),
+    setContext: input => dispatch(actions.setContext(input)),
   };
 };
 

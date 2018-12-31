@@ -5,12 +5,6 @@ const GenePreview = props => {
         femStyle, femImage, femScreen,
         cbdStyle,  cbdImage, cbdScreen,
         regStyle,  regImage, regScreen;
-    autoScreen = femScreen = cbdScreen = regScreen = {
-        transform: "rotate(-90deg) translateY(-90%)",
-        transition: "all 0.5s ease-in-out",
-        width: "125%",
-        height: "100%"
-    }
 
     switch(props.misc.geneHoverIndex){
         case 0:
@@ -106,6 +100,13 @@ const GenePreview = props => {
             regStyle = {
                 transform: "translateX(227%)",
             };
+            autoScreen = femScreen = cbdScreen = regScreen = {
+                transform: "rotate(-90deg) translateY(-90%)",
+                transition: "all 0.5s ease-in-out",
+                width: "125%",
+                height: "100%"
+            };
+            
         break;
     }
         
@@ -118,7 +119,7 @@ const GenePreview = props => {
                     onMouseEnter={() => props.setGeneHoverIndex(0)} 
                     onMouseLeave={() => props.setGeneHoverIndex(0)} className="auto h-500 z-10">
                     <div style={femScreen} className="bg-almost-black text-white uppercase">Feminized</div>
-                    <img className="w-full slow" src="../static/img/feminized.png" style={femImage} />
+                    <img className="absolute w-full slow" src="../static/img/feminized.png" style={femImage} />
                 </div>
             </Link>
             <Link href="/shop#autoflower">

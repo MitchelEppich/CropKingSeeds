@@ -77,6 +77,14 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         hoverIndex: state.hoverIndex == action.index ? null : action.index
       });
+    case actionTypes.SET_CHECKOUT_SCREEN:
+      return updateObject(state, {
+        checkoutScreen: action.input
+      });
+    case actionTypes.SET_CONTEXT:
+      return updateObject(state, {
+        context: action.input
+      });
     case actionTypes.SET_GENE_HOVER_INDEX:
       return updateObject(state, {
         geneHoverIndex:  state.geneHoverIndex == action.index ? null : action.index

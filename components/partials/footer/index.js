@@ -16,9 +16,9 @@ const Footer = props => {
             </div>
             <div className="">
                 <img style={{
-                       width: "410px",
+                       width: "300px",
                        position: "absolute",
-                       height: "320px",
+                       height: "auto",
                        bottom: "0px",
 
                 }} src="../static/img/cropkingseeds-footer.png" />
