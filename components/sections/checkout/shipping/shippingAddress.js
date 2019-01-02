@@ -9,29 +9,55 @@ const ShippingAddress = props => {
       </h2>
       <form>
         <div className="w-full mt-4">
-          <div className="w-full p-2">
-            <input
-              type="text"
-              name=""
-              id="name"
-              onChange={e => {
-                let _orderDetails = props.checkout.orderDetails;
-                let _target = e.target;
-                let _key = _target.id;
-                let _value = _target.value;
-                let _tag = "sFirstName sLastName";
+          <div className="w-full p-2 inline-flex">
+            <div className="w-1/2">
+              <input
+                type="text"
+                name="fullName"
+                id="fullName"
+                onChange={e => {
+                  let _orderDetails = props.checkout.orderDetails;
+                  let _target = e.target;
+                  let _key = _target.id;
+                  let _value = _target.value;
+                  let _tag = "sFirstName sLastName";
 
-                props.modifyOrderDetails({
-                  orderDetails: _orderDetails,
-                  group: pageGroup,
-                  key: _key,
-                  value: _value,
-                  tag: _tag
-                });
-              }}
-              placeholder="Full Name"
-              className="p-2 w-full"
-            />
+                  props.modifyOrderDetails({
+                    orderDetails: _orderDetails,
+                    group: pageGroup,
+                    key: _key,
+                    value: _value,
+                    tag: _tag
+                  });
+                }}
+                placeholder="Full Name"
+                className="p-2 w-full"
+              />
+            </div>
+            <div className="w-1/2 px-2">
+              <input
+                type="email"
+                name="email"
+                id="email"
+                onChange={e => {
+                  let _orderDetails = props.checkout.orderDetails;
+                  let _target = e.target;
+                  let _key = _target.id;
+                  let _value = _target.value;
+                  let _tag = "sEmail";
+
+                  props.modifyOrderDetails({
+                    orderDetails: _orderDetails,
+                    group: pageGroup,
+                    key: _key,
+                    value: _value,
+                    tag: _tag
+                  });
+                }}
+                placeholder="Email Address"
+                className="p-2 w-full"
+              />
+            </div>
           </div>
           <div className="w-full p-2">
             <input
@@ -176,7 +202,7 @@ const ShippingAddress = props => {
                     tag: _tag
                   });
                 }}
-                placeholder="Province or State"
+                placeholder="Province"
                 className="p-2 w-full"
               />
             </div>
