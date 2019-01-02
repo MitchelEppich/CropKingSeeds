@@ -16,7 +16,7 @@ import NavigationReducer from "./navigation";
 const initialState = {
   visibleScreen: ["dogs"], // When [] show main screen
   strains: null,
-  hoverIndex: null,
+  hoverId: null,
   geneHoverIndex: null,
   stepsCheckout: 0,
   sameAddress: true,
@@ -111,14 +111,10 @@ const indexReducer = (state = initialState, action) => {
           visibleScreen: [...state.visibleScreen, action.input]
         });
       }
-    case actionTypes.SET_HOVER_INDEX:
+    case actionTypes.SET_HOVER_ID:
       return updateObject(state, {
-        hoverIndex: state.hoverIndex == action.index ? null : action.index
+        hoverId: state.hoverId == action.id ? null : action.id
       });
-    // case actionTypes.SET_CHECKOUT_SCREEN:
-    //   return updateObject(state, {
-    //     checkoutScreen: action.input
-    //   });
     case actionTypes.TOGGLE_STEPS_CHECKOUT:
       return updateObject(state, {
         stepsCheckout: action.input
@@ -133,13 +129,8 @@ const indexReducer = (state = initialState, action) => {
           state.geneHoverIndex == action.index ? null : action.index
       });
     case actionTypes.NEXT_BANNER_SLIDE:
-<<<<<<< HEAD
       let slideIndex = state.activeBannerSlide
       let slidesLength = state.bannerSlidePositions.length - 1;
-=======
-      let slideIndex = state.activeBannerSlide;
-      let slidesLength = state.bannerSlidePositions.length;
->>>>>>> 8dca7de01fbc1c4e0c982ece2f98178ebf63afd9
       if (slideIndex === slidesLength) {
         slideIndex = -1;
       }
@@ -152,7 +143,7 @@ const indexReducer = (state = initialState, action) => {
         strains: [...action.strains]
       });
     case actionTypes.TOGGLE_FILTER:
-      let filterIndex = state.activeFilters.indexOf(action.filter);
+      let filterIndex = state.activeFilters.findIndex(x => JSON.stringify(x) === JSON.stringify(action.filter));
       let activeFilters = state.activeFilters;
       if (filterIndex > -1) {
         activeFilters.splice(filterIndex, 1);

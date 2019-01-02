@@ -20,7 +20,7 @@ class Layout extends Component {
 
   render() {
     return (
-      <div className="bg-red-dark">
+      <div className="bg-smoke-grey">
         <Header {...this.props} />
         <div className=""> 
           <div className="bg-white px-4 w-1300 mx-auto">

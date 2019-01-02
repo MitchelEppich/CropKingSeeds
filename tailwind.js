@@ -48,6 +48,7 @@ let colors = {
   "almost-black": "rgba(0,0,0,0.5)",
 
   black: "#000",
+  "smoke-grey": "#eee",
   "grey-darkest": "#3d4852",
   "grey-darker": "#606f7b",
   "grey-dark": "#8795a1",
