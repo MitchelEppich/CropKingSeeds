@@ -20,9 +20,14 @@ const imports = {
 
 const actionTypes = {
   SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN",
+  SET_CHECKOUT_SCREEN: "SET_CHECKOUT_SCREEN",
   SET_HOVER_INDEX: "SET_HOVER_INDEX",
   SET_GENE_HOVER_INDEX: "SET_GENE_HOVER_INDEX",
-  NEXT_BANNER_SLIDE: "NEXT_BANNER_SLIDE"
+  NEXT_BANNER_SLIDE: "NEXT_BANNER_SLIDE",
+  SET_STRAINS: "SET_STRAINS",
+  SET_CONTEXT: "SET_CONTEXT",
+  TOGGLE_FILTER: "TOGGLE_FILTER",
+  CLEAR_FILTERS: "CLEAR_FILTERS"
 };
 
 const actions = {
@@ -32,7 +37,16 @@ const actions = {
       input: input
     };
   },
-  setHoverIndex: index => {
+  setCheckoutScreen: input => {
+    return {
+      type: actionTypes.SET_CHECKOUT_SCREEN,
+      input: input
+    };
+  },
+  setContext: input => {
+    return { type: actionTypes.SET_CONTEXT, input: input };
+  },
+  setHoverIndex: (index) => {
     return {
       type: actionTypes.SET_HOVER_INDEX,
       index: index
@@ -48,10 +62,64 @@ const actions = {
     return {
       type: actionTypes.NEXT_BANNER_SLIDE
     };
+  },
+  getStrains: () => {
+    return async dispatch => {
+      const link = new HttpLink({ uri, fetch: fetch });
+      const operation = { query: query.allStrains };
+
+      await makePromise(execute(link, operation))
+        .then(data => {
+            Promise.resolve(
+              dispatch(actions.setStrains(data.data.allStrains))
+            );
+        })
+        .catch(error => console.log(error));
+    };
+  },
+  setStrains: strains => {
+    return {
+      type: actionTypes.SET_STRAINS,
+      strains: strains
+    };
+  },
+  toggleFilter: filter => {
+    return {
+      type: actionTypes.TOGGLE_FILTER,
+      filter: filter
+    };
+  },
+  clearFilters: () => {
+    return {
+      type: actionTypes.CLEAR_FILTERS
+    };
   }
 };
 
-const query = {};
+const query = {
+  allStrains: gql` 
+    query {
+      allStrains {
+        name
+        price
+        strainImg
+        packageImg
+        description
+        effect
+        genetic
+        yield
+        flowerTime
+        difficulty
+        type
+        og
+        pthc
+        pcbd
+        pcbn
+        country
+        sotiId
+      }
+  }`
+};
 
 const mutation = {};
 

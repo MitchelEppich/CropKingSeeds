@@ -4,7 +4,6 @@ const resolvers = require("./resolvers");
 const typeDefs = `
 type Query {
   sendString: String
-
   strain(input: StrainInput!): Strain
   allStrains(filter: StrainInput): [Strain]!
 }

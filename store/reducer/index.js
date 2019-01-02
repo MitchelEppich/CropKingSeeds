@@ -11,218 +11,52 @@ import { updateObject } from "../utility";
 
 const initialState = {
   visibleScreen: ["dogs"], // When [] show main screen
-  products: [
-    {
-      _id : "5be22670c766994440c43c29",
-      price : [ 
-          45, 
-          65, 
-          95
-      ],
-      name : "Rock Candy",
-      "plant_url" : "../static/img/cannabis-plant.png",
-      "package_url" : "../static/img/cks-package.png",
-      "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
-      "floweringTime" : "7-9 weeks",
-      "effects" : "Happy, euphoric",
-      "thc" : "15-19%",
-      "type" : "80% Indica / 20% Sativa",
-      "difficulty" : "Easy",
-      "indOut" : "Indoor/Outdoor",
-      "color" : "#8bd5d4",
-      "autoflower" : false,
-      "sotiCode" : "RCF"
-    },
-    {
-      _id : "5be22670c766994440c43c29",
-      price : [ 
-          45, 
-          65, 
-          95
-      ],
-      name : "Rock Candy",
-      "plant_url" : "../static/img/cannabis-plant.png",
-      "package_url" : "../static/img/cks-package.png",
-      "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
-      "floweringTime" : "7-9 weeks",
-      "effects" : "Happy, euphoric",
-      "thc" : "15-19%",
-      "type" : "80% Indica / 20% Sativa",
-      "difficulty" : "Easy",
-      "indOut" : "Indoor/Outdoor",
-      "color" : "#8bd5d4",
-      "autoflower" : false,
-      "sotiCode" : "RCF"
-    },
-    {
-      _id : "5be22670c766994440c43c29",
-      price : [ 
-          45, 
-          65, 
-          95
-      ],
-      name : "Rock Candy",
-      "plant_url" : "../static/img/cannabis-plant.png",
-      "package_url" : "../static/img/cks-package.png",
-      "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
-      "floweringTime" : "7-9 weeks",
-      "effects" : "Happy, euphoric",
-      "thc" : "15-19%",
-      "type" : "80% Indica / 20% Sativa",
-      "difficulty" : "Easy",
-      "indOut" : "Indoor/Outdoor",
-      "color" : "#8bd5d4",
-      "autoflower" : false,
-      "sotiCode" : "RCF"
-    },
-    {
-      _id : "5be22670c766994440c43c29",
-      price : [ 
-          45, 
-          65, 
-          95
-      ],
-      name : "Rock Candy",
-      "plant_url" : "../static/img/cannabis-plant.png",
-      "package_url" : "../static/img/cks-package.png",
-      "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
-      "floweringTime" : "7-9 weeks",
-      "effects" : "Happy, euphoric",
-      "thc" : "15-19%",
-      "type" : "80% Indica / 20% Sativa",
-      "difficulty" : "Easy",
-      "indOut" : "Indoor/Outdoor",
-      "color" : "#8bd5d4",
-      "autoflower" : false,
-      "sotiCode" : "RCF"
-    },
-    {
-      _id : "5be22670c766994440c43c29",
-      price : [ 
-          45, 
-          65, 
-          95
-      ],
-      name : "Rock Candy",
-      "plant_url" : "../static/img/cannabis-plant.png",
-      "package_url" : "../static/img/cks-package.png",
-      "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
-      "floweringTime" : "7-9 weeks",
-      "effects" : "Happy, euphoric",
-      "thc" : "15-19%",
-      "type" : "80% Indica / 20% Sativa",
-      "difficulty" : "Easy",
-      "indOut" : "Indoor/Outdoor",
-      "color" : "#8bd5d4",
-      "autoflower" : false,
-      "sotiCode" : "RCF"
-    },
-    {
-      _id : "5be22670c766994440c43c29",
-      price : [ 
-          45, 
-          65, 
-          95
-      ],
-      name : "Rock Candy",
-      "plant_url" : "../static/img/cannabis-plant.png",
-      "package_url" : "../static/img/cks-package.png",
-      "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
-      "floweringTime" : "7-9 weeks",
-      "effects" : "Happy, euphoric",
-      "thc" : "15-19%",
-      "type" : "80% Indica / 20% Sativa",
-      "difficulty" : "Easy",
-      "indOut" : "Indoor/Outdoor",
-      "color" : "#8bd5d4",
-      "autoflower" : false,
-      "sotiCode" : "RCF"
-    },
-    {
-      _id : "5be22670c766994440c43c29",
-      price : [ 
-          45, 
-          65, 
-          95
-      ],
-      name : "Rock Candy",
-      "plant_url" : "../static/img/cannabis-plant.png",
-      "package_url" : "../static/img/cks-package.png",
-      "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
-      "floweringTime" : "7-9 weeks",
-      "effects" : "Happy, euphoric",
-      "thc" : "15-19%",
-      "type" : "80% Indica / 20% Sativa",
-      "difficulty" : "Easy",
-      "indOut" : "Indoor/Outdoor",
-      "color" : "#8bd5d4",
-      "autoflower" : false,
-      "sotiCode" : "RCF"
-    },
-    {
-      _id : "5be22670c766994440c43c29",
-      price : [ 
-          45, 
-          65, 
-          95
-      ],
-      name : "Rock Candy",
-      "plant_url" : "../static/img/cannabis-plant.png",
-      "package_url" : "../static/img/cks-package.png",
-      "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
-      "floweringTime" : "7-9 weeks",
-      "effects" : "Happy, euphoric",
-      "thc" : "15-19%",
-      "type" : "80% Indica / 20% Sativa",
-      "difficulty" : "Easy",
-      "indOut" : "Indoor/Outdoor",
-      "color" : "#8bd5d4",
-      "autoflower" : false,
-      "sotiCode" : "RCF"
-    },
-    {
-      _id : "5be22670c766994440c43c29",
-      price : [ 
-          45, 
-          65, 
-          95
-      ],
-      name : "Rock Candy",
-      "plant_url" : "../static/img/cannabis-plant.png",
-      "package_url" : "../static/img/cks-package.png",
-      "description" : "This extremely relaxing strain is great after a long day, producing a strong euphoria that slowly slips you into a deep sleep. Great for all growers, this easy-to-grow strain will make your grow room smell of citrus fruit. The buds have a fluffy soft look, with a thick layer of sugary white trichomes.",
-      "floweringTime" : "7-9 weeks",
-      "effects" : "Happy, euphoric",
-      "thc" : "15-19%",
-      "type" : "80% Indica / 20% Sativa",
-      "difficulty" : "Easy",
-      "indOut" : "Indoor/Outdoor",
-      "color" : "#8bd5d4",
-      "autoflower" : false,
-      "sotiCode" : "RCF"
-    },
-  ],
+  strains: null,
   hoverIndex: null,
   geneHoverIndex: null,
-  activeBannerSlide: 0,
+  activeBannerSlide: 6,
   bannerSlides: [
     {
-      color: "blue"
+      color: "blue",
+      style: {
+        backgroundImage: "url(../static/img/banner1.png)",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat"
+      }
     },{
-      color: "orange"
+      color: "orange",
+      style: {
+        // backgroundImage: "url(../static/img/banner2.png)",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat"
+      }
     },{
-      color: "white"
+      color: "white",
+      style: {
+        // backgroundImage: "url(../static/img/banner3.png)",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat"
+      }
     }
   ],
   bannerSlidePositions: [
-    // { 'transform': 'translateX(-300%)', 'display': 'none' },
-    { 'transform': 'translateX(-200%)', 'display': 'none', transition: "all 0.5s ease-in-out"  },
-    { 'transform': 'translateX(-100%)', transition: "all 0.5s ease-in-out"},
-    { 'transform': 'translateX(0)', transition: "all 0.5s ease-in-out" },
-    { 'transform': 'translateX(100%)' , transition: "all 0.5s ease-in-out"},
-    { 'transform': 'translateX(200%)', 'display': 'none', transition: "all 0.5s ease-in-out"  },
-    // { 'transform': 'translateX(300%)', 'display': 'none' },
-],
+    { 'transform': ' translateX(-500%)', 'display': 'none', transition: "all 0.5s ease-in-out"},
+    { 'transform': ' translateX(-40%)', 'display': 'none', transition: "all 0.5s ease-in-out"},
+    { 'transform': ' translateX(-200%)', transition: "all 0.5s ease-in-out" },
+    { 'transform': ' translateX(0)', transition: "all 0.5s ease-in-out" },
+    { 'transform': ' translateX(200%)', transition: "all 0.5s ease-in-out" },
+    { 'transform': ' translateX(400%)', 'display': 'none', transition: "all 0.5s ease-in-out"},
+    { 'transform': ' translateX(500%)', 'display': 'none', transition: "all 0.5s ease-in-out"},
+    // { 'transform': 'translateX(-100%)' , transition: "all 0.5s ease-in-out"},
+    // { 'transform': 'translateX(0)', transition: "all 0.5s ease-in-out" },
+    // { 'transform': 'translateX(100%)', transition: "all 0.5s ease-in-out"},
+    // { 'transform': 'translateX(200%)', display: "none", transition: "all 0.5s ease-in-out"  },
+    // { 'transform': 'translateX(-200%)', display: "none", transition: "all 0.5s ease-in-out"  },
+  ],
+  activeFilters: []
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -244,19 +78,48 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         hoverIndex: state.hoverIndex == action.index ? null : action.index
       });
+    case actionTypes.SET_CHECKOUT_SCREEN:
+      return updateObject(state, {
+        checkoutScreen: action.input
+      });
+    case actionTypes.SET_CONTEXT:
+      return updateObject(state, {
+        context: action.input
+      });
     case actionTypes.SET_GENE_HOVER_INDEX:
       return updateObject(state, {
         geneHoverIndex:  state.geneHoverIndex == action.index ? null : action.index
       });
     case actionTypes.NEXT_BANNER_SLIDE:
       let slideIndex = state.activeBannerSlide
-      let slidesLength = state.bannerSlides.length - 1;
+      let slidesLength = state.bannerSlidePositions.length;
       if (slideIndex === slidesLength) {
         slideIndex = -1;
       }
       ++slideIndex;
       return updateObject(state, {
         activeBannerSlide: slideIndex
+      });
+    case actionTypes.SET_STRAINS:
+      return updateObject(state, {
+        strains: [...action.strains]
+      });
+    case actionTypes.TOGGLE_FILTER:
+      let filterIndex = state.activeFilters.indexOf(action.filter);
+      let activeFilters = state.activeFilters;
+      if (filterIndex > -1) {
+        activeFilters.splice(filterIndex, 1);
+        return updateObject(state, {
+          activeFilters: [...activeFilters]
+        });
+      } else {
+        return updateObject(state, {
+          activeFilters: [...state.activeFilters, action.filter]
+        });
+      }
+    case actionTypes.CLEAR_FILTERS:
+      return updateObject(state, {
+        activeFilters: []
       });
     default:
       return state;

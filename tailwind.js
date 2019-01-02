@@ -45,7 +45,7 @@ let colors = {
   transparent: "transparent",
   "semi-transparent": "rgba(250, 250, 250, 0.2)",
   "almost-white": "rgba(255, 255, 255, 0.7)",
-  "almost-black": "rgba(0,0,0,0.9)",
+  "almost-black": "rgba(0,0,0,0.5)",
 
   black: "#000",
   "grey-darkest": "#3d4852",
@@ -167,10 +167,16 @@ module.exports = {
   */
 
   screens: {
-    sm: "576px",
-    md: "768px",
-    lg: "992px",
-    xl: "1200px"
+    // 'sm': {'min': '100px', 'max': '577px'},
+    // 'md': {'min': '578px', 'max': '767px'},
+    // 'lg': {'min': '768px', 'max': '991px'},
+    // 'xl': {'min': '992px', 'max': '1199px'},
+    // '2xl': {'min': '1200px'},
+    'sm': {'min': '100px', 'max': '991px'},
+    // 'md': {'min': '578px', 'max': '767px'},
+    'lg': {'min': '992px', 'max': '1380px'},
+    'xl': {'min': '1381px'},
+    // '2xl': {'min': '1200px'},
   },
 
   /*
@@ -256,6 +262,7 @@ module.exports = {
     xl: "1.25rem", // 20px
     "2xl": "1.5rem", // 24px
     "3xl": "1.875rem", // 30px
+    "3/5xl": "2.5rem",
     "4xl": "3.5rem", // 36px
     "5xl": "5rem", // 48px
     "6xl": "6rem"
@@ -501,7 +508,8 @@ module.exports = {
     full: "100%",
     '3full': "300%",
     screen: "100vw",
-    container: "1030px",
+    container: "80%",
+    main: "85%"
   },
 
   /*

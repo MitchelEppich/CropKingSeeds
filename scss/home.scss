@@ -127,6 +127,33 @@ right: 0;
 .slow {
   transition: all 0.5s ease-in-out;
 }
+.slowish {
+  transition: all 0.2s ease-in-out;
+}
+
+// CHECKOUT PREVIEW
+
+.item-preview { 
+  border: 1px solid rgba(206, 206, 206, 0.30);
+  box-shadow: 0px 1px 2px rgba(206, 206, 206, 0.3);
+  transform: scale(1); 
+  transition: transform 0.6s ease; 
+}
+
+.item-preview:hover { 
+  transform: scale(1.04);
+  transition: transform 0.6s ease;
+}
+
+.steps-active:before {
+  content: "";
+  border: solid .5em transparent;
+  border-top-color: #222;
+  position: absolute;
+  top: -0.6em;
+  left: 50%;
+  margin-left: -.25em;
+}
 
 
 
@@ -141,6 +168,7 @@ right: 0;
   background-repeat: no-repeat;
   overflow: hidden;
   border: 5px solid #FFF;
+  cursor: pointer;
 }
 .fem {
   width: 33%;
@@ -152,6 +180,7 @@ right: 0;
   background-repeat: no-repeat;
   overflow: hidden;
   border: 5px solid #FFF;
+  cursor: pointer;
 }
 .cbd {
   width: 33%;
@@ -163,6 +192,7 @@ right: 0;
   background-repeat: no-repeat;
   overflow: hidden;
   border: 5px solid #FFF;
+  cursor: pointer;
 }
 .reg {
   width: 33%;
@@ -174,4 +204,55 @@ right: 0;
   background-repeat: no-repeat;
   overflow: hidden;
   border: 5px solid #FFF;
+  cursor: pointer;
 };
+
+
+.bannerBuyNow {
+  position: absolute;
+  width: 14rem;
+  left: calc(50% - 7rem);
+  bottom: 3rem;
+  background-color: rgba(0,0,0,0.5);
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+}
+
+.filter {
+  @include element("hr"){
+    width: 90%;
+    height: 1px;
+    box-shadow: 0 2px 0 0 rgba(204,31,26,0.3);
+  }
+}
+
+
+
+
+
+
+
+@media only screen and (min-width: 1380px) {
+
+  .bannerBuyNow {
+    position: absolute;
+    width: 14rem;
+    left: calc(50% - 7rem);
+    bottom: 1.5rem;
+    background-color: rgba(0,0,0,0.5);
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background-color: rgba(0,0,0,0.8);
+    }
+  }
+
+
+}
+
+
+
+
+
+

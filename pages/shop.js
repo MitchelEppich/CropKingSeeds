@@ -13,17 +13,28 @@ import FeaturedStrainThumbnails from "../components/sections/shop/featuredStrain
 
 class Index extends Component {
 
+  
+  componentWillMount(){
+    this.props.getStrains();
+  }
 
   render() {
     return (
       <Layout>
-          <div className="flex flex-wrap">
-            <div className="w-1/4">
-              <Filters {...this.props} />
-              <FeaturedStrainThumbnails {...this.props} />
+        {this.props.misc.strains && this.props.misc.strains.length > 0 ?
+          <React.Fragment>
+            <div className="flex flex-wrap">
+              <div className="w-1/4">
+                <Filters {...this.props} />
+                <FeaturedStrainThumbnails {...this.props} />
+              </div>
+              <ProductGrid {...this.props} />
             </div>
-            <ProductGrid {...this.props} />
-          </div>
+          </React.Fragment>
+        :
+          <p>Loading...</p>
+        }
+         
       </Layout>
     );
   }
@@ -32,7 +43,10 @@ class Index extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
-    setHoverIndex: index => dispatch(actions.setHoverIndex(index))
+    setHoverIndex: index => dispatch(actions.setHoverIndex(index)),
+    getStrains: () => dispatch(actions.getStrains()),
+    toggleFilter: filter => dispatch(actions.toggleFilter(filter)),
+    clearFilters: () => dispatch(actions.clearFilters())
   };
 };
 

@@ -1,17 +1,15 @@
 
-import Thumbnail from "../productGrid/thumbnail";
-
 const index = props => {
 
   let hoverIndex = props.misc.hoverIndex;
 
-  let thumbnails = props.misc.products.map((product, index)=> {
+  let thumbnails = props.misc.strains.map((product, index)=> {
     if(index > 2)return null;
     let packageStyle = hoverIndex == index ? 
     {
       height: "200px", width: "120px", position: "absolute", zIndex: 10, margin: "0 50px", transition: "0.5s all ease-in-out",
       transform: "translateX(-30px)",
-      backgroundImage: "url(" + product.package_url + ")",
+      backgroundImage: "url(" + product.packageImg + ")",
       backgroundPosition: "center",
       backgroundSize: "cover"
     } 
@@ -19,7 +17,7 @@ const index = props => {
     {
       height: "200px", width: "120px", position: "absolute", zIndex: 10, margin: "0 50px", transition: "0.5s all ease-in-out",
       transform: "translateX(0)",
-      backgroundImage: "url(" + product.package_url + ")",
+      backgroundImage: "url(" + product.packageImg + ")",
       backgroundPosition: "center",
       backgroundSize: "cover"
     };
@@ -37,13 +35,13 @@ const index = props => {
 
     let overlayStyle = hoverIndex == index ? 
     {
-      height: "100%", width: "100%", backgroundColor: "rgba(0,0,0,0.5)", transition: "0.5s all ease-in-out",
-      color: "rgba(255,255,255,1)"
+      height: "99%", width: "86%", padding: "20px", backgroundColor: "rgba(0,0,0,0.5)", transition: "0.5s all ease-in-out",
+      color: "rgba(255,255,255,1)", transform: "translateX(14px) translateY(1px)"
     } 
     : 
     {
-      height: "100%", width: "100%", backgroundColor: "rgba(0,0,0,0)", transition: "0.5s all ease-in-out",
-      color: "rgba(255,255,255,0)"
+      height: "0px", width: "86%", backgroundColor: "rgba(0,0,0,0.5)", transition: "0.5s all ease-in-out",
+      color: "rgba(255,255,255,0)", transform: "translateX(14px) translateY(1px)"
     };
 
     return(
@@ -51,7 +49,7 @@ const index = props => {
         <div style={packageStyle}>
           <div style={overlayStyle}>Overlay words</div>
         </div>
-      <img src={product.plant_url} style={plantStyle} />
+      <img src={product.strainImg} style={plantStyle} />
     </div>
     );
   });

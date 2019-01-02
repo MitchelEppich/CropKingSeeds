@@ -9,9 +9,9 @@ import {TimelineLite} from "gsap";
 class Index extends Component {
 
   constructor (props) {
-      super(props);
-      this.myTween = new TimelineLite({paused: true});
-      this.myElements = [];
+    super(props);
+    this.myTween = new TimelineLite({paused: true});
+    this.myElements = [];
   }
 
   componentDidMount(){
@@ -23,61 +23,115 @@ class Index extends Component {
   render() {
 
     let hoverIndex = this.props.misc.hoverIndex;
+    let products = this.props.misc.strains;
+    if(this.props.misc.activeFilters.length > 0){
+      for(let i = 0; i < this.props.misc.activeFilters.length; i++){
+        if(this.props.misc.activeFilters[i] === "thcLow"){
+          products = products.filter(val => {
+            for(let i of val.pthc){
+              if(i > 20){
+                return false;
+              }
+            }
+            return true;
+          });
+          continue;
+        }
+        if(this.props.misc.activeFilters[i] === "thcHigh"){
+          products = products.filter(val => {
+            for(let i of val.pthc){
+              if(i < 20){
+                return false;
+              }
+            }
+            return true;
+          });
+          continue;
+        }
+        if(this.props.misc.activeFilters[i] === "cbdLow"){
+          products = products.filter(val => {
+            for(let i of val.pcbd){
+              if(i > 2){
+                return false;
+              }
+            }
+            return true;
+          });
+          continue;
+        }
+        if(this.props.misc.activeFilters[i] === "cbdHigh"){
+          products = products.filter(val => {
+            for(let i of val.pcbd){
+              if(i < 2){
+                return false;
+              }
+            }
+            return true;
+          });
+          continue;
+        }
+        products = products.filter(val => {
+          return JSON.stringify(val).toLowerCase().includes(this.props.misc.activeFilters[i].toLowerCase());
+        });
+      
+      }
+    }
+    products = products.map((product, index)=> {
+
+      let packageStyle = hoverIndex == index ? 
+      {
+        height: "100%", width: "100%", position: "relative", zIndex: 10, margin: "0 50px", transition: "0.5s all ease-in-out",
+        transform: "translateX(-15px)",
+        backgroundImage: "url(" + product.packageImg + ")",
+        backgroundPosition: "center",
+        backgroundSize: "cover"
+      } 
+      : 
+      {
+        height: "100%", width: "100%", position: "relative", zIndex: 10, margin: "0 50px", transition: "0.5s all ease-in-out",
+        transform: "translateX(0)",
+        backgroundImage: "url(" + product.packageImg + ")",
+        backgroundPosition: "center",
+        backgroundSize: "cover"
+      };
+
+      let plantStyle = hoverIndex == index ? 
+      {
+        height: "100%", position: "relative", zIndex: 0, margin: "0 50px", transition: "0.5s all ease-in-out",
+        transform: "translateX(55px) translateY(-250px)"
+      } 
+      : 
+      {
+        height: "100%", position: "relative", zIndex: 0, margin: "0 50px", transition: "0.5s all ease-in-out",
+        transform: "translateX(40px) translateY(-250px)"
+      };
+
+      let overlayStyle = hoverIndex == index ? 
+      {
+        height: "99%", width: "86%", padding: "20px", backgroundColor: "rgba(0,0,0,0.5)", transition: "0.5s all ease-in-out",
+        color: "rgba(255,255,255,1)", transform: "translateX(14px) translateY(1px)"
+      } 
+      : 
+      {
+        height: "0px", width: "86%", backgroundColor: "rgba(0,0,0,0.5)", transition: "0.5s all ease-in-out",
+        color: "rgba(255,255,255,0)", transform: "translateX(14px) translateY(1px)"
+      };
+
+        return(
+            <div key={index} ref={div => this.myElements[index] = div} onMouseEnter={() => this.props.setHoverIndex(index)} onMouseLeave={() => this.props.setHoverIndex(index)} className="w-64 h-64 m-4 text-white">
+              <div style={packageStyle} className="px-12 py-2 mx-4">
+                <div style={overlayStyle}>{product.name.substring(0, product.name.length - 15)}</div>
+              </div>
+              <img src={product.strainImg} style={plantStyle} />
+            </div>
+        );
+    });
 
 
     return (
         <div className="w-3/4 min-h-500 text-white">
           <div className="flex flex-wrap justify-start pt-16">
-            {this.props.misc.products.map((product, index)=> {
-
-              let packageStyle = hoverIndex == index ? 
-              {
-                height: "200px", width: "120px", position: "absolute", zIndex: 10, margin: "0 50px", transition: "0.5s all ease-in-out",
-                transform: "translateX(-30px)",
-                backgroundImage: "url(" + product.package_url + ")",
-                backgroundPosition: "center",
-                backgroundSize: "cover"
-              } 
-              : 
-              {
-                height: "200px", width: "120px", position: "absolute", zIndex: 10, margin: "0 50px", transition: "0.5s all ease-in-out",
-                transform: "translateX(0)",
-                backgroundImage: "url(" + product.package_url + ")",
-                backgroundPosition: "center",
-                backgroundSize: "cover"
-              };
-
-              let plantStyle = hoverIndex == index ? 
-              {
-                height: "200px", position: "absolute", zIndex: 0, margin: "0 50px", transition: "0.5s all ease-in-out",
-                transform: "translateX(30px)"
-              } 
-              : 
-              {
-                height: "200px", position: "absolute", zIndex: 0, margin: "0 50px", transition: "0.5s all ease-in-out",
-                transform: "translateX(0)"
-              };
-
-              let overlayStyle = hoverIndex == index ? 
-              {
-                height: "100%", width: "100%", backgroundColor: "rgba(0,0,0,0.5)", transition: "0.5s all ease-in-out",
-                color: "rgba(255,255,255,1)"
-              } 
-              : 
-              {
-                height: "100%", width: "100%", backgroundColor: "rgba(0,0,0,0)", transition: "0.5s all ease-in-out",
-                color: "rgba(255,255,255,0)"
-              };
-
-                return(
-                    <div key={index} ref={div => this.myElements[index] = div} onMouseEnter={() => this.props.setHoverIndex(index)} onMouseLeave={() => this.props.setHoverIndex(index)} className="w-64 h-64 m-8 text-white">
-                      <div style={packageStyle}>
-                        <div style={overlayStyle}>Overlay words</div>
-                      </div>
-                      <img src={product.plant_url} style={plantStyle} />
-                    </div>
-                );
-            })}
+            {products}
         </div>
     </div>
     );
