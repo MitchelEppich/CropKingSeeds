@@ -11,11 +11,15 @@ import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
 
 import Cart from "./cart";
+import Checkout from "./checkout";
+import Navigation from "./navigation";
 
 const uri = "http://localhost:3000/graphql";
 
 const imports = {
-  ...Cart(uri)
+  ...Cart(uri),
+  ...Checkout(uri),
+  ...Navigation(uri)
 };
 
 const actionTypes = {
@@ -47,7 +51,7 @@ const actions = {
   setContext: input => {
     return { type: actionTypes.SET_CONTEXT, input: input };
   },
-  setHoverIndex: (index) => {
+  setHoverIndex: index => {
     return {
       type: actionTypes.SET_HOVER_INDEX,
       index: index
@@ -71,9 +75,7 @@ const actions = {
 
       await makePromise(execute(link, operation))
         .then(data => {
-            Promise.resolve(
-              dispatch(actions.setStrains(data.data.allStrains))
-            );
+          Promise.resolve(dispatch(actions.setStrains(data.data.allStrains)));
         })
         .catch(error => console.log(error));
     };
@@ -98,7 +100,7 @@ const actions = {
 };
 
 const query = {
-  allStrains: gql` 
+  allStrains: gql`
     query {
       allStrains {
         name
@@ -119,7 +121,8 @@ const query = {
         country
         sotiId
       }
-  }`
+    }
+  `
 };
 
 const mutation = {};

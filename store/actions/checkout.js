@@ -16,13 +16,18 @@ const actionTypes = {
 const getActions = uri => {
   const objects = {
     modifyOrderDetails: input => {
-      let _orderDetails = input._orderDetails;
+      let _orderDetails = input.orderDetails;
       let _group = input.group;
       let _key = input.key;
       let _value = input.value;
+      let _tag = input.tag;
 
-      if (_group != null) _orderDetails[_group][_key] = _value;
-      else _orderDetails[_key] = _value;
+      if (_group != null) {
+        if (_orderDetails[_group] == null) _orderDetails[_group] = {};
+        _orderDetails[_group][_key] = _value;
+      } else _orderDetails[_key] = { value: _value, tag: _tag };
+
+      console.log(_orderDetails);
 
       return {
         type: actionTypes.MODIFY_ORDER_DETAILS,
