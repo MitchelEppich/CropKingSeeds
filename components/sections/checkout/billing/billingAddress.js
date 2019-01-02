@@ -1,7 +1,7 @@
 import React from "react";
 
 const BillingAddress = props => {
-  console.log("here", props);
+  let pageGroup = "billing";
   return (
     <div className="w-full mt-6 pb-8">
       <h2 className="text-3xl font-extrabold mt-12 mb-6 text-black">
