@@ -64,12 +64,20 @@ const CreditCard = props => {
                     </div>
                 </div>
                 <div className="w-full inline-flex flex items-center">
-                    <div style={{width:"170px"}}>
-                        <input type="number" placeholder="Security Code" size="3" maxLength="3" className="p-2 w-full mt-2"/>
+                    <div className="w-1/3 pt-2 mt-1">
+                        <select placeholder="" className="p-2 pt-3 w-full">
+                            <option value="Visa">Visa</option>
+                            <option value="MasterCard">MasterCard</option>      
+                        </select>
+                    </div>
+                    
+                    <div style={{width:"170px"}} className="ml-2 mt-2">
+                        <input type="number" placeholder="Security Code" size="3" maxLength="3" className="p-2 w-full mt-1 "/>
                     </div>
                     <div className="mt-1 ml-2">
                         <img src="../static/img/securitycode.png" width="50px" className="opacity-50 pt-1"/>
                     </div>
+                    
                 </div>
             </div>
             : null }

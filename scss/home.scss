@@ -90,12 +90,30 @@ input, textarea, select {
   background-color: #b8b8b8;
 }
 
+select.sizeable-opt
+{
+ font-size:	95%;
+}
+
 li {
   list-style: none;  
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3,  {
   font-family: "Big John Regular", Helvetica, Arial, sans-serif;
+}
+
+h4 {
+  font-family: "Slim Joe Regular", Helvetica, Arial, sans-serif;
+  font-weight: bolder;
+}
+
+.unselectable {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .preserv-3d {
@@ -127,9 +145,11 @@ right: 0;
 .slow {
   transition: all 0.5s ease-in-out;
 }
+
 .slowish {
   transition: all 0.2s ease-in-out;
 }
+
 
 // CHECKOUT PREVIEW
 
@@ -147,10 +167,10 @@ right: 0;
 
 .steps-active:before {
   content: "";
-  border: solid .5em transparent;
-  border-top-color: #222;
+  border: solid 0.5em transparent;
+  border-top-color: #b81c18;
   position: absolute;
-  top: -0.6em;
+  top: -0.5em;
   left: 50%;
   margin-left: -.25em;
 }

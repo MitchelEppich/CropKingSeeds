@@ -22,7 +22,8 @@ class Layout extends Component {
     return (
       <div className="bg-red-dark">
         <Header {...this.props} />
-        <div className="px-12 xl:px-32">
+        {/* <div className="px-12 xl:px-32"> */}
+        <div className="mx-auto w-container">
           <div className="bg-white px-4">
             {this.props.children}
           </div>

@@ -27,7 +27,8 @@ const actionTypes = {
   SET_STRAINS: "SET_STRAINS",
   SET_CONTEXT: "SET_CONTEXT",
   TOGGLE_FILTER: "TOGGLE_FILTER",
-  CLEAR_FILTERS: "CLEAR_FILTERS"
+  CLEAR_FILTERS: "CLEAR_FILTERS",
+  TOGGLE_STEPS_CHECKOUT: "TOGGLE_STEPS_CHECKOUT"
 };
 
 const actions = {
@@ -37,9 +38,9 @@ const actions = {
       input: input
     };
   },
-  setCheckoutScreen: input => {
+  toggleStepsCheckout: input => {
     return {
-      type: actionTypes.SET_CHECKOUT_SCREEN,
+      type: actionTypes.TOGGLE_STEPS_CHECKOUT,
       input: input
     };
   },
