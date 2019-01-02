@@ -28,7 +28,8 @@ const actionTypes = {
   SET_CONTEXT: "SET_CONTEXT",
   TOGGLE_FILTER: "TOGGLE_FILTER",
   CLEAR_FILTERS: "CLEAR_FILTERS",
-  TOGGLE_STEPS_CHECKOUT: "TOGGLE_STEPS_CHECKOUT"
+  TOGGLE_STEPS_CHECKOUT: "TOGGLE_STEPS_CHECKOUT",
+  SHOW_DIFFERENT_ADDRESS: "SHOW_DIFFERENT_ADDRESS"
 };
 
 const actions = {
@@ -41,6 +42,12 @@ const actions = {
   toggleStepsCheckout: input => {
     return {
       type: actionTypes.TOGGLE_STEPS_CHECKOUT,
+      input: input
+    };
+  },
+  toggleShowDifferentAddress: input => {
+    return {
+      type: actionTypes.SHOW_DIFFERENT_ADDRESS,
       input: input
     };
   },

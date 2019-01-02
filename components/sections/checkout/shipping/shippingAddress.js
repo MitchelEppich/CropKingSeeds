@@ -6,13 +6,23 @@ const ShippingAddress = props => {
             <h2 className="text-3xl font-extrabold mt-12 mb-6 text-black">Shipping Address</h2>   
             <form>
                 <div className="w-full mt-4">
-                    <div className="w-full p-2">
-                        <input 
-                        type="text" 
-                        name="" 
-                        id="" 
-                        placeholder="Full Name" 
-                        className="p-2 w-full"/>
+                    <div className="w-full p-2 inline-flex">
+                        <div className="w-1/2">
+                            <input 
+                            type="text" 
+                            name="fullName" 
+                            id="fullName" 
+                            placeholder="Full Name" 
+                            className="p-2 w-full"/>
+                        </div>
+                        <div className="w-1/2 px-2">
+                            <input 
+                            type="email" 
+                            name="email" 
+                            id="email" 
+                            placeholder="Email Address" 
+                            className="p-2 w-full"/>
+                        </div>
                     </div>
                     <div className="w-full p-2">
                         <input 

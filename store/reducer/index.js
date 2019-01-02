@@ -15,7 +15,7 @@ const initialState = {
   hoverIndex: null,
   geneHoverIndex: null,
   stepsCheckout: 0,
-  sameAddress: true,
+  showDifferentAddress: false,
   // checkoutScreen: "productsScreen",
   activeBannerSlide: 6,
   bannerSlides: [
@@ -88,6 +88,10 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.TOGGLE_STEPS_CHECKOUT:
       return updateObject(state, { 
         stepsCheckout: action.input 
+      });
+      case actionTypes.SHOW_DIFFERENT_ADDRESS:
+      return updateObject(state, {
+        showDifferentAddress: !state.showDifferentAddress
       });
     case actionTypes.SET_CONTEXT:
       return updateObject(state, {

@@ -16,6 +16,7 @@ import ProductPreview from "../components/sections/checkout/productPreview";
 import Coupon from "../components/sections/checkout/coupon";
 import Shipping from "../components/sections/checkout/shipping";
 import ShippingMethod from "../components/sections/checkout/shipping/shippingMethod";
+import BillingAddress from "../components/sections/checkout/billing/";
 import Payment from "../components/sections/checkout/payment";
 import Checkout from "../components/sections/checkout";
 import Confirmation from "../components/sections/checkout/confirmation";
@@ -34,19 +35,17 @@ class Index extends Component {
             {this.props.misc.stepsCheckout != 0 ?
             <div onClick={()=>{
                   this.props.misc.stepsCheckout > 0 ? 
-                  this.props.toggleStepsCheckout(this.props.misc.stepsCheckout -1) : null
-                  console.log(this.props.misc.stepsCheckout)
+                  this.props.toggleStepsCheckout(this.props.misc.stepsCheckout -1) : null  
                 }} 
                 className="absolute p-2 mt-3 pin-l cursor-pointer hover:text-red">
                 <FontAwesomeIcon icon={faAngleLeft} className="fa-4x" />
             </div> : null }
 
             {/* arrow right */}
-            {this.props.misc.stepsCheckout != 3 ?
+            {this.props.misc.stepsCheckout != 4 ?
             <div onClick={()=>{
-                  this.props.misc.stepsCheckout < 3 ? 
-                  this.props.toggleStepsCheckout(this.props.misc.stepsCheckout +1) : null
-                  console.log(this.props.misc.stepsCheckout)
+                  this.props.misc.stepsCheckout < 4 ? 
+                  this.props.toggleStepsCheckout(this.props.misc.stepsCheckout +1) : null   
                 }} 
                 className="absolute p-2 mt-3 pin-r cursor-pointer hover:text-red">
                 <FontAwesomeIcon icon={faAngleRight} className="fa-4x" />
@@ -74,10 +73,14 @@ class Index extends Component {
             : null }
 
             {this.props.misc.stepsCheckout == 2 ?                    
+            <BillingAddress {...this.props} />            
+            : null }
+
+            {this.props.misc.stepsCheckout == 3 ?                    
             <Payment {...this.props} />            
             : null }
 
-            {this.props.misc.stepsCheckout == 3 ?               
+            {this.props.misc.stepsCheckout == 4 ?               
             <Confirmation {...this.props} />            
             : null }
         </div>
@@ -107,6 +110,7 @@ const mapDispatchToProps = dispatch => {
     // setCheckoutScreen: input => dispatch(actions.setCheckoutScreen(input)),
     setContext: input => dispatch(actions.setContext(input)),
     toggleStepsCheckout: input => dispatch(actions.toggleStepsCheckout(input)),
+    toggleShowDifferentAddress: input => dispatch(actions.toggleShowDifferentAddress(input)),
     
   };
 };
