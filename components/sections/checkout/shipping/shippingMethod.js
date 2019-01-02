@@ -1,4 +1,17 @@
 const ShippingMethod = props => {
+  let methods = [
+    {
+      type: "Regular Shipping",
+      price: 10
+    },
+    {
+      type: "Express Registered with Tracking",
+      price: 30
+    }
+  ];
+
+  let pageGroup = "shipping";
+
   return (
     <div className="w-full mt-8">
       <h2 className="text-3xl font-extrabold mt-4 mb-6 text-black">
@@ -10,14 +23,44 @@ const ShippingMethod = props => {
             <input
               type="checkbox"
               className="checkbox"
-              id="type"
-              checked={props.checkout.orderDetails[pageGroup].type == 0}
+              id="method"
+              checked={
+                props.checkout.orderDetails[pageGroup] != null
+                  ? props.checkout.orderDetails[pageGroup].method == 0
+                  : false
+              }
               onChange={e => {
                 let _orderDetails = props.checkout.orderDetails;
                 let _target = e.target;
                 let _key = _target.id;
                 let _value = 0;
-                let _tag = "sType";
+                let _tag = undefined;
+
+                props.modifyOrderDetails({
+                  orderDetails: _orderDetails,
+                  group: pageGroup,
+                  key: _key,
+                  value: _value,
+                  tag: _tag
+                });
+
+                let _method = methods[_value];
+
+                _key = "shippingCost";
+                _value = _method.price;
+                _tag = "sShipping";
+
+                props.modifyOrderDetails({
+                  orderDetails: _orderDetails,
+                  group: pageGroup,
+                  key: _key,
+                  value: _value,
+                  tag: _tag
+                });
+
+                _key = "shippingDetail";
+                _value = _method.type;
+                _tag = "sType";
 
                 props.modifyOrderDetails({
                   orderDetails: _orderDetails,
@@ -48,9 +91,52 @@ const ShippingMethod = props => {
             <input
               type="checkbox"
               className="checkbox"
-              checked={props.misc.context == 1}
-              onChange={() => {
-                props.setContext(1);
+              id="method"
+              checked={
+                props.checkout.orderDetails[pageGroup] != null
+                  ? props.checkout.orderDetails[pageGroup].method == 1
+                  : false
+              }
+              onChange={e => {
+                let _orderDetails = props.checkout.orderDetails;
+                let _target = e.target;
+                let _key = _target.id;
+                let _value = 1;
+                let _tag = undefined;
+
+                props.modifyOrderDetails({
+                  orderDetails: _orderDetails,
+                  group: pageGroup,
+                  key: _key,
+                  value: _value,
+                  tag: _tag
+                });
+
+                let _method = methods[_value];
+
+                _key = "shippingCost";
+                _value = _method.price;
+                _tag = "sShipping";
+
+                props.modifyOrderDetails({
+                  orderDetails: _orderDetails,
+                  group: pageGroup,
+                  key: _key,
+                  value: _value,
+                  tag: _tag
+                });
+
+                _key = "shippingDetail";
+                _value = _method.type;
+                _tag = "sType";
+
+                props.modifyOrderDetails({
+                  orderDetails: _orderDetails,
+                  group: pageGroup,
+                  key: _key,
+                  value: _value,
+                  tag: _tag
+                });
               }}
             />
             <h2 className="font-extrabold text-grey ml-2">Express Shipping</h2>

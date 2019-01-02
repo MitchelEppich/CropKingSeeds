@@ -39,7 +39,8 @@ const actions = {
   setVisibleScreen: input => {
     return {
       type: actionTypes.SET_VISIBLE_SCREEN,
-      input: input
+      input: input.input,
+      clearAll: input.clearAll
     };
   },
   toggleStepsCheckout: input => {

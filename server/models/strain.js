@@ -16,8 +16,9 @@ const StrainSchema = Schema({
   indica: Number,
   sativa: Number,
   ruderalis: Number,
-  type: Number,
-  og: [String],
+  type: Number, // Sativa, Indica, or Hybrid
+  env: String, // Indoor or Outdoor
+  og: [String], // Original genetics
   pthc: [Number],
   pcbd: [Number],
   pcbn: [Number],

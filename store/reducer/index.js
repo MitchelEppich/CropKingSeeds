@@ -87,6 +87,7 @@ const initialState = {
 const indexReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_VISIBLE_SCREEN:
+      let _clearAll = action.clearAll;
       let screenIndex = state.visibleScreen.indexOf(action.input);
       let screens = state.visibleScreen;
       if (screenIndex > -1) {
@@ -94,6 +95,8 @@ const indexReducer = (state = initialState, action) => {
         return updateObject(state, {
           visibleScreen: [...screens]
         });
+      } else if (_clearAll) {
+        return updateObject(state, { visibleScreen: [action.input] });
       } else {
         return updateObject(state, {
           visibleScreen: [...state.visibleScreen, action.input]
