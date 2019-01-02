@@ -1,5 +1,5 @@
 import React from "react";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown, faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CreditCard = props => {
@@ -27,19 +27,30 @@ const CreditCard = props => {
       </div>
       {props.misc.visibleScreen.includes("creditCard") ? (
         <div className="w-600 mx-auto p-2">
-          <div className="w-full mt-2 text-center opacity-50">
+          <div className="w-full mt-2 text-center opacity-75">
             <p className="text-sm p-2">Cards Accepted:</p>
             <img src="../static/img/cards.png" width="100px" />
           </div>
-          <div className="w-full mt-6 text-center">
-            <input
-              type="number"
-              placeholder="Credit Card Number..."
-              className="p-2 w-full mt-6"
-            />
+          <div className="w-full mt-6">
+            <input 
+                type="text" 
+                placeholder="Name on Card..."
+                className="p-2 w-full" />
+          </div>
+          <div className="w-full mt-2 text-center relative inline-flex">
+            <div className="w-full">
+              <input
+                type="text"
+                placeholder="Credit Card Number..."
+                className="p-2 w-full"
+              />
+            </div>
+            <div className="absolute pin-r text-grey-light opacity-50">
+              <FontAwesomeIcon icon={faCreditCard} className="fa-2x mt-1 mr-2" />
+            </div>
           </div>
           <div className="w-full inline-flex mt-2">
-            <div className="w-1/2 mr-1">
+            <div className="w-1/3 mr-1 inline-flex">
               <select placeholder="" className="p-2 w-full">
                 <option value="" disabled selected>
                   Month
@@ -58,7 +69,7 @@ const CreditCard = props => {
                 <option value="December">December</option>
               </select>
             </div>
-            <div className="w-1/2 ml-1">
+            <div className="w-1/3 ml-1 inline-flex">
               <select placeholder="" className="p-2 w-full">
                 <option value="" disabled selected>
                   Year
@@ -72,32 +83,26 @@ const CreditCard = props => {
                 <option value="2025">2025</option>
               </select>
             </div>
+            <div className="w-1/3 inline-flex relative">
+              <div className="ml-2 w-full">
+                  <input
+                    type="text"
+                    placeholder="Security Code"
+                    size="3"
+                    maxLength="3"
+                    className="p-2 w-full mt-0 "
+                  />
+                </div>
+                <div className="mt-0 ml-2 absolute pin-r">
+                  <img
+                    src="../static/img/securitycode.png"
+                    width="40px"
+                    className="opacity-50 pt-1 mr-1"
+                  />
+                </div>
           </div>
-          <div className="w-full inline-flex flex items-center">
-            <div className="w-1/3 pt-2 mt-1">
-              <select placeholder="" className="p-2 pt-3 w-full">
-                <option value="Visa">Visa</option>
-                <option value="MasterCard">MasterCard</option>
-              </select>
-            </div>
-
-            <div style={{ width: "170px" }} className="ml-2 mt-2">
-              <input
-                type="number"
-                placeholder="Security Code"
-                size="3"
-                maxLength="3"
-                className="p-2 w-full mt-1 "
-              />
-            </div>
-            <div className="mt-1 ml-2">
-              <img
-                src="../static/img/securitycode.png"
-                width="50px"
-                className="opacity-50 pt-1"
-              />
-            </div>
           </div>
+          
         </div>
       ) : null}
     </div>

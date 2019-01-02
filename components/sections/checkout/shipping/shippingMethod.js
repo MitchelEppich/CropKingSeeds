@@ -20,7 +20,8 @@ const ShippingMethod = props => {
       <div className="w-full inline-flex">
         <div className="p-2">
           <div className="inline-flex items-center flex">
-            <input
+            <label className="items-center flex cursor-pointer">
+              <input
               type="checkbox"
               className="checkbox"
               id="method"
@@ -71,7 +72,7 @@ const ShippingMethod = props => {
                 });
               }}
             />
-            <h2 className="font-extrabold text-grey ml-2">Regular Shipping</h2>
+            <h2 className="font-extrabold text-grey hover:text-grey-light ml-2">Regular Shipping</h2></label>
             <span className="text-3xl text-grey-light ml-10">$10</span>
           </div>
           <p className="mt-2 leading-normal">
@@ -88,6 +89,7 @@ const ShippingMethod = props => {
       <div className="w-full inline-flex mt-6 mb-12">
         <div className="p-2">
           <div className="inline-flex items-center flex">
+            <label className="items-center flex cursor-pointer">
             <input
               type="checkbox"
               className="checkbox"
@@ -139,7 +141,7 @@ const ShippingMethod = props => {
                 });
               }}
             />
-            <h2 className="font-extrabold text-grey ml-2">Express Shipping</h2>
+            <h2 className="font-extrabold text-grey hover:text-grey-light ml-2">Express Shipping</h2></label>
             <span className="text-3xl text-grey-light ml-10">$32</span>
           </div>
           <p className="mt-2 leading-normal">

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Moneygram = props => {
   return (
-    <div className="w-full mb-6">
+    <div className="w-full mb-6 ">
       <div
         onClick={() => {
           props.setVisibleScreen({ input: "moneygram", clearAll: true });
@@ -14,7 +14,7 @@ const Moneygram = props => {
           background: "#ffffff",
           color: "#191919"
         }}
-        className="h-10 inline-flex w-full cursor-pointer"
+        className="h-10 mb-2 inline-flex w-full cursor-pointer"
       >
         <div className="w-4/5 p-2 flex items-center">
           <p>Pay with Moneygram</p>

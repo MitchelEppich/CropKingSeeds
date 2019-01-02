@@ -167,12 +167,24 @@ right: 0;
 
 .steps-active:before {
   content: "";
-  border: solid 0.5em transparent;
+  border: solid 0.8em transparent;
   border-top-color: #b81c18;
   position: absolute;
-  top: -0.5em;
+  top: -0.6em;
   left: 50%;
   margin-left: -.25em;
+}
+
+.step-text { 
+  color: black;
+  transform: scale(1); 
+  transition: transform 0.2s ease; 
+}
+
+.step-text:hover { 
+  color: #b81c18;
+  transform: scale(1.04);
+  transition: transform 0.2s ease;
 }
 
 

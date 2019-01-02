@@ -20,7 +20,7 @@ class Layout extends Component {
 
   render() {
     return (
-      <div className="bg-red-dark">
+      <div style={{background: "#eeeeee"}} className="">
         <Header {...this.props} />
         {/* <div className="px-12 xl:px-32"> */}
         <div className="mx-auto w-container">
