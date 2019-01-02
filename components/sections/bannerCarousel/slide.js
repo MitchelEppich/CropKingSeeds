@@ -9,8 +9,8 @@ const slide = props => {
   let position = props.misc.bannerSlidePositions[positionIndex];
 
   return (
-    <div style={{...position, ...props.style}} className={"h-500 w-full z-0 absolute bg-" + props.color}>
-    {props.index == 0 ?
+    <div onClick={() => props.nextBannerSlide()} style={{...position, ...props.style}} className={"h-500 w-full z-0 absolute bg-" + props.color}>
+    {props.index == 4 ?
       <button className="px-4 py-2 mx-auto text-center text-lg text-white border border-white font-bold bannerBuyNow">Buy Now</button>
     :
     null}

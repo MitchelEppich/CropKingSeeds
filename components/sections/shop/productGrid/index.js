@@ -24,55 +24,61 @@ class Index extends Component {
 
     let hoverIndex = this.props.misc.hoverIndex;
     let products = this.props.misc.strains;
+    console.log(products);
     if(this.props.misc.activeFilters.length > 0){
       for(let i = 0; i < this.props.misc.activeFilters.length; i++){
-        if(this.props.misc.activeFilters[i] === "thcLow"){
-          products = products.filter(val => {
-            for(let i of val.pthc){
-              if(i > 20){
-                return false;
+        switch(this.props.misc.activeFilters[i]){
+          case "thcLow":
+            products = products.filter(val => {
+              for(let i of val.pthc){
+                if(i > 20){
+                  return false;
+                }
               }
-            }
-            return true;
-          });
-          continue;
-        }
-        if(this.props.misc.activeFilters[i] === "thcHigh"){
-          products = products.filter(val => {
-            for(let i of val.pthc){
-              if(i < 20){
-                return false;
+              return true;
+            });
+            break;
+          case "thcHigh":
+            products = products.filter(val => {
+              for(let i of val.pthc){
+                if(i < 20){
+                  return false;
+                }
               }
-            }
-            return true;
-          });
-          continue;
-        }
-        if(this.props.misc.activeFilters[i] === "cbdLow"){
-          products = products.filter(val => {
-            for(let i of val.pcbd){
-              if(i > 2){
-                return false;
+              return true;
+            });
+            break;
+          case "cbdLow":
+            products = products.filter(val => {
+              for(let i of val.pcbd){
+                if(i > 2){
+                  return false;
+                }
               }
-            }
-            return true;
-          });
-          continue;
-        }
-        if(this.props.misc.activeFilters[i] === "cbdHigh"){
-          products = products.filter(val => {
-            for(let i of val.pcbd){
-              if(i < 2){
-                return false;
+              return true;
+            });
+            break;
+          case "cbdHigh":
+            products = products.filter(val => {
+              for(let i of val.pcbd){
+                if(i < 2){
+                  return false;
+                }
               }
-            }
-            return true;
-          });
-          continue;
+              return true;
+            });
+            break;
+          case "cbd":
+            
+          default:
+            products = products.filter(val => {
+              return JSON.stringify(val).toLowerCase().includes(this.props.misc.activeFilters[i].toLowerCase());
+            });
+          break;
         }
-        products = products.filter(val => {
-          return JSON.stringify(val).toLowerCase().includes(this.props.misc.activeFilters[i].toLowerCase());
-        });
+       
+      
+       
       
       }
     }

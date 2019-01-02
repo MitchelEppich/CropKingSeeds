@@ -15,7 +15,7 @@ const filters = props => {
     }
 
     return (
-        <div className="w-full h-700 pt-12 text-red-dark">
+        <div className="w-full h-500 pt-12 text-red-dark">
             <ul className="leading-loose flex flex-wrap">
                 <li className="text-red-dark font-bold w-full">Type</li>
                 <li><button onClick={() => props.toggleFilter("indica")} className={props.misc.activeFilters.includes("indica") ? activeButton : notActiveButton}>Indica</button></li>
