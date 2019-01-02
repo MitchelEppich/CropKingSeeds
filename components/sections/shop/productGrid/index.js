@@ -4,7 +4,7 @@ import withData from "../../../../lib/withData";
 import { connect } from "react-redux";
 import actions from "../../../../store/actions";
 import {TimelineLite} from "gsap";
-
+import Link from "next/link";
 
 class Index extends Component {
 
@@ -140,15 +140,21 @@ class Index extends Component {
             <div key={index} ref={div => this.myElements[index] = div} onMouseEnter={() => this.props.setHoverId(product._id)} onMouseLeave={() => this.props.setHoverId(product._id)} className={hoverId == product._id ?"w-64 h-64 text-white relative z-50 slowish": "w-64 h-64 text-white relative z-0 slowish"}>
               <div style={overlayStyle}>
                 {/*<h3 className="bg-red-dark w-full absolute z-30 mt-8 text-white text-center">{product.name.substring(0, product.name.length - 15)}</h3>*/}
-                <div style={packageStyle} className="px-12 py-2">
-                </div>
-                <img src={product.strainImg} style={plantStyle} />
-                <h4 className="w-full mt-2 text-black font-bold text-center">{product.name.substring(0, product.name.length - 15)}</h4>
+                <Link href="/">
+                  <React.Fragment>
+                    <div style={packageStyle} className="px-12 py-2 cursor-pointer">
+                    </div>
+                    <img src={product.strainImg} style={plantStyle} />
+                  </React.Fragment>
+                </Link>
+                <Link href="/">
+                  <h4 className="w-full mt-2 text-black font-black text-center cursor-pointer">{product.name.substring(0, product.name.length - 15)}</h4>
+                </Link>
                 <p className="text-grey pl-4 my-4">Type:<span className="ml-1 text-black">{type}</span></p>
                 <div className="flex flex-wrap justify-between">
-                  <button className="w-16 bg-white rounded-lg flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 text-black">5<span className="w-full text-red-dark">seeds</span></button>
-                  <button className="w-16 bg-white rounded-lg flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 text-black">10<span className="w-full text-red-dark">seeds</span></button>
-                  <button className="w-16 bg-white rounded-lg flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 text-black">25<span className="w-full text-red-dark">seeds</span></button>
+                  <button className="w-16 bg-white rounded-lg flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold text-black">5<span className="w-full text-red-dark">seeds</span></button>
+                  <button className="w-16 bg-white rounded-lg flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold text-black">10<span className="w-full text-red-dark">seeds</span></button>
+                  <button className="w-16 bg-white rounded-lg flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold text-black">25<span className="w-full text-red-dark">seeds</span></button>
                   <button className="bg-red-dark rounded-lg text-center text-white mx-auto m-4 p-4">Add to Cart</button>
                 </div>
               </div>
