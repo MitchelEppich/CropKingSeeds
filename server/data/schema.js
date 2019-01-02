@@ -33,6 +33,9 @@ type Strain {
   pcbn: [Float]
   country: [Int]
   sotiId: String
+  indica: Float
+  sativa: Float
+  ruderalis: Float
 }
 
 input StrainInput {
@@ -53,6 +56,9 @@ input StrainInput {
   pcbn: [Float]
   country: [Int]
   sotiId: String
+  indica: Float
+  sativa: Float
+  ruderalis: Float
 }
 
 type Mutation {
