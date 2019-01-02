@@ -15,19 +15,24 @@ const GenePreview = props => {
             height: "100%"
         };
         autoPack = femPack = cbdPack = regPack = {
-            transform: "translateY(10%) translateX(-5%)"
+            transform: "translateY(10%) translateX(-5%)",
+            position: "absolute"
         };
         autoHeading  = {
-            transform: "translateX(81%) translateY(-208%) rotate(-90deg)",
+            transform: "translateX(81%) rotate(-90deg)",
+            margin: "0 5%"
         };
         femHeading = {
-            transform: "translateX(123%) translateY(-120%) rotate(-90deg)",
+            transform: "translateX(123%) rotate(-90deg)",
+            width: "100%"
         };
         cbdHeading = {
-            transform: "translateX(375%) translateY(21%) rotate(-90deg)",
+            transform: "translateX(375%) rotate(-90deg)",
+            margin: "0 5%"
         };
         regHeading = {
-            transform: "translateX(152%) translateY(-90%) rotate(-90deg)",
+            transform: "translateX(152%) rotate(-90deg)",
+            margin: "0 5%"
         };
 
     switch(props.misc.geneHoverIndex){
