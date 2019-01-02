@@ -14,6 +14,9 @@ const initialState = {
   strains: null,
   hoverIndex: null,
   geneHoverIndex: null,
+  stepsCheckout: 0,
+  sameAddress: true,
+  // checkoutScreen: "productsScreen",
   activeBannerSlide: 6,
   bannerSlides: [
     {
@@ -77,9 +80,13 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         hoverIndex: state.hoverIndex == action.index ? null : action.index
       });
-    case actionTypes.SET_CHECKOUT_SCREEN:
-      return updateObject(state, {
-        checkoutScreen: action.input
+    // case actionTypes.SET_CHECKOUT_SCREEN:
+    //   return updateObject(state, {
+    //     checkoutScreen: action.input
+    //   });
+    case actionTypes.TOGGLE_STEPS_CHECKOUT:
+      return updateObject(state, { 
+        stepsCheckout: action.input 
       });
     case actionTypes.SET_CONTEXT:
       return updateObject(state, {

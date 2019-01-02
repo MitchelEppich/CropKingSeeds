@@ -21,7 +21,7 @@ class Index extends Component {
   render() {
     return (
       <Layout>
-        {this.props.misc.strains.length > 0 ?
+        {this.props.misc.strains != null && this.props.misc.strains.length > 0 ?
           <React.Fragment>
             <div className="flex flex-wrap">
               <div className="w-1/4">

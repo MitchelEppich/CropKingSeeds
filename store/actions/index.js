@@ -25,7 +25,8 @@ const actionTypes = {
   SET_GENE_HOVER_INDEX: "SET_GENE_HOVER_INDEX",
   NEXT_BANNER_SLIDE: "NEXT_BANNER_SLIDE",
   SET_STRAINS: "SET_STRAINS",
-  SET_CONTEXT: "SET_CONTEXT"
+  SET_CONTEXT: "SET_CONTEXT",
+  TOGGLE_STEPS_CHECKOUT: "TOGGLE_STEPS_CHECKOUT"
 };
 
 const actions = {
@@ -38,6 +39,12 @@ const actions = {
   setCheckoutScreen: input => {
     return {
       type: actionTypes.SET_CHECKOUT_SCREEN,
+      input: input
+    };
+  },
+  toggleStepsCheckout: input => {
+    return {
+      type: actionTypes.TOGGLE_STEPS_CHECKOUT,
       input: input
     };
   },
