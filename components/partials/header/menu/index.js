@@ -15,15 +15,15 @@ const menu = props => {
                     <FontAwesomeIcon icon={faSearch} className="text-red-dark fa-2x py-1" /> 
                 </div>
                 <div className="w-full mt-2">
-                    <ul className="inline-flex w-full text-red-dark font-bold text-lg pt-2 pl-32">
+                    <ul className="inline-flex w-full text-red-dark font-bold text-2xl pt-2 pl-32">
                         <Link href="/shop">
-                            <li className="px-2 py-1 mx-2 cursor-pointer text-2xl hover:text-red-dark-dark">Shop</li>
+                            <li className="px-2 py-1 mx-2 cursor-pointer text-3xl hover:text-red-dark-dark">Shop</li>
                         </Link>
                         <Link href="/germination">
-                            <li className="px-2 py-1 mx-2 cursor-pointer text-2xl hover:text-red-dark-dark">Germination</li>
+                            <li className="px-2 py-1 mx-2 cursor-pointer text-3xl hover:text-red-dark-dark">Germination</li>
                         </Link>
                         <Link href="/articles">
-                            <li className="px-2 py-1 mx-2 cursor-pointer text-2xl hover:text-red-dark-dark">Articles</li>
+                            <li className="px-2 py-1 mx-2 cursor-pointer text-3xl hover:text-red-dark-dark">Articles</li>
                         </Link>
                     </ul>
                 </div>

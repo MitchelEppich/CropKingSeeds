@@ -46,7 +46,8 @@ const mapDispatchToProps = dispatch => {
     setHoverId: id => dispatch(actions.setHoverId(id)),
     getStrains: () => dispatch(actions.getStrains()),
     toggleFilter: filter => dispatch(actions.toggleFilter(filter)),
-    clearFilters: () => dispatch(actions.clearFilters())
+    clearFilters: () => dispatch(actions.clearFilters()),
+    quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input))
   };
 };
 

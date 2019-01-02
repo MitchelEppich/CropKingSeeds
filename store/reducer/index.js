@@ -93,7 +93,8 @@ const initialState = {
     { 'transform': ' translateX(300%)', 'display': 'none', transition: "all 0.5s ease-in-out"},
     
   ],
-  activeFilters: []
+  activeFilters: [],
+  quickAddToCartQty: null
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -158,6 +159,10 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.CLEAR_FILTERS:
       return updateObject(state, {
         activeFilters: []
+      });
+    case actionTypes.QUICK_ADD_TO_CART_QTY:
+      return updateObject(state, {
+        quickAddToCartQty: action.input
       });
     default:
       return state;
