@@ -41,6 +41,7 @@ type Strain {
   indica: Float
   sativa: Float
   ruderalis: Float
+  env: String
 }
 
 input StrainInput {
@@ -64,10 +65,12 @@ input StrainInput {
   indica: Float
   sativa: Float
   ruderalis: Float
+  env: String
 }
 
 type Mutation {
   createStrain(input: StrainInput): Strain
+  typeToDom: String
 }
 
 `;

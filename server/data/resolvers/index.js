@@ -2,7 +2,7 @@ const StrainResolvers = require("./strain");
 
 const axios = require("axios");
 
-// const Strain = StrainResolvers.Strain
+const Strain = StrainResolvers.Strain;
 
 const resolvers = {
   Query: {
@@ -19,6 +19,7 @@ const resolvers = {
         });
     }
   },
+  Strain,
   Mutation: {
     ...StrainResolvers.Mutation
   }
