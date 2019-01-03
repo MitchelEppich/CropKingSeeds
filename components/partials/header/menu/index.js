@@ -51,7 +51,7 @@ const menu = props => {
             <div className="mx-8 ml-12 mt-4">
                 <p className="">Call: 604-563-0291</p>
             </div>
-            <div onClick={() => {props.setVisibleScreen({ input: "viewCart" });}} className="ml-12 mt-2">
+            <div onClick={() => {props.setVisibleScreen({ input: "viewCart" });}} className="ml-12 mt-2 cursor-pointer">
                 <FontAwesomeIcon icon={faShoppingCart} className="fa-2x" />
             </div>
         </div>

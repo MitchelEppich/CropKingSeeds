@@ -54,7 +54,7 @@ let colors = {
   "grey-dark": "#8795a1",
   grey: "#202020",
   "grey-light": "#6b6b6b",
-  "grey-lighter": "#f1f5f8",
+  "grey-lighter": "#d4d4d4",
   "grey-lightest": "#f8fafc",
   white: "#ffffff",
 
@@ -173,10 +173,10 @@ module.exports = {
     // 'lg': {'min': '768px', 'max': '991px'},
     // 'xl': {'min': '992px', 'max': '1199px'},
     // '2xl': {'min': '1200px'},
-    'sm': {'min': '100px', 'max': '991px'},
+    'sm': { 'min': '100px', 'max': '991px' },
     // 'md': {'min': '578px', 'max': '767px'},
-    'lg': {'min': '992px', 'max': '1367px'},
-    'xl': {'min': '1368px'},
+    'lg': { 'min': '992px', 'max': '1367px' },
+    'xl': { 'min': '1368px' },
     // '2xl': {'min': '1200px'},
   },
 

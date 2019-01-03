@@ -277,14 +277,18 @@ right: 0;
   }
 }
 
-.filter {
-  @include element("hr"){
+.hr {
+  @include element("filters"){
     width: 90%;
     height: 1px;
     box-shadow: 0 2px 0 0 rgba(204,31,26,0.3);
   }
+  @include element("cart"){
+    width: 90%;
+    height: 1px;
+    box-shadow: 0 2px 0 0 #d4d4d4;
+  }
 }
-
 
 
 

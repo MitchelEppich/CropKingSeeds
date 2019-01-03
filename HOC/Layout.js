@@ -14,20 +14,20 @@ import Header from "../components/partials/header";
 import Footer from "../components/partials/footer";
 
 class Layout extends Component {
-  componentDidMount() {}
+  componentDidMount() { }
 
-  componentDidUpdate() {}
+  componentDidUpdate() { }
 
   render() {
     return (
       <div className="bg-smoke-grey">
         <Header {...this.props} />
-        <div className=""> 
+        <div className="">
           <div className="bg-white px-16px w-1300 mx-auto pt-8">
             {this.props.children}
           </div>
         </div>
-        
+
         <Cart {...this.props} />
         <Footer {...this.props} />
       </div>
@@ -37,7 +37,8 @@ class Layout extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input))
+    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+    modifyCart: input => dispatch(actions.modifyCart(input)),
   };
 };
 
