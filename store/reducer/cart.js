@@ -2,7 +2,12 @@ import actionTypes from "../actions";
 import { updateObject } from "../utility";
 
 const initialState = {
-  items: {}
+  items: {
+    AFM25: {
+      _id: "524j2626l1j61j",
+      name: "Auto Fem mix"
+    }
+  }
 };
 
 export default (state = initialState, action) => {

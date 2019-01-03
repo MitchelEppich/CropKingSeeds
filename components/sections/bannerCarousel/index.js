@@ -8,7 +8,7 @@ const BannerCarousel = props => {
     });
 
     return (
-        <div className="h-500 w-full bg-green-light flex relative overflow-hidden">
+        <div className="h-500 w-full flex relative overflow-hidden">
            {slides}
         </div>
     );

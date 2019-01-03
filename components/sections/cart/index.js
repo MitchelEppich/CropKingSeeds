@@ -25,13 +25,53 @@ const cart = props => {
         overflowY: "auto",
         width: "500px"
       };
+  let items = Object.entries(props.cart.items).map((item, index) => {
+    return (
+      <CartItem
+        key={item[1]._id}
+        val={{ ...item[1], sotiId: item[0] }}
+        {...props}
+        index={index}
+      />
+    );
+  });
 
   return (
     <div
       style={viewCart}
-      onClick={() => props.setVisibleScreen({ input: "viewCart" })}
-      className="w-500 sm:w-screen max-w-screen z-50 pin-t pin-r h-screen bg-white fixed pb-12 shadow-lg"
-    />
+      className="w-500 text-black text-3xl sm:w-screen max-w-screen z-50 pin-t pin-r h-screen bg-white fixed pb-12 shadow-lg"
+    >
+      <h2
+        onClick={() => props.setVisibleScreen("viewCart")}
+        className="text-red-dark w-full h-16 text-center mt-8 cursor-pointer"
+      >
+        Cart
+      </h2>
+      <p
+        onClick={() => props.setVisibleScreen("viewCart")}
+        className="absolute pin-t pin-r mt-8 mr-8 text-red-dark cursor-pointer"
+      >
+        <FontAwesomeIcon icon={faTimes} className="fa-lg" />
+      </p>
+      <div className="min-h-500 w-full">
+        {items.length > 0 ? (
+          items
+        ) : (
+          <p className="text-center my-12">No items in cart!</p>
+        )}
+      </div>
+
+      {items.length > 0 ? (
+        <Link href="/checkout">
+          <button
+            onClick={() => props.setVisibleScreen("viewCart")}
+            className="mx-auto block px-8 py-2 border border-red-dark text-red-dark"
+          >
+            Checkout
+          </button>
+        </Link>
+      ) : null}
+    </div>
   );
 };
 

@@ -8,10 +8,9 @@ library.add(faPlus, faMinus, faTimesCircle);
 //returns a cart item with the strain thumbnail, name, and quantity (also has buttons to increase or reduce qty)
 const cartItem = props => {
 
-
     return (
       <div>
-        
+        <p className="text-black">{props.val.name}</p>
       </div>
     );
   };

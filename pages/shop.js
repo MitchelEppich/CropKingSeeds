@@ -23,8 +23,8 @@ class Index extends Component {
       <Layout>
         {this.props.misc.strains != null && this.props.misc.strains.length > 0 ?
           <React.Fragment>
-            <div className="flex flex-wrap">
-              <div className="w-1/4">
+            <div className={this.props.misc.viewProductExpand != null ? "fixed overflow-hidden" :"flex flex-wrap"}>
+              <div className={this.props.misc.viewProductExpanded ? "w-0 slow":"w-1/4 slow"}>
                 <Filters {...this.props} />
                 {/*<FeaturedStrainThumbnails {...this.props} />*/}
               </div>
