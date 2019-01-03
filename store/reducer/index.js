@@ -94,7 +94,8 @@ const initialState = {
     
   ],
   activeFilters: [],
-  quickAddToCartQty: null
+  quickAddToCartQty: 0,
+  viewProductExpanded: null
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -163,6 +164,10 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.QUICK_ADD_TO_CART_QTY:
       return updateObject(state, {
         quickAddToCartQty: action.input
+      });
+    case actionTypes.EXPAND_PRODUCT:
+      return updateObject(state, {
+        viewProductExpanded: action.id
       });
     default:
       return state;

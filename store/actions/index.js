@@ -33,7 +33,8 @@ const actionTypes = {
   TOGGLE_FILTER: "TOGGLE_FILTER",
   CLEAR_FILTERS: "CLEAR_FILTERS",
   TOGGLE_STEPS_CHECKOUT: "TOGGLE_STEPS_CHECKOUT",
-  QUICK_ADD_TO_CART_QTY: "QUICK_ADD_TO_CART_QTY"
+  QUICK_ADD_TO_CART_QTY: "QUICK_ADD_TO_CART_QTY",
+  EXPAND_PRODUCT: "EXPAND_PRODUCT"
 };
 
 const actions = {
@@ -102,6 +103,12 @@ const actions = {
     return {
       type: actionTypes.QUICK_ADD_TO_CART_QTY,
       input: input
+    }
+  },
+  expandProduct: (id) => {
+    return {
+      type: actionTypes.EXPAND_PRODUCT,
+      id: id
     }
   }
 };
