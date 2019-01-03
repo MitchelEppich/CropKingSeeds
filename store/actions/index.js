@@ -33,7 +33,8 @@ const actionTypes = {
   TOGGLE_FILTER: "TOGGLE_FILTER",
   CLEAR_FILTERS: "CLEAR_FILTERS",
   TOGGLE_STEPS_CHECKOUT: "TOGGLE_STEPS_CHECKOUT",
-  SHOW_DIFFERENT_ADDRESS: "SHOW_DIFFERENT_ADDRESS"
+  SHOW_DIFFERENT_ADDRESS: "SHOW_DIFFERENT_ADDRESS",
+  QUICK_ADD_TO_CART_QTY: "QUICK_ADD_TO_CART_QTY"
 };
 
 const actions = {
@@ -104,6 +105,12 @@ const actions = {
     return {
       type: actionTypes.CLEAR_FILTERS
     };
+  },
+  quickAddToCartQty: input => {
+    return {
+      type: actionTypes.QUICK_ADD_TO_CART_QTY,
+      input: input
+    }
   }
 };
 
