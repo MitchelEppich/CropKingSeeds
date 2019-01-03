@@ -9,65 +9,52 @@ import {
 
 const menu = props => {
   return (
-    <div className="w-full bg-red-dark shadow-lg h-24 inline-flex test">
-      <div className="p-2 w-1/2 inline-flex">
-        <div className="p-2 ml-6 mt-1 p-3 cursor-pointer">
-          <FontAwesomeIcon icon={faSearch} className="text-white fa-2x py-1" />
+    <div className="w-full h-16 bg-red-dark flex justify-center text-white pt-2">
+        <div className="flex mr-12 ">
+            <div className="w-1/3 mr-4 flex">
+                <input placeholder="Search" className="w-5/6 pl-2 border-b-1 border-r-0 border-l-0 border-t-0 h-10 bg-transparent text-white"/><FontAwesomeIcon icon={faSearch} className="fa-lg cursor-pointer mt-3 ml-2" />
+            </div>
+            <ul className="list-reset flex w-3/4 text-3xl">
+                <Link href="/shop">
+                    <li className="mx-4 mt-2">
+                    Shop
+                    </li>
+                </Link>
+                <Link href="/germination">
+                    <li className="mx-4 mt-2">
+                    Germination
+                    </li>
+                </Link>
+                <Link href="/articles">
+                    <li className="mx-4 mt-2">
+                    Articles
+                    </li>
+                </Link>
+            </ul>
         </div>
-        <div className="w-full mt-2">
-          <ul className="inline-flex w-full text-white font-bold text-2xl pt-2 pl-32">
-            <Link href="/shop">
-              <li className="px-2 py-1 mx-2 cursor-pointer text-3xl hover:text-white-dark">
-                Shop
-              </li>
-            </Link>
-            <Link href="/germination">
-              <li className="px-2 py-1 mx-2 cursor-pointer text-3xl hover:text-white-dark">
-                Germination
-              </li>
-            </Link>
-            <Link href="/articles">
-              <li className="px-2 py-1 mx-2 cursor-pointer text-3xl hover:text-white-dark">
-                Articles
-              </li>
-            </Link>
-          </ul>
-        </div>
-      </div>
-      <div
-        onClick={() => console.log(props)}
-        className="cursor-pointer text-center"
-      >
-        <img src="../static/img/cropkingseeds.png" className="w-24" />
-      </div>
-
-      <div className="w-1/2 inline-flex">
-        <div className="w-1/5 mt-2">
-          <ul className="inline-flex text-white font-bold  justify-around text-lg pt-2">
-            <li className="px-2 py-1 mx-2 cursor-pointer hover:text-white text-white">
-              <FontAwesomeIcon icon={faFacebookF} className="fa-2x" />
-            </li>
-            <li className="px-2 py-1 mx-2 cursor-pointer hover:text-white text-white">
-              <FontAwesomeIcon icon={faTwitter} className="fa-2x" />
-            </li>
-            <li className="px-2 py-1 mx-2 cursor-pointer hover:text-white text-white">
-              <FontAwesomeIcon icon={faInstagram} className="fa-2x" />
-            </li>
-          </ul>
+        <div onClick={() => console.log(props)} className="w-32">
+            <img src="../static/img/cropkingseeds.png" className="w-24 mx-auto block" />
         </div>
 
-        <div className="w-3/5 text-white mt-2 text-center mt-4">
-          <p className="p-2 mt-2 text-lg">Call: 604-563-0291</p>
+        <div className="flex ml-12 ">
+            <ul className="flex list-reset">
+                <li className="mx-2 mt-2">
+                    <FontAwesomeIcon icon={faFacebookF} className="fa-2x" />
+                </li>
+                <li className="mx-2 mt-2">
+                    <FontAwesomeIcon icon={faTwitter} className="fa-2x" />
+                </li>
+                <li className="mx-2 mt-2">
+                    <FontAwesomeIcon icon={faInstagram} className="fa-2x" />
+                </li>
+            </ul>
+            <div className="mx-8 mt-4">
+                <p className="">Call: 604-563-0291</p>
+            </div>
+            <div onClick={() => {props.setVisibleScreen({ input: "viewCart" });}} className="ml-12 mt-2">
+                <FontAwesomeIcon icon={faShoppingCart} className="fa-2x" />
+            </div>
         </div>
-        <div
-          onClick={() => {
-            props.setVisibleScreen({ input: "viewCart" });
-          }}
-          className="bg-red-dark text-white w-1/5 text-center pt-6 cursor-pointer"
-        >
-          <FontAwesomeIcon icon={faShoppingCart} className="fa-2x" />
-        </div>
-      </div>
     </div>
   );
 };
