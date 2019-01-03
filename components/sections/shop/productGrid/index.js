@@ -4,7 +4,7 @@ import withData from "../../../../lib/withData";
 import { connect } from "react-redux";
 import actions from "../../../../store/actions";
 import {TimelineLite} from "gsap";
-
+import Link from "next/link";
 
 class Index extends Component {
 
@@ -22,107 +22,142 @@ class Index extends Component {
 
   render() {
 
-    let hoverIndex = this.props.misc.hoverIndex;
+    let hoverId = this.props.misc.hoverId;
     let products = this.props.misc.strains;
     if(this.props.misc.activeFilters.length > 0){
       for(let i = 0; i < this.props.misc.activeFilters.length; i++){
-        if(this.props.misc.activeFilters[i] === "thcLow"){
-          products = products.filter(val => {
-            for(let i of val.pthc){
-              if(i > 20){
-                return false;
+        if(this.props.misc.activeFilters[i].hasOwnProperty('thc')){
+          if(this.props.misc.activeFilters[i]['thc'] === 'thcLow'){
+            products = products.filter(val => {
+              for(let i of val.pthc){
+                if(i > 20){
+                  return false;
+                }
               }
-            }
-            return true;
+              return true;
+            });
+            continue;
+          } else {
+            products = products.filter(val => {
+              for(let i of val.pthc){
+                if(i < 20){
+                  return false;
+                }
+              }
+              return true;
+            });
+            continue;
+          }
+        }
+        if(this.props.misc.activeFilters[i].hasOwnProperty('cbd')){
+          if(this.props.misc.activeFilters[i]['cbd'] === 'cbdLow'){
+            products = products.filter(val => {
+              for(let i of val.pcbd){
+                if(i > 2){
+                  return false;
+                }
+              }
+              return true;
+            });
+            continue;
+          } else {
+            products = products.filter(val => {
+              for(let i of val.pcbd){
+                if(i < 2){
+                  return false;
+                }
+              }
+              return true;
+            });
+            continue;
+          }
+        }
+        if(this.props.misc.activeFilters[i].hasOwnProperty('genetic')){
+          products = products.filter(val => {
+            if(val.genetic === this.props.misc.activeFilters[i]['genetic'])
+              return true;
+            return false;
           });
           continue;
         }
-        if(this.props.misc.activeFilters[i] === "thcHigh"){
+        if(this.props.misc.activeFilters[i].hasOwnProperty('type')){
           products = products.filter(val => {
-            for(let i of val.pthc){
-              if(i < 20){
-                return false;
-              }
-            }
-            return true;
+            if(val.type === this.props.misc.activeFilters[i]['type'])
+              return true;
+            return false;
           });
           continue;
         }
-        if(this.props.misc.activeFilters[i] === "cbdLow"){
-          products = products.filter(val => {
-            for(let i of val.pcbd){
-              if(i > 2){
-                return false;
-              }
-            }
-            return true;
-          });
-          continue;
-        }
-        if(this.props.misc.activeFilters[i] === "cbdHigh"){
-          products = products.filter(val => {
-            for(let i of val.pcbd){
-              if(i < 2){
-                return false;
-              }
-            }
-            return true;
-          });
-          continue;
-        }
-        products = products.filter(val => {
-          return JSON.stringify(val).toLowerCase().includes(this.props.misc.activeFilters[i].toLowerCase());
-        });
-      
       }
     }
     products = products.map((product, index)=> {
 
-      let packageStyle = hoverIndex == index ? 
+      let type;
+      if(product.type === 0){
+        type = "Sativa";
+      } else if (product.type === 1) {
+        type = "Indica";
+      } else {
+        type = "Hybrid";
+      }
+      let packageStyle = hoverId == product._id ? 
       {
-        height: "100%", width: "100%", position: "relative", zIndex: 10, margin: "0 50px", transition: "0.5s all ease-in-out",
-        transform: "translateX(-15px)",
+        height: "50%", width: "50%", position: "relative", zIndex: 10, transition: "0.4s all ease-in-out",
         backgroundImage: "url(" + product.packageImg + ")",
         backgroundPosition: "center",
         backgroundSize: "cover"
       } 
       : 
       {
-        height: "100%", width: "100%", position: "relative", zIndex: 10, margin: "0 50px", transition: "0.5s all ease-in-out",
-        transform: "translateX(0)",
+        height: "100%", width: "100%", position: "relative", zIndex: 10, transition: "0.4s all ease-in-out",
         backgroundImage: "url(" + product.packageImg + ")",
         backgroundPosition: "center",
         backgroundSize: "cover"
       };
 
-      let plantStyle = hoverIndex == index ? 
+      let plantStyle = hoverId == product._id ? 
       {
-        height: "100%", position: "relative", zIndex: 0, margin: "0 50px", transition: "0.5s all ease-in-out",
-        transform: "translateX(55px) translateY(-250px)"
+        height: "45%", position: "absolute", top: "15px", zIndex: 0, transition: "0.4s all ease-in-out", transform: "translateX(50px)"
       } 
       : 
       {
-        height: "100%", position: "relative", zIndex: 0, margin: "0 50px", transition: "0.5s all ease-in-out",
-        transform: "translateX(40px) translateY(-250px)"
+        height: "90%", position: "absolute", top: "15px", zIndex: 0, transition: "0.4s all ease-in-out",
       };
 
-      let overlayStyle = hoverIndex == index ? 
+      let overlayStyle = hoverId == product._id ? 
       {
-        height: "99%", width: "86%", padding: "20px", backgroundColor: "rgba(0,0,0,0.5)", transition: "0.5s all ease-in-out",
-        color: "rgba(255,255,255,1)", transform: "translateX(14px) translateY(1px)"
+        height: "170%", width: "110%", backgroundColor: "#eee", transition: "0.4s all ease-in-out",
+        color: "rgba(255,255,255,1)", position: "absolute", boxShadow: "0 15px 30px 0 rgba(0,0,0,0.11), 0 5px 15px 0 rgba(0,0,0,0.08)",
       } 
       : 
       {
-        height: "0px", width: "86%", backgroundColor: "rgba(0,0,0,0.5)", transition: "0.5s all ease-in-out",
-        color: "rgba(255,255,255,0)", transform: "translateX(14px) translateY(1px)"
+        height: "100%", width: "100%", backgroundColor: "#eee", transition: "0.4s all ease-in-out",
+        color: "rgba(255,255,255,0)", position: "relative", zIndex: "0", overflow: "visible"
       };
+
 
         return(
-            <div key={index} ref={div => this.myElements[index] = div} onMouseEnter={() => this.props.setHoverIndex(index)} onMouseLeave={() => this.props.setHoverIndex(index)} className="w-64 h-64 m-4 text-white">
-              <div style={packageStyle} className="px-12 py-2 mx-4">
-                <div style={overlayStyle}>{product.name.substring(0, product.name.length - 15)}</div>
+            <div key={index} ref={div => this.myElements[index] = div} onMouseEnter={() => this.props.setHoverId(product._id)} onMouseLeave={() => this.props.setHoverId(product._id)} className={hoverId == product._id ?"w-64 h-64 text-white relative z-50 slowish": "w-64 h-64 text-white relative z-0 slowish"}>
+              <div style={overlayStyle}>
+                {/*<h3 className="bg-red-dark w-full absolute z-30 mt-8 text-white text-center">{product.name.substring(0, product.name.length - 15)}</h3>*/}
+                <Link href="/">
+                  <React.Fragment>
+                    <div style={packageStyle} className="px-12 py-2 cursor-pointer">
+                    </div>
+                    <img src={product.strainImg} style={plantStyle} />
+                  </React.Fragment>
+                </Link>
+                <Link href="/">
+                  <h4 className="w-full mt-2 text-black font-black text-center cursor-pointer">{product.name.substring(0, product.name.length - 15)}</h4>
+                </Link>
+                <p className="text-grey pl-4 my-4">Type:<span className="ml-1 text-black">{type}</span></p>
+                <div className="flex flex-wrap justify-between">
+                  <button className="w-16 bg-white rounded-lg flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold text-black">5<span className="w-full text-red-dark">seeds</span></button>
+                  <button className="w-16 bg-white rounded-lg flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold text-black">10<span className="w-full text-red-dark">seeds</span></button>
+                  <button className="w-16 bg-white rounded-lg flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold text-black">25<span className="w-full text-red-dark">seeds</span></button>
+                  <button className="bg-red-dark rounded-lg text-center text-white mx-auto m-4 p-4">Add to Cart</button>
+                </div>
               </div>
-              <img src={product.strainImg} style={plantStyle} />
             </div>
         );
     });
@@ -140,7 +175,7 @@ class Index extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setHoverIndex: index => dispatch(actions.setHoverIndex(index))
+    setHoverId: id => dispatch(actions.setHoverId(id))
   };
 };
 

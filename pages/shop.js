@@ -26,7 +26,7 @@ class Index extends Component {
             <div className="flex flex-wrap">
               <div className="w-1/4">
                 <Filters {...this.props} />
-                <FeaturedStrainThumbnails {...this.props} />
+                {/*<FeaturedStrainThumbnails {...this.props} />*/}
               </div>
               <ProductGrid {...this.props} />
             </div>
@@ -43,7 +43,7 @@ class Index extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
-    setHoverIndex: index => dispatch(actions.setHoverIndex(index)),
+    setHoverId: id => dispatch(actions.setHoverId(id)),
     getStrains: () => dispatch(actions.getStrains()),
     toggleFilter: filter => dispatch(actions.toggleFilter(filter)),
     clearFilters: () => dispatch(actions.clearFilters())

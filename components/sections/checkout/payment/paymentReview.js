@@ -18,21 +18,22 @@ const PaymentReview = props => {
                     background: "whitesmoke",
                     padding:"5px",
                 }}>
-                Shipping Address</h3>
+                Shipping Address
+                </h3>
                 <div className="p-2">                 
-                    <p className="text-xs mt-2">                    
+                    <p className="mt-2">                    
                     {props.checkout.orderDetails.shipping != null ? <span>{props.checkout.orderDetails.shipping.address}{", "}</span> : "Not Defined" }</p>
 
-                    <p className="text-xs mt-2">{props.checkout.orderDetails.shipping != null ? <span>{props.checkout.orderDetails.shipping.city}{", "}{props.checkout.orderDetails.shipping.state}</span> : "Not Defined" }</p>
+                    <p className="mt-2">{props.checkout.orderDetails.shipping != null ? <span>{props.checkout.orderDetails.shipping.city}{", "}{props.checkout.orderDetails.shipping.state}</span> : "Not Defined" }</p>
 
-                    <p className="text-xs mt-2">{props.checkout.orderDetails.shipping != null ? props.checkout.orderDetails.shipping.postalZip : "Not Defined" }</p>
+                    <p className="mt-2">{props.checkout.orderDetails.shipping != null ? props.checkout.orderDetails.shipping.postalZip : "Not Defined" }</p>
 
-                    <p className="text-xs mt-2">{props.checkout.orderDetails.shipping != null ? props.checkout.orderDetails.shipping.country : "Not Defined" }</p>
+                    <p className="mt-2">{props.checkout.orderDetails.shipping != null ? props.checkout.orderDetails.shipping.country : "Not Defined" }</p>
 
-                    <p className="text-xs mt-6"><span className="p-2 text-grey-light"><FontAwesomeIcon icon={faPhone} className="fa-lg" /></span>
+                    <p className="mt-2"><span className="p-2 text-grey-light"><FontAwesomeIcon icon={faPhone} className="fa-lg" /></span>
                     {props.checkout.orderDetails.shipping != null ? props.checkout.orderDetails.shipping.phone : "Not Defined" }</p>
 
-                    <p className="text-xs mt-4"><span className="p-2 text-grey-light"><FontAwesomeIcon icon={faEnvelope} className="fa-lg" /></span>
+                    <p className="mt-2"><span className="p-2 text-grey-light"><FontAwesomeIcon icon={faEnvelope} className="fa-lg" /></span>
                      {props.checkout.orderDetails.shipping != null ? <span>{props.checkout.orderDetails.shipping.email}</span>: "Not Defined" }</p>
                 </div>   
             </div>    
@@ -49,23 +50,24 @@ const PaymentReview = props => {
                     background: "whitesmoke",
                     padding:"5px",
                 }}>
-                Billing Address</h3>
+                Billing Address
+                </h3>
                 <div className="p-2">                 
-                    <p className="text-xs mt-2">                    
+                    <p className="mt-2">                    
                     {props.checkout.orderDetails.shipping != null ? <span>{props.checkout.orderDetails.shipping.address}{", "}</span> : "Not Defined" }</p>
 
-                    <p className="text-xs mt-2">{props.checkout.orderDetails.shipping != null ? <span>{props.checkout.orderDetails.shipping.city}{", "}{props.checkout.orderDetails.shipping.state}</span> : "Not Defined" }</p>
+                    <p className="mt-2">{props.checkout.orderDetails.shipping != null ? <span>{props.checkout.orderDetails.shipping.city}{", "}{props.checkout.orderDetails.shipping.state}</span> : "Not Defined" }</p>
 
-                    <p className="text-xs mt-2">{props.checkout.orderDetails.shipping != null ? props.checkout.orderDetails.shipping.postalZip : "Not Defined" }</p>
+                    <p className="mt-2">{props.checkout.orderDetails.shipping != null ? props.checkout.orderDetails.shipping.postalZip : "Not Defined" }</p>
 
-                    <p className="text-xs mt-2">{props.checkout.orderDetails.shipping != null ? props.checkout.orderDetails.shipping.country : "Not Defined" }</p>
+                    <p className="mt-2">{props.checkout.orderDetails.shipping != null ? props.checkout.orderDetails.shipping.country : "Not Defined" }</p>
 
-                    <p className="text-xs mt-6"><span className="p-2 text-grey-light"><FontAwesomeIcon icon={faPhone} className="fa-lg" /></span>
+                    <p className="mt-2"><span className="p-2 text-grey-light"><FontAwesomeIcon icon={faPhone} className="fa-lg" /></span>
                     {props.checkout.orderDetails.shipping != null ? props.checkout.orderDetails.shipping.phone : "Not Defined" }</p>
 
-                    <p className="text-xs mt-4"><span className="p-2 text-grey-light"><FontAwesomeIcon icon={faEnvelope} className="fa-lg" /></span>
+                    <p className="mt-2"><span className="p-2 text-grey-light"><FontAwesomeIcon icon={faEnvelope} className="fa-lg" /></span>
                      {props.checkout.orderDetails.shipping != null ? <span>{props.checkout.orderDetails.shipping.email}</span>: "Not Defined" }</p>
-                </div>
+                </div> 
             </div>    
             <div style={{
                 border: "2px solid rgb(239, 239, 239)",
@@ -82,13 +84,13 @@ const PaymentReview = props => {
                 }}>
                 Payment Information</h3>
                 <div className="p-2">
-                    <p className="text-xs mt-2">Product Total: <span className="">$250</span></p>
-                    <p className="text-xs mt-2">Shipping: <span className="">$10</span></p>
-                    <p className="text-xs mt-2">Tax: <span className="">$15</span></p>
-                    <p className="text-xs mt-2">Credit Card Tax: <span className="">$12</span></p>
+                    <p className="mt-2">Product Total: <span className="">$250</span></p>
+                    <p className="mt-2">Shipping: <span className="">$10</span></p>
+                    <p className="mt-2">Tax: <span className="">$15</span></p>
+                    <p className="mt-2">Credit Card Tax: <span className="">$12</span></p>
                     <hr
                     style={{ border: "1px solid rgba(228, 228, 228, 0.3)" }}
-                    className="mt-10"/>
+                    className="mt-6"/>
                     <p className="text-lg mt-2 font-extrabold text-center">Total: <span className="">$287</span></p>
                 </div>
             </div>    

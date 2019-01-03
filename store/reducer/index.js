@@ -16,7 +16,7 @@ import NavigationReducer from "./navigation";
 const initialState = {
   visibleScreen: ["dogs"], // When [] show main screen
   strains: null,
-  hoverIndex: null,
+  hoverId: null,
   geneHoverIndex: null,
   stepsCheckout: 0,
   showDifferentAddress: false,
@@ -24,9 +24,9 @@ const initialState = {
   activeBannerSlide: 6,
   bannerSlides: [
     {
-      color: "blue",
+      color: "green-dark",
       style: {
-        backgroundImage: "url(../static/img/banner1.png)",
+        // backgroundImage: "url(../static/img/banner1.png)",
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat"
@@ -49,37 +49,49 @@ const initialState = {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat"
       }
+    },{
+      color: "yellow",
+      style: {
+        // backgroundImage: "url(../static/img/banner1.png)",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat"
+      }
+    },{
+      // color: "green-dark",
+      style: {
+        backgroundImage: "url(../static/img/banner1.png)",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat"
+      }
+    },{
+      color: "blue",
+      style: {
+        // backgroundImage: "url(../static/img/banner3.png)",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat"
+      }
+    },{
+      color: "red",
+      style: {
+        // backgroundImage: "url(../static/img/banner3.png)",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat"
+      }
     }
   ],
   bannerSlidePositions: [
-    {
-      transform: " translateX(-500%)",
-      display: "none",
-      transition: "all 0.5s ease-in-out"
-    },
-    {
-      transform: " translateX(-40%)",
-      display: "none",
-      transition: "all 0.5s ease-in-out"
-    },
-    { transform: " translateX(-200%)", transition: "all 0.5s ease-in-out" },
-    { transform: " translateX(0)", transition: "all 0.5s ease-in-out" },
-    { transform: " translateX(200%)", transition: "all 0.5s ease-in-out" },
-    {
-      transform: " translateX(400%)",
-      display: "none",
-      transition: "all 0.5s ease-in-out"
-    },
-    {
-      transform: " translateX(500%)",
-      display: "none",
-      transition: "all 0.5s ease-in-out"
-    }
-    // { 'transform': 'translateX(-100%)' , transition: "all 0.5s ease-in-out"},
-    // { 'transform': 'translateX(0)', transition: "all 0.5s ease-in-out" },
-    // { 'transform': 'translateX(100%)', transition: "all 0.5s ease-in-out"},
-    // { 'transform': 'translateX(200%)', display: "none", transition: "all 0.5s ease-in-out"  },
-    // { 'transform': 'translateX(-200%)', display: "none", transition: "all 0.5s ease-in-out"  },
+    { 'transform': ' translateX(-300%)', 'display': 'none', transition: "all 0.5s ease-in-out"},
+    { 'transform': ' translateX(-200%)', 'display': 'none', transition: "all 0.5s ease-in-out"},
+    { 'transform': ' translateX(-100%)', transition: "all 0.5s ease-in-out" },
+    { 'transform': ' translateX(0)', transition: "all 0.5s ease-in-out" },
+    { 'transform': ' translateX(100%)', transition: "all 0.5s ease-in-out" },
+    { 'transform': ' translateX(200%)', 'display': 'none', transition: "all 0.5s ease-in-out"},
+    { 'transform': ' translateX(300%)', 'display': 'none', transition: "all 0.5s ease-in-out"},
+    
   ],
   activeFilters: []
 };
@@ -102,14 +114,10 @@ const indexReducer = (state = initialState, action) => {
           visibleScreen: [...state.visibleScreen, action.input]
         });
       }
-    case actionTypes.SET_HOVER_INDEX:
+    case actionTypes.SET_HOVER_ID:
       return updateObject(state, {
-        hoverIndex: state.hoverIndex == action.index ? null : action.index
+        hoverId: state.hoverId == action.id ? null : action.id
       });
-    // case actionTypes.SET_CHECKOUT_SCREEN:
-    //   return updateObject(state, {
-    //     checkoutScreen: action.input
-    //   });
     case actionTypes.TOGGLE_STEPS_CHECKOUT:
       return updateObject(state, {
         stepsCheckout: action.input
@@ -128,8 +136,8 @@ const indexReducer = (state = initialState, action) => {
           state.geneHoverIndex == action.index ? null : action.index
       });
     case actionTypes.NEXT_BANNER_SLIDE:
-      let slideIndex = state.activeBannerSlide;
-      let slidesLength = state.bannerSlidePositions.length;
+      let slideIndex = state.activeBannerSlide
+      let slidesLength = state.bannerSlidePositions.length - 1;
       if (slideIndex === slidesLength) {
         slideIndex = -1;
       }
@@ -142,7 +150,7 @@ const indexReducer = (state = initialState, action) => {
         strains: [...action.strains]
       });
     case actionTypes.TOGGLE_FILTER:
-      let filterIndex = state.activeFilters.indexOf(action.filter);
+      let filterIndex = state.activeFilters.findIndex(x => JSON.stringify(x) === JSON.stringify(action.filter));
       let activeFilters = state.activeFilters;
       if (filterIndex > -1) {
         activeFilters.splice(filterIndex, 1);

@@ -25,7 +25,7 @@ const imports = {
 const actionTypes = {
   SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN",
   SET_CHECKOUT_SCREEN: "SET_CHECKOUT_SCREEN",
-  SET_HOVER_INDEX: "SET_HOVER_INDEX",
+  SET_HOVER_ID: "SET_HOVER_ID",
   SET_GENE_HOVER_INDEX: "SET_GENE_HOVER_INDEX",
   NEXT_BANNER_SLIDE: "NEXT_BANNER_SLIDE",
   SET_STRAINS: "SET_STRAINS",
@@ -59,10 +59,10 @@ const actions = {
   setContext: input => {
     return { type: actionTypes.SET_CONTEXT, input: input };
   },
-  setHoverIndex: index => {
+  setHoverId: id => {
     return {
-      type: actionTypes.SET_HOVER_INDEX,
-      index: index
+      type: actionTypes.SET_HOVER_ID,
+      id: id
     };
   },
   setGeneHoverIndex: index => {
@@ -111,6 +111,7 @@ const query = {
   allStrains: gql`
     query {
       allStrains {
+        _id
         name
         price
         strainImg
