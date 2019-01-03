@@ -2,8 +2,8 @@
 
 
 const filters = props => {
-    let activeButton = "border border-red-dark rounded-lg p-2 m-1 font-bold slowish bg-red-dark text-white";
-    let notActiveButton = "text-red-dark border border-red-dark rounded-lg p-2 m-1 font-bold slowish hover:bg-red-dark hover:text-white";
+    let activeButton = "border border-red-dark  p-2 m-1 font-bold slowish bg-red-dark text-white";
+    let notActiveButton = "text-red-dark border border-red-dark  p-2 m-1 font-bold slowish hover:bg-red-dark hover:text-white";
 
     let toggleCategory = (props, type, toToggle, toTurnOff) => {
         if(props.misc.activeFilters.some(e => e[type] === toTurnOff)){
@@ -54,7 +54,7 @@ const filters = props => {
                 <li><button onClick={() => toggleCategory(props, "cbd", "cbdHigh", "cbdLow")} className={props.misc.activeFilters.some(e => e.cbd === "cbdHigh") ? activeButton : notActiveButton}>High</button></li>
             </ul>
             <hr className="filter__hr"/>
-            <button onClick={() => props.clearFilters()} className="text-red-dark border border-red-dark rounded-lg p-2 w-1/2 m-2 mt-4 mx-auto block font-bold slowish hover:bg-red-dark hover:text-white">Clear</button>
+            <button onClick={() => props.clearFilters()} className="text-red-dark border border-red-dark  p-2 w-1/2 m-2 mt-4 mx-auto block font-bold slowish hover:bg-red-dark hover:text-white">Clear</button>
         </div>
     );
 }

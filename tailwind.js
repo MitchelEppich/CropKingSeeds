@@ -60,7 +60,7 @@ let colors = {
 
   "red-darkest": "#3b0d0c",
   "red-darker": "#621b18",
-  "red-dark": "#cc1f1a",
+  "red-dark": "#960000",
   red: "#ff0700",
   // red: "#e3342f",
   "red-light": "#ef5753",
@@ -597,6 +597,14 @@ module.exports = {
 
   minHeight: {
     "0": "0",
+    "100": "100px",
+    "200": "200px",
+    "300": "300px",
+    "400": "400px",
+    "500": "500px",
+    "600": "600px",
+    "700": "700px",
+    "800": "800px",
     full: "100%",
     screen: "100vh"
   },

@@ -24,7 +24,7 @@ class Index extends Component {
 
     let hoverId = this.props.misc.hoverId;
     let products = this.props.misc.strains;
-    console.log(products)
+    // console.log(products)
     if(this.props.misc.activeFilters.length > 0){
       for(let i = 0; i < this.props.misc.activeFilters.length; i++){
         if(this.props.misc.activeFilters[i].hasOwnProperty('thc')){
@@ -169,10 +169,10 @@ class Index extends Component {
                 </Link>
                 <p className={hoverId == product._id ? "text-grey pl-4 my-4 slow": "opacity-0 slow"}>Type:<span className="ml-1 text-black">{type}</span><span className="p-2 ml-12 text-2xl">${product.price[this.props.misc.quickAddToCartQty] < 1 ? product.price[1] : product.price[this.props.misc.quickAddToCartQty]}</span></p>
                 <div className={hoverId == product._id ? "flex flex-wrap justify-center px-4": "flex flex-wrap justify-center px-4 opacity-0"}>
-                  {product.price[0] > 0 ? <button onClick={() => this.props.quickAddToCartQty(0)} className={this.props.misc.quickAddToCartQty === 0 ? "bg-red-dark text-white w-16 rounded-lg flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold": "bg-white text-black w-16 rounded-lg flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold"}>5<span className={this.props.misc.quickAddToCartQty === 0 ? "w-full text-white":"w-full text-red-dark"}>seeds</span></button>:null}
-                  <button onClick={() => this.props.quickAddToCartQty(1)} className={this.props.misc.quickAddToCartQty === 1 ? "bg-red-dark text-white w-16 rounded-lg flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold": "bg-white text-black w-16 rounded-lg flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold"}>10<span className={this.props.misc.quickAddToCartQty === 1 ? "w-full text-white":"w-full text-red-dark"}>seeds</span></button>
-                  <button onClick={() => this.props.quickAddToCartQty(2)} className={this.props.misc.quickAddToCartQty === 2 ? "bg-red-dark text-white w-16 rounded-lg flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold": "bg-white text-black w-16 rounded-lg flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold"}>25<span className={this.props.misc.quickAddToCartQty === 2 ? "w-full text-white":"w-full text-red-dark"}>seeds</span></button>
-                  <button className="bg-red-dark rounded-lg text-center text-white mx-auto m-4 p-4">Add to Cart</button>
+                  {product.price[0] > 0 ? <button onClick={() => this.props.quickAddToCartQty(0)} className={this.props.misc.quickAddToCartQty === 0 ? "bg-red-dark text-white w-16  flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold": "bg-white text-black w-16  flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold"}>5<span className={this.props.misc.quickAddToCartQty === 0 ? "w-full text-white":"w-full text-red-dark"}>seeds</span></button>:null}
+                  <button onClick={() => this.props.quickAddToCartQty(1)} className={this.props.misc.quickAddToCartQty === 1 ? "bg-red-dark text-white w-16  flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold": "bg-white text-black w-16  flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold"}>10<span className={this.props.misc.quickAddToCartQty === 1 ? "w-full text-white":"w-full text-red-dark"}>seeds</span></button>
+                  <button onClick={() => this.props.quickAddToCartQty(2)} className={this.props.misc.quickAddToCartQty === 2 ? "bg-red-dark text-white w-16  flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold": "bg-white text-black w-16  flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold"}>25<span className={this.props.misc.quickAddToCartQty === 2 ? "w-full text-white":"w-full text-red-dark"}>seeds</span></button>
+                  <button className="bg-red-dark  text-center text-white mx-auto m-4 p-4">Add to Cart</button>
                 </div>
               </div>
             </div>
