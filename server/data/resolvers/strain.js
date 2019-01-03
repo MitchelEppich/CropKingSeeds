@@ -18,7 +18,8 @@ const resolvers = {
   },
   Strain: {
     genetic(strain) {
-      console.log(strain);
+      // console.log(strain);
+      // return "Test";
     }
   },
   Subscription: {},
