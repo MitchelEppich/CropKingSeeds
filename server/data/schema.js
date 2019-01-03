@@ -6,6 +6,12 @@ type Query {
   sendString: String
   strain(input: StrainInput!): Strain
   allStrains(filter: StrainInput): [Strain]!
+  getBitcoinData(input: BitcoinDataInput): String
+}
+
+input BitcoinDataInput {
+  currency: String
+  value: String
 }
 
 input StrainFilter {

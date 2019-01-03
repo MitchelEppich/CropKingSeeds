@@ -11,7 +11,8 @@ import Navigation from "./navigation";
 
 const actionTypes = {
   MODIFY_ORDER_DETAILS: "MODIFY_ORDER_DETAILS",
-  SET_ORDER_DETAILS: "SET_ORDER_DETAILS"
+  SET_ORDER_DETAILS: "SET_ORDER_DETAILS",
+  GET_BITCOIN_DATA: "GET_BITCOIN_DATA"
 };
 
 const getActions = uri => {
@@ -26,6 +27,7 @@ const getActions = uri => {
       if (_group != null) {
         if (_orderDetails[_group] == null) _orderDetails[_group] = {};
         _orderDetails[_group][_key] = _value;
+        _orderDetails[_group].updatedAt = new Date();
       } else _orderDetails[_key] = { value: _value, tag: _tag };
 
       console.log(_orderDetails);
@@ -37,12 +39,41 @@ const getActions = uri => {
         type: actionTypes.SET_ORDER_DETAILS,
         input: input.orderDetails
       };
+    },
+    getBitcoinData: input => {
+      return async dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = {
+          query: query.getBitcoinData,
+          variables: { ...input }
+        };
+
+        await makePromise(execute(link, operation))
+          .then(data => {
+            let _rate = data.data.getBitcoinData;
+            dispatch({
+              type: actionTypes.GET_BITCOIN_DATA,
+              input: {
+                currency: input.currency,
+                value: input.value,
+                rate: _rate
+              }
+            });
+          })
+          .catch(error => console.log(error));
+      };
     }
   };
 
   return { ...objects };
 };
-const query = {};
+const query = {
+  getBitcoinData: gql`
+    query($value: String, $currency: String) {
+      getBitcoinData(input: { value: $value, currency: $currency })
+    }
+  `
+};
 
 const mutation = {};
 

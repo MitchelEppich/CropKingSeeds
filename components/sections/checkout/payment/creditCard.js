@@ -1,9 +1,14 @@
 import React from "react";
 import { faAngleDown, faCreditCard } from "@fortawesome/free-solid-svg-icons";
+import { faCcVisa, faCcMastercard } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import StringMask from "string-mask";
 
 const CreditCard = props => {
   let pageGroup = "payment";
+
+  let ccNumberFormat = new StringMask("0000-0000-0000-0000");
 
   if (props.checkout.orderDetails[pageGroup] == null) {
     let _orderDetails = props.checkout.orderDetails;
@@ -52,6 +57,27 @@ const CreditCard = props => {
           <div className="w-full mt-6">
             <input
               type="text"
+              id="cardHolder"
+              value={
+                props.checkout.orderDetails[pageGroup] != null
+                  ? props.checkout.orderDetails[pageGroup].cardHolder || ""
+                  : undefined
+              }
+              onChange={e => {
+                let _orderDetails = props.checkout.orderDetails;
+                let _target = e.target;
+                let _key = _target.id;
+                let _value = _target.value;
+                let _tag = "ccname";
+
+                props.modifyOrderDetails({
+                  orderDetails: _orderDetails,
+                  group: pageGroup,
+                  key: _key,
+                  value: _value,
+                  tag: _tag
+                });
+              }}
               placeholder="Name on Card..."
               className="p-2 w-full"
             />
@@ -60,14 +86,62 @@ const CreditCard = props => {
             <div className="w-full">
               <input
                 type="text"
+                id="cardNumber"
+                value={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? ccNumberFormat.apply(
+                        props.checkout.orderDetails[pageGroup].cardNumber
+                      ) || ""
+                    : undefined
+                }
+                onChange={e => {
+                  let _orderDetails = props.checkout.orderDetails;
+                  let _target = e.target;
+                  let _key = _target.id;
+                  let _value = _target.value.replace(new RegExp("-", "g"), "");
+                  let _tag = "ccno";
+
+                  props.modifyOrderDetails({
+                    orderDetails: _orderDetails,
+                    group: pageGroup,
+                    key: _key,
+                    value: _value,
+                    tag: _tag
+                  });
+
+                  _key = "type";
+                  _value = getCardType(_value);
+                  _tag = "cctype";
+                  props.modifyOrderDetails({
+                    orderDetails: _orderDetails,
+                    group: pageGroup,
+                    key: _key,
+                    value: _value,
+                    tag: _tag
+                  });
+                }}
                 placeholder="Credit Card Number..."
                 className="p-2 w-full"
               />
             </div>
-            <div className="absolute pin-r text-grey-light opacity-50">
-              <FontAwesomeIcon
-                icon={faCreditCard}
-                className="fa-2x mt-1 mr-2"
+            <div className="absolute pin-r text-grey-light opacity-75">
+              <img
+                src={`../static/img/cc${(() => {
+                  let _type = props.checkout.orderDetails[pageGroup].type;
+                  switch (_type) {
+                    case "Mastercard":
+                      return "Mastercard";
+                    case "Visa":
+                      return "Visa";
+                    default:
+                      return "Default";
+                  }
+                })()}.png`}
+                width="40px"
+                className="mr-1"
+                style={{
+                  paddingTop: "5px"
+                }}
               />
             </div>
           </div>
@@ -76,17 +150,18 @@ const CreditCard = props => {
               <select
                 placeholder=""
                 className="p-2 w-full"
-                // value={
-                //   props.checkout.orderDetails[pageGroup] != null
-                //     ? props.checkout.orderDetails[pageGroup].fullName || ""
-                //     : undefined
-                // }
+                id="month"
+                value={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? props.checkout.orderDetails[pageGroup].month || ""
+                    : undefined
+                }
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;
                   let _key = _target.id;
                   let _value = _target.value;
-                  let _tag = "bFirstName bLastName";
+                  let _tag = "ccexpire";
 
                   props.modifyOrderDetails({
                     orderDetails: _orderDetails,
@@ -115,7 +190,31 @@ const CreditCard = props => {
               </select>
             </div>
             <div className="w-1/3 ml-1 inline-flex">
-              <select placeholder="" className="p-2 w-full">
+              <select
+                placeholder=""
+                className="p-2 w-full"
+                id="year"
+                value={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? props.checkout.orderDetails[pageGroup].year || ""
+                    : undefined
+                }
+                onChange={e => {
+                  let _orderDetails = props.checkout.orderDetails;
+                  let _target = e.target;
+                  let _key = _target.id;
+                  let _value = _target.value;
+                  let _tag = "ccexpire";
+
+                  props.modifyOrderDetails({
+                    orderDetails: _orderDetails,
+                    group: pageGroup,
+                    key: _key,
+                    value: _value,
+                    tag: _tag
+                  });
+                }}
+              >
                 <option value="" disabled selected>
                   Year
                 </option>
@@ -133,6 +232,27 @@ const CreditCard = props => {
                 <input
                   type="text"
                   placeholder="Security Code"
+                  id="ccv"
+                  value={
+                    props.checkout.orderDetails[pageGroup] != null
+                      ? props.checkout.orderDetails[pageGroup].ccv || ""
+                      : undefined
+                  }
+                  onChange={e => {
+                    let _orderDetails = props.checkout.orderDetails;
+                    let _target = e.target;
+                    let _key = _target.id;
+                    let _value = _target.value;
+                    let _tag = "ccvno";
+
+                    props.modifyOrderDetails({
+                      orderDetails: _orderDetails,
+                      group: pageGroup,
+                      key: _key,
+                      value: _value,
+                      tag: _tag
+                    });
+                  }}
                   size="3"
                   maxLength="3"
                   className="p-2 w-full mt-0 "
@@ -151,6 +271,31 @@ const CreditCard = props => {
       ) : null}
     </div>
   );
+};
+
+let getCardType = number => {
+  let ccType;
+  if (number.match(new RegExp("^4")) != null) {
+    ccType = "Visa";
+  } else if (
+    /^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/.test(
+      number
+    ) ||
+    number.match(new RegExp("^5")) != null
+  ) {
+    ccType = "Mastercard";
+  }
+  // Mastercard
+  // Updated for Mastercard 2017 BINs expansion
+  // if (/^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/.test(number)){
+  //     ccType = "Mastercard";
+  // }
+  // AMEX
+  // re = new RegExp("^3[47]");
+  // if (number.match(re) != null){
+  //   ccType = "AMEX";
+  // }
+  return ccType;
 };
 
 export default CreditCard;

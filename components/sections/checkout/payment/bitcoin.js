@@ -3,11 +3,19 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Bitcoin = props => {
+  let showBitcoinData = () => {
+    let _data = props.checkout.bitcoinData;
+
+    if (_data == null || Object.keys(_data).length == 0) return null;
+    return <p>{`${_data.value} ${_data.currency} = ${_data.rate} ₿`}</p>;
+  };
+
   return (
     <div className="w-full mb-6">
       <div
         onClick={() => {
           props.setVisibleScreen({ input: "bitcoin", clearAll: true });
+          props.getBitcoinData({ value: "1", currency: "USD" });
         }}
         style={{
           border: "2px solid #e4e4e4",
@@ -38,7 +46,10 @@ const Bitcoin = props => {
               className="mt-4 cursor-pointer"
             />
           </div>
-          <div className="w-200 p-2 mx-auto mt-6 text-center">
+          <div className="w-full mt-2 text-center text-md">
+            {showBitcoinData()}
+          </div>
+          <div className="w-200 p-2 mx-auto mt-4 text-center">
             <p className="text-center p-2 bg-grey text-white hover:bg-grey-light cursor-pointer">
               Pay Now
             </p>

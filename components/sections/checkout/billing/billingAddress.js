@@ -1,7 +1,12 @@
 import React from "react";
 
+import StringMask from "string-mask";
+
 const BillingAddress = props => {
   let pageGroup = "billing";
+
+  let phoneFormat = new StringMask("(000) 000-0000");
+  let postalFormat = new StringMask("U0U 0U0");
 
   if (props.checkout.orderDetails[pageGroup] == null) {
     let _orderDetails = props.checkout.orderDetails;
@@ -17,22 +22,16 @@ const BillingAddress = props => {
   if (
     props.checkout.orderDetails[pageGroup] != null &&
     props.checkout.orderDetails[pageGroup].readOnly &&
-    !props.checkout.orderDetails[pageGroup].copied
+    props.checkout.orderDetails.shipping.updatedAt !=
+      props.checkout.orderDetails[pageGroup].updatedAt
   ) {
     let _orderDetails = props.checkout.orderDetails;
     _orderDetails[pageGroup] = {
       ..._orderDetails.shipping,
       ..._orderDetails.billing
     };
-    _orderDetails[pageGroup].copied = true;
 
-    props.setOrderDetails({ orderDetails: _orderDetails });
-  } else if (
-    !props.checkout.orderDetails[pageGroup].readOnly &&
-    props.checkout.orderDetails[pageGroup].copied
-  ) {
-    let _orderDetails = props.checkout.orderDetails;
-    _orderDetails[pageGroup] = { readOnly: false, copied: false };
+    _orderDetails[pageGroup].updatedAt = _orderDetails.shipping.updatedAt;
 
     props.setOrderDetails({ orderDetails: _orderDetails });
   }
@@ -57,17 +56,13 @@ const BillingAddress = props => {
               onChange={e => {
                 let _orderDetails = props.checkout.orderDetails;
                 let _target = e.target;
-                let _key = _target.id;
-                let _value = !_target.checked;
-                let _tag = undefined;
 
-                props.modifyOrderDetails({
-                  orderDetails: _orderDetails,
-                  group: pageGroup,
-                  key: _key,
-                  value: _value,
-                  tag: _tag
-                });
+                _orderDetails[pageGroup] = {
+                  readOnly: !_target.checked,
+                  updatedAt: new Date()
+                };
+
+                props.setOrderDetails({ orderDetails: _orderDetails });
               }}
             />
             Different from Shipping Address

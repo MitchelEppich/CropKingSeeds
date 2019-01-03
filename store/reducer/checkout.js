@@ -2,7 +2,8 @@ import actionTypes from "../actions";
 import { updateObject } from "../utility";
 
 const initialState = {
-  orderDetails: {}
+  orderDetails: {},
+  bitcoinData: {}
 };
 
 export default (state = initialState, action) => {
@@ -11,6 +12,8 @@ export default (state = initialState, action) => {
       return updateObject(state, { orderDetails: action.input });
     case actionTypes.SET_ORDER_DETAILS:
       return updateObject(state, { orderDetails: action.input });
+    case actionTypes.GET_BITCOIN_DATA:
+      return updateObject(state, { bitcoinData: action.input });
     default:
       return state;
   }
