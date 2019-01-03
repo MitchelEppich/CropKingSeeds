@@ -2,6 +2,7 @@ import React from "react";
 
 const ShippingAddress = props => {
   let pageGroup = "shipping";
+  console.log(props.checkout.orderDetails[pageGroup]);
   return (
     <div className="w-full mt-6">
       <h2 className="text-3xl font-extrabold mt-12 mb-6 text-black">
@@ -15,6 +16,11 @@ const ShippingAddress = props => {
                 type="text"
                 name="fullName"
                 id="fullName"
+                value={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? props.checkout.orderDetails[pageGroup].fullName || ""
+                    : undefined
+                }
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;
@@ -39,6 +45,11 @@ const ShippingAddress = props => {
                 type="email"
                 name="email"
                 id="email"
+                value={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? props.checkout.orderDetails[pageGroup].email || ""
+                    : undefined
+                }
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;
@@ -64,6 +75,11 @@ const ShippingAddress = props => {
               type="text"
               name=""
               id="address"
+              value={
+                props.checkout.orderDetails[pageGroup] != null
+                  ? props.checkout.orderDetails[pageGroup].address || ""
+                  : undefined
+              }
               onChange={e => {
                 let _orderDetails = props.checkout.orderDetails;
                 let _target = e.target;
@@ -88,6 +104,11 @@ const ShippingAddress = props => {
               type="text"
               name=""
               id="apartment"
+              value={
+                props.checkout.orderDetails[pageGroup] != null
+                  ? props.checkout.orderDetails[pageGroup].apartment || ""
+                  : undefined
+              }
               onChange={e => {
                 let _orderDetails = props.checkout.orderDetails;
                 let _target = e.target;
@@ -113,6 +134,11 @@ const ShippingAddress = props => {
                 type="text"
                 name=""
                 id="postalZip"
+                value={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? props.checkout.orderDetails[pageGroup].postalZip || ""
+                    : undefined
+                }
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;
@@ -137,6 +163,11 @@ const ShippingAddress = props => {
                 type="text"
                 name=""
                 id="city"
+                value={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? props.checkout.orderDetails[pageGroup].city || ""
+                    : undefined
+                }
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;
@@ -161,6 +192,11 @@ const ShippingAddress = props => {
                 type="text"
                 name=""
                 id="country"
+                value={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? props.checkout.orderDetails[pageGroup].country || ""
+                    : undefined
+                }
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;
@@ -187,6 +223,11 @@ const ShippingAddress = props => {
                 type="text"
                 name=""
                 id="state"
+                value={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? props.checkout.orderDetails[pageGroup].state || ""
+                    : undefined
+                }
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;
@@ -211,6 +252,11 @@ const ShippingAddress = props => {
                 type="text"
                 name=""
                 id="phone"
+                value={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? props.checkout.orderDetails[pageGroup].phone || ""
+                    : undefined
+                }
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;

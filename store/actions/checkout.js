@@ -10,7 +10,8 @@ import fetch from "node-fetch";
 import Navigation from "./navigation";
 
 const actionTypes = {
-  MODIFY_ORDER_DETAILS: "MODIFY_ORDER_DETAILS"
+  MODIFY_ORDER_DETAILS: "MODIFY_ORDER_DETAILS",
+  SET_ORDER_DETAILS: "SET_ORDER_DETAILS"
 };
 
 const getActions = uri => {
@@ -29,9 +30,12 @@ const getActions = uri => {
 
       console.log(_orderDetails);
 
+      return { type: actionTypes.MODIFY_ORDER_DETAILS, input: _orderDetails };
+    },
+    setOrderDetails: input => {
       return {
-        type: actionTypes.MODIFY_ORDER_DETAILS,
-        input: _orderDetails
+        type: actionTypes.SET_ORDER_DETAILS,
+        input: input.orderDetails
       };
     }
   };

@@ -2,39 +2,96 @@ import React from "react";
 
 const BillingAddress = props => {
   let pageGroup = "billing";
+
+  if (props.checkout.orderDetails[pageGroup] == null) {
+    let _orderDetails = props.checkout.orderDetails;
+
+    props.modifyOrderDetails({
+      orderDetails: _orderDetails,
+      group: pageGroup,
+      key: "readOnly",
+      value: true
+    });
+  }
+
+  if (
+    props.checkout.orderDetails[pageGroup] != null &&
+    props.checkout.orderDetails[pageGroup].readOnly &&
+    !props.checkout.orderDetails[pageGroup].copied
+  ) {
+    let _orderDetails = props.checkout.orderDetails;
+    _orderDetails[pageGroup] = {
+      ..._orderDetails.shipping,
+      ..._orderDetails.billing
+    };
+    _orderDetails[pageGroup].copied = true;
+
+    props.setOrderDetails({ orderDetails: _orderDetails });
+  } else if (
+    !props.checkout.orderDetails[pageGroup].readOnly &&
+    props.checkout.orderDetails[pageGroup].copied
+  ) {
+    let _orderDetails = props.checkout.orderDetails;
+    _orderDetails[pageGroup] = { readOnly: false, copied: false };
+
+    props.setOrderDetails({ orderDetails: _orderDetails });
+  }
+
   return (
     <div className="w-full mt-6 pb-8">
       <h2 className="text-3xl font-extrabold mt-12 mb-6 text-black">
         Billing Address
       </h2>
-      <form
-      // onChange={props.misc.showDifferentAddress ? 'readonly' : null }
-      >
+      <form>
         <div className="pl-2 mt-6 flex items-center inline-flex">
           <label className="font-bold flex items-center cursor-pointer">
             <input
               type="checkbox"
-              className="checkbox"
-              id="sameAddress"
-              value={props.misc.showDifferentAddress}
-              onChange={() => {
-                props.toggleShowDifferentAddress();
-                console.log(props.misc.showDifferentAddress);
-                // props.misc.sameAddress ? !props.misc.sameAddress : props.misc.sameAddress
-                // props.toggleStepsCheckout(props.misc.sameAddress)
+              className="checkbox cursor-pointer"
+              id="readOnly"
+              checked={
+                props.checkout.orderDetails[pageGroup] != null
+                  ? !props.checkout.orderDetails[pageGroup].readOnly
+                  : false
+              }
+              onChange={e => {
+                let _orderDetails = props.checkout.orderDetails;
+                let _target = e.target;
+                let _key = _target.id;
+                let _value = !_target.checked;
+                let _tag = undefined;
+
+                props.modifyOrderDetails({
+                  orderDetails: _orderDetails,
+                  group: pageGroup,
+                  key: _key,
+                  value: _value,
+                  tag: _tag
+                });
               }}
             />
             Different from Shipping Address
           </label>
         </div>
 
-        <div className="w-full mt-4">
+        <div
+          className={`w-full mt-4 ${
+            props.checkout.orderDetails[pageGroup].readOnly
+              ? "opacity-50 pointer-events-none unselectable"
+              : ""
+          }`}
+        >
           <div className="w-full p-2 inline-flex">
             <div className="w-1/2">
               <input
                 type="text"
                 name="fullName"
                 id="fullName"
+                value={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? props.checkout.orderDetails[pageGroup].fullName || ""
+                    : undefined
+                }
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;
@@ -59,6 +116,11 @@ const BillingAddress = props => {
                 type="email"
                 name="email"
                 id="email"
+                value={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? props.checkout.orderDetails[pageGroup].email || ""
+                    : undefined
+                }
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;
@@ -84,6 +146,11 @@ const BillingAddress = props => {
               type="text"
               name=""
               id="address"
+              value={
+                props.checkout.orderDetails[pageGroup] != null
+                  ? props.checkout.orderDetails[pageGroup].address || ""
+                  : undefined
+              }
               onChange={e => {
                 let _orderDetails = props.checkout.orderDetails;
                 let _target = e.target;
@@ -108,6 +175,11 @@ const BillingAddress = props => {
               type="text"
               name=""
               id="apartment"
+              value={
+                props.checkout.orderDetails[pageGroup] != null
+                  ? props.checkout.orderDetails[pageGroup].apartment || ""
+                  : undefined
+              }
               onChange={e => {
                 let _orderDetails = props.checkout.orderDetails;
                 let _target = e.target;
@@ -133,6 +205,11 @@ const BillingAddress = props => {
                 type="text"
                 name=""
                 id="postalZip"
+                value={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? props.checkout.orderDetails[pageGroup].postalZip || ""
+                    : undefined
+                }
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;
@@ -157,6 +234,11 @@ const BillingAddress = props => {
                 type="text"
                 name=""
                 id="city"
+                value={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? props.checkout.orderDetails[pageGroup].city || ""
+                    : undefined
+                }
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;
@@ -181,6 +263,11 @@ const BillingAddress = props => {
                 type="text"
                 name=""
                 id="country"
+                value={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? props.checkout.orderDetails[pageGroup].country || ""
+                    : undefined
+                }
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;
@@ -207,6 +294,11 @@ const BillingAddress = props => {
                 type="text"
                 name=""
                 id="state"
+                value={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? props.checkout.orderDetails[pageGroup].state || ""
+                    : undefined
+                }
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;
@@ -231,6 +323,11 @@ const BillingAddress = props => {
                 type="text"
                 name=""
                 id="phone"
+                value={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? props.checkout.orderDetails[pageGroup].phone || ""
+                    : undefined
+                }
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;

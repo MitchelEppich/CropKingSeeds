@@ -3,6 +3,24 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CreditCard = props => {
+  let pageGroup = "payment";
+
+  if (props.checkout.orderDetails[pageGroup] == null) {
+    let _orderDetails = props.checkout.orderDetails;
+
+    _orderDetails[pageGroup] = {
+      oridSuffix: "-KMH-7"
+      // amount: 0, // Cost of cart -input
+      // ccno: -1, // Card Number -input
+      // cvvno: -1, // Card CVV Number -input
+      // cctype: "", // Card Type -input
+      // ccexpire: "", // Card Expiry -input
+      // ccname: "", // Card Holder Name -input
+    };
+
+    props.setOrderDetails();
+  }
+
   return (
     <div className="w-full mb-6">
       <div
@@ -40,7 +58,30 @@ const CreditCard = props => {
           </div>
           <div className="w-full inline-flex mt-2">
             <div className="w-1/2 mr-1">
-              <select placeholder="" className="p-2 w-full">
+              <select
+                placeholder=""
+                className="p-2 w-full"
+                // value={
+                //   props.checkout.orderDetails[pageGroup] != null
+                //     ? props.checkout.orderDetails[pageGroup].fullName || ""
+                //     : undefined
+                // }
+                onChange={e => {
+                  let _orderDetails = props.checkout.orderDetails;
+                  let _target = e.target;
+                  let _key = _target.id;
+                  let _value = _target.value;
+                  let _tag = "bFirstName bLastName";
+
+                  props.modifyOrderDetails({
+                    orderDetails: _orderDetails,
+                    group: pageGroup,
+                    key: _key,
+                    value: _value,
+                    tag: _tag
+                  });
+                }}
+              >
                 <option value="" disabled selected>
                   Month
                 </option>

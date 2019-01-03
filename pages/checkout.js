@@ -123,6 +123,7 @@ const mapDispatchToProps = dispatch => {
     setContext: input => dispatch(actions.setContext(input)),
     toggleStepsCheckout: input => dispatch(actions.toggleStepsCheckout(input)),
     modifyOrderDetails: input => dispatch(actions.modifyOrderDetails(input)),
+    setOrderDetails: input => dispatch(actions.setOrderDetails(input)),
     toggleShowDifferentAddress: input =>
       dispatch(actions.toggleShowDifferentAddress(input))
   };

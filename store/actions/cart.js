@@ -38,6 +38,20 @@ const getActions = uri => {
         case "ADD":
         case "UPDATE":
           _cart[_productIdentifier] = { _product };
+          // CART : {
+          //   "GLF25" : {
+          //     per: "210"
+          //     quantity: 2
+          //   },
+          //   "GLF5" : {
+          //     per: "50"
+          //     quantity: 2
+          //   },
+          // }
+          // for (let x of Object.keys(cart))
+          // {
+
+          // }
           break;
         default:
       }
