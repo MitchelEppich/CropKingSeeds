@@ -61,7 +61,7 @@ const menu = props => {
         </div>
         <div
           onClick={() => {
-            props.setVisibleScreen("viewCart");
+            props.setVisibleScreen({ input: "viewCart" });
           }}
           className="bg-red-dark text-white w-1/5 text-center pt-6 cursor-pointer"
         >

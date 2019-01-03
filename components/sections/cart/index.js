@@ -48,7 +48,7 @@ const cart = props => {
         Cart
       </h2>
       <p
-        onClick={() => props.setVisibleScreen("viewCart")}
+        onClick={() => props.setVisibleScreen({ input: "viewCart" })}
         className="absolute pin-t pin-r mt-8 mr-8 text-red-dark cursor-pointer"
       >
         <FontAwesomeIcon icon={faTimes} className="fa-lg" />
