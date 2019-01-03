@@ -28,10 +28,8 @@ const cart = props => {
   let items = Object.entries(props.cart.items).map((item, index) => {
     return (
       <CartItem
-        key={item[1]._id}
-        val={{ ...item[1], sotiId: item[0] }}
-        {...props}
-        index={index}
+        key={item[0]}
+        val={{ ...item[1], sotiId: item[0] }} {...props} index={index}
       />
     );
   });
