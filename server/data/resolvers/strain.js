@@ -16,12 +16,7 @@ const resolvers = {
       return Strain.find(query);
     }
   },
-  Strain: {
-    genetic(strain) {
-      // console.log(strain);
-      // return "Test";
-    }
-  },
+  Strain: {},
   Subscription: {},
   Mutation: {
     createStrain: (_, { input }) => {

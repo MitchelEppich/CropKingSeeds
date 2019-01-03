@@ -85,7 +85,15 @@ const actions = {
 
       await makePromise(execute(link, operation))
         .then(data => {
-          Promise.resolve(dispatch(actions.setStrains(data.data.allStrains)));
+          let _strains = data.data.allStrains;
+          let _new = [];
+          for (let strain of _strains) {
+            _new.push(inferStrainData(strain));
+          }
+
+          console.log(_new);
+
+          Promise.resolve(dispatch(actions.setStrains(_new)));
         })
         .catch(error => console.log(error));
     };
@@ -143,12 +151,76 @@ const query = {
         pcbn
         country
         sotiId
+        env
       }
     }
   `
 };
 
 const mutation = {};
+
+let inferStrainData = strain => {
+  let _countries = [
+    "Canada",
+    "United States",
+    "Spain",
+    "Netherlands",
+    "United Kingdom",
+    "South Africa"
+  ];
+  let _genetics = ["Feminized", "Autoflower", "Regular", "CBD", "Dwarf", "Mix"];
+  let _difficulties = ["Easy", "Moderate", "Experienced", "Master"];
+  let _envs = ["Indoors or Outdoors", "Indoors", "Outdoors"];
+  let _types = ["Sativa", "Indica", "Hybrid"];
+
+  let { country, difficulty, genetic, type, env, pcbd, pcbn, pthc } = strain;
+  let _yield = strain.yield;
+  country = (() => {
+    let str = "";
+    do {
+      let _countryIndex = country.shift();
+      let _countriesLeft = country.length;
+
+      str += _countries[_countryIndex];
+
+      if (_countriesLeft > 1) str += ", ";
+      else if (_countriesLeft == 1) str += " and ";
+    } while (country.length > 0);
+    return str;
+  })();
+  difficulty = _difficulties[difficulty];
+  genetic = _genetics[genetic];
+  type = _types[type];
+  env = _envs[env];
+  pcbd = pcbd.map(a => `${a}%`).join("-");
+  pcbn = pcbn.map(a => `${a}%`).join("-");
+  pthc = pthc.map(a => `${a}%`).join("-");
+  _yield = (() => {
+    let arr = [];
+    do {
+      let _output = _yield.shift();
+      if (_output != -1) {
+        if (_yield.length == 1) _output = `${_output}g Indoors`;
+        else _output = `${_output}g Outdoors`;
+      }
+      arr.push(_output);
+    } while (_yield.length > 0);
+    return arr;
+  })();
+
+  return {
+    ...strain,
+    country,
+    difficulty,
+    genetic,
+    type,
+    env,
+    pthc,
+    pcbd,
+    pcbn,
+    yield: _yield
+  };
+};
 
 export default {
   // TYPES
