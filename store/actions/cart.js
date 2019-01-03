@@ -22,43 +22,53 @@ const getActions = uri => {
       };
     },
     modifyCart: input => {
-      let _cart = input.cart;
+      let _items = input.items;
       let _action = input.action;
 
       let _productIdentifier = input.productIdentifier;
       let _product = input.product;
 
+      let _quantity = input.quantity;
+
+      let _item;
+
       switch (_action) {
         case "REMOVE":
-          _cart = _cart.filter(a => {
+          _items = _items.filter(a => {
             if (a.productIdentifier == _productIdentifier) return false;
             return true;
           });
           break;
-        case "ADD":
-        case "UPDATE":
-          _cart[_productIdentifier] = { _product };
-          // CART : {
-          //   "GLF25" : {
-          //     per: "210"
-          //     quantity: 2
-          //   },
-          //   "GLF5" : {
-          //     per: "50"
-          //     quantity: 2
-          //   },
-          // }
-          // for (let x of Object.keys(cart))
-          // {
-
-          // }
+        case "APPEND":
+          if (_productIdentifier in _items) {
+            _quantity += _items[_productIdentifier].quantity;
+          }
+          _items[_productIdentifier] = {
+            product: _product,
+            quantity: _quantity
+          };
           break;
+        case "MODIFY":
+          _item = _items[_productIdentifier];
+          _quantity += _item.quantity;
+          _items[_productIdentifier] = {
+            ..._item,
+            quantity: Math.max(0, _quantity)
+          };
+          break;
+        case "SET":
+          _item = _items[_productIdentifier];
+          _items[_productIdentifier] = {
+            ..._item,
+            quantity: _quantity
+          };
         default:
       }
 
+      console.log(_items);
       return {
         type: actionTypes.MODIFY_CART,
-        input: _cart
+        input: _items
       };
     }
   };

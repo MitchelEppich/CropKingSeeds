@@ -203,6 +203,12 @@ class Index extends Component {
       ) {
         return null;
       }
+
+      if (hoverId != null && hoverId == product._id) {
+        if (product.price[this.props.misc.quickAddToCartQty] == -1)
+          this.props.quickAddToCartQty(this.props.misc.quickAddToCartQty + 1);
+      }
+
       return (
         <div
           key={index}
@@ -330,7 +336,30 @@ class Index extends Component {
                   seeds
                 </span>
               </button>
-              <button className="bg-red-dark  text-center text-white mx-auto m-4 p-4">
+              <button
+                className="bg-red-dark  text-center text-white mx-auto m-4 p-4"
+                onClick={() => {
+                  let _identifier =
+                    product.sotiId +
+                    (() => {
+                      switch (this.props.misc.quickAddToCartQty) {
+                        case 0:
+                          return "5";
+                        case 1:
+                          return "10";
+                        case 2:
+                          return "25";
+                      }
+                    })();
+                  this.props.modifyCart({
+                    items: this.props.cart.items,
+                    action: "APPEND",
+                    productIdentifier: _identifier,
+                    product: product,
+                    quantity: 1
+                  });
+                }}
+              >
                 Add to Cart
               </button>
             </div>
