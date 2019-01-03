@@ -9,30 +9,39 @@ const GenePreview = props => {
             transform: "translateY(0%)"
         };
         autoScreen = femScreen = cbdScreen = regScreen = {
-            transform: "translateX(-85%)",
+            transform: "translateX(-445px) rotate(-90deg)",
             transition: "all 0.5s ease-in-out",
-            width: "100%",
+            width: "120%",
             height: "100%"
         };
         autoPack = femPack = cbdPack = regPack = {
-            transform: "translateY(10%) translateX(-5%)",
-            position: "absolute"
+            transform: "rotate(90deg)",
+            margin: "85px 70px",
+            width: "400px"
         };
         autoHeading  = {
-            transform: "translateX(81%) rotate(-90deg)",
-            margin: "0 5%"
+            transform: "translateX(15px)",
+            position: "absolute",
+            bottom: "0",
+            transition: "all 0.5s ease-in-out"
         };
         femHeading = {
-            transform: "translateX(123%) rotate(-90deg)",
-            width: "100%"
+            transform: "translateX(15px)",
+            position: "absolute",
+            bottom: "0",
+            transition: "all 0.5s ease-in-out"
         };
         cbdHeading = {
-            transform: "translateX(375%) rotate(-90deg)",
-            margin: "0 5%"
+            transform: "translateX(15px)",
+            position: "absolute",
+            bottom: "0",
+            transition: "all 0.5s ease-in-out"
         };
         regHeading = {
-            transform: "translateX(152%) rotate(-90deg)",
-            margin: "0 5%"
+            transform: "translateX(15px)",
+            position: "absolute",
+            bottom: "0",
+            transition: "all 0.5s ease-in-out"
         };
 
     switch(props.misc.geneHoverIndex){
@@ -53,9 +62,15 @@ const GenePreview = props => {
                 transform: "translateY(100%)",
                 opacity: 0
             };
+            femHeading = {
+                ...femHeading,
+                transform: "translateX(-65px) translateY(-180px) rotate(90deg)",
+                position: "absolute",
+                bottom: "0"
+            };
             femScreen = {
                 ...femScreen,
-                transform: " translateX(-2%)",
+                transform: "translateX(-89px) rotate(-90deg)",
             };
             break;
 
@@ -76,9 +91,15 @@ const GenePreview = props => {
                 transform: "translateY(100%)",
                 opacity: 0
             };
+            autoHeading = {
+                ...autoHeading,
+                transform: "translateX(-100px) translateY(-175px) rotate(90deg)",
+                position: "absolute",
+                bottom: "0"
+            };
             autoScreen = {
                 ...autoScreen,
-                transform: " translateX(-2%)",
+                transform: "translateX(-89px) rotate(-90deg)",
             };
             break;
 
@@ -99,9 +120,15 @@ const GenePreview = props => {
                 transform: "translateY(100%)",
                 opacity: 0
             };
+            cbdHeading = {
+                ...cbdHeading,
+                transform: "translateX(0px) translateY(-180px) rotate(90deg)",
+                position: "absolute",
+                bottom: "0"
+            };
             cbdScreen = {
                 ...cbdScreen,
-                transform: " translateX(-2%)",
+                transform: "translateX(-89px) rotate(-90deg)",
             };
             break;
 
@@ -122,9 +149,15 @@ const GenePreview = props => {
                 transform: "translateY(100%)",
                 opacity: 0
             };
+            regHeading = {
+                ...regHeading,
+                transform: "translateX(-45px) translateY(-180px) rotate(90deg)",
+                position: "absolute",
+                bottom: "0"
+            };
             regScreen = {
                 ...regScreen,
-                transform: " translateX(-2%)",
+                transform: "translateX(-89px) rotate(-90deg)",
             };
             break;
 

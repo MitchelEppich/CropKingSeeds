@@ -25,7 +25,7 @@ const imports = {
 const actionTypes = {
   SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN",
   SET_CHECKOUT_SCREEN: "SET_CHECKOUT_SCREEN",
-  SET_HOVER_INDEX: "SET_HOVER_INDEX",
+  SET_HOVER_ID: "SET_HOVER_ID",
   SET_GENE_HOVER_INDEX: "SET_GENE_HOVER_INDEX",
   NEXT_BANNER_SLIDE: "NEXT_BANNER_SLIDE",
   SET_STRAINS: "SET_STRAINS",
@@ -33,7 +33,8 @@ const actionTypes = {
   TOGGLE_FILTER: "TOGGLE_FILTER",
   CLEAR_FILTERS: "CLEAR_FILTERS",
   TOGGLE_STEPS_CHECKOUT: "TOGGLE_STEPS_CHECKOUT",
-  SHOW_DIFFERENT_ADDRESS: "SHOW_DIFFERENT_ADDRESS"
+  SHOW_DIFFERENT_ADDRESS: "SHOW_DIFFERENT_ADDRESS",
+  QUICK_ADD_TO_CART_QTY: "QUICK_ADD_TO_CART_QTY"
 };
 
 const actions = {
@@ -59,10 +60,10 @@ const actions = {
   setContext: input => {
     return { type: actionTypes.SET_CONTEXT, input: input };
   },
-  setHoverIndex: index => {
+  setHoverId: id => {
     return {
-      type: actionTypes.SET_HOVER_INDEX,
-      index: index
+      type: actionTypes.SET_HOVER_ID,
+      id: id
     };
   },
   setGeneHoverIndex: index => {
@@ -104,6 +105,12 @@ const actions = {
     return {
       type: actionTypes.CLEAR_FILTERS
     };
+  },
+  quickAddToCartQty: input => {
+    return {
+      type: actionTypes.QUICK_ADD_TO_CART_QTY,
+      input: input
+    }
   }
 };
 
@@ -111,6 +118,7 @@ const query = {
   allStrains: gql`
     query {
       allStrains {
+        _id
         name
         price
         strainImg

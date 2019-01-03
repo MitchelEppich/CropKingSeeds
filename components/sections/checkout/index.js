@@ -11,7 +11,7 @@ const Checkout = props => {
                     e.preventDefault()                       
                     props.toggleStepsCheckout(0) 
                 }} 
-                    className="p-2 cursor-pointer">
+                    className="p-2 cursor-pointer step-text">
                     1. Products Review
                 </div>
             </div>
@@ -20,7 +20,7 @@ const Checkout = props => {
                     e.preventDefault()                       
                     props.toggleStepsCheckout(1)                    
                 }} 
-                    className="p-2 cursor-pointer">
+                    className="p-2 cursor-pointer step-text">
                     2. Shipping Details
                 </div>
             </div>
@@ -29,7 +29,7 @@ const Checkout = props => {
                     e.preventDefault()                       
                     props.toggleStepsCheckout(2)     
                 }}
-                    className="p-2 cursor-pointer">
+                    className="p-2 cursor-pointer step-text">
                     3. Billing Address
                 </div>
             </div>
@@ -38,7 +38,7 @@ const Checkout = props => {
                     e.preventDefault()                       
                     props.toggleStepsCheckout(3)     
                 }}
-                    className="p-2 cursor-pointer">
+                    className="p-2 cursor-pointer step-text">
                     4. Payment
                 </div>
             </div>
@@ -47,7 +47,7 @@ const Checkout = props => {
                     e.preventDefault()                       
                     props.toggleStepsCheckout(4)                      
                 }} 
-                    className="p-2 cursor-pointer">
+                    className="p-2 cursor-pointer step-text">
                     5. Confirmation
                 </div>
             </div>                              

@@ -29,36 +29,6 @@ class Index extends Component {
       <Layout>
         <div className="text-center w-full pt-10 mt-4 bg-white relative">
           <h1 className="text-4xl font-bold text-black">Checkout Preview</h1>
-
-          {this.props.misc.stepsCheckout != 0 ? (
-            <div
-              onClick={() => {
-                this.props.misc.stepsCheckout > 0
-                  ? this.props.toggleStepsCheckout(
-                      this.props.misc.stepsCheckout - 1
-                    )
-                  : null;
-              }}
-              className="absolute p-2 mt-3 pin-l cursor-pointer hover:text-red"
-            >
-              <FontAwesomeIcon icon={faAngleLeft} className="fa-4x" />
-            </div>
-          ) : null}
-
-          {this.props.misc.stepsCheckout != 4 ? (
-            <div
-              onClick={() => {
-                this.props.misc.stepsCheckout < 4
-                  ? this.props.toggleStepsCheckout(
-                      this.props.misc.stepsCheckout + 1
-                    )
-                  : null;
-              }}
-              className="absolute p-2 mt-3 pin-r cursor-pointer hover:text-red"
-            >
-              <FontAwesomeIcon icon={faAngleRight} className="fa-4x" />
-            </div>
-          ) : null}
         </div>
 
         <div className="w-container mx-auto mt-12 bg-white">
@@ -97,21 +67,48 @@ class Index extends Component {
             <Confirmation {...this.props} />
           ) : null}
         </div>
-        {/* <div className="w-full p-2 inline-flex justify-center">
-          <div onClick={()=>{
-            this.props.misc.stepsCheckout > 0 ? 
-            this.props.toggleStepsCheckout(this.props.misc.stepsCheckout -1) : null
-            console.log(this.props.misc.stepsCheckout)
-          }} 
-          className="w-200 p-2 text-center bg-grey-light text-white mx-2 cursor-pointer">
-          Back</div>
-          <div onClick={()=>{
-            this.props.misc.stepsCheckout < 3 ? 
-            this.props.toggleStepsCheckout(this.props.misc.stepsCheckout +1) : null
-            console.log(this.props.misc.stepsCheckout)
-          }}          
-          className="w-200 p-2 text-center bg-grey text-white mx-2 cursor-pointer">Next Step</div>
-        </div> */}
+
+        <div className="w-container mx-auto">
+          <hr
+            style={{ border: "1px solid rgba(228, 228, 228, 0.3)" }}
+            className=""/>
+          
+          <div className="w-full p-2 inline-flex justify-between">
+          
+            <div onClick={()=>{
+              this.props.misc.stepsCheckout > 0 ? 
+              this.props.toggleStepsCheckout(this.props.misc.stepsCheckout -1) : null
+              console.log(this.props.misc.stepsCheckout)
+            }} 
+            className="w-200 p-2 text-left mx-2 cursor-pointer flex items-center hover:text-red">
+            {this.props.misc.stepsCheckout != 0 ? (
+            <span className="flex items-center">
+                <FontAwesomeIcon icon={faAngleLeft} className="fa-2x mr-4" />
+                Back
+            </span>
+            ) : null }
+            </div> 
+          
+
+            <span style={{ height: "40px", borderLeft: "2px solid #ececec"}} />
+            
+
+            
+            <div onClick={()=>{
+              this.props.misc.stepsCheckout < 4 ? 
+              this.props.toggleStepsCheckout(this.props.misc.stepsCheckout +1) : null
+              console.log(this.props.misc.stepsCheckout)
+            }}          
+            className="w-200 p-2 text-right justify-end mx-2 cursor-pointer flex items-center hover:text-red"> 
+            {this.props.misc.stepsCheckout != 4 ? ( 
+            <span className="flex items-center">
+                Next 
+                <FontAwesomeIcon icon={faAngleRight} className="fa-2x ml-4" />
+            </span>
+            ) : null }
+            </div> 
+          </div>
+        </div>
       </Layout>
     );
   }

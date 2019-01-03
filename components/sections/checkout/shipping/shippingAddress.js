@@ -40,7 +40,7 @@ const ShippingAddress = props => {
                 className="p-2 w-full"
               />
             </div>
-            <div className="w-1/2 px-2">
+            <div className="w-1/2 pl-2">
               <input
                 type="email"
                 name="email"
