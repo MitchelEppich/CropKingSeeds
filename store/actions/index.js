@@ -13,13 +13,15 @@ import fetch from "node-fetch";
 import Cart from "./cart";
 import Checkout from "./checkout";
 import Navigation from "./navigation";
+import Shop from "./shop";
 
 const uri = "http://localhost:3000/graphql";
 
 const imports = {
   ...Cart(uri),
   ...Checkout(uri),
-  ...Navigation(uri)
+  ...Navigation(uri),
+  ...Shop(uri)
 };
 
 const actionTypes = {
@@ -30,12 +32,8 @@ const actionTypes = {
   NEXT_BANNER_SLIDE: "NEXT_BANNER_SLIDE",
   SET_STRAINS: "SET_STRAINS",
   SET_CONTEXT: "SET_CONTEXT",
-  TOGGLE_FILTER: "TOGGLE_FILTER",
-  CLEAR_FILTERS: "CLEAR_FILTERS",
   TOGGLE_STEPS_CHECKOUT: "TOGGLE_STEPS_CHECKOUT",
-  SHOW_DIFFERENT_ADDRESS: "SHOW_DIFFERENT_ADDRESS",
-  QUICK_ADD_TO_CART_QTY: "QUICK_ADD_TO_CART_QTY",
-  EXPAND_PRODUCT: "EXPAND_PRODUCT"
+  SHOW_DIFFERENT_ADDRESS: "SHOW_DIFFERENT_ADDRESS"
 };
 
 const actions = {
@@ -101,29 +99,6 @@ const actions = {
       type: actionTypes.SET_STRAINS,
       strains: strains
     };
-  },
-  toggleFilter: filter => {
-    return {
-      type: actionTypes.TOGGLE_FILTER,
-      filter: filter
-    };
-  },
-  clearFilters: () => {
-    return {
-      type: actionTypes.CLEAR_FILTERS
-    };
-  },
-  quickAddToCartQty: input => {
-    return {
-      type: actionTypes.QUICK_ADD_TO_CART_QTY,
-      input: input
-    };
-  },
-  expandProduct: id => {
-    return {
-      type: actionTypes.EXPAND_PRODUCT,
-      id: id
-    };
   }
 };
 
@@ -171,8 +146,19 @@ let inferStrainData = strain => {
   let _envs = ["Indoors or Outdoors", "Indoors", "Outdoors"];
   let _types = ["Sativa", "Indica", "Hybrid"];
 
-  let { country, difficulty, genetic, type, env, pcbd, pcbn, pthc } = strain;
+  let {
+    country,
+    difficulty,
+    genetic,
+    type,
+    env,
+    pcbd,
+    pcbn,
+    pthc,
+    name
+  } = strain;
   let _yield = strain.yield;
+  name = name.replace(" Cannabis", "");
   country = (() => {
     let str = "";
     do {
@@ -190,9 +176,20 @@ let inferStrainData = strain => {
   genetic = _genetics[genetic];
   type = _types[type];
   env = _envs[env];
-  pcbd = pcbd.map(a => `${a}%`).join("-");
-  pcbn = pcbn.map(a => `${a}%`).join("-");
-  pthc = pthc.map(a => `${a}%`).join("-");
+  let cbd = (() => {
+    let _max = pcbd[pcbd.length - 1];
+    if (_max >= 2) return "high";
+    return "low";
+  })();
+  let thc = (() => {
+    let _max = pthc[pthc.length - 1];
+    if (_max >= 15) return "high";
+    return "low";
+  })();
+
+  pcbd = pcbd.map(a => `${a.toFixed(2)}%`).join("-");
+  pcbn = pcbn.map(a => `${a.toFixed(2)}%`).join("-");
+  pthc = pthc.map(a => `${a.toFixed(2)}%`).join("-");
   _yield = (() => {
     let arr = [];
     do {
@@ -216,7 +213,10 @@ let inferStrainData = strain => {
     pthc,
     pcbd,
     pcbn,
-    yield: _yield
+    yield: _yield,
+    cbd,
+    thc,
+    name
   };
 };
 
