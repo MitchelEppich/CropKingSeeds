@@ -42,8 +42,6 @@ const resolvers = {
         })();
 
         strain.save();
-
-        console.log(strain);
       }
     }
   }

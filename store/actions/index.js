@@ -167,6 +167,17 @@ let inferStrainData = strain => {
   genetic = _genetics[genetic];
   type = _types[type];
   env = _envs[env];
+  let cbd = (() => {
+    let _max = pcbd[pcbd.length - 1];
+    if (_max >= 2) return "high";
+    return "low";
+  })();
+  let thc = (() => {
+    let _max = pthc[pthc.length - 1];
+    if (_max >= 15) return "high";
+    return "low";
+  })();
+
   pcbd = pcbd.map(a => `${a.toFixed(2)}%`).join("-");
   pcbn = pcbn.map(a => `${a.toFixed(2)}%`).join("-");
   pthc = pthc.map(a => `${a.toFixed(2)}%`).join("-");
@@ -183,13 +194,6 @@ let inferStrainData = strain => {
     return arr;
   })();
 
-  let cbdRate = (() => {
-    return "low";
-  })();
-  let thcRate = (() => {
-    return "low";
-  })();
-
   return {
     ...strain,
     country,
@@ -201,8 +205,8 @@ let inferStrainData = strain => {
     pcbd,
     pcbn,
     yield: _yield,
-    cbdRate,
-    thcRate
+    cbd,
+    thc
   };
 };
 

@@ -20,10 +20,21 @@ const getActions = uri => {
     toggleFilter: input => {
       let _filter = { ...input.filter };
       delete input.filter;
-      _filter = {
-        ..._filter,
-        ...input
-      };
+      // Assuming only one filter at a time
+      let _key = Object.keys(input)[0];
+      let shouldRemove = (() => {
+        if (_filter[_key] == input[_key]) {
+          return true;
+        }
+      })();
+      if (shouldRemove) {
+        delete _filter[_key];
+      } else {
+        _filter = {
+          ..._filter,
+          ...input
+        };
+      }
       return {
         type: actionTypes.TOGGLE_FILTER,
         input: _filter

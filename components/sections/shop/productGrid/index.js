@@ -24,16 +24,14 @@ class Index extends Component {
     products = products
       .filter(a => {
         let _filter = this.props.shop.activeFilters;
-        // if (Object.keys(_filter).length == 0) return true;
-        if (
-          _filter.type == a.type &&
-          _filter.genetic == a.genetic
-          // &&
-          // _filter.thc == a.thcRate &&
-          // _filter.cbd == a.cbdRate
-        )
-          return true;
-        return false;
+        if (Object.keys(_filter).length == 0) return true;
+        let _pass = true;
+        if (_filter.type != null && _filter.type != a.type) _pass = false;
+        if (_filter.genetic != null && _filter.genetic != a.genetic)
+          _pass = false;
+        if (_filter.cbd != null && _filter.cbd != a.cbd) _pass = false;
+        if (_filter.thc != null && _filter.thc != a.thc) _pass = false;
+        return _pass;
       })
       .map((product, index) => {
         let packageStyle =
