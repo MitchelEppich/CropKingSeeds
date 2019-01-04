@@ -86,7 +86,7 @@ const menu = props => {
             marginLeft: "-5px",
           }}
           >
-            1
+            {Object.keys(props.cart.items).length}
           </span>
         </div>
       </div>

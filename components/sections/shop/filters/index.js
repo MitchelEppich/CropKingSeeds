@@ -54,7 +54,7 @@ const filters = props => {
                 <li><button onClick={() => toggleCategory(props, "cbd", "cbdHigh", "cbdLow")} className={props.misc.activeFilters.some(e => e.cbd === "cbdHigh") ? activeButton : notActiveButton}>High</button></li>
             </ul>
             <hr className="hr__filters" />
-            <button onClick={() => props.clearFilters()} className="text-red-dark border border-red-dark  p-2 w-1/2 m-2 mt-4 mx-auto block font-bold slowish hover:bg-red-dark hover:text-white">Clear</button>
+            <button onClick={() => props.clearFilters()} className="text-red-dark border border-red-dark slow p-2 w-1/2 m-2 mt-4 mx-auto block font-bold hover:bg-red-dark hover:text-white">Clear</button>
         </div>
     );
 }

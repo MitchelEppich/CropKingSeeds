@@ -47,7 +47,7 @@ const cart = props => {
             <h2 onClick={() => props.setVisibleScreen({ input: "viewCart" })} className="text-red-dark w-full h-16 text-center font-thin mt-8 cursor-pointer" >
                 Cart
             </h2>
-            <div className="min-h-500 w-full mt-4 pt-8 mb-8 font-thin bg-smoke-grey">
+            <div className="min-h-300 w-full mt-4 pt-8 mb-8 font-thin bg-smoke-grey">
                 {items.length > 0 ? items : <p className="text-center">No items in cart!</p>}
             </div>
             <div className="pl-32 pr-4 my-4 flex justify-between">
