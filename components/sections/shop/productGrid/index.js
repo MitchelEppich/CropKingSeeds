@@ -31,7 +31,11 @@ class Index extends Component {
         if (Object.keys(_filter).length == 0) return true;
         let _pass = true;
         if (_filter.type != null && _filter.type != a.type) _pass = false;
-        if (_filter.genetic != null && _filter.genetic != a.genetic)
+        if (
+          _filter.genetic != null &&
+          _filter.genetic.length != 0 &&
+          !_filter.genetic.includes(a.genetic)
+        )
           _pass = false;
         if (_filter.cbd != null && _filter.cbd != a.cbd) _pass = false;
         if (_filter.thc != null && _filter.thc != a.thc) _pass = false;

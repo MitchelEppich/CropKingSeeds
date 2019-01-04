@@ -22,19 +22,25 @@ const getActions = uri => {
       delete input.filter;
       // Assuming only one filter at a time
       let _key = Object.keys(input)[0];
+      if (_filter[_key] == null) _filter[_key] = [];
       let shouldRemove = (() => {
-        if (_filter[_key] == input[_key]) {
+        if (_filter[_key].includes(input[_key])) {
           return true;
         }
       })();
       if (shouldRemove) {
-        delete _filter[_key];
+        if (input.multiple == true) {
+          _filter[_key] = _filter[_key].filter(a => {
+            if (a == input[_key]) return false;
+            return true;
+          });
+        } else delete _filter[_key];
       } else {
-        _filter = {
-          ..._filter,
-          ...input
-        };
+        if (input.multiple == true) {
+          _filter[_key].push(input[_key]);
+        } else _filter[_key] = input[_key];
       }
+      console.log(_filter);
       return {
         type: actionTypes.TOGGLE_FILTER,
         input: _filter

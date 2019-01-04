@@ -68,11 +68,13 @@ const filters = props => {
             onClick={() =>
               props.toggleFilter({
                 filter: props.shop.activeFilters,
-                genetic: "Autoflower"
+                genetic: "Autoflower",
+                multiple: true
               })
             }
             className={
-              props.shop.activeFilters.genetic == "Autoflower"
+              props.shop.activeFilters.genetic != null &&
+              props.shop.activeFilters.genetic.includes("Autoflower")
                 ? activeButton
                 : notActiveButton
             }
@@ -85,11 +87,13 @@ const filters = props => {
             onClick={() =>
               props.toggleFilter({
                 filter: props.shop.activeFilters,
-                genetic: "Feminized"
+                genetic: "Feminized",
+                multiple: true
               })
             }
             className={
-              props.shop.activeFilters.genetic == "Feminized"
+              props.shop.activeFilters.genetic != null &&
+              props.shop.activeFilters.genetic.includes("Feminized")
                 ? activeButton
                 : notActiveButton
             }
@@ -102,11 +106,13 @@ const filters = props => {
             onClick={() =>
               props.toggleFilter({
                 filter: props.shop.activeFilters,
-                genetic: "Regular"
+                genetic: "Regular",
+                multiple: true
               })
             }
             className={
-              props.shop.activeFilters.genetic == "Regular"
+              props.shop.activeFilters.genetic != null &&
+              props.shop.activeFilters.genetic.includes("Regular")
                 ? activeButton
                 : notActiveButton
             }
@@ -119,11 +125,13 @@ const filters = props => {
             onClick={() =>
               props.toggleFilter({
                 filter: props.shop.activeFilters,
-                genetic: "CBD"
+                genetic: "CBD",
+                multiple: true
               })
             }
             className={
-              props.shop.activeFilters.genetic == "CBD"
+              props.shop.activeFilters.genetic != null &&
+              props.shop.activeFilters.genetic.includes("CBD")
                 ? activeButton
                 : notActiveButton
             }
@@ -136,11 +144,13 @@ const filters = props => {
             onClick={() =>
               props.toggleFilter({
                 filter: props.shop.activeFilters,
-                genetic: "Dwarf"
+                genetic: "Dwarf",
+                multiple: true
               })
             }
             className={
-              props.shop.activeFilters.genetic == "Dwarf"
+              props.shop.activeFilters.genetic != null &&
+              props.shop.activeFilters.genetic.includes("Dwarf")
                 ? activeButton
                 : notActiveButton
             }
@@ -153,11 +163,13 @@ const filters = props => {
             onClick={() =>
               props.toggleFilter({
                 filter: props.shop.activeFilters,
-                genetic: "Mix"
+                genetic: "Mix",
+                multiple: true
               })
             }
             className={
-              props.shop.activeFilters.genetic == "Mix"
+              props.shop.activeFilters.genetic != null &&
+              props.shop.activeFilters.genetic.includes("Mix")
                 ? activeButton
                 : notActiveButton
             }
