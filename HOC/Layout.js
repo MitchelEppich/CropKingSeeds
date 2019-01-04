@@ -19,11 +19,14 @@ class Layout extends Component {
   componentDidUpdate() { }
 
   render() {
+
+
+
     return (
       <div className="bg-smoke-grey">
         <Header {...this.props} />
         <div className="">
-          <div className="bg-white px-16px w-1300 mx-auto">
+          <div className="bg-white px-4 w-1300 mx-auto shadow-md">
             {this.props.children}
           </div>
         </div>

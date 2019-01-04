@@ -57,7 +57,7 @@ let colors = {
   "grey-lighter": "#d4d4d4",
   "grey-lightest": "#f8fafc",
   white: "#ffffff",
-
+  "red-shopCart": "#9a1815",
   "red-darkest": "#3b0d0c",
   "red-darker": "#621b18",
   "red-dark": "#960000",
@@ -262,6 +262,7 @@ module.exports = {
     lg: "1.125rem", // 18px
     xl: "1.25rem", // 20px
     "2xl": "1.5rem", // 24px
+    "2/5xl": "1.65rem", // 27px
     "3xl": "1.875rem", // 30px
     "3/5xl": "2.5rem",
     "4xl": "3.5rem", // 36px
@@ -544,6 +545,7 @@ module.exports = {
     "10": "2.5rem",
     "12": "3rem",
     "16": "4rem",
+    "20": "5rem",
     "24": "6rem",
     "32": "8rem",
     "40": "10rem",
@@ -605,6 +607,10 @@ module.exports = {
     "600": "600px",
     "700": "700px",
     "800": "800px",
+    "16": "4rem",
+    "20": "5rem",
+    "24": "6rem",
+    "32": "8rem",
     full: "100%",
     screen: "100vh"
   },
@@ -724,7 +730,8 @@ module.exports = {
     "16": "4rem",
     "20": "5rem",
     "24": "6rem",
-    "32": "8rem"
+    "32": "8rem",
+    "64": "16rem"
   },
 
   /*

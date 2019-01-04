@@ -1,4 +1,5 @@
 import React from "react"
+import Link from "next/link";
 import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -12,13 +13,27 @@ const Footer = props => {
                 }} 
                 className="mt-8">
                     <ul className="text-white font-bold pl-6 p-2">
-                        <li className="text-lg p-2 hover:text-grey-light cursor-pointer">About</li>
-                        <li className="text-lg p-2 hover:text-grey-light cursor-pointer">Contact Us</li>
-                        <li className="text-lg p-2 hover:text-grey-light cursor-pointer">Privacy Policy</li>
-                        <li className="text-lg p-2 hover:text-grey-light cursor-pointer">Delivery/Payment</li>
-                        <li className="text-lg p-2 hover:text-grey-light cursor-pointer">Partners</li>
-                        <li className="text-lg p-2 hover:text-grey-light cursor-pointer">Affiliates</li>
-                        <li className="text-lg p-2 hover:text-grey-light cursor-pointer">FAQ</li>
+                        <Link href="/about">
+                            <li className="text-2xl p-1 hover:text-grey-light cursor-pointer">About</li>
+                        </Link>
+                        <Link href="/contact">
+                            <li className="text-2xl p-1 hover:text-grey-light cursor-pointer">Contact Us</li>
+                        </Link>
+                        <Link href="/privacy">
+                            <li className="text-2xl p-1 hover:text-grey-light cursor-pointer">Privacy Policy</li>
+                        </Link>
+                        <Link href="/delivery">
+                            <li className="text-2xl p-1 hover:text-grey-light cursor-pointer">Delivery/Payment</li>
+                        </Link>
+                        <Link href="/partners">
+                            <li className="text-2xl p-1 hover:text-grey-light cursor-pointer">Partners</li>
+                        </Link>
+                        <Link href="/affiliates">
+                            <li className="text-2xl p-1 hover:text-grey-light cursor-pointer">Affiliates</li>
+                        </Link>
+                        <Link href="/faq">
+                            <li className="text-2xl p-1 hover:text-grey-light cursor-pointer">FAQ</li>
+                        </Link>
                     </ul>
                 </div>
                 <div 
@@ -27,7 +42,7 @@ const Footer = props => {
                 }} 
                 className="">
                     <img style={{
-                        width: "300px",
+                        width: "380px",
                         position: "absolute",
                         height: "auto",
                         bottom: "0px",
@@ -39,7 +54,7 @@ const Footer = props => {
                     width: "40%"
                 }} 
                 className="text-white text-center">
-                    <h4 className="p-2 mt-4 mb-4 text-lg">Subscribe to the CKS Newsletter</h4>
+                    <h4 className="p-2 mt-4 mb-4 text-2/5xl font-extrabold">Subscribe to the CKS Newsletter</h4>
                     
                     <div className="inline-flex relative w-container items-center">
                         <input type="email" className="p-2 w-full" id="" defaultValue="" placeholder="Email address" />
