@@ -89,8 +89,6 @@ const actions = {
             _new.push(inferStrainData(strain));
           }
 
-          console.log(_new);
-
           Promise.resolve(dispatch(actions.setStrains(_new)));
         })
         .catch(error => console.log(error));

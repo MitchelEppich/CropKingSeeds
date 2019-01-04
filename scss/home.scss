@@ -83,13 +83,13 @@
 
 .body,
 html {
-  font-family: "Raleway";
+  font-family: 'Raleway', sans-serif;
   color: #252525;
   font-size: 15px;
-  font-weight: 600;
   padding: 0;
   margin: 0;
   background: white;
+  font-weight: 500;
 }
 
 input, textarea, select {
@@ -123,12 +123,12 @@ li {
   list-style: none;  
 }
 
-h1, h2, h3,  {
-  font-family: "Big John Regular", Helvetica, Arial, sans-serif;
+h1, h2, h3, h4, h5  {
+  font-family: 'Raleway', sans-serif;
+  
 }
 
-h4 {
-  font-family: "Slim Joe Regular", Helvetica, Arial, sans-serif;
+h4 {  
   font-weight: bolder;
 }
 
@@ -212,7 +212,17 @@ right: 0;
   transition: transform 0.2s ease;
 }
 
+// ARTICLES SECTION
 
+.scale-item { 
+  transform: scale(1); 
+  transition: transform 0.3s ease; 
+}
+
+.scale-item:hover { 
+  transform: scale(1.04);
+  transition: transform 0.3s ease;
+}
 
 // HOME GENE PREVIEW
 .auto {
@@ -277,14 +287,18 @@ right: 0;
   }
 }
 
-.filter {
-  @include element("hr"){
+.hr {
+  @include element("filters"){
     width: 90%;
     height: 1px;
     box-shadow: 0 2px 0 0 rgba(204,31,26,0.3);
   }
+  @include element("cart"){
+    width: 90%;
+    height: 1px;
+    box-shadow: 0 2px 0 0 #d4d4d4;
+  }
 }
-
 
 
 

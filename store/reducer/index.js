@@ -13,6 +13,7 @@ import CheckoutReducer from "./checkout";
 import CartReducer from "./cart";
 import NavigationReducer from "./navigation";
 import ShopReducer from "./shop";
+import PartnerReducer from "./partner";
 
 const initialState = {
   visibleScreen: ["dogs"], // When [] show main screen
@@ -178,5 +179,6 @@ export default combineReducers({
   nav: NavigationReducer,
   cart: CartReducer,
   checkout: CheckoutReducer,
-  shop: ShopReducer
+  shop: ShopReducer,
+  partner: PartnerReducer
 });

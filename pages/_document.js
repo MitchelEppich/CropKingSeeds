@@ -28,7 +28,7 @@ export default class MyDocument extends Document {
             content="initial-scale=1.0, width=device-width"
             key="viewport"
           />
-          <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"></link>
+          <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700,800,900" rel="stylesheet"></link>
           {/* <meta httpEquiv="ScreenOrientation" content="autoRotate:disabled" />
           <meta name="robots" content="index, follow" />
           <meta

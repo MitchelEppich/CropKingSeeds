@@ -30,7 +30,7 @@ class Index extends Component {
             <News {...this.props} />
           </React.Fragment>
         :
-          <p className="text-transparent text-4xl h-500 w-full py-32"><span className="text-black">Loading...</span>Mitchel is bad</p>
+          <p className="text-transparent text-4xl h-500 w-full py-32"><span className="text-black">Loading...</span></p>
         }
         
       </Layout>

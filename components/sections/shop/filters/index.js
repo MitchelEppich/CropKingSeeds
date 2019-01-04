@@ -1,8 +1,8 @@
 const filters = props => {
   let activeButton =
-    "border border-red-dark  p-2 m-1 font-bold slowish bg-red-dark text-white";
+    "border border-red-dark p-2 m-1 font-bold slow bg-red-dark text-white";
   let notActiveButton =
-    "text-red-dark border border-red-dark  p-2 m-1 font-bold slowish hover:bg-red-dark hover:text-white";
+    "text-red-dark border border-red-dark  p-2 m-1 font-bold slow hover:bg-red-dark hover:text-white";
 
   return (
     <div className="w-full h-500 pt-12 text-red-dark">
@@ -60,7 +60,7 @@ const filters = props => {
           </button>
         </li>
       </ul>
-      <hr className="filter__hr" />
+      <hr className="hr__filters" />
       <ul className="leading-loose flex flex-wrap pl-4">
         <li className="text-red-dark font-bold w-full text-2xl">Genetics</li>
         <li>
@@ -106,7 +106,7 @@ const filters = props => {
               })
             }
             className={
-              props.shop.activeFilters.genetic === "Regular"
+              props.shop.activeFilters.genetic == "Regular"
                 ? activeButton
                 : notActiveButton
             }
@@ -123,7 +123,7 @@ const filters = props => {
               })
             }
             className={
-              props.shop.activeFilters.genetic === "CBD"
+              props.shop.activeFilters.genetic == "CBD"
                 ? activeButton
                 : notActiveButton
             }
@@ -140,7 +140,7 @@ const filters = props => {
               })
             }
             className={
-              props.shop.activeFilters.genetic === "Dwarf"
+              props.shop.activeFilters.genetic == "Dwarf"
                 ? activeButton
                 : notActiveButton
             }
@@ -157,7 +157,7 @@ const filters = props => {
               })
             }
             className={
-              props.shop.activeFilters.genetic === "Mix"
+              props.shop.activeFilters.genetic == "Mix"
                 ? activeButton
                 : notActiveButton
             }
@@ -166,7 +166,7 @@ const filters = props => {
           </button>
         </li>
       </ul>
-      <hr className="filter__hr" />
+      <hr className="hr__filters" />
       <ul className="leading-loose flex flex-wrap pl-4">
         <li className="text-red-dark font-bold w-full text-2xl">
           THC Percentage
@@ -180,7 +180,7 @@ const filters = props => {
               })
             }
             className={
-              props.shop.activeFilters.thc === "low"
+              props.shop.activeFilters.thc == "low"
                 ? activeButton
                 : notActiveButton
             }
@@ -197,7 +197,7 @@ const filters = props => {
               })
             }
             className={
-              props.shop.activeFilters.thc === "high"
+              props.shop.activeFilters.thc == "high"
                 ? activeButton
                 : notActiveButton
             }
@@ -206,7 +206,7 @@ const filters = props => {
           </button>
         </li>
       </ul>
-      <hr className="filter__hr" />
+      <hr className="hr__filters" />
       <ul className="leading-loose flex flex-wrap pl-4">
         <li className="text-red-dark font-bold w-full text-2xl">
           CBD Percentage
@@ -220,7 +220,7 @@ const filters = props => {
               })
             }
             className={
-              props.shop.activeFilters.cbd === "low"
+              props.shop.activeFilters.cbd == "low"
                 ? activeButton
                 : notActiveButton
             }
@@ -237,7 +237,7 @@ const filters = props => {
               })
             }
             className={
-              props.shop.activeFilters.cbd === "high"
+              props.shop.activeFilters.cbd == "high"
                 ? activeButton
                 : notActiveButton
             }
@@ -246,7 +246,7 @@ const filters = props => {
           </button>
         </li>
       </ul>
-      <hr className="filter__hr" />
+      <hr className="hr__filters" />
       <button
         onClick={() => props.clearFilters()}
         className="text-red-dark border border-red-dark  p-2 w-1/2 m-2 mt-4 mx-auto block font-bold slowish hover:bg-red-dark hover:text-white"
