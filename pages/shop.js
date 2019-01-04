@@ -31,7 +31,7 @@ class Index extends Component {
             >
               <div
                 className={
-                  this.props.misc.viewProductExpanded
+                  this.props.shop.viewProductExpanded
                     ? "w-0 slow"
                     : "w-1/4 slow"
                 }
@@ -55,7 +55,7 @@ const mapDispatchToProps = dispatch => {
     setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
     setHoverId: id => dispatch(actions.setHoverId(id)),
     getStrains: () => dispatch(actions.getStrains()),
-    toggleFilter: filter => dispatch(actions.toggleFilter(filter)),
+    toggleFilter: input => dispatch(actions.toggleFilter(input)),
     clearFilters: () => dispatch(actions.clearFilters()),
     quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
     modifyCart: input => dispatch(actions.modifyCart(input)),

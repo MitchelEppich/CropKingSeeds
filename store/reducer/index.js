@@ -12,6 +12,7 @@ import { updateObject } from "../utility";
 import CheckoutReducer from "./checkout";
 import CartReducer from "./cart";
 import NavigationReducer from "./navigation";
+import ShopReducer from "./shop";
 
 const initialState = {
   visibleScreen: ["dogs"], // When [] show main screen
@@ -49,7 +50,8 @@ const initialState = {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat"
       }
-    },{
+    },
+    {
       color: "yellow",
       style: {
         // backgroundImage: "url(../static/img/banner1.png)",
@@ -57,7 +59,8 @@ const initialState = {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat"
       }
-    },{
+    },
+    {
       // color: "green-dark",
       style: {
         backgroundImage: "url(../static/img/banner1.png)",
@@ -65,7 +68,8 @@ const initialState = {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat"
       }
-    },{
+    },
+    {
       color: "blue",
       style: {
         // backgroundImage: "url(../static/img/banner3.png)",
@@ -73,7 +77,8 @@ const initialState = {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat"
       }
-    },{
+    },
+    {
       color: "red",
       style: {
         // backgroundImage: "url(../static/img/banner3.png)",
@@ -84,18 +89,30 @@ const initialState = {
     }
   ],
   bannerSlidePositions: [
-    { 'transform': ' translateX(-300%)', 'display': 'none', transition: "all 0.5s ease-in-out"},
-    { 'transform': ' translateX(-200%)', 'display': 'none', transition: "all 0.5s ease-in-out"},
-    { 'transform': ' translateX(-100%)', transition: "all 0.5s ease-in-out" },
-    { 'transform': ' translateX(0)', transition: "all 0.5s ease-in-out" },
-    { 'transform': ' translateX(100%)', transition: "all 0.5s ease-in-out" },
-    { 'transform': ' translateX(200%)', 'display': 'none', transition: "all 0.5s ease-in-out"},
-    { 'transform': ' translateX(300%)', 'display': 'none', transition: "all 0.5s ease-in-out"},
-    
-  ],
-  activeFilters: [],
-  quickAddToCartQty: 0,
-  viewProductExpanded: null
+    {
+      transform: " translateX(-300%)",
+      display: "none",
+      transition: "all 0.5s ease-in-out"
+    },
+    {
+      transform: " translateX(-200%)",
+      display: "none",
+      transition: "all 0.5s ease-in-out"
+    },
+    { transform: " translateX(-100%)", transition: "all 0.5s ease-in-out" },
+    { transform: " translateX(0)", transition: "all 0.5s ease-in-out" },
+    { transform: " translateX(100%)", transition: "all 0.5s ease-in-out" },
+    {
+      transform: " translateX(200%)",
+      display: "none",
+      transition: "all 0.5s ease-in-out"
+    },
+    {
+      transform: " translateX(300%)",
+      display: "none",
+      transition: "all 0.5s ease-in-out"
+    }
+  ]
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -124,7 +141,7 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         stepsCheckout: action.input
       });
-      case actionTypes.SHOW_DIFFERENT_ADDRESS:
+    case actionTypes.SHOW_DIFFERENT_ADDRESS:
       return updateObject(state, {
         showDifferentAddress: !state.showDifferentAddress
       });
@@ -138,7 +155,7 @@ const indexReducer = (state = initialState, action) => {
           state.geneHoverIndex == action.index ? null : action.index
       });
     case actionTypes.NEXT_BANNER_SLIDE:
-      let slideIndex = state.activeBannerSlide
+      let slideIndex = state.activeBannerSlide;
       let slidesLength = state.bannerSlidePositions.length - 1;
       if (slideIndex === slidesLength) {
         slideIndex = -1;
@@ -151,31 +168,6 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         strains: [...action.strains]
       });
-    case actionTypes.TOGGLE_FILTER:
-      let filterIndex = state.activeFilters.findIndex(x => JSON.stringify(x) === JSON.stringify(action.filter));
-      let activeFilters = state.activeFilters;
-      if (filterIndex > -1) {
-        activeFilters.splice(filterIndex, 1);
-        return updateObject(state, {
-          activeFilters: [...activeFilters]
-        });
-      } else {
-        return updateObject(state, {
-          activeFilters: [...state.activeFilters, action.filter]
-        });
-      }
-    case actionTypes.CLEAR_FILTERS:
-      return updateObject(state, {
-        activeFilters: []
-      });
-    case actionTypes.QUICK_ADD_TO_CART_QTY:
-      return updateObject(state, {
-        quickAddToCartQty: action.input
-      });
-    case actionTypes.EXPAND_PRODUCT:
-      return updateObject(state, {
-        viewProductExpanded: action.id
-      });
     default:
       return state;
   }
@@ -185,5 +177,6 @@ export default combineReducers({
   misc: indexReducer,
   nav: NavigationReducer,
   cart: CartReducer,
-  checkout: CheckoutReducer
+  checkout: CheckoutReducer,
+  shop: ShopReducer
 });
