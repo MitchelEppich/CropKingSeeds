@@ -22,6 +22,7 @@ const getActions = uri => {
             };
         },
         modifyCart: input => {
+            console.log(input)
             let _items = input.items;
             let _action = input.action;
 
