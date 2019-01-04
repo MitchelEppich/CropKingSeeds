@@ -23,7 +23,7 @@ class Layout extends Component {
       <div className="bg-smoke-grey">
         <Header {...this.props} />
         <div className=""> 
-          <div className="bg-white px-4 w-1300 mx-auto">
+          <div style={{ boxShadow: "0px 0px 10px #dcdcdc" }} className="bg-white px-4 w-1300 mx-auto">
             {this.props.children}
           </div>
         </div>

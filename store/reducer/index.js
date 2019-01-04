@@ -12,6 +12,7 @@ import { updateObject } from "../utility";
 import CheckoutReducer from "./checkout";
 import CartReducer from "./cart";
 import NavigationReducer from "./navigation";
+import PartnerReducer from "./partner";
 
 const initialState = {
   visibleScreen: ["dogs"], // When [] show main screen
@@ -180,5 +181,6 @@ export default combineReducers({
   misc: indexReducer,
   nav: NavigationReducer,
   cart: CartReducer,
-  checkout: CheckoutReducer
+  checkout: CheckoutReducer,
+  partner: PartnerReducer
 });

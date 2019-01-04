@@ -2,7 +2,12 @@ import Menu from "./menu"
 
 const Header = props => {
     return (
-        <div className="preserv-3d">
+        <div style={{
+            position: "fixed",
+            width: "100%",
+            zIndex: "999",
+            boxShadow: "0 0 30px rgba(0, 0, 0, 0.58)",
+        }} className="preserv-3d">
             <Menu {...props}/>
         {/*
             <div 
