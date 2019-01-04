@@ -14,6 +14,7 @@ import Cart from "./cart";
 import Checkout from "./checkout";
 import Navigation from "./navigation";
 import Shop from "./shop";
+import ViewProduct from "./viewProduct";
 
 const uri = "http://localhost:3000/graphql";
 
@@ -21,7 +22,8 @@ const imports = {
   ...Cart(uri),
   ...Checkout(uri),
   ...Navigation(uri),
-  ...Shop(uri)
+  ...Shop(uri),
+  ...ViewProduct(uri)
 };
 
 const actionTypes = {
@@ -59,9 +61,10 @@ const actions = {
   setContext: input => {
     return { type: actionTypes.SET_CONTEXT, input: input };
   },
-  setHoverId: id => {
+  setHoverId: (expanded, id) => {
     return {
       type: actionTypes.SET_HOVER_ID,
+      expanded: expanded,
       id: id
     };
   },

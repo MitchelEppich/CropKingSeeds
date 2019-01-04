@@ -17,10 +17,6 @@ class Index extends Component {
     this.myTween.restart();
   }
 
-  // quickAddSelection = val => {
-  //   this.props.quickAddToCartQty(val);
-  // }
-
   render() {
     let hoverId = this.props.misc.hoverId;
     let products = this.props.misc.strains;
@@ -38,14 +34,15 @@ class Index extends Component {
         return _pass;
       })
       .map((product, index) => {
+
         return (
           <div
             key={index}
             ref={div => (this.myElements[index] = div)}
             onMouseEnter={() => {
-              this.props.setHoverId(product._id);
+              this.props.setHoverId(this.props.shop.viewProductExpanded, product._id)
             }}
-            onMouseLeave={() => this.props.setHoverId(product._id)}
+            onMouseLeave={() => { this.props.setHoverId(this.props.shop.viewProductExpanded, product._id) }}
             className={
               hoverId == product._id
                 ? "w-64 h-64 text-white relative z-50 slowish"
@@ -62,7 +59,7 @@ class Index extends Component {
       });
 
     return (
-      <div className="w-3/4 min-h-500 text-white">
+      <div className="w-3/4 min-h-700 text-white">
         <div
           className={
             this.props.shop.viewProductExpanded != null
@@ -79,7 +76,8 @@ class Index extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setHoverId: id => dispatch(actions.setHoverId(id)),
+    setHoverId: (expanded, id) =>
+      dispatch(actions.setHoverId(expanded, id)),
     quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
     expandProduct: id => dispatch(actions.expandProduct(id)),
     modifyCart: input => dispatch(actions.modifyCart(input))

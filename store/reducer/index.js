@@ -14,6 +14,7 @@ import CartReducer from "./cart";
 import NavigationReducer from "./navigation";
 import ShopReducer from "./shop";
 import PartnerReducer from "./partner";
+import ViewProductReducer from "./viewProduct";
 
 const initialState = {
   visibleScreen: ["dogs"], // When [] show main screen
@@ -135,6 +136,7 @@ const indexReducer = (state = initialState, action) => {
         });
       }
     case actionTypes.SET_HOVER_ID:
+      if (action.expanded != null) { return state }
       return updateObject(state, {
         hoverId: state.hoverId == action.id ? null : action.id
       });
@@ -180,5 +182,6 @@ export default combineReducers({
   cart: CartReducer,
   checkout: CheckoutReducer,
   shop: ShopReducer,
-  partner: PartnerReducer
+  partner: PartnerReducer,
+  viewProduct: ViewProductReducer
 });
