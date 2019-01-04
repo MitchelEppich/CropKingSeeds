@@ -44,6 +44,7 @@ let defaultConfig = require("tailwindcss/defaultConfig")();
 let colors = {
   transparent: "transparent",
   "semi-transparent": "rgba(250, 250, 250, 0.2)",
+  "black-transparent": "rgba(0,0,0,.775)",
   "almost-white": "rgba(255, 255, 255, 0.7)",
   "almost-black": "rgba(0,0,0,0.5)",
 
@@ -55,7 +56,7 @@ let colors = {
   grey: "#202020",
   "grey-light": "#6b6b6b",
   "grey-lighter": "#d4d4d4",
-  "grey-lightest": "#f8fafc",
+  "grey-lightest": "#f1f1f1",
   white: "#ffffff",
   "red-shopCart": "#9a1815",
   "red-darkest": "#3b0d0c",
@@ -173,10 +174,10 @@ module.exports = {
     // 'lg': {'min': '768px', 'max': '991px'},
     // 'xl': {'min': '992px', 'max': '1199px'},
     // '2xl': {'min': '1200px'},
-    'sm': { 'min': '100px', 'max': '991px' },
+    sm: { min: "100px", max: "991px" },
     // 'md': {'min': '578px', 'max': '767px'},
-    'lg': { 'min': '992px', 'max': '1367px' },
-    'xl': { 'min': '1368px' },
+    lg: { min: "992px", max: "1367px" },
+    xl: { min: "1368px" }
     // '2xl': {'min': '1200px'},
   },
 
@@ -511,7 +512,7 @@ module.exports = {
     "800": "800px",
     "1300": "1300px",
     full: "100%",
-    '3full': "300%",
+    "3full": "300%",
     screen: "100vw",
     container: "80%",
     main: "85%"
@@ -560,7 +561,7 @@ module.exports = {
     "700": "700px",
     "800": "800px",
     full: "100%",
-    screen: "100vh",
+    screen: "100vh"
   },
 
   /*
@@ -580,7 +581,7 @@ module.exports = {
   minWidth: {
     "0": "0",
     "3": "33.33%",
-    "full": "100%"
+    full: "100%"
   },
 
   /*
@@ -641,8 +642,8 @@ module.exports = {
     "4xl": "90rem",
     "5xl": "100rem",
     full: "100%",
-    "sButton": "634px",
-    "uploadButton": "320px",
+    sButton: "634px",
+    uploadButton: "320px"
   },
 
   /*
@@ -696,7 +697,7 @@ module.exports = {
     "20": "5rem",
     "24": "6rem",
     "32": "8rem",
-    "videoPlayerPadding": "27rem"
+    videoPlayerPadding: "27rem"
   },
 
   /*

@@ -7,6 +7,7 @@ import withData from "../lib/withData";
 import { connect } from "react-redux";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
+import ArticlePage from "../components/sections/articlePage";
 
 class Index extends Component {
 
@@ -14,7 +15,9 @@ class Index extends Component {
 
     return (
       <Layout>
-
+        <div className="pt-12">
+          <ArticlePage />
+        </div>
       </Layout>
     );
   }
