@@ -37,7 +37,7 @@ const cart = props => {
     });
 
     return (
-        <div style={viewCart} className="w-500 text-black text-3xl sm:w-screen max-w-screen z-50 pin-t pin-r h-screen bg-white fixed pb-12 shadow-lg">
+        <div style={viewCart} className="w-500 text-black text-3xl sm:w-screen max-w-screen z-50 pin-t pin-r h-screen bg-white fixed pb-12 shadow-lg pt-16">
             <p
                 onClick={() => props.setVisibleScreen({ input: "viewCart" })}
                 className="absolute pin-t pin-l mt-8 ml-12 text-red-dark cursor-pointer"
@@ -47,8 +47,8 @@ const cart = props => {
             <h2 onClick={() => props.setVisibleScreen({ input: "viewCart" })} className="text-red-dark w-full h-16 text-center font-thin mt-8 cursor-pointer" >
                 Cart
             </h2>
-            <div className="min-h-500 w-full mt-4 mb-8 font-thin bg-smoke-grey">
-                {items.length > 0 ? items : <p className="text-center my-12">No items in cart!</p>}
+            <div className="min-h-500 w-full mt-4 pt-8 mb-8 font-thin bg-smoke-grey">
+                {items.length > 0 ? items : <p className="text-center">No items in cart!</p>}
             </div>
             <div className="pl-32 pr-4 my-4 flex justify-between">
                 <p className="inline-block">Sub Total</p>
