@@ -146,8 +146,19 @@ let inferStrainData = strain => {
   let _envs = ["Indoors or Outdoors", "Indoors", "Outdoors"];
   let _types = ["Sativa", "Indica", "Hybrid"];
 
-  let { country, difficulty, genetic, type, env, pcbd, pcbn, pthc } = strain;
+  let {
+    country,
+    difficulty,
+    genetic,
+    type,
+    env,
+    pcbd,
+    pcbn,
+    pthc,
+    name
+  } = strain;
   let _yield = strain.yield;
+  name = name.replace(" Cannabis", "");
   country = (() => {
     let str = "";
     do {
@@ -204,7 +215,8 @@ let inferStrainData = strain => {
     pcbn,
     yield: _yield,
     cbd,
-    thc
+    thc,
+    name
   };
 };
 

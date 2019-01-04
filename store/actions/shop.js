@@ -40,7 +40,6 @@ const getActions = uri => {
           _filter[_key].push(input[_key]);
         } else _filter[_key] = input[_key];
       }
-      console.log(_filter);
       return {
         type: actionTypes.TOGGLE_FILTER,
         input: _filter
