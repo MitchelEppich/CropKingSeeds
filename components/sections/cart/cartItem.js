@@ -6,11 +6,18 @@ library.add(faPlus, faMinus, faTimes);
 //takes in the strain item as prop
 //returns a cart item with the strain thumbnail, name, and quantity (also has buttons to increase or reduce qty)
 const cartItem = props => {
+
+    let packSize = props.item.sotiIdQty.slice(props.item.sotiIdQty.length - 2)
+    if (!(/^\d+$/.test(packSize) && packSize.length == 2)) {
+        packSize = props.item.sotiIdQty.slice(props.item.sotiIdQty.length - 1)
+    }
+
+
     return (
         <div className="flex justify-between px-4 py-2">
             <img className="h-32" src={props.item.product.packageImg} />
             <div className="flex flex-wrap justify-between">
-                <h3 className="text-black text-2xl w-300 h-16 pr-3">{props.item.product.name}</h3>
+                <h3 className="text-black text-2xl w-300 h-16 pr-3">{props.item.product.name}<span className="text-base ml-2">({packSize + " pack)"}</span></h3>
                 <div className="h-16"><FontAwesomeIcon icon={faTimes} className="fa-sm text-grey-lighter hover:text-grey-light cursor-pointer" /></div>
                 <div className="w-100 flex justify-between h-6">
                     <button onClick={() => props.modifyCart({
