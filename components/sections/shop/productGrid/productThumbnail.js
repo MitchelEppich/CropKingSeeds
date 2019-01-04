@@ -1,14 +1,6 @@
 import Link from "next/link";
 
 const propsThumbnail = props => {
-  let type;
-  if (props.product.type === 0) {
-    type = "Sativa";
-  } else if (props.product.type === 1) {
-    type = "Indica";
-  } else {
-    type = "Hybrid";
-  }
   let packageStyle =
     props.hoverId == props.product._id
       ? {
@@ -170,7 +162,7 @@ const propsThumbnail = props => {
             : "opacity-0 slow"
         }
       >
-        Type:<span className="ml-1 text-black">{type}</span>
+        Type:<span className="ml-1 text-black">{props.product.type}</span>
         <span className="p-2 ml-12 text-2xl">
           $
           {props.product.price[props.shop.quickAddToCartQty] < 1
