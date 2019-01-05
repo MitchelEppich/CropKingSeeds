@@ -81,10 +81,16 @@ const getActions = uri => {
         default:
       }
 
-      console.log(_items);
+      let _price = Object.values(_items)
+        .map(a => a.price)
+        .reduce((a, b) => {
+          return a + b;
+        }, 0);
+
       return {
         type: actionTypes.MODIFY_CART,
-        input: _items
+        items: _items,
+        price: _price
       };
     }
   };

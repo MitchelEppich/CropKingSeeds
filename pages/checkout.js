@@ -130,7 +130,9 @@ const mapDispatchToProps = dispatch => {
     setOrderDetails: input => dispatch(actions.setOrderDetails(input)),
     getBitcoinData: input => dispatch(actions.getBitcoinData(input)),
     toggleShowDifferentAddress: input =>
-      dispatch(actions.toggleShowDifferentAddress(input))
+      dispatch(actions.toggleShowDifferentAddress(input)),
+    modifyCart: input => dispatch(actions.modifyCart(input)),
+    clearCart: () => dispatch(actions.clearCart())
   };
 };
 

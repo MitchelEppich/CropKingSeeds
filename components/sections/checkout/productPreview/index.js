@@ -19,17 +19,25 @@ const ProductPreview = props => {
       let _product = _item.product;
       _arr.push(
         <div
+          key={item}
           style={{ width: "48%" }}
           className="inline-flex relative mx-2 mt-4 item-preview"
         >
           <div className="h-10 w-10 mt-1 mr-1 items-center flex ml-4 cursor-pointer  hover:text-white hover:bg-red-dark text-center p-2 absolute pin-r">
-            <FontAwesomeIcon icon={faTimes} className="fa-lg ml-1" />
+            <FontAwesomeIcon
+              icon={faTimes}
+              className="fa-lg ml-1"
+              onClick={() => {
+                props.modifyCart({
+                  items: props.cart.items,
+                  action: "REMOVE",
+                  productIdentifier: item
+                });
+              }}
+            />
           </div>
           <div className="w-2/5 text-center cursor-pointer p-1">
-            <img
-              src="../static/img/CKS-Feminized-Cali-OG-KushxHaze-Sativa-7997.png"
-              style={imgPack}
-            />
+            <img src={_product.packageImg} style={imgPack} />
           </div>
           <div className="mt-1 p-2 w-3/5 relative">
             <h3 className="px-2 text-2xl mr-8 font-bold">{_product.name}</h3>
@@ -37,10 +45,10 @@ const ProductPreview = props => {
               {_item.amount} Packs
             </p>
             <p className="px-2 pt-2 font-medium text-grey-light text-md">
-              {_item.product.type}
+              {_product.type}
             </p>
             <p className="px-2 pt-2 font-medium text-grey-light text-md">
-              ${_item.price.toFixed(2)}
+              ${_item.per.toFixed(2)}
             </p>
             <div className="absolute w-full p-2 flex items-center inline-flex mr-2 pin-r h-12 pin-b justify-end">
               <div className="mx-4">
@@ -58,8 +66,8 @@ const ProductPreview = props => {
                       props.modifyCart({
                         items: props.cart.items,
                         action: "MODIFY",
-                        productIdentifier: props.item.productIdentifier,
-                        product: props.item.product,
+                        productIdentifier: item,
+                        product: _product,
                         quantity: -1
                       })
                     }
@@ -78,8 +86,8 @@ const ProductPreview = props => {
                       props.modifyCart({
                         items: props.cart.items,
                         action: "MODIFY",
-                        productIdentifier: props.item.productIdentifier,
-                        product: props.item.product,
+                        productIdentifier: item,
+                        product: _product,
                         quantity: 1
                       })
                     }
@@ -96,9 +104,7 @@ const ProductPreview = props => {
                 style={{ borderRadius: "5px" }}
                 className="text-grey-light text-center"
               >
-                <p className="font-semibold text-2xl">
-                  ${_item.price * _item.amount}
-                </p>
+                <p className="font-semibold text-2xl">${_item.price}</p>
               </div>
             </div>
           </div>

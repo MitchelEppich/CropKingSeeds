@@ -27,8 +27,8 @@ const initialState = {
     //   },
     //   quantity: 1
     // }
-  }
-
+  },
+  price: 0
 };
 
 export default (state = initialState, action) => {
@@ -36,7 +36,7 @@ export default (state = initialState, action) => {
     case actionTypes.CLEAR_CART:
       return updateObject(state, { items: {} });
     case actionTypes.MODIFY_CART:
-      return updateObject(state, { items: action.input });
+      return updateObject(state, { items: action.items, price: action.price });
     default:
       return state;
   }

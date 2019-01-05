@@ -19,7 +19,8 @@ const Coupon = props => {
         <div className="w-200 ml-2">
           <div className="p-2 text-grey-light font-bold text-center">
             <h3>
-              Subtotal: <span className="text-black">$560</span>
+              Subtotal:{" "}
+              <span className="text-black">${props.cart.price.toFixed(2)}</span>
             </h3>
           </div>
         </div>
