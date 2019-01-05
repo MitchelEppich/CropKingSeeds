@@ -29,7 +29,7 @@ export default class MyDocument extends Document {
           />
           {/* <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700,800,900" rel="stylesheet"></link> */}
           <link
-            href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700,800,900"
+            href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,500,600,700,800,900"
             rel="stylesheet"
           />
           {/* <meta httpEquiv="ScreenOrientation" content="autoRotate:disabled" />
