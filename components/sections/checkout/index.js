@@ -7,7 +7,7 @@ const Checkout = props => {
       style={{
         borderTop: "2px solid #efefef"
       }}
-      className="w-full pt-2 inline-flex"
+      className="w-full pt-2 inline-flex text-xl font-medium"
     >
       <div
         className={`w-1/4 mx-2 text-center text-black relative unselectable ${

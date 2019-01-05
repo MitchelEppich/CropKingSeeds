@@ -27,11 +27,11 @@ class Index extends Component {
   render() {
     return (
       <Layout>
-        <div className="text-center w-full pt-10 mt-4 bg-white relative">
+        <div className="text-center w-full pt-32 bg-white relative">
           <h1 className="text-4xl font-bold text-black">Checkout Preview</h1>
         </div>
 
-        <div className="w-container mx-auto mt-12 bg-white">
+        <div className="w-container mx-auto pt-12 bg-white">
           <Checkout {...this.props} />
           {this.props.misc.stepsCheckout == 0 ? (
             <div>
@@ -87,7 +87,7 @@ class Index extends Component {
               className="w-200 p-2 text-left mx-2 cursor-pointer flex items-center hover:text-red"
             >
               {this.props.misc.stepsCheckout != 0 ? (
-                <span className="flex items-center">
+                <span className="flex items-center font-extrabold text-grey-light hover:text-red-dark text-2xl">
                   <FontAwesomeIcon icon={faAngleLeft} className="fa-2x mr-4" />
                   Back
                 </span>
@@ -108,7 +108,7 @@ class Index extends Component {
               className="w-200 p-2 text-right justify-end mx-2 cursor-pointer flex items-center hover:text-red"
             >
               {this.props.misc.stepsCheckout != 4 ? (
-                <span className="flex items-center">
+                <span className="flex items-center font-extrabold text-grey-light hover:text-red-dark text-2xl">
                   Next
                   <FontAwesomeIcon icon={faAngleRight} className="fa-2x ml-4" />
                 </span>

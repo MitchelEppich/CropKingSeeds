@@ -7,19 +7,19 @@ library.add(faPlus, faMinus, faTimes);
 //returns a cart item with the strain thumbnail, name, and quantity (also has buttons to increase or reduce qty)
 const cartItem = props => {
   return (
-    <div className="flex justify-between px-4 py-2">
+    <div className="flex justify-between px-4 py-2 scale-item">
       <img className="h-32" src={props.item.product.packageImg} />
       <div className="flex flex-wrap justify-between">
-        <h3 className="text-black text-2xl w-300 h-16 pr-3">
+        <h3 className="text-black text-xl w-300 h-16 pr-3 mt-2">
           {props.item.product.name}
-          <span className="text-base ml-2">
+          <span className="text-base flex text-grey-light">
             ({props.item.amount + " pack)"}
           </span>
         </h3>
-        <div className="h-16">
+        <div className="h-10 w-10 cursor-pointer pt-1 hover:bg-red-dark hover:text-white text-center text-grey">
           <FontAwesomeIcon
             icon={faTimes}
-            className="fa-sm text-grey-lighter hover:text-grey-light cursor-pointer"
+            className="fa-sm "
             onClick={() => {
               props.modifyCart({
                 items: props.cart.items,
@@ -29,7 +29,7 @@ const cartItem = props => {
             }}
           />
         </div>
-        <div className="w-100 flex justify-between h-6">
+        <div className="w-100 flex justify-between h-6 items-center">
           <button
             onClick={() =>
               props.modifyCart({
@@ -40,14 +40,16 @@ const cartItem = props => {
                 quantity: -1
               })
             }
-            className="px-2 bg-red-dark text-sm text-white"
+            className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white"
           >
             <FontAwesomeIcon
               icon={faMinus}
               className="fa-sm text-white cursor-pointer"
             />
           </button>
-          <p className="text-2xl leading-none">{props.item.quantity}</p>
+          <p className="leading-none font-semibold text-xl">
+            {props.item.quantity}
+          </p>
           <button
             onClick={() =>
               props.modifyCart({
@@ -58,7 +60,7 @@ const cartItem = props => {
                 quantity: 1
               })
             }
-            className="px-2 bg-red-dark text-sm text-white"
+            className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white"
           >
             <FontAwesomeIcon
               icon={faPlus}
@@ -66,7 +68,9 @@ const cartItem = props => {
             />
           </button>
         </div>
-        <p>${props.item.price.toFixed(2)}</p>
+        <div>
+          <p className="text-2xl">${props.item.price.toFixed(2)}</p>
+        </div>
       </div>
     </div>
   );
