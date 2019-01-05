@@ -88,7 +88,7 @@ const actions = {
           for (let strain of _strains) {
             _new.push(inferStrainData(strain));
           }
-
+          console.log(_new);
           Promise.resolve(dispatch(actions.setStrains(_new)));
         })
         .catch(error => console.log(error));
@@ -158,7 +158,6 @@ let inferStrainData = strain => {
     name
   } = strain;
   let _yield = strain.yield;
-  name = name.replace(" Cannabis", "");
   country = (() => {
     let str = "";
     do {
@@ -174,6 +173,14 @@ let inferStrainData = strain => {
   })();
   difficulty = _difficulties[difficulty];
   genetic = _genetics[genetic];
+  name = (() => {
+    let _name = name;
+    _name = _name.replace("Cannabis", "").replace("Seeds", "");
+    if (genetic != "Mix") _name = _name.replace(genetic, "");
+    else _name = _name.replace("Mix", "Mixed");
+    if (genetic == "CBD") _name = _name.replace("CB", "");
+    return _name.replace(/\s+/g, " ").trim();
+  })();
   type = _types[type];
   env = _envs[env];
   let cbd = (() => {
@@ -192,6 +199,16 @@ let inferStrainData = strain => {
   pthc = pthc.map(a => `${a.toFixed(2)}%`).join("-");
   _yield = (() => {
     let arr = [];
+
+    let _combo = (() => {
+      let _str;
+      let _i = _yield[0];
+      let _o = _yield[1];
+      if (_i > _o) _str = `${_o}g to ${_i}g *`;
+      else if (_i == _o) _str = `${_i}g *`;
+      else _str = `${_i}g to ${_o}g *`;
+      return _str;
+    })();
     do {
       let _output = _yield.shift();
       if (_output != -1) {
@@ -200,6 +217,7 @@ let inferStrainData = strain => {
       }
       arr.push(_output);
     } while (_yield.length > 0);
+    arr.push(_combo);
     return arr;
   })();
 
