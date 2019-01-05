@@ -10,7 +10,6 @@ import fetch from "node-fetch";
 
 const actionTypes = {
   QUICK_ADD_TO_CART_QTY: "QUICK_ADD_TO_CART_QTY",
-  EXPAND_PRODUCT: "EXPAND_PRODUCT",
   TOGGLE_FILTER: "TOGGLE_FILTER",
   CLEAR_FILTERS: "CLEAR_FILTERS"
 };
@@ -49,12 +48,6 @@ const getActions = uri => {
       return {
         type: actionTypes.QUICK_ADD_TO_CART_QTY,
         input: input
-      };
-    },
-    expandProduct: id => {
-      return {
-        type: actionTypes.EXPAND_PRODUCT,
-        id: id
       };
     }
   };

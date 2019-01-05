@@ -25,6 +25,7 @@ const initialState = {
   showDifferentAddress: false,
   // checkoutScreen: "productsScreen",
   activeBannerSlide: 6,
+  notification: null, //"Crop King Seeds will be at High Times Cannabis Cup Sept. 13-16 2019",
   bannerSlides: [
     {
       color: "green-dark",
@@ -136,7 +137,6 @@ const indexReducer = (state = initialState, action) => {
         });
       }
     case actionTypes.SET_HOVER_ID:
-      if (action.expanded != null) { return state }
       return updateObject(state, {
         hoverId: state.hoverId == action.id ? null : action.id
       });

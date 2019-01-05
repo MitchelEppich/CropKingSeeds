@@ -22,7 +22,7 @@ class Index extends Component {
     return (
       <Layout>
         <div>
-          <div className="flex flex-wrap justify-between">
+          <div className="flex flex-wrap justify-between h-500">
             <ImageCarousel  {...this.props} />
             <div className="flex flex-wrap w-2/3">
               <Details  {...this.props} />
@@ -42,7 +42,10 @@ class Index extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input))
+    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+    setHoverId: id => dispatch(actions.setHoverId(id)),
+    quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
+    modifyCart: input => dispatch(actions.modifyCart(input)),
   };
 };
 

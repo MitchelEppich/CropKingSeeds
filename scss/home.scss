@@ -162,11 +162,11 @@ h4 {
 }
 
 .absolute-center {
-position: absolute;
-margin-left: auto;
-margin-right: auto;
-left: 0;
-right: 0;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 .slow {
@@ -176,6 +176,16 @@ right: 0;
 .slowish {
   transition: all 0.2s ease-in-out;
 }
+
+// menu
+.menu {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.58);
+  background-position: 0% 10%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
 
 
 // CHECKOUT PREVIEW
@@ -234,7 +244,7 @@ right: 0;
   transition: all 0.5s ease-in-out;
   background-image: url("../static/img/Red.png");
   background-position: center;
-  background-size: cover;
+  background-size: 500px 500px;
   background-repeat: no-repeat;
   overflow: hidden;
   border: 5px solid #FFF;
@@ -246,7 +256,7 @@ right: 0;
   transition: all 0.5s ease-in-out;
   background-image: url("../static/img/Purple.png");
   background-position: center;
-  background-size: cover;
+  background-size: 500px 500px;
   background-repeat: no-repeat;
   overflow: hidden;
   border: 5px solid #FFF;
@@ -258,7 +268,7 @@ right: 0;
   transition: all 0.5s ease-in-out;
   background-image: url("../static/img/White.png");
   background-position: center;
-  background-size: cover;
+  background-size: 500px 500px;
   background-repeat: no-repeat;
   overflow: hidden;
   border: 5px solid #FFF;
@@ -270,7 +280,7 @@ right: 0;
   transition: all 0.5s ease-in-out;
   background-image: url("../static/img/green.png");
   background-position: center;
-  background-size: cover;
+  background-size: 500px 500px;
   background-repeat: no-repeat;
   overflow: hidden;
   border: 5px solid #FFF;

@@ -8,9 +8,12 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 const menu = props => {
+  let menuStyle = {
+    // backgroundImage: "url(../static/img/red.png)",
+  };
 
   return (
-    <div className="w-full bg-red-dark h-20 inline-flex test">
+    <div style={menuStyle} className=" w-full bg-red-dark h-20 inline-flex test">
       <div className="w-1/2 inline-flex">
         <div className="p-2 w-1/5 text-center p-3 cursor-pointer text-white bg-red-shopCart">
           <FontAwesomeIcon

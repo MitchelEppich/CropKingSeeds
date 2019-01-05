@@ -9,7 +9,7 @@ import {
 const details = props => {
 
   return (
-    <div className="border w-full h-300">
+    <div className="w-full h-300">
       <h1 className="mb-2 font-black">{props.viewProduct.currentProduct.name}</h1>
       <p>Excepteur irure excepteur eiusmod quis pariatur esse esse deserunt ex ad nostrud proident eu incididunt. In occaecat officia cillum reprehenderit veniam aute deserunt veniam adipisicing proident. Tempor esse est quis non anim veniam aute ipsum aliquip consequat amet elit cillum magna. Voluptate labore incididunt irure nulla elit. Duis Lorem adipisicing mollit culpa laborum anim nisi dolor. Laboris adipisicing eiusmod non occaecat est deserunt sit ex.</p>
       <div className="leading-none mt-8 mb-4 ">

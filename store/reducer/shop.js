@@ -3,8 +3,7 @@ import { updateObject } from "../utility";
 
 const initialState = {
   activeFilters: {},
-  quickAddToCartQty: 0,
-  viewProductExpanded: null
+  quickAddToCartQty: 0
 };
 
 export default (state = initialState, action) => {
@@ -12,10 +11,6 @@ export default (state = initialState, action) => {
     case actionTypes.QUICK_ADD_TO_CART_QTY:
       return updateObject(state, {
         quickAddToCartQty: action.input
-      });
-    case actionTypes.EXPAND_PRODUCT:
-      return updateObject(state, {
-        viewProductExpanded: action.id
       });
     case actionTypes.TOGGLE_FILTER:
       return updateObject(state, {

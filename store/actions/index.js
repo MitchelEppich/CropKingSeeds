@@ -61,10 +61,9 @@ const actions = {
   setContext: input => {
     return { type: actionTypes.SET_CONTEXT, input: input };
   },
-  setHoverId: (expanded, id) => {
+  setHoverId: (id) => {
     return {
       type: actionTypes.SET_HOVER_ID,
-      expanded: expanded,
       id: id
     };
   },

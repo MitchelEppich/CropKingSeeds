@@ -7,10 +7,10 @@ import { } from "@fortawesome/free-brands-svg-icons";
 const moreInfo = props => {
 
   return (
-    <div className="border w-full">
+    <div className="w-full">
       <h3 className="font-black my-2">Information on {props.viewProduct.currentProduct.name}</h3>
       <p>Qui ullamco ipsum fugiat incididunt velit adipisicing aliqua Lorem duis sint excepteur duis dolor. Excepteur irure excepteur eiusmod quis pariatur esse esse deserunt ex ad nostrud proident eu incididunt. In occaecat officia cillum reprehenderit veniam aute deserunt veniam adipisicing proident. Tempor esse est quis non anim veniam aute ipsum aliquip consequat amet elit cillum magna. Voluptate labore incididunt irure nulla elit. Duis Lorem adipisicing mollit culpa laborum anim nisi dolor. Laboris adipisicing eiusmod non occaecat est deserunt sit ex. Qui ullamco ipsum fugiat incididunt velit adipisicing aliqua Lorem duis sint excepteur duis dolor.<br /> Excepteur irure excepteur eiusmod quis pariatur esse esse deserunt ex ad nostrud proident eu incididunt. In occaecat officia cillum reprehenderit veniam aute deserunt veniam adipisicing proident. Tempor esse est quis non anim veniam aute ipsum aliquip consequat amet elit cillum magna. Voluptate labore incididunt irure nulla elit. Duis Lorem adipisicing mollit culpa laborum anim nisi dolor. Laboris adipisicing eiusmod non occaecat est deserunt sit ex.</p>
-      <video controls width="600">
+      <video className="mt-8 mb-4 " controls width="600">
 
         <source src="/media/examples/flower.webm"
           type="video/webm" />
@@ -20,7 +20,7 @@ const moreInfo = props => {
 
         Sorry, your browser doesn't support embedded videos.
       </video>
-      <ul className="list-reset leading-normal">
+      <ul className="list-reset leading-normal mb-4">
         <li className="li--viewProduct">High THC Content</li>
         <li className="li--viewProduct">High Yield Indoors</li>
         <li className="li--viewProduct">Grows to be 5ft</li>

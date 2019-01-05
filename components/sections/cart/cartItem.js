@@ -19,7 +19,7 @@ const cartItem = props => {
             <div className="flex flex-wrap justify-between">
                 <h3 className="text-black text-2xl w-300 h-16 pr-3">{props.item.product.name}<span className="text-base ml-2">({packSize + " pack)"}</span></h3>
                 <div className="h-16"><FontAwesomeIcon icon={faTimes} className="fa-sm text-grey-lighter hover:text-grey-light cursor-pointer" /></div>
-                <div className="w-100 flex justify-between h-6">
+                <div className="w-75px flex justify-between h-6 mx-2 shadow-md">
                     <button onClick={() => props.modifyCart({
                         items: props.cart.items,
                         action: "MODIFY",
@@ -27,7 +27,7 @@ const cartItem = props => {
                         product: props.item,
                         quantity: -1
                     })} className="px-2 bg-red-dark text-sm text-white"><FontAwesomeIcon icon={faMinus} className="fa-sm text-white cursor-pointer" /></button>
-                    <p className="text-2xl leading-none">{props.item.quantity}</p>
+                    <p className="text-xl font-medium leading-none">{props.item.quantity}</p>
                     <button onClick={() => props.modifyCart({
                         items: props.cart.items,
                         action: "MODIFY",

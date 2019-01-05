@@ -40,9 +40,9 @@ class Index extends Component {
             key={index}
             ref={div => (this.myElements[index] = div)}
             onMouseEnter={() => {
-              this.props.setHoverId(this.props.shop.viewProductExpanded, product._id)
+              this.props.setHoverId(product._id)
             }}
-            onMouseLeave={() => { this.props.setHoverId(this.props.shop.viewProductExpanded, product._id) }}
+            onMouseLeave={() => { this.props.setHoverId(product._id) }}
             className={
               hoverId == product._id
                 ? "w-64 h-64 text-white relative z-50 slowish"
@@ -76,8 +76,8 @@ class Index extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setHoverId: (expanded, id) =>
-      dispatch(actions.setHoverId(expanded, id)),
+    setHoverId: (id) =>
+      dispatch(actions.setHoverId(id)),
     quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
     expandProduct: id => dispatch(actions.expandProduct(id)),
     modifyCart: input => dispatch(actions.modifyCart(input))
