@@ -107,21 +107,37 @@ const propsThumbnail = props => {
   ) {
     return null;
   }
-  let tenSeedsButton =
-    "bg-white text-black w-16  flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold";
-  let tenSeedsButtonWord = "w-full text-red-dark";
-  if (props.shop.quickAddToCartQty === 1) {
-    tenSeedsButton =
-      "bg-red-dark text-white w-16  flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold";
-    tenSeedsButtonWord = "w-full text-white";
-  }
-  if (props.hoverId != null && props.hoverId == props.product._id) {
-    if (props.product.price[props.shop.quickAddToCartQty] == -1) {
-      tenSeedsButton =
-        "bg-red-dark text-white w-16  flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold";
-      tenSeedsButtonWord = "w-full text-white";
-    }
-  }
+
+  let showSeedAmounts = () => {
+    let _product = props.product;
+    let _arr = _product.price;
+    return _arr.map((price, index) => {
+      return (
+        <button
+          key={_product.sotiId + index}
+          onClick={() => props.quickAddToCartQty(index)}
+          className={`${
+            props.shop.quickAddToCartQty === index
+              ? "bg-red-dark text-white w-16  flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold"
+              : "bg-white text-black w-16  flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold"
+          } ${
+            price == -1 ? "opacity-50 pointer-events-none unselectable" : ""
+          }`}
+        >
+          {[5, 10, 25][index]}
+          <span
+            className={
+              props.shop.quickAddToCartQty === index
+                ? "w-full text-white"
+                : "w-full text-red-dark"
+            }
+          >
+            seeds
+          </span>
+        </button>
+      );
+    });
+  };
 
   return (
     <div style={overlayStyle}>
@@ -177,68 +193,12 @@ const propsThumbnail = props => {
             : "flex flex-wrap justify-center px-4 opacity-0"
         }
       >
-        {props.product.price[0] > 0 ? (
-          <button
-            onClick={() => props.quickAddToCartQty(0)}
-            className={
-              props.shop.quickAddToCartQty === 0
-                ? "bg-red-dark text-white w-16  flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold"
-                : "bg-white text-black w-16  flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold"
-            }
-          >
-            5
-            <span
-              className={
-                props.shop.quickAddToCartQty === 0
-                  ? "w-full text-white"
-                  : "w-full text-red-dark"
-              }
-            >
-              seeds
-            </span>
-          </button>
-        ) : null}
-        <button
-          onClick={() => props.quickAddToCartQty(1)}
-          className={tenSeedsButton}
-        >
-          10
-          <span className={tenSeedsButtonWord}>seeds</span>
-        </button>
-        <button
-          onClick={() => props.quickAddToCartQty(2)}
-          className={
-            props.shop.quickAddToCartQty === 2
-              ? "bg-red-dark text-white w-16  flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold"
-              : "bg-white text-black w-16  flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold"
-          }
-        >
-          25
-          <span
-            className={
-              props.shop.quickAddToCartQty === 2
-                ? "w-full text-white"
-                : "w-full text-red-dark"
-            }
-          >
-            seeds
-          </span>
-        </button>
+        {showSeedAmounts()}
         <button
           className="bg-red-dark  text-center text-white mx-auto m-4 p-4"
           onClick={() => {
             let _identifier =
-              props.product.sotiId +
-              (() => {
-                switch (props.shop.quickAddToCartQty) {
-                  case 0:
-                    return "5";
-                  case 1:
-                    return "10";
-                  case 2:
-                    return "25";
-                }
-              })();
+              props.product.sotiId + [5, 10, 25][props.shop.quickAddToCartQty];
             props.modifyCart({
               items: props.cart.items,
               action: "APPEND",

@@ -8,15 +8,11 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 const menu = props => {
-
   return (
     <div className="w-full bg-red-dark h-20 inline-flex test">
       <div className="w-1/2 inline-flex">
         <div className="p-2 w-1/5 text-center p-3 cursor-pointer text-white bg-red-shopCart">
-          <FontAwesomeIcon
-            icon={faSearch}
-            className="fa-2x p-1 mt-3"
-          />
+          <FontAwesomeIcon icon={faSearch} className="fa-2x p-1 mt-3" />
         </div>
         <div className="w-full mt-3">
           <ul className="inline-flex w-full text-white font-bold text-lg pt-2 pl-32">
@@ -42,7 +38,10 @@ const menu = props => {
         onClick={() => console.log(props)}
         className="cursor-pointer text-center"
       >
-        <img src="../static/img/cropkingseeds.png" className="w-32 scale-item" />
+        <img
+          src="../static/img/cropkingseeds.png"
+          className="w-32 scale-item"
+        />
       </div>
 
       <div className="w-1/2 inline-flex">
@@ -61,7 +60,9 @@ const menu = props => {
         </div>
 
         <div className="w-2/5 mt-2 text-center mt-4">
-          <p className="text-white p-2 mt-2 text-lg font-extrabold">Call: 604-563-0291</p>
+          <p className="text-white p-2 mt-2 text-lg font-extrabold">
+            Call: 604-563-0291
+          </p>
         </div>
         <div
           onClick={() => {
@@ -70,21 +71,22 @@ const menu = props => {
           className="w-1/5 text-center pt-6 cursor-pointer text-white bg-red-shopCart"
         >
           <FontAwesomeIcon icon={faShoppingCart} className="fa-2x" />
-          <span style={{
-            height: "28px",
-            width: "28px",
-            borderRadius: "50%",
-            background: "white",
-            position: "absolute",
-            marginTop: "-10px",
-            color: "#cc1f1a",
-            fontSize: "20px",
-            fontWeight: "bolder",
-            textAlign: "center",
-            paddingTop: "2px",
-            marginTop: "-14px",
-            marginLeft: "-5px",
-          }}
+          <span
+            style={{
+              height: "28px",
+              width: "28px",
+              borderRadius: "50%",
+              background: "white",
+              position: "absolute",
+              marginTop: "-10px",
+              color: "#cc1f1a",
+              fontSize: "20px",
+              fontWeight: "bolder",
+              textAlign: "center",
+              paddingTop: "2px",
+              marginTop: "-14px",
+              marginLeft: "-5px"
+            }}
           >
             {Object.keys(props.cart.items).length}
           </span>

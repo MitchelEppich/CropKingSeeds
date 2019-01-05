@@ -48,6 +48,11 @@ class Index extends Component {
             ref={div => (this.myElements[index] = div)}
             onMouseEnter={() => {
               this.props.setHoverId(product._id);
+              let _index = 0;
+              while (product.price[_index] == -1) {
+                _index++;
+              }
+              this.props.quickAddToCartQty(_index);
             }}
             onMouseLeave={() => this.props.setHoverId(product._id)}
             className={
