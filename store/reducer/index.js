@@ -14,6 +14,7 @@ import CartReducer from "./cart";
 import NavigationReducer from "./navigation";
 import ShopReducer from "./shop";
 import PartnerReducer from "./partner";
+import ViewProductReducer from "./viewProduct";
 
 const initialState = {
   visibleScreen: ["dogs"], // When [] show main screen
@@ -24,6 +25,7 @@ const initialState = {
   showDifferentAddress: false,
   // checkoutScreen: "productsScreen",
   activeBannerSlide: 6,
+  notification: null, //"Crop King Seeds will be at High Times Cannabis Cup Sept. 13-16 2019",
   bannerSlides: [
     {
       color: "green-dark",
@@ -180,5 +182,6 @@ export default combineReducers({
   cart: CartReducer,
   checkout: CheckoutReducer,
   shop: ShopReducer,
-  partner: PartnerReducer
+  partner: PartnerReducer,
+  viewProduct: ViewProductReducer
 });

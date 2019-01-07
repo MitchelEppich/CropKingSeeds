@@ -17,10 +17,6 @@ class Index extends Component {
     this.myTween.restart();
   }
 
-  // quickAddSelection = val => {
-  //   this.props.quickAddToCartQty(val);
-  // }
-
   render() {
     let hoverId = this.props.misc.hoverId;
     let products = this.props.misc.strains;
@@ -54,7 +50,9 @@ class Index extends Component {
               }
               this.props.quickAddToCartQty(_index);
             }}
-            onMouseLeave={() => this.props.setHoverId(product._id)}
+            onMouseLeave={() => {
+              this.props.setHoverId(product._id);
+            }}
             className={
               hoverId == product._id
                 ? "w-64 h-64 text-white relative z-50 slowish"
@@ -71,7 +69,7 @@ class Index extends Component {
       });
 
     return (
-      <div className="w-3/4 min-h-500 text-white">
+      <div className="w-3/4 min-h-700 text-white">
         <div
           className={
             this.props.shop.viewProductExpanded != null

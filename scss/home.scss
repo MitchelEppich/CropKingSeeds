@@ -125,6 +125,9 @@ select.sizeable-opt {
 li {
   list-style: none;
 }
+.li--viewProduct {
+  list-style: inside;
+}
 
 h1,
 h2,
@@ -189,6 +192,14 @@ h4 {
   transition: all 0.2s ease-in-out;
 }
 
+// menu
+.menu {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.58);
+  background-position: 0% 10%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 // CHECKOUT PREVIEW
 
 .item-preview {
@@ -245,7 +256,7 @@ h4 {
   transition: all 0.5s ease-in-out;
   background-image: url("../static/img/Red.png");
   background-position: center;
-  background-size: cover;
+  background-size: 500px 500px;
   background-repeat: no-repeat;
   overflow: hidden;
   border: 5px solid #fff;
@@ -257,7 +268,7 @@ h4 {
   transition: all 0.5s ease-in-out;
   background-image: url("../static/img/Purple.png");
   background-position: center;
-  background-size: cover;
+  background-size: 500px 500px;
   background-repeat: no-repeat;
   overflow: hidden;
   border: 5px solid #fff;
@@ -269,7 +280,7 @@ h4 {
   transition: all 0.5s ease-in-out;
   background-image: url("../static/img/White.png");
   background-position: center;
-  background-size: cover;
+  background-size: 500px 500px;
   background-repeat: no-repeat;
   overflow: hidden;
   border: 5px solid #fff;
@@ -281,7 +292,7 @@ h4 {
   transition: all 0.5s ease-in-out;
   background-image: url("../static/img/green.png");
   background-position: center;
-  background-size: cover;
+  background-size: 500px 500px;
   background-repeat: no-repeat;
   overflow: hidden;
   border: 5px solid #fff;
