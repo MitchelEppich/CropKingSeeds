@@ -9,7 +9,7 @@ const reviews = props => {
     )
   })
   return (
-    <div className="w-full pb-2 pt-8">
+    <div className="w-full pb-8 pt-8">
       <h3 className="font-black text-2xl">Customer Reviews</h3>
       {/* map total reviews here */}
       {reviews}
