@@ -61,7 +61,7 @@ const actions = {
   setContext: input => {
     return { type: actionTypes.SET_CONTEXT, input: input };
   },
-  setHoverId: (id) => {
+  setHoverId: id => {
     return {
       type: actionTypes.SET_HOVER_ID,
       id: id
@@ -90,7 +90,6 @@ const actions = {
           for (let strain of _strains) {
             _new.push(inferStrainData(strain));
           }
-          console.log(_new);
           Promise.resolve(dispatch(actions.setStrains(_new)));
         })
         .catch(error => console.log(error));

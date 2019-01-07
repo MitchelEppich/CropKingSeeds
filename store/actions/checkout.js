@@ -30,8 +30,6 @@ const getActions = uri => {
         _orderDetails[_group].updatedAt = new Date();
       } else _orderDetails[_key] = { value: _value, tag: _tag };
 
-      console.log(_orderDetails);
-
       return { type: actionTypes.MODIFY_ORDER_DETAILS, input: _orderDetails };
     },
     setOrderDetails: input => {

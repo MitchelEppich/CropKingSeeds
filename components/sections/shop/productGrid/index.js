@@ -17,6 +17,10 @@ class Index extends Component {
     this.myTween.restart();
   }
 
+  componentDidUpdate(prevProps) {
+    this.myTween.set(this.myElements, { autoAlpha: 1, y: -30 });
+  }
+
   render() {
     let hoverId = this.props.misc.hoverId;
     let products = this.props.misc.strains;
@@ -53,11 +57,12 @@ class Index extends Component {
             onMouseLeave={() => {
               this.props.setHoverId(product._id);
             }}
-            className={
-              hoverId == product._id
-                ? "w-64 h-64 text-white relative z-50 slowish"
-                : "w-64 h-64 text-white relative z-0 slowish"
-            }
+            className={`
+              ${
+                hoverId == product._id
+                  ? "w-64 h-64 text-white relative z-50 slowish"
+                  : "w-64 h-64 text-white relative z-0 slowish"
+              }`}
           >
             <ProductThumbnail
               hoverId={hoverId}
