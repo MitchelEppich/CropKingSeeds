@@ -9,17 +9,17 @@ const cartItem = props => {
   return (
     <div className="flex justify-between px-4 py-2 scale-item">
       <img className="h-32" src={props.item.product.packageImg} />
-      <div className="flex flex-wrap justify-between">
+      <div className="flex relative flex-wrap justify-between">
         <h3 className="text-black text-xl w-300 h-16 pr-3 mt-2">
           {props.item.product.name}
           <span className="text-base flex text-grey-light">
-            ({props.item.amount + " pack)"}
+            - {props.item.amount + " pack"}
           </span>
         </h3>
-        <div className="h-10 w-10 cursor-pointer pt-1 hover:bg-red-dark hover:text-white text-center text-grey">
+        <div className="h-10 w-10 cursor-pointer absolute pin-t pin-r pt-1 hover:bg-red-dark hover:text-white text-center text-grey">
           <FontAwesomeIcon
             icon={faTimes}
-            className="fa-sm "
+            className="fa-sm"
             onClick={() => {
               props.modifyCart({
                 items: props.cart.items,

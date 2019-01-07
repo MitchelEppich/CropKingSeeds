@@ -50,7 +50,7 @@ const propsThumbnail = props => {
           height: "180%",
           width: "110%",
           paddingBottom: "60px",
-          backgroundColor: "#eee",
+          backgroundColor: "#fff",
           transition: "0.6s all ease-in-out",
           color: "rgba(255,255,255,1)",
           position: "absolute",
@@ -60,7 +60,7 @@ const propsThumbnail = props => {
       : {
           height: "100%",
           width: "100%",
-          backgroundColor: "#eee",
+          backgroundColor: "#fff",
           transition: "0.6s all ease-in-out",
           color: "rgba(255,255,255,0)",
           position: "relative",
@@ -118,8 +118,8 @@ const propsThumbnail = props => {
           onClick={() => props.quickAddToCartQty(index)}
           className={`${
             props.shop.quickAddToCartQty === index
-              ? "bg-red-dark text-white w-16  flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold"
-              : "bg-white text-black w-16  flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold"
+              ? "bg-red-dark text-white w-16 flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold"
+              : "bg-white text-black w-16 flex flex-wrap text-center justify-center leading-normal shadow-md mx-2 font-bold"
           } ${
             price == -1 ? "opacity-50 pointer-events-none unselectable" : ""
           }`}
@@ -165,10 +165,11 @@ const propsThumbnail = props => {
           className={
             props.hoverId == props.product._id
               ? "w-full mt-2 text-black font-black text-2xl text-center cursor-pointer"
-              : "opacity-0 slow"
+              : "opacity-0 slow text-center text-xs"
           }
         >
-          {props.product.name.substring(0, props.product.name.length - 15)}
+          {/* {props.product.name.substring(0, props.product.name.length - 15)} */}
+          Testing
         </h3>
       </Link>
       <p
