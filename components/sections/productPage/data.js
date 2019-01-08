@@ -42,29 +42,28 @@ const data = props => {
             </div>
 
             <div className="w-full flex text-white justify-between">
-                <div
-                    className="bg-orange mx-1 rounded-lg text-center my-2"
-                    style={{ width: _product.ruderalis * 100 + "%" }}>
-                    {_product.ruderalis}
-                    <span
-                        className="text-grey"
-                        style={{
-                            position: "absolute",
-                            transform: "translateX(-20px) translateY(43px) rotate(45deg)"
-                        }}>
-                        Ruderalis
-                    </span>
-                </div>{" "}
+                {_product.ruderalis > 0 ? (
+                    <div
+                        className="bg-orange mx-1 rounded-lg text-center my-2"
+                        style={{ width: _product.ruderalis * 100 + "%" }}>
+                        {_product.ruderalis}
+                        <span
+                            className="text-grey"
+                            style={{
+                                position: "absolute",
+                                transform: "translateX(-50%) translateY(43px) rotate(45deg)"
+                            }}>
+                            Ruderalis
+                        </span>
+                    </div>
+                ) : null}
                 <div
                     className="bg-blue mx-1 rounded-lg text-center my-2"
                     style={{ width: _product.indica * 100 + "%" }}>
                     {_product.indica}
                     <span
                         className="text-grey"
-                        style={{
-                            position: "absolute",
-                            transform: "translateX(-20px) translateY(33px) rotate(45deg)"
-                        }}>
+                        style={{ position: "absolute", transform: "translateX(-50%) translateY(33px) rotate(45deg)" }}>
                         Indica
                     </span>
                 </div>{" "}
@@ -74,10 +73,7 @@ const data = props => {
                     {_product.sativa}
                     <span
                         className="text-grey"
-                        style={{
-                            position: "absolute",
-                            transform: "translateX(-20px) translateY(33px) rotate(45deg)"
-                        }}>
+                        style={{ position: "absolute", transform: "translateX(-50%) translateY(33px) rotate(45deg)" }}>
                         Sativa
                     </span>
                 </div>
