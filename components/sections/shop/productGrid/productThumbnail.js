@@ -2,10 +2,12 @@ import Link from "next/link";
 import {
   faSeedling,
   faClock,
-  faEnvelope,
-  faPrint
+  faMinus,
+  faPlus,
+  faShoppingCart
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AddToCart from "../../productPage/addToCart";
 
 const productThumbnail = props => {
   let packageStyle =
@@ -92,8 +94,10 @@ const productThumbnail = props => {
     boxShadow: "rgba(60, 58, 58, 0.45) 0px 2px 6px"
   };
 
+  let currentProduct = props.viewProduct.currentProduct;
+
   let showSeedAmounts = () => {
-    let _product = props.product;
+    let _product = props.viewProduct.currentProduct;
     let _arr = _product.price;
     return _arr.map((price, index) => {
       return (
@@ -102,20 +106,18 @@ const productThumbnail = props => {
           onClick={() => props.quickAddToCartQty(index)}
           className={`${
             props.shop.quickAddToCartQty === index
-              ? "bg-red-dark text-white w-16 h-12 flex flex-wrap scale-item text-center justify-center leading-normal shadow-md mx-2 font-bold"
-              : "bg-white text-black w-16 flex flex-wrap scale-item  text-center justify-center leading-normal shadow-md mx-2 font-bold"
+              ? "bg-red-dark text-white w-18 h-6 flex flex-wrap text-center justify-center leading-normal uppercase font-bold"
+              : "bg-white text-black w-18 h-6 flex flex-wrap text-center justify-center leading-normal uppercase font-bold"
           } ${
             price == -1 ? "opacity-50 pointer-events-none unselectable" : ""
-          }`}
-        >
-          <p>{[5, 10, 25][index]}</p>
+          }`}>
+          {[5, 10, 25][index]}
           <span
             className={
               props.shop.quickAddToCartQty === index
-                ? "w-full text-white text-sm"
-                : "w-full text-grey"
-            }
-          >
+                ? "text-white text-xs h-6 pt-1"
+                : "text-red-dark text-xs h-6 pt-1"
+            }>
             seeds
           </span>
         </button>
@@ -127,25 +129,23 @@ const productThumbnail = props => {
     <div style={overlayStyle}>
       <Link
         href="/viewProduct"
-        as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}
-      >
+        as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}>
         <div style={packageStyle} className="px-12 py-2 cursor-pointer" />
       </Link>
       <Link
         href="/viewProduct"
-        as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}
-      >
+        as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}>
         <img src={props.product.strainImg} style={plantStyle} />
       </Link>
       <div
         className={
           props.hoverId == props.product._id ? "w-full bg-white" : "relative"
-        }
-      >
+        }>
         <Link
           href="/viewProduct"
-          as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}
-        >
+          as={
+            "/product/" + props.product.name.toLowerCase().replace(/ /g, "-")
+          }>
           <div style={{ zIndex: "9999999" }} className="absolute w-full">
             <h3
               style={props.hoverId != props.product._id ? strainTitle : null}
@@ -153,8 +153,7 @@ const productThumbnail = props => {
                 props.hoverId == props.product._id
                   ? "w-full mt-4 mb-4 text-black font-black text-2xl text-center cursor-pointer"
                   : "slow text-center text-lg text-grey p-2 font-extrabold z-50"
-              }
-            >
+              }>
               {props.product.name}
             </h3>
           </div>
@@ -164,8 +163,7 @@ const productThumbnail = props => {
             props.hoverId == props.product._id
               ? "border-b-2 border-grey-lightest w-main mx-auto pt-2"
               : "hidden slow"
-          }
-        >
+          }>
           {" "}
         </div>
         <div className="text-center w-full pt-8">
@@ -174,8 +172,7 @@ const productThumbnail = props => {
               props.hoverId == props.product._id
                 ? "text-grey my-3 slow font-extrabold text-sm"
                 : "hidden slow"
-            }
-          >
+            }>
             <span className="ml-1 text-grey font-medium">
               {props.product.genetic} {props.product.type}
             </span>
@@ -186,14 +183,12 @@ const productThumbnail = props => {
             props.hoverId == props.product._id
               ? "text-grey px-6 p-2 text-sm"
               : "hidden slow"
-          }
-        >
+          }>
           <Link
             href="/viewProduct"
             as={
               "/product/" + props.product.name.toLowerCase().replace(/ /g, "-")
-            }
-          >
+            }>
             <p className="cursor-pointer hover:text-grey">
               {props.product.description.substring(0, 50) + "..."}
             </p>
@@ -204,8 +199,7 @@ const productThumbnail = props => {
             props.hoverId == props.product._id
               ? "w-full p-2 px-4 inline-flex text-grey text-center"
               : "hidden slow"
-          }
-        >
+          }>
           <div className="w-1/2 text-sm mx-2 inline-flex bg-grey-lightest text-center">
             <div className="text-center w-full pt-1 inline-flex flex items-center justify-between">
               <FontAwesomeIcon icon={faClock} className="fa-lg ml-2 mb-1" />
@@ -228,39 +222,109 @@ const productThumbnail = props => {
             props.hoverId == props.product._id
               ? "flex justify-center px-4 mt-2 items-center flex"
               : "flex flex-wrap justify-center px-4 hidden"
-          }
-        >
+          }>
           {props.hoverId == props.product._id ? (
-            <React.Fragment>
-              {" "}
-              {showSeedAmounts()}{" "}
-              <button
-                className="bg-red-dark text-center scale-item text-white mx-auto h-12 px-2 py-2"
-                onClick={() => {
-                  let _identifier =
-                    props.product.sotiId +
-                    [5, 10, 25][props.shop.quickAddToCartQty];
-                  props.modifyCart({
-                    items: props.cart.items,
-                    action: "APPEND",
-                    productIdentifier: _identifier,
-                    product: props.product,
-                    quantity: 1
-                  });
-                }}
-              >
-                Add to Cart
-              </button>{" "}
-            </React.Fragment>
-          ) : null}
+            <div className="w-full inline-flex flex items-center">
+              <div className="w-2/3 flex flex-wrap mr-2">
+                <div className="w-54 h-12 flex flex-wrap content-center">
+                  {showSeedAmounts()}
+                  <div
+                    style={{
+                      boxShadow:
+                        "0 15px 20px 0 rgba(0,0,0,0.08), 0 5px 10px 0 rgba(0,0,0,0.08), 0 -5px 10px 0 rgba(0,0,0,0.08)"
+                    }}
+                    className="w-54 h-5 flex justify-between">
+                    <button
+                      onClick={() => props.modifyCart({})}
+                      className="w-6 bg-grey-light text-sm text-white">
+                      <FontAwesomeIcon
+                        icon={faMinus}
+                        className="fa-sm text-white cursor-pointer"
+                      />
+                    </button>
+                    <input
+                      defaultValue="1"
+                      className="text-lg text-center w-48 border-0 font-bold pt-1 leading-none"
+                      type="number"
+                    />
+                    <button
+                      onClick={() => props.modifyCart({})}
+                      className="w-6 bg-grey-light text-sm text-white">
+                      <FontAwesomeIcon
+                        icon={faPlus}
+                        className="fa-sm text-white cursor-pointer"
+                      />
+                    </button>
+                  </div>
+                </div>
+
+                {/* <Link href="/checkout">
+                  <button className="bg-red-dark h-12 w-32 text-center text-white p-4" onClick={() => {
+                      let _identifier = props.product.sotiId + [5, 10, 25][props.shop.quickAddToCartQty];
+                      props.modifyCart({
+                        items: props.cart.items,
+                        action: "APPEND",
+                        productIdentifier: _identifier,
+                        product: props.product,
+                        quantity: 1
+                      });
+                    }}>
+                    Buy Now
+                  </button>
+                </Link> */}
+              </div>
+              <div className="w-1/3 ml-2">
+                <button
+                  className="bg-red-dark text-xs text-center font-extrabold text-white p-4"
+                  onClick={() => {
+                    let _identifier =
+                      props.product.sotiId +
+                      [5, 10, 25][props.shop.quickAddToCartQty];
+                    props.modifyCart({
+                      items: props.cart.items,
+                      action: "APPEND",
+                      productIdentifier: _identifier,
+                      product: props.product,
+                      quantity: 1
+                    });
+                  }}>
+                  Add to Cart
+                  {/* <FontAwesomeIcon
+                    icon={faShoppingCart}
+                    className="ml-2 fa-lg"
+                  /> */}
+                </button>
+              </div>
+            </div> // <React.Fragment>
+          ) : //   {" "}
+          //   {showSeedAmounts()}{" "}
+          //   <button
+          //     className="bg-red-dark text-center scale-item text-white mx-auto h-12 px-2 py-2"
+          //     onClick={() => {
+          //       let _identifier =
+          //         props.product.sotiId +
+          //         [5, 10, 25][props.shop.quickAddToCartQty];
+          //       props.modifyCart({
+          //         items: props.cart.items,
+          //         action: "APPEND",
+          //         productIdentifier: _identifier,
+          //         product: props.product,
+          //         quantity: 1
+          //       });
+          //     }}
+          //   >
+          //     Add to Cart
+          //   </button>{" "}
+          // </React.Fragment>
+
+          null}
         </div>
         <div
           className={
             props.hoverId == props.product._id
               ? "w-full p-2 px-6 mt-3 text-red-dark font-extrabold text-center"
               : "hidden slow"
-          }
-        >
+          }>
           <p className="text-3xl bg-grey-lightest text-grey p-2">
             $
             {props.product.price[props.shop.quickAddToCartQty] < 1
@@ -273,8 +337,7 @@ const productThumbnail = props => {
             props.hoverId == props.product._id
               ? "w-full mx-auto text-center p-1"
               : "hidden slow"
-          }
-        >
+          }>
           <p className="text-sm italic font-extrabold text-red-dark text-right mr-6">
             In stock
           </p>
