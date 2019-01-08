@@ -9,26 +9,26 @@
 
 /******MIXINS*******/
 @mixin element($element) {
-  &__#{$element} {
-    @content;
-  }
+    &__#{$element} {
+        @content;
+    }
 }
 
 // Block Element
 // @access public
 // @param {String} $element - Element's name
 @mixin element($element) {
-  &__#{$element} {
-    @content;
-  }
+    &__#{$element} {
+        @content;
+    }
 }
 // Block Modifier
 // @access public
 // @param {String} $modifier - Modifier's name
 @mixin modifier($modifier) {
-  &--#{$modifier} {
-    @content;
-  }
+    &--#{$modifier} {
+        @content;
+    }
 }
 
 /* CUSTOM FONTS */
@@ -51,82 +51,87 @@
 //   font-display: swap;
 // }
 @font-face {
-  font-family: "proxima nova";
-  src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff")
-    format("truetype");
-  font-weight: thin;
-  font-style: normal;
-  font-display: swap;
+    font-family: "proxima nova";
+    src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff") format("truetype");
+    font-weight: thin;
+    font-style: normal;
+    font-display: swap;
 }
 @font-face {
-  font-family: "proxima nova";
-  src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff")
-    format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+    font-family: "proxima nova";
+    src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 @font-face {
-  font-family: "proxima nova";
-  src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-xbold-webfont.woff")
-    format("truetype");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
+    font-family: "proxima nova";
+    src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-xbold-webfont.woff") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
 }
 @font-face {
-  font-family: "proxima nova";
-  src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-black-webfont.woff")
-    format("truetype");
-  font-weight: bolder;
-  font-style: normal;
-  font-display: swap;
+    font-family: "proxima nova";
+    src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-black-webfont.woff") format("truetype");
+    font-weight: bolder;
+    font-style: normal;
+    font-display: swap;
 }
 
 .body,
 html {
-  font-family: "Nunito Sans", sans-serif;
-  color: #252525;
-  font-size: 15px;
-  padding: 0;
-  margin: 0;
-  background: white;
-  font-weight: 500;
+    font-family: "Nunito Sans", sans-serif;
+    color: #252525;
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+    background: white;
+    font-weight: 500;
 }
 
 input,
 textarea,
 select {
-  border: 2px solid #ececec;
-  border-radius: 3px;
-  font-weight: 600;
+    border: 2px solid #ececec;
+    border-radius: 3px;
+    font-weight: 600;
 }
 option {
-  font-weight: 600;
+    font-weight: 600;
 }
 
 .checkbox {
-  height: 24px;
-  width: 24px;
-  margin-right: 5px;
-  background-color: #eee;
-  border-radius: 50%;
-  vertical-align: text-top;
+    height: 24px;
+    width: 24px;
+    margin-right: 5px;
+    background-color: #eee;
+    border-radius: 50%;
+    vertical-align: text-top;
 }
 
 .checkbox:checked {
-  background-color: #b8b8b8;
+    background-color: #b8b8b8;
 }
 
 select.sizeable-opt {
-  font-size: 95%;
+    font-size: 95%;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+textarea:focus,
+input:focus {
+    outline: none;
+}
 li {
-  list-style: none;
+    list-style: none;
 }
 .li--viewProduct {
-  list-style: inside;
+    list-style: inside;
 }
 
 h1,
@@ -134,206 +139,206 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "Nunito Sans", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 
 h4 {
-  font-weight: bolder;
+    font-weight: bolder;
 }
 
 .text-content::first-letter {
-  font-weight: bold;
-  color: black;
-  font-size: 36px;
-  float: left;
-  margin: 4px 4px 0px 0px;
-  line-height: 0.8;
+    font-weight: bold;
+    color: black;
+    font-size: 36px;
+    float: left;
+    margin: 4px 4px 0px 0px;
+    line-height: 0.8;
 }
 
 .unselectable {
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .preserv-3d {
-  transform-style: preserve-3d;
+    transform-style: preserve-3d;
 }
 
 .test2 {
-  background: #ff0707;
-  height: 90px;
-  width: 100%;
-  overflow-x: hidden;
-  margin-left: -8px;
-  margin-top: -53px;
-  transform: translateZ(-1em) rotate(-3deg);
+    background: #ff0707;
+    height: 90px;
+    width: 100%;
+    overflow-x: hidden;
+    margin-left: -8px;
+    margin-top: -53px;
+    transform: translateZ(-1em) rotate(-3deg);
 }
 
 .example {
-  background-color: red;
+    background-color: red;
 }
 
 .absolute-center {
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
 }
 
 .slow {
-  transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 .slowish {
-  transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
 // menu
 .menu {
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.58);
-  background-position: 0% 10%;
-  background-size: cover;
-  background-repeat: no-repeat;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.58);
+    background-position: 0% 10%;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 // CHECKOUT PREVIEW
 
 .item-preview {
-  border: 1px solid rgba(206, 206, 206, 0.3);
-  box-shadow: 0px 1px 2px rgba(206, 206, 206, 0.3);
-  transform: scale(1);
-  transition: transform 0.6s ease;
+    border: 1px solid rgba(206, 206, 206, 0.3);
+    box-shadow: 0px 1px 2px rgba(206, 206, 206, 0.3);
+    transform: scale(1);
+    transition: transform 0.6s ease;
 }
 
 .item-preview:hover {
-  transform: scale(1.04);
-  transition: transform 0.6s ease;
+    transform: scale(1.04);
+    transition: transform 0.6s ease;
 }
 
 .steps-active:before {
-  content: "";
-  border: solid 0.8em transparent;
-  border-top-color: #b81c18;
-  position: absolute;
-  top: -0.6em;
-  left: 50%;
-  margin-left: -0.25em;
+    content: "";
+    border: solid 0.8em transparent;
+    border-top-color: #b81c18;
+    position: absolute;
+    top: -0.6em;
+    left: 50%;
+    margin-left: -0.25em;
 }
 
 .step-text {
-  color: black;
-  font-family: Helvetica;
-  transform: scale(1);
-  transition: transform 0.2s ease;
+    color: black;
+    font-family: Helvetica;
+    transform: scale(1);
+    transition: transform 0.2s ease;
 }
 
 .step-text:hover {
-  color: #b81c18;
-  transform: scale(1.04);
-  transition: transform 0.2s ease;
+    color: #b81c18;
+    transform: scale(1.04);
+    transition: transform 0.2s ease;
 }
 
 // ARTICLES SECTION
 
 .scale-item {
-  transform: scale(1);
-  transition: transform 0.3s ease;
+    transform: scale(1);
+    transition: transform 0.3s ease;
 }
 
 .scale-item:hover {
-  transform: scale(1.04);
-  transition: transform 0.3s ease;
+    transform: scale(1.04);
+    transition: transform 0.3s ease;
 }
 
 // HOME GENE PREVIEW
 .auto {
-  width: 33%;
-  position: absolute;
-  transition: all 0.5s ease-in-out;
-  background-image: url("../static/img/Red.png");
-  background-position: center;
-  background-size: 500px 500px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  border: 5px solid #fff;
-  cursor: pointer;
+    width: 33%;
+    position: absolute;
+    transition: all 0.5s ease-in-out;
+    background-image: url("../static/img/Red.png");
+    background-position: center;
+    background-size: 500px 500px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    border: 5px solid #fff;
+    cursor: pointer;
 }
 .fem {
-  width: 33%;
-  position: absolute;
-  transition: all 0.5s ease-in-out;
-  background-image: url("../static/img/Purple.png");
-  background-position: center;
-  background-size: 500px 500px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  border: 5px solid #fff;
-  cursor: pointer;
+    width: 33%;
+    position: absolute;
+    transition: all 0.5s ease-in-out;
+    background-image: url("../static/img/Purple.png");
+    background-position: center;
+    background-size: 500px 500px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    border: 5px solid #fff;
+    cursor: pointer;
 }
 .cbd {
-  width: 33%;
-  position: absolute;
-  transition: all 0.5s ease-in-out;
-  background-image: url("../static/img/White.png");
-  background-position: center;
-  background-size: 500px 500px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  border: 5px solid #fff;
-  cursor: pointer;
+    width: 33%;
+    position: absolute;
+    transition: all 0.5s ease-in-out;
+    background-image: url("../static/img/White.png");
+    background-position: center;
+    background-size: 500px 500px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    border: 5px solid #fff;
+    cursor: pointer;
 }
 .reg {
-  width: 33%;
-  position: absolute;
-  transition: all 0.5s ease-in-out;
-  background-image: url("../static/img/green.png");
-  background-position: center;
-  background-size: 500px 500px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  border: 5px solid #fff;
-  cursor: pointer;
+    width: 33%;
+    position: absolute;
+    transition: all 0.5s ease-in-out;
+    background-image: url("../static/img/green.png");
+    background-position: center;
+    background-size: 500px 500px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    border: 5px solid #fff;
+    cursor: pointer;
 }
 
 .bannerBuyNow {
-  position: absolute;
-  width: 14rem;
-  left: calc(50% - 7rem);
-  bottom: 3rem;
-  background-color: rgba(0, 0, 0, 0.5);
-  transition: all 0.3s ease-in-out;
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-}
-
-.hr {
-  @include element("filters") {
-    width: 90%;
-    height: 1px;
-    box-shadow: 0 2px 0 0 rgba(204, 31, 26, 0.3);
-  }
-  @include element("cart") {
-    width: 90%;
-    height: 1px;
-    box-shadow: 0 2px 0 0 #d4d4d4;
-  }
-}
-
-@media only screen and (min-width: 1380px) {
-  .bannerBuyNow {
     position: absolute;
     width: 14rem;
     left: calc(50% - 7rem);
-    bottom: 1.5rem;
+    bottom: 3rem;
     background-color: rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease-in-out;
     &:hover {
-      background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.8);
     }
-  }
+}
+
+.hr {
+    @include element("filters") {
+        width: 90%;
+        height: 1px;
+        box-shadow: 0 2px 0 0 rgba(204, 31, 26, 0.3);
+    }
+    @include element("cart") {
+        width: 90%;
+        height: 1px;
+        box-shadow: 0 2px 0 0 #d4d4d4;
+    }
+}
+
+@media only screen and (min-width: 1380px) {
+    .bannerBuyNow {
+        position: absolute;
+        width: 14rem;
+        left: calc(50% - 7rem);
+        bottom: 1.5rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    }
 }
