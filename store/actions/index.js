@@ -182,7 +182,7 @@ let inferStrainData = strain => {
     _name = _name.replace("Cannabis", "").replace("Seeds", "");
     if (genetic != "Mix") _name = _name.replace(genetic, "");
     else _name = _name.replace("Mix", "Mixed");
-    if (genetic == "CBD") _name = _name.replace("CB", "");
+    // if (genetic == "CBD") _name = _name.replace("CB", "");
     return _name.replace(/\s+/g, " ").trim();
   })();
   type = _types[type];
@@ -198,9 +198,9 @@ let inferStrainData = strain => {
     return "low";
   })();
 
-  pcbd = pcbd.map(a => `${a.toFixed(2)}%`).join("-");
-  pcbn = pcbn.map(a => `${a.toFixed(2)}%`).join("-");
-  pthc = pthc.map(a => `${a.toFixed(2)}%`).join("-");
+  //   pcbd = pcbd.map(a => `${a.toFixed(2)}%`).join("-");
+  //   pcbn = pcbn.map(a => `${a.toFixed(2)}%`).join("-");
+  //   pthc = pthc.map(a => `${a.toFixed(2)}%`).join("-");
 
   _yield = (() => {
     let arr = [];

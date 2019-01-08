@@ -59,6 +59,7 @@ const productThumbnail = props => {
   let overlayStyle =
     props.hoverId == props.product._id
       ? {
+          transform: "translateX(-60px)",
           height: "230%",
           width: "150%",
           backgroundColor: "#fff",
@@ -83,10 +84,9 @@ const productThumbnail = props => {
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: "-43px",
-    width: "85%",
+    width: "93%",
     borderTopLeftRadius: "10px",
     borderBottomRightRadius: "10px",
-    background: "#484848",
     color: "white",
     textShadow: "rgb(0, 0, 0) 1px 1px 2px",
     boxShadow: "rgba(60, 58, 58, 0.45) 0px 2px 6px"
@@ -124,7 +124,12 @@ const productThumbnail = props => {
   };
 
   return (
-    <div style={overlayStyle}>
+    <div
+      style={overlayStyle}
+      onClick={() => {
+        props.setCurrentProduct({ product: props.product });
+      }}
+    >
       <Link
         href="/viewProduct"
         as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}
@@ -152,7 +157,11 @@ const productThumbnail = props => {
               className={
                 props.hoverId == props.product._id
                   ? "w-full mt-4 mb-4 text-black font-black text-2xl text-center cursor-pointer"
-                  : "slow text-center text-lg text-grey p-2 font-extrabold z-50"
+                  : `slow text-center text-lg text-grey p-2 font-extrabold z-50 bg-${
+                      props.detail.geneColor[
+                        props.product.genetic.toLowerCase()
+                      ]
+                    }`
               }
             >
               {props.product.name}
