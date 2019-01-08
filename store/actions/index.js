@@ -126,6 +126,9 @@ const query = {
         country
         sotiId
         env
+        sativa
+        indica
+        ruderalis
       }
     }
   `
@@ -198,6 +201,7 @@ let inferStrainData = strain => {
   pcbd = pcbd.map(a => `${a.toFixed(2)}%`).join("-");
   pcbn = pcbn.map(a => `${a.toFixed(2)}%`).join("-");
   pthc = pthc.map(a => `${a.toFixed(2)}%`).join("-");
+
   _yield = (() => {
     let arr = [];
 
