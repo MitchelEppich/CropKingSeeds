@@ -22,7 +22,7 @@ const ArticlePage = props => {
   };
 
   return (
-    <div className="w-full pt-24 relative h-full pb-12 mb-12">
+    <div className="w-full relative h-full pb-12 mb-12">
       <ImgHeader />
       <div className="inline-flex">
         <div style={articleSection} className="ml-24">

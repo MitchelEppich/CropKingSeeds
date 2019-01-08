@@ -40,8 +40,7 @@ const cartItem = props => {
                 quantity: -1
               })
             }
-            className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white"
-          >
+            className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white">
             <FontAwesomeIcon
               icon={faMinus}
               className="fa-sm text-white cursor-pointer"
@@ -60,8 +59,7 @@ const cartItem = props => {
                 quantity: 1
               })
             }
-            className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white"
-          >
+            className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white">
             <FontAwesomeIcon
               icon={faPlus}
               className="fa-sm text-white cursor-pointer"
