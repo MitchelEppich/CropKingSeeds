@@ -6,6 +6,7 @@ import {
   faPrint
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SeedSelectModule from "../../productPage/seedSelectModule";
 
 const productThumbnail = props => {
   let packageStyle =
@@ -90,37 +91,6 @@ const productThumbnail = props => {
     color: "white",
     textShadow: "rgb(0, 0, 0) 1px 1px 2px",
     boxShadow: "rgba(60, 58, 58, 0.45) 0px 2px 6px"
-  };
-
-  let showSeedAmounts = () => {
-    let _product = props.product;
-    let _arr = _product.price;
-    return _arr.map((price, index) => {
-      return (
-        <button
-          key={_product.sotiId + index}
-          onClick={() => props.quickAddToCartQty(index)}
-          className={`${
-            props.shop.quickAddToCartQty === index
-              ? "bg-red-dark text-white w-16 h-12 flex flex-wrap scale-item text-center justify-center leading-normal shadow-md mx-2 font-bold"
-              : "bg-white text-black w-16 flex flex-wrap scale-item  text-center justify-center leading-normal shadow-md mx-2 font-bold"
-          } ${
-            price == -1 ? "opacity-50 pointer-events-none unselectable" : ""
-          }`}
-        >
-          <p>{[5, 10, 25][index]}</p>
-          <span
-            className={
-              props.shop.quickAddToCartQty === index
-                ? "w-full text-white text-sm"
-                : "w-full text-grey"
-            }
-          >
-            seeds
-          </span>
-        </button>
-      );
-    });
   };
 
   return (
@@ -242,7 +212,7 @@ const productThumbnail = props => {
           {props.hoverId == props.product._id ? (
             <React.Fragment>
               {" "}
-              {showSeedAmounts()}{" "}
+              <SeedSelectModule {...props} />
               <button
                 className="bg-red-dark text-center scale-item text-white mx-auto h-12 px-2 py-2"
                 onClick={() => {

@@ -5,42 +5,38 @@ const data = props => {
     let pthc = _product.pthc.map(a => `${a.toFixed(2)}%`).join("-");
     return (
         <div className="w-full px-4">
-            <div className="flex">
-                <div className="w-1/6">
-                    <p className="my-2 font-bold leading-tight">THC</p>
-                    <p className="my-2 font-bold leading-tight">CBD</p>
-                    <p className="my-2 font-bold leading-tight">CBN</p>
+            <div className="flex flex-wrap">
+                <p className="w-1/6 font-bold my-1 py-1">THC</p>
+                <div className="w-5/6 flex text-white justify-between my-2">
+                    <div
+                        className={
+                            _product.thc == "low"
+                                ? "bg-orange mx-1 rounded-lg text-center p-1 text-xs"
+                                : "bg-green mx-1 rounded-lg text-center p-1 text-xs"
+                        }
+                        style={{ width: _product.pthc[1] * 3 + "%" }}>
+                        {pthc}
+                    </div>
                 </div>
-                <div className="w-5/6">
-                    <div className="w-full flex text-white justify-between my-2">
-                        <div
-                            className={
-                                _product.thc == "low"
-                                    ? "bg-orange mx-1 rounded-lg text-center p-1 text-xs"
-                                    : "bg-green mx-1 rounded-lg text-center p-1 text-xs"
-                            }
-                            style={{ width: _product.pthc[1] * 1.5 + "%" }}>
-                            {pthc}
-                        </div>
+                <p className="w-1/6 font-bold my-1 py-1">CBD</p>
+                <div className="w-5/6 flex text-white justify-between my-2">
+                    <div
+                        className={
+                            _product.cbd == "low"
+                                ? "bg-orange mx-1 rounded-lg text-center p-1 text-xs"
+                                : "bg-green mx-1 rounded-lg text-center p-1 text-xs"
+                        }
+                        style={{ width: _product.pcbd[1] * 50 + "%" }}>
+                        {pcbd}
                     </div>
-                    <div className="w-full flex text-white justify-between my-2">
-                        <div
-                            className={
-                                _product.cbd == "low"
-                                    ? "bg-orange mx-1 rounded-lg text-center p-1 text-xs"
-                                    : "bg-green mx-1 rounded-lg text-center p-1 text-xs"
-                            }
-                            style={{ width: _product.pcbd[1] * 100 + "%" }}>
-                            {pcbd}
-                        </div>
-                    </div>
-                    <div className="w-full flex text-white justify-between my-2">
-                        {" "}
-                        <div
-                            className="bg-blue mx-1 rounded-lg text-center p-1 text-xs"
-                            style={{ width: _product.pcbn[1] * 10 + "%" }}>
-                            {pcbn}
-                        </div>
+                </div>
+                <p className="w-1/6 font-bold my-1 py-1">CBN</p>
+                <div className="w-5/6 flex text-white justify-between my-2">
+                    {" "}
+                    <div
+                        className="bg-purple mx-1 rounded-lg text-center p-1 text-xs"
+                        style={{ width: _product.pcbn[1] * 10 + "%" }}>
+                        {pcbn}
                     </div>
                 </div>
             </div>
@@ -50,37 +46,40 @@ const data = props => {
                     className="bg-orange mx-1 rounded-lg text-center my-2"
                     style={{ width: _product.ruderalis * 100 + "%" }}>
                     {_product.ruderalis}
-                    {/* <span
+                    <span
                         className="text-grey"
                         style={{
-                            position: "absolute"
+                            position: "absolute",
+                            transform: "translateX(-20px) translateY(43px) rotate(45deg)"
                         }}>
                         Ruderalis
-                    </span> */}
+                    </span>
                 </div>{" "}
                 <div
                     className="bg-blue mx-1 rounded-lg text-center my-2"
                     style={{ width: _product.indica * 100 + "%" }}>
                     {_product.indica}
-                    {/* <span
+                    <span
                         className="text-grey"
                         style={{
-                            position: "absolute"
+                            position: "absolute",
+                            transform: "translateX(-20px) translateY(33px) rotate(45deg)"
                         }}>
                         Indica
-                    </span> */}
+                    </span>
                 </div>{" "}
                 <div
                     className="bg-green mx-1 rounded-lg text-center my-2"
                     style={{ width: _product.sativa * 100 + "%" }}>
                     {_product.sativa}
-                    {/* <span
+                    <span
                         className="text-grey"
                         style={{
-                            position: "absolute"
+                            position: "absolute",
+                            transform: "translateX(-20px) translateY(33px) rotate(45deg)"
                         }}>
                         Sativa
-                    </span> */}
+                    </span>
                 </div>
             </div>
         </div>

@@ -61,7 +61,8 @@ let colors = {
   "red-shopCart": "#9a1815",
   "red-darkest": "#3b0d0c",
   "red-darker": "#621b18",
-  "red-dark": "#960000",
+  "red-dark": "#A31621",
+  // "red-dark": "#960000",
   red: "#ff0700",
   // red: "#e3342f",
   "red-light": "#ef5753",
@@ -712,6 +713,9 @@ module.exports = {
     "20": "5rem",
     "24": "6rem",
     "32": "8rem",
+    "48": "12rem",
+    "54": "15rem",
+    "64": "16rem",
     videoPlayerPadding: "27rem"
   },
 
@@ -748,6 +752,8 @@ module.exports = {
     "24": "6rem",
     "25": "6.3rem",
     "32": "8rem",
+    "48": "12rem",
+    "54": "15rem",
     "64": "16rem"
   },
 
