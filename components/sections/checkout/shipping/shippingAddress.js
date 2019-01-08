@@ -1,7 +1,75 @@
 import React from "react";
 
+import data from "../../../../static/data";
+
 const ShippingAddress = props => {
   let pageGroup = "shipping";
+
+  if (props.checkout.orderDetails[pageGroup] == null) {
+    let _orderDetails = props.checkout.orderDetails;
+
+    props.modifyOrderDetails({
+      orderDetails: _orderDetails,
+      group: pageGroup,
+      key: undefined,
+      value: undefined
+    });
+  }
+
+  let showCountries = () => {
+    let arr = [
+      <option key="default" disabled value="">
+        Select...
+      </option>,
+      <option key="_Canada" value="Canada">
+        Canada
+      </option>,
+      <option key="_United States" value="United States">
+        United States
+      </option>,
+      <option key="hr" disabled>
+        -------
+      </option>
+    ];
+    for (let country of data.countries) {
+      arr.push(
+        <option key={country} value={country}>
+          {country}
+        </option>
+      );
+    }
+    return arr;
+  };
+
+  let showOptions = () => {
+    if (props.checkout.orderDetails[pageGroup] == null) return null;
+    let _country = props.checkout.orderDetails[pageGroup].country;
+    let _data;
+    switch (_country) {
+      case "Canada":
+        _data = data.provincesCA;
+        break;
+      case "United States":
+        _data = data.statesUS;
+        break;
+      default:
+        _data = [];
+    }
+
+    let arr = [
+      <option key="default" disabled value="">
+        Select...
+      </option>
+    ];
+    for (let state of _data) {
+      arr.push(
+        <option key={state} value={state}>
+          {state}
+        </option>
+      );
+    }
+    return arr;
+  };
 
   return (
     <div className="w-full mt-6">
@@ -26,7 +94,7 @@ const ShippingAddress = props => {
                   let _target = e.target;
                   let _key = _target.id;
                   let _value = _target.value;
-                  let _tag = "sFirstName sLastName";
+                  let _tag = "FirstName LastName";
 
                   props.modifyOrderDetails({
                     orderDetails: _orderDetails,
@@ -55,7 +123,7 @@ const ShippingAddress = props => {
                   let _target = e.target;
                   let _key = _target.id;
                   let _value = _target.value;
-                  let _tag = "sEmail";
+                  let _tag = "Email";
 
                   props.modifyOrderDetails({
                     orderDetails: _orderDetails,
@@ -85,7 +153,7 @@ const ShippingAddress = props => {
                 let _target = e.target;
                 let _key = _target.id;
                 let _value = _target.value;
-                let _tag = "sAddress";
+                let _tag = "Address";
 
                 props.modifyOrderDetails({
                   orderDetails: _orderDetails,
@@ -114,7 +182,7 @@ const ShippingAddress = props => {
                 let _target = e.target;
                 let _key = _target.id;
                 let _value = _target.value;
-                let _tag = "sApartment";
+                let _tag = "Apartment";
 
                 props.modifyOrderDetails({
                   orderDetails: _orderDetails,
@@ -144,7 +212,7 @@ const ShippingAddress = props => {
                   let _target = e.target;
                   let _key = _target.id;
                   let _value = _target.value;
-                  let _tag = "sPostalZip";
+                  let _tag = "PostalZip";
 
                   props.modifyOrderDetails({
                     orderDetails: _orderDetails,
@@ -173,7 +241,7 @@ const ShippingAddress = props => {
                   let _target = e.target;
                   let _key = _target.id;
                   let _value = _target.value;
-                  let _tag = "sCity";
+                  let _tag = "City";
 
                   props.modifyOrderDetails({
                     orderDetails: _orderDetails,
@@ -188,21 +256,15 @@ const ShippingAddress = props => {
               />
             </div>
             <div className="w-1/3">
-              <input
-                type="text"
-                name=""
+              <select
                 id="country"
-                value={
-                  props.checkout.orderDetails[pageGroup] != null
-                    ? props.checkout.orderDetails[pageGroup].country || ""
-                    : undefined
-                }
+                value={props.checkout.orderDetails[pageGroup].country || ""}
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;
                   let _key = _target.id;
                   let _value = _target.value;
-                  let _tag = "sCountry";
+                  let _tag = "Country";
 
                   props.modifyOrderDetails({
                     orderDetails: _orderDetails,
@@ -213,39 +275,78 @@ const ShippingAddress = props => {
                   });
                 }}
                 placeholder="Country"
-                className="p-2 w-full"
-              />
+                className="w-full"
+                style={{
+                  padding: "0.35rem"
+                }}
+              >
+                {showCountries()}
+              </select>
             </div>
           </div>
           <div className="w-full p-2 inline-flex">
             <div className="w-1/2">
-              <input
-                type="text"
-                name=""
-                id="state"
-                value={
-                  props.checkout.orderDetails[pageGroup] != null
-                    ? props.checkout.orderDetails[pageGroup].state || ""
-                    : undefined
-                }
-                onChange={e => {
-                  let _orderDetails = props.checkout.orderDetails;
-                  let _target = e.target;
-                  let _key = _target.id;
-                  let _value = _target.value;
-                  let _tag = "sState";
+              {props.checkout.orderDetails[pageGroup] != null &&
+              ["Canada", "United States"].includes(
+                props.checkout.orderDetails[pageGroup].country
+              ) ? (
+                <select
+                  type="text"
+                  name=""
+                  id="state"
+                  value={props.checkout.orderDetails[pageGroup].state || ""}
+                  onChange={e => {
+                    let _orderDetails = props.checkout.orderDetails;
+                    let _target = e.target;
+                    let _key = _target.id;
+                    let _value = _target.value;
+                    let _tag = "State";
 
-                  props.modifyOrderDetails({
-                    orderDetails: _orderDetails,
-                    group: pageGroup,
-                    key: _key,
-                    value: _value,
-                    tag: _tag
-                  });
-                }}
-                placeholder="Province"
-                className="p-2 w-full"
-              />
+                    props.modifyOrderDetails({
+                      orderDetails: _orderDetails,
+                      group: pageGroup,
+                      key: _key,
+                      value: _value,
+                      tag: _tag
+                    });
+                  }}
+                  placeholder="Province"
+                  className="w-full"
+                  style={{
+                    padding: "0.35rem"
+                  }}
+                >
+                  {showOptions()}
+                </select>
+              ) : (
+                <input
+                  type="text"
+                  name=""
+                  id="state"
+                  value={
+                    props.checkout.orderDetails[pageGroup] != null
+                      ? props.checkout.orderDetails[pageGroup].state || ""
+                      : undefined
+                  }
+                  onChange={e => {
+                    let _orderDetails = props.checkout.orderDetails;
+                    let _target = e.target;
+                    let _key = _target.id;
+                    let _value = _target.value;
+                    let _tag = "State";
+
+                    props.modifyOrderDetails({
+                      orderDetails: _orderDetails,
+                      group: pageGroup,
+                      key: _key,
+                      value: _value,
+                      tag: _tag
+                    });
+                  }}
+                  placeholder="Province"
+                  className="p-2 w-full"
+                />
+              )}
             </div>
             <div className="w-1/2 pl-2">
               <input
@@ -262,7 +363,7 @@ const ShippingAddress = props => {
                   let _target = e.target;
                   let _key = _target.id;
                   let _value = _target.value;
-                  let _tag = "sPhone";
+                  let _tag = "Phone";
 
                   props.modifyOrderDetails({
                     orderDetails: _orderDetails,
