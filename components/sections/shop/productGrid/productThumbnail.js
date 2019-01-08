@@ -2,12 +2,11 @@ import Link from "next/link";
 import {
   faSeedling,
   faClock,
-  faMinus,
-  faPlus,
-  faShoppingCart
+  faEnvelope,
+  faPrint
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import AddToCart from "../../productPage/addToCart";
+import SeedSelectModule from "../../productPage/seedSelectModule";
 
 const productThumbnail = props => {
   let packageStyle =
@@ -92,37 +91,6 @@ const productThumbnail = props => {
     color: "white",
     textShadow: "rgb(0, 0, 0) 1px 1px 2px",
     boxShadow: "rgba(60, 58, 58, 0.45) 0px 2px 6px"
-  };
-
-  let currentProduct = props.viewProduct.currentProduct;
-
-  let showSeedAmounts = () => {
-    let _product = props.viewProduct.currentProduct;
-    let _arr = _product.price;
-    return _arr.map((price, index) => {
-      return (
-        <button
-          key={_product.sotiId + index}
-          onClick={() => props.quickAddToCartQty(index)}
-          className={`${
-            props.shop.quickAddToCartQty === index
-              ? "bg-red-dark text-white w-18 h-6 flex flex-wrap text-center justify-center leading-normal uppercase font-bold"
-              : "bg-white text-black w-18 h-6 flex flex-wrap text-center justify-center leading-normal uppercase font-bold"
-          } ${
-            price == -1 ? "opacity-50 pointer-events-none unselectable" : ""
-          }`}>
-          {[5, 10, 25][index]}
-          <span
-            className={
-              props.shop.quickAddToCartQty === index
-                ? "text-white text-xs h-6 pt-1"
-                : "text-red-dark text-xs h-6 pt-1"
-            }>
-            seeds
-          </span>
-        </button>
-      );
-    });
   };
 
   return (
@@ -224,100 +192,27 @@ const productThumbnail = props => {
               : "flex flex-wrap justify-center px-4 hidden"
           }>
           {props.hoverId == props.product._id ? (
-            <div className="w-full inline-flex flex items-center">
-              <div className="w-2/3 flex flex-wrap mr-2">
-                <div className="w-54 h-12 flex flex-wrap content-center">
-                  {showSeedAmounts()}
-                  <div
-                    style={{
-                      boxShadow:
-                        "0 15px 20px 0 rgba(0,0,0,0.08), 0 5px 10px 0 rgba(0,0,0,0.08), 0 -5px 10px 0 rgba(0,0,0,0.08)"
-                    }}
-                    className="w-54 h-5 flex justify-between">
-                    <button
-                      onClick={() => props.modifyCart({})}
-                      className="w-6 bg-grey-light text-sm text-white">
-                      <FontAwesomeIcon
-                        icon={faMinus}
-                        className="fa-sm text-white cursor-pointer"
-                      />
-                    </button>
-                    <input
-                      defaultValue="1"
-                      className="text-lg text-center w-48 border-0 font-bold pt-1 leading-none"
-                      type="number"
-                    />
-                    <button
-                      onClick={() => props.modifyCart({})}
-                      className="w-6 bg-grey-light text-sm text-white">
-                      <FontAwesomeIcon
-                        icon={faPlus}
-                        className="fa-sm text-white cursor-pointer"
-                      />
-                    </button>
-                  </div>
-                </div>
-
-                {/* <Link href="/checkout">
-                  <button className="bg-red-dark h-12 w-32 text-center text-white p-4" onClick={() => {
-                      let _identifier = props.product.sotiId + [5, 10, 25][props.shop.quickAddToCartQty];
-                      props.modifyCart({
-                        items: props.cart.items,
-                        action: "APPEND",
-                        productIdentifier: _identifier,
-                        product: props.product,
-                        quantity: 1
-                      });
-                    }}>
-                    Buy Now
-                  </button>
-                </Link> */}
-              </div>
-              <div className="w-1/3 ml-2">
-                <button
-                  className="bg-red-dark text-xs text-center font-extrabold text-white p-4"
-                  onClick={() => {
-                    let _identifier =
-                      props.product.sotiId +
-                      [5, 10, 25][props.shop.quickAddToCartQty];
-                    props.modifyCart({
-                      items: props.cart.items,
-                      action: "APPEND",
-                      productIdentifier: _identifier,
-                      product: props.product,
-                      quantity: 1
-                    });
-                  }}>
-                  Add to Cart
-                  {/* <FontAwesomeIcon
-                    icon={faShoppingCart}
-                    className="ml-2 fa-lg"
-                  /> */}
-                </button>
-              </div>
-            </div> // <React.Fragment>
-          ) : //   {" "}
-          //   {showSeedAmounts()}{" "}
-          //   <button
-          //     className="bg-red-dark text-center scale-item text-white mx-auto h-12 px-2 py-2"
-          //     onClick={() => {
-          //       let _identifier =
-          //         props.product.sotiId +
-          //         [5, 10, 25][props.shop.quickAddToCartQty];
-          //       props.modifyCart({
-          //         items: props.cart.items,
-          //         action: "APPEND",
-          //         productIdentifier: _identifier,
-          //         product: props.product,
-          //         quantity: 1
-          //       });
-          //     }}
-          //   >
-          //     Add to Cart
-          //   </button>{" "}
-          // </React.Fragment>
-
-          null}
+            <React.Fragment>
+              {" "}
+              <SeedSelectModule {...props} />
+              <button
+                className="bg-red-dark text-center scale-item text-white mx-auto h-12 px-2 py-2"
+                onClick={() => {
+                  let _identifier =
+                    props.product.sotiId +
+                    [5, 10, 25][props.shop.quickAddToCartQty];
+                  props.modifyCart({
+                    items: props.cart.items,
+                    action: "APPEND",
+                    productIdentifier: _identifier,
+                    product: props.product,
+                    quantity: 1
+                  });
+                }}>
+                Add to Cart
+              </button>{" "}
+            </React.Fragment>
+          ) : null}
         </div>
         <div
           className={
