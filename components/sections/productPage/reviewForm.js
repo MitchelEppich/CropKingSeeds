@@ -31,7 +31,7 @@ const reviewForm = props => {
             />
             <div className="w-1/3 content-center flex justify-around mx-auto mt-4">{reviewIcons}</div>
             <input
-                className="w-1/3 mx-auto h-12 mt-2 hover:bg-red-dark bg-red-lighter text-white cursor-pointer"
+                className="w-1/3 mx-auto h-12 mt-2 hover:bg-red-dark bg-red-light text-white cursor-pointer"
                 type="submit"
             />
         </form>
