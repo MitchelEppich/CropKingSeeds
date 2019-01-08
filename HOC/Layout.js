@@ -14,14 +14,13 @@ import Header from "../components/partials/header";
 import Footer from "../components/partials/footer";
 
 class Layout extends Component {
-  componentDidMount() { }
+  componentDidMount() {
+    this.props.getStrains();
+  }
 
-  componentDidUpdate() { }
+  componentDidUpdate() {}
 
   render() {
-
-
-
     return (
       <div className="bg-smoke-grey">
         <Header {...this.props} />
@@ -41,7 +40,8 @@ class Layout extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
-    modifyCart: input => dispatch(actions.modifyCart(input)),
+    getStrains: () => dispatch(actions.getStrains()),
+    modifyCart: input => dispatch(actions.modifyCart(input))
   };
 };
 

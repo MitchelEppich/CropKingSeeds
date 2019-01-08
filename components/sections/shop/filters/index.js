@@ -1,8 +1,13 @@
 const filters = props => {
   let activeButton =
-    "border border-red-dark p-2 m-1 font-bold slow bg-red-dark text-white";
+    "border border-red-dark buttonStyle p-2 m-1 font-bold slow bg-red-dark text-white";
   let notActiveButton =
-    "text-red-dark border border-red-dark  p-2 m-1 font-bold slow hover:bg-red-dark hover:text-white";
+    "text-grey border bg-grey-lightest border-grey-lightest p-2 m-1 font-bold slow hover:bg-red-dark hover:text-white";
+
+  let buttonStyle = {
+    borderTopLeftRadius: "10px",
+    borderBottomRightRadius: "10px"
+  };
 
   return (
     <div className="w-full h-500 pt-12 text-red-dark">
@@ -16,12 +21,12 @@ const filters = props => {
                 type: "Sativa"
               })
             }
+            style={buttonStyle}
             className={
               props.shop.activeFilters.type == "Sativa"
                 ? activeButton
                 : notActiveButton
-            }
-          >
+            }>
             Sativa
           </button>
         </li>
@@ -33,12 +38,12 @@ const filters = props => {
                 type: "Indica"
               })
             }
+            style={buttonStyle}
             className={
               props.shop.activeFilters.type == "Indica"
                 ? activeButton
                 : notActiveButton
-            }
-          >
+            }>
             Indica
           </button>
         </li>
@@ -50,12 +55,12 @@ const filters = props => {
                 type: "Hybrid"
               })
             }
+            style={buttonStyle}
             className={
               props.shop.activeFilters.type == "Hybrid"
                 ? activeButton
                 : notActiveButton
-            }
-          >
+            }>
             Hybrid
           </button>
         </li>
@@ -72,13 +77,13 @@ const filters = props => {
                 multiple: true
               })
             }
+            style={buttonStyle}
             className={
               props.shop.activeFilters.genetic != null &&
               props.shop.activeFilters.genetic.includes("Autoflower")
                 ? activeButton
                 : notActiveButton
-            }
-          >
+            }>
             Autoflower
           </button>
         </li>
@@ -91,13 +96,13 @@ const filters = props => {
                 multiple: true
               })
             }
+            style={buttonStyle}
             className={
               props.shop.activeFilters.genetic != null &&
               props.shop.activeFilters.genetic.includes("Feminized")
                 ? activeButton
                 : notActiveButton
-            }
-          >
+            }>
             Feminized
           </button>
         </li>
@@ -110,13 +115,13 @@ const filters = props => {
                 multiple: true
               })
             }
+            style={buttonStyle}
             className={
               props.shop.activeFilters.genetic != null &&
               props.shop.activeFilters.genetic.includes("Regular")
                 ? activeButton
                 : notActiveButton
-            }
-          >
+            }>
             Regular
           </button>
         </li>
@@ -129,13 +134,13 @@ const filters = props => {
                 multiple: true
               })
             }
+            style={buttonStyle}
             className={
               props.shop.activeFilters.genetic != null &&
               props.shop.activeFilters.genetic.includes("CBD")
                 ? activeButton
                 : notActiveButton
-            }
-          >
+            }>
             CBD
           </button>
         </li>
@@ -148,13 +153,13 @@ const filters = props => {
                 multiple: true
               })
             }
+            style={buttonStyle}
             className={
               props.shop.activeFilters.genetic != null &&
               props.shop.activeFilters.genetic.includes("Dwarf")
                 ? activeButton
                 : notActiveButton
-            }
-          >
+            }>
             Dwarf
           </button>
         </li>
@@ -167,13 +172,13 @@ const filters = props => {
                 multiple: true
               })
             }
+            style={buttonStyle}
             className={
               props.shop.activeFilters.genetic != null &&
               props.shop.activeFilters.genetic.includes("Mix")
                 ? activeButton
                 : notActiveButton
-            }
-          >
+            }>
             Mix
           </button>
         </li>
@@ -191,12 +196,12 @@ const filters = props => {
                 thc: "low"
               })
             }
+            style={buttonStyle}
             className={
               props.shop.activeFilters.thc == "low"
                 ? activeButton
                 : notActiveButton
-            }
-          >
+            }>
             Low
           </button>
         </li>
@@ -208,12 +213,12 @@ const filters = props => {
                 thc: "high"
               })
             }
+            style={buttonStyle}
             className={
               props.shop.activeFilters.thc == "high"
                 ? activeButton
                 : notActiveButton
-            }
-          >
+            }>
             High
           </button>
         </li>
@@ -231,12 +236,12 @@ const filters = props => {
                 cbd: "low"
               })
             }
+            style={buttonStyle}
             className={
               props.shop.activeFilters.cbd == "low"
                 ? activeButton
                 : notActiveButton
-            }
-          >
+            }>
             Low
           </button>
         </li>
@@ -248,21 +253,21 @@ const filters = props => {
                 cbd: "high"
               })
             }
+            style={buttonStyle}
             className={
               props.shop.activeFilters.cbd == "high"
                 ? activeButton
                 : notActiveButton
-            }
-          >
+            }>
             High
           </button>
         </li>
       </ul>
       <hr className="hr__filters" />
       <button
+        style={{ width: "90%" }}
         onClick={() => props.clearFilters()}
-        className="text-red-dark border border-red-dark  p-2 w-1/2 m-2 mt-4 mx-auto block font-bold slowish hover:bg-red-dark hover:text-white"
-      >
+        className="text-white bg-red-dark p-2 m-2 mt-4 mx-auto block font-bold slowish hover:bg-grey hover:text-white">
         Clear
       </button>
     </div>

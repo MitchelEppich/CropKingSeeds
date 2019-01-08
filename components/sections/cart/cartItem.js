@@ -13,7 +13,7 @@ const cartItem = props => {
         <h3 className="text-black text-xl w-300 h-16 pr-3 mt-2">
           {props.item.product.name}
           <span className="text-base flex text-grey-light">
-            - {props.item.amount + " pack"}
+            {props.item.amount + " pack"}
           </span>
         </h3>
         <div className="h-10 w-10 cursor-pointer absolute pin-t pin-r pt-1 hover:bg-red-dark hover:text-white text-center text-grey">
@@ -40,8 +40,7 @@ const cartItem = props => {
                 quantity: -1
               })
             }
-            className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white"
-          >
+            className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white">
             <FontAwesomeIcon
               icon={faMinus}
               className="fa-sm text-white cursor-pointer"
@@ -60,8 +59,7 @@ const cartItem = props => {
                 quantity: 1
               })
             }
-            className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white"
-          >
+            className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white">
             <FontAwesomeIcon
               icon={faPlus}
               className="fa-sm text-white cursor-pointer"

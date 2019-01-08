@@ -55,10 +55,9 @@ class Index extends Component {
             }}
             className={
               hoverId == product._id
-                ? "w-64 h-64 text-white relative z-50 slowish"
-                : "w-64 h-64 text-white relative z-0 slowish"
-            }
-          >
+                ? "w-64 h-64 mx-6 mt-4 text-white relative z-50 slowish"
+                : "w-64 h-64 mx-6 mt-8 text-white relative z-0 slowish"
+            }>
             <ProductThumbnail
               hoverId={hoverId}
               product={product}
@@ -75,8 +74,7 @@ class Index extends Component {
             this.props.shop.viewProductExpanded != null
               ? "flex flex-wrap justify-start"
               : "flex flex-wrap justify-start pt-16"
-          }
-        >
+          }>
           {products}
         </div>
       </div>

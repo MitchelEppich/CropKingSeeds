@@ -12,33 +12,30 @@ import ProductGrid from "../components/sections/shop/productGrid";
 import FeaturedStrainThumbnails from "../components/sections/shop/featuredStrainThumbnails";
 
 class Index extends Component {
-  componentWillMount() {
-    this.props.getStrains();
-  }
+  componentWillMount() {}
 
   render() {
     return (
       <Layout>
         {this.props.misc.strains != null &&
-          this.props.misc.strains.length > 0 ? (
-            <React.Fragment>
-              <div className="flex flex-wrap">
-                <div
-                  className={
-                    this.props.shop.viewProductExpanded != null
-                      ? "hidden"
-                      : "w-1/4 slow"
-                  }
-                >
-                  <Filters {...this.props} />
-                  {/*<FeaturedStrainThumbnails {...this.props} />*/}
-                </div>
-                <ProductGrid {...this.props} />
+        this.props.misc.strains.length > 0 ? (
+          <React.Fragment>
+            <div className="flex flex-wrap">
+              <div
+                className={
+                  this.props.shop.viewProductExpanded != null
+                    ? "hidden"
+                    : "w-1/4 slow"
+                }>
+                <Filters {...this.props} />
+                {/*<FeaturedStrainThumbnails {...this.props} />*/}
               </div>
-            </React.Fragment>
-          ) : (
-            <p>Loading...</p>
-          )}
+              <ProductGrid {...this.props} />
+            </div>
+          </React.Fragment>
+        ) : (
+          <p>Loading...</p>
+        )}
       </Layout>
     );
   }
