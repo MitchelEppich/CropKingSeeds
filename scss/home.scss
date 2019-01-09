@@ -328,6 +328,14 @@ h4 {
         height: 1px;
         box-shadow: 0 2px 0 0 #d4d4d4;
     }
+    @include element("germinationSteps") {
+        width: 75%;
+        height: 10px;
+        position: absolute;
+        left: 12.25%;
+        top: 5px;
+        box-shadow: 0 10px 0 0 #d4d4d4;
+    }
 }
 
 @media only screen and (min-width: 1380px) {

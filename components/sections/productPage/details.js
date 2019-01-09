@@ -9,7 +9,7 @@ const details = props => {
     });
 
     return (
-        <div className="w-full mt-8">
+        <div className=" mt-8">
             {props.viewProduct.showFullDescription ? (
                 <p>
                     {_product.description}

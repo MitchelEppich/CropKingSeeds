@@ -16,6 +16,7 @@ import ShopReducer from "./shop";
 import PartnerReducer from "./partner";
 import ViewProductReducer from "./viewProduct";
 import DetailReducer from "./detail";
+import GerminationReducer from "./germination";
 
 const initialState = {
     visibleScreen: ["dogs"], // When [] show main screen
@@ -184,5 +185,6 @@ export default combineReducers({
     shop: ShopReducer,
     partner: PartnerReducer,
     viewProduct: ViewProductReducer,
-    detail: DetailReducer
+    detail: DetailReducer,
+    germination: GerminationReducer
 });
