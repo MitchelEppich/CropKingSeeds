@@ -212,7 +212,7 @@ const productThumbnail = props => {
           {props.hoverId == props.product._id ? (
             <React.Fragment>
               {" "}
-              <SeedSelectModule {...props} />
+              <SeedSelectModule {...props} product={props.product} />
               <button
                 className="bg-red-dark text-center scale-item text-white mx-auto h-12 px-2 py-2"
                 onClick={() => {
@@ -224,7 +224,7 @@ const productThumbnail = props => {
                     action: "APPEND",
                     productIdentifier: _identifier,
                     product: props.product,
-                    quantity: 1
+                    quantity: props.cart.potentialQuantity
                   });
                 }}
               >

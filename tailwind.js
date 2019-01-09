@@ -69,7 +69,7 @@ let colors = {
   "red-lighter": "#f9acaa",
   "red-lightest": "#fcebea",
   "red-sativa": "#E53B3A",
-  "red-feminized": "#E55F6d",
+  "orange-feminized": "#FFC90A",
 
   "orange-darkest": "#462a16",
   "orange-darker": "#613b1f",
@@ -114,7 +114,7 @@ let colors = {
   "blue-lighter": "#bcdefa",
   "blue-lightest": "#eff8ff",
   "blue-indica": "#2286E5",
-  "blue-cbd": "#6FDFE5",
+  "green-cbd": "#34945F",
   "blue-dwarf": "#133BBF",
 
   "indigo-darkest": "#191e38",

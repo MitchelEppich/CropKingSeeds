@@ -41,7 +41,9 @@ const mapDispatchToProps = dispatch => {
   return {
     setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
     getStrains: () => dispatch(actions.getStrains()),
-    modifyCart: input => dispatch(actions.modifyCart(input))
+    modifyCart: input => dispatch(actions.modifyCart(input)),
+    modifyPotentialQuantity: input =>
+      dispatch(actions.modifyPotentialQuantity(input))
   };
 };
 

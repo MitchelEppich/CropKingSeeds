@@ -26,7 +26,8 @@ class Index extends Component {
                   this.props.shop.viewProductExpanded != null
                     ? "hidden"
                     : "w-1/4 slow"
-                }>
+                }
+              >
                 <Filters {...this.props} />
                 {/*<FeaturedStrainThumbnails {...this.props} />*/}
               </div>
@@ -50,6 +51,8 @@ const mapDispatchToProps = dispatch => {
     clearFilters: () => dispatch(actions.clearFilters()),
     quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
     modifyCart: input => dispatch(actions.modifyCart(input)),
+    modifyPotentialQuantity: input =>
+      dispatch(actions.modifyPotentialQuantity(input)),
     clearCart: () => dispatch(actions.clearCart())
   };
 };

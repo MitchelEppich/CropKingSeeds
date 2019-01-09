@@ -11,7 +11,8 @@ import Navigation from "./navigation";
 
 const actionTypes = {
   CLEAR_CART: "CLEAR_CART",
-  MODIFY_CART: "MODIFY_CART"
+  MODIFY_CART: "MODIFY_CART",
+  MODIFY_POTENTIAL_QUANTITY: "MODIFY_POTENTIAL_QUANTITY"
 };
 
 const getActions = uri => {
@@ -19,6 +20,28 @@ const getActions = uri => {
     clearCart: () => {
       return {
         type: actionTypes.CLEAR_CART
+      };
+    },
+    modifyPotentialQuantity: input => {
+      let _potentialQuantity = input.potentialQuantity;
+      let _action = input.action;
+
+      let _quantity = input.quantity;
+
+      switch (_action) {
+        case "SET":
+          break;
+        case "MODIFY":
+          _quantity = Math.max(1, _quantity + _potentialQuantity);
+          break;
+        case "CLEAR":
+          _quantity = 1;
+          break;
+      }
+
+      return {
+        type: actionTypes.MODIFY_POTENTIAL_QUANTITY,
+        input: _quantity
       };
     },
     modifyCart: input => {

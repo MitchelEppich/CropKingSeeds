@@ -54,6 +54,11 @@ class Index extends Component {
                 _index++;
               }
               this.props.quickAddToCartQty(_index);
+              this.props.modifyPotentialQuantity({
+                potentialQuantity: this.props.cart.potentialQuantity,
+                action: "SET",
+                quantity: 1
+              });
             }}
             onMouseLeave={() => {
               this.props.setHoverId(product._id);
@@ -95,7 +100,9 @@ const mapDispatchToProps = dispatch => {
     quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
     expandProduct: id => dispatch(actions.expandProduct(id)),
     modifyCart: input => dispatch(actions.modifyCart(input)),
-    setCurrentProduct: input => dispatch(actions.setCurrentProduct(input))
+    setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
+    modifyPotentialQuantity: input =>
+      dispatch(actions.modifyPotentialQuantity(input))
   };
 };
 
