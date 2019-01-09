@@ -5,7 +5,7 @@ library.add(faPlus, faMinus);
 
 const seedSelectModule = props => {
     let showSeedAmounts = () => {
-        let _product = props.viewProduct.currentProduct;
+        let _product = props.product || props.viewProduct.currentProduct;
         let _arr = _product.price;
         return _arr.map((price, index) => {
             return (
