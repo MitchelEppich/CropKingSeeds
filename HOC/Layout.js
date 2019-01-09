@@ -96,7 +96,6 @@ class Layout extends Component {
             retina_detect: true
           }}
         /> */}
-                >>>>>>> 4dafeb8008ec46c270557f0a0bca7f874e3afb2c
                 <Header {...this.props} />
                 <div className="pt-24">
                     <div className="bg-white relative z-30 px-4 py-4 w-1300 mx-auto shadow-md">
