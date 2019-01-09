@@ -7,7 +7,7 @@ const ContactInfo = props => {
       <div className="w-container mx-auto p-2">
         <p className="p-4 text-grey font-extrabold text-3/5xl">Contact Info</p>
       </div>
-      <div className="w-full mt-4 p-4">
+      <div className="w-container mx-auto mt-4 p-4">
         <p>Canada: (604) 563 0291</p>
         <p>USA: </p>
         <p>Phone: </p>

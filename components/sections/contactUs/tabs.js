@@ -17,7 +17,7 @@ const Tabs = props => {
             clearAll: true
           })
         }
-        className="w-1/3 mx-12 p-2 text-center shadow-lg bg-white relative h-300 scale-item">
+        className="w-1/3 mx-12 p-2 text-center shadow-lg bg-white relative h-300 scale-item cursor-pointer">
         <FontAwesomeIcon
           icon={faPhone}
           className="fa-7x text-grey-lighter my-6"
@@ -35,7 +35,7 @@ const Tabs = props => {
             clearAll: true
           })
         }
-        className="w-1/3 mx-12 p-2 text-center shadow-lg bg-white relative h-300 scale-item">
+        className="w-1/3 mx-12 p-2 text-center shadow-lg bg-white relative h-300 scale-item cursor-pointer">
         <FontAwesomeIcon
           icon={faEnvelope}
           className="fa-7x text-grey-lighter my-6"
@@ -47,7 +47,7 @@ const Tabs = props => {
         </div>
       </div>
 
-      <div className="w-1/3 mx-12 p-2 text-center shadow-lg bg-white relative h-300 scale-item">
+      <div className="w-1/3 mx-12 p-2 text-center shadow-lg bg-white relative h-300 scale-item cursor-pointer">
         <FontAwesomeIcon
           icon={faComments}
           className="fa-7x text-grey-lighter my-6"
