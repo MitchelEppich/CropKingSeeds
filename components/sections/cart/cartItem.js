@@ -7,8 +7,8 @@ library.add(faPlus, faMinus, faTimes);
 //returns a cart item with the strain thumbnail, name, and quantity (also has buttons to increase or reduce qty)
 const cartItem = props => {
   return (
-    <div className="flex justify-between px-4 py-2 scale-item">
-      <img className="h-32" src={props.item.product.packageImg} />
+    <div className="flex justify-between px-4 py-2">
+      <img className="h-32 mx-6" src={props.item.product.packageImg} />
       <div className="flex relative flex-wrap justify-between">
         <h3 className="text-black text-xl w-300 h-16 pr-3 mt-2">
           {props.item.product.name}

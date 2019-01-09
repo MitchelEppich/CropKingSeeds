@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Footer = props => {
   return (
     <div
-      style={{ background: "#161925" }}
+      // style={{ background: "#161925" }}
       className="w-full h-300 mt-24 inline-flex bg-grey relative">
       <div className="w-container mx-auto inline-flex">
         <div

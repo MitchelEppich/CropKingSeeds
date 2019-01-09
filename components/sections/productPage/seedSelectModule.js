@@ -14,20 +14,19 @@ const seedSelectModule = props => {
           onClick={() => props.quickAddToCartQty(index)}
           className={`${
             props.shop.quickAddToCartQty === index
-              ? "bg-red-dark text-white w-18 h-6 flex flex-wrap text-center justify-center leading-normal uppercase font-bold"
-              : "bg-white text-black w-18 h-6 flex flex-wrap text-center justify-center leading-normal uppercase font-bold"
+              ? "bg-red-dark text-white w-1/3 h-10 mr-1 flex flex-wrap text-center justify-center leading-normal uppercase font-bold border border-grey-lightest hover:bg-grey-light hover:text-white "
+              : "bg-white text-black w-1/3 h-10 flex mr-1 flex-wrap text-center justify-center leading-normal uppercase font-bold border border-grey-lightest hover:bg-grey-light hover:text-white"
           } ${
             price == -1 ? "opacity-50 pointer-events-none unselectable" : ""
-          }`}
-        >
+          }`}>
           {[5, 10, 25][index]}
           <span
             className={
               props.shop.quickAddToCartQty === index
-                ? "text-white text-xs h-6 pt-1"
-                : "text-red-dark text-xs h-6 pt-1"
-            }
-          >
+                ? "text-white text-xs h-6 pt-1 ml-1"
+                : "text-xs h-6 pt-1 ml-1"
+            }>
+            {" "}
             seeds
           </span>
         </button>
@@ -36,15 +35,16 @@ const seedSelectModule = props => {
   };
 
   return (
-    <div className="w-54 h-12 flex flex-wrap content-center">
-      {showSeedAmounts()}
+    <div className="w-full flex flex-wrap content-center my-2">
+      <div className="inline-flex w-full">{showSeedAmounts()}</div>
       <div
-        style={{
-          boxShadow:
-            "0 1px 2px 0 rgba(0,0,0,0.08), 0 -2px 2px 0 rgba(0,0,0,0.08)"
-        }}
-        className="w-54 h-6 flex justify-between"
-      >
+        style={
+          {
+            // boxShadow:
+            //   "0 1px 2px 0 rgba(0,0,0,0.08), 0 -2px 2px 0 rgba(0,0,0,0.08)"
+          }
+        }
+        className="w-full h-8 mt-1 flex justify-between border border-grey-lightest">
         <button
           onClick={() =>
             props.modifyPotentialQuantity({
@@ -53,8 +53,7 @@ const seedSelectModule = props => {
               quantity: -1
             })
           }
-          className="w-6 bg-grey-light text-sm text-white"
-        >
+          className="w-6 bg-grey-light text-sm text-white">
           <FontAwesomeIcon
             icon={faMinus}
             className="fa-sm text-white cursor-pointer"
@@ -91,8 +90,7 @@ const seedSelectModule = props => {
               quantity: 1
             })
           }
-          className="w-6 bg-grey-light text-sm text-white"
-        >
+          className="w-6 bg-grey-light text-sm text-white">
           <FontAwesomeIcon
             icon={faPlus}
             className="fa-sm text-white cursor-pointer"

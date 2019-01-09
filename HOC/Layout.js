@@ -24,13 +24,8 @@ class Layout extends Component {
   render() {
     return (
       <div
-        style={{
-          backgroundColor: "#9A1815",
-          width: "100vw",
-          height: "100%"
-        }}
-      >
-        <Particles
+        style={{ backgroundColor: "#9A1815", width: "100vw", height: "100%" }}>
+        {/* <Particles
           width="100vw"
           height="100vh"
           style={{ position: "absolute", zIndex: 0 }}
@@ -38,6 +33,7 @@ class Layout extends Component {
             particles: {
               number: { value: 80, density: { enable: true, value_area: 800 } },
               color: { value: "#ffffff" },
+
               shape: {
                 type: "image",
                 stroke: { width: 0, color: "#FFF" },
@@ -45,7 +41,8 @@ class Layout extends Component {
                 image: {
                   src: "../static/img/cannabis.svg",
                   width: 100,
-                  height: 100
+                  height: 100,
+                  color: { value: "#ffffff" }
                 }
               },
               opacity: {
@@ -54,7 +51,7 @@ class Layout extends Component {
                 anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
               },
               size: {
-                value: 3,
+                value: 15,
                 random: true,
                 anim: { enable: false, speed: 40, size_min: 0.1, sync: false }
               },
@@ -79,7 +76,7 @@ class Layout extends Component {
             interactivity: {
               detect_on: "canvas",
               events: {
-                onhover: { enable: true, mode: "repulse" },
+                onhover: { enable: true, mode: "bubble" },
                 onclick: { enable: true, mode: "push" },
                 resize: true
               },
@@ -99,7 +96,7 @@ class Layout extends Component {
             },
             retina_detect: true
           }}
-        />
+        /> */}
 
         <Header {...this.props} />
         <div className="pt-24">
