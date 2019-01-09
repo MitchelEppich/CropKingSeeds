@@ -22,16 +22,20 @@ class Index extends Component {
                             Join our affiliate program to start earning lucrative commissions when you recommend Crop
                             King Seeds!
                             <br />
+                            <br />
                             At Crop King Seeds, we're obsessed with affiliate and customer happiness. As an affiliate,
                             you can rest assured that we are working hard to convert any visitors you send us into
                             custoemrs who will be thrilled to stay wuth us for a long time.
                             <br />
-                            <span>How does it work?</span>
+                            <br />
+                            <span className="font-bold">How does it work?</span>
                             <br />
                             When you join, you will be supplied with a range of banners and textual links that you place
                             within your website and their activity will be tracked by our affiliate software. You will
                             earn commissions based on the purchase of our products.
-                            <span>Frequently Asked Questions:</span>
+                            <br />
+                            <br />
+                            <span className="font-bold">Frequently Asked Questions:</span>
                             Click here to see our full list of FAQ's.
                         </p>
                         <h3 className="my-4">Program Details</h3>

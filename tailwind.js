@@ -69,8 +69,8 @@ let colors = {
   "red-lighter": "#f9acaa",
   "red-lightest": "#fcebea",
   "red-sativa": "#E53B3A",
-  "orange-feminized": "#FFC90A",
 
+  "orange-feminized": "#FFC90A",
   "orange-darkest": "#462a16",
   "orange-darker": "#613b1f",
   "orange-dark": "#de751f",
@@ -97,6 +97,7 @@ let colors = {
   "green-lighter": "#a2f5bf",
   "green-lightest": "#e3fcec",
   "green-regular": "#BCE519",
+  "green-cbd": "#34945F",
 
   "teal-darkest": "#0d3331",
   "teal-darker": "#20504f",
@@ -114,7 +115,6 @@ let colors = {
   "blue-lighter": "#bcdefa",
   "blue-lightest": "#eff8ff",
   "blue-indica": "#2286E5",
-  "green-cbd": "#34945F",
   "blue-dwarf": "#133BBF",
 
   "indigo-darkest": "#191e38",
@@ -710,6 +710,7 @@ module.exports = {
     "10": "2.5rem",
     "12": "3rem",
     "16": "4rem",
+    "22": "4.5rem",
     "20": "5rem",
     "24": "6rem",
     "32": "8rem",
