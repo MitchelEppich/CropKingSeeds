@@ -36,8 +36,8 @@ const GenePreview = props => {
     };
     autoPack = femPack = cbdPack = regPack = {
         transform: "rotate(90deg)",
-        margin: "85px 70px",
-        width: "400px"
+        margin: "48px 106px",
+        width: "280px"
     };
     autoHeading = {
         transform: "translateX(15px)",
@@ -49,7 +49,8 @@ const GenePreview = props => {
         transform: "translateX(-150px) translateY(-175px) rotate(90deg)",
         position: "absolute",
         bottom: "0",
-        transition: "all 0.5s ease-in-out"
+        transition: "all 0.5s ease-in-out",
+        opacity: 0
     };
     femHeading = {
         transform: "translateX(15px)",
@@ -61,7 +62,8 @@ const GenePreview = props => {
         transform: "translateX(-115px) translateY(-180px) rotate(90deg)",
         position: "absolute",
         bottom: "0",
-        transition: "all 0.5s ease-in-out"
+        transition: "all 0.5s ease-in-out",
+        opacity: 0
     };
     cbdHeading = {
         transform: "translateX(15px)",
@@ -73,7 +75,8 @@ const GenePreview = props => {
         transform: "translateX(-70px) translateY(-180px) rotate(90deg)",
         position: "absolute",
         bottom: "0",
-        transition: "all 0.5s ease-in-out"
+        transition: "all 0.5s ease-in-out",
+        opacity: 0
     };
     regHeading = {
         transform: "translateX(15px)",
@@ -85,23 +88,36 @@ const GenePreview = props => {
         transform: "translateX(-125px) translateY(-180px) rotate(90deg)",
         position: "absolute",
         bottom: "0",
-        transition: "all 0.5s ease-in-out"
+        transition: "all 0.5s ease-in-out",
+        opacity: 0
+    };
+    autoStyle = {
+        transform: "translateX(0)"
+    };
+    femStyle = {
+        transform: "translateX(75%)"
+    };
+    cbdStyle = {
+        transform: "translateX(150%)"
+    };
+    regStyle = {
+        transform: "translateX(227%)"
     };
 
     switch (props.misc.geneHoverIndex) {
         case 0:
-            autoStyle = {
-                transform: "translateX(0)"
-            };
-            femStyle = {
-                transform: "translateX(97%)"
-            };
-            cbdStyle = {
-                transform: "translateX(170%)"
-            };
-            regStyle = {
-                transform: "translateX(235%)"
-            };
+            // autoStyle = {
+            //     transform: "translateX(0)"
+            // };
+            // femStyle = {
+            //     transform: "translateX(97%)"
+            // };
+            // cbdStyle = {
+            //     transform: "translateX(170%)"
+            // };
+            // regStyle = {
+            //     transform: "translateX(235%)"
+            // };
             femImage = {
                 transform: "translateY(100%)",
                 opacity: 0
@@ -110,26 +126,30 @@ const GenePreview = props => {
                 ...femHeading,
                 opacity: 0
             };
-            femHeadingBottom = { ...femHeadingBottom, transform: "translateX(-65px) translateY(-180px) rotate(90deg)" };
+            femHeadingBottom = {
+                ...femHeadingBottom,
+                opacity: 1,
+                transform: "translateX(-125px) translateY(-180px) rotate(90deg)"
+            };
             femScreen = {
                 ...femScreen,
-                transform: "translateX(-89px) rotate(-90deg)"
+                transform: "translateX(-130px) rotate(-90deg)"
             };
             break;
 
         case 1:
-            autoStyle = {
-                transform: "translateX(0)"
-            };
-            femStyle = {
-                transform: "translateX(65%)"
-            };
-            cbdStyle = {
-                transform: "translateX(163%)"
-            };
-            regStyle = {
-                transform: "translateX(230%)"
-            };
+            // autoStyle = {
+            //     transform: "translateX(0)"
+            // };
+            // femStyle = {
+            //     transform: "translateX(65%)"
+            // };
+            // cbdStyle = {
+            //     transform: "translateX(163%)"
+            // };
+            // regStyle = {
+            //     transform: "translateX(230%)"
+            // };
             autoImage = {
                 transform: "translateY(100%)",
                 opacity: 0
@@ -140,27 +160,28 @@ const GenePreview = props => {
             };
             autoHeadingBottom = {
                 ...autoHeadingBottom,
-                transform: "translateX(-100px) translateY(-175px) rotate(90deg)"
+                opacity: 1,
+                transform: "translateX(-155px) translateY(-175px) rotate(90deg)"
             };
             autoScreen = {
                 ...autoScreen,
-                transform: "translateX(-89px) rotate(-90deg)"
+                transform: "translateX(-130px) rotate(-90deg)"
             };
             break;
 
         case 2:
-            autoStyle = {
-                transform: "translateX(0)"
-            };
-            femStyle = {
-                transform: "translateX(65%)"
-            };
-            cbdStyle = {
-                transform: "translateX(130%)"
-            };
-            regStyle = {
-                transform: "translateX(227%)"
-            };
+            // autoStyle = {
+            //     transform: "translateX(0)"
+            // };
+            // femStyle = {
+            //     transform: "translateX(65%)"
+            // };
+            // cbdStyle = {
+            //     transform: "translateX(130%)"
+            // };
+            // regStyle = {
+            //     transform: "translateX(227%)"
+            // };
             cbdImage = {
                 transform: "translateY(100%)",
                 opacity: 0
@@ -171,27 +192,28 @@ const GenePreview = props => {
             };
             cbdHeadingBottom = {
                 ...cbdHeadingBottom,
-                transform: "translateX(-10px) translateY(-180px) rotate(90deg)"
+                opacity: 1,
+                transform: "translateX(-100px) translateY(-180px) rotate(90deg)"
             };
             cbdScreen = {
                 ...cbdScreen,
-                transform: "translateX(-89px) rotate(-90deg)"
+                transform: "translateX(-126px) rotate(-90deg)"
             };
             break;
 
         case 3:
-            autoStyle = {
-                transform: "translateX(0)"
-            };
-            femStyle = {
-                transform: "translateX(65%)"
-            };
-            cbdStyle = {
-                transform: "translateX(135%)"
-            };
-            regStyle = {
-                transform: "translateX(205%)"
-            };
+            // autoStyle = {
+            //     transform: "translateX(0)"
+            // };
+            // femStyle = {
+            //     transform: "translateX(65%)"
+            // };
+            // cbdStyle = {
+            //     transform: "translateX(135%)"
+            // };
+            // regStyle = {
+            //     transform: "translateX(205%)"
+            // };
             regImage = {
                 transform: "translateY(100%)",
                 opacity: 0
@@ -202,28 +224,16 @@ const GenePreview = props => {
             };
             regHeadingBottom = {
                 ...regHeadingBottom,
-                transform: "translateX(-55px) translateY(-180px) rotate(90deg)"
+                opacity: 1,
+                transform: "translateX(-113px) translateY(-180px) rotate(90deg)"
             };
             regScreen = {
                 ...regScreen,
-                transform: "translateX(-89px) rotate(-90deg)"
+                transform: "translateX(-127px) rotate(-90deg)"
             };
             break;
 
         default:
-            autoStyle = {
-                transform: "translateX(0)"
-            };
-            femStyle = {
-                transform: "translateX(75%)"
-            };
-            cbdStyle = {
-                transform: "translateX(150%)"
-            };
-            regStyle = {
-                transform: "translateX(227%)"
-            };
-
             break;
     }
 
@@ -245,11 +255,11 @@ const GenePreview = props => {
                     className="auto h-500 z-10">
                     <img className="absolute w-full slow" src="../static/img/feminized.png" style={femImage} />
                     <div style={femScreen} className="bg-almost-black text-white uppercase">
-                        <img src="../static/img/femPack.png" style={femPack} />
+                        <img src="../static/img/strains/package/GTF.png" style={femPack} />
                         <p style={femHeading} className="absolute text-3/5xl">
                             Feminized
                         </p>
-                        <p style={femHeadingBottom} className="absolute text-3/5xl">
+                        <p style={femHeadingBottom} className="absolute bg-red-dark px-24 text-3/5xl">
                             Feminized
                         </p>
                     </div>
@@ -271,11 +281,11 @@ const GenePreview = props => {
                     className="fem h-500 z-20">
                     <img className="absolute w-full slow" src="../static/img/autoflower.png" style={autoImage} />
                     <div style={autoScreen} className="bg-almost-black text-white uppercase">
-                        <img src="../static/img/autoPack.png" style={autoPack} />
+                        <img src="../static/img/strains/package/AHA.png" style={autoPack} />
                         <p style={autoHeading} className="absolute text-3/5xl">
                             Autoflower
                         </p>
-                        <p style={autoHeadingBottom} className="absolute text-3/5xl">
+                        <p style={autoHeadingBottom} className="absolute bg-purple px-24 text-3/5xl">
                             Autoflower
                         </p>
                     </div>
@@ -285,11 +295,7 @@ const GenePreview = props => {
                 <div
                     style={cbdStyle}
                     onClick={() => {
-                        props.toggleFilter({
-                            filter: props.shop.activeFilters,
-                            genetic: "cbd",
-                            multiple: true
-                        });
+                        props.toggleFilter({ filter: props.shop.activeFilters, genetic: "cbd", multiple: true });
                         window.scroll(0, 0);
                     }}
                     onMouseEnter={() => props.setGeneHoverIndex(2)}
@@ -297,11 +303,11 @@ const GenePreview = props => {
                     className="cbd h-500 z-30">
                     <img className="absolute w-full slow" src="../static/img/cbd.png" style={cbdImage} />
                     <div style={cbdScreen} className="bg-almost-black text-white uppercase">
-                        <img src="../static/img/cbdPack.png" style={cbdPack} />
+                        <img src="../static/img/strains/package/CBD.png" style={cbdPack} />
                         <p style={cbdHeading} className="absolute text-3/5xl">
                             CBD
                         </p>
-                        <p style={cbdHeadingBottom} className="absolute text-3/5xl">
+                        <p style={cbdHeadingBottom} className="absolute bg-grey-light px-32 text-3/5xl">
                             CBD
                         </p>
                     </div>
@@ -323,11 +329,11 @@ const GenePreview = props => {
                     className="reg h-500 z-40">
                     <img className="absolute w-full slow" src="../static/img/regular.png" style={regImage} />
                     <div style={regScreen} className="bg-almost-black text-white uppercase">
-                        <img src="../static/img/regPack.png" style={regPack} />
+                        <img src="../static/img/strains/package/OSR.png" style={regPack} />
                         <p style={regHeading} className="absolute text-3/5xl">
                             Regular
                         </p>
-                        <p style={regHeadingBottom} className="absolute text-3/5xl">
+                        <p style={regHeadingBottom} className="absolute bg-green px-24 text-3/5xl">
                             Regular
                         </p>
                     </div>

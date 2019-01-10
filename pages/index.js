@@ -15,8 +15,16 @@ import News from "../components/sections/news";
 class Index extends Component {
     componentWillMount() {
         this.props.getStrains();
+        this.runCarousel(5000, this.props.nextBannerSlide);
     }
 
+    runCarousel(delay, callback) {
+        var loop = function() {
+            callback();
+            setTimeout(loop, delay);
+        };
+        loop();
+    }
     render() {
         return (
             <Layout>
@@ -42,6 +50,7 @@ const mapDispatchToProps = dispatch => {
         setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
         setGeneHoverIndex: index => dispatch(actions.setGeneHoverIndex(index)),
         nextBannerSlide: () => dispatch(actions.nextBannerSlide()),
+        toggleTransitionStatus: () => dispatch(actions.toggleTransitionStatus()),
         getStrains: () => dispatch(actions.getStrains()),
         toggleFilter: input => dispatch(actions.toggleFilter(input))
     };
