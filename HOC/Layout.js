@@ -98,7 +98,7 @@ class Layout extends Component {
         /> */}
                 <Header {...this.props} />
                 <div className="pt-24">
-                    <div className="bg-white relative z-30 px-4 py-4 w-1300 mx-auto shadow-md">
+                    <div className="bg-white relative z-30 px-4 py-4 w-full xl:w-1300 lg:w-1300 mx-auto shadow-md">
                         {this.props.children}
                     </div>
                 </div>

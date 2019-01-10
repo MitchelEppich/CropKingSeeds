@@ -29,24 +29,6 @@ const initialState = {
     activeBannerSlide: 2,
     notification: null, //"Crop King Seeds will be at High Times Cannabis Cup Sept. 13-16 2019",
     bannerSlides: [
-        // {
-        //     color: "green-dark",
-        //     style: {
-        //         // backgroundImage: "url(../static/img/banner1.png)",
-        //         backgroundPosition: "center",
-        //         backgroundSize: "cover",
-        //         backgroundRepeat: "no-repeat"
-        //     }
-        // },
-        // {
-        //     color: "orange",
-        //     style: {
-        //         // backgroundImage: "url(../static/img/banner2.png)",
-        //         backgroundPosition: "center",
-        //         backgroundSize: "cover",
-        //         backgroundRepeat: "no-repeat"
-        //     }
-        // },
         {
             color: "white",
             style: {
@@ -74,49 +56,11 @@ const initialState = {
                 backgroundRepeat: "no-repeat"
             }
         }
-        // {
-        //     color: "blue",
-        //     style: {
-        //         // backgroundImage: "url(../static/img/banner3.png)",
-        //         backgroundPosition: "center",
-        //         backgroundSize: "cover",
-        //         backgroundRepeat: "no-repeat"
-        //     }
-        // },
-        // {
-        //     color: "red",
-        //     style: {
-        //         // backgroundImage: "url(../static/img/banner3.png)",
-        //         backgroundPosition: "center",
-        //         backgroundSize: "cover",
-        //         backgroundRepeat: "no-repeat"
-        //     }
-        // }
     ],
     bannerSlidePositions: [
-        // {
-        //   transform: " translateX(-300%)",
-        //   display: "none",
-        //   transition: "all 0.5s ease-in-out"
-        // },
-        // {
-        //   transform: " translateX(-200%)",
-        //   display: "none",
-        //   transition: "all 0.5s ease-in-out"
-        // },
         { transform: " translateX(-100%)", transition: "all 0.5s ease-in-out", zIndex: -10 },
         { transform: " translateX(0)", transition: "all 0.5s ease-in-out", zIndex: 0 },
         { transform: " translateX(100%)", transition: "all 0.5s ease-in-out" }
-        // {
-        //   transform: " translateX(200%)",
-        //   display: "none",
-        //   transition: "all 0.5s ease-in-out"
-        // },
-        // {
-        //   transform: " translateX(300%)",
-        //   display: "none",
-        //   transition: "all 0.5s ease-in-out"
-        // }
     ]
 };
 
