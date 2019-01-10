@@ -4,7 +4,7 @@ const data = props => {
     let pcbn = _product.pcbn.map(a => `${a.toFixed(2)}%`).join("-");
     let pthc = _product.pthc.map(a => `${a.toFixed(2)}%`).join("-");
     return (
-        <div className="w-full px-4">
+        <div className="w-5/6 px-2 pb-8 bg-grey-lighter rounded-lg ">
             <div className="flex flex-wrap">
                 <p className="w-1/6 font-bold my-1 py-1">THC</p>
                 <div className="w-5/6 flex text-white justify-between my-2">
@@ -46,7 +46,7 @@ const data = props => {
                     <div
                         className="bg-orange mx-1 rounded-lg text-center my-2"
                         style={{ width: _product.ruderalis * 100 + "%" }}>
-                        {_product.ruderalis}
+                        {_product.ruderalis * 100}%
                         <span
                             className="text-grey"
                             style={{
@@ -60,7 +60,7 @@ const data = props => {
                 <div
                     className="bg-blue mx-1 rounded-lg text-center my-2"
                     style={{ width: _product.indica * 100 + "%" }}>
-                    {_product.indica}
+                    {_product.indica * 100}%
                     <span
                         className="text-grey"
                         style={{ position: "absolute", transform: "translateX(-50%) translateY(33px) rotate(45deg)" }}>
@@ -70,7 +70,7 @@ const data = props => {
                 <div
                     className="bg-green mx-1 rounded-lg text-center my-2"
                     style={{ width: _product.sativa * 100 + "%" }}>
-                    {_product.sativa}
+                    {_product.sativa * 100}%
                     <span
                         className="text-grey"
                         style={{ position: "absolute", transform: "translateX(-50%) translateY(33px) rotate(45deg)" }}>
