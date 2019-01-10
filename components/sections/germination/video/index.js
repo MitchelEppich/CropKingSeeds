@@ -11,7 +11,7 @@ const Video = props => {
                     height="240"
                     src="https://growreel.com/embed/5bc119ae674e3139208e8047"
                     frameBorder="0"
-                    autoplay="false"
+                    autoPlay="false"
                 />
             </div>
         </div>
