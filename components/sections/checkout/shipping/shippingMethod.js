@@ -22,57 +22,60 @@ const ShippingMethod = props => {
           <div className="inline-flex items-center flex">
             <label className="items-center flex cursor-pointer">
               <input
-              type="checkbox"
-              className="checkbox"
-              id="method"
-              checked={
-                props.checkout.orderDetails[pageGroup] != null
-                  ? props.checkout.orderDetails[pageGroup].method == 0
-                  : false
-              }
-              onChange={e => {
-                let _orderDetails = props.checkout.orderDetails;
-                let _target = e.target;
-                let _key = _target.id;
-                let _value = 0;
-                let _tag = undefined;
+                type="checkbox"
+                className="checkbox"
+                id="method"
+                checked={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? props.checkout.orderDetails[pageGroup].method == 0
+                    : false
+                }
+                onChange={e => {
+                  let _orderDetails = props.checkout.orderDetails;
+                  let _target = e.target;
+                  let _key = _target.id;
+                  let _value = 0;
+                  let _tag = undefined;
 
-                props.modifyOrderDetails({
-                  orderDetails: _orderDetails,
-                  group: pageGroup,
-                  key: _key,
-                  value: _value,
-                  tag: _tag
-                });
+                  props.modifyOrderDetails({
+                    orderDetails: _orderDetails,
+                    group: pageGroup,
+                    key: _key,
+                    value: _value,
+                    tag: _tag
+                  });
 
-                let _method = methods[_value];
+                  let _method = methods[_value];
 
-                _key = "shippingCost";
-                _value = _method.price;
-                _tag = "sShipping";
+                  _key = "shippingCost";
+                  _value = _method.price;
+                  _tag = "Shipping";
 
-                props.modifyOrderDetails({
-                  orderDetails: _orderDetails,
-                  group: pageGroup,
-                  key: _key,
-                  value: _value,
-                  tag: _tag
-                });
+                  props.modifyOrderDetails({
+                    orderDetails: _orderDetails,
+                    group: pageGroup,
+                    key: _key,
+                    value: _value,
+                    tag: _tag
+                  });
 
-                _key = "shippingDetail";
-                _value = _method.type;
-                _tag = "sType";
+                  _key = "shippingDetail";
+                  _value = _method.type;
+                  _tag = "Shipped_Type";
 
-                props.modifyOrderDetails({
-                  orderDetails: _orderDetails,
-                  group: pageGroup,
-                  key: _key,
-                  value: _value,
-                  tag: _tag
-                });
-              }}
-            />
-            <h2 className="font-extrabold text-grey hover:text-grey-light ml-2">Regular Shipping</h2></label>
+                  props.modifyOrderDetails({
+                    orderDetails: _orderDetails,
+                    group: pageGroup,
+                    key: _key,
+                    value: _value,
+                    tag: _tag
+                  });
+                }}
+              />
+              <h2 className="font-extrabold text-grey hover:text-grey-light ml-2">
+                Regular Shipping
+              </h2>
+            </label>
             <span className="text-3xl text-grey-light ml-10">$10</span>
           </div>
           <p className="mt-2 leading-normal">
@@ -90,58 +93,61 @@ const ShippingMethod = props => {
         <div className="p-2">
           <div className="inline-flex items-center flex">
             <label className="items-center flex cursor-pointer">
-            <input
-              type="checkbox"
-              className="checkbox"
-              id="method"
-              checked={
-                props.checkout.orderDetails[pageGroup] != null
-                  ? props.checkout.orderDetails[pageGroup].method == 1
-                  : false
-              }
-              onChange={e => {
-                let _orderDetails = props.checkout.orderDetails;
-                let _target = e.target;
-                let _key = _target.id;
-                let _value = 1;
-                let _tag = undefined;
+              <input
+                type="checkbox"
+                className="checkbox"
+                id="method"
+                checked={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? props.checkout.orderDetails[pageGroup].method == 1
+                    : false
+                }
+                onChange={e => {
+                  let _orderDetails = props.checkout.orderDetails;
+                  let _target = e.target;
+                  let _key = _target.id;
+                  let _value = 1;
+                  let _tag = undefined;
 
-                props.modifyOrderDetails({
-                  orderDetails: _orderDetails,
-                  group: pageGroup,
-                  key: _key,
-                  value: _value,
-                  tag: _tag
-                });
+                  props.modifyOrderDetails({
+                    orderDetails: _orderDetails,
+                    group: pageGroup,
+                    key: _key,
+                    value: _value,
+                    tag: _tag
+                  });
 
-                let _method = methods[_value];
+                  let _method = methods[_value];
 
-                _key = "shippingCost";
-                _value = _method.price;
-                _tag = "sShipping";
+                  _key = "shippingCost";
+                  _value = _method.price;
+                  _tag = "Shipping";
 
-                props.modifyOrderDetails({
-                  orderDetails: _orderDetails,
-                  group: pageGroup,
-                  key: _key,
-                  value: _value,
-                  tag: _tag
-                });
+                  props.modifyOrderDetails({
+                    orderDetails: _orderDetails,
+                    group: pageGroup,
+                    key: _key,
+                    value: _value,
+                    tag: _tag
+                  });
 
-                _key = "shippingDetail";
-                _value = _method.type;
-                _tag = "sType";
+                  _key = "shippingDetail";
+                  _value = _method.type;
+                  _tag = "Shipped_Type";
 
-                props.modifyOrderDetails({
-                  orderDetails: _orderDetails,
-                  group: pageGroup,
-                  key: _key,
-                  value: _value,
-                  tag: _tag
-                });
-              }}
-            />
-            <h2 className="font-extrabold text-grey hover:text-grey-light ml-2">Express Shipping</h2></label>
+                  props.modifyOrderDetails({
+                    orderDetails: _orderDetails,
+                    group: pageGroup,
+                    key: _key,
+                    value: _value,
+                    tag: _tag
+                  });
+                }}
+              />
+              <h2 className="font-extrabold text-grey hover:text-grey-light ml-2">
+                Express Shipping
+              </h2>
+            </label>
             <span className="text-3xl text-grey-light ml-10">$32</span>
           </div>
           <p className="mt-2 leading-normal">

@@ -7,30 +7,37 @@ import StringMask from "string-mask";
 
 const CreditCard = props => {
   let pageGroup = "payment";
+  let paymentType = "Credit Card";
 
   let ccNumberFormat = new StringMask("0000-0000-0000-0000");
-
-  if (props.checkout.orderDetails[pageGroup] == null) {
-    let _orderDetails = props.checkout.orderDetails;
-
-    _orderDetails[pageGroup] = {
-      oridSuffix: "-KMH-7"
-      // amount: 0, // Cost of cart -input
-      // ccno: -1, // Card Number -input
-      // cvvno: -1, // Card CVV Number -input
-      // cctype: "", // Card Type -input
-      // ccexpire: "", // Card Expiry -input
-      // ccname: "", // Card Holder Name -input
-    };
-
-    props.setOrderDetails();
-  }
 
   return (
     <div className="w-full mb-6">
       <div
         onClick={() => {
           props.setVisibleScreen({ input: "creditCard", clearAll: true });
+          let _orderDetails = props.checkout.orderDetails;
+          props.modifyOrderDetails({
+            orderDetails: _orderDetails,
+            group: pageGroup,
+            key: "method",
+            value:
+              _orderDetails[pageGroup]["method"] == null
+                ? {
+                    value: paymentType,
+                    tag: "Payment_Method",
+                    oridSuffix: "-KMH-7"
+                    // amount: 0, // Cost of cart -input
+                    // ccno: -1, // Card Number -input
+                    // cvvno: -1, // Card CVV Number -input
+                    // cctype: "", // Card Type -input
+                    // ccexpire: "", // Card Expiry -input
+                    // ccname: "", // Card Holder Name -input
+                  }
+                : undefined,
+            tag: undefined,
+            requestUpdateOfGroup: { value: true, group: pageGroup }
+          });
         }}
         style={{
           border: "2px solid #e4e4e4",

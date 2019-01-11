@@ -16,7 +16,8 @@ import Navigation from "./navigation";
 import Shop from "./shop";
 import ViewProduct from "./viewProduct";
 
-const uri = "http://localhost:3000/graphql";
+// const uri = "http://localhost:3000/graphql";
+const uri = "http://192.168.0.57:3000/graphql";
 
 const imports = {
   ...Cart(uri),

@@ -3,6 +3,9 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Bitcoin = props => {
+  let pageGroup = "payment";
+  let paymentType = "Bitcoin";
+
   let showBitcoinData = () => {
     let _data = props.checkout.bitcoinData;
 
@@ -16,6 +19,20 @@ const Bitcoin = props => {
         onClick={() => {
           props.setVisibleScreen({ input: "bitcoin", clearAll: true });
           props.getBitcoinData({ value: "1", currency: "USD" });
+          let _orderDetails = props.checkout.orderDetails;
+          props.modifyOrderDetails({
+            orderDetails: _orderDetails,
+            group: pageGroup,
+            key: "method",
+            value:
+              _orderDetails[pageGroup]["method"] == null
+                ? {
+                    value: paymentType
+                  }
+                : undefined,
+            tag: undefined,
+            requestUpdateOfGroup: { value: true, group: pageGroup }
+          });
         }}
         style={{
           border: "2px solid #e4e4e4",

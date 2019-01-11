@@ -5,7 +5,27 @@ const Coupon = props => {
     <div className="w-full flex items-center h-10 inline-flex mt-4 p-2 mb-8">
       <div className="w-1/3">
         <div className="w-full">
-          <input type="text" placeholder="Coupon Code" className="p-2 w-full" />
+          <input
+            type="text"
+            id="coupon"
+            placeholder="Coupon Code"
+            className="p-2 w-full"
+            onChange={e => {
+              let _orderDetails = props.checkout.orderDetails;
+              let _target = e.target;
+              let _key = _target.id;
+              let _value = _target.value;
+              let _tag = "Coupon";
+
+              props.modifyOrderDetails({
+                orderDetails: _orderDetails,
+                group: pageGroup,
+                key: _key,
+                value: _value,
+                tag: _tag
+              });
+            }}
+          />
         </div>
       </div>
       <div className="w-1/3">

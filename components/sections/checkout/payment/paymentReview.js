@@ -6,28 +6,58 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import data from "../../../../static/data";
+
 const PaymentReview = props => {
   let pageGroup = "payment";
+  let _orderDetails = props.checkout.orderDetails;
 
-  if (props.checkout.orderDetails[pageGroup] == null) {
-    let _orderDetails = props.checkout.orderDetails;
+  if (
+    _orderDetails[pageGroup] == null ||
+    _orderDetails[pageGroup].updateRequested
+  ) {
+    console.log("Updating");
 
     let cartTotal = props.cart.price;
-    let tax = 0.1; // Still need to get tax
-    let creditTax = cartTotal * 0.1;
-    let shippingFee = _orderDetails.shipping.shippingCost;
-    let taxFee = cartTotal * tax;
+    let { tax, provTax, taxType } =
+      _orderDetails.billing.country.value.toLowerCase() == "canada"
+        ? (() => {
+            let _province = data.provincesCA[_orderDetails.billing.state.value];
+            let _type = _province.type;
+            let _tax = _province.gst;
+            let _provTax = 0;
+            if (_type != "GST") _provTax = _province[_type.toLowerCase()];
+            return { tax: _tax, provTax: _provTax, taxType: _type };
+          })()
+        : { tax: 0, provTax: 0, taxType: "" }; // Still need to get tax
+    let creditTax =
+      _orderDetails[pageGroup] != null &&
+      _orderDetails[pageGroup].method != null &&
+      _orderDetails[pageGroup].method.value == "Credit Card"
+        ? 0.1
+        : 0;
+    let creditFee = cartTotal * creditTax;
+    //_orderDetails.payment["Credit Card"] != null ? cartTotal * 0.1 : 0;
+    let cumTax = tax + provTax;
+    let shippingFee = _orderDetails.shipping.shippingCost.value;
+    let taxFee = cartTotal * cumTax;
 
-    let orderTotal = creditTax + shippingFee + cartTotal + taxFee;
+    let orderTotal = creditFee + shippingFee + cartTotal + taxFee;
 
     _orderDetails[pageGroup] = {
       ..._orderDetails.payment,
-      creditTax,
-      shippingFee,
+      updateRequested: false,
+      creditFee: { value: creditFee, tag: "CC_Charge" },
+      shippingFee: { value: shippingFee, tag: "Shipping" },
       taxFee,
-      tax,
-      cartTotal,
-      orderTotal
+      cumTax,
+      creditTax,
+      tax: { value: tax, tag: "tax" },
+      provTax: { value: provTax, tag: "prov_tax" },
+      taxType: { value: taxType, tag: "prov_tax_type" },
+      cartTotal: { value: cartTotal, tag: "Order_Amt" },
+      orderTotal: { value: orderTotal, tag: "Total" },
+      currency: { value: "USD", tag: "currency" } // Temporary
     };
 
     _orderDetails[pageGroup].updatedAt = _orderDetails.payment.updatedAt;
@@ -57,9 +87,9 @@ const PaymentReview = props => {
         </h3>
         <div className="p-2">
           <p className="mt-2">
-            {props.checkout.orderDetails.shipping != null ? (
+            {_orderDetails.shipping != null ? (
               <span>
-                {props.checkout.orderDetails.shipping.address}
+                {_orderDetails.shipping.address.value}
                 {", "}
               </span>
             ) : (
@@ -68,11 +98,11 @@ const PaymentReview = props => {
           </p>
 
           <p className="mt-2">
-            {props.checkout.orderDetails.shipping != null ? (
+            {_orderDetails.shipping != null ? (
               <span>
-                {props.checkout.orderDetails.shipping.city}
+                {_orderDetails.shipping.city.value}
                 {", "}
-                {props.checkout.orderDetails.shipping.state}
+                {_orderDetails.shipping.state.value}
               </span>
             ) : (
               "Not Defined"
@@ -80,14 +110,14 @@ const PaymentReview = props => {
           </p>
 
           <p className="mt-2">
-            {props.checkout.orderDetails.shipping != null
-              ? props.checkout.orderDetails.shipping.postalZip
+            {_orderDetails.shipping != null
+              ? _orderDetails.shipping.postalZip.value
               : "Not Defined"}
           </p>
 
           <p className="mt-2">
-            {props.checkout.orderDetails.shipping != null
-              ? props.checkout.orderDetails.shipping.country
+            {_orderDetails.shipping != null
+              ? _orderDetails.shipping.country.value
               : "Not Defined"}
           </p>
 
@@ -95,8 +125,8 @@ const PaymentReview = props => {
             <span className="p-2 text-grey-light">
               <FontAwesomeIcon icon={faPhone} className="fa-lg" />
             </span>
-            {props.checkout.orderDetails.shipping != null
-              ? props.checkout.orderDetails.shipping.phone
+            {_orderDetails.shipping != null
+              ? _orderDetails.shipping.phone.value
               : "Not Defined"}
           </p>
 
@@ -104,8 +134,8 @@ const PaymentReview = props => {
             <span className="p-2 text-grey-light">
               <FontAwesomeIcon icon={faEnvelope} className="fa-lg" />
             </span>
-            {props.checkout.orderDetails.shipping != null ? (
-              <span>{props.checkout.orderDetails.shipping.email}</span>
+            {_orderDetails.shipping != null ? (
+              <span>{_orderDetails.shipping.email.value}</span>
             ) : (
               "Not Defined"
             )}
@@ -132,9 +162,9 @@ const PaymentReview = props => {
         </h3>
         <div className="p-2">
           <p className="mt-2">
-            {props.checkout.orderDetails.shipping != null ? (
+            {_orderDetails.billing != null ? (
               <span>
-                {props.checkout.orderDetails.shipping.address}
+                {_orderDetails.billing.address.value}
                 {", "}
               </span>
             ) : (
@@ -143,11 +173,11 @@ const PaymentReview = props => {
           </p>
 
           <p className="mt-2">
-            {props.checkout.orderDetails.shipping != null ? (
+            {_orderDetails.billing != null ? (
               <span>
-                {props.checkout.orderDetails.shipping.city}
+                {_orderDetails.billing.city.value}
                 {", "}
-                {props.checkout.orderDetails.shipping.state}
+                {_orderDetails.billing.state.value}
               </span>
             ) : (
               "Not Defined"
@@ -155,14 +185,14 @@ const PaymentReview = props => {
           </p>
 
           <p className="mt-2">
-            {props.checkout.orderDetails.shipping != null
-              ? props.checkout.orderDetails.shipping.postalZip
+            {_orderDetails.billing != null
+              ? _orderDetails.billing.postalZip.value
               : "Not Defined"}
           </p>
 
           <p className="mt-2">
-            {props.checkout.orderDetails.shipping != null
-              ? props.checkout.orderDetails.shipping.country
+            {_orderDetails.billing != null
+              ? _orderDetails.billing.country.value
               : "Not Defined"}
           </p>
 
@@ -170,8 +200,8 @@ const PaymentReview = props => {
             <span className="p-2 text-grey-light">
               <FontAwesomeIcon icon={faPhone} className="fa-lg" />
             </span>
-            {props.checkout.orderDetails.shipping != null
-              ? props.checkout.orderDetails.shipping.phone
+            {_orderDetails.billing != null
+              ? _orderDetails.billing.phone.value
               : "Not Defined"}
           </p>
 
@@ -179,8 +209,8 @@ const PaymentReview = props => {
             <span className="p-2 text-grey-light">
               <FontAwesomeIcon icon={faEnvelope} className="fa-lg" />
             </span>
-            {props.checkout.orderDetails.shipping != null ? (
-              <span>{props.checkout.orderDetails.shipping.email}</span>
+            {_orderDetails.billing != null ? (
+              <span>{_orderDetails.billing.email.value}</span>
             ) : (
               "Not Defined"
             )}
@@ -209,25 +239,26 @@ const PaymentReview = props => {
           <p className="mt-2">
             Product Total: {console.log(props)}
             <span className="">
-              ${props.checkout.orderDetails[pageGroup].cartTotal.toFixed(2)}
+              ${_orderDetails[pageGroup].cartTotal.value.toFixed(2)}
             </span>
           </p>
           <p className="mt-2">
             Shipping:{" "}
             <span className="">
-              ${props.checkout.orderDetails[pageGroup].shippingFee.toFixed(2)}
+              ${_orderDetails[pageGroup].shippingFee.value.toFixed(2)}
             </span>
           </p>
           <p className="mt-2">
-            Tax:{" "}
+            Tax ({(_orderDetails[pageGroup].cumTax * 100).toFixed(2)}%):{" "}
             <span className="">
-              ${props.checkout.orderDetails[pageGroup].taxFee.toFixed(2)}
+              ${_orderDetails[pageGroup].taxFee.toFixed(2)}
             </span>
           </p>
           <p className="mt-2">
-            Credit Card Tax (10%):{" "}
+            Credit Card Tax (
+            {(_orderDetails[pageGroup].creditTax * 100).toFixed(2)}%):{" "}
             <span className="">
-              ${props.checkout.orderDetails[pageGroup].creditTax.toFixed(2)}
+              ${_orderDetails[pageGroup].creditFee.value.toFixed(2)}
             </span>
           </p>
           <hr
@@ -237,7 +268,7 @@ const PaymentReview = props => {
           <p className="text-lg mt-2 font-extrabold text-center">
             Total:{" "}
             <span className="">
-              ${props.checkout.orderDetails[pageGroup].orderTotal.toFixed(2)}
+              ${_orderDetails[pageGroup].orderTotal.value.toFixed(2)}
             </span>
           </p>
         </div>

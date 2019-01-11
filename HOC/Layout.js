@@ -30,7 +30,7 @@ class Layout extends Component {
           height: "100%"
         }}
       >
-        <Particles
+        {/* <Particles
           width="100vw"
           height="100vh"
           style={{ position: "absolute", zIndex: 0 }}
@@ -99,7 +99,7 @@ class Layout extends Component {
             },
             retina_detect: true
           }}
-        />
+        /> */}
 
         <Header {...this.props} />
         <div className="pt-24">

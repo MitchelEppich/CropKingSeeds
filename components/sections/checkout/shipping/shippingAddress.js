@@ -42,12 +42,16 @@ const ShippingAddress = props => {
   };
 
   let showOptions = () => {
-    if (props.checkout.orderDetails[pageGroup] == null) return null;
-    let _country = props.checkout.orderDetails[pageGroup].country;
+    if (
+      props.checkout.orderDetails[pageGroup] == null &&
+      props.checkout.orderDetails[pageGroup].country != null
+    )
+      return null;
+    let _country = props.checkout.orderDetails[pageGroup].country.value;
     let _data;
     switch (_country) {
       case "Canada":
-        _data = data.provincesCA;
+        _data = Object.keys(data.provincesCA);
         break;
       case "United States":
         _data = data.statesUS;
@@ -77,7 +81,13 @@ const ShippingAddress = props => {
         Shipping Address
       </h2>
       <form>
-        <div className="w-full mt-4">
+        <div
+          className={`w-full mt-4 ${
+            props.checkout.orderDetails[pageGroup].readOnly
+              ? "opacity-50 pointer-events-none unselectable"
+              : ""
+          }`}
+        >
           <div className="w-full p-2 inline-flex">
             <div className="w-1/2">
               <input
@@ -85,8 +95,10 @@ const ShippingAddress = props => {
                 name="fullName"
                 id="fullName"
                 value={
-                  props.checkout.orderDetails[pageGroup] != null
-                    ? props.checkout.orderDetails[pageGroup].fullName || ""
+                  props.checkout.orderDetails[pageGroup] != null &&
+                  props.checkout.orderDetails[pageGroup].fullName != null
+                    ? props.checkout.orderDetails[pageGroup].fullName.value ||
+                      ""
                     : undefined
                 }
                 onChange={e => {
@@ -114,8 +126,9 @@ const ShippingAddress = props => {
                 name="email"
                 id="email"
                 value={
-                  props.checkout.orderDetails[pageGroup] != null
-                    ? props.checkout.orderDetails[pageGroup].email || ""
+                  props.checkout.orderDetails[pageGroup] != null &&
+                  props.checkout.orderDetails[pageGroup].email != null
+                    ? props.checkout.orderDetails[pageGroup].email.value || ""
                     : undefined
                 }
                 onChange={e => {
@@ -144,8 +157,9 @@ const ShippingAddress = props => {
               name=""
               id="address"
               value={
-                props.checkout.orderDetails[pageGroup] != null
-                  ? props.checkout.orderDetails[pageGroup].address || ""
+                props.checkout.orderDetails[pageGroup] != null &&
+                props.checkout.orderDetails[pageGroup].address != null
+                  ? props.checkout.orderDetails[pageGroup].address.value || ""
                   : undefined
               }
               onChange={e => {
@@ -153,7 +167,7 @@ const ShippingAddress = props => {
                 let _target = e.target;
                 let _key = _target.id;
                 let _value = _target.value;
-                let _tag = "Address";
+                let _tag = "Address1";
 
                 props.modifyOrderDetails({
                   orderDetails: _orderDetails,
@@ -173,8 +187,9 @@ const ShippingAddress = props => {
               name=""
               id="apartment"
               value={
-                props.checkout.orderDetails[pageGroup] != null
-                  ? props.checkout.orderDetails[pageGroup].apartment || ""
+                props.checkout.orderDetails[pageGroup] != null &&
+                props.checkout.orderDetails[pageGroup].apartment != null
+                  ? props.checkout.orderDetails[pageGroup].apartment.value || ""
                   : undefined
               }
               onChange={e => {
@@ -203,8 +218,10 @@ const ShippingAddress = props => {
                 name=""
                 id="postalZip"
                 value={
-                  props.checkout.orderDetails[pageGroup] != null
-                    ? props.checkout.orderDetails[pageGroup].postalZip || ""
+                  props.checkout.orderDetails[pageGroup] != null &&
+                  props.checkout.orderDetails[pageGroup].postalZip != null
+                    ? props.checkout.orderDetails[pageGroup].postalZip.value ||
+                      ""
                     : undefined
                 }
                 onChange={e => {
@@ -212,7 +229,7 @@ const ShippingAddress = props => {
                   let _target = e.target;
                   let _key = _target.id;
                   let _value = _target.value;
-                  let _tag = "PostalZip";
+                  let _tag = "Postal_Zip_Code";
 
                   props.modifyOrderDetails({
                     orderDetails: _orderDetails,
@@ -232,8 +249,9 @@ const ShippingAddress = props => {
                 name=""
                 id="city"
                 value={
-                  props.checkout.orderDetails[pageGroup] != null
-                    ? props.checkout.orderDetails[pageGroup].city || ""
+                  props.checkout.orderDetails[pageGroup] != null &&
+                  props.checkout.orderDetails[pageGroup].city != null
+                    ? props.checkout.orderDetails[pageGroup].city.value || ""
                     : undefined
                 }
                 onChange={e => {
@@ -258,7 +276,13 @@ const ShippingAddress = props => {
             <div className="w-1/3">
               <select
                 id="country"
-                value={props.checkout.orderDetails[pageGroup].country || ""}
+                defaultValue=""
+                value={
+                  props.checkout.orderDetails[pageGroup] != null &&
+                  props.checkout.orderDetails[pageGroup].country != null
+                    ? props.checkout.orderDetails[pageGroup].country.value || ""
+                    : undefined
+                }
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;
@@ -271,14 +295,16 @@ const ShippingAddress = props => {
                     group: pageGroup,
                     key: _key,
                     value: _value,
-                    tag: _tag
+                    tag: _tag,
+                    requestUpdateOfGroup: {
+                      value: true,
+                      group: "payment"
+                    }
                   });
                 }}
                 placeholder="Country"
                 className="w-full"
-                style={{
-                  padding: "0.35rem"
-                }}
+                style={{ padding: "0.35rem" }}
               >
                 {showCountries()}
               </select>
@@ -287,14 +313,21 @@ const ShippingAddress = props => {
           <div className="w-full p-2 inline-flex">
             <div className="w-1/2">
               {props.checkout.orderDetails[pageGroup] != null &&
+              props.checkout.orderDetails[pageGroup].country != null &&
               ["Canada", "United States"].includes(
-                props.checkout.orderDetails[pageGroup].country
+                props.checkout.orderDetails[pageGroup].country.value
               ) ? (
                 <select
                   type="text"
                   name=""
                   id="state"
-                  value={props.checkout.orderDetails[pageGroup].state || ""}
+                  defaultValue=""
+                  value={
+                    props.checkout.orderDetails[pageGroup] != null &&
+                    props.checkout.orderDetails[pageGroup].state != null
+                      ? props.checkout.orderDetails[pageGroup].state.value || ""
+                      : undefined
+                  }
                   onChange={e => {
                     let _orderDetails = props.checkout.orderDetails;
                     let _target = e.target;
@@ -307,14 +340,16 @@ const ShippingAddress = props => {
                       group: pageGroup,
                       key: _key,
                       value: _value,
-                      tag: _tag
+                      tag: _tag,
+                      requestUpdateOfGroup: {
+                        value: true,
+                        group: "payment"
+                      }
                     });
                   }}
                   placeholder="Province"
                   className="w-full"
-                  style={{
-                    padding: "0.35rem"
-                  }}
+                  style={{ padding: "0.35rem" }}
                 >
                   {showOptions()}
                 </select>
@@ -324,8 +359,9 @@ const ShippingAddress = props => {
                   name=""
                   id="state"
                   value={
-                    props.checkout.orderDetails[pageGroup] != null
-                      ? props.checkout.orderDetails[pageGroup].state || ""
+                    props.checkout.orderDetails[pageGroup] != null &&
+                    props.checkout.orderDetails[pageGroup].state != null
+                      ? props.checkout.orderDetails[pageGroup].state.value || ""
                       : undefined
                   }
                   onChange={e => {
@@ -354,8 +390,9 @@ const ShippingAddress = props => {
                 name=""
                 id="phone"
                 value={
-                  props.checkout.orderDetails[pageGroup] != null
-                    ? props.checkout.orderDetails[pageGroup].phone || ""
+                  props.checkout.orderDetails[pageGroup] != null &&
+                  props.checkout.orderDetails[pageGroup].phone != null
+                    ? props.checkout.orderDetails[pageGroup].phone.value || ""
                     : undefined
                 }
                 onChange={e => {
@@ -363,7 +400,7 @@ const ShippingAddress = props => {
                   let _target = e.target;
                   let _key = _target.id;
                   let _value = _target.value;
-                  let _tag = "Phone";
+                  let _tag = "PhoneNum";
 
                   props.modifyOrderDetails({
                     orderDetails: _orderDetails,

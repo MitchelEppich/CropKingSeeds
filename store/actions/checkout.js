@@ -23,10 +23,26 @@ const getActions = uri => {
       let _key = input.key;
       let _value = input.value;
       let _tag = input.tag;
+      let _requestUpdateOfGroup = input.requestUpdateOfGroup;
+
+      console.log(_requestUpdateOfGroup);
+
+      if (
+        _requestUpdateOfGroup != null &&
+        _orderDetails[_requestUpdateOfGroup.group] != null &&
+        _requestUpdateOfGroup.value
+      ) {
+        if (_requestUpdateOfGroup.group == "payment" && _group == "shipping") {
+          _orderDetails["billing"] = _orderDetails["shipping"];
+          _orderDetails[_requestUpdateOfGroup.group]["updateRequested"] = true;
+        } else
+          _orderDetails[_requestUpdateOfGroup.group]["updateRequested"] = true;
+      }
 
       if (_group != null) {
         if (_orderDetails[_group] == null) _orderDetails[_group] = {};
-        _orderDetails[_group][_key] = _value;
+        _orderDetails[_group][_key] =
+          _tag == null ? _value : { value: _value, tag: _tag };
         _orderDetails[_group].updatedAt = new Date();
       } else _orderDetails[_key] = { value: _value, tag: _tag };
 

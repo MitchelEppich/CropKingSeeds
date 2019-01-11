@@ -15,13 +15,14 @@ const schema = require("./data/schema");
 
 // next.js setup
 const port = process.env.PORT || -1;
-const url = process.env.URL || "FAILED";
+const url = "192.168.0.57"; //process.env.URL || "FAILED";
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const subscriptionsPath = "/subscriptions";
-const subscriptionsEndpoint = `ws://${url}:${port}${subscriptionsPath}`;
+// const subscriptionsEndpoint = `ws://${url}:${port}${subscriptionsPath}`;
+const subscriptionsEndpoint = `ws://192.168.0.57:3000${subscriptionsPath}`;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(

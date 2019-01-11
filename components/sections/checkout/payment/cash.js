@@ -3,11 +3,28 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Cash = props => {
+  let pageGroup = "payment";
+  let paymentType = "Cash";
+
   return (
     <div className="w-full mb-6 ">
       <div
         onClick={() => {
           props.setVisibleScreen({ input: "cash", clearAll: true });
+          let _orderDetails = props.checkout.orderDetails;
+          props.modifyOrderDetails({
+            orderDetails: _orderDetails,
+            group: pageGroup,
+            key: "method",
+            value:
+              _orderDetails[pageGroup]["method"] == null
+                ? {
+                    value: paymentType
+                  }
+                : undefined,
+            tag: undefined,
+            requestUpdateOfGroup: { value: true, group: pageGroup }
+          });
         }}
         style={{
           border: "2px solid #e4e4e4",
