@@ -238,7 +238,7 @@ const GenePreview = props => {
     }
 
     return (
-        <div className="flex w-full my-12 h-500 mx-auto relative overflow-hidden">
+        <div className="flex sm:flex-wrap w-full my-12 h-500 mx-auto relative overflow-hidden">
             <Link href="/shop">
                 <div
                     style={autoStyle}
@@ -252,7 +252,7 @@ const GenePreview = props => {
                     }}
                     onMouseEnter={() => props.setGeneHoverIndex(0)}
                     onMouseLeave={() => props.setGeneHoverIndex(0)}
-                    className="auto h-500 z-10">
+                    className="auto h-500 sm:h-300 z-10">
                     <img className="absolute w-full slow" src="../static/img/feminized.png" style={femImage} />
                     <div style={femScreen} className="bg-almost-black text-white uppercase">
                         <img src="../static/img/strains/package/GTF.png" style={femPack} />
@@ -278,7 +278,7 @@ const GenePreview = props => {
                     }}
                     onMouseEnter={() => props.setGeneHoverIndex(1)}
                     onMouseLeave={() => props.setGeneHoverIndex(1)}
-                    className="fem h-500 z-20">
+                    className="fem h-500 sm:h-300 z-20">
                     <img className="absolute w-full slow" src="../static/img/autoflower.png" style={autoImage} />
                     <div style={autoScreen} className="bg-almost-black text-white uppercase">
                         <img src="../static/img/strains/package/AHA.png" style={autoPack} />
@@ -300,7 +300,7 @@ const GenePreview = props => {
                     }}
                     onMouseEnter={() => props.setGeneHoverIndex(2)}
                     onMouseLeave={() => props.setGeneHoverIndex(2)}
-                    className="cbd h-500 z-30">
+                    className="cbd h-500 sm:h-300 z-30">
                     <img className="absolute w-full slow" src="../static/img/cbd.png" style={cbdImage} />
                     <div style={cbdScreen} className="bg-almost-black text-white uppercase">
                         <img src="../static/img/strains/package/CBD.png" style={cbdPack} />
@@ -326,7 +326,7 @@ const GenePreview = props => {
                     }}
                     onMouseEnter={() => props.setGeneHoverIndex(3)}
                     onMouseLeave={() => props.setGeneHoverIndex(3)}
-                    className="reg h-500 z-40">
+                    className="reg h-500 sm:h-300 z-40">
                     <img className="absolute w-full slow" src="../static/img/regular.png" style={regImage} />
                     <div style={regScreen} className="bg-almost-black text-white uppercase">
                         <img src="../static/img/strains/package/OSR.png" style={regPack} />
