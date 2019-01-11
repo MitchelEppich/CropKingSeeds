@@ -209,6 +209,40 @@ h4 {
   background-repeat: no-repeat;
 }
 
+// ANIMATION HEADER
+
+.ray_box {
+  top: 0px;
+  left: 180px;
+  right: 0;
+  position: absolute;
+  bottom: 0;
+  width: 55px;
+  -webkit-animation: ray_anim 12s linear infinite;
+  animation: ray_anim 12s linear infinite;
+  z-index: -5;
+}
+
+.ray {
+  background: red;
+  margin-left: 5px;
+  border-radius: 80% 80% 0 0;
+  position: absolute;
+  z-index: 10;
+  opacity: 1;
+}
+
+@keyframes ray_anim {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
 // CHECKOUT PREVIEW
 
 .item-preview {
