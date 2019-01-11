@@ -19,10 +19,14 @@ const menu = props => {
   return (
     <div
       style={{
+        background: "white",
         background: "url(static/img/redbg.png)",
         backgroundSize: "cover",
         backgroundPosition: "left",
-        height: "178px"
+        height: "178px",
+        overflow: "hidden",
+        zIndex: "-18",
+        position: "absolute"
       }}
       className="w-full">
       <div className="w-full h-16 inline-flex mt-6">
@@ -57,6 +61,52 @@ const menu = props => {
         <div
           style={{ marginTop: "32px" }}
           className="w-container mx-auto text-center relative">
+          <div className="ray_box">
+            <div
+              className="ray"
+              style={{
+                height: "170px",
+                width: "30px",
+                transform: "rotate(0deg)",
+                WebkitTransform: "rotate(0deg)",
+                top: "-175px",
+                left: "3px"
+              }}
+            />
+            <div
+              className="ray"
+              style={{
+                height: "170px",
+                width: "30px",
+                transform: "rotate(90deg)",
+                WebkitTransform: "rotate(90deg)",
+                top: "-58px",
+                left: "120px"
+              }}
+            />
+            <div
+              className="ray"
+              style={{
+                height: "170px",
+                width: "30px",
+                transform: "rotate(270deg)",
+                WebkitTransform: "rotate(270deg)",
+                top: "-58px",
+                left: "-115px"
+              }}
+            />
+            <div
+              className="ray"
+              style={{
+                height: "170px",
+                width: "30px",
+                transform: "rotate(180deg)",
+                WebkitTransform: "rotate(180deg)",
+                top: "60px",
+                left: "3px"
+              }}
+            />
+          </div>
           <div className="inline-flex w-full">
             <div className="w-1/4 flex justify-center pl-20">
               <div
@@ -68,14 +118,16 @@ const menu = props => {
                   background: "#600706",
                   padding: "6px",
                   marginTop: "-60px",
-                  boxShadow: "rgba(0, 0, 0, 0.2) 0px 4px 10px"
+                  boxShadow: "rgba(0, 0, 0, 0.2) 0px 4px 10px",
+                  position: "fixed"
                 }}
               />
               <img
                 style={{
                   width: "200px",
                   padding: "0px",
-                  marginTop: "-85px"
+                  marginTop: "-85px",
+                  position: "fixed"
                 }}
                 src="../static/img/cropkingseed2s.png"
                 className="scale-item absolute cursor-pointer"
