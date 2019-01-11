@@ -286,4 +286,9 @@ export default PaymentReview;
 
 let buildProductList = items => {
   console.log(items);
+  for (let key of Object.keys(items)) {
+    let item = items[key];
+    let product = item.product;
+    console.log(product);
+  }
 };
