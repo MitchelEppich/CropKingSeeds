@@ -25,7 +25,7 @@ class Index extends Component {
                             <br />
                             At Crop King Seeds, we're obsessed with affiliate and customer happiness. As an affiliate,
                             you can rest assured that we are working hard to convert any visitors you send us into
-                            custoemrs who will be thrilled to stay wuth us for a long time.
+                            customers who will be thrilled to stay wuth us for a long time.
                             <br />
                             <br />
                             <span className="font-bold">How does it work?</span>
@@ -36,9 +36,10 @@ class Index extends Component {
                             <br />
                             <br />
                             <span className="font-bold">Frequently Asked Questions:</span>
+                            <br />
                             Click here to see our full list of FAQ's.
                         </p>
-                        <h3 className="my-4">Program Details</h3>
+                        <h3 className="my-4 mt-6">Program Details</h3>
                         <div className="flex flex-wrap">
                             <div className="w-1/3 my-2 font-bold">Commission Type:</div>
                             <div className="w-2/3 my-2">Pay-Per-Sale 20% for each sale you deliver.</div>

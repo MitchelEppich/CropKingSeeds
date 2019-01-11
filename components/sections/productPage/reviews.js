@@ -6,7 +6,7 @@ const reviews = props => {
         return <Review {...props} {...review} index={index} key={index} />;
     });
     return (
-        <div className="w-full pb-8 pt-8">
+        <div className="w-full pb-8 pt-6">
             <h3 className="font-black text-2xl text-center ">Customer Reviews</h3>
 
             <ReviewForm {...props} />

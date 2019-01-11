@@ -27,7 +27,7 @@ class Index extends Component {
   render() {
     return (
       <Layout>
-        <div className="text-center w-full pt-32 bg-white relative">
+        <div className="text-center w-full pt-8 bg-white relative">
           <h1 className="text-4xl font-bold text-black">Checkout Preview</h1>
         </div>
 
@@ -135,17 +135,19 @@ class Index extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)), // setCheckoutScreen: input => dispatch(actions.setCheckoutScreen(input)),
+    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
     setContext: input => dispatch(actions.setContext(input)),
     toggleStepsCheckout: input => dispatch(actions.toggleStepsCheckout(input)),
     modifyOrderDetails: input => dispatch(actions.modifyOrderDetails(input)),
+    modifyPotentialQuantity: input =>
+      dispatch(actions.modifyPotentialQuantity(input)),
     setOrderDetails: input => dispatch(actions.setOrderDetails(input)),
     getBitcoinData: input => dispatch(actions.getBitcoinData(input)),
     toggleShowDifferentAddress: input =>
       dispatch(actions.toggleShowDifferentAddress(input)),
     modifyCart: input => dispatch(actions.modifyCart(input)),
     clearCart: () => dispatch(actions.clearCart())
-  };
+  }; // setCheckoutScreen: input => dispatch(actions.setCheckoutScreen(input)),
 };
 
 export default connect(

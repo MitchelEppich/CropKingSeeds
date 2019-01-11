@@ -216,6 +216,7 @@ const PaymentReview = props => {
             )}
           </p>
         </div>
+        {console.log(props.checkout)}
       </div>
       <div
         style={{
@@ -235,42 +236,44 @@ const PaymentReview = props => {
         >
           Payment Information
         </h3>
-        <div className="p-2">
-          <p className="mt-2">
-            Product Total: {console.log(props)}
-            <span className="">
+        <div className="p-2 inline-flex w-full">
+          <div className="w-1/2 text-right">
+            <p className="mt-2">Product Total:</p>
+            <p className="mt-2">Shipping: </p>
+            <p className="mt-2">
+              Tax ({(_orderDetails[pageGroup].cumTax * 100).toFixed(2)}%):
+            </p>
+            <p className="mt-2">
+              Credit Card Tax (
+              {(_orderDetails[pageGroup].creditTax * 100).toFixed(2)}%):{" "}
+            </p>
+          </div>
+          <div className="w-1/2 text-right">
+            <p className="mt-2">
               ${_orderDetails[pageGroup].cartTotal.value.toFixed(2)}
-            </span>
-          </p>
-          <p className="mt-2">
-            Shipping:{" "}
-            <span className="">
+            </p>
+            <p className="mt-2">
               ${_orderDetails[pageGroup].shippingFee.value.toFixed(2)}
-            </span>
-          </p>
-          <p className="mt-2">
-            Tax ({(_orderDetails[pageGroup].cumTax * 100).toFixed(2)}%):{" "}
-            <span className="">
+            </p>
+            <p className="mt-2">
               ${_orderDetails[pageGroup].taxFee.toFixed(2)}
-            </span>
-          </p>
-          <p className="mt-2">
-            Credit Card Tax (
-            {(_orderDetails[pageGroup].creditTax * 100).toFixed(2)}%):{" "}
-            <span className="">
+            </p>
+            <p className="mt-2">
               ${_orderDetails[pageGroup].creditFee.value.toFixed(2)}
-            </span>
-          </p>
-          <hr
-            style={{ border: "1px solid rgba(228, 228, 228, 0.3)" }}
-            className="mt-6"
-          />
-          <p className="text-lg mt-2 font-extrabold text-center">
-            Total:{" "}
-            <span className="">
+            </p>
+          </div>
+        </div>
+        <div className="p-2 mt-4 border-t-2 border-grey-lightest inline-flex w-full">
+          <div className="w-1/2 text-right">
+            {" "}
+            <p className="font-bold">Total:</p>{" "}
+          </div>
+          <div className="w-1/2 text-right">
+            {" "}
+            <p className="font-bold">
               ${_orderDetails[pageGroup].orderTotal.value.toFixed(2)}
-            </span>
-          </p>
+            </p>{" "}
+          </div>
         </div>
       </div>
     </div>

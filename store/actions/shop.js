@@ -17,18 +17,21 @@ const actionTypes = {
 const getActions = uri => {
   const objects = {
     toggleFilter: input => {
+      console.log("input", input);
       let _filter = { ...input.filter };
       delete input.filter;
       // Assuming only one filter at a time
       let _key = Object.keys(input)[0];
       if (_filter[_key] == null) _filter[_key] = [];
       let shouldRemove = (() => {
-        if (_filter[_key].includes(input[_key])) {
+        console.log(_key);
+        if (_key != null && _filter[_key].includes(input[_key])) {
           return true;
         }
       })();
       if (shouldRemove) {
         if (input.multiple == true) {
+          console.log("should2");
           _filter[_key] = _filter[_key].filter(a => {
             if (a == input[_key]) return false;
             return true;

@@ -6,18 +6,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Footer = props => {
   return (
     <div
-      style={{ background: "#161925" }}
+      // style={{ background: "#161925" }}
       className="w-full h-300 mt-24 inline-flex bg-grey relative">
       <div className="w-container mx-auto inline-flex">
         <div
           style={{
             width: "20%"
           }}
-          className="mt-8">
+          className="mt-4">
           <ul className="text-white font-bold pl-6 p-2">
             <Link href="/about">
               <li className="text-2xl p-1 hover:text-grey-light cursor-pointer">
                 About
+              </li>
+            </Link>
+            <Link href="/articles">
+              <li className="text-2xl p-1 hover:text-grey-light cursor-pointer">
+                Articles
               </li>
             </Link>
             <Link href="/contact">
@@ -57,7 +62,7 @@ const Footer = props => {
             width: "40%"
           }}
           className="">
-          <img
+          {/* <img
             style={{
               width: "380px",
               position: "absolute",
@@ -66,7 +71,7 @@ const Footer = props => {
             }}
             src="../static/img/cropkingseeds-footer.png"
             className="ml-12"
-          />
+          /> */}
         </div>
         <div
           style={{

@@ -148,7 +148,7 @@ const ShippingMethod = props => {
                 Express Shipping
               </h2>
             </label>
-            <span className="text-3xl text-grey-light ml-10">$32</span>
+            <span className="text-3xl text-grey-light ml-10">$30</span>
           </div>
           <p className="mt-2 leading-normal">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

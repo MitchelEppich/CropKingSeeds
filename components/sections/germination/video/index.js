@@ -1,22 +1,21 @@
 import React from "react";
 
 const Video = props => {
-  return (
-    <div className="w-full">
-      <h2 className="p-2 font-extrabold bg-grey-lightest">
-        Check it out our video about:
-      </h2>
+    return (
+        <div className="w-1/2">
+            <h2 className="p-2 font-extrabold bg-grey-lightest">Check out our germination video:</h2>
 
-      <div className="pt-2">
-        <iframe
-          width="420px"
-          height="240px"
-          src="https://growreel.com/embed/5bc119ae674e3139208e8047"
-          frameBorder="0"
-        />
-      </div>
-    </div>
-  );
+            <div className="pt-2 text-center">
+                <iframe
+                    width="420"
+                    height="240"
+                    src="https://growreel.com/embed/5bc119ae674e3139208e8047"
+                    frameBorder="0"
+                    autoPlay="false"
+                />
+            </div>
+        </div>
+    );
 };
 
 export default Video;

@@ -12,52 +12,49 @@ import ProductGrid from "../components/sections/shop/productGrid";
 import FeaturedStrainThumbnails from "../components/sections/shop/featuredStrainThumbnails";
 
 class Index extends Component {
-  componentWillMount() {}
+    componentWillMount() {}
 
-  render() {
-    return (
-      <Layout>
-        {this.props.misc.strains != null &&
-        this.props.misc.strains.length > 0 ? (
-          <React.Fragment>
-            <div className="flex flex-wrap">
-              <div
-                className={
-                  this.props.shop.viewProductExpanded != null
-                    ? "hidden"
-                    : "w-1/4 slow"
-                }
-              >
-                <Filters {...this.props} />
-                {/*<FeaturedStrainThumbnails {...this.props} />*/}
-              </div>
-              <ProductGrid {...this.props} />
-            </div>
-          </React.Fragment>
-        ) : (
-          <p>Loading...</p>
-        )}
-      </Layout>
-    );
-  }
+    render() {
+        return (
+            <Layout>
+                {this.props.misc.strains != null && this.props.misc.strains.length > 0 ? (
+                    <React.Fragment>
+                        <div className="">
+                            <div className="pl-12 pt-10 text-grey font-extrabold text-center text-3/5xl">
+                                <h3>Shop</h3>
+                            </div>
+                            <div className="flex flex-wrap">
+                                <div className={this.props.shop.viewProductExpanded != null ? "hidden" : "w-1/4 slow"}>
+                                    <Filters {...this.props} />
+                                    {/*<FeaturedStrainThumbnails {...this.props} />*/}
+                                </div>
+                                <ProductGrid {...this.props} />
+                            </div>
+                        </div>
+                    </React.Fragment>
+                ) : (
+                    <p>Loading...</p>
+                )}
+            </Layout>
+        );
+    }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
-    setHoverId: id => dispatch(actions.setHoverId(id)),
-    getStrains: () => dispatch(actions.getStrains()),
-    toggleFilter: input => dispatch(actions.toggleFilter(input)),
-    clearFilters: () => dispatch(actions.clearFilters()),
-    quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
-    modifyCart: input => dispatch(actions.modifyCart(input)),
-    modifyPotentialQuantity: input =>
-      dispatch(actions.modifyPotentialQuantity(input)),
-    clearCart: () => dispatch(actions.clearCart())
-  };
+    return {
+        setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+        setHoverId: id => dispatch(actions.setHoverId(id)),
+        getStrains: () => dispatch(actions.getStrains()),
+        toggleFilter: input => dispatch(actions.toggleFilter(input)),
+        clearFilters: () => dispatch(actions.clearFilters()),
+        quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
+        modifyCart: input => dispatch(actions.modifyCart(input)),
+        modifyPotentialQuantity: input => dispatch(actions.modifyPotentialQuantity(input)),
+        clearCart: () => dispatch(actions.clearCart())
+    };
 };
 
 export default connect(
-  state => state,
-  mapDispatchToProps
+    state => state,
+    mapDispatchToProps
 )(withData(Index));

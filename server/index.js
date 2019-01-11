@@ -26,73 +26,70 @@ const subscriptionsEndpoint = `ws://192.168.0.57:3000${subscriptionsPath}`;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(
-  process.env.M_URL,
-  { useNewUrlParser: true }
+    process.env.M_URL,
+    { useNewUrlParser: true }
 );
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "Connection error:"));
 db.once("open", () => console.log("We are connected!"));
 
-app
-  .prepare()
-  .then(() => {
-    const server = express();
+app.prepare()
+    .then(() => {
+        const server = express();
 
-    server.use(
-      cors({
-        origin: "*"
-      })
-    );
+        server.use(
+            cors({
+                origin: "*"
+            })
+        );
 
-    // server.get("/watch/:_id", (req, res) => {
-    //   app.render(req, res, "/", {});
-    // });
+        // server.get("/watch/:_id", (req, res) => {
+        //   app.render(req, res, "/", {});
+        // });
 
-    server.use(
-      "/graphql",
-      bodyParser.json(),
-      graphqlExpress((req, res) => {
-        return {
-          schema,
-          context: {
-            token: req.headers.authorization
-              ? req.headers.authorization.substring("Bearer ".length)
-              : ""
-          }
-        };
-      })
-    );
-    server.use(
-      "/graphiql",
-      graphiqlExpress({
-        endpointURL: "/graphql",
-        subscriptionsEndpoint: subscriptionsEndpoint
-      })
-    );
+        server.use(
+            "/graphql",
+            bodyParser.json(),
+            graphqlExpress((req, res) => {
+                return {
+                    schema,
+                    context: {
+                        token: req.headers.authorization ? req.headers.authorization.substring("Bearer ".length) : ""
+                    }
+                };
+            })
+        );
+        server.use(
+            "/graphiql",
+            graphiqlExpress({
+                endpointURL: "/graphql",
+                subscriptionsEndpoint: subscriptionsEndpoint
+            })
+        );
 
-    server.get("*", (req, res) => {
-      return handle(req, res);
+        server.get("*", (req, res) => {
+            return handle(req, res);
+        });
+
+        const ws = createServer(server);
+        ws.listen(port, url, () => {
+            // remove url before heroku!!
+            console.log(`Apollo Server is now running on https://${url}:${port}`);
+            // Set up the WebSocket for handling GraphQL subscriptions
+            new SubscriptionServer(
+                {
+                    execute,
+                    subscribe,
+                    schema
+                },
+                {
+                    server: ws,
+                    path: "/subscriptions"
+                }
+            );
+        });
+    })
+    .catch(ex => {
+        console.error(ex.stack);
+        process.exit(1);
     });
-
-    const ws = createServer(server);
-    ws.listen(port, url, () => {
-      // remove url before heroku!!
-      console.log(`Apollo Server is now running on https://${url}:${port}`);
-      // Set up the WebSocket for handling GraphQL subscriptions
-      new SubscriptionServer(
-        {
-          execute,
-          subscribe,
-          schema
-        },
-        {
-          server: ws,
-          path: "/subscriptions"
-        }
-      );
-    });
-  })
-  .catch(ex => {
-    console.error(ex.stack);
-    process.exit(1);
-  });

@@ -16,6 +16,7 @@ import ShopReducer from "./shop";
 import PartnerReducer from "./partner";
 import ViewProductReducer from "./viewProduct";
 import DetailReducer from "./detail";
+import GerminationReducer from "./germination";
 
 const initialState = {
     visibleScreen: ["dogs"], // When [] show main screen
@@ -28,26 +29,8 @@ const initialState = {
     activeBannerSlide: 2,
     notification: null, //"Crop King Seeds will be at High Times Cannabis Cup Sept. 13-16 2019",
     bannerSlides: [
-        // {
-        //     color: "green-dark",
-        //     style: {
-        //         // backgroundImage: "url(../static/img/banner1.png)",
-        //         backgroundPosition: "center",
-        //         backgroundSize: "cover",
-        //         backgroundRepeat: "no-repeat"
-        //     }
-        // },
-        // {
-        //     color: "orange",
-        //     style: {
-        //         // backgroundImage: "url(../static/img/banner2.png)",
-        //         backgroundPosition: "center",
-        //         backgroundSize: "cover",
-        //         backgroundRepeat: "no-repeat"
-        //     }
-        // },
         {
-            color: "white",
+            color: "blue",
             style: {
                 // backgroundImage: "url(../static/img/banner3.png)",
                 backgroundPosition: "center",
@@ -73,49 +56,11 @@ const initialState = {
                 backgroundRepeat: "no-repeat"
             }
         }
-        // {
-        //     color: "blue",
-        //     style: {
-        //         // backgroundImage: "url(../static/img/banner3.png)",
-        //         backgroundPosition: "center",
-        //         backgroundSize: "cover",
-        //         backgroundRepeat: "no-repeat"
-        //     }
-        // },
-        // {
-        //     color: "red",
-        //     style: {
-        //         // backgroundImage: "url(../static/img/banner3.png)",
-        //         backgroundPosition: "center",
-        //         backgroundSize: "cover",
-        //         backgroundRepeat: "no-repeat"
-        //     }
-        // }
     ],
     bannerSlidePositions: [
-        // {
-        //   transform: " translateX(-300%)",
-        //   display: "none",
-        //   transition: "all 0.5s ease-in-out"
-        // },
-        // {
-        //   transform: " translateX(-200%)",
-        //   display: "none",
-        //   transition: "all 0.5s ease-in-out"
-        // },
-        { transform: " translateX(-100%)", transition: "all 0.5s ease-in-out", zIndex: -10 },
-        { transform: " translateX(0)", transition: "all 0.5s ease-in-out", zIndex: 0 },
-        { transform: " translateX(100%)", transition: "all 0.5s ease-in-out" }
-        // {
-        //   transform: " translateX(200%)",
-        //   display: "none",
-        //   transition: "all 0.5s ease-in-out"
-        // },
-        // {
-        //   transform: " translateX(300%)",
-        //   display: "none",
-        //   transition: "all 0.5s ease-in-out"
-        // }
+        { transform: " translateX(-100%)" },
+        { transform: " translateX(0)", transition: "1s all ease-in-out" },
+        { transform: " translateX(100%)", transition: "1s all ease-in-out" }
     ]
 };
 
@@ -184,5 +129,6 @@ export default combineReducers({
     shop: ShopReducer,
     partner: PartnerReducer,
     viewProduct: ViewProductReducer,
-    detail: DetailReducer
+    detail: DetailReducer,
+    germination: GerminationReducer
 });

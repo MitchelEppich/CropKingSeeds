@@ -11,7 +11,7 @@ const ContactUs = props => {
       </div>
       <Tabs {...props} />
 
-      {props.misc.visibleScreen != null &&
+      {props.misc.visibleScreen == "dogs" ||
       props.misc.visibleScreen.includes("contactForm") ? (
         <Forms {...props} />
       ) : null}
