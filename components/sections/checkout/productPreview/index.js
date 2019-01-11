@@ -4,9 +4,9 @@ import { faTimes, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const ProductPreview = props => {
   let imgPack = {
-    height: "100%",
-    width: "100%",
-    objectFit: "cover"
+    // height: "100%",
+    width: "60%"
+    // objectFit: "cover"
   };
 
   // console.log(props);
@@ -22,10 +22,10 @@ const ProductPreview = props => {
           key={item}
           style={{ width: "48%" }}
           className="inline-flex relative mx-2 mt-4 item-preview">
-          <div className="w-2/5 text-center cursor-pointer p-1">
+          <div className="w-1/3 text-center cursor-pointer p-2">
             <img src={_product.packageImg} style={imgPack} />
           </div>
-          <div className="mt-1 p-2 pt-2 w-3/5 relative">
+          <div className="mt-1 p-2 pt-2 w-2/3 relative">
             <div className="inline-flex w-full items-center flex">
               <div className="w-full">
                 <h3 className="px-2 h-10 w-full text-2xl font-bold inline">
@@ -33,10 +33,10 @@ const ProductPreview = props => {
                 </h3>
               </div>
 
-              <div className="inline float-right h-10 w-12 px-3 items-center flex cursor-pointer hover:text-white hover:bg-red-dark text-center p-2s">
+              <div className="float-right h-10 w-10 items-center flex cursor-pointer hover:text-white hover:bg-red-dark text-center">
                 <FontAwesomeIcon
                   icon={faTimes}
-                  className="fa-lg ml-1 cursor-pointer"
+                  className="fa-2x pl-1 ml-1 cursor-pointer"
                   onClick={() => {
                     props.modifyCart({
                       items: props.cart.items,
@@ -47,25 +47,17 @@ const ProductPreview = props => {
                 />
               </div>
             </div>
-            <p className="px-2 pt-4 font-medium text-grey-light text-md">
+            <p className="px-2 font-bold text-grey-light">
               {_item.amount} Packs
             </p>
-            <p className="px-2 pt-2 font-medium text-grey-light text-md">
+            <p className="px-2 pt-1 font-bold text-grey-light text-md">
               {_product.type}
             </p>
-            <p className="px-2 pt-2 font-medium text-grey-light text-md">
+            {/* <p className="px-2 pt-2 font-bold text-grey-light text-md">
               ${_item.per.toFixed(2)}
-            </p>
-            <div className="absolute w-full p-2 flex items-center inline-flex mr-2 pin-r h-12 pin-b justify-end">
-              <div className="mx-4">
-                {/* <input
-                  type="number"
-                  maxLength="100"
-                  size="3"
-                  placeholder="XXX"
-                  className="p-2"
-                  style={{ width: "70px" }}
-                /> */}
+            </p> */}
+            <div className="w-full p-2 mt-8 flex items-center inline-flex h-12 justify-start">
+              <div className="w-1/2 mr-2">
                 <div className="w-100 flex justify-between h-6 items-center">
                   <button
                     onClick={() =>
@@ -83,9 +75,43 @@ const ProductPreview = props => {
                       className="fa-sm text-white cursor-pointer"
                     />
                   </button>
-                  <p className="leading-none font-semibold text-xl">
+                  <input
+                    onBlur={e => {
+                      let _value = e.target.value;
+                      if (_value == "") {
+                        props.modifyCart({
+                          items: props.cart.items,
+                          action: "SET",
+                          price: _item.price,
+                          productIdentifier: item,
+                          product: _product,
+                          quantity: 1
+                        });
+                      }
+                    }}
+                    onChange={e => {
+                      let _value = e.target.value;
+
+                      if (_value == null || parseInt(_value) < 1) {
+                        _value = 1;
+                      }
+
+                      props.modifyCart({
+                        items: props.cart.items,
+                        action: "SET",
+                        price: _item.price,
+                        productIdentifier: item,
+                        product: _product,
+                        quantity: parseInt(_value)
+                      });
+                    }}
+                    value={_item.quantity || ""}
+                    className="text-lg text-center w-12 border-0 font-bold pt-1 leading-none"
+                    type="number"
+                  />
+                  {/* <p className="leading-none font-semibold text-xl">
                     {_item.quantity}
-                  </p>
+                  </p> */}
                   <button
                     onClick={() =>
                       props.modifyCart({
@@ -104,10 +130,10 @@ const ProductPreview = props => {
                   </button>
                 </div>
               </div>
-              <div
-                style={{ borderRadius: "5px" }}
-                className="text-grey-light text-center">
-                <p className="font-semibold text-2xl">${_item.price}</p>
+              <div className="text-grey text-right w-1/2">
+                <p className="font-semibold text-2xl">
+                  ${(_item.price || 0).toFixed(2)}
+                </p>
               </div>
             </div>
           </div>

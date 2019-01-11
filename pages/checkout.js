@@ -27,7 +27,7 @@ class Index extends Component {
   render() {
     return (
       <Layout>
-        <div className="text-center w-full pt-32 bg-white relative">
+        <div className="text-center w-full pt-8 bg-white relative">
           <h1 className="text-4xl font-bold text-black">Checkout Preview</h1>
         </div>
 
@@ -84,8 +84,7 @@ class Index extends Component {
                   : null;
                 console.log(this.props.misc.stepsCheckout);
               }}
-              className="w-200 p-2 text-left mx-2 cursor-pointer flex items-center hover:text-red"
-            >
+              className="w-200 p-2 text-left mx-2 cursor-pointer flex items-center hover:text-red">
               {this.props.misc.stepsCheckout != 0 ? (
                 <span className="flex items-center font-extrabold text-grey-light hover:text-red-dark text-2xl">
                   <FontAwesomeIcon icon={faAngleLeft} className="fa-2x mr-4" />
@@ -105,8 +104,7 @@ class Index extends Component {
                   : null;
                 console.log(this.props.misc.stepsCheckout);
               }}
-              className="w-200 p-2 text-right justify-end mx-2 cursor-pointer flex items-center hover:text-red"
-            >
+              className="w-200 p-2 text-right justify-end mx-2 cursor-pointer flex items-center hover:text-red">
               {this.props.misc.stepsCheckout != 4 ? (
                 <span className="flex items-center font-extrabold text-grey-light hover:text-red-dark text-2xl">
                   Next
@@ -123,17 +121,19 @@ class Index extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)), // setCheckoutScreen: input => dispatch(actions.setCheckoutScreen(input)),
+    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
     setContext: input => dispatch(actions.setContext(input)),
     toggleStepsCheckout: input => dispatch(actions.toggleStepsCheckout(input)),
     modifyOrderDetails: input => dispatch(actions.modifyOrderDetails(input)),
+    modifyPotentialQuantity: input =>
+      dispatch(actions.modifyPotentialQuantity(input)),
     setOrderDetails: input => dispatch(actions.setOrderDetails(input)),
     getBitcoinData: input => dispatch(actions.getBitcoinData(input)),
     toggleShowDifferentAddress: input =>
       dispatch(actions.toggleShowDifferentAddress(input)),
     modifyCart: input => dispatch(actions.modifyCart(input)),
     clearCart: () => dispatch(actions.clearCart())
-  };
+  }; // setCheckoutScreen: input => dispatch(actions.setCheckoutScreen(input)),
 };
 
 export default connect(

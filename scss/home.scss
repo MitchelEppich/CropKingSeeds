@@ -197,7 +197,6 @@ h4 {
 .slowish {
     transition: all 0.3s ease-in-out;
 }
-
 // menu
 .menu {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.58);
@@ -319,9 +318,12 @@ h4 {
 
 .hr {
     @include element("filters") {
-        width: 90%;
-        height: 1px;
-        box-shadow: 0 2px 0 0 rgba(204, 31, 26, 0.3);
+        width: 95%;
+        height: 2px;
+        box-shadow: 0 2px 0 0 rgba(189, 188, 188, 0.3);
+        // width: 90%;
+        // height: 1px;
+        // box-shadow: 0 2px 0 0 rgba(204, 31, 26, 0.3);
     }
     @include element("cart") {
         width: 90%;

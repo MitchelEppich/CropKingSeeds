@@ -105,7 +105,10 @@ const getActions = uri => {
       }
 
       let _price = Object.values(_items)
-        .map(a => a.price)
+        .map(a => {
+          if (isNaN(a.price)) return 0;
+          return a.price;
+        })
         .reduce((a, b) => {
           return a + b;
         }, 0);

@@ -3,9 +3,9 @@ import React from "react";
 const Tips = props => {
   return (
     <div className="w-full p-2">
-      <div className="w-full relative  shadow">
+      <div className="w-full relative shadow">
         <div className="w-full absolute">
-          <h3 className="text-2xl bg-grey-lightest font-extrabold p-2">
+          <h3 className="text-2xl bg-grey-lightest font-extrabold p-2 pl-6">
             Tips{" "}
           </h3>
         </div>

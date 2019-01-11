@@ -43,16 +43,14 @@ const PaymentReview = props => {
           background: "#ffffff",
           color: "#191919"
         }}
-        className="w-1/3 h-200 mx-0"
-      >
+        className="w-1/3 h-200 mx-0">
         <h3
           style={{
             borderBottom: "2px solid #505050",
             color: "#1d1d1d",
             background: "whitesmoke",
             padding: "5px"
-          }}
-        >
+          }}>
           Shipping Address
         </h3>
         <div className="p-2">
@@ -118,23 +116,21 @@ const PaymentReview = props => {
           background: "#ffffff",
           color: "#191919"
         }}
-        className="w-1/3 h-200 mx-4"
-      >
+        className="w-1/3 h-200 mx-4">
         <h3
           style={{
             borderBottom: "2px solid #505050",
             color: "#1d1d1d",
             background: "whitesmoke",
             padding: "5px"
-          }}
-        >
+          }}>
           Billing Address
         </h3>
         <div className="p-2">
           <p className="mt-2">
-            {props.checkout.orderDetails.shipping != null ? (
+            {props.checkout.orderDetails.billing != null ? (
               <span>
-                {props.checkout.orderDetails.shipping.address}
+                {props.checkout.orderDetails.billing.address}
                 {", "}
               </span>
             ) : (
@@ -143,11 +139,11 @@ const PaymentReview = props => {
           </p>
 
           <p className="mt-2">
-            {props.checkout.orderDetails.shipping != null ? (
+            {props.checkout.orderDetails.billing != null ? (
               <span>
-                {props.checkout.orderDetails.shipping.city}
+                {props.checkout.orderDetails.billing.city}
                 {", "}
-                {props.checkout.orderDetails.shipping.state}
+                {props.checkout.orderDetails.billing.state}
               </span>
             ) : (
               "Not Defined"
@@ -155,14 +151,14 @@ const PaymentReview = props => {
           </p>
 
           <p className="mt-2">
-            {props.checkout.orderDetails.shipping != null
-              ? props.checkout.orderDetails.shipping.postalZip
+            {props.checkout.orderDetails.billing != null
+              ? props.checkout.orderDetails.billing.postalZip
               : "Not Defined"}
           </p>
 
           <p className="mt-2">
-            {props.checkout.orderDetails.shipping != null
-              ? props.checkout.orderDetails.shipping.country
+            {props.checkout.orderDetails.billing != null
+              ? props.checkout.orderDetails.billing.country
               : "Not Defined"}
           </p>
 
@@ -170,8 +166,8 @@ const PaymentReview = props => {
             <span className="p-2 text-grey-light">
               <FontAwesomeIcon icon={faPhone} className="fa-lg" />
             </span>
-            {props.checkout.orderDetails.shipping != null
-              ? props.checkout.orderDetails.shipping.phone
+            {props.checkout.orderDetails.billing != null
+              ? props.checkout.orderDetails.billing.phone
               : "Not Defined"}
           </p>
 
@@ -179,13 +175,14 @@ const PaymentReview = props => {
             <span className="p-2 text-grey-light">
               <FontAwesomeIcon icon={faEnvelope} className="fa-lg" />
             </span>
-            {props.checkout.orderDetails.shipping != null ? (
-              <span>{props.checkout.orderDetails.shipping.email}</span>
+            {props.checkout.orderDetails.billing != null ? (
+              <span>{props.checkout.orderDetails.billing.email}</span>
             ) : (
               "Not Defined"
             )}
           </p>
         </div>
+        {console.log(props.checkout)}
       </div>
       <div
         style={{
@@ -193,53 +190,49 @@ const PaymentReview = props => {
           background: "#ffffff",
           color: "#191919"
         }}
-        className="w-1/3 h-200 mx-0"
-      >
+        className="w-1/3 h-200 mx-0">
         <h3
           style={{
             borderBottom: "2px solid #505050",
             color: "#1d1d1d",
             background: "whitesmoke",
             padding: "5px"
-          }}
-        >
+          }}>
           Payment Information
         </h3>
-        <div className="p-2">
-          <p className="mt-2">
-            Product Total: {console.log(props)}
-            <span className="">
+        <div className="p-2 inline-flex w-full">
+          <div className="w-1/2 text-right">
+            <p className="mt-2">Product Total:</p>
+            <p className="mt-2">Shipping: </p>
+            <p className="mt-2">Tax:</p>
+            <p className="mt-2">Credit Card Tax (10%): </p>
+          </div>
+          <div className="w-1/2 text-right">
+            <p className="mt-2">
               ${props.checkout.orderDetails[pageGroup].cartTotal.toFixed(2)}
-            </span>
-          </p>
-          <p className="mt-2">
-            Shipping:{" "}
-            <span className="">
+            </p>
+            <p className="mt-2">
               ${props.checkout.orderDetails[pageGroup].shippingFee.toFixed(2)}
-            </span>
-          </p>
-          <p className="mt-2">
-            Tax:{" "}
-            <span className="">
+            </p>
+            <p className="mt-2">
               ${props.checkout.orderDetails[pageGroup].taxFee.toFixed(2)}
-            </span>
-          </p>
-          <p className="mt-2">
-            Credit Card Tax (10%):{" "}
-            <span className="">
+            </p>
+            <p className="mt-2">
               ${props.checkout.orderDetails[pageGroup].creditTax.toFixed(2)}
-            </span>
-          </p>
-          <hr
-            style={{ border: "1px solid rgba(228, 228, 228, 0.3)" }}
-            className="mt-6"
-          />
-          <p className="text-lg mt-2 font-extrabold text-center">
-            Total:{" "}
-            <span className="">
+            </p>
+          </div>
+        </div>
+        <div className="p-2 mt-4 border-t-2 border-grey-lightest inline-flex w-full">
+          <div className="w-1/2 text-right">
+            {" "}
+            <p className="font-bold">Total:</p>{" "}
+          </div>
+          <div className="w-1/2 text-right">
+            {" "}
+            <p className="font-bold">
               ${props.checkout.orderDetails[pageGroup].orderTotal.toFixed(2)}
-            </span>
-          </p>
+            </p>{" "}
+          </div>
         </div>
       </div>
     </div>

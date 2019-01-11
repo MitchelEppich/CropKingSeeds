@@ -32,11 +32,6 @@ const menu = props => {
                 Germination
               </li>
             </Link>
-            <Link href="/articles">
-              <li className="px-2 py-1 mx-2 cursor-pointer text-2xl hover:text-red-darker">
-                Articles
-              </li>
-            </Link>
           </ul>
         </div>
       </div>

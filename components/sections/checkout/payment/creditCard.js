@@ -37,8 +37,7 @@ const CreditCard = props => {
           background: "#ffffff",
           color: "#191919"
         }}
-        className="h-10 inline-flex w-full cursor-pointer"
-      >
+        className="h-10 inline-flex w-full cursor-pointer">
         <div className="w-4/5 p-2 flex items-center">
           <p>Pay with Credit Card</p>
         </div>
@@ -170,8 +169,7 @@ const CreditCard = props => {
                     value: _value,
                     tag: _tag
                   });
-                }}
-              >
+                }}>
                 <option value="" disabled selected>
                   Month
                 </option>
@@ -213,8 +211,7 @@ const CreditCard = props => {
                     value: _value,
                     tag: _tag
                   });
-                }}
-              >
+                }}>
                 <option value="" disabled selected>
                   Year
                 </option>
@@ -255,14 +252,14 @@ const CreditCard = props => {
                   }}
                   size="3"
                   maxLength="3"
-                  className="p-2 w-full mt-0 "
+                  className="p-2 py-3 w-full mt-0 "
                 />
               </div>
               <div className="mt-0 ml-2 absolute pin-r">
                 <img
                   src="../static/img/securitycode.png"
                   width="40px"
-                  className="opacity-50 pt-1 mr-1"
+                  className="opacity-50 pt-2 mr-1"
                 />
               </div>
             </div>
