@@ -20,18 +20,22 @@ class Index extends Component {
         {this.props.misc.strains != null &&
         this.props.misc.strains.length > 0 ? (
           <React.Fragment>
-            <div className="flex flex-wrap">
-              <div
-                className={
-                  this.props.shop.viewProductExpanded != null
-                    ? "hidden"
-                    : "w-1/4 slow"
-                }
-              >
-                <Filters {...this.props} />
-                {/*<FeaturedStrainThumbnails {...this.props} />*/}
+            <div className="">
+              <div className="pl-12 pt-10 text-grey font-extrabold text-center text-3/5xl">
+                <h3>Shop</h3>
               </div>
-              <ProductGrid {...this.props} />
+              <div className="flex flex-wrap">
+                <div
+                  className={
+                    this.props.shop.viewProductExpanded != null
+                      ? "hidden"
+                      : "w-1/4 slow"
+                  }>
+                  <Filters {...this.props} />
+                  {/*<FeaturedStrainThumbnails {...this.props} />*/}
+                </div>
+                <ProductGrid {...this.props} />
+              </div>
             </div>
           </React.Fragment>
         ) : (

@@ -12,21 +12,21 @@ const FAQ = props => {
         <p className="font-extrabold p-2 text-2xl">Most Popular Questions</p>
         <div className="w-full p-2 inline-flex">
           <div className="w-1/3 mr-2">
-            <TipsBox />
+            <TipsBox {...props} />
           </div>
           <div className="w-1/3 mr-2">
-            <TipsBox />
+            <TipsBox {...props} />
           </div>
           <div className="w-1/3">
-            <TipsBox />
+            <TipsBox {...props} />
           </div>
         </div>
       </div>
       <div className="w-full mt-8">
-        <PopUpSection />
-        <PopUpSection />
-        <PopUpSection />
-        <PopUpSection />
+        <PopUpSection {...props} />
+        <PopUpSection {...props} />
+        <PopUpSection {...props} />
+        <PopUpSection {...props} />
       </div>
     </div>
   );

@@ -210,7 +210,7 @@ const productThumbnail = props => {
               </div>
               <div className="w-full inline-flex mt-2">
                 <button
-                  className="bg-addtocart mr-1 w-full text-center text-white h-10 px-2 py-2 hover:bg-grey"
+                  className="bg-red-dark mr-1 w-full text-center text-white h-10 px-2 py-2 hover:bg-grey"
                   onClick={() => {
                     props.modifyCart({
                       items: props.cart.items,
@@ -224,9 +224,8 @@ const productThumbnail = props => {
                 </button>
                 <Link href="/checkout">
                   <button
-                    className="bg-buynow ml-1 w-full text-center text-white h-10 px-2 py-2 hover:bg-grey"
+                    className="bg-grey-dark ml-1 w-full text-center text-white h-10 px-2 py-2 hover:bg-grey"
                     onClick={() => {
-                      console.log("cl");
                       props.modifyCart({
                         items: props.cart.items,
                         action: "APPEND",
