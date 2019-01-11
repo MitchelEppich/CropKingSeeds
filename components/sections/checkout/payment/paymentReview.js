@@ -16,8 +16,6 @@ const PaymentReview = props => {
     _orderDetails[pageGroup] == null ||
     _orderDetails[pageGroup].updateRequested
   ) {
-    console.log("Updating");
-
     let cartTotal = props.cart.price;
     let { tax, provTax, taxType } =
       _orderDetails.billing.country.value.toLowerCase() == "canada"
@@ -37,7 +35,6 @@ const PaymentReview = props => {
         ? 0.1
         : 0;
     let creditFee = cartTotal * creditTax;
-    //_orderDetails.payment["Credit Card"] != null ? cartTotal * 0.1 : 0;
     let cumTax = tax + provTax;
     let shippingFee = _orderDetails.shipping.shippingCost.value;
     let taxFee = cartTotal * cumTax;
@@ -237,7 +234,7 @@ const PaymentReview = props => {
           Payment Information
         </h3>
         <div className="p-2 inline-flex w-full">
-          <div className="w-1/2 text-right">
+          <div className="w-3/5 text-right">
             <p className="mt-2">Product Total:</p>
             <p className="mt-2">Shipping: </p>
             <p className="mt-2">
@@ -248,7 +245,7 @@ const PaymentReview = props => {
               {(_orderDetails[pageGroup].creditTax * 100).toFixed(2)}%):{" "}
             </p>
           </div>
-          <div className="w-1/2 text-right">
+          <div className="w-2/5 pl-4 text-left">
             <p className="mt-2">
               ${_orderDetails[pageGroup].cartTotal.value.toFixed(2)}
             </p>
@@ -264,11 +261,11 @@ const PaymentReview = props => {
           </div>
         </div>
         <div className="p-2 mt-4 border-t-2 border-grey-lightest inline-flex w-full">
-          <div className="w-1/2 text-right">
+          <div className="w-3/5 text-right">
             {" "}
             <p className="font-bold">Total:</p>{" "}
           </div>
-          <div className="w-1/2 text-right">
+          <div className="w-2/5 text-left pl-4">
             {" "}
             <p className="font-bold">
               ${_orderDetails[pageGroup].orderTotal.value.toFixed(2)}

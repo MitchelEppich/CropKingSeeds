@@ -25,8 +25,6 @@ const getActions = uri => {
       let _tag = input.tag;
       let _requestUpdateOfGroup = input.requestUpdateOfGroup;
 
-      console.log(_requestUpdateOfGroup);
-
       if (
         _requestUpdateOfGroup != null &&
         _orderDetails[_requestUpdateOfGroup.group] != null &&

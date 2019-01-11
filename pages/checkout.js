@@ -24,6 +24,15 @@ import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Index extends Component {
+  componentDidMount() {
+    this.props.toggleStepsCheckout(0);
+    let _orderDetails = this.props.checkout.orderDetails;
+    this.props.modifyOrderDetails({
+      orderDetails: _orderDetails,
+      requestUpdateOfGroup: { group: "payment", value: true }
+    });
+  }
+
   render() {
     return (
       <Layout>
