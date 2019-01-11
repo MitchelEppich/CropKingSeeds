@@ -46,8 +46,8 @@ const cart = props => {
   return (
     <div
       style={viewCart}
-      className="w-500 text-black text-3xl sm:w-screen max-w-screen z-50 pin-t pin-r h-screen bg-white fixed pb-12 shadow-lg pt-16">
-      <div className="relative h-24 w-full fixed">
+      className="w-500 text-black text-3xl sm:w-screen max-w-screen z-50 pin-t pin-r h-screen bg-white fixed pb-12 shadow-lg pt-56">
+      <div className="relative h-20 w-full fixed">
         <div className="absolute w-full">
           <p
             onClick={() =>
@@ -55,7 +55,7 @@ const cart = props => {
                 input: "viewCart"
               })
             }
-            className="absolute pin-t pin-l mt-8 ml-12 text-red-dark cursor-pointer">
+            className="absolute pin-t pin-l mt-4 ml-12 text-red-dark cursor-pointer">
             <FontAwesomeIcon icon={faAngleDoubleRight} className="fa-lg" />
           </p>
           <h2
@@ -64,7 +64,7 @@ const cart = props => {
                 input: "viewCart"
               })
             }
-            className="text-red-dark border-b-2 border-red-dark w-full h-16 text-center text-3/5xl font-extrabold mt-8 cursor-pointer">
+            className="text-red-dark border-b-2 border-red-dark w-full h-16 text-center text-3/5xl font-extrabold mt-4 cursor-pointer">
             Cart
           </h2>
         </div>

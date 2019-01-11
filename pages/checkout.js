@@ -36,7 +36,7 @@ class Index extends Component {
   render() {
     return (
       <Layout>
-        <div className="text-center w-full pt-8 bg-white relative">
+        <div className="text-center w-full pt-12 bg-white relative">
           <h1 className="text-4xl font-bold text-black">Checkout Preview</h1>
         </div>
 
@@ -83,7 +83,7 @@ class Index extends Component {
             className=""
           />
 
-          <div className="w-full p-2 inline-flex justify-between">
+          <div className="w-full inline-flex justify-between">
             <div
               onClick={() => {
                 this.props.misc.stepsCheckout > 0
@@ -91,12 +91,11 @@ class Index extends Component {
                       this.props.misc.stepsCheckout - 1
                     )
                   : null;
-                console.log(this.props.misc.stepsCheckout);
               }}
-              className="w-200 p-2 text-left mx-2 cursor-pointer flex items-center hover:text-red"
+              className="w-200 p-2 text-left cursor-pointer flex items-center hover:text-red"
             >
               {this.props.misc.stepsCheckout != 0 ? (
-                <span className="flex items-center font-extrabold text-grey-light hover:text-red-dark text-2xl">
+                <span className="flex items-center font-extrabold text-grey-light hover:text-red-dark text-2xl uppercase">
                   <FontAwesomeIcon icon={faAngleLeft} className="fa-2x mr-4" />
                   Back
                 </span>
@@ -135,7 +134,7 @@ class Index extends Component {
                     : null;
                 }
               }}
-              className={`w-200 p-2 text-right justify-end mx-2 cursor-pointer flex items-center hover:text-red ${
+              className={`w-200 p-2 text-right justify-end cursor-pointer flex items-center hover:text-red ${
                 Object.keys(this.props.cart.items).length == 0 ||
                 (this.props.misc.stepsCheckout == 3 &&
                   this.props.checkout.orderDetails.payment != null &&
@@ -145,7 +144,7 @@ class Index extends Component {
               }`}
             >
               {this.props.misc.stepsCheckout != 4 ? (
-                <span className="flex items-center font-extrabold text-grey-light hover:text-red-dark text-2xl">
+                <span className="flex items-center font-extrabold text-grey-light hover:text-red-dark text-2xl uppercase">
                   Next
                   <FontAwesomeIcon icon={faAngleRight} className="fa-2x ml-4" />
                 </span>
