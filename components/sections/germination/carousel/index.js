@@ -5,27 +5,30 @@ const Carousel = props => {
     let images = props.germination.steps.map((step, index) => {
         return <img key={index} style={{ width: "540px", height: "320px", marginTop: "25px" }} src={step.image} />;
     });
-    let progressImages = props.germination.steps.map((step, index) => {
+    let progressDivs = props.germination.steps.map((step, index) => {
         let style =
             currentStep == index
-                ? { transform: "translateY(-67px)", width: "140px", height: "140px" }
-                : { transform: "translateY(-57px)", width: "120px", height: "120px" };
+                ? {
+                      transform: "translateY(-10px)",
+                      width: "30px",
+                      height: "30px",
+                      paddingTop: "2px",
+                      fontSize: "1.5rem"
+                  }
+                : { transform: "translateY(-7px)", width: "20px", height: "20px" };
         return (
-            <div key={index} className="w-200 h-8 text-center">
-                <img
-                    onClick={() => {
-                        props.changeStep({
-                            _incrOrDecr: 0,
-                            _currentStep: index,
-                            _totalSteps: props.germination.steps.length
-                        });
-                    }}
-                    key={index}
-                    style={style}
-                    className="relative cursor-pointer z-50"
-                    src={step.progressImage}
-                />
-                {/* <span
+            <div
+                onClick={() => {
+                    props.changeStep({
+                        _incrOrDecr: 0,
+                        _currentStep: index,
+                        _totalSteps: props.germination.steps.length
+                    });
+                }}
+                key={index}
+                style={style}
+                className="z-50 bg-grey-light text-center cursor-pointer">
+                <span
                     onClick={() => {
                         props.changeStep({
                             _incrOrDecr: 0,
@@ -35,19 +38,12 @@ const Carousel = props => {
                     }}
                     style={{
                         margin: "0 auto",
-                        width: "20px",
-                        height: "20px",
                         zIndex: 50,
                         color: "white",
-                        borderRadius: "50%",
-                        backgroundColor: "#A31621",
-                        position: "absolute",
-                        paddingLeft: "1px",
-                        transform: "translateX(-65px)",
                         cursor: "pointer"
                     }}>
                     {index + 1}
-                </span> */}
+                </span>
             </div>
         );
     });
@@ -105,9 +101,7 @@ const Carousel = props => {
                 </button>
             </div>
             <div className="w-full h-60px absolute pin-b">
-                <div className="bg-grey-lighter h-2 w-full px-32 mt-8 flex justify-between mx-auto">
-                    {progressImages}
-                </div>
+                <div className="bg-grey-lighter h-2 w-full px-32 mt-8 flex justify-between mx-auto">{progressDivs}</div>
             </div>
         </div>
     );

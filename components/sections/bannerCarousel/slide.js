@@ -8,7 +8,7 @@ const slide = props => {
     return (
         <div
             onClick={() => {
-                // props.nextBannerSlide();
+                props.nextBannerSlide();
             }}
             style={{ ...position, ...props.style }}
             className={"h-500 w-full z-0 absolute bg-" + props.color}>
