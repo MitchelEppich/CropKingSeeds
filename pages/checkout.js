@@ -109,10 +109,23 @@ class Index extends Component {
               onClick={() => {
                 if (this.props.misc.stepsCheckout == 3) {
                   getCustomerIP(ip => {
-                    console.log(ip);
-                    this.props.toggleStepsCheckout(
-                      this.props.misc.stepsCheckout + 1
-                    );
+                    if (ip == null) {
+                      console.log("Failed to fetch IP");
+                      return;
+                    }
+                    this.props
+                      .processOrder({
+                        orderDetails: {
+                          ...this.props.checkout.orderDetails,
+                          CardHolderIp: ip
+                        }
+                      })
+                      .then(res => {
+                        console.log(res);
+                        this.props.toggleStepsCheckout(
+                          this.props.misc.stepsCheckout + 1
+                        );
+                      });
                   });
                 } else {
                   this.props.misc.stepsCheckout < 4
@@ -123,7 +136,10 @@ class Index extends Component {
                 }
               }}
               className={`w-200 p-2 text-right justify-end mx-2 cursor-pointer flex items-center hover:text-red ${
-                Object.keys(this.props.cart.items).length == 0
+                Object.keys(this.props.cart.items).length == 0 ||
+                (this.props.misc.stepsCheckout == 3 &&
+                  this.props.checkout.orderDetails.payment != null &&
+                  this.props.checkout.orderDetails.payment.method == null)
                   ? "opacity-50 unselectable pointer-events-none"
                   : ""
               }`}
@@ -155,6 +171,7 @@ const mapDispatchToProps = dispatch => {
     toggleShowDifferentAddress: input =>
       dispatch(actions.toggleShowDifferentAddress(input)),
     modifyCart: input => dispatch(actions.modifyCart(input)),
+    processOrder: input => dispatch(actions.processOrder(input)),
     clearCart: () => dispatch(actions.clearCart())
   }; // setCheckoutScreen: input => dispatch(actions.setCheckoutScreen(input)),
 };
