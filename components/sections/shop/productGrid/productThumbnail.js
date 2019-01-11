@@ -18,7 +18,7 @@ const productThumbnail = props => {
     props.product.sotiId + [5, 10, 25][props.shop.quickAddToCartQty];
 
   return (
-    <div className={overlayClass}>
+    <div className={`${overlayClass} overflow-hidden`}>
       <FontAwesomeIcon
         onClick={() => {
           props.setHoverId(product._id);
@@ -36,24 +36,23 @@ const productThumbnail = props => {
         onClick={() => {
           props.setCurrentProduct({ product: props.product });
         }}
-        className={hover ? "w-full" : "relative"}
-      >
+        className={hover ? "w-full bg-white ml-1" : "relative"}>
         <Link
           href="/viewProduct"
-          as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}
-        >
+          as={
+            "/product/" + props.product.name.toLowerCase().replace(/ /g, "-")
+          }>
           <div style={{ zIndex: "1000" }} className="absolute w-full">
             <h3
               className={
                 hover
-                  ? "w-full mt-4 mb-4 text-black font-black text-2xl text-center cursor-pointer"
+                  ? "w-full mt-2 mb-2 text-black font-black text-2xl text-center cursor-pointer"
                   : `slow text-center sm:text-xs text-lg text-grey p-2 font-extrabold z-50 strainTitle bg-${
                       props.detail.geneColor[
                         props.product.genetic.toLowerCase()
                       ]
                     }`
-              }
-            >
+              }>
               {props.product.name}
             </h3>
           </div>
@@ -63,8 +62,7 @@ const productThumbnail = props => {
             hover
               ? "border-b-2 border-grey-lightest w-main mx-auto pt-2"
               : "hidden slow"
-          }
-        >
+          }>
           {" "}
         </div>
         <div className="text-center w-full pt-8">
@@ -73,8 +71,7 @@ const productThumbnail = props => {
               hover
                 ? "text-grey my-3 slow font-extrabold text-sm"
                 : "hidden slow"
-            }
-          >
+            }>
             <span className="ml-1 text-grey font-medium">
               {props.product.genetic} {props.product.type}
             </span>
@@ -85,10 +82,9 @@ const productThumbnail = props => {
             href="/viewProduct"
             as={
               "/product/" + props.product.name.toLowerCase().replace(/ /g, "-")
-            }
-          >
+            }>
             <p className="cursor-pointer hover:text-grey">
-              {props.product.description.substring(0, 50) + "..."}
+              {props.product.description.substring(0, 45) + "..."}
             </p>
           </Link>
         </div>
@@ -97,8 +93,7 @@ const productThumbnail = props => {
             hover
               ? "w-full p-2 px-4 inline-flex text-grey text-center"
               : "hidden slow"
-          }
-        >
+          }>
           <div className="w-1/2 text-sm mx-2 inline-flex bg-grey-lightest text-center">
             <div className="text-center w-full pt-1 inline-flex flex items-center justify-between">
               <FontAwesomeIcon icon={faClock} className="fa-lg ml-2 mb-1" />
@@ -121,8 +116,7 @@ const productThumbnail = props => {
             hover
               ? "flex justify-center px-4 items-center flex"
               : "flex flex-wrap justify-center px-4 hidden"
-          }
-        >
+          }>
           {hover ? (
             <div className="w-full">
               <div className="w-full">
@@ -139,8 +133,7 @@ const productThumbnail = props => {
                       product: props.product,
                       quantity: props.cart.potentialQuantity
                     });
-                  }}
-                >
+                  }}>
                   Add to Cart
                 </button>
                 <Link href="/checkout">
@@ -154,8 +147,7 @@ const productThumbnail = props => {
                         product: props.product,
                         quantity: props.cart.potentialQuantity
                       });
-                    }}
-                  >
+                    }}>
                     Buy Now
                   </button>
                 </Link>
@@ -168,8 +160,7 @@ const productThumbnail = props => {
             hover
               ? "w-full p-2 px-6 mt-3 text-red-dark font-extrabold text-center inline-flex"
               : "hidden slow"
-          }
-        >
+          }>
           <div className="w-1/2 mr-1 bg-grey-lightest pb-2">
             <p className="text-xs mt-2 text-grey pt-2 px-2">Price per Pack:</p>{" "}
             <p className="text-2xl text-grey px-2 ">
@@ -191,8 +182,7 @@ const productThumbnail = props => {
           </div>
         </div>
         <div
-          className={hover ? "w-full mx-auto text-center p-1" : "hidden slow"}
-        >
+          className={hover ? "w-full mx-auto text-center p-1" : "hidden slow"}>
           <p className="text-sm italic font-extrabold text-red-dark text-right mr-6">
             In stock
           </p>

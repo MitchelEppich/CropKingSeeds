@@ -8,8 +8,8 @@ const Coupon = props => {
           <input
             type="text"
             id="coupon"
-            placeholder="Coupon Code"
-            className="p-2 w-full"
+            placeholder="COUPON CODE"
+            className="p-3 w-full"
             onChange={e => {
               let _orderDetails = props.checkout.orderDetails;
               let _target = e.target;
@@ -30,18 +30,18 @@ const Coupon = props => {
       </div>
       <div className="w-1/3">
         <div className="w-200 ml-2">
-          <div className="p-2 bg-grey-light text-white font-bold text-center cursor-pointer hover:bg-grey ">
+          <div className="p-3 bg-grey-light text-white font-bold text-center cursor-pointer hover:bg-grey uppercase">
             Apply
           </div>
         </div>
       </div>
       <div className="w-1/3 flex justify-end">
         <div className="w-200 ml-2">
-          <div className="p-2 text-grey-light font-bold text-center">
-            <h3>
-              Subtotal:{" "}
-              <span className="text-black">${props.cart.price.toFixed(2)}</span>
-            </h3>
+          <div className="p-2 text-center text-xl inline-flex items-center flex">
+            <p className="text-grey-light font-bold">SUBTOTAL: </p>
+            <p className="text-red-dark p-2 font-extrabold">
+              ${props.cart.price.toFixed(2)}
+            </p>
           </div>
         </div>
       </div>

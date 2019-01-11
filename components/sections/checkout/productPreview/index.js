@@ -130,8 +130,8 @@ const ProductPreview = props => {
                   </button>
                 </div>
               </div>
-              <div className="text-grey text-right w-1/2">
-                <p className="font-semibold text-2xl">
+              <div className="text-grey-light text-right w-1/2 items-center">
+                <p className="font-semibold text-lg">
                   ${(_item.price || 0).toFixed(2)}
                 </p>
               </div>

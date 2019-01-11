@@ -23,9 +23,7 @@ class Layout extends Component {
 
   render() {
     return (
-      <div
-        style={{ backgroundColor: "#9A1815", width: "100vw", height: "100%" }}
-      >
+      <div style={{ backgroundColor: "#f3f3f3", height: "100%" }}>
         {/* <Particles
           width="100vw"
           height="100vh"
@@ -99,7 +97,7 @@ class Layout extends Component {
           }}
         /> */}
         <Header {...this.props} />
-        <div className="pt-24">
+        <div className="pt-48">
           <div className="bg-white relative z-30 px-4 py-4 w-full xl:w-1300 lg:w-1300 mx-auto shadow-md">
             {this.props.children}
           </div>
