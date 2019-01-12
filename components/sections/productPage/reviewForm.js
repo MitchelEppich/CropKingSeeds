@@ -20,10 +20,10 @@ const reviewForm = props => {
     }
 
     return (
-        <form className="min-h-300 my-2 mb-8 xl:w-700 w-300 flex flex-wrap mx-auto">
+        <form className="min-h-300 my-2 mb-12 xl:w-700 w-300 flex flex-wrap mx-auto">
             <div className="w-full mx-auto flex flex-wrap justify-between">
-                <input className="w-full h-12 text-xl my-2 pl-2" placeholder="Name (optional)" />
-                <input className="w-full h-12 text-xl my-2 pl-2" placeholder="Email" />
+                <input className="w-340 h-12 text-xl my-2 pl-2" placeholder="Name (optional)" />
+                <input className="w-340 h-12 text-xl my-2 pl-2" placeholder="Email" />
             </div>
             <textarea
                 placeholder={"What did you think about " + props.viewProduct.currentProduct.name + "?"}

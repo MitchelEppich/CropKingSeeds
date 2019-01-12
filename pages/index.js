@@ -15,7 +15,7 @@ import News from "../components/sections/news";
 class Index extends Component {
     componentWillMount() {
         this.props.getStrains();
-        this.runCarousel(5000, this.props.nextBannerSlide);
+        // this.runCarousel(5000, this.props.nextBannerSlide);
     }
 
     runCarousel(delay, callback) {
@@ -25,6 +25,7 @@ class Index extends Component {
         };
         loop();
     }
+
     render() {
         return (
             <Layout>

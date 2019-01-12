@@ -14,7 +14,7 @@ const BannerCarousel = props => {
         );
     });
 
-    return <div className="bg-green h-500 w-full flex relative overflow-hidden">{slides}</div>;
+    return <div className="bg-green h-500 sm:h-200 w-full flex relative overflow-hidden">{slides}</div>;
 };
 
 export default BannerCarousel;
