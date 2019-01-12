@@ -129,7 +129,7 @@ const menu = props => {
                   marginTop: "-85px",
                   position: "fixed"
                 }}
-                src="../static/img/cropkingseed2s.png"
+                src="../static/img/cropkingseeds-footer.png"
                 className="scale-item absolute cursor-pointer"
               />
             </div>
@@ -160,18 +160,22 @@ const menu = props => {
                     onClick={() => {
                       props.setVisibleScreen({ input: "viewCart" });
                     }}
-                    className="text-center cursor-pointer text-white">
+                    className="text-center cursor-pointer mt-1 text-white">
                     <div className="">
-                      <img
+                      <FontAwesomeIcon
+                        icon={faShoppingCart}
+                        className="fa-lg"
+                      />
+                      {/* <img
                         src="../static/img/shopping-cart-xxl.png"
                         width="40px"
-                      />
+                      /> */}
 
                       <span
                         style={{
                           height: "28px",
                           width: "28px",
-                          border: "0.3px solid #a31621",
+                          // border: "0.3px solid #a31621",
                           borderRadius: "50%",
                           background: "#ffca0f",
                           position: "absolute",

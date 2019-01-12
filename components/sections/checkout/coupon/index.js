@@ -38,7 +38,7 @@ const Coupon = props => {
       <div className="w-1/3 flex justify-end">
         <div className="w-200 ml-2">
           <div className="p-2 text-center text-xl inline-flex items-center flex">
-            <p className="text-grey-light font-bold">SUBTOTAL: </p>
+            <p className="text-grey-light font-bold uppercase">Subtotal: </p>
             <p className="text-red-dark p-2 font-extrabold">
               ${props.cart.price.toFixed(2)}
             </p>
