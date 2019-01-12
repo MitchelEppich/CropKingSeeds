@@ -20,7 +20,7 @@ const initialState = {
         }
     ],
     currentStep: 0,
-    carouselPositions: ["translateX(600px)", "translateX(-930px)", "translateX(-2460px)"]
+    carouselPositions: ["translateX(660px)", "translateX(-865px)", "translateX(-2390px)"]
 };
 
 export default (state = initialState, action) => {

@@ -17,14 +17,10 @@ class Index extends Component {
         return (
             <Layout>
                 <div className="pt-12 mb-24">
-                    <div>
+                    <div className="">
                         <Carousel {...this.props} />
-                        <div className="w-full my-12 flex flex-wrap">
-                            <Video />
-                            <div className="w-1/2">
-                                <Tips />
-                                <Tips />
-                            </div>
+                        <div className="w-full px-8 pt-8 h-500 my-12 bg-grey-lightest">
+                            <h2 className="w-full text-center text-3xl font-black uppercase">Our Guarantee</h2>
                         </div>
                         <div className="w-full mt-8">
                             <h3 className="w-full font-black text-2xl h-12 my-2">Featured Products</h3>

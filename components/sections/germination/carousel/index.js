@@ -3,19 +3,19 @@ const Carousel = props => {
     let carouselPositions = props.germination.carouselPositions;
 
     let images = props.germination.steps.map((step, index) => {
-        return <img key={index} style={{ width: "540px", height: "320px", marginTop: "25px" }} src={step.image} />;
+        return <img key={index} style={{ width: "551.11px", height: "310px", marginTop: "25px" }} src={step.image} />;
     });
     let progressDivs = props.germination.steps.map((step, index) => {
         let style =
             currentStep == index
                 ? {
-                      transform: "translateY(-10px)",
+                      transform: "translateY(-30px)",
                       width: "30px",
                       height: "30px",
                       paddingTop: "2px",
                       fontSize: "1.5rem"
                   }
-                : { transform: "translateY(-7px)", width: "20px", height: "20px" };
+                : { transform: "translateY(-25px)", width: "20px", height: "20px" };
         return (
             <div
                 onClick={() => {
@@ -25,32 +25,28 @@ const Carousel = props => {
                         _totalSteps: props.germination.steps.length
                     });
                 }}
-                key={index}
-                style={style}
-                className="z-50 bg-grey-light text-center cursor-pointer">
-                <span
-                    onClick={() => {
-                        props.changeStep({
-                            _incrOrDecr: 0,
-                            _currentStep: index,
-                            _totalSteps: props.germination.steps.length
-                        });
-                    }}
-                    style={{
-                        margin: "0 auto",
-                        zIndex: 50,
-                        color: "white",
-                        cursor: "pointer"
-                    }}>
-                    {index + 1}
-                </span>
+                className="bg-white p-4 z-50  cursor-pointer"
+                key={index}>
+                <div style={style} className="bg-grey-light text-center">
+                    <span
+                        onClick={() => {
+                            props.changeStep({
+                                _incrOrDecr: 0,
+                                _currentStep: index,
+                                _totalSteps: props.germination.steps.length
+                            });
+                        }}
+                        style={{ margin: "0 auto", zIndex: 50, color: "white", cursor: "pointer" }}>
+                        {index + 1}
+                    </span>
+                </div>
             </div>
         );
     });
 
     return (
-        <div className="w-1200 shadow-lg h-400 pt-12 text-xl relative overflow-hidden mx-auto">
-            <div className="w-1/3 ml-24 absolute z-0">
+        <div className="sm:w-full sm:pt-4 shadow-lg h-400 pt-12 text-xl relative overflow-hidden mx-auto bg-white">
+            <div className="w-1/3 sm:w-2/3 sm:ml-16 ml-24 absolute z-0">
                 <h2 className="px-4 my-4 text-center">Step {currentStep + 1}</h2>
                 <p className="w-full slow px-4">{props.germination.steps[currentStep].instruction}</p>
             </div>
@@ -78,8 +74,8 @@ const Carousel = props => {
                     }}
                     className={
                         currentStep > 0
-                            ? "text-white bg-red-dark w-60px p-2 font-bold slowish hover:bg-grey hover:text-white"
-                            : "cursor-not-allowed text-white bg-grey-lighter w-60px p-2 font-bold slowish "
+                            ? "sm:hidden text-white bg-red-dark w-60px p-2 font-bold slowish hover:bg-grey hover:text-white"
+                            : "sm:hidden cursor-not-allowed text-white bg-grey-lightest w-60px p-2 font-bold slowish "
                     }>
                     Prev
                 </button>
@@ -94,14 +90,14 @@ const Carousel = props => {
                     }}
                     className={
                         currentStep < props.germination.steps.length - 1
-                            ? "text-white bg-red-dark w-60px p-2 font-bold slowish hover:bg-grey hover:text-white"
-                            : "cursor-not-allowed text-white bg-grey-lighter w-60px p-2 font-bold slowish "
+                            ? "sm:hidden text-white bg-red-dark w-60px p-2 font-bold slowish hover:bg-grey hover:text-white"
+                            : "sm:hidden cursor-not-allowed text-white bg-grey-lightest w-60px p-2 font-bold slowish "
                     }>
                     Next
                 </button>
             </div>
             <div className="w-full h-60px absolute pin-b">
-                <div className="bg-grey-lighter h-2 w-full px-32 mt-8 flex justify-between mx-auto">{progressDivs}</div>
+                <div className="bg-grey-light h-1px w-full px-32 mt-8 flex justify-between mx-auto">{progressDivs}</div>
             </div>
         </div>
     );

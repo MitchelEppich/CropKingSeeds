@@ -1,10 +1,5 @@
-
-
 const news = props => {
+    return <div className="mt-12 w-full sm:h-200 h-500 bg-black" />;
+};
 
-  return (
-    <div className="mt-12 w-full h-500 bg-black"></div>
-  );
-}
-
-export default news
+export default news;

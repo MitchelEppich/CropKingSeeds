@@ -8,12 +8,12 @@ const review = props => {
         ratings.push(<FontAwesomeIcon key={i} icon={faCannabis} className="text-red-dark fa-lg mx-1" />);
     }
     return (
-        <div className="my-2 flex px-8 justify-center">
-            <div className="px-4 pt-2">
+        <div className="my-2 flex justify-center">
+            <div className="pr-4 pt-2 w-1/4">
                 <p className="font-bold text-xl mb-1">{props.name}</p>
                 {ratings}
             </div>
-            <p className="w-2/3">{props.comment}</p>
+            <p className="w-3/4 text-justify">{props.comment}</p>
         </div>
     );
 };
