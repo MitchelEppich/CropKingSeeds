@@ -23,18 +23,18 @@ const menu = props => {
         background: "url(static/img/redbg.png)",
         backgroundSize: "cover",
         backgroundPosition: "left",
-        height: "178px",
+        height: "120px",
         overflow: "hidden",
         zIndex: "-18",
         position: "absolute"
       }}
       className="w-full">
-      <div className="w-full h-16 inline-flex mt-6">
+      <div className="w-full h-12 inline-flex mt-6">
         <div className="w-1/2 relative">
           <div
             style={{ background: "#f9f9f9" }}
             className="absolute pin-l shadow-md my-auto rounded -ml-2">
-            <p className="pl-12 pr-8 p-3 uppercase font-extrabold text-xl">
+            <p className="pl-12 pr-8 p-2 uppercase font-extrabold text-lg">
               Call: 604-563-0291
             </p>
           </div>
@@ -44,12 +44,12 @@ const menu = props => {
           <div
             style={{ background: "#f9f9f9" }}
             className="absolute pin-r shadow-md my-auto rounded -mr-2 inline-flex cursor-pointer scale-item">
-            <div className="w-16 rounded bg-yellow-dark p-2 items-center flex justify-center">
+            <div className="w-12 rounded bg-yellow-dark p-2 items-center flex justify-center">
               <p>
-                <FontAwesomeIcon icon={faDollarSign} className="fa-lg" />
+                <FontAwesomeIcon icon={faDollarSign} className="" />
               </p>
             </div>
-            <p className="px-6 p-3 uppercase text-center font-extrabold text-xl">
+            <p className="px-6  pt-2 p-1 uppercase text-center font-extrabold text-lg">
               USD
             </p>
           </div>
@@ -57,9 +57,9 @@ const menu = props => {
       </div>
       <div
         style={{ background: "rgba(93, 9, 9, 0.71)" }}
-        className="w-full h-16">
+        className="w-full h-12">
         <div
-          style={{ marginTop: "32px" }}
+          style={{ marginTop: "3px" }}
           className="w-container mx-auto text-center relative">
           <div className="ray_box">
             {(() => {
@@ -88,25 +88,25 @@ const menu = props => {
             })()}
           </div>
           <div className="inline-flex w-full">
-            <div className="w-1/4 flex justify-center pl-20">
+            <div className="w-1/4 flex justify-center pl-2">
               <div
                 className="absolute"
                 style={{
-                  width: "175px",
-                  height: "175px",
+                  width: "125px",
+                  height: "125px",
                   borderRadius: "50%",
                   background: "#600706",
                   padding: "6px",
-                  marginTop: "-60px",
+                  marginTop: "-57px",
                   boxShadow: "rgba(0, 0, 0, 0.2) 0px 4px 10px",
                   position: "fixed"
                 }}
               />
               <img
                 style={{
-                  width: "200px",
+                  width: "125px",
                   padding: "0px",
-                  marginTop: "-85px",
+                  marginTop: "-66px",
                   position: "fixed"
                 }}
                 src="../static/img/cropkingseeds-footer.png"
@@ -114,24 +114,24 @@ const menu = props => {
               />
             </div>
             <div className="w-3/4 flex justify-start">
-              <ul className="inline-flex text-white mt-3 uppercase">
+              <ul className="inline-flex text-white mt-1 uppercase">
                 <Link href="/">
-                  <li className="font-extrabold text-2xl p-2 mx-8 cursor-pointer scale-item">
+                  <li className="font-extrabold text-xl pt-3 p-2 mx-8 cursor-pointer scale-item">
                     Home
                   </li>
                 </Link>
                 <Link href="/shop">
-                  <li className="font-extrabold text-2xl p-2 mx-8 cursor-pointer scale-item">
+                  <li className="font-extrabold text-xl pt-3 p-2 mx-8 cursor-pointer scale-item">
                     Shop
                   </li>
                 </Link>
                 <Link href="/germination">
-                  <li className="font-extrabold text-2xl p-2 mx-8 cursor-pointer scale-item">
+                  <li className="font-extrabold text-xl pt-3 p-2 mx-8 cursor-pointer scale-item">
                     Germination
                   </li>
                 </Link>
                 <Link href="/contact">
-                  <li className="font-extrabold text-2xl p-2 mx-8 cursor-pointer scale-item">
+                  <li className="font-extrabold text-xl pt-3 p-2 mx-8 cursor-pointer scale-item">
                     Contact
                   </li>
                 </Link>
@@ -154,8 +154,7 @@ const menu = props => {
                       <span
                         style={{
                           height: "28px",
-                          width: "28px",
-                          // border: "0.3px solid #a31621",
+                          width: "28px", // border: "0.3px solid #a31621",
                           borderRadius: "50%",
                           background: "#ffca0f",
                           position: "absolute",
