@@ -5,7 +5,7 @@ const Header = props => {
   let HeaderStyle = {
     position: "fixed",
     width: "100%",
-    zIndex: "999",
+    zIndex: "50",
     boxShadow: "0 2px 3px rgba(47, 46, 46, 0.34)"
   };
 

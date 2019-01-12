@@ -28,12 +28,14 @@ const menu = props => {
         zIndex: "-18",
         position: "absolute"
       }}
-      className="w-full">
+      className="w-full"
+    >
       <div className="w-full h-16 inline-flex mt-6">
         <div className="w-1/2 relative">
           <div
             style={{ background: "#f9f9f9" }}
-            className="absolute pin-l shadow-md my-auto rounded -ml-2">
+            className="absolute pin-l shadow-md my-auto rounded -ml-2"
+          >
             <p className="pl-12 pr-8 p-3 uppercase font-extrabold text-xl">
               Call: 604-563-0291
             </p>
@@ -43,7 +45,8 @@ const menu = props => {
         <div className="w-1/2">
           <div
             style={{ background: "#f9f9f9" }}
-            className="absolute pin-r shadow-md my-auto rounded -mr-2 inline-flex cursor-pointer scale-item">
+            className="absolute pin-r shadow-md my-auto rounded -mr-2 inline-flex cursor-pointer scale-item"
+          >
             <div className="w-16 rounded bg-yellow-dark p-2 items-center flex justify-center">
               <p>
                 <FontAwesomeIcon icon={faDollarSign} className="fa-lg" />
@@ -57,55 +60,37 @@ const menu = props => {
       </div>
       <div
         style={{ background: "rgba(93, 9, 9, 0.71)" }}
-        className="w-full h-16">
+        className="w-full h-16"
+      >
         <div
           style={{ marginTop: "32px" }}
-          className="w-container mx-auto text-center relative">
+          className="w-container mx-auto text-center relative"
+        >
           <div className="ray_box">
-            <div
-              className="ray"
-              style={{
-                height: "170px",
-                width: "30px",
-                transform: "rotate(0deg)",
-                WebkitTransform: "rotate(0deg)",
-                top: "-175px",
-                left: "3px"
-              }}
-            />
-            <div
-              className="ray"
-              style={{
-                height: "170px",
-                width: "30px",
-                transform: "rotate(90deg)",
-                WebkitTransform: "rotate(90deg)",
-                top: "-58px",
-                left: "120px"
-              }}
-            />
-            <div
-              className="ray"
-              style={{
-                height: "170px",
-                width: "30px",
-                transform: "rotate(270deg)",
-                WebkitTransform: "rotate(270deg)",
-                top: "-58px",
-                left: "-115px"
-              }}
-            />
-            <div
-              className="ray"
-              style={{
-                height: "170px",
-                width: "30px",
-                transform: "rotate(180deg)",
-                WebkitTransform: "rotate(180deg)",
-                top: "60px",
-                left: "3px"
-              }}
-            />
+            {(() => {
+              let arr = [];
+
+              let _width = 30;
+              let _height = 2000;
+              let _amount = 34;
+              for (let i = 0; i < _amount; i++) {
+                let _deg = i * (360 / _amount);
+
+                arr.push(
+                  <div
+                    className="ray"
+                    style={{
+                      height: `${_height}px`,
+                      width: `${_width}px`,
+                      transform: `rotate(${_deg}deg)`,
+                      WebkitTransform: `rotate(${_deg}deg)`,
+                      boxShadow: "0 5px 25px rgb(255, 72, 0)"
+                    }}
+                  />
+                );
+              }
+              return arr;
+            })()}
           </div>
           <div className="inline-flex w-full">
             <div className="w-1/4 flex justify-center pl-20">
@@ -160,7 +145,8 @@ const menu = props => {
                     onClick={() => {
                       props.setVisibleScreen({ input: "viewCart" });
                     }}
-                    className="text-center cursor-pointer text-white">
+                    className="text-center cursor-pointer text-white"
+                  >
                     <div className="">
                       <img
                         src="../static/img/shopping-cart-xxl.png"
@@ -182,7 +168,8 @@ const menu = props => {
                           paddingTop: "6px",
                           marginTop: "-14px",
                           marginLeft: "-5px"
-                        }}>
+                        }}
+                      >
                         {Object.keys(props.cart.items).length}
                       </span>
                     </div>
