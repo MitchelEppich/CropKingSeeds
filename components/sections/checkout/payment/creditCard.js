@@ -22,8 +22,10 @@ const CreditCard = props => {
             group: pageGroup,
             key: "method",
             value:
-              _orderDetails[pageGroup]["method"] == null
-                ? {
+              _orderDetails[pageGroup]["method"] != null &&
+              _orderDetails[pageGroup]["method"].value == paymentType
+                ? undefined
+                : {
                     value: paymentType,
                     tag: "Payment_Method",
                     oridSuffix: "-KMH-7"
@@ -33,8 +35,7 @@ const CreditCard = props => {
                     // cctype: "", // Card Type -input
                     // ccexpire: "", // Card Expiry -input
                     // ccname: "", // Card Holder Name -input
-                  }
-                : undefined,
+                  },
             tag: undefined,
             requestUpdateOfGroup: { value: true, group: pageGroup }
           });
@@ -44,7 +45,8 @@ const CreditCard = props => {
           background: "#ffffff",
           color: "#191919"
         }}
-        className="h-10 inline-flex w-full cursor-pointer">
+        className="h-10 inline-flex w-full cursor-pointer"
+      >
         <div className="w-4/5 p-2 flex items-center">
           <p>Pay with Credit Card</p>
         </div>
@@ -74,7 +76,7 @@ const CreditCard = props => {
                 let _target = e.target;
                 let _key = _target.id;
                 let _value = _target.value;
-                let _tag = "ccname";
+                let _tag = undefined;
 
                 props.modifyOrderDetails({
                   orderDetails: _orderDetails,
@@ -84,7 +86,7 @@ const CreditCard = props => {
                   tag: _tag
                 });
               }}
-              placeholder="Name on Card..."
+              placeholder="Card Holder Name ..."
               className="p-2 w-full"
             />
           </div>
@@ -94,18 +96,18 @@ const CreditCard = props => {
                 type="text"
                 id="cardNumber"
                 value={
-                  props.checkout.orderDetails[pageGroup] != null
-                    ? ccNumberFormat.apply(
-                        props.checkout.orderDetails[pageGroup].cardNumber
-                      ) || ""
+                  props.checkout.orderDetails[pageGroup] != null &&
+                  props.checkout.orderDetails[pageGroup].cardNumber != null
+                    ? props.checkout.orderDetails[pageGroup].cardNumber.value ||
+                      ""
                     : undefined
                 }
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;
                   let _key = _target.id;
-                  let _value = _target.value.replace(new RegExp("-", "g"), "");
-                  let _tag = "ccno";
+                  let _value = _target.value;
+                  let _tag = "CreditCardnumber";
 
                   props.modifyOrderDetails({
                     orderDetails: _orderDetails,
@@ -117,7 +119,7 @@ const CreditCard = props => {
 
                   _key = "type";
                   _value = getCardType(_value);
-                  _tag = "cctype";
+                  _tag = "Typeofcard";
                   props.modifyOrderDetails({
                     orderDetails: _orderDetails,
                     group: pageGroup,
@@ -126,14 +128,16 @@ const CreditCard = props => {
                     tag: _tag
                   });
                 }}
-                placeholder="Credit Card Number..."
+                placeholder="Credit Card Number ..."
                 className="p-2 w-full"
               />
             </div>
             <div className="absolute pin-r text-grey-light opacity-75">
               <img
                 src={`../static/img/cc${(() => {
-                  let _type = props.checkout.orderDetails[pageGroup].type;
+                  let _type =
+                    props.checkout.orderDetails[pageGroup].type != null &&
+                    props.checkout.orderDetails[pageGroup].type.value;
                   switch (_type) {
                     case "Mastercard":
                       return "Mastercard";
@@ -145,9 +149,7 @@ const CreditCard = props => {
                 })()}.png`}
                 width="40px"
                 className="mr-1"
-                style={{
-                  paddingTop: "5px"
-                }}
+                style={{ paddingTop: "5px" }}
               />
             </div>
           </div>
@@ -156,10 +158,13 @@ const CreditCard = props => {
               <select
                 placeholder=""
                 className="p-2 w-full"
-                id="month"
+                id="ccExpireMonth"
+                defaultValue=""
                 value={
-                  props.checkout.orderDetails[pageGroup] != null
-                    ? props.checkout.orderDetails[pageGroup].month || ""
+                  props.checkout.orderDetails[pageGroup] != null &&
+                  props.checkout.orderDetails[pageGroup].ccExpireMonth != null
+                    ? props.checkout.orderDetails[pageGroup].ccExpireMonth
+                        .value || ""
                     : undefined
                 }
                 onChange={e => {
@@ -167,7 +172,7 @@ const CreditCard = props => {
                   let _target = e.target;
                   let _key = _target.id;
                   let _value = _target.value;
-                  let _tag = "ccexpire";
+                  let _tag = "Expiry_Date-Month";
 
                   props.modifyOrderDetails({
                     orderDetails: _orderDetails,
@@ -176,8 +181,9 @@ const CreditCard = props => {
                     value: _value,
                     tag: _tag
                   });
-                }}>
-                <option value="" disabled selected>
+                }}
+              >
+                <option value="" disabled>
                   Month
                 </option>
                 <option value="January">January</option>
@@ -198,10 +204,13 @@ const CreditCard = props => {
               <select
                 placeholder=""
                 className="p-2 w-full"
-                id="year"
+                id="ccExpireYear"
+                defaultValue=""
                 value={
-                  props.checkout.orderDetails[pageGroup] != null
-                    ? props.checkout.orderDetails[pageGroup].year || ""
+                  props.checkout.orderDetails[pageGroup] != null &&
+                  props.checkout.orderDetails[pageGroup].ccExpireYear != null
+                    ? props.checkout.orderDetails[pageGroup].ccExpireYear
+                        .value || ""
                     : undefined
                 }
                 onChange={e => {
@@ -209,7 +218,7 @@ const CreditCard = props => {
                   let _target = e.target;
                   let _key = _target.id;
                   let _value = _target.value;
-                  let _tag = "ccexpire";
+                  let _tag = "Expiry_Date-Year";
 
                   props.modifyOrderDetails({
                     orderDetails: _orderDetails,
@@ -218,7 +227,8 @@ const CreditCard = props => {
                     value: _value,
                     tag: _tag
                   });
-                }}>
+                }}
+              >
                 <option value="" disabled selected>
                   Year
                 </option>
@@ -236,10 +246,11 @@ const CreditCard = props => {
                 <input
                   type="text"
                   placeholder="Security Code"
-                  id="ccv"
+                  id="cvv"
                   value={
-                    props.checkout.orderDetails[pageGroup] != null
-                      ? props.checkout.orderDetails[pageGroup].ccv || ""
+                    props.checkout.orderDetails[pageGroup] != null &&
+                    props.checkout.orderDetails[pageGroup].cvv != null
+                      ? props.checkout.orderDetails[pageGroup].cvv.value || ""
                       : undefined
                   }
                   onChange={e => {
@@ -247,7 +258,7 @@ const CreditCard = props => {
                     let _target = e.target;
                     let _key = _target.id;
                     let _value = _target.value;
-                    let _tag = "ccvno";
+                    let _tag = "CVV_Number";
 
                     props.modifyOrderDetails({
                       orderDetails: _orderDetails,

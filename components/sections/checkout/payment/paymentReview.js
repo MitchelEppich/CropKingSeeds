@@ -11,12 +11,17 @@ import data from "../../../../static/data";
 const PaymentReview = props => {
   let pageGroup = "payment";
   let _orderDetails = props.checkout.orderDetails;
+  let _cart = props.cart;
 
+  let productList = buildProductList(_cart.items);
   if (
     _orderDetails[pageGroup] == null ||
     _orderDetails[pageGroup].updateRequested
   ) {
-    let cartTotal = props.cart.price;
+    // Product Information
+
+    // Payment Information
+    let cartTotal = _cart.price;
     let { tax, provTax, taxType } =
       _orderDetails.billing.country.value.toLowerCase() == "canada"
         ? (() => {
@@ -54,8 +59,9 @@ const PaymentReview = props => {
       taxType: { value: taxType, tag: "prov_tax_type" },
       cartTotal: { value: cartTotal, tag: "Order_Amt" },
       orderTotal: { value: orderTotal, tag: "Total" },
-      currency: { value: "USD", tag: "currency" } // Temporary
-    };
+      productList: { value: productList, tag: "productlist" },
+      currency: { value: "USD", tag: "Currency" }
+    }; // Temporary
 
     _orderDetails[pageGroup].updatedAt = _orderDetails.payment.updatedAt;
 
@@ -213,7 +219,6 @@ const PaymentReview = props => {
             )}
           </p>
         </div>
-        {console.log(props.checkout)}
       </div>
       <div
         style={{
@@ -278,3 +283,12 @@ const PaymentReview = props => {
 };
 
 export default PaymentReview;
+
+let buildProductList = items => {
+  console.log(items);
+  for (let key of Object.keys(items)) {
+    let item = items[key];
+    let product = item.product;
+    console.log(product);
+  }
+};

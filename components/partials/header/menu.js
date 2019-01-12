@@ -62,50 +62,30 @@ const menu = props => {
           style={{ marginTop: "32px" }}
           className="w-container mx-auto text-center relative">
           <div className="ray_box">
-            <div
-              className="ray"
-              style={{
-                height: "170px",
-                width: "30px",
-                transform: "rotate(0deg)",
-                WebkitTransform: "rotate(0deg)",
-                top: "-175px",
-                left: "3px"
-              }}
-            />
-            <div
-              className="ray"
-              style={{
-                height: "170px",
-                width: "30px",
-                transform: "rotate(90deg)",
-                WebkitTransform: "rotate(90deg)",
-                top: "-58px",
-                left: "120px"
-              }}
-            />
-            <div
-              className="ray"
-              style={{
-                height: "170px",
-                width: "30px",
-                transform: "rotate(270deg)",
-                WebkitTransform: "rotate(270deg)",
-                top: "-58px",
-                left: "-115px"
-              }}
-            />
-            <div
-              className="ray"
-              style={{
-                height: "170px",
-                width: "30px",
-                transform: "rotate(180deg)",
-                WebkitTransform: "rotate(180deg)",
-                top: "60px",
-                left: "3px"
-              }}
-            />
+            {(() => {
+              let arr = [];
+
+              let _width = 30;
+              let _height = 2000;
+              let _amount = 34;
+              for (let i = 0; i < _amount; i++) {
+                let _deg = i * (360 / _amount);
+
+                arr.push(
+                  <div
+                    className="ray"
+                    style={{
+                      height: `${_height}px`,
+                      width: `${_width}px`,
+                      transform: `rotate(${_deg}deg)`,
+                      WebkitTransform: `rotate(${_deg}deg)`,
+                      boxShadow: "0 5px 25px rgb(255, 72, 0)"
+                    }}
+                  />
+                );
+              }
+              return arr;
+            })()}
           </div>
           <div className="inline-flex w-full">
             <div className="w-1/4 flex justify-center pl-20">

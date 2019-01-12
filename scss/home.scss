@@ -212,24 +212,26 @@ h4 {
 // ANIMATION HEADER
 
 .ray_box {
-  top: 0px;
-  left: 180px;
+  left: 170px;
   right: 0;
   position: absolute;
   bottom: 0;
-  width: 55px;
-  -webkit-animation: ray_anim 12s linear infinite;
-  animation: ray_anim 12s linear infinite;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: ray_anim 400s linear infinite;
+  animation: ray_anim 400s linear infinite;
   z-index: -5;
 }
 
 .ray {
-  background: red;
-  margin-left: 5px;
-  border-radius: 80% 80% 0 0;
+  background: linear-gradient(to top, rgba(255, 0, 0, 0), rgb(255, 72, 0));
+  // background: red;
+  transform-origin: center top;
+  border-radius: 200% 200% 0 0;
   position: absolute;
   z-index: 10;
-  opacity: 1;
+  opacity: 0.6;
+  left: 50%;
 }
 
 @keyframes ray_anim {

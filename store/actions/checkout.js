@@ -9,10 +9,13 @@ import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
 import Navigation from "./navigation";
 
+import moment from "moment";
+
 const actionTypes = {
   MODIFY_ORDER_DETAILS: "MODIFY_ORDER_DETAILS",
   SET_ORDER_DETAILS: "SET_ORDER_DETAILS",
-  GET_BITCOIN_DATA: "GET_BITCOIN_DATA"
+  GET_BITCOIN_DATA: "GET_BITCOIN_DATA",
+  PROCESS_ORDER: "PROCESS_ORDER"
 };
 
 const getActions = uri => {
@@ -73,6 +76,66 @@ const getActions = uri => {
             });
           })
           .catch(error => console.log(error));
+      };
+    },
+    processOrder: input => {
+      return async dispatch => {
+        dispatch({
+          type: actionTypes.PROCESS_ORDER
+        });
+        let _orderDetails = input.orderDetails;
+        let orderPost = {
+          CardHolderIp: _orderDetails.CardHolderIp,
+          Order_Date: moment().format("YY-MM-DD HH:mm:ss"),
+          Order_ID: 10000000
+        };
+        delete _orderDetails.CardHolderIp;
+        for (let key of Object.keys(_orderDetails)) {
+          if (key == "undefined") continue;
+          let prefix = (() => {
+            switch (key) {
+              case "shipping":
+                return "Ship";
+              case "billing":
+                return "Bill";
+              default:
+                return "";
+            }
+          })();
+          for (let _key of Object.keys(_orderDetails[key])) {
+            if (_key == "undefined") continue;
+            let obj = _orderDetails[key][_key];
+            if (obj.value == null) continue;
+            if (obj.tag.includes(" ")) {
+              let _obj = obj.value.split(" ");
+              for (let item of obj.tag.split(" ")) {
+                orderPost[prefix + item] = _obj.shift();
+              }
+            } else {
+              let suffix = prefix == "Ship" && obj.tag == "Address1" ? "1" : "";
+              orderPost[prefix + obj.tag + suffix] = obj.value;
+            }
+            // console.log({ [obj.tag]: obj.value });
+          }
+        }
+        console.log(orderPost);
+        return Promise("Test");
+        // const link = new HttpLink({ uri, fetch: fetch });
+        // const operation = { query: query.getBitcoinData, variables: { ...input } };
+
+        // await makePromise(execute(link, operation))
+        //   .then(data => {
+        //     let _rate = data.data.getBitcoinData;
+        //     dispatch({
+        //       type: actionTypes.GET_BITCOIN_DATA,
+        //       input: {
+        //         currency: input.currency,
+        //         value: input.value,
+        //         rate: _rate
+        //       }
+        //     });
+        //   })
+        //   .catch(error => console.log(error));
       };
     }
   };
