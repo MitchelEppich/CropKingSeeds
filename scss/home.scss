@@ -384,7 +384,6 @@ h4 {
     z-index: 0;
     transform: translateX(-250px);
     transition: 0.6s all ease-in-out;
-    cursor: pointer;
     @include modifier("hover") {
         height: 36%;
         position: absolute;
@@ -392,8 +391,7 @@ h4 {
         z-index: 0;
         margin-top: 10px;
         transition: 0.6s all ease-in-out;
-        transform: translateX(-150px);
-        cursor: pointer;
+        transform: translateX(-180px);
     }
 }
 .overlayClass {
@@ -405,7 +403,9 @@ h4 {
     position: relative;
     z-index: 0;
     overflow: visible;
+    text-align: center;
     @include modifier("hover") {
+        text-align: center;
         transform: translateX(-60px);
         height: 650px;
         width: 145%;
@@ -422,16 +422,14 @@ h4 {
     position: relative;
     z-index: 10;
     transition: 0.6s all ease-in-out;
-    cursor: pointer;
     padding: 0.5rem 3rem;
     @include modifier("hover") {
         height: 38%;
         position: relative;
-        margin-left: 10px;
+        transform: translateX(-50px);
         z-index: 10;
         transition: 0.6s all ease-in-out;
         margin-top: 10px;
-        cursor: pointer;
         padding: 0.5rem 3rem;
     }
 }
@@ -445,6 +443,42 @@ h4 {
     color: white;
     text-shadow: rgb(0, 0, 0) 1px 1px 2px;
     box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
+    @include modifier("hover") {
+        transition: 0.2s all ease-in-out;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+
+//ViewProduct Page
+.prec {
+    top: 30px;
+    position: relative;
+    font-size: 30px;
+}
+
+.circle {
+    position: relative;
+    top: 5px;
+    left: 5px;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color: #e6f4f7;
+}
+
+.active-border {
+    position: relative;
+    text-align: center;
+    width: 110px;
+    height: 110px;
+    border-radius: 100%;
+
+    background-color: #39b4cc;
+    background-image: linear-gradient(162deg, transparent 50%, #a2ecfb 50%),
+        linear-gradient(90deg, #a2ecfb 50%, transparent 50%);
 }
 
 //media queries

@@ -24,7 +24,7 @@ class Index extends Component {
         return (
             <Layout>
                 <div className="p-8">
-                    <div className="flex flex-wrap justify-start h-500">
+                    <div className="flex flex-wrap justify-start h-700">
                         <div className="w-1/3 flex flex-wrap justify-center">
                             <ImageCarousel {...this.props} />
                             <Data {...this.props} />

@@ -4,45 +4,16 @@ const data = props => {
     let pcbn = _product.pcbn.map(a => `${a.toFixed(2)}%`).join("-");
     let pthc = _product.pthc.map(a => `${a.toFixed(2)}%`).join("-");
     return (
-        <div className="w-5/6 px-2 pb-8 bg-grey-lighter rounded-lg ">
-            <div className="flex flex-wrap">
-                <p className="w-1/6 font-bold my-1 py-1">THC</p>
-                <div className="w-5/6 flex text-white justify-between my-2">
-                    <div
-                        className={
-                            _product.thc == "low"
-                                ? "bg-orange mx-1 rounded-lg text-center p-1 text-xs"
-                                : "bg-green mx-1 rounded-lg text-center p-1 text-xs"
-                        }
-                        style={{ width: _product.pthc[1] * 3 + "%" }}>
-                        {pthc}
+        <div className="w-5/6 px-2 pb-8 bg-grey-lightest flex flex-wrap">
+            <div className="w-full text-white">
+                <div id="activeBorder" class="active-border">
+                    <div id="circle" class="circle">
+                        <span class="prec 270" id="prec">
+                            20%
+                        </span>
                     </div>
                 </div>
-                <p className="w-1/6 font-bold my-1 py-1">CBD</p>
-                <div className="w-5/6 flex text-white justify-between my-2">
-                    <div
-                        className={
-                            _product.cbd == "low"
-                                ? "bg-orange mx-1 rounded-lg text-center p-1 text-xs"
-                                : "bg-green mx-1 rounded-lg text-center p-1 text-xs"
-                        }
-                        style={{ width: _product.pcbd[1] * 50 + "%" }}>
-                        {pcbd}
-                    </div>
-                </div>
-                <p className="w-1/6 font-bold my-1 py-1">CBN</p>
-                <div className="w-5/6 flex text-white justify-between my-2">
-                    {" "}
-                    <div
-                        className="bg-purple mx-1 rounded-lg text-center p-1 text-xs"
-                        style={{ width: _product.pcbn[1] * 10 + "%" }}>
-                        {pcbn}
-                    </div>
-                </div>
-            </div>
-
-            <div className="w-full flex text-white justify-between">
-                {_product.ruderalis > 0 ? (
+                {/* {_product.ruderalis > 0 ? (
                     <div
                         className="bg-orange mx-1 rounded-lg text-center my-2"
                         style={{ width: _product.ruderalis * 100 + "%" }}>
@@ -76,6 +47,42 @@ const data = props => {
                         style={{ position: "absolute", transform: "translateX(-50%) translateY(33px) rotate(45deg)" }}>
                         Sativa
                     </span>
+                </div> */}
+            </div>
+            <div className="w-full">
+                <div className="w-full h-8 flex text-white justify-start my-2">
+                    <p className="text-black font-bold my-1 mr-2  py-1">THC</p>
+                    <div
+                        className={
+                            _product.thc == "low"
+                                ? "bg-orange mx-1 rounded-lg text-left pl-2 py-3 text-xs"
+                                : "bg-green mx-1 rounded-lg text-left pl-2 py-3 text-xs"
+                        }
+                        style={{ width: _product.pthc[1] * 3 + "%" }}>
+                        {pthc}
+                    </div>
+                </div>
+
+                <div className="w-full h-8 flex text-white justify-start my-2">
+                    <p className="text-black font-bold my-1 mr-2  py-1">CBD</p>
+                    <div
+                        className={
+                            _product.cbd == "low"
+                                ? "bg-orange mx-1 rounded-lg text-left pl-2 py-3 text-xs"
+                                : "bg-green mx-1 rounded-lg text-left pl-2 py-3 text-xs"
+                        }
+                        style={{ width: _product.pcbd[1] * 50 + "%" }}>
+                        {pcbd}
+                    </div>
+                </div>
+
+                <div className="w-full h-8 flex text-white justify-start my-2">
+                    <p className="text-black font-bold my-1 mr-2  py-1">CBN</p>{" "}
+                    <div
+                        className="bg-purple mx-1 rounded-lg text-left pl-2 py-3 text-xs"
+                        style={{ width: _product.pcbn[1] * 10 + "%" }}>
+                        {pcbn}
+                    </div>
                 </div>
             </div>
         </div>
