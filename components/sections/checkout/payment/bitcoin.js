@@ -25,11 +25,12 @@ const Bitcoin = props => {
             group: pageGroup,
             key: "method",
             value:
-              _orderDetails[pageGroup]["method"] == null
-                ? {
+              _orderDetails[pageGroup]["method"] != null &&
+              _orderDetails[pageGroup]["method"].value == paymentType
+                ? undefined
+                : {
                     value: paymentType
-                  }
-                : undefined,
+                  },
             tag: undefined,
             requestUpdateOfGroup: { value: true, group: pageGroup }
           });
