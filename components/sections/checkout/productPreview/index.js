@@ -4,12 +4,9 @@ import { faTimes, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const ProductPreview = props => {
   let imgPack = {
-    // height: "100%",
     width: "60%"
-    // objectFit: "cover"
   };
 
-  // console.log(props);
   let showProducts = () => {
     let _arr = [];
 

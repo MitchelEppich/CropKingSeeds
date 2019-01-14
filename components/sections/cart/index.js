@@ -46,7 +46,7 @@ const cart = props => {
   return (
     <div
       style={viewCart}
-      className="w-500 text-black text-3xl sm:w-screen max-w-screen z-50 pin-t pin-r h-screen bg-white fixed pb-12 shadow-lg pt-56"
+      className="w-500 text-black text-3xl sm:w-screen max-w-screen z-40 pin-t pin-r h-screen bg-white fixed pb-12 shadow-lg pt-32"
     >
       <div className="relative h-20 w-full fixed">
         <div className="absolute w-full">
