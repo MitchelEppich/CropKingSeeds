@@ -7,13 +7,15 @@ const Footer = props => {
   return (
     <div
       // style={{ background: "#161925" }}
-      className="w-full h-300 mt-24 inline-flex bg-grey relative">
+      className="w-full h-300 mt-24 inline-flex bg-grey relative"
+    >
       <div className="w-container mx-auto inline-flex">
         <div
           style={{
             width: "20%"
           }}
-          className="mt-4">
+          className="mt-4"
+        >
           <ul className="text-white font-bold pl-6 p-2">
             <Link href="/about">
               <li className="text-2xl p-1 hover:text-grey-light cursor-pointer">
@@ -61,7 +63,8 @@ const Footer = props => {
           style={{
             width: "40%"
           }}
-          className="">
+          className=""
+        >
           {/* <img
             style={{
               width: "380px",
@@ -77,7 +80,8 @@ const Footer = props => {
           style={{
             width: "40%"
           }}
-          className="text-white text-center">
+          className="text-white text-center"
+        >
           <h4 className="p-2 mt-4 mb-4 text-2/5xl font-extrabold">
             Subscribe to the CKS Newsletter
           </h4>

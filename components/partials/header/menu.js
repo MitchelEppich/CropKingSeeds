@@ -28,12 +28,14 @@ const menu = props => {
         zIndex: "-18",
         position: "absolute"
       }}
-      className="w-full">
+      className="w-full"
+    >
       <div className="w-full h-12 inline-flex mt-6">
         <div className="w-1/2 relative">
           <div
             style={{ background: "#f9f9f9" }}
-            className="absolute pin-l shadow-md my-auto rounded -ml-2">
+            className="absolute pin-l shadow-md my-auto rounded -ml-2"
+          >
             <p className="pl-12 pr-8 p-2 uppercase font-extrabold text-lg">
               Call: 604-563-0291
             </p>
@@ -43,7 +45,8 @@ const menu = props => {
         <div className="w-1/2">
           <div
             style={{ background: "#f9f9f9" }}
-            className="absolute pin-r shadow-md my-auto rounded -mr-2 inline-flex cursor-pointer scale-item">
+            className="absolute pin-r shadow-md my-auto rounded -mr-2 inline-flex cursor-pointer scale-item"
+          >
             <div className="w-12 rounded bg-yellow-dark p-2 items-center flex justify-center">
               <p>
                 <FontAwesomeIcon icon={faDollarSign} className="" />
@@ -57,10 +60,12 @@ const menu = props => {
       </div>
       <div
         style={{ background: "rgba(93, 9, 9, 0.71)" }}
-        className="w-full h-12">
+        className="w-full h-12"
+      >
         <div
           style={{ marginTop: "3px" }}
-          className="w-container mx-auto text-center relative">
+          className="w-container mx-auto text-center relative"
+        >
           <div className="ray_box">
             {(() => {
               let arr = [];
@@ -140,7 +145,8 @@ const menu = props => {
                     onClick={() => {
                       props.setVisibleScreen({ input: "viewCart" });
                     }}
-                    className="text-center cursor-pointer mt-1 text-white">
+                    className="text-center cursor-pointer mt-1 text-white"
+                  >
                     <div className="">
                       <FontAwesomeIcon
                         icon={faShoppingCart}
@@ -165,7 +171,8 @@ const menu = props => {
                           paddingTop: "6px",
                           marginTop: "-14px",
                           marginLeft: "-5px"
-                        }}>
+                        }}
+                      >
                         {Object.keys(props.cart.items).length}
                       </span>
                     </div>
