@@ -89,6 +89,12 @@ html {
     background: white;
     font-weight: 500;
 }
+svg {
+    height: 100%;
+}
+svg:not(:root) {
+    display: inline-block;
+}
 
 input,
 textarea,
