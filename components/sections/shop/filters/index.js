@@ -67,7 +67,6 @@ const filters = props => {
       arr.push(
         <button
           onClick={() => {
-            console.log("AQUI", filter);
             props.toggleFilter({
               filter: filtersActive,
               genetic: filter,

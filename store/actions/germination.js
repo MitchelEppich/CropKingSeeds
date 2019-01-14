@@ -9,39 +9,39 @@ import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
 
 const actionTypes = {
-    CHANGE_STEP: "CHANGE_STEP"
+  CHANGE_STEP: "CHANGE_STEP"
 };
 
 const getActions = uri => {
-    const objects = {
-        changeStep: changeObj => {
-            let newStep =
-                changeObj._currentStep + changeObj._incrOrDecr >= 0 &&
-                changeObj._currentStep + changeObj._incrOrDecr < changeObj._totalSteps
-                    ? changeObj._currentStep + changeObj._incrOrDecr
-                    : changeObj._currentStep;
-            if (changeObj._incrOrDecr === 0) {
-                newStep = changeObj._currentStep;
-            }
-            return {
-                type: actionTypes.CHANGE_STEP,
-                step: newStep
-            };
-        }
-    };
+  const objects = {
+    changeStep: changeObj => {
+      let newStep =
+        changeObj._currentStep + changeObj._incrOrDecr >= 0 &&
+        changeObj._currentStep + changeObj._incrOrDecr < changeObj._totalSteps
+          ? changeObj._currentStep + changeObj._incrOrDecr
+          : changeObj._currentStep;
+      if (changeObj._incrOrDecr === 0) {
+        newStep = changeObj._currentStep;
+      }
+      return {
+        type: actionTypes.CHANGE_STEP,
+        step: newStep
+      };
+    }
+  };
 
-    return { ...objects };
+  return { ...objects };
 };
 const query = {};
 
 const mutation = {};
 
 export default uri => {
-    const actions = getActions(uri);
-    return {
-        // TYPES
-        ...actionTypes,
-        // ACTIONS
-        ...actions
-    };
+  const actions = getActions(uri);
+  return {
+    // TYPES
+    ...actionTypes,
+    // ACTIONS
+    ...actions
+  };
 };

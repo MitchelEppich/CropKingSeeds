@@ -8,6 +8,23 @@ const menu = props => {
         // backgroundImage: "url(../static/img/red.png)",
     };
 
+    let viewCurrency;
+    viewCurrency = props.misc.visibleScreen.includes("viewCurrency")
+        ? {
+              transform: "translateX(0px)",
+              transition: "all 0.2s ease-in-out",
+              WebkitTransition: "all 0.2s ease-in-out",
+              width: "122px",
+              height: "122px"
+          }
+        : {
+              transform: "translateX(122px)",
+              transition: "all 0.2s ease-in-out",
+              WebkitTransition: "all 0.2s ease-in-out",
+              width: "122px",
+              height: "122px"
+          };
+
     return (
         <div
             style={{
@@ -24,12 +41,17 @@ const menu = props => {
             <div className="w-full h-12 inline-flex mt-6">
                 <div className="w-1/2 relative">
                     <div style={{ background: "#f9f9f9" }} className="absolute pin-l shadow-md my-auto rounded -ml-2">
-                        <p className="pl-12 pr-8 p-2 uppercase font-extrabold text-lg">Call: 604-563-0291</p>
+                        <p className="pl-8 pr-6 p-2 uppercase font-extrabold text-lg">Call: +1 (604) 563-0291</p>
                     </div>
                 </div>
 
-                <div className="w-1/2">
+                <div className="w-1/2 relative">
                     <div
+                        onClick={() =>
+                            props.setVisibleScreen({
+                                input: "viewCurrency"
+                            })
+                        }
                         style={{ background: "#f9f9f9" }}
                         className="absolute pin-r shadow-md my-auto rounded -mr-2 inline-flex cursor-pointer scale-item">
                         <div className="w-12 rounded bg-yellow-dark p-2 items-center flex justify-center">
@@ -37,7 +59,37 @@ const menu = props => {
                                 <FontAwesomeIcon icon={faDollarSign} className="" />
                             </p>
                         </div>
-                        <p className="px-6  pt-2 p-1 uppercase text-center font-extrabold text-lg">USD</p>
+                        <p className="px-6 pt-2 p-1 uppercase text-center font-extrabold text-lg">USD</p>
+                    </div>
+                    <div
+                        style={viewCurrency}
+                        className="fixed h-300 pin-r bg-white shadow-md rounded cursor-pointer mt-10 -mr-1">
+                        <div className="w-full wrap flex-wrap">
+                            <div className="mt-1 bg-white inline-flex cursor-pointer hover:bg-grey-lightest">
+                                <div className="w-12  p-2 items-center flex justify-center">
+                                    <p>
+                                        <img src="../../static/img/currency_canada.png" className="w-10" />
+                                    </p>
+                                </div>
+                                <p className="px-6 pt-2 p-1 uppercase text-center font-extrabold text-lg ">CAD</p>
+                            </div>
+                            <div className="mt-1 bg-white -mr-2 inline-flex cursor-pointer hover:bg-grey-lightest">
+                                <div className="w-12 p-2 items-center flex justify-center">
+                                    <p>
+                                        <img src="../../static/img/currency_aus.png" className="w-10" />
+                                    </p>
+                                </div>
+                                <p className="px-6 pt-2 p-1 uppercase text-center font-extrabold text-lg">AUS</p>
+                            </div>
+                            <div className="mt-1 bg-white -mr-2 inline-flex cursor-pointer hover:bg-grey-lightest">
+                                <div className="w-12 p-2 items-center flex justify-center">
+                                    <p>
+                                        <img src="../../static/img/currency_euro.png" className="w-10" />
+                                    </p>
+                                </div>
+                                <p className="px-6 pt-2 p-1 uppercase text-center font-extrabold text-lg">EUR</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -52,7 +104,6 @@ const menu = props => {
                             let _amount = 34;
                             for (let i = 0; i < _amount; i++) {
                                 let _deg = i * (360 / _amount);
-
                                 arr.push(
                                     <div
                                         className="ray"
@@ -73,25 +124,22 @@ const menu = props => {
                         <div className="w-1/4 flex justify-center pl-2">
                             <div
                                 className="absolute"
-                                style={{
-                                    width: "125px",
-                                    height: "125px",
-                                    borderRadius: "50%",
-                                    background: "#600706",
-                                    padding: "6px",
-                                    marginTop: "-57px",
-                                    boxShadow: "rgba(0, 0, 0, 0.2) 0px 4px 10px",
-                                    position: "fixed"
-                                }}
+                                style={
+                                    {
+                                        width: "128px",
+                                        height: "128px",
+                                        borderRadius: "50%",
+                                        background: "#600706",
+                                        padding: "6px",
+                                        marginTop: "-54px",
+                                        position: "fixed",
+                                        boxShadow: "rgba(0, 0, 0, 0.2) 0px 4px 10px"
+                                    } // boxShadow: "rgb(255, 106, 0) 0px -9px 69px",
+                                }
                             />
                             <img
-                                style={{
-                                    width: "125px",
-                                    padding: "0px",
-                                    marginTop: "-66px",
-                                    position: "fixed"
-                                }}
-                                src="../static/img/cropkingseeds-footer.png"
+                                style={{ width: "125px", padding: "0px", marginTop: "-69px", position: "fixed" }}
+                                src="../static/img/cks-logo-header.png"
                                 className="scale-item absolute cursor-pointer"
                             />
                         </div>
@@ -125,26 +173,24 @@ const menu = props => {
                                         className="text-center cursor-pointer mt-1 text-white">
                                         <div className="">
                                             <FontAwesomeIcon icon={faShoppingCart} className="fa-lg" />
-                                            {/* <img
-                        src="../static/img/shopping-cart-xxl.png"
-                        width="40px"
-                      /> */}
 
                                             <span
-                                                style={{
-                                                    height: "28px",
-                                                    width: "28px", // border: "0.3px solid #a31621",
-                                                    borderRadius: "50%",
-                                                    background: "#ffca0f",
-                                                    position: "absolute",
-                                                    marginTop: "-10px",
-                                                    color: "#404040",
-                                                    fontSize: "16px",
-                                                    textAlign: "center",
-                                                    paddingTop: "6px",
-                                                    marginTop: "-14px",
-                                                    marginLeft: "-5px"
-                                                }}>
+                                                style={
+                                                    {
+                                                        height: "28px",
+                                                        width: "28px",
+                                                        borderRadius: "50%",
+                                                        background: "#ffca0f",
+                                                        position: "absolute",
+                                                        marginTop: "-10px",
+                                                        color: "#404040",
+                                                        fontSize: "16px",
+                                                        textAlign: "center",
+                                                        paddingTop: "6px",
+                                                        marginTop: "-14px",
+                                                        marginLeft: "-5px"
+                                                    } // border: "0.3px solid #a31621",
+                                                }>
                                                 {Object.keys(props.cart.items).length}
                                             </span>
                                         </div>
