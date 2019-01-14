@@ -3,14 +3,36 @@ const data = props => {
     let pcbd = _product.pcbd.map(a => `${a.toFixed(2)}%`).join("-");
     let pcbn = _product.pcbn.map(a => `${a.toFixed(2)}%`).join("-");
     let pthc = _product.pthc.map(a => `${a.toFixed(2)}%`).join("-");
+    let activeBorder = {
+        position: "relative",
+        textAlign: "center",
+        width: "110px",
+        height: "110px",
+        borderRadius: "100%",
+        backgroundColor: "#39b4cc",
+        backgroundImage:
+            "linear-gradient(250deg, transparent 50%, #FFF 50%), linear-gradient(0deg, #FFF 50%, transparent 50%)"
+    };
+    let activeBorder2 = {
+        position: "relative",
+        textAlign: "center",
+        width: "110px",
+        height: "110px",
+        borderRadius: "100%",
+        backgroundColor: "#39b4cc",
+        backgroundImage:
+            "linear-gradient(0deg, transparent 50%, #000 50%), linear-gradient(0deg, #000 50%, transparent 50%)"
+    };
     return (
         <div className="w-5/6 px-2 pb-8 bg-grey-lightest flex flex-wrap">
             <div className="w-full text-white">
-                <div id="activeBorder" class="active-border">
-                    <div id="circle" class="circle">
-                        <span class="prec 270" id="prec">
-                            20%
-                        </span>
+                <div id="activeBorder" style={activeBorder}>
+                    <div id="activeBorder2" style={activeBorder2}>
+                        {/* <div id="circle" className="circle">
+                            <span class="prec 270" id="prec">
+                                20%
+                            </span>
+                        </div> */}
                     </div>
                 </div>
                 {/* {_product.ruderalis > 0 ? (
