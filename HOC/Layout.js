@@ -17,17 +17,17 @@ import Footer from "../components/partials/footer";
 import Tawkto from "../components/sketches/tawkto";
 
 class Layout extends Component {
-  componentDidMount() {
-    this.props.getStrains();
-    Tawkto();
-  }
+    componentDidMount() {
+        this.props.getStrains();
+        Tawkto();
+    }
 
-  componentDidUpdate() {}
+    componentDidUpdate() {}
 
-  render() {
-    return (
-      <div style={{ backgroundColor: "#f3f3f3", height: "100%" }}>
-        {/* <Particles
+    render() {
+        return (
+            <div style={{ backgroundColor: "#f3f3f3", height: "100%" }}>
+                {/* <Particles
           width="100vw"
           height="100vh"
           style={{ position: "absolute", zIndex: 0 }}
@@ -99,31 +99,30 @@ class Layout extends Component {
             retina_detect: true
           }}
         /> */}
-        {/* <Tawkto /> */}
-        <Header {...this.props} />
-        <div className="pt-48">
-          <div className="bg-white relative z-30 px-4 py-4 w-full xl:w-1300 lg:w-1300 mx-auto shadow-md">
-            {this.props.children}
-          </div>
-        </div>
-        <Cart {...this.props} />
-        <Footer {...this.props} />
-      </div>
-    );
-  }
+                {/* <Tawkto /> */}
+                {/* <Header {...this.props} /> */}
+                <div className="pt-48">
+                    <div className="bg-white relative z-30 px-4 py-4 w-full xl:w-1300 lg:w-1300 mx-auto shadow-md">
+                        {this.props.children}
+                    </div>
+                </div>
+                <Cart {...this.props} />
+                {/* <Footer {...this.props} /> */}
+            </div>
+        );
+    }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
-    getStrains: () => dispatch(actions.getStrains()),
-    modifyCart: input => dispatch(actions.modifyCart(input)),
-    modifyPotentialQuantity: input =>
-      dispatch(actions.modifyPotentialQuantity(input))
-  };
+    return {
+        setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+        getStrains: () => dispatch(actions.getStrains()),
+        modifyCart: input => dispatch(actions.modifyCart(input)),
+        modifyPotentialQuantity: input => dispatch(actions.modifyPotentialQuantity(input))
+    };
 };
 
 export default connect(
-  state => state,
-  mapDispatchToProps
+    state => state,
+    mapDispatchToProps
 )(Layout);

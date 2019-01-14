@@ -14,7 +14,7 @@ const productThumbnail = props => {
         <div className={`${overlayClass} overflow-hidden`}>
             <FontAwesomeIcon
                 onClick={() => {
-                    props.setHoverId(product._id);
+                    props.setHoverId(props.product._id);
                 }}
                 icon={faTimes}
                 className={

@@ -4,10 +4,6 @@ import { faSearch, faShoppingCart, faDollarSign } from "@fortawesome/free-solid-
 import { faFacebookF, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 const menu = props => {
-    let menuStyle = {
-        // backgroundImage: "url(../static/img/red.png)",
-    };
-
     let viewCurrency;
     viewCurrency = props.misc.visibleScreen.includes("viewCurrency")
         ? {

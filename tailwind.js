@@ -188,8 +188,8 @@ module.exports = {
         // '2xl': {'min': '1200px'},
         sm: { min: "100px", max: "991px" },
         // 'md': {'min': '578px', 'max': '767px'},
-        lg: { min: "992px", max: "1367px" },
-        xl: { min: "1368px" }
+        lg: { min: "992px" }
+        // xl: { min: "1368px" }
         // '2xl': {'min': '1200px'},
     },
 
@@ -571,6 +571,7 @@ module.exports = {
         "100": "100px",
         "150": "150px",
         "200": "200px",
+        "250": "250px",
         "300": "300px",
         "400": "400px",
         "500": "500px",
