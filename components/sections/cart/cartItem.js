@@ -121,7 +121,7 @@ const cartItem = props => {
               <p className="text-xl text-grey-light font-bold">
                 {currency != null
                   ? `${currency.symbol}${(
-                      currency.convert * props.item.price
+                      currency.convert * props.cart.price
                     ).toFixed(2)}`
                   : ""}
               </p>
