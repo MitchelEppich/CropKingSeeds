@@ -90,8 +90,7 @@ const filters = props => {
                 <span className="">Filters:</span>
                 <FontAwesomeIcon className="fa-lg " icon={faSlidersH} />
             </p>
-
-            <ul className="leading-loose flex flex-wrap pl-4">
+            <ul className="leading-loose flex flex-wrap pl-4 pt-6">
                 <li className="text-red-dark font-bold w-full text-xl">Type</li>
                 {showFilter(["sativa", "indica", "hybrid"], "type")}
             </ul>
@@ -120,11 +119,6 @@ const filters = props => {
                         {filtersActive.type != null ? (
                             <p className="p-2 inline-flex">Type: {showFilter(["low", "high"], "cbd")}</p>
                         ) : null}
-
-                        <p className="p-2">
-                            Genetics: <span className="font-bold capitalize">{showFilterActives()}</span>
-                        </p>
-
                         {filtersActive.thc != null ? (
                             <p className="p-2">
                                 THC Percentage:{" "}
@@ -152,11 +146,10 @@ const filters = props => {
                     </div>
                 )}
             </div>
-
             <button
                 style={{ width: "95%" }}
                 onClick={() => props.clearFilters()}
-                className="text-white bg-red-dark p-2 m-2 mt-4 mx-auto block font-bold slowish hover:bg-grey hover:text-white">
+                className="text-white bg-red-dark p-2 m-2 mt-6 mx-auto block font-bold slowish hover:bg-grey hover:text-white text-lg">
                 Clear Filters
             </button>
         </div>

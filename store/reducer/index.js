@@ -25,6 +25,7 @@ const initialState = {
     geneHoverIndex: null,
     stepsCheckout: 0,
     showDifferentAddress: false,
+    ageVerification: null,
     // checkoutScreen: "productsScreen",
     activeBannerSlide: 2,
     notification: null, //"Crop King Seeds will be at High Times Cannabis Cup Sept. 13-16 2019",
@@ -34,7 +35,7 @@ const initialState = {
             style: {
                 // backgroundImage: "url(../static/img/banner3.png)",
                 backgroundPosition: "center",
-                backgroundSize: "contain",
+                backgroundSize: "cover",
                 backgroundRepeat: "no-repeat"
             }
         },
@@ -43,7 +44,7 @@ const initialState = {
             style: {
                 // backgroundImage: "url(../static/img/banner1.png)",
                 backgroundPosition: "center",
-                backgroundSize: "contain",
+                backgroundSize: "cover",
                 backgroundRepeat: "no-repeat"
             }
         },
@@ -52,7 +53,7 @@ const initialState = {
             style: {
                 backgroundImage: "url(../static/img/banner1.png)",
                 backgroundPosition: "center",
-                backgroundSize: "contain",
+                backgroundSize: "cover",
                 backgroundRepeat: "no-repeat"
             }
         }
@@ -89,6 +90,10 @@ const indexReducer = (state = initialState, action) => {
         case actionTypes.TOGGLE_STEPS_CHECKOUT:
             return updateObject(state, {
                 stepsCheckout: action.input
+            });
+        case actionTypes.SET_AGE_VERIFICATION:
+            return updateObject(state, {
+                ageVerification: action.input
             });
         case actionTypes.SHOW_DIFFERENT_ADDRESS:
             return updateObject(state, {

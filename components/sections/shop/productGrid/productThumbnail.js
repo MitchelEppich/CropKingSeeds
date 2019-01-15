@@ -11,30 +11,32 @@ const productThumbnail = props => {
     let productIdentifier = props.product.sotiId + [5, 10, 25][props.shop.quickAddToCartQty];
 
     return (
-        <div className={`${overlayClass} overflow-hidden`}>
+        <div className={`${overlayClass} overflow-x-hidden overflow-y-hidden`}>
             <FontAwesomeIcon
                 onClick={() => {
-                    props.setHoverId(props.product._id);
+                    props.setHoverId(product._id);
                 }}
                 icon={faTimes}
                 className={
                     hover ? "lg:hidden xl:hidden fa-2x text-grey-light absolute z-50 pin-t pin-r mt-3 mr-3" : "hidden"
                 }
             />
+
             <img src={props.product.packageImg} className={packageClass} />
             <img src={props.product.strainImg} className={plantClass} />
+
             <div
                 onClick={() => {
                     props.setCurrentProduct({ product: props.product });
                 }}
-                className={hover ? "w-full bg-white ml-1" : "relative"}>
+                className={hover ? "overflow-hidden w-full bg-white ml-1" : "relative"}>
                 <Link href="/viewProduct" as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}>
                     <div style={{ zIndex: "1000" }} className="absolute w-full">
                         <h3
                             className={
                                 hover
                                     ? "w-full mt-2 mb-2 text-black font-black text-2xl text-center cursor-pointer strainTitle--hover"
-                                    : `slow text-center sm:text-xs text-lg text-grey p-2 font-extrabold z-50 strainTitle bg-${
+                                    : `text-center sm:text-xs text-lg text-grey p-2 font-extrabold z-50 strainTitle bg-${
                                           props.detail.geneColor[props.product.genetic.toLowerCase()]
                                       }`
                             }>
@@ -42,10 +44,10 @@ const productThumbnail = props => {
                         </h3>
                     </div>
                 </Link>
-                <div className={hover ? "border-b-2 border-grey-lightest w-main mx-auto pt-2" : "hidden slow"}> </div>
+                <div className={hover ? "border-t-2 border-grey-lightest w-main mx-auto pt-1" : "hidden slow"}> </div>
                 <div className="text-center w-full pt-8">
                     <p className={hover ? "text-grey my-3 slow font-extrabold text-sm" : "hidden slow"}>
-                        <span className="ml-1 text-grey font-medium">
+                        <span className="ml-1 text-grey font-bolder uppercase">
                             {props.product.genetic} {props.product.type}
                         </span>
                     </p>
@@ -58,7 +60,7 @@ const productThumbnail = props => {
                     </Link>
                 </div>
                 <div className={hover ? "w-full p-2 px-4 inline-flex text-grey text-center" : "hidden slow"}>
-                    <div className="w-1/2 text-sm mx-2 inline-flex bg-grey-lightest text-center">
+                    <div className="w-1/2 text-sm mr-2 inline-flex bg-grey-lightest text-center">
                         <div className="text-center w-full pt-1 inline-flex flex items-center justify-between">
                             <FontAwesomeIcon icon={faClock} className="fa-lg ml-2 mb-1" />
                             <p className="w-full font-extrabold p-1 text-center justify-center">
@@ -66,7 +68,7 @@ const productThumbnail = props => {
                             </p>
                         </div>
                     </div>
-                    <div className="w-1/2 text-sm mx-2 inline-flex bg-grey-lightest text-center">
+                    <div className="w-1/2 text-sm ml-2 inline-flex bg-grey-lightest text-center">
                         <div className="text-center w-full pt-1 inline-flex flex items-center justify-between">
                             <FontAwesomeIcon icon={faSeedling} className="fa-lg ml-2 mb-1" />
                             <p className="w-full font-extrabold p-1 text-center justify-center">
@@ -114,6 +116,7 @@ const productThumbnail = props => {
                                         }}>
                                         Buy Now
                                     </button>
+                                    >>>>>>> 1ab2566b97c0a8fd3a43c946510c44e4f7f99ddd
                                 </Link>
                             </div>
                         </div>
@@ -122,7 +125,7 @@ const productThumbnail = props => {
                 <div
                     className={
                         hover
-                            ? "w-full p-2 px-6 mt-3 text-red-dark font-extrabold text-center inline-flex"
+                            ? "w-full p-2 px-4 mt-1 text-red-dark font-extrabold text-center inline-flex"
                             : "hidden slow"
                     }>
                     <div className="w-1/2 mr-1 bg-grey-lightest pb-2">

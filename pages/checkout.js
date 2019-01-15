@@ -92,8 +92,7 @@ class Index extends Component {
                     )
                   : null;
               }}
-              className="w-200 p-2 text-left cursor-pointer flex items-center hover:text-red"
-            >
+              className="w-200 p-2 text-left cursor-pointer flex items-center hover:text-red">
               {this.props.misc.stepsCheckout != 0 ? (
                 <span className="flex items-center font-extrabold text-grey-light hover:text-red-dark text-2xl uppercase">
                   <FontAwesomeIcon icon={faAngleLeft} className="fa-2x mr-4" />
@@ -141,8 +140,7 @@ class Index extends Component {
                   this.props.checkout.orderDetails.payment.method == null)
                   ? "opacity-50 unselectable pointer-events-none"
                   : ""
-              }`}
-            >
+              }`}>
               {this.props.misc.stepsCheckout != 4 ? (
                 <span className="flex items-center font-extrabold text-grey-light hover:text-red-dark text-2xl uppercase">
                   Next

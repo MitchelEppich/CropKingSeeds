@@ -27,6 +27,7 @@ const cart = props => {
         WebkitTransition: "all 0.2s ease-in-out",
         width: "500px"
       };
+
   let items = Object.entries(props.cart.items).map((item, index) => {
     return (
       <React.Fragment key={item[0]}>
@@ -73,8 +74,8 @@ const cart = props => {
         </div>
       </div>
       <div className="min-h-300 h-full w-full font-thin bg-smoke-grey overflow-y-auto pb-32">
-        {items.length > 0 ? (
-          items
+        {items.length > 0 || items != null ? (
+          <CartItem {...props} />
         ) : (
           <div className="text-center text-base">
             <p className="text-3xl mb-2 mt-64 font-extrabold">
@@ -85,7 +86,7 @@ const cart = props => {
           </div>
         )}
       </div>
-      <div className="pr-4 pb-4 h-24 items-center flex bg-white text-red-dark flex absolute pin-b border-t-2 border-red-dark w-500">
+      <div className="pr-4 h-16 items-center flex bg-white text-red-dark flex absolute pin-b border-t-2 border-red-dark w-500">
         <Link href="/checkout">
           <button
             onClick={() =>
