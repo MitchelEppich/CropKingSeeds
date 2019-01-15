@@ -73,7 +73,7 @@ class Index extends Component {
             });
 
         return (
-            <div className="lg:w-3/4 min-h-700 text-white">
+            <div className="lg:w-3/4 xl:w-3/4 xxl:w-3/4 min-h-700 text-white">
                 <div className="w-full justify-end flex pt-3 p-2  mb-2 text-grey-light items-center flex">
                     Sort by:
                     <select className="ml-3">

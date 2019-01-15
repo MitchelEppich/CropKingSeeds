@@ -116,7 +116,6 @@ const productThumbnail = props => {
                                         }}>
                                         Buy Now
                                     </button>
-                                    >>>>>>> 1ab2566b97c0a8fd3a43c946510c44e4f7f99ddd
                                 </Link>
                             </div>
                         </div>
