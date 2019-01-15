@@ -12,18 +12,14 @@ import actions from "../store/actions";
 import Cart from "../components/sections/cart";
 import Header from "../components/partials/header";
 import Footer from "../components/partials/footer";
-<<<<<<< HEAD
 import Head from "next/head";
-=======
 import ShareButtons from "../components/sections/shareButtons";
 import AgeVerification from "../components/sections/ageVerification";
->>>>>>> 1ab2566b97c0a8fd3a43c946510c44e4f7f99ddd
 // import Particles from "react-particles-js";
 
 import Tawkto from "../components/sketches/tawkto";
 
 class Layout extends Component {
-<<<<<<< HEAD
     componentDidMount() {
         this.props.getStrains();
         // Tawkto();
@@ -40,18 +36,12 @@ class Layout extends Component {
         //     // s0.parentNode.insertBefore(s1, s0);
         // });
     }
-=======
-  componentDidMount() {
-    this.props.getStrains();
-  }
->>>>>>> 1ab2566b97c0a8fd3a43c946510c44e4f7f99ddd
+    componentDidUpdate() {}
 
-  componentDidUpdate() {}
-
-  render() {
-    return (
-      <div style={{ backgroundColor: "#f3f3f3", height: "100%" }}>
-        {/* <Particles
+    render() {
+        return (
+            <div style={{ backgroundColor: "#f3f3f3", height: "100%" }}>
+                {/* <Particles
           width="100vw"
           height="100vh"
           style={{ position: "absolute", zIndex: 0 }}
@@ -123,51 +113,37 @@ class Layout extends Component {
             retina_detect: true
           }}
         /> */}
-<<<<<<< HEAD
                 {/* <Tawkto /> */}
                 {/* <Head>
                     <script crossorigin="*" async src="https://embed.tawk.to/5ae8bd0d5f7cdf4f0533c472/default" />
                 </Head> */}
-                {/* <Header {...this.props} /> */}
-                <div className="pt-48">
+                <Header {...this.props} />
+                {/* <AgeVerification {...this.props} /> */}
+                <div className="pt-32">
+                    {" "}
+                    <ShareButtons {...this.props} />
                     <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 mx-auto shadow-md">
                         {this.props.children}
                     </div>
                 </div>
-                {/* <Cart {...this.props} /> */}
-                {/* <Footer {...this.props} /> */}
+                <Cart {...this.props} />
+                <Footer {...this.props} />
             </div>
         );
     }
-=======
-        <Header {...this.props} />
-        {/* <AgeVerification {...this.props} /> */}
-        <div className="pt-32">
-          <ShareButtons {...this.props} />
-          <div className="bg-white relative z-30 px-4 py-4 pb-16 w-full xl:w-1300 lg:w-1300 mx-auto shadow-md">
-            {this.props.children}
-          </div>
-        </div>
-        <Cart {...this.props} />
-        <Footer {...this.props} />
-      </div>
-    );
-  }
->>>>>>> 1ab2566b97c0a8fd3a43c946510c44e4f7f99ddd
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
-    getStrains: () => dispatch(actions.getStrains()),
-    modifyCart: input => dispatch(actions.modifyCart(input)),
-    modifyPotentialQuantity: input =>
-      dispatch(actions.modifyPotentialQuantity(input)),
-    setAgeVerification: input => dispatch(actions.setAgeVerification(input))
-  };
+    return {
+        setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+        getStrains: () => dispatch(actions.getStrains()),
+        modifyCart: input => dispatch(actions.modifyCart(input)),
+        modifyPotentialQuantity: input => dispatch(actions.modifyPotentialQuantity(input)),
+        setAgeVerification: input => dispatch(actions.setAgeVerification(input))
+    };
 };
 
 export default connect(
-  state => state,
-  mapDispatchToProps
+    state => state,
+    mapDispatchToProps
 )(Layout);
