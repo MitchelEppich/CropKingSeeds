@@ -145,6 +145,7 @@ const ProductPreview = props => {
       <h2 className="text-3/5xl font-extrabold mt-12 mb-6 text-black">
         Shopping Cart
       </h2>
+
       <div className="w-full inline-flex flex-wrap mb-4 mt-2">
         {showProducts()}
       </div>
