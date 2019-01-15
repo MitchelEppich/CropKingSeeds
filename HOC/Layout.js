@@ -30,45 +30,45 @@ class Layout extends Component {
         }
       });
 
-    window.addEventListener("resize", () => {
-      let breakpoints = [
-        0,
-        515,
-        776,
-        1030,
-        1280,
-        1350,
-        1530,
-        1780,
-        1920,
-        2268,
-        2300,
-        2400,
-        2750,
-        3840
-      ];
+    // window.addEventListener("resize", () => {
+    //   let breakpoints = [
+    //     0,
+    //     515,
+    //     776,
+    //     1030,
+    //     1280,
+    //     1350,
+    //     1530,
+    //     1780,
+    //     1920,
+    //     2268,
+    //     2300,
+    //     2400,
+    //     2750,
+    //     3840
+    //   ];
 
-      for (let i = 0; i < breakpoints.length - 1; i++) {
-        if (
-          window.innerWidth > breakpoints[i] &&
-          window.innerWidth <= breakpoints[i + 1] &&
-          this.props.misc.currentMediaSize != breakpoints[i + 1]
-        ) {
-          this.props.setMediaSize(breakpoints[i + 1]);
-        }
-      }
-    });
+    //   for (let i = 0; i < breakpoints.length - 1; i++) {
+    //     if (
+    //       window.innerWidth > breakpoints[i] &&
+    //       window.innerWidth <= breakpoints[i + 1] &&
+    //       this.props.misc.currentMediaSize != breakpoints[i + 1]
+    //     ) {
+    //       this.props.setMediaSize(breakpoints[i + 1]);
+    //     }
+    //   }
+    // });
 
-    let body = document.querySelector("#body");
-    body.addEventListener("scroll", () => {
-      if (
-        body.scrollHeight - 100 > body.scrollTop + body.clientHeight &&
-        !this.props.list.listUpdating
-      ) {
-        this.props.toggleUpdatingStatus(true);
-        this.props.buildList(this.props.global.usedKeys);
-      }
-    });
+    // let body = document.querySelector("#body");
+    // body.addEventListener("scroll", () => {
+    //   if (
+    //     body.scrollHeight - 100 > body.scrollTop + body.clientHeight &&
+    //     !this.props.list.listUpdating
+    //   ) {
+    //     this.props.toggleUpdatingStatus(true);
+    //     this.props.buildList(this.props.global.usedKeys);
+    //   }
+    // });
     // Tawkto();
     // let Tawk_API = Tawk_API || {},
     //     Tawk_LoadStart = new Date();

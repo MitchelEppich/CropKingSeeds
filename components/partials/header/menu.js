@@ -64,7 +64,6 @@ const menu = props => {
     return arr;
   };
 
-  let viewCurrency;
   viewCurrency = props.misc.visibleScreen.includes("viewCurrency")
     ? {
         transform: "translateX(0px)",
@@ -83,17 +82,18 @@ const menu = props => {
 
   return (
     <div
-      style={{
-        background: "white",
-        background: "url(../static/img/bg-header.png)",
-        backgroundSize: "cover",
-        backgroundPosition: "left",
-        // height: "120px",
-        overflow: "hidden",
-        zIndex: "-18",
-        position: "absolute",
-        boxShadow: "0 2px 6px rgba(64, 64, 64, 0.29)"
-      }}
+      style={
+        {
+          background: "white",
+          background: "url(../static/img/bg-header.png)",
+          backgroundSize: "cover",
+          backgroundPosition: "left",
+          overflow: "hidden",
+          zIndex: "-18",
+          position: "absolute",
+          boxShadow: "0 2px 6px rgba(64, 64, 64, 0.29)"
+        } // height: "120px",
+      }
       className="w-full"
     >
       <div className="w-full h-12 inline-flex mt-6 sm:mt-0 sm:mb-6">
@@ -123,13 +123,11 @@ const menu = props => {
             style={{ background: "#f9f9f9" }}
             className="absolute pin-r shadow-md my-auto rounded -mr-2 inline-flex cursor-pointer scale-item"
           >
-            <div className="w-12 rounded bg-yellow-dark p-2 items-center flex justify-center">
-              <p>
-                <FontAwesomeIcon icon={faDollarSign} className="" />
-              </p>
+            <div className="w-12 rounded bg-yellow-dark p-2 items-center flex justify-center font-extrabold">
+              {currency != null ? currency.symbol : ""}
             </div>
             <p className="px-6 pt-2 p-1 uppercase text-center font-extrabold text-lg">
-              USD
+              {currency != null ? currency.label.toUpperCase() : ""}
             </p>
           </div>
           <div

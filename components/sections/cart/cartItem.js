@@ -7,6 +7,7 @@ library.add(faPlus, faMinus, faTimes);
 //returns a cart item with the strain thumbnail, name, and quantity (also has buttons to increase or reduce qty)
 
 const cartItem = props => {
+  let currency = props.checkout.viewCurrency;
   let showCartProducts = () => {
     let _arr = [];
 
@@ -118,7 +119,11 @@ const cartItem = props => {
             </div>
             <div className="flex items-center">
               <p className="text-xl text-grey-light font-bold">
-                ${(_item.price || 0).toFixed(2)}
+                {currency != null
+                  ? `${currency.symbol}${(
+                      currency.convert * props.item.price
+                    ).toFixed(2)}`
+                  : ""}
               </p>
             </div>
           </div>
