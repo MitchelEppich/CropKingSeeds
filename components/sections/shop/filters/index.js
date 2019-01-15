@@ -49,7 +49,8 @@ const filters = props => {
                 : `${notActiveButton} hover:bg-${
                     color[filter]
                   } hover:text-white`
-            }>
+            }
+          >
             {filter == "cbd"
               ? "CBD"
               : filter.charAt(0).toUpperCase() + filter.slice(1)}
@@ -84,7 +85,8 @@ const filters = props => {
             });
           }}
           style={buttonStyle}
-          className="p-2 px-4 capitalize font-bold m-1 bg-grey-lightest hover:bg-grey-light hover:text-white">
+          className="p-2 px-4 capitalize font-bold m-1 bg-grey-lightest hover:bg-grey-light hover:text-white"
+        >
           {filter}
         </button>
       );
@@ -95,12 +97,15 @@ const filters = props => {
   return (
     <div
       className={
-        "w-full overflow-hidden text-red-dark border border-grey-lighter cursor-pointer" +
-        (props.shop.showFilters ? "" : " h-10")
-      }>
+        props.shop.showFilters
+          ? "h-700 w-full absolute bg-white z-999 lg:sticky xl:sticky xxl:sticky text-red-dark border border-grey-lighter cursor-pointer"
+          : " h-10 w-full absolute bg-white z-999 overflow-hidden lg:sticky xl:sticky xxl:sticky text-red-dark border border-grey-lighter cursor-pointer" // style={{ top: "140px" }}
+      }
+    >
       <p
         onClick={() => props.toggleShowFilters()}
-        className="h-10 px-4 pt-2 leading-tight text-xl font-bold text-black shadow flex justify-between">
+        className="h-10 px-4 pt-2 leading-tight text-xl font-bold text-black shadow flex justify-between"
+      >
         <span className="">Filters:</span>
         <FontAwesomeIcon className="fa-lg " icon={faSlidersH} />
       </p>
@@ -171,7 +176,8 @@ const filters = props => {
       <button
         style={{ width: "95%" }}
         onClick={() => props.clearFilters()}
-        className="text-white bg-red-dark p-2 m-2 mt-6 mx-auto block font-bold slowish hover:bg-grey hover:text-white text-lg">
+        className="text-white bg-red-dark p-2 m-2 mt-6 mx-auto block font-bold slowish hover:bg-grey hover:text-white text-lg"
+      >
         Clear Filters
       </button>
     </div>
