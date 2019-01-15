@@ -506,6 +506,12 @@ h4 {
         margin: 48px 106px;
         width: 100px;
     }
+    .headingClass {
+        transform: translateX(30px);
+        position: absolute;
+        bottom: 0;
+        transition: all 0.5s ease-in-out;
+    }
     //////////////////////
     //SHOP PAGE THUMBAILS (MOBILE)
     //////////////////////
@@ -580,6 +586,17 @@ h4 {
             &:hover {
                 transform: scale(1.1);
             }
+        }
+    }
+    .bannerBuyNow {
+        position: absolute;
+        width: 6rem;
+        left: calc(50% - 3rem);
+        bottom: 1rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.8);
         }
     }
     //////////////////////

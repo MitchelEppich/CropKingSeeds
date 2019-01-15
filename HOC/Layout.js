@@ -113,17 +113,17 @@ class Layout extends Component {
           }}
         /> */}
                 {/* <Tawkto /> */}
-                <Head>
+                {/* <Head>
                     <script crossorigin="*" async src="https://embed.tawk.to/5ae8bd0d5f7cdf4f0533c472/default" />
-                </Head>
+                </Head> */}
                 {/* <Header {...this.props} /> */}
-                {/* <div className="pt-48">
+                <div className="pt-48">
                     <div className="bg-white relative z-30 px-4 py-4 w-full xl:w-1300 lg:w-1300 mx-auto shadow-md">
                         {this.props.children}
                     </div>
-                </div> */}
+                </div>
                 {/* <Cart {...this.props} /> */}
-                {/* <Footer {...this.props} />  */}
+                {/* <Footer {...this.props} /> */}
             </div>
         );
     }

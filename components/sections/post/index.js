@@ -4,7 +4,7 @@ const Post = props => {
     return (
         <div className="mx-auto bg-white flex flex-wrap">
             <div className="sm:w-full w-1/2 p-4 mt-12 h-300 shadow-lg">
-                <h2 className="text-center font-hairline xl:mt-8 text-4xl text-red-dark">Germination</h2>
+                <h2 className="text-center font-hairline xl:mt-8 lg:text-4xl sm:text-3xl text-red-dark">Germination</h2>
                 <p className="text-justify p-2 xl:my-4 ">
                     Proper germination is the first step to get your cannabis plants growing successfully. Follow our 5
                     easy steps, or watch our short video to assure your plants flourish right from the seed.

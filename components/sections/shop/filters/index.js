@@ -28,7 +28,7 @@ const filters = props => {
         })();
         for (let filter of filters) {
             arr.push(
-                <li>
+                <li key={filter}>
                     <button
                         onClick={() =>
                             props.toggleFilter({
@@ -61,6 +61,7 @@ const filters = props => {
         for (let filter of filtersActive.genetic) {
             arr.push(
                 <button
+                    key={filter}
                     onClick={() => {
                         props.toggleFilter({
                             filter: filtersActive,

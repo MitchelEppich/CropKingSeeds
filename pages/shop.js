@@ -24,7 +24,7 @@ class Index extends Component {
                             <div className="flex flex-wrap">
                                 <div className="sm:w-full w-1/4 slow">
                                     <Filters {...this.props} />
-                                    <FeaturedStrainThumbnails {...this.props} />
+                                    {/* <FeaturedStrainThumbnails {...this.props} /> */}
                                 </div>
                                 <ProductGrid {...this.props} />
                             </div>
