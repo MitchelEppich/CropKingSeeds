@@ -30,12 +30,14 @@ const GenePreview = props => {
     let windows = types.map((val, index) => {
         let strainImgStyle = { position: "absolute", bottom: "0" },
             headingStyle,
-            screenStyle;
+            screenStyle,
+            packStyle = { opacity: 0 };
 
         if (props.misc.geneHoverIndex == index) {
             strainImgStyle = { ...strainImgStyle, transform: "translateY(100%)", opacity: 0 };
             headingStyle = { opacity: 0 };
             screenStyle = { transform: "translateX(-130px) rotate(-90deg)" };
+            packStyle = { opacity: 1 };
         }
         return (
             <Link href="/shop" key={index}>
@@ -51,11 +53,17 @@ const GenePreview = props => {
                     }}
                     onMouseEnter={() => props.setGeneHoverIndex(index)}
                     onMouseLeave={() => props.setGeneHoverIndex(index)}
-                    className="genePreview sm:h-16 lg:h-500 z-10">
-                    <img className="sm:hidden absolute w-full slow" src={val.strainImg} style={strainImgStyle} />
+                    className="genePreview">
+                    <img
+                        className="sm:hidden md:hidden absolute w-full slow"
+                        src={val.strainImg}
+                        style={strainImgStyle}
+                    />
                     <div style={screenStyle} className="screenClass bg-almost-black text-white uppercase">
-                        <img src={val.packImg} className="sm:hidden packClass" />
-                        <p style={headingStyle} className="headingClass sm:pb-2 absolute sm:text-3xl lg:text-3/5xl">
+                        <img src={val.packImg} style={packStyle} className="sm:hidden packClass slow" />
+                        <p
+                            style={headingStyle}
+                            className="headingClass absolute sm:text-3xl md:text-3/5xl lg:text-3xl xl:text-3/5xl xxl:text-3/5xl">
                             {val.name}
                         </p>
                     </div>
@@ -65,8 +73,8 @@ const GenePreview = props => {
     });
 
     return (
-        <div className="flex flex-wrap w-full lg:my-12 lg:h-500 mx-auto relative overflow-hidden">
-            <h2 className="w-full h-12 mt-8 mb-2 text-center text-3xl font-black shadow-md">Categories</h2>
+        <div className="flex flex-wrap w-full xl:my-12 xl:h-500 mx-auto relative overflow-hidden">
+            <h2 className="w-full h-12 mt-8 mb-2 pt-2 text-center text-3xl font-black shadow-md">Categories</h2>
             {windows}
         </div>
     );
