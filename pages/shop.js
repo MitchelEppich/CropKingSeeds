@@ -21,11 +21,16 @@ class Index extends Component {
                     <React.Fragment>
                         <div className="">
                             <div className="pl-12 pt-10 text-grey font-extrabold text-center text-3/5xl">
-                                <h3>Shop</h3>
+                                <h3>Shop Cannabis Seeds</h3>
                             </div>
-                            <div className="flex flex-wrap">
-                                <div className={this.props.shop.viewProductExpanded != null ? "hidden" : "w-1/4 slow"}>
-                                    <Filters {...this.props} />
+                            <div className="flex flex-wrap relative">
+                                <div
+                                    className={
+                                        this.props.shop.viewProductExpanded != null ? "hidden" : "w-1/4 slow relative"
+                                    }>
+                                    <div style={{ top: "140px" }} className="sticky">
+                                        <Filters {...this.props} />
+                                    </div>
                                     {/*<FeaturedStrainThumbnails {...this.props} />*/}
                                 </div>
                                 <ProductGrid {...this.props} />
@@ -50,7 +55,8 @@ const mapDispatchToProps = dispatch => {
         quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
         modifyCart: input => dispatch(actions.modifyCart(input)),
         modifyPotentialQuantity: input => dispatch(actions.modifyPotentialQuantity(input)),
-        clearCart: () => dispatch(actions.clearCart())
+        clearCart: () => dispatch(actions.clearCart()),
+        toggleShowFilters: () => dispatch(actions.toggleShowFilters())
     };
 };
 

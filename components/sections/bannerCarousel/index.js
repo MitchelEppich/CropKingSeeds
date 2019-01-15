@@ -14,7 +14,14 @@ const BannerCarousel = props => {
         );
     });
 
-    return <div className="bg-green h-500 sm:h-200 w-full flex relative overflow-hidden">{slides}</div>;
+    return (
+        <div className="xxl:h-600 xl:h-400 lg:h-400 md:h-250 sm:h-250 w-full flex relative overflow-hidden">
+            {slides}
+            {props.misc.activeBannerSlide == 2 ? (
+                <button className="bannerBuyNow md:hidden lg:hidden xl:hidden xxl:hidden">Buy Now</button>
+            ) : null}
+        </div>
+    );
 };
 
 export default BannerCarousel;

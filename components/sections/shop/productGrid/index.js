@@ -64,8 +64,8 @@ class Index extends Component {
                         }}
                         className={
                             hoverId == product._id
-                                ? "w-64 h-64 text-white relative z-50 slowish my-4 mx-8"
-                                : "w-64 h-64 text-white relative z-0 slowish my-4 mx-8"
+                                ? "w-64 h-64 sm:w-48 sm:h-48 text-white relative z-50 slowish lg:my-4 lg:mx-8"
+                                : "w-64 h-64 sm:w-48 sm:h-48 text-white relative z-0 slowish lg:my-4 lg:mx-8"
                         }>
                         <ProductThumbnail hoverId={hoverId} product={product} {...this.props} />
                     </div>
@@ -73,7 +73,7 @@ class Index extends Component {
             });
 
         return (
-            <div className="w-3/4 min-h-700 text-white">
+            <div className="lg:w-3/4 xl:w-3/4 xxl:w-3/4 min-h-700 text-white">
                 <div className="w-full justify-end flex pt-3 p-2  mb-2 text-grey-light items-center flex">
                     Sort by:
                     <select className="ml-3">

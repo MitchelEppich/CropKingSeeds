@@ -18,12 +18,11 @@ class Index extends Component {
   render() {
     return (
       <Layout>
-        <div className="mt-0 w-full mx-auto relative">
+        <div className=" w-full mx-auto relative">
           <ArticleSlider {...this.props} />
           <div
             style={{ marginTop: "-150px" }}
-            className="inline-flex w-full absolute"
-          >
+            className="inline-flex w-full absolute">
             <SmArticles {...this.props} src="SMimage-1.jpg" />
             <SmArticles {...this.props} src="SMimage-2.jpg" />
             <SmArticles {...this.props} src="SMimage-3.jpg" />

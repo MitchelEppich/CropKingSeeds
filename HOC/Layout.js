@@ -12,6 +12,9 @@ import actions from "../store/actions";
 import Cart from "../components/sections/cart";
 import Header from "../components/partials/header";
 import Footer from "../components/partials/footer";
+import Head from "next/head";
+import ShareButtons from "../components/sections/shareButtons";
+import AgeVerification from "../components/sections/ageVerification";
 // import Particles from "react-particles-js";
 
 import Tawkto from "../components/sketches/tawkto";
@@ -66,10 +69,20 @@ class Layout extends Component {
         this.props.buildList(this.props.global.usedKeys);
       }
     });
-
     // Tawkto();
+    // let Tawk_API = Tawk_API || {},
+    //     Tawk_LoadStart = new Date();
+    // (function() {
+    //     let s1 = document.createElement("script");
+    //     // s0 = document.getElementsByTagName("script")[0];
+    //     s1.async = true;
+    //     s1.src = "https://embed.tawk.to/5ae8bd0d5f7cdf4f0533c472/default";
+    //     s1.charset = "UTF-8";
+    //     s1.setAttribute("crossorigin", "*");
+    //     document.body.appendChild(s1);
+    //     // s0.parentNode.insertBefore(s1, s0);
+    // });
   }
-
   componentDidUpdate() {}
 
   render() {
@@ -148,9 +161,15 @@ class Layout extends Component {
           }}
         /> */}
         {/* <Tawkto /> */}
+        {/* <Head>
+                    <script crossorigin="*" async src="https://embed.tawk.to/5ae8bd0d5f7cdf4f0533c472/default" />
+                </Head> */}
         <Header {...this.props} />
-        <div className="pt-48">
-          <div className="bg-white relative z-30 px-4 py-4 w-full xl:w-1300 lg:w-1300 mx-auto shadow-md">
+        {/* <AgeVerification {...this.props} /> */}
+        <div className="pt-32">
+          {" "}
+          <ShareButtons {...this.props} />
+          <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 mx-auto shadow-md">
             {this.props.children}
           </div>
         </div>
@@ -168,7 +187,8 @@ const mapDispatchToProps = dispatch => {
     modifyCart: input => dispatch(actions.modifyCart(input)),
     setCurrency: input => dispatch(actions.setCurrency(input)),
     modifyPotentialQuantity: input =>
-      dispatch(actions.modifyPotentialQuantity(input))
+      dispatch(actions.modifyPotentialQuantity(input)),
+    setAgeVerification: input => dispatch(actions.setAgeVerification(input))
   };
 };
 

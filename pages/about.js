@@ -7,14 +7,14 @@ import withData from "../lib/withData";
 import { connect } from "react-redux";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
-import Privacy from "../components/sections/privacy";
+import About from "../components/sections/about";
 
 class Index extends Component {
   render() {
     return (
       <Layout>
-        <div className="pt-0">
-          <Privacy {...this.props} />
+        <div className="pt-0 min-h-500">
+          <About />
         </div>
       </Layout>
     );

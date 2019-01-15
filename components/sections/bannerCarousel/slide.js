@@ -11,12 +11,8 @@ const slide = props => {
                 props.nextBannerSlide();
             }}
             style={{ ...position, ...props.style }}
-            className={"h-500 sm:h-200 w-full z-0 absolute bg-" + props.color}>
-            {props.index == 4 ? (
-                <button className="px-4 py-2 mx-auto text-center text-lg text-white border border-white font-bold bannerBuyNow">
-                    Buy Now
-                </button>
-            ) : null}
+            className={"xxl:h-600 xl:h-400 lg:h-400 md:h-250 sm:h-full w-full z-0 absolute bg-" + props.color}>
+            {props.index == 2 ? <button className="bannerBuyNow sm:hidden">Buy Now</button> : null}
         </div>
     );
 };
