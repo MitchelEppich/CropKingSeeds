@@ -64,12 +64,16 @@ const BillingAddress = props => {
   };
 
   let showOptions = () => {
-    if (props.checkout.orderDetails[pageGroup] == null) return null;
-    let _country = props.checkout.orderDetails[pageGroup].country;
+    if (
+      props.checkout.orderDetails[pageGroup] == null &&
+      props.checkout.orderDetails[pageGroup].country != null
+    )
+      return null;
+    let _country = props.checkout.orderDetails[pageGroup].country.value;
     let _data;
     switch (_country) {
       case "Canada":
-        _data = data.provincesCA;
+        _data = Object.keys(data.provincesCA);
         break;
       case "United States":
         _data = data.statesUS;
@@ -98,120 +102,186 @@ const BillingAddress = props => {
       <h2 className="text-3xl font-extrabold mt-12 mb-6 text-black">
         Billing Address
       </h2>
-      <form>
-        <div className="pl-2 mt-6 flex items-center inline-flex">
-          <label className="font-bold flex items-center cursor-pointer">
+      <div className="pl-2 mt-6 flex items-center inline-flex">
+        <label className="font-bold flex items-center cursor-pointer">
+          <input
+            type="checkbox"
+            className="checkbox cursor-pointer"
+            id="readOnly"
+            checked={
+              props.checkout.orderDetails[pageGroup] != null
+                ? !props.checkout.orderDetails[pageGroup].readOnly
+                : false
+            }
+            onChange={e => {
+              let _orderDetails = props.checkout.orderDetails;
+              let _target = e.target;
+
+              _orderDetails[pageGroup] = {
+                readOnly: !_target.checked,
+                updatedAt: new Date()
+              };
+
+              props.setOrderDetails({ orderDetails: _orderDetails });
+            }}
+          />
+          Different from Shipping Address
+        </label>
+      </div>
+      <div
+        className={`w-full mt-4 ${
+          props.checkout.orderDetails[pageGroup].readOnly
+            ? "opacity-50 pointer-events-none unselectable"
+            : ""
+        }`}
+      >
+        <div className="w-full p-2 inline-flex">
+          <div className="w-1/2">
             <input
-              type="checkbox"
-              className="checkbox cursor-pointer"
-              id="readOnly"
-              checked={
-                props.checkout.orderDetails[pageGroup] != null
-                  ? !props.checkout.orderDetails[pageGroup].readOnly
-                  : false
+              type="text"
+              name="name"
+              id="fullName"
+              autoComplete="name"
+              value={
+                props.checkout.orderDetails[pageGroup] != null &&
+                props.checkout.orderDetails[pageGroup].fullName != null
+                  ? props.checkout.orderDetails[pageGroup].fullName.value || ""
+                  : ""
               }
               onChange={e => {
                 let _orderDetails = props.checkout.orderDetails;
                 let _target = e.target;
+                let _key = _target.id;
+                let _value = _target.value;
+                let _tag = "FirstName LastName";
 
-                _orderDetails[pageGroup] = {
-                  readOnly: !_target.checked,
-                  updatedAt: new Date()
-                };
-
-                props.setOrderDetails({ orderDetails: _orderDetails });
+                props.modifyOrderDetails({
+                  orderDetails: _orderDetails,
+                  group: pageGroup,
+                  key: _key,
+                  value: _value,
+                  tag: _tag
+                });
               }}
+              placeholder="Full Name"
+              className="p-2 w-full"
+              required
             />
-            Different from Shipping Address
-          </label>
+          </div>
+          <div className="w-1/2 pl-2">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={
+                props.checkout.orderDetails[pageGroup] != null &&
+                props.checkout.orderDetails[pageGroup].email != null
+                  ? props.checkout.orderDetails[pageGroup].email.value || ""
+                  : ""
+              }
+              onChange={e => {
+                let _orderDetails = props.checkout.orderDetails;
+                let _target = e.target;
+                let _key = _target.id;
+                let _value = _target.value;
+                let _tag = "Email";
+
+                props.modifyOrderDetails({
+                  orderDetails: _orderDetails,
+                  group: pageGroup,
+                  key: _key,
+                  value: _value,
+                  tag: _tag
+                });
+              }}
+              placeholder="Email Address"
+              className="p-2 w-full"
+              required
+            />
+          </div>
         </div>
-        <div
-          className={`w-full mt-4 ${
-            props.checkout.orderDetails[pageGroup].readOnly
-              ? "opacity-50 pointer-events-none unselectable"
-              : ""
-          }`}
-        >
-          <div className="w-full p-2 inline-flex">
-            <div className="w-1/2">
-              <input
-                type="text"
-                name="fullName"
-                id="fullName"
-                value={
-                  props.checkout.orderDetails[pageGroup] != null &&
-                  props.checkout.orderDetails[pageGroup].fullName != null
-                    ? props.checkout.orderDetails[pageGroup].fullName.value ||
-                      ""
-                    : undefined
-                }
-                onChange={e => {
-                  let _orderDetails = props.checkout.orderDetails;
-                  let _target = e.target;
-                  let _key = _target.id;
-                  let _value = _target.value;
-                  let _tag = "FirstName LastName";
+        <div className="w-full p-2">
+          <input
+            type="text"
+            name="street-address"
+            autoComplete="shipping street-address"
+            id="address"
+            value={
+              props.checkout.orderDetails[pageGroup] != null &&
+              props.checkout.orderDetails[pageGroup].address != null
+                ? props.checkout.orderDetails[pageGroup].address.value || ""
+                : ""
+            }
+            onChange={e => {
+              let _orderDetails = props.checkout.orderDetails;
+              let _target = e.target;
+              let _key = _target.id;
+              let _value = _target.value;
+              let _tag = "Address";
 
-                  props.modifyOrderDetails({
-                    orderDetails: _orderDetails,
-                    group: pageGroup,
-                    key: _key,
-                    value: _value,
-                    tag: _tag
-                  });
-                }}
-                placeholder="Full Name"
-                className="p-2 w-full"
-              />
-            </div>
-            <div className="w-1/2 pl-2">
-              <input
-                type="email"
-                name="email"
-                id="email"
-                value={
-                  props.checkout.orderDetails[pageGroup] != null &&
-                  props.checkout.orderDetails[pageGroup].email != null
-                    ? props.checkout.orderDetails[pageGroup].email.value || ""
-                    : undefined
-                }
-                onChange={e => {
-                  let _orderDetails = props.checkout.orderDetails;
-                  let _target = e.target;
-                  let _key = _target.id;
-                  let _value = _target.value;
-                  let _tag = "Email";
+              props.modifyOrderDetails({
+                orderDetails: _orderDetails,
+                group: pageGroup,
+                key: _key,
+                value: _value,
+                tag: _tag
+              });
+            }}
+            placeholder="Street Address"
+            className="p-2 w-full"
+            required
+          />
+        </div>
+        <div className="w-full p-2">
+          <input
+            type="text"
+            name="apartment"
+            autoComplete="shipping apartment"
+            id="apartment"
+            value={
+              props.checkout.orderDetails[pageGroup] != null &&
+              props.checkout.orderDetails[pageGroup].apartment != null
+                ? props.checkout.orderDetails[pageGroup].apartment.value || ""
+                : ""
+            }
+            onChange={e => {
+              let _orderDetails = props.checkout.orderDetails;
+              let _target = e.target;
+              let _key = _target.id;
+              let _value = _target.value;
+              let _tag = "Apartment";
 
-                  props.modifyOrderDetails({
-                    orderDetails: _orderDetails,
-                    group: pageGroup,
-                    key: _key,
-                    value: _value,
-                    tag: _tag
-                  });
-                }}
-                placeholder="Email Address"
-                className="p-2 w-full"
-              />
-            </div>
-          </div>
-          <div className="w-full p-2">
+              props.modifyOrderDetails({
+                orderDetails: _orderDetails,
+                group: pageGroup,
+                key: _key,
+                value: _value,
+                tag: _tag
+              });
+            }}
+            placeholder="Apart. / Suite / Other"
+            className="p-2 w-full"
+          />
+        </div>
+        <div className="w-full p-2 inline-flex">
+          <div className="w-1/3">
             <input
               type="text"
-              name=""
-              id="address"
+              name="ship-zip"
+              autoComplete="shipping postal-code"
+              id="postalZip"
               value={
                 props.checkout.orderDetails[pageGroup] != null &&
-                props.checkout.orderDetails[pageGroup].address != null
-                  ? props.checkout.orderDetails[pageGroup].address.value || ""
-                  : undefined
+                props.checkout.orderDetails[pageGroup].postalZip != null
+                  ? props.checkout.orderDetails[pageGroup].postalZip.value || ""
+                  : ""
               }
               onChange={e => {
                 let _orderDetails = props.checkout.orderDetails;
                 let _target = e.target;
                 let _key = _target.id;
                 let _value = _target.value;
-                let _tag = "Address";
+                let _tag = "Postal_Zip_Code";
 
                 props.modifyOrderDetails({
                   orderDetails: _orderDetails,
@@ -221,27 +291,29 @@ const BillingAddress = props => {
                   tag: _tag
                 });
               }}
-              placeholder="Street Address"
+              placeholder="ZIP Code"
               className="p-2 w-full"
+              required
             />
           </div>
-          <div className="w-full p-2">
+          <div className="w-1/3 px-2">
             <input
               type="text"
-              name=""
-              id="apartment"
+              name="ship-city"
+              autoComplete="shipping locality"
+              id="city"
               value={
                 props.checkout.orderDetails[pageGroup] != null &&
-                props.checkout.orderDetails[pageGroup].apartment != null
-                  ? props.checkout.orderDetails[pageGroup].apartment.value || ""
-                  : undefined
+                props.checkout.orderDetails[pageGroup].city != null
+                  ? props.checkout.orderDetails[pageGroup].city.value || ""
+                  : ""
               }
               onChange={e => {
                 let _orderDetails = props.checkout.orderDetails;
                 let _target = e.target;
                 let _key = _target.id;
                 let _value = _target.value;
-                let _tag = "Apartment";
+                let _tag = "City";
 
                 props.modifyOrderDetails({
                   orderDetails: _orderDetails,
@@ -251,88 +323,77 @@ const BillingAddress = props => {
                   tag: _tag
                 });
               }}
-              placeholder="Apart. / Suite / Other"
+              placeholder="City"
               className="p-2 w-full"
+              required
             />
           </div>
-          <div className="w-full p-2 inline-flex">
-            <div className="w-1/3">
-              <input
-                type="text"
-                name=""
-                id="postalZip"
-                value={
-                  props.checkout.orderDetails[pageGroup] != null &&
-                  props.checkout.orderDetails[pageGroup].postalZip != null
-                    ? props.checkout.orderDetails[pageGroup].postalZip.value ||
-                      ""
-                    : undefined
-                }
-                onChange={e => {
-                  let _orderDetails = props.checkout.orderDetails;
-                  let _target = e.target;
-                  let _key = _target.id;
-                  let _value = _target.value;
-                  let _tag = "Postal_Zip_Code";
+          <div className="w-1/3">
+            <select
+              id="country"
+              name="ship-country"
+              autoComplete="shipping country"
+              required
+              defaultValue=""
+              value={
+                props.checkout.orderDetails[pageGroup] != null &&
+                props.checkout.orderDetails[pageGroup].country != null
+                  ? props.checkout.orderDetails[pageGroup].country.value || ""
+                  : ""
+              }
+              onChange={e => {
+                let _orderDetails = props.checkout.orderDetails;
+                let _target = e.target;
+                let _key = _target.id;
+                let _value = _target.value;
+                let _tag = "Country";
 
-                  props.modifyOrderDetails({
-                    orderDetails: _orderDetails,
-                    group: pageGroup,
-                    key: _key,
-                    value: _value,
-                    tag: _tag
-                  });
-                }}
-                placeholder="ZIP Code"
-                className="p-2 w-full"
-              />
-            </div>
-            <div className="w-1/3 px-2">
-              <input
-                type="text"
-                name=""
-                id="city"
-                value={
-                  props.checkout.orderDetails[pageGroup] != null &&
-                  props.checkout.orderDetails[pageGroup].city != null
-                    ? props.checkout.orderDetails[pageGroup].city.value || ""
-                    : undefined
-                }
-                onChange={e => {
-                  let _orderDetails = props.checkout.orderDetails;
-                  let _target = e.target;
-                  let _key = _target.id;
-                  let _value = _target.value;
-                  let _tag = "City";
-
-                  props.modifyOrderDetails({
-                    orderDetails: _orderDetails,
-                    group: pageGroup,
-                    key: _key,
-                    value: _value,
-                    tag: _tag
-                  });
-                }}
-                placeholder="City"
-                className="p-2 w-full"
-              />
-            </div>
-            <div className="w-1/3">
+                props.modifyOrderDetails({
+                  orderDetails: _orderDetails,
+                  group: pageGroup,
+                  key: _key,
+                  value: _value,
+                  tag: _tag,
+                  requestUpdateOfGroup: {
+                    value: true,
+                    group: "payment"
+                  }
+                });
+              }}
+              placeholder="Country"
+              className="w-full"
+              style={{ padding: "0.35rem" }}
+            >
+              {showCountries()}
+            </select>
+          </div>
+        </div>
+        <div className="w-full p-2 inline-flex">
+          <div className="w-1/2">
+            {props.checkout.orderDetails[pageGroup] != null &&
+            props.checkout.orderDetails[pageGroup].country != null &&
+            ["Canada", "United States"].includes(
+              props.checkout.orderDetails[pageGroup].country.value
+            ) ? (
               <select
-                id="country"
+                type="text"
+                name="ship-state"
+                autoComplete="shipping region"
+                required
+                id="state"
                 defaultValue=""
                 value={
                   props.checkout.orderDetails[pageGroup] != null &&
-                  props.checkout.orderDetails[pageGroup].country != null
-                    ? props.checkout.orderDetails[pageGroup].country.value || ""
-                    : undefined
+                  props.checkout.orderDetails[pageGroup].state != null
+                    ? props.checkout.orderDetails[pageGroup].state.value || ""
+                    : ""
                 }
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;
                   let _key = _target.id;
                   let _value = _target.value;
-                  let _tag = "Country";
+                  let _tag = "State";
 
                   props.modifyOrderDetails({
                     orderDetails: _orderDetails,
@@ -346,105 +407,31 @@ const BillingAddress = props => {
                     }
                   });
                 }}
-                placeholder="Country"
+                placeholder="Province"
                 className="w-full"
                 style={{ padding: "0.35rem" }}
               >
-                {showCountries()}
+                {showOptions()}
               </select>
-            </div>
-          </div>
-          <div className="w-full p-2 inline-flex">
-            <div className="w-1/2">
-              {props.checkout.orderDetails[pageGroup] != null &&
-              props.checkout.orderDetails[pageGroup].country != null &&
-              ["Canada", "United States"].includes(
-                props.checkout.orderDetails[pageGroup].country.value
-              ) ? (
-                <select
-                  type="text"
-                  name=""
-                  id="state"
-                  defaultValue=""
-                  value={
-                    props.checkout.orderDetails[pageGroup] != null &&
-                    props.checkout.orderDetails[pageGroup].state != null
-                      ? props.checkout.orderDetails[pageGroup].state.value || ""
-                      : undefined
-                  }
-                  onChange={e => {
-                    let _orderDetails = props.checkout.orderDetails;
-                    let _target = e.target;
-                    let _key = _target.id;
-                    let _value = _target.value;
-                    let _tag = "State";
-
-                    props.modifyOrderDetails({
-                      orderDetails: _orderDetails,
-                      group: pageGroup,
-                      key: _key,
-                      value: _value,
-                      tag: _tag,
-                      requestUpdateOfGroup: {
-                        value: true,
-                        group: "payment"
-                      }
-                    });
-                  }}
-                  placeholder="Province"
-                  className="w-full"
-                  style={{ padding: "0.35rem" }}
-                >
-                  {showOptions()}
-                </select>
-              ) : (
-                <input
-                  type="text"
-                  name=""
-                  id="state"
-                  value={
-                    props.checkout.orderDetails[pageGroup] != null &&
-                    props.checkout.orderDetails[pageGroup].state != null
-                      ? props.checkout.orderDetails[pageGroup].state.value || ""
-                      : undefined
-                  }
-                  onChange={e => {
-                    let _orderDetails = props.checkout.orderDetails;
-                    let _target = e.target;
-                    let _key = _target.id;
-                    let _value = _target.value;
-                    let _tag = "State";
-
-                    props.modifyOrderDetails({
-                      orderDetails: _orderDetails,
-                      group: pageGroup,
-                      key: _key,
-                      value: _value,
-                      tag: _tag
-                    });
-                  }}
-                  placeholder="Province"
-                  className="p-2 w-full"
-                />
-              )}
-            </div>
-            <div className="w-1/2 pl-2">
+            ) : (
               <input
                 type="text"
-                name=""
-                id="phone"
+                name="ship-state"
+                autoComplete="shipping region"
+                required
+                id="state"
                 value={
                   props.checkout.orderDetails[pageGroup] != null &&
-                  props.checkout.orderDetails[pageGroup].phone != null
-                    ? props.checkout.orderDetails[pageGroup].phone.value || ""
-                    : undefined
+                  props.checkout.orderDetails[pageGroup].state != null
+                    ? props.checkout.orderDetails[pageGroup].state.value || ""
+                    : ""
                 }
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;
                   let _key = _target.id;
                   let _value = _target.value;
-                  let _tag = "PhoneNum";
+                  let _tag = "State";
 
                   props.modifyOrderDetails({
                     orderDetails: _orderDetails,
@@ -454,13 +441,45 @@ const BillingAddress = props => {
                     tag: _tag
                   });
                 }}
-                placeholder="Phone"
+                placeholder="Province"
                 className="p-2 w-full"
               />
-            </div>
+            )}
+          </div>
+          <div className="w-1/2 pl-2">
+            <input
+              type="text"
+              name="phone"
+              autoComplete="tel"
+              required
+              id="phone"
+              value={
+                props.checkout.orderDetails[pageGroup] != null &&
+                props.checkout.orderDetails[pageGroup].phone != null
+                  ? props.checkout.orderDetails[pageGroup].phone.value || ""
+                  : ""
+              }
+              onChange={e => {
+                let _orderDetails = props.checkout.orderDetails;
+                let _target = e.target;
+                let _key = _target.id;
+                let _value = _target.value;
+                let _tag = "PhoneNum";
+
+                props.modifyOrderDetails({
+                  orderDetails: _orderDetails,
+                  group: pageGroup,
+                  key: _key,
+                  value: _value,
+                  tag: _tag
+                });
+              }}
+              placeholder="Phone"
+              className="p-2 w-full"
+            />
           </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

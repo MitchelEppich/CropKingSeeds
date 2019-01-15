@@ -6,6 +6,8 @@ library.add(faPlus, faMinus, faTimes);
 //takes in the strain item as prop
 //returns a cart item with the strain thumbnail, name, and quantity (also has buttons to increase or reduce qty)
 const cartItem = props => {
+  let currency = props.checkout.viewCurrency;
+
   return (
     <div className="flex justify-between px-4 py-2">
       <img className="h-32 mx-6" src={props.item.product.packageImg} />
@@ -40,7 +42,8 @@ const cartItem = props => {
                 quantity: -1
               })
             }
-            className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white">
+            className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white"
+          >
             <FontAwesomeIcon
               icon={faMinus}
               className="fa-sm text-white cursor-pointer"
@@ -59,7 +62,8 @@ const cartItem = props => {
                 quantity: 1
               })
             }
-            className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white">
+            className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white"
+          >
             <FontAwesomeIcon
               icon={faPlus}
               className="fa-sm text-white cursor-pointer"
@@ -67,7 +71,13 @@ const cartItem = props => {
           </button>
         </div>
         <div>
-          <p className="text-2xl">${props.item.price.toFixed(2)}</p>
+          <p className="text-2xl">
+            {currency != null
+              ? `${currency.symbol}${(
+                  currency.convert * props.item.price
+                ).toFixed(2)}`
+              : ""}
+          </p>
         </div>
       </div>
     </div>

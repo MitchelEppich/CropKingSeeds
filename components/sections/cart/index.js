@@ -12,6 +12,7 @@ import Link from "next/link";
 //takes list of cart items as prop
 // returns the cart, offscreen to the right until the cart icon is clicked
 const cart = props => {
+  let currency = props.checkout.viewCurrency;
   //styles
   let viewCart;
   viewCart = props.misc.visibleScreen.includes("viewCart")
@@ -105,7 +106,11 @@ const cart = props => {
             Subtotal:
           </p>
           <p className="inline-block text-2xl font-extrabold text-red-dark">
-            ${props.cart.price.toFixed(2)}
+            {currency != null
+              ? `${currency.symbol}${(
+                  currency.convert * props.cart.price
+                ).toFixed(2)}`
+              : ""}
           </p>
         </div>
       </div>

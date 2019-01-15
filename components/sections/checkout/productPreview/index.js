@@ -7,6 +7,8 @@ const ProductPreview = props => {
     width: "60%"
   };
 
+  let currency = props.checkout.viewCurrency;
+
   let showProducts = () => {
     let _arr = [];
 
@@ -18,7 +20,8 @@ const ProductPreview = props => {
         <div
           key={item}
           style={{ width: "48%" }}
-          className="inline-flex relative mx-2 mt-4 item-preview">
+          className="inline-flex relative mx-2 mt-4 item-preview"
+        >
           <div className="w-1/3 text-center cursor-pointer p-2">
             <img src={_product.packageImg} style={imgPack} />
           </div>
@@ -66,7 +69,8 @@ const ProductPreview = props => {
                         quantity: -1
                       })
                     }
-                    className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white">
+                    className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white"
+                  >
                     <FontAwesomeIcon
                       icon={faMinus}
                       className="fa-sm text-white cursor-pointer"
@@ -119,7 +123,8 @@ const ProductPreview = props => {
                         quantity: 1
                       })
                     }
-                    className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white">
+                    className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white"
+                  >
                     <FontAwesomeIcon
                       icon={faPlus}
                       className="fa-sm text-white cursor-pointer"
@@ -129,7 +134,11 @@ const ProductPreview = props => {
               </div>
               <div className="text-grey-light text-right w-1/2 items-center">
                 <p className="font-semibold text-lg">
-                  ${(_item.price || 0).toFixed(2)}
+                  {currency != null
+                    ? `${currency.symbol}${(
+                        currency.convert * (_item.price || 0)
+                      ).toFixed(2)}`
+                    : ""}
                 </p>
               </div>
             </div>
