@@ -9,6 +9,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import data from "../../../../static/data";
 
 const PaymentReview = props => {
+  let currency = props.checkout.viewCurrency;
+
   let pageGroup = "payment";
   let _orderDetails = props.checkout.orderDetails;
   let _cart = props.cart;
@@ -252,16 +254,33 @@ const PaymentReview = props => {
           </div>
           <div className="w-2/5 pl-4 text-left">
             <p className="mt-2">
-              ${_orderDetails[pageGroup].cartTotal.value.toFixed(2)}
+              {currency != null
+                ? `${currency.symbol}${(
+                    currency.convert * _orderDetails[pageGroup].cartTotal.value
+                  ).toFixed(2)}`
+                : ""}
             </p>
             <p className="mt-2">
-              ${_orderDetails[pageGroup].shippingFee.value.toFixed(2)}
+              {currency != null
+                ? `${currency.symbol}${(
+                    currency.convert *
+                    _orderDetails[pageGroup].shippingFee.value
+                  ).toFixed(2)}`
+                : ""}
             </p>
             <p className="mt-2">
-              ${_orderDetails[pageGroup].taxFee.toFixed(2)}
+              {currency != null
+                ? `${currency.symbol}${(
+                    currency.convert * _orderDetails[pageGroup].taxFee
+                  ).toFixed(2)}`
+                : ""}
             </p>
             <p className="mt-2">
-              ${_orderDetails[pageGroup].creditFee.value.toFixed(2)}
+              {currency != null
+                ? `${currency.symbol}${(
+                    currency.convert * _orderDetails[pageGroup].creditFee.value
+                  ).toFixed(2)}`
+                : ""}
             </p>
           </div>
         </div>
@@ -273,7 +292,11 @@ const PaymentReview = props => {
           <div className="w-2/5 text-left pl-4">
             {" "}
             <p className="font-bold">
-              ${_orderDetails[pageGroup].orderTotal.value.toFixed(2)}
+              {currency != null
+                ? `${currency.symbol}${(
+                    currency.convert * _orderDetails[pageGroup].orderTotal.value
+                  ).toFixed(2)}`
+                : ""}
             </p>{" "}
           </div>
         </div>
@@ -285,10 +308,16 @@ const PaymentReview = props => {
 export default PaymentReview;
 
 let buildProductList = items => {
-  console.log(items);
+  let productList = [];
   for (let key of Object.keys(items)) {
     let item = items[key];
     let product = item.product;
-    console.log(product);
+    let _name = `${product.sotiId}${item.amount} - ${product.name} ${
+      product.genetic
+    } Cannabis Seeds (${item.amount} Seeds)`;
+
+    productList.push(`${_name} x ${item.quantity} x ${item.price}`);
   }
+
+  return productList.toString();
 };

@@ -7,6 +7,7 @@ import SeedSelectModule from "./seedSelectModule";
 
 const addToCart = props => {
   let currentProduct = props.viewProduct.currentProduct;
+  let currency = props.checkout.viewCurrency;
 
   return (
     <div className="w-full">
@@ -18,7 +19,12 @@ const addToCart = props => {
             </p>
           </div>
           <p className="font-bold font-extrabold text-2xl text-grey-light ml-4">
-            ${currentProduct.price[props.shop.quickAddToCartQty].toFixed(2)}
+            {currency != null
+              ? `${currency.symbol}${(
+                  currency.convert *
+                  currentProduct.price[props.shop.quickAddToCartQty]
+                ).toFixed(2)}`
+              : ""}
           </p>
         </div>
       </div>
@@ -32,11 +38,13 @@ const addToCart = props => {
             </div>
 
             <p className="font-bold font-extrabold text-2xl text-grey-light ml-4">
-              $
-              {(
-                currentProduct.price[props.shop.quickAddToCartQty] *
-                props.cart.potentialQuantity
-              ).toFixed(2)}
+              {currency != null
+                ? `${currency.symbol}${(
+                    currency.convert *
+                    (currentProduct.price[props.shop.quickAddToCartQty] *
+                      props.cart.potentialQuantity)
+                  ).toFixed(2)}`
+                : ""}
             </p>
           </div>
         ) : null}
@@ -61,7 +69,8 @@ const addToCart = props => {
                   product: currentProduct,
                   quantity: props.cart.potentialQuantity
                 });
-              }}>
+              }}
+            >
               Add to Cart
             </button>
           </div>
@@ -80,7 +89,8 @@ const addToCart = props => {
                     product: currentProduct,
                     quantity: props.cart.potentialQuantity
                   });
-                }}>
+                }}
+              >
                 Buy Now
               </button>
             </Link>

@@ -15,7 +15,8 @@ const actionTypes = {
   MODIFY_ORDER_DETAILS: "MODIFY_ORDER_DETAILS",
   SET_ORDER_DETAILS: "SET_ORDER_DETAILS",
   GET_BITCOIN_DATA: "GET_BITCOIN_DATA",
-  PROCESS_ORDER: "PROCESS_ORDER"
+  PROCESS_ORDER: "PROCESS_ORDER",
+  SET_CURRENCY: "SET_CURRENCY"
 };
 
 const getActions = uri => {
@@ -78,17 +79,34 @@ const getActions = uri => {
           .catch(error => console.log(error));
       };
     },
+    setCurrency: input => {
+      return {
+        type: actionTypes.SET_CURRENCY,
+        input: input.currency
+      };
+    },
     processOrder: input => {
       return async dispatch => {
         dispatch({
           type: actionTypes.PROCESS_ORDER
         });
-        let _orderDetails = input.orderDetails;
+        let _orderDetails = { ...input.orderDetails };
         let orderPost = {
+          Website_From: "cropkingseeds.com",
           CardHolderIp: _orderDetails.CardHolderIp,
           Order_Date: moment().format("YY-MM-DD HH:mm:ss"),
           Order_ID: 10000000
         };
+        if (_orderDetails.payment.ccExpireMonth != null) {
+          let _month = _orderDetails.payment.ccExpireMonth.value;
+          let _year = _orderDetails.payment.ccExpireYear.value;
+          _orderDetails.payment.expiryDate = {
+            value: `${_year}-${_month}`,
+            tag: "Expiry_Date"
+          };
+          delete _orderDetails.payment.ccExpireMonth;
+          delete _orderDetails.payment.ccExpireYear;
+        }
         delete _orderDetails.CardHolderIp;
         for (let key of Object.keys(_orderDetails)) {
           if (key == "undefined") continue;
@@ -112,8 +130,11 @@ const getActions = uri => {
                 orderPost[prefix + item] = _obj.shift();
               }
             } else {
-              let suffix = prefix == "Ship" && obj.tag == "Address1" ? "1" : "";
-              orderPost[prefix + obj.tag + suffix] = obj.value;
+              let suffix = prefix == "Ship" && obj.tag == "Address" ? "1" : "";
+              let _key = obj.tag + suffix;
+              if (prefix == "Bill" && _key == "Postal_Zip_Code")
+                _key = "PostalZipCode";
+              orderPost[prefix + _key] = obj.value;
             }
             // console.log({ [obj.tag]: obj.value });
           }

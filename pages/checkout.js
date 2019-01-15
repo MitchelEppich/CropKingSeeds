@@ -34,122 +34,144 @@ class Index extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <Layout>
         <div className="text-center w-full pt-12 bg-white relative">
           <h1 className="text-4xl font-bold text-black">Checkout Preview</h1>
         </div>
-
-        <div className="w-container mx-auto pt-12 bg-white">
-          <Checkout {...this.props} />
-          {this.props.misc.stepsCheckout == 0 ? (
-            <div>
-              <ProductPreview {...this.props} />
-              <hr
-                style={{ border: "1px solid rgb(228, 228, 228)" }}
-                className="my-6"
-              />
-              <Coupon {...this.props} />
-            </div>
-          ) : null}
-
-          {this.props.misc.stepsCheckout == 1 ? (
-            <div>
-              <Shipping {...this.props} />
-              <hr
-                style={{ border: "1px solid rgb(228, 228, 228)" }}
-                className="my-6"
-              />
-              <ShippingMethod {...this.props} />
-            </div>
-          ) : null}
-
-          {this.props.misc.stepsCheckout == 2 ? (
-            <BillingAddress {...this.props} />
-          ) : null}
-
-          {this.props.misc.stepsCheckout == 3 ? (
-            <Payment {...this.props} />
-          ) : null}
-
-          {this.props.misc.stepsCheckout == 4 ? (
-            <Confirmation {...this.props} />
-          ) : null}
-        </div>
-
-        <div className="w-container mx-auto">
-          <hr
-            style={{ border: "1px solid rgba(228, 228, 228, 0.3)" }}
-            className=""
-          />
-
-          <div className="w-full inline-flex justify-between">
-            <div
-              onClick={() => {
-                this.props.misc.stepsCheckout > 0
-                  ? this.props.toggleStepsCheckout(
-                      this.props.misc.stepsCheckout - 1
-                    )
-                  : null;
-              }}
-              className="w-200 p-2 text-left cursor-pointer flex items-center hover:text-red">
-              {this.props.misc.stepsCheckout != 0 ? (
-                <span className="flex items-center font-extrabold text-grey-light hover:text-red-dark text-2xl uppercase">
-                  <FontAwesomeIcon icon={faAngleLeft} className="fa-2x mr-4" />
-                  Back
-                </span>
-              ) : null}
-            </div>
-
-            <span style={{ height: "40px", borderLeft: "2px solid #ececec" }} />
-
-            <div
-              onClick={() => {
-                if (this.props.misc.stepsCheckout == 3) {
-                  getCustomerIP(ip => {
-                    if (ip == null) {
-                      console.log("Failed to fetch IP");
-                      return;
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            // this.props.toggleStepsCheckout(1);
+            if (this.props.misc.stepsCheckout == 3) {
+              getCustomerIP(ip => {
+                if (ip == null) {
+                  console.log("Failed to fetch IP");
+                  return;
+                }
+                this.props
+                  .processOrder({
+                    orderDetails: {
+                      ...this.props.checkout.orderDetails,
+                      CardHolderIp: ip
                     }
-                    this.props
-                      .processOrder({
-                        orderDetails: {
-                          ...this.props.checkout.orderDetails,
-                          CardHolderIp: ip
-                        }
-                      })
-                      .then(res => {
-                        console.log(res);
-                        this.props.toggleStepsCheckout(
-                          this.props.misc.stepsCheckout + 1
-                        );
-                      });
+                  })
+                  .then(res => {
+                    console.log(res);
+                    this.props.toggleStepsCheckout(
+                      this.props.misc.stepsCheckout + 1
+                    );
                   });
-                } else {
-                  this.props.misc.stepsCheckout < 4
+              });
+            } else {
+              this.props.misc.stepsCheckout < 4
+                ? this.props.toggleStepsCheckout(
+                    this.props.misc.stepsCheckout + 1
+                  )
+                : null;
+            }
+          }}
+        >
+          <div className="w-container mx-auto pt-12 bg-white">
+            <Checkout {...this.props} />
+            {this.props.misc.stepsCheckout == 0 ? (
+              <div>
+                <ProductPreview {...this.props} />
+                <hr
+                  style={{ border: "1px solid rgb(228, 228, 228)" }}
+                  className="my-6"
+                />
+                <Coupon {...this.props} />
+              </div>
+            ) : null}
+
+            {this.props.misc.stepsCheckout == 1 ? (
+              <div>
+                <Shipping {...this.props} />
+                <hr
+                  style={{ border: "1px solid rgb(228, 228, 228)" }}
+                  className="my-6"
+                />
+                <ShippingMethod {...this.props} />
+              </div>
+            ) : null}
+
+            {this.props.misc.stepsCheckout == 2 ? (
+              <BillingAddress {...this.props} />
+            ) : null}
+
+            {this.props.misc.stepsCheckout == 3 ? (
+              <Payment {...this.props} />
+            ) : null}
+
+            {this.props.misc.stepsCheckout == 4 ? (
+              <Confirmation {...this.props} />
+            ) : null}
+          </div>
+
+          <div className="w-container mx-auto">
+            <hr
+              style={{ border: "1px solid rgba(228, 228, 228, 0.3)" }}
+              className=""
+            />
+
+            <div className="w-full inline-flex justify-between">
+              <div
+                onClick={() => {
+                  this.props.misc.stepsCheckout > 0
                     ? this.props.toggleStepsCheckout(
-                        this.props.misc.stepsCheckout + 1
+                        this.props.misc.stepsCheckout - 1
                       )
                     : null;
-                }
-              }}
-              className={`w-200 p-2 text-right justify-end cursor-pointer flex items-center hover:text-red ${
-                Object.keys(this.props.cart.items).length == 0 ||
-                (this.props.misc.stepsCheckout == 3 &&
-                  this.props.checkout.orderDetails.payment != null &&
-                  this.props.checkout.orderDetails.payment.method == null)
-                  ? "opacity-50 unselectable pointer-events-none"
-                  : ""
-              }`}>
-              {this.props.misc.stepsCheckout != 4 ? (
-                <span className="flex items-center font-extrabold text-grey-light hover:text-red-dark text-2xl uppercase">
-                  Next
-                  <FontAwesomeIcon icon={faAngleRight} className="fa-2x ml-4" />
-                </span>
-              ) : null}
+                }}
+                className="w-200 p-2 text-left cursor-pointer flex items-center hover:text-red"
+              >
+                {this.props.misc.stepsCheckout != 0 ? (
+                  <span className="flex items-center font-extrabold text-grey-light hover:text-red-dark text-2xl uppercase">
+                    <FontAwesomeIcon
+                      icon={faAngleLeft}
+                      className="fa-2x mr-4"
+                    />
+                    Back
+                  </span>
+                ) : null}
+              </div>
+
+              <span
+                style={{ height: "40px", borderLeft: "2px solid #ececec" }}
+              />
+
+              <div
+                className={`w-200 p-2 text-right justify-end cursor-pointer flex items-center hover:text-red ${
+                  Object.keys(this.props.cart.items).length == 0 ||
+                  (this.props.misc.stepsCheckout == 3 &&
+                    this.props.checkout.orderDetails.payment != null &&
+                    this.props.checkout.orderDetails.payment.method == null) ||
+                  (this.props.checkout.orderDetails.shipping != null &&
+                    this.props.misc.stepsCheckout == 1 &&
+                    this.props.checkout.orderDetails.shipping.shippingCost ==
+                      null)
+                    ? "opacity-50 unselectable pointer-events-none"
+                    : ""
+                }`}
+              >
+                {this.props.misc.stepsCheckout != 4 ? (
+                  <button
+                    className="flex items-center font-extrabold text-grey-light hover:text-red-dark text-2xl uppercase"
+                    type="submit"
+                  >
+                    Next
+                    <FontAwesomeIcon
+                      icon={faAngleRight}
+                      className="fa-2x ml-4"
+                    />
+                  </button>
+                ) : null}
+              </div>
             </div>
           </div>
-        </div>
+        </form>
       </Layout>
     );
   }

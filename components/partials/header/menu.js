@@ -18,24 +18,67 @@ const menu = props => {
     // backgroundImage: "url(../static/img/red.png)",
   };
 
-  let viewCurrency;
+  let availableCurrency = props.checkout.availableCurrency;
+  let currency = props.checkout.viewCurrency;
+
+  let viewCurrency, showMobileNav;
+  let availableCurrencyLength = Object.keys(availableCurrency).length;
+
+  let showCurrency = () => {
+    let arr = [];
+    for (let country of Object.keys(availableCurrency)) {
+      if (currency != null && country == currency.label) continue;
+      arr.push(
+        <div
+          className="bg-white inline-flex cursor-pointer hover:bg-grey-lightest"
+          style={{
+            marginTop: "5px",
+            height: "34px"
+          }}
+          onClick={() => {
+            props.setCurrency({
+              currency: {
+                label: country,
+                ...props.checkout.availableCurrency[country]
+              }
+            });
+            props.setVisibleScreen({
+              input: "viewCurrency"
+            });
+          }}>
+          <div className="w-12  p-2 items-center flex justify-center">
+            <p>
+              <img
+                src={`../../static/img/currency/currency_${country}.png`}
+                className="w-10"
+              />
+            </p>
+          </div>
+          <p className="px-6 pt-2 p-1 uppercase text-center font-extrabold text-lg ">
+            {country.toUpperCase()}
+          </p>
+        </div>
+      );
+    }
+    return arr;
+  };
+
   viewCurrency = props.misc.visibleScreen.includes("viewCurrency")
     ? {
         transform: "translateX(0px)",
         transition: "all 0.2s ease-in-out",
         WebkitTransition: "all 0.2s ease-in-out",
         width: "122px",
-        height: "122px"
+        height: `${8 + (availableCurrencyLength - 1) * 39}px`
       }
     : {
         transform: "translateX(122px)",
         transition: "all 0.2s ease-in-out",
         WebkitTransition: "all 0.2s ease-in-out",
         width: "122px",
-        height: "122px"
+        height: `${8 + (availableCurrencyLength - 1) * 39}px`
       };
 
-  let showMobileNav;
   showMobileNav = props.misc.visibleScreen.includes("showMobileNav")
     ? {
         transform: "translateX(0px)",
@@ -91,60 +134,18 @@ const menu = props => {
             }
             style={{ background: "#f9f9f9" }}
             className="absolute pin-r shadow-md my-auto rounded -mr-2 inline-flex cursor-pointer scale-item">
-            <div className="w-12 rounded bg-yellow-dark p-2 items-center flex justify-center">
-              <p>
-                <FontAwesomeIcon icon={faDollarSign} className="" />
-              </p>
+            <div className="w-12 rounded bg-yellow-dark p-2 items-center flex justify-center font-extrabold">
+              {currency != null ? currency.symbol : ""}
             </div>
             <p className="px-6 pt-2 p-1 uppercase text-center font-extrabold text-lg">
-              USD
+              {currency != null ? currency.label.toUpperCase() : ""}
             </p>
           </div>
           <div
             style={viewCurrency}
             className="fixed h-300 pin-r bg-white shadow-md rounded cursor-pointer mt-10 -mr-1">
             {" "}
-            <div className="w-full wrap flex-wrap">
-              <div className="mt-1 bg-white inline-flex cursor-pointer hover:bg-grey-lightest">
-                <div className="w-12  p-2 items-center flex justify-center">
-                  <p>
-                    <img
-                      src="../../static/img/currency_canada.png"
-                      className="w-10"
-                    />
-                  </p>
-                </div>
-                <p className="px-6 pt-2 p-1 uppercase text-center font-extrabold text-lg ">
-                  CAD
-                </p>
-              </div>
-              <div className="mt-1 bg-white -mr-2 inline-flex cursor-pointer hover:bg-grey-lightest">
-                <div className="w-12 p-2 items-center flex justify-center">
-                  <p>
-                    <img
-                      src="../../static/img/currency_aus.png"
-                      className="w-10"
-                    />
-                  </p>
-                </div>
-                <p className="px-6 pt-2 p-1 uppercase text-center font-extrabold text-lg">
-                  AUS
-                </p>
-              </div>
-              <div className="mt-1 bg-white -mr-2 inline-flex cursor-pointer hover:bg-grey-lightest">
-                <div className="w-12 p-2 items-center flex justify-center">
-                  <p>
-                    <img
-                      src="../../static/img/currency_euro.png"
-                      className="w-10"
-                    />
-                  </p>
-                </div>
-                <p className="px-6 pt-2 p-1 uppercase text-center font-extrabold text-lg">
-                  EUR
-                </p>
-              </div>
-            </div>
+            <div className="w-full wrap flex-wrap">{showCurrency()}</div>
           </div>
         </div>
       </div>
@@ -276,7 +277,6 @@ const menu = props => {
                   className="text-white p-2 h-12 ml-auto mr-4 w-12 flex justify-end bg-semi-transparent cursor-pointer">
                   <FontAwesomeIcon icon={faBars} className="fa-2x" />
                 </div>
-
                 <div
                   style={showMobileNav}
                   className="w-full fixed bg-red-dark z-50 pt-8">

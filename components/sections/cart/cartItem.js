@@ -7,6 +7,7 @@ library.add(faPlus, faMinus, faTimes);
 //returns a cart item with the strain thumbnail, name, and quantity (also has buttons to increase or reduce qty)
 
 const cartItem = props => {
+  let currency = props.checkout.viewCurrency;
   let showCartProducts = () => {
     let _arr = [];
 
@@ -21,7 +22,8 @@ const cartItem = props => {
             background:
               Object.keys(_items).indexOf(item) % 2 == 0 ? "#e6e6e6" : "#f6f6f6"
           }}
-          className={`flex justify-between px-4 py-2 border-b-2 border-grey-lightest`}>
+          className={`flex justify-between px-4 py-2 border-b-2 border-grey-lightest`}
+        >
           <img className="h-32 mx-6" src={_product.packageImg} />
           <div className="flex relative flex-wrap justify-between">
             <h3 className="text-black text-xl w-300 h-16 pr-3 mt-2">
@@ -55,7 +57,8 @@ const cartItem = props => {
                       quantity: -1
                     })
                   }
-                  className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white">
+                  className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white"
+                >
                   <FontAwesomeIcon
                     icon={faMinus}
                     className="fa-sm text-white cursor-pointer"
@@ -105,7 +108,8 @@ const cartItem = props => {
                       quantity: 1
                     })
                   }
-                  className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white">
+                  className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white"
+                >
                   <FontAwesomeIcon
                     icon={faPlus}
                     className="fa-sm text-white cursor-pointer"
@@ -115,7 +119,11 @@ const cartItem = props => {
             </div>
             <div className="flex items-center">
               <p className="text-xl text-grey-light font-bold">
-                ${(_item.price || 0).toFixed(2)}
+                {currency != null
+                  ? `${currency.symbol}${(
+                      currency.convert * props.cart.price
+                    ).toFixed(2)}`
+                  : ""}
               </p>
             </div>
           </div>
