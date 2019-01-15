@@ -9,17 +9,17 @@ import {
 
 const PopUpSection = props => {
   return (
-    <div className="w-container mx-auto">
-      <div className="w-full p-2">
+    <div className="w-full">
+      <div className="w-full p-2 px-4">
         <div
           onClick={() => {
             props.setVisibleScreen({ input: "showPayment", clearAll: true });
           }}
-          className="h-10 bg-grey-lightest w-full inline-flex items-center">
+          className="h-10 bg-grey-lightest w-full inline-flex items-center cursor-pointer hover:bg-grey-light hover:text-white ">
           <div className="w-full p-2">
-            <h3 className="font-extrabold pl-6 text-2xl">Payment / Delivery</h3>
+            <h3 className="font-bold pl-6 text-2xl">{props.title}</h3>
           </div>
-          <div className="w-12 h-10 text-center hover:bg-grey-light hover:text-white cursor-pointer">
+          <div className="w-12 h-10 text-center ">
             {props.misc.visibleScreen.includes("showPayment") ? (
               <FontAwesomeIcon icon={faMinus} className="fa-lg mt-2" />
             ) : (

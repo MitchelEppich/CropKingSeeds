@@ -61,7 +61,7 @@ const Footer = props => {
                   Privacy Policy
                 </li>
               </Link>
-              <Link href="/delivery">
+              <Link href="/faq">
                 <li className="text-xl p-1 pt-3 hover:text-grey-light cursor-pointer">
                   Delivery/Payment
                 </li>
@@ -96,7 +96,6 @@ const Footer = props => {
               placeholder="Email address"
             />
             <div className="absolute pin-r p-2 bg-yellow-dark text-grey cursor-pointer hover:bg-grey-dark hover:text-yellow-dark w-16">
-              {/* <p className="p-2 font-extrabold uppercase">Subscribe!</p> */}
               <FontAwesomeIcon icon={faAngleRight} className="fa-2x h-10 " />
             </div>
           </div>

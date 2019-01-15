@@ -3,7 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearch,
   faShoppingCart,
-  faDollarSign
+  faDollarSign,
+  faPhone,
+  faBars
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebookF,
@@ -37,23 +39,29 @@ const menu = props => {
     <div
       style={{
         background: "white",
-        background: "url(../static/img/redbg.png)",
+        background: "url(../static/img/bg-header.png)",
         backgroundSize: "cover",
         backgroundPosition: "left",
-        height: "120px",
+        // height: "120px",
         overflow: "hidden",
         zIndex: "-18",
-        position: "absolute"
+        position: "absolute",
+        boxShadow: "0 2px 6px rgba(64, 64, 64, 0.29)"
       }}
       className="w-full">
-      <div className="w-full h-12 inline-flex mt-6">
-        <div className="w-1/2 relative">
+      <div className="w-full h-12 inline-flex mt-6 sm:mt-0 sm:mb-6">
+        <div className="w-1/2 relative ">
           <div
             style={{ background: "#f9f9f9" }}
-            className="absolute pin-l shadow-md my-auto rounded -ml-2">
+            className="absolute inline-flex pin-l shadow-md my-auto rounded -ml-4">
             <p className="pl-8 pr-6 p-2 uppercase font-extrabold text-lg">
-              Call: +1 (604) 563-0291
+              +1 (604) 563-0291
             </p>
+            <div className="w-12 rounded bg-yellow-dark p-2 items-center flex justify-center">
+              <p>
+                <FontAwesomeIcon icon={faPhone} className="" />
+              </p>
+            </div>
           </div>
         </div>
 
@@ -76,8 +84,9 @@ const menu = props => {
             </p>
           </div>
           <div
-            style={viewCurrency} // style={{ width: "122px", height: "122px" }}
+            style={viewCurrency}
             className="fixed h-300 pin-r bg-white shadow-md rounded cursor-pointer mt-10 -mr-1">
+            {" "}
             <div className="w-full wrap flex-wrap">
               <div className="mt-1 bg-white inline-flex cursor-pointer hover:bg-grey-lightest">
                 <div className="w-12  p-2 items-center flex justify-center">
@@ -127,7 +136,7 @@ const menu = props => {
         className="w-full h-12">
         <div
           style={{ marginTop: "3px" }}
-          className="w-container mx-auto text-center relative">
+          className="w-container sm:w-full md:w-full mx-auto text-center relative">
           <div className="ray_box">
             {(() => {
               let arr = [];
@@ -154,75 +163,72 @@ const menu = props => {
               return arr;
             })()}
           </div>
-          <div className="inline-flex w-full">
-            <div className="w-1/4 flex justify-center pl-2">
+          <div className="inline-flex w-full sm:block md:block">
+            <div className="w-1/4 sm:w-full md:w-full flex justify-center pl-2">
               <div
                 className="absolute"
-                style={
-                  {
-                    width: "128px",
-                    height: "128px",
-                    borderRadius: "50%",
-                    background: "#600706",
-                    padding: "6px",
-                    marginTop: "-54px",
-                    position: "fixed",
-                    boxShadow: "rgba(0, 0, 0, 0.2) 0px 4px 10px"
-                  } // boxShadow: "rgb(255, 106, 0) 0px -9px 69px",
-                }
+                style={{
+                  width: "128px",
+                  height: "128px",
+                  borderRadius: "50%",
+                  background: "#600706",
+                  padding: "6px",
+                  marginTop: "-54px",
+                  position: "fixed",
+                  zIndex: "55",
+                  boxShadow: "rgba(0, 0, 0, 0.2) 0px 4px 10px"
+                }}
               />
               <img
                 style={{
                   width: "125px",
                   padding: "0px",
                   marginTop: "-69px",
-                  position: "fixed"
+                  position: "fixed",
+                  zIndex: "55"
                 }}
                 src="../static/img/cks-logo-header.png"
                 className="scale-item absolute cursor-pointer"
               />
             </div>
-            <div className="w-3/4 flex justify-start">
-              <ul className="inline-flex text-white mt-1 uppercase">
-                <Link href="/">
-                  <li className="font-extrabold text-xl pt-3 p-2 mx-8 cursor-pointer scale-item">
-                    Home
-                  </li>
-                </Link>
-                <Link href="/shop">
-                  <li className="font-extrabold text-xl pt-3 p-2 mx-8 cursor-pointer scale-item">
-                    Shop
-                  </li>
-                </Link>
-                <Link href="/germination">
-                  <li className="font-extrabold text-xl pt-3 p-2 mx-8 cursor-pointer scale-item">
-                    Germination
-                  </li>
-                </Link>
-                <Link href="/contact">
-                  <li className="font-extrabold text-xl pt-3 p-2 mx-8 cursor-pointer scale-item">
-                    Contact
-                  </li>
-                </Link>
-                <li className="font-extrabold text-2xl px-2 mx-8 cursor-pointer scale-item">
-                  <div
-                    onClick={() => {
-                      props.setVisibleScreen({ input: "viewCart" });
-                    }}
-                    className="text-center cursor-pointer mt-1 text-white">
-                    <div className="">
-                      <FontAwesomeIcon
-                        icon={faShoppingCart}
-                        className="fa-lg"
-                      />
-                      {/* <img
-                        src="../static/img/shopping-cart-xxl.png"
-                        width="40px"
-                      /> */}
+            <div className="w-3/4 sm:w-full md:w-full flex justify-start">
+              {/* MAIN MENU */}
+              <div className="sm:hidden md:hidden">
+                <ul className="inline-flex text-white mt-1 uppercase">
+                  <Link href="/">
+                    <li className="font-extrabold text-xl pt-3 p-2 mx-8 cursor-pointer slowish hover:text-yellow-dark">
+                      Home
+                    </li>
+                  </Link>
+                  <Link href="/shop">
+                    <li className="font-extrabold text-xl pt-3 p-2 mx-8 cursor-pointer slowish hover:text-yellow-dark">
+                      Shop
+                    </li>
+                  </Link>
+                  <Link href="/germination">
+                    <li className="font-extrabold text-xl pt-3 p-2 mx-8 cursor-pointer slowish hover:text-yellow-dark">
+                      Germination
+                    </li>
+                  </Link>
+                  <Link href="/contact">
+                    <li className="font-extrabold text-xl pt-3 p-2 mx-8 cursor-pointer slowish hover:text-yellow-dark">
+                      Contact
+                    </li>
+                  </Link>
+                  <li className="font-extrabold text-2xl px-2 mx-8 cursor-pointer scale-item">
+                    <div
+                      onClick={() => {
+                        props.setVisibleScreen({ input: "viewCart" });
+                      }}
+                      className="text-center cursor-pointer mt-1 text-white">
+                      <div className="">
+                        <FontAwesomeIcon
+                          icon={faShoppingCart}
+                          className="fa-lg"
+                        />
 
-                      <span
-                        style={
-                          {
+                        <span
+                          style={{
                             height: "28px",
                             width: "28px",
                             borderRadius: "50%",
@@ -235,14 +241,51 @@ const menu = props => {
                             paddingTop: "6px",
                             marginTop: "-14px",
                             marginLeft: "-5px"
-                          } // border: "0.3px solid #a31621",
-                        }>
-                        {Object.keys(props.cart.items).length}
-                      </span>
+                          }}>
+                          {Object.keys(props.cart.items).length}
+                        </span>
+                      </div>
                     </div>
+                  </li>
+                </ul>
+              </div>
+
+              {/* MOBILE MENU */}
+              <div className="justify-end w-full h-300 lg:hidden xl:hidden xxl:hidden">
+                <div
+                  onClick={() => {
+                    props.setVisibleScreen({ input: "navMobile" });
+                  }}
+                  className="text-white p-2 h-12 ml-auto w-12 flex justify-end bg-semi-transparent cursor-pointer">
+                  <FontAwesomeIcon icon={faBars} className="fa-2x" />
+                </div>
+                {props.misc.visibleScreen.includes("navMobile") ? (
+                  <div className="w-full fixed bg-red-dark z-50 pt-12">
+                    <ul className="text-white w-full mt-1 ml-0 pl-0 uppercase">
+                      <Link href="/">
+                        <li className="font-extrabold text-xl pt-3 p-2 my-1 hover:bg-grey cursor-pointer slow">
+                          Home
+                        </li>
+                      </Link>
+                      <Link href="/shop">
+                        <li className="font-extrabold text-xl pt-3 p-2 my-1 hover:bg-grey cursor-pointer slow">
+                          Shop
+                        </li>
+                      </Link>
+                      <Link href="/germination">
+                        <li className="font-extrabold text-xl pt-3 p-2 my-1 hover:bg-grey cursor-pointer slow">
+                          Germination
+                        </li>
+                      </Link>
+                      <Link href="/contact">
+                        <li className="font-extrabold text-xl pt-3 p-2 my-1 hover:bg-grey cursor-pointer slow">
+                          Contact
+                        </li>
+                      </Link>
+                    </ul>
                   </div>
-                </li>
-              </ul>
+                ) : null}
+              </div>
             </div>
           </div>
         </div>

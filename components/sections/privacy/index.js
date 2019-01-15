@@ -2,13 +2,13 @@ import React from "react";
 
 const Privacy = props => {
   return (
-    <div className="w-full pt-4">
+    <div className="w-full">
       <div className="w-full relative inline-flex">
         <div className="w-full">
           <img
             src="../static/img/privacy.jpg"
             className=""
-            style={{ filter: "opacity(0.6)" }}
+            // style={{ filter: "opacity(0.6)" }}
           />
         </div>
         <div

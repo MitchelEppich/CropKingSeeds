@@ -90,11 +90,11 @@ const filters = props => {
   };
 
   return (
-    <div className="w-full pt-12 text-red-dark">
+    <div className="w-full pt-2 text-red-dark">
       <div className="pt-2">
         <p className="pl-4 text-lg font-medium text-grey-light">Filter:</p>
       </div>
-      <ul className="leading-loose flex flex-wrap pl-4">
+      <ul className="leading-loose flex flex-wrap pl-4 pt-6">
         <li className="text-red-dark font-bold w-full text-xl">Type</li>
         {showFilter(["sativa", "indica", "hybrid"], "type")}
       </ul>
@@ -124,7 +124,9 @@ const filters = props => {
 
       <hr className="hr__filters" />
 
-      <div className="text-grey p-2 mt-4">
+      {/* ACTIVE FILTERS */}
+
+      {/* <div className="text-grey p-2 mt-4">
         <p className="p-2 text-red-dark font-bold text-xl">Active Filters:</p>
         {filtersActive.genetic != null || filtersActive != null ? (
           <div>
@@ -167,12 +169,12 @@ const filters = props => {
             <p className="font-bold">None</p>
           </div>
         )}
-      </div>
+      </div> */}
 
       <button
         style={{ width: "95%" }}
         onClick={() => props.clearFilters()}
-        className="text-white bg-red-dark p-2 m-2 mt-4 mx-auto block font-bold slowish hover:bg-grey hover:text-white">
+        className="text-white bg-red-dark p-2 m-2 mt-6 mx-auto block font-bold slowish hover:bg-grey hover:text-white text-lg">
         Clear Filters
       </button>
     </div>

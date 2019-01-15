@@ -38,7 +38,8 @@ const actionTypes = {
   SET_STRAINS: "SET_STRAINS",
   SET_CONTEXT: "SET_CONTEXT",
   TOGGLE_STEPS_CHECKOUT: "TOGGLE_STEPS_CHECKOUT",
-  SHOW_DIFFERENT_ADDRESS: "SHOW_DIFFERENT_ADDRESS"
+  SHOW_DIFFERENT_ADDRESS: "SHOW_DIFFERENT_ADDRESS",
+  SET_AGE_VERIFICATION: "SET_AGE_VERIFICATION"
 };
 
 const actions = {
@@ -54,6 +55,17 @@ const actions = {
       type: actionTypes.TOGGLE_STEPS_CHECKOUT,
       input: input
     };
+  },
+  setAgeVerification: input => {
+    let _ageVerification = input.ageVerification;
+    let _group = input.group;
+    let _value = input.value;
+
+    if (_ageVerification == null) _ageVerification = {};
+
+    _ageVerification[_group] = _value;
+
+    return { type: actionTypes.SET_AGE_VERIFICATION, input: _ageVerification };
   },
   toggleShowDifferentAddress: input => {
     return {
