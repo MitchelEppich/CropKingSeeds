@@ -26,11 +26,9 @@ class Index extends Component {
                             <div className="flex flex-wrap relative">
                                 <div
                                     className={
-                                        this.props.shop.viewProductExpanded != null ? "hidden" : "w-1/4 slow relative"
+                                        "sm:w-full md:w-full lg:w-1/4 xl:w-1/4 xxl:w-1/4 slow relative mt-8 mb-12"
                                     }>
-                                    <div style={{ top: "140px" }} className="sticky">
-                                        <Filters {...this.props} />
-                                    </div>
+                                    <Filters {...this.props} />
                                     {/*<FeaturedStrainThumbnails {...this.props} />*/}
                                 </div>
                                 <ProductGrid {...this.props} />

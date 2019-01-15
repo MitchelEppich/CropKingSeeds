@@ -64,8 +64,8 @@ class Index extends Component {
                         }}
                         className={
                             hoverId == product._id
-                                ? "w-64 h-64 sm:w-48 sm:h-48 text-white relative z-50 slowish lg:my-4 lg:mx-8"
-                                : "w-64 h-64 sm:w-48 sm:h-48 text-white relative z-0 slowish lg:my-4 lg:mx-8"
+                                ? "w-64 h-64 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:h-48 lg:w-48 text-white relative sm:absolute md:absolute z-50 slowish lg:my-4 sm:my-2 md:my-2 lg:mx-8 xl:mx-8 xxl:mx-8"
+                                : "w-64 h-64 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:h-48 lg:w-48 text-white relative z-0 slowish lg:my-4 sm:my-2 md:my-2 lg:mx-8 xl:mx-8 xxl:mx-8"
                         }>
                         <ProductThumbnail hoverId={hoverId} product={product} {...this.props} />
                     </div>
@@ -73,7 +73,7 @@ class Index extends Component {
             });
 
         return (
-            <div className="lg:w-3/4 xl:w-3/4 xxl:w-3/4 min-h-700 text-white">
+            <div className="sm:w-full md:w-full lg:w-3/4 xl:w-3/4 xxl:w-3/4 min-h-700 text-white">
                 <div className="w-full justify-end flex pt-3 p-2  mb-2 text-grey-light items-center flex">
                     Sort by:
                     <select className="ml-3">
@@ -82,9 +82,7 @@ class Index extends Component {
                         <option value="Most Reviewed">Most Reviewed</option>
                     </select>
                 </div>
-                <div className={this.props.shop.viewProductExpanded != null ? "flex flex-wrap" : "flex flex-wrap pt-6"}>
-                    {products}
-                </div>
+                <div className="flex flex-wrap pt-6 sm:justify-center md:justify-center">{products}</div>
             </div>
         );
     }

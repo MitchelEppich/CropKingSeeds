@@ -81,8 +81,9 @@ const filters = props => {
     return (
         <div
             className={
-                "w-full overflow-hidden text-red-dark border border-grey-lighter cursor-pointer" +
-                (props.shop.showFilters ? "" : " h-10")
+                props.shop.showFilters
+                    ? "h-700 w-full absolute bg-white z-999 lg:sticky xl:sticky xxl:sticky text-red-dark border border-grey-lighter cursor-pointer"
+                    : " h-10 w-full absolute bg-white z-999 overflow-hidden lg:sticky xl:sticky xxl:sticky text-red-dark border border-grey-lighter cursor-pointer" // style={{ top: "140px" }}
             }>
             <p
                 onClick={() => props.toggleShowFilters()}

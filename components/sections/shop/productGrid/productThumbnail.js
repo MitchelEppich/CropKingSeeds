@@ -11,10 +11,10 @@ const productThumbnail = props => {
     let productIdentifier = props.product.sotiId + [5, 10, 25][props.shop.quickAddToCartQty];
 
     return (
-        <div className={`${overlayClass} overflow-x-hidden overflow-y-hidden`}>
+        <div className={overlayClass}>
             <FontAwesomeIcon
                 onClick={() => {
-                    props.setHoverId(product._id);
+                    props.setHoverId(props.product._id);
                 }}
                 icon={faTimes}
                 className={
