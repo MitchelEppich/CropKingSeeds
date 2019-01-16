@@ -1,70 +1,71 @@
 const details = props => {
-    let _product = props.viewProduct.currentProduct;
-    let _genes = _product.og.map((val, index) => {
-        return (
-            <span key={index} className="font-bold">
-                {val}
-            </span>
-        );
-    });
-
+  let _product = props.viewProduct.currentProduct;
+  let _genes = _product.og.map((val, index) => {
     return (
-        <div className=" mt-8">
-            {props.viewProduct.showFullDescription ? (
-                <p>
-                    {_product.description}
-                    <span onClick={() => props.toggleFullDescription()} className="text-red-dark cursor-pointer ml-1">
-                        show less
-                    </span>
-                </p>
-            ) : (
-                <p>
-                    {_product.description.substring(0, 250) + "..."}
-                    <span onClick={() => props.toggleFullDescription()} className="text-red-dark cursor-pointer">
-                        show more
-                    </span>
-                </p>
-            )}
-            <div className="flex mt-8">
-                <div className="flex flex-wrap w-2/3 justify-start">
-                    <div className="w-1/3 p-2 text-center leading-tight shadow">
-                        <p className="mb-1">Grow Time:</p>
-                        <span className="font-bold text-lg">{_product.flowerTime}</span>
-                    </div>
-                    <div className="w-1/3 p-2 text-center leading-tight shadow">
-                        {" "}
-                        <p className="mb-1">Yield:</p>
-                        <span className="font-bold text-lg">{_product.yield[0] + " /"}</span>
-                        <br />
-                        <span className="font-bold text-lg">{_product.yield[1]}</span>
-                    </div>
-                    <div className="w-1/3 p-2 text-center leading-tight shadow">
-                        <p className="mb-1">Difficulty:</p>
-                        <span className="font-bold text-lg">{_product.difficulty}</span>
-                    </div>
-                    <div className="w-1/3 p-2 text-center leading-tight shadow">
-                        <p>Genes:</p>
-                        {_genes}
-                    </div>
-                    <div className="w-1/3 p-2 text-center leading-tight shadow">
-                        <p className="mb-1">Country:</p>
-                        <span className="font-bold text-lg">{_product.country}</span>
-                    </div>
-                    <div className="w-1/3 p-2 text-center leading-tight shadow">
-                        <p className="mb-1">Environment:</p>
-                        <span className="font-bold text-lg">{_product.env}</span>
-                    </div>
-                </div>
-                <ul className="list-reset leading-normal p-4 shadow w-1/3">
-                    <li>Effects</li>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                </ul>
-            </div>
-        </div>
+      <span key={index} className="font-bold">
+        {val}
+      </span>
     );
+  });
+
+  return (
+    <div className="mt-1 p-2">
+      <div className="flex mt-6 border-2 border-grey-lightest">
+        <div className="flex flex-wrap w-2/3 justify-start">
+          <div className="w-1/3  text-center leading-tight border-grey-lightest border">
+            <p className="mb-1 p-1 font-bold bg-grey-lightest text-grey uppercase">
+              Grow Time:
+            </p>
+            <div className="p-2">{_product.flowerTime}</div>
+          </div>
+          <div className="w-1/3  text-center leading-tight border-grey-lightest border">
+            {" "}
+            <p className="mb-1 p-1 font-bold bg-grey-lightest text-grey uppercase">
+              Yield:
+            </p>
+            <div className="p-2">
+              {_product.yield[0] + " "} / {_product.yield[1]}
+            </div>
+          </div>
+          <div className="w-1/3 text-center leading-tight border-grey-lightest border">
+            <p className="mb-1 p-1 font-bold bg-grey-lightest text-grey uppercase">
+              Difficulty:
+            </p>
+            <div className="p-2">{_product.difficulty}</div>
+          </div>
+          <div className="w-1/3 text-center leading-tight border-grey-lightest border">
+            <p className="mb-1 p-1 font-bold bg-grey-lightest text-grey uppercase">
+              Genes:
+            </p>
+            {_genes}
+          </div>
+          <div className="w-1/3 text-center leading-tight border-grey-lightest border">
+            <p className="mb-1 p-1 font-bold bg-grey-lightest text-grey uppercase">
+              Country:
+            </p>
+            <div className="p-2">{_product.country}</div>
+          </div>
+          <div className="w-1/3 text-center leading-tight border-grey-lightest border">
+            <p className="mb-1 p-1 font-bold bg-grey-lightest text-grey uppercase">
+              Environment:
+            </p>
+            <div className="p-2">{_product.env}</div>
+          </div>
+        </div>
+        <div className="w-1/3 text-center leading-tight border-grey-lightest border">
+          <p className="mb-1 p-1 font-bold bg-grey-lightest text-grey uppercase">
+            Effects:
+          </p>
+          <ul className="list-reset leading-normal text-left pl-2">
+            <li>1- Relax</li>
+            <li>2- Relax</li>
+            <li>3- Relax</li>
+            <li>4- Relax</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default details;
