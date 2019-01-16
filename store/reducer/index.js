@@ -62,7 +62,8 @@ const initialState = {
         { transform: " translateX(-100%)" },
         { transform: " translateX(0)", transition: "1s all ease-in-out" },
         { transform: " translateX(100%)", transition: "1s all ease-in-out" }
-    ]
+    ],
+    mediaSize: "xl"
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -86,6 +87,10 @@ const indexReducer = (state = initialState, action) => {
         case actionTypes.SET_HOVER_ID:
             return updateObject(state, {
                 hoverId: state.hoverId == action.id ? null : action.id
+            });
+        case actionTypes.SET_MEDIA_SIZE:
+            return updateObject(state, {
+                mediaSize: action.input
             });
         case actionTypes.TOGGLE_STEPS_CHECKOUT:
             return updateObject(state, {

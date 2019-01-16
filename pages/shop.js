@@ -12,17 +12,15 @@ import ProductGrid from "../components/sections/shop/productGrid";
 import FeaturedStrainThumbnails from "../components/sections/shop/featuredStrainThumbnails";
 
 class Index extends Component {
-    componentWillMount() {}
-
     render() {
         return (
             <Layout>
                 {this.props.misc.strains != null && this.props.misc.strains.length > 0 ? (
                     <React.Fragment>
-                        <div className="">
-                            <div className="pl-12 pt-10 text-grey font-extrabold text-center text-3/5xl">
-                                <h3>Shop Cannabis Seeds</h3>
-                            </div>
+                        <div>
+                            <h3 className="pt-10 text-grey font-extrabold text-center text-3/5xl mx-auto w-full text-center">
+                                Shop Cannabis Seeds
+                            </h3>
                             <div className="flex flex-wrap relative">
                                 <div
                                     className={
