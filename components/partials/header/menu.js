@@ -84,18 +84,16 @@ const menu = props => {
 
     return (
         <div
-            style={
-                {
-                    background: "white",
-                    background: "url(../static/img/bg-header.png)",
-                    backgroundSize: "cover",
-                    backgroundPosition: "left",
-                    overflow: "hidden",
-                    zIndex: "-18",
-                    position: "absolute",
-                    boxShadow: "0 2px 6px rgba(64, 64, 64, 0.29)"
-                } // height: "120px",
-            }
+            style={{
+                background: "white",
+                background: "url(../static/img/bg-header.png)",
+                backgroundSize: "cover",
+                backgroundPosition: "left",
+                overflow: "hidden",
+                zIndex: "-18",
+                position: "absolute",
+                boxShadow: "0 2px 6px rgba(64, 64, 64, 0.29)"
+            }}
             className="w-full">
             <div className="w-full h-12 inline-flex mt-6 sm:mt-0 sm:mb-6">
                 <div className="w-1/2 relative ">

@@ -588,6 +588,7 @@ module.exports = {
     "700": "700px",
     "800": "800px",
     "900": "900px",
+    productImg: "370px",
     full: "100%",
     screen: "100vh"
   },
