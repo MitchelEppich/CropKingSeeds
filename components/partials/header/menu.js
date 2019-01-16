@@ -204,6 +204,7 @@ const menu = props => {
                   zIndex: "55"
                 }}
                 src="../static/img/cks-logo-header.png"
+                onClick={() => console.log(props)}
                 className="scale-item absolute cursor-pointer"
               />
             </div>

@@ -4,7 +4,7 @@ import Link from "next/link";
 const Breadcrumb = props => {
   return (
     <div className="mt-2 mb-6">
-      <div className="cursor-pointer text-sm font-medium inline-flex">
+      <div className="text-sm font-medium inline-flex">
         <Link href="/">
           <div className="mx-1 cursor-pointer hover:text-red-dark">Home /</div>
         </Link>
@@ -16,8 +16,7 @@ const Breadcrumb = props => {
             onClick={() => {
               props.toggleFilter({
                 filter: props.shop.activeFilters,
-                genetic: props.viewProduct.currentProduct.type,
-                multiple: true
+                type: props.viewProduct.currentProduct.type.toLowerCase()
               });
               window.scroll(0, 0);
             }}
@@ -26,9 +25,7 @@ const Breadcrumb = props => {
           </div>
         </Link>
 
-        <div className="mx-1 cursor-pointer hover:text-red-dark">
-          {props.viewProduct.currentProduct.name}
-        </div>
+        <div className="mx-1">{props.viewProduct.currentProduct.name}</div>
       </div>
     </div>
   );
