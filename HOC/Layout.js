@@ -58,7 +58,7 @@ class Layout extends Component {
       md: { min: 480, max: 767 },
       lg: { min: 768, max: 991 },
       xl: { min: 992, max: 1367 },
-      xxl: { min: 1368 }
+      xxl: { min: 1368, max: 999999999 }
     };
 
     for (let mediaSize of Object.keys(mediaSizes)) {
