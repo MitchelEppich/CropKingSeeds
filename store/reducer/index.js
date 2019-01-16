@@ -63,7 +63,7 @@ const initialState = {
         { transform: " translateX(0)", transition: "1s all ease-in-out" },
         { transform: " translateX(100%)", transition: "1s all ease-in-out" }
     ],
-    mediaSize: null
+    mediaSize: "xl"
 };
 
 const indexReducer = (state = initialState, action) => {

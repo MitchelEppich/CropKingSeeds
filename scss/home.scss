@@ -1,19 +1,12 @@
-/*******************************************/
-/*This is the main stylesheet***/
-/******************************************/
+/*******************/
+/*MAIN STYLESHEET***/
+/*******************/
 
 @tailwind preflight;
 @tailwind utilities;
 
-/****SCROLLBAR*****/
-
-/******MIXINS*******/
-@mixin element($element) {
-    &__#{$element} {
-        @content;
-    }
-}
-
+//////////////
+//MIXINS
 // Block Element
 // @access public
 // @param {String} $element - Element's name
@@ -30,56 +23,26 @@
         @content;
     }
 }
-
-/* CUSTOM FONTS */
-/*********************/
-
+//EXAMPLE FONT FACE IMPORT WITH TWO WEIGHTS
 // @font-face {
-//   font-family: "Wowi-TypefaceRegular";
-//   src: url("../static/fonts/Wowi-Typeface/Wowi-TypefaceRegular.ttf")
-//       format("truetype");
-//   font-weight: normal;
-//   font-style: normal;
-//   font-display: swap;
+//     font-family: "proxima nova";
+//     src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff") format("truetype");
+//     font-weight: thin;
+//     font-style: normal;
+//     font-display: swap;
+// }
+// @font-face {
+//     font-family: "proxima nova";
+//     src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff") format("truetype");
+//     font-weight: normal;
+//     font-style: normal;
+//     font-display: swap;
 // }
 
-// @font-face {
-//   font-family: "Big John Regular";
-//   src: url("../static/fonts/Big-John/big-john-webfont.woff") format("truetype");
-//   font-weight: lighter;
-//   font-style: normal;
-//   font-display: swap;
-// }
-@font-face {
-    font-family: "proxima nova";
-    src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff") format("truetype");
-    font-weight: thin;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: "proxima nova";
-    src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: "proxima nova";
-    src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-xbold-webfont.woff") format("truetype");
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: "proxima nova";
-    src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-black-webfont.woff") format("truetype");
-    font-weight: bolder;
-    font-style: normal;
-    font-display: swap;
-}
-
-.body,
+////////////////////////
+// UNIVERSAL
+//ELEMENTS
+body,
 html {
     font-family: "Nunito Sans", sans-serif;
     color: #252525;
@@ -89,58 +52,11 @@ html {
     background: white;
     font-weight: 500;
 }
-svg {
-    height: 100%;
-}
-svg:not(:root) {
-    display: inline-block;
-}
-
-input,
-textarea,
-select {
-    border: 2px solid #ececec;
-    border-radius: 3px;
-    font-weight: 600;
-}
-option {
-    font-weight: 600;
-}
-
-.checkbox {
-    height: 24px;
-    width: 24px;
-    margin-right: 5px;
-    background-color: #eee;
-    border-radius: 50%;
-    vertical-align: text-top;
-}
-
-.checkbox:checked {
-    background-color: #b8b8b8;
-}
-
-select.sizeable-opt {
-    font-size: 95%;
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-textarea:focus,
+button:focus,
 input:focus,
-button:focus {
+textarea:focus {
     outline: none;
 }
-li {
-    list-style: none;
-}
-.li--viewProduct {
-    list-style: inside;
-}
-
 h1,
 h2,
 h3,
@@ -148,46 +64,36 @@ h4,
 h5 {
     font-family: "Nunito Sans", sans-serif;
 }
-
-h4 {
-    font-weight: bolder;
+input,
+select,
+svg,
+textarea {
+    border: 2px solid #ececec;
+    border-radius: 3px;
+    font-weight: 600;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+li {
+    list-style: none;
+}
+option {
+    font-weight: 600;
+}
+select.sizeable-opt {
+    font-size: 95%;
+}
+svg {
+    height: 100%;
+    &:not(:root) {
+        display: inline-block;
+    }
 }
 
-.text-content::first-letter {
-    font-weight: bold;
-    color: black;
-    font-size: 36px;
-    float: left;
-    margin: 4px 4px 0px 0px;
-    line-height: 0.8;
-}
-
-.unselectable {
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.preserv-3d {
-    transform-style: preserve-3d;
-}
-
-.test2 {
-    background: #ff0707;
-    height: 90px;
-    width: 100%;
-    overflow-x: hidden;
-    margin-left: -8px;
-    margin-top: -53px;
-    transform: translateZ(-1em) rotate(-3deg);
-}
-
-.example {
-    background-color: red;
-}
-
+//CLASSES
 .absolute-center {
     position: absolute;
     margin-left: auto;
@@ -199,164 +105,26 @@ h4 {
     margin-top: auto;
     margin-bottom: auto;
 }
-
-// .absolute-center {
-//   position: absolute;
-//   margin-left: auto;
-//   margin-right: auto;
-//   left: 0;
-//   right: 0;
-// }
-
-.slow {
-    transition: all 0.5s ease-in-out;
+.checkbox {
+    height: 24px;
+    width: 24px;
+    margin-right: 5px;
+    background-color: #eee;
+    border-radius: 50%;
+    vertical-align: text-top;
+}
+.checkbox:checked {
+    background-color: #b8b8b8;
 }
 
-.slowish {
-    transition: all 0.3s ease-in-out;
+.example {
+    background-color: red;
 }
-// menu
-.menu {
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.58);
-    background-position: 0% 10%;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-// ANIMATION HEADER
-
-.ray_box {
-    left: 170px;
-    top: 5px;
-    right: 0;
-    position: absolute;
-    bottom: 0;
-    width: 30px;
-    height: 30px;
-    -webkit-animation: ray_anim 300s linear infinite;
-    animation: ray_anim 300s linear infinite;
-    z-index: -5;
-}
-
-.ray {
-    background: linear-gradient(to top, rgba(255, 0, 0, 0), rgb(255, 72, 0));
-    // background: red;
-    transform-origin: center top;
-    border-radius: 200% 200% 0 0;
-    position: absolute;
-    z-index: 10;
-    opacity: 0.6;
-    left: 50%;
-}
-
-@keyframes ray_anim {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
-}
-
-// CHECKOUT PREVIEW
-
-.item-preview {
-    border: 1px solid rgba(206, 206, 206, 0.3);
-    box-shadow: 0px 1px 2px rgba(206, 206, 206, 0.3);
-    transform: scale(1);
-    transition: transform 0.6s ease;
-}
-
-.item-preview:hover {
-    transform: scale(1.04);
-    transition: transform 0.6s ease;
-}
-
-.steps-active:before {
-    content: "";
-    border: solid 0.4em transparent;
-    border-top-color: #0a0a0a;
-    position: absolute;
-    top: -0.5em;
-    left: 50%;
-    margin-left: -0.25em;
-}
-
-.step-text {
-    color: black;
-    font-family: "Nunito Sans", sans-serif;
-    transform: scale(1);
-    transition: transform 0.2s ease;
-}
-
-.step-text:hover {
-    color: #b60903;
-    transform: scale(1.04);
-    transition: transform 0.2s ease;
-}
-
-// ARTICLES SECTION
-
-.scale-item {
-    transform: scale(1);
-    transition: transform 0.3s ease;
-}
-
-.scale-item:hover {
-    transform: scale(1.04);
-    transition: transform 0.3s ease;
-}
-
-// HOME GENE PREVIEW
-.genePreview {
-    width: 25%;
-    transition: all 0.5s ease-in-out;
-    background-position: center;
-    background-size: 500px 500px;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    border: 5px solid #fff;
-    cursor: pointer;
-}
-.screenClass {
-    transform: translateX(-445px) rotate(-90deg);
-    transition: all 0.5s ease-in-out;
-    width: 160%;
-    height: 100%;
-}
-.packClass {
-    transform: rotate(90deg);
-    margin: 80px 165px;
-    width: 240px;
-}
-.headingClass {
-    transform: translateX(90px);
-    position: absolute;
-    bottom: 0;
-    transition: all 0.5s ease-in-out;
-}
-.bannerBuyNow {
-    position: absolute;
-    width: 14rem;
-    left: calc(50% - 7rem);
-    bottom: 1.5rem;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease-in-out;
-    &:hover {
-        background-color: rgba(0, 0, 0, 0.8);
-    }
-}
-
 .hr {
     @include element("filters") {
         width: 95%;
         height: 2px;
         box-shadow: 0 2px 0 0 rgba(189, 188, 188, 0.3);
-        // width: 90%;
-        // height: 1px;
-        // box-shadow: 0 2px 0 0 rgba(204, 31, 26, 0.3);
     }
     @include element("cart") {
         width: 90%;
@@ -372,27 +140,189 @@ h4 {
         box-shadow: 0 10px 0 0 #d4d4d4;
     }
 }
+.menu {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.58);
+    background-position: 0% 10%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.li--viewProduct {
+    list-style: inside;
+}
+.preserv-3d {
+    transform-style: preserve-3d;
+}
 
-//////////////////////
-//SHOP PAGE THUMBAILS
-//////////////////////
-.plantClass {
-    height: 82%;
+.ray_box {
+    /*HEADER ANIMATION */
+    left: 170px;
+    top: 5px;
+    right: 0;
     position: absolute;
-    top: 15px;
-    z-index: 0;
-    transform: translateX(-250px);
-    transition: 0.5s all ease-in-out;
-    @include modifier("hover") {
-        height: 36%;
-        position: absolute;
-        top: 8px;
-        z-index: 0;
-        margin-top: 10px;
-        transition: 0.5s all ease-in-out;
-        transform: translateX(-180px);
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    -webkit-animation: ray_anim 300s linear infinite;
+    animation: ray_anim 300s linear infinite;
+    z-index: -5;
+}
+.ray {
+    /*HEADER ANIMATION */
+    background: linear-gradient(to top, rgba(255, 0, 0, 0), rgb(255, 72, 0));
+    transform-origin: center top;
+    border-radius: 200% 200% 0 0;
+    position: absolute;
+    z-index: 10;
+    opacity: 0.6;
+    left: 50%;
+}
+.slow {
+    transition: all 0.5s ease-in-out;
+}
+.slowish {
+    transition: all 0.3s ease-in-out;
+}
+.test2 {
+    background: #ff0707;
+    height: 90px;
+    width: 100%;
+    overflow-x: hidden;
+    margin-left: -8px;
+    margin-top: -53px;
+    transform: translateZ(-1em) rotate(-3deg);
+}
+.text-content::first-letter {
+    font-weight: bold;
+    color: black;
+    font-size: 36px;
+    float: left;
+    margin: 4px 4px 0px 0px;
+    line-height: 0.8;
+}
+.unselectable {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+//ANIMATIONS
+@keyframes ray_anim {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
+// END UNIVERSAL
+///////////////////////////////
+
+////////////////
+// ARTICLES PAGE
+.scale-item {
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+.scale-item:hover {
+    transform: scale(1.04);
+    transition: transform 0.3s ease;
+}
+// END ARTICLES PAGE
+////////////////////
+
+////////////////
+// CHECKOUT PAGE
+.item-preview {
+    border: 1px solid rgba(206, 206, 206, 0.3);
+    box-shadow: 0px 1px 2px rgba(206, 206, 206, 0.3);
+    transform: scale(1);
+    transition: transform 0.6s ease;
+}
+.item-preview:hover {
+    transform: scale(1.04);
+    transition: transform 0.6s ease;
+}
+.step-text {
+    color: black;
+    font-family: "Nunito Sans", sans-serif;
+    transform: scale(1);
+    transition: transform 0.2s ease;
+}
+.step-text:hover {
+    color: #b60903;
+    transform: scale(1.04);
+    transition: transform 0.2s ease;
+}
+.steps-active:before {
+    content: "";
+    border: solid 0.4em transparent;
+    border-top-color: #0a0a0a;
+    position: absolute;
+    top: -0.5em;
+    left: 50%;
+    margin-left: -0.25em;
+}
+// END CHECKOUT PAGE
+////////////////////
+
+//////////////////
+//GERMINATION PAGE
+.germinationCarouselImg {
+    width: 551.11px;
+    height: 310px;
+    margin-top: 25px;
+}
+// END GERMINATION PAGE
+///////////////////////
+
+/////////////
+// HOME PAGE
+.bannerBuyNow {
+    position: absolute;
+    width: 14rem;
+    left: calc(50% - 7rem);
+    bottom: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+}
+.genePreview {
+    width: 25%;
+    transition: all 0.5s ease-in-out;
+    background-position: center;
+    background-size: 500px 500px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    border: 5px solid #fff;
+    cursor: pointer;
+}
+.headingClass {
+    transform: translateX(90px);
+    position: absolute;
+    bottom: 0;
+    transition: all 0.5s ease-in-out;
+}
+.packClass {
+    transform: rotate(90deg);
+    margin: 80px 165px;
+    width: 240px;
+}
+.screenClass {
+    transform: translateX(-445px) rotate(-90deg);
+    transition: all 0.5s ease-in-out;
+    width: 160%;
+    height: 100%;
+}
+// END HOME PAGE
+////////////////
+
+////////////
+//SHOP PAGE
 .overlayClass {
     height: 100%;
     width: 100%;
@@ -433,6 +363,23 @@ h4 {
         padding: 0.5rem 3rem;
     }
 }
+.plantClass {
+    height: 82%;
+    position: absolute;
+    top: 15px;
+    z-index: 0;
+    transform: translateX(-250px);
+    transition: 0.5s all ease-in-out;
+    @include modifier("hover") {
+        height: 36%;
+        position: absolute;
+        top: 8px;
+        z-index: 0;
+        margin-top: 10px;
+        transition: 0.5s all ease-in-out;
+        transform: translateX(-180px);
+    }
+}
 .strainTitle {
     margin-left: auto;
     margin-right: auto;
@@ -450,14 +397,21 @@ h4 {
         }
     }
 }
+// END SHOP PAGE
+////////////////
 
-//ViewProduct Page
-.prec {
-    top: 30px;
+//////////////////
+//VIEWPRODUCT PAGE
+.active-border {
     position: relative;
-    font-size: 30px;
+    text-align: center;
+    width: 110px;
+    height: 110px;
+    border-radius: 100%;
+    background-color: #39b4cc;
+    background-image: linear-gradient(250deg, transparent 50%, #a2ecfb 50%),
+        linear-gradient(0deg, #a2ecfb 50%, transparent 50%);
 }
-
 .circle {
     position: relative;
     top: 5px;
@@ -468,32 +422,54 @@ h4 {
     border-radius: 100%;
     background-color: #e6f4f7;
 }
-
-.active-border {
+.prec {
+    top: 30px;
     position: relative;
-    text-align: center;
-    width: 110px;
-    height: 110px;
-    border-radius: 100%;
-
-    background-color: #39b4cc;
-    background-image: linear-gradient(250deg, transparent 50%, #a2ecfb 50%),
-        linear-gradient(0deg, #a2ecfb 50%, transparent 50%);
+    font-size: 30px;
 }
+// END VIEWPRODUCT PAGE
+///////////////////////
 
 ///////////////
-//GERMINATION//
-///////////////
-.germinationCarouselImg {
-    width: 551.11px;
-    height: 310px;
-    margin-top: 25px;
-}
-
-// \\\\\\\\\\\\\\\\\\\\\\
-//media queries
-// \\\\\\\\\\\\\\\\\\\\\\
+//MEDIA QUERIES
+// XXL
 @media only screen and (max-width: 1921px) {
+    ////////////
+    // UNIVERSAL
+    // END UNIVERSAL
+    ////////////////
+
+    ///////////////
+    // ARTICLE PAGE
+    // END ARTICLE PAGE
+    ///////////////////
+
+    ////////////////
+    // CHECKOUT PAGE
+    // END CHECKOUT PAGE
+    ////////////////////
+
+    ///////////////////
+    // GERMINATION PAGE
+    // END GERMINATION PAGE
+    ///////////////////////
+
+    ////////////
+    // HOME PAGE
+    .bannerBuyNow {
+        color: white;
+        padding: 0.5rem 2rem;
+        border: 1px solid white;
+        position: absolute;
+        width: 14rem;
+        left: calc(50% - 7rem);
+        bottom: 3rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    }
     .genePreview {
         width: 25%;
         height: 500px;
@@ -506,23 +482,29 @@ h4 {
         border: 5px solid #fff;
         cursor: pointer;
     }
-    .screenClass {
-        transform: translateX(-445px) rotate(-90deg);
-        transition: all 0.5s ease-in-out;
-        width: 160%;
-        height: 100%;
-    }
-    .packClass {
-        transform: rotate(90deg);
-        margin: 80px 128px;
-        width: 240px;
-    }
     .headingClass {
         transform: translateX(17px);
         position: absolute;
         bottom: 0;
         transition: all 0.5s ease-in-out;
     }
+    .packClass {
+        transform: rotate(90deg);
+        margin: 80px 128px;
+        width: 240px;
+    }
+    .screenClass {
+        transform: translateX(-445px) rotate(-90deg);
+        transition: all 0.5s ease-in-out;
+        width: 160%;
+        height: 100%;
+    }
+
+    // END HOME PAGE
+    ////////////////
+
+    ////////////
+    // SHOP PAGE
     .overlayClass {
         height: 100%;
         width: 100%;
@@ -548,11 +530,42 @@ h4 {
             border: 0.5px solid #cecece;
         }
     }
+    // END SHOP PAGE
+    ////////////////
+
+    ///////////////////
+    // VIEWPRODUCT PAGE
+    // END VIEWPRODUCT PAGE
+    ///////////////////////
+}
+
+// XL
+@media only screen and (max-width: 1367px) {
+    ////////////
+    // UNIVERSAL
+    // END UNIVERSAL
+    ////////////////
+
+    ///////////////
+    // ARTICLE PAGE
+    // END ARTICLE PAGE
+    ///////////////////
+
+    ////////////////
+    // CHECKOUT PAGE
+    // END CHECKOUT PAGE
+    ////////////////////
+
+    ///////////////////
+    // GERMINATION PAGE
+    // END GERMINATION PAGE
+    ///////////////////////
+
+    ////////////
+    // HOME PAGE
     .bannerBuyNow {
-        color: white;
-        padding: 0.5rem 2rem;
-        border: 1px solid white;
         position: absolute;
+        padding: 0.5rem 2rem;
         width: 14rem;
         left: calc(50% - 7rem);
         bottom: 3rem;
@@ -562,8 +575,6 @@ h4 {
             background-color: rgba(0, 0, 0, 0.8);
         }
     }
-}
-@media only screen and (max-width: 1367px) {
     .genePreview {
         width: 25%;
         height: 350px;
@@ -576,67 +587,67 @@ h4 {
         border: 5px solid #fff;
         cursor: pointer;
     }
-    .screenClass {
-        transform: translateX(-300px) rotate(-90deg);
-        transition: all 0.5s ease-in-out;
-        width: 170%;
-        height: 100%;
-    }
-    .packClass {
-        transform: rotate(90deg);
-        margin: 97px 100px;
-        width: 155px;
-    }
     .headingClass {
         transform: translateX(17px);
         position: absolute;
         bottom: 0;
         transition: all 0.5s ease-in-out;
     }
-    .bannerBuyNow {
-        position: absolute;
-        padding: 0.5rem 2rem;
-        width: 14rem;
-        left: calc(50% - 7rem);
-        bottom: 3rem;
-        background-color: rgba(0, 0, 0, 0.5);
-        transition: all 0.3s ease-in-out;
-        &:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-    }
-}
-@media screen and (max-width: 991px) {
-    /* start of large tablet styles */
-    .genePreview {
-        width: 25%;
-        height: 300px;
-        z-index: 10;
-        transition: all 0.5s ease-in-out;
-        background-position: center;
-        background-size: 500px 500px;
-        background-repeat: no-repeat;
-        overflow: hidden;
-        border: 5px solid #fff;
-        cursor: pointer;
-    }
-    .screenClass {
-        transform: translateX(-260px) rotate(-90deg);
-        transition: all 0.5s ease-in-out;
-        width: 190%;
-        height: 100%;
-    }
     .packClass {
         transform: rotate(90deg);
-        margin: 98px 90px;
-        width: 125px;
+        margin: 97px 100px;
+        width: 155px;
     }
-    .headingClass {
-        transform: translateX(10px);
-        position: absolute;
-        bottom: 0;
+    .screenClass {
+        transform: translateX(-300px) rotate(-90deg);
         transition: all 0.5s ease-in-out;
+        width: 170%;
+        height: 100%;
     }
+
+    // END HOME PAGE
+    ////////////////
+
+    ////////////
+    // SHOP PAGE
+    // END SHOP PAGE
+    ////////////////
+
+    ///////////////////
+    // VIEWPRODUCT PAGE
+    // END VIEWPRODUCT PAGE
+    ///////////////////////
+}
+
+// LG
+@media screen and (max-width: 991px) {
+    ////////////
+    // UNIVERSAL
+    // END UNIVERSAL
+    ////////////////
+
+    ///////////////
+    // ARTICLE PAGE
+    // END ARTICLE PAGE
+    ///////////////////
+
+    ////////////////
+    // CHECKOUT PAGE
+    // END CHECKOUT PAGE
+    ////////////////////
+
+    ///////////////////
+    // GERMINATION PAGE
+    .germinationCarouselImg {
+        width: 551.11px;
+        height: 310px;
+        margin-top: 25px;
+    }
+    // END GERMINATION PAGE
+    ///////////////////////
+
+    ////////////
+    // HOME PAGE
     .bannerBuyNow {
         position: absolute;
         padding: 0.5rem 2rem;
@@ -649,25 +660,42 @@ h4 {
             background-color: rgba(0, 0, 0, 0.8);
         }
     }
-    .plantClass {
-        height: 80%;
-        position: absolute;
-        top: 25px;
-        z-index: 0;
-        transform: translateX(-180px);
-        transition: 0.6s all ease-in-out;
+    .genePreview {
+        width: 25%;
+        height: 300px;
+        z-index: 10;
+        transition: all 0.5s ease-in-out;
+        background-position: center;
+        background-size: 500px 500px;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        border: 5px solid #fff;
         cursor: pointer;
-        @include modifier("hover") {
-            height: 36%;
-            position: absolute;
-            top: 8px;
-            z-index: 0;
-            margin-top: 10px;
-            transition: 0.6s all ease-in-out;
-            transform: translateX(-160px);
-            cursor: pointer;
-        }
     }
+    .headingClass {
+        transform: translateX(10px);
+        position: absolute;
+        bottom: 0;
+        transition: all 0.5s ease-in-out;
+    }
+    .packClass {
+        transform: rotate(90deg);
+        margin: 98px 90px;
+        width: 125px;
+    }
+    .screenClass {
+        transform: translateX(-260px) rotate(-90deg);
+        transition: all 0.5s ease-in-out;
+        width: 190%;
+        height: 100%;
+    }
+
+    // END HOME PAGE
+    ////////////////
+
+    ////////////
+    // SHOP PAGE
+
     .overlayClass {
         height: 100%;
         width: 100%;
@@ -711,6 +739,25 @@ h4 {
             cursor: pointer;
         }
     }
+    .plantClass {
+        height: 80%;
+        position: absolute;
+        top: 25px;
+        z-index: 0;
+        transform: translateX(-180px);
+        transition: 0.6s all ease-in-out;
+        cursor: pointer;
+        @include modifier("hover") {
+            height: 36%;
+            position: absolute;
+            top: 8px;
+            z-index: 0;
+            margin-top: 10px;
+            transition: 0.6s all ease-in-out;
+            transform: translateX(-160px);
+            cursor: pointer;
+        }
+    }
     .strainTitle {
         margin-left: auto;
         margin-right: auto;
@@ -728,18 +775,51 @@ h4 {
             }
         }
     }
-    ///////////////
-    //GERMINATION//
-    ///////////////
-    .germinationCarouselImg {
-        width: 551.11px;
-        height: 310px;
-        margin-top: 25px;
-    }
+    // END SHOP PAGE
+    ////////////////
+
+    ///////////////////
+    // VIEWPRODUCT PAGE
+    // END VIEWPRODUCT PAGE
+    ///////////////////////
 }
 
+// MD
 @media screen and (max-width: 767px) {
-    /* start of medium tablet styles */
+    ////////////
+    // UNIVERSAL
+    // END UNIVERSAL
+    ////////////////
+
+    ///////////////
+    // ARTICLE PAGE
+    // END ARTICLE PAGE
+    ///////////////////
+
+    ////////////////
+    // CHECKOUT PAGE
+    // END CHECKOUT PAGE
+    ////////////////////
+
+    ///////////////////
+    // GERMINATION PAGE
+    // END GERMINATION PAGE
+    ///////////////////////
+
+    ////////////
+    // HOME PAGE
+    .bannerBuyNow {
+        position: absolute;
+        padding: 0.5rem 1rem;
+        width: 10rem;
+        left: calc(50% - 5rem);
+        bottom: 7%;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    }
     .genePreview {
         width: 100%;
         height: 60px;
@@ -751,42 +831,30 @@ h4 {
         border: 5px solid #fff;
         cursor: pointer;
     }
-    .screenClass {
-        transform: translateX(0) rotate(0deg);
-        transition: all 0.5s ease-in-out;
-        width: 100%;
-        height: 100%;
-    }
-    .packClass {
-        transform: rotate(90deg);
-        margin: 48px 106px;
-        width: 100px;
-    }
     .headingClass {
         transform: translateX(20px);
         position: absolute;
         bottom: 0;
         transition: all 0.5s ease-in-out;
     }
-    .plantClass {
-        height: 80%;
-        position: absolute;
-        top: 5px;
-        z-index: 0;
-        transform: translateX(-160px);
-        transition: 0.6s all ease-in-out;
-        cursor: pointer;
-        @include modifier("hover") {
-            height: 27%;
-            position: absolute;
-            top: 0;
-            z-index: 0;
-            margin-top: 10px;
-            transition: 0.6s all ease-in-out;
-            transform: translateX(-110px);
-            cursor: pointer;
-        }
+    .packClass {
+        transform: rotate(90deg);
+        margin: 48px 106px;
+        width: 100px;
     }
+    .screenClass {
+        transform: translateX(0) rotate(0deg);
+        transition: all 0.5s ease-in-out;
+        width: 100%;
+        height: 100%;
+    }
+
+    // END HOME PAGE
+    ////////////////
+
+    ////////////
+    // SHOP PAGE
+
     .overlayClass {
         height: 100%;
         width: 100%;
@@ -830,6 +898,25 @@ h4 {
             cursor: pointer;
         }
     }
+    .plantClass {
+        height: 80%;
+        position: absolute;
+        top: 5px;
+        z-index: 0;
+        transform: translateX(-160px);
+        transition: 0.6s all ease-in-out;
+        cursor: pointer;
+        @include modifier("hover") {
+            height: 27%;
+            position: absolute;
+            top: 0;
+            z-index: 0;
+            margin-top: 10px;
+            transition: 0.6s all ease-in-out;
+            transform: translateX(-110px);
+            cursor: pointer;
+        }
+    }
     .strainTitle {
         margin-left: auto;
         margin-right: auto;
@@ -847,22 +934,55 @@ h4 {
             }
         }
     }
+    // END SHOP PAGE
+    ////////////////
+
+    ///////////////////
+    // VIEWPRODUCT PAGE
+    // END VIEWPRODUCT PAGE
+    ///////////////////////
+}
+
+// SM
+@media only screen and (max-width: 479px) {
+    ////////////
+    // UNIVERSAL
+
+    // END UNIVERSAL
+    ////////////////
+
+    ///////////////
+    // ARTICLE PAGE
+
+    // END ARTICLE PAGE
+    ///////////////////
+
+    ////////////////
+    // CHECKOUT PAGE
+
+    // END CHECKOUT PAGE
+    ////////////////////
+
+    ///////////////////
+    // GERMINATION PAGE
+
+    // END GERMINATION PAGE
+    ///////////////////////
+
+    ////////////
+    // HOME PAGE
     .bannerBuyNow {
         position: absolute;
-        padding: 0.5rem 1rem;
-        width: 10rem;
-        left: calc(50% - 5rem);
-        bottom: 7%;
+        padding: 0.6rem 1rem;
+        width: 14rem;
+        bottom: 0;
+        left: calc(50% - 7rem);
         background-color: rgba(0, 0, 0, 0.5);
         transition: all 0.3s ease-in-out;
         &:hover {
             background-color: rgba(0, 0, 0, 0.8);
         }
     }
-}
-
-@media only screen and (max-width: 479px) {
-    /* start of phone styles */
     .genePreview {
         width: 100%;
         height: 60px;
@@ -874,45 +994,29 @@ h4 {
         border: 5px solid #fff;
         cursor: pointer;
     }
-    .screenClass {
-        transform: translateX(0) rotate(0deg);
-        transition: all 0.5s ease-in-out;
-        width: 100%;
-        height: 100%;
-    }
-    .packClass {
-        transform: rotate(90deg);
-        margin: 48px 106px;
-        width: 100px;
-    }
     .headingClass {
         transform: translateX(20px);
         position: absolute;
         bottom: 7px;
         transition: all 0.5s ease-in-out;
     }
-    //////////////////////
-    //SHOP PAGE THUMBAILS (MOBILE)
-    //////////////////////
-    .plantClass {
-        height: 80%;
-        position: absolute;
-        top: 5px;
-        z-index: 0;
-        transform: translateX(-110px);
-        transition: 0.6s all ease-in-out;
-        cursor: pointer;
-        @include modifier("hover") {
-            height: 27%;
-            position: absolute;
-            top: 0;
-            z-index: 0;
-            margin-top: 10px;
-            transition: 0.6s all ease-in-out;
-            transform: translateX(-110px);
-            cursor: pointer;
-        }
+    .packClass {
+        transform: rotate(90deg);
+        margin: 48px 106px;
+        width: 100px;
     }
+    .screenClass {
+        transform: translateX(0) rotate(0deg);
+        transition: all 0.5s ease-in-out;
+        width: 100%;
+        height: 100%;
+    }
+    // END HOME PAGE
+    ////////////////
+
+    ////////////
+    // SHOP PAGE
+
     .overlayClass {
         height: 100%;
         width: 100%;
@@ -956,6 +1060,25 @@ h4 {
             cursor: pointer;
         }
     }
+    .plantClass {
+        height: 80%;
+        position: absolute;
+        top: 5px;
+        z-index: 0;
+        transform: translateX(-110px);
+        transition: 0.6s all ease-in-out;
+        cursor: pointer;
+        @include modifier("hover") {
+            height: 27%;
+            position: absolute;
+            top: 0;
+            z-index: 0;
+            margin-top: 10px;
+            transition: 0.6s all ease-in-out;
+            transform: translateX(-110px);
+            cursor: pointer;
+        }
+    }
     .strainTitle {
         margin-left: auto;
         margin-right: auto;
@@ -973,17 +1096,16 @@ h4 {
             }
         }
     }
-    .bannerBuyNow {
-        position: absolute;
-        padding: 0.6rem 1rem;
-        width: 14rem;
-        bottom: 0;
-        left: calc(50% - 7rem);
-        background-color: rgba(0, 0, 0, 0.5);
-        transition: all 0.3s ease-in-out;
-        &:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-    }
-    // ////////////////////
+    // END SHOP PAGE
+    ////////////////
+
+    ///////////////////
+    // VIEWPRODUCT PAGE
+
+    // END VIEWPRODUCT PAGE
+    ///////////////////////
+
+    //////////////////////
+    //SHOP PAGE THUMBAILS
+    //////////////////////
 }
