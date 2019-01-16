@@ -45,7 +45,8 @@ const menu = props => {
             props.setVisibleScreen({
               input: "viewCurrency"
             });
-          }}>
+          }}
+        >
           <div className="w-12  p-2 items-center flex justify-center">
             <p>
               <img
@@ -108,12 +109,14 @@ const menu = props => {
           boxShadow: "0 2px 6px rgba(64, 64, 64, 0.29)"
         } // height: "120px",
       }
-      className="w-full">
+      className="w-full"
+    >
       <div className="w-full h-12 inline-flex mt-6 sm:mt-0 sm:mb-6">
         <div className="w-1/2 relative ">
           <div
             style={{ background: "#f9f9f9" }}
-            className="absolute inline-flex pin-l shadow-md my-auto rounded -ml-4">
+            className="absolute inline-flex pin-l shadow-md my-auto rounded -ml-4"
+          >
             <p className="pl-8 pr-6 p-2 uppercase font-extrabold text-lg">
               +1 (604) 563-0291
             </p>
@@ -133,7 +136,8 @@ const menu = props => {
               })
             }
             style={{ background: "#f9f9f9" }}
-            className="absolute pin-r shadow-md my-auto rounded -mr-2 inline-flex cursor-pointer scale-item">
+            className="absolute pin-r shadow-md my-auto rounded -mr-2 inline-flex cursor-pointer scale-item"
+          >
             <div className="w-12 rounded bg-yellow-dark p-2 items-center flex justify-center font-extrabold">
               {currency != null ? currency.symbol : ""}
             </div>
@@ -143,7 +147,8 @@ const menu = props => {
           </div>
           <div
             style={viewCurrency}
-            className="fixed h-300 pin-r bg-white shadow-md rounded cursor-pointer mt-10 -mr-1">
+            className="fixed h-300 pin-r bg-white shadow-md rounded cursor-pointer mt-10 -mr-1"
+          >
             {" "}
             <div className="w-full wrap flex-wrap">{showCurrency()}</div>
           </div>
@@ -151,10 +156,12 @@ const menu = props => {
       </div>
       <div
         style={{ background: "rgba(93, 9, 9, 0.71)" }}
-        className="w-full h-12">
+        className="w-full h-12"
+      >
         <div
           style={{ marginTop: "3px" }}
-          className="w-container sm:w-full md:w-full mx-auto text-center relative">
+          className="w-container sm:w-full md:w-full mx-auto text-center relative"
+        >
           <div className="ray_box">
             {(() => {
               let arr = [];
@@ -205,6 +212,7 @@ const menu = props => {
                   position: "fixed",
                   zIndex: "55"
                 }}
+                onClick={() => console.log(props)}
                 src="../static/img/cks-logo-header.png"
                 className="scale-item absolute cursor-pointer"
               />
@@ -238,7 +246,8 @@ const menu = props => {
                       onClick={() => {
                         props.setVisibleScreen({ input: "viewCart" });
                       }}
-                      className="text-center cursor-pointer mt-1 text-white">
+                      className="text-center cursor-pointer mt-1 text-white"
+                    >
                       <div className="">
                         <FontAwesomeIcon
                           icon={faShoppingCart}
@@ -259,7 +268,8 @@ const menu = props => {
                             paddingTop: "6px",
                             marginTop: "-14px",
                             marginLeft: "-5px"
-                          }}>
+                          }}
+                        >
                           {Object.keys(props.cart.items).length}
                         </span>
                       </div>
@@ -274,12 +284,14 @@ const menu = props => {
                   onClick={() => {
                     props.setVisibleScreen({ input: "showMobileNav" });
                   }}
-                  className="text-white p-2 h-12 ml-auto mr-4 w-12 flex justify-end bg-semi-transparent cursor-pointer">
+                  className="text-white p-2 h-12 ml-auto mr-4 w-12 flex justify-end bg-semi-transparent cursor-pointer"
+                >
                   <FontAwesomeIcon icon={faBars} className="fa-2x" />
                 </div>
                 <div
                   style={showMobileNav}
-                  className="w-full fixed bg-red-dark z-50 pt-8">
+                  className="w-full fixed bg-red-dark z-50 pt-8"
+                >
                   <ul className="text-white w-full mt-1 ml-0 pl-0 uppercase">
                     <Link href="/">
                       <li className="font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slow">

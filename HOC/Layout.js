@@ -30,45 +30,12 @@ class Layout extends Component {
         }
       });
 
-    // window.addEventListener("resize", () => {
-    //   let breakpoints = [
-    //     0,
-    //     515,
-    //     776,
-    //     1030,
-    //     1280,
-    //     1350,
-    //     1530,
-    //     1780,
-    //     1920,
-    //     2268,
-    //     2300,
-    //     2400,
-    //     2750,
-    //     3840
-    //   ];
+    this.setMediaSize();
 
-    //   for (let i = 0; i < breakpoints.length - 1; i++) {
-    //     if (
-    //       window.innerWidth > breakpoints[i] &&
-    //       window.innerWidth <= breakpoints[i + 1] &&
-    //       this.props.misc.currentMediaSize != breakpoints[i + 1]
-    //     ) {
-    //       this.props.setMediaSize(breakpoints[i + 1]);
-    //     }
-    //   }
-    // });
+    window.addEventListener("resize", () => {
+      this.setMediaSize();
+    });
 
-    // let body = document.querySelector("#body");
-    // body.addEventListener("scroll", () => {
-    //   if (
-    //     body.scrollHeight - 100 > body.scrollTop + body.clientHeight &&
-    //     !this.props.list.listUpdating
-    //   ) {
-    //     this.props.toggleUpdatingStatus(true);
-    //     this.props.buildList(this.props.global.usedKeys);
-    //   }
-    // });
     // Tawkto();
     // let Tawk_API = Tawk_API || {},
     //     Tawk_LoadStart = new Date();
@@ -84,6 +51,28 @@ class Layout extends Component {
     // });
   }
   componentDidUpdate() {}
+
+  setMediaSize = () => {
+    let mediaSizes = {
+      sm: { min: 100, max: 479 },
+      md: { min: 480, max: 767 },
+      lg: { min: 768, max: 991 },
+      xl: { min: 992, max: 1367 },
+      xxl: { min: 1368 }
+    };
+
+    for (let mediaSize of Object.keys(mediaSizes)) {
+      let _mediaSizeDim = mediaSizes[mediaSize];
+      let _width = window.innerWidth;
+      if (
+        _width ==
+          Math.max(_mediaSizeDim.min, Math.min(_width, _mediaSizeDim.max)) &&
+        this.props.misc.mediaSize != mediaSize
+      ) {
+        this.props.setMediaSize({ mediaSize: mediaSize });
+      }
+    }
+  };
 
   render() {
     return (
@@ -188,7 +177,8 @@ const mapDispatchToProps = dispatch => {
     setCurrency: input => dispatch(actions.setCurrency(input)),
     modifyPotentialQuantity: input =>
       dispatch(actions.modifyPotentialQuantity(input)),
-    setAgeVerification: input => dispatch(actions.setAgeVerification(input))
+    setAgeVerification: input => dispatch(actions.setAgeVerification(input)),
+    setMediaSize: input => dispatch(actions.setMediaSize(input))
   };
 };
 

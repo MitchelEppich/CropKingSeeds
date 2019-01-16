@@ -39,7 +39,8 @@ const actionTypes = {
   SET_CONTEXT: "SET_CONTEXT",
   TOGGLE_STEPS_CHECKOUT: "TOGGLE_STEPS_CHECKOUT",
   SHOW_DIFFERENT_ADDRESS: "SHOW_DIFFERENT_ADDRESS",
-  SET_AGE_VERIFICATION: "SET_AGE_VERIFICATION"
+  SET_AGE_VERIFICATION: "SET_AGE_VERIFICATION",
+  SET_MEDIA_SIZE: "SET_MEDIA_SIZE"
 };
 
 const actions = {
@@ -48,6 +49,12 @@ const actions = {
       type: actionTypes.SET_VISIBLE_SCREEN,
       input: input.input,
       clearAll: input.clearAll
+    };
+  },
+  setMediaSize: input => {
+    return {
+      type: actionTypes.SET_MEDIA_SIZE,
+      input: input.mediaSize
     };
   },
   toggleStepsCheckout: input => {
