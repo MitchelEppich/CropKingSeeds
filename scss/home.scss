@@ -533,12 +533,12 @@ h4 {
         z-index: 0;
         overflow: visible;
         text-align: center;
-
         @include modifier("hover") {
             text-align: center;
             transform: translateX(-60px);
-            height: 635px;
+            height: 655px;
             width: 145%;
+            padding: 10px;
             background-color: #fff;
             transition: 0.5s all ease-in-out;
             color: rgba(255, 255, 255, 1);
@@ -656,6 +656,7 @@ h4 {
         z-index: 0;
         transform: translateX(-180px);
         transition: 0.6s all ease-in-out;
+        cursor: pointer;
         @include modifier("hover") {
             height: 36%;
             position: absolute;
@@ -664,6 +665,7 @@ h4 {
             margin-top: 10px;
             transition: 0.6s all ease-in-out;
             transform: translateX(-160px);
+            cursor: pointer;
         }
     }
     .overlayClass {
@@ -677,15 +679,16 @@ h4 {
         overflow: visible;
         text-align: center;
         @include modifier("hover") {
-            height: 650px;
+            height: 700px;
             width: 276px;
-            left: -50%;
+            left: -25%;
+            padding: 10px 10px;
             text-align: center;
             transform: translateX(15px);
             background-color: #fff;
             transition: 0.6s all ease-in-out;
             color: rgba(255, 255, 255, 1);
-            position: absolute;
+            position: relative;
             box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
             border: 0.5px solid #cecece;
         }
@@ -696,6 +699,7 @@ h4 {
         z-index: 10;
         transition: 0.6s all ease-in-out;
         padding: 0.5rem 3rem;
+        cursor: pointer;
         @include modifier("hover") {
             height: 38%;
             position: relative;
@@ -704,6 +708,7 @@ h4 {
             transition: 0.6s all ease-in-out;
             margin-top: 10px;
             padding: 0.5rem 3rem;
+            cursor: pointer;
         }
     }
     .strainTitle {
@@ -770,6 +775,7 @@ h4 {
         z-index: 0;
         transform: translateX(-160px);
         transition: 0.6s all ease-in-out;
+        cursor: pointer;
         @include modifier("hover") {
             height: 27%;
             position: absolute;
@@ -778,6 +784,7 @@ h4 {
             margin-top: 10px;
             transition: 0.6s all ease-in-out;
             transform: translateX(-110px);
+            cursor: pointer;
         }
     }
     .overlayClass {
@@ -799,7 +806,7 @@ h4 {
             background-color: #fff;
             transition: 0.6s all ease-in-out;
             color: rgba(255, 255, 255, 1);
-            position: absolute;
+            position: relative;
             box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
             border: 0.5px solid #cecece;
         }
@@ -811,6 +818,7 @@ h4 {
         transition: 0.6s all ease-in-out;
         padding: 0;
         transform: translateX(-5px);
+        cursor: pointer;
         @include modifier("hover") {
             height: 27%;
             position: relative;
@@ -819,6 +827,7 @@ h4 {
             transition: 0.6s all ease-in-out;
             margin-top: 10px;
             padding: 0;
+            cursor: pointer;
         }
     }
     .strainTitle {
@@ -892,6 +901,7 @@ h4 {
         z-index: 0;
         transform: translateX(-110px);
         transition: 0.6s all ease-in-out;
+        cursor: pointer;
         @include modifier("hover") {
             height: 27%;
             position: absolute;
@@ -900,6 +910,7 @@ h4 {
             margin-top: 10px;
             transition: 0.6s all ease-in-out;
             transform: translateX(-110px);
+            cursor: pointer;
         }
     }
     .overlayClass {
@@ -921,7 +932,7 @@ h4 {
             background-color: #fff;
             transition: 0.6s all ease-in-out;
             color: rgba(255, 255, 255, 1);
-            position: absolute;
+            position: relative;
             box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
             border: 0.5px solid #cecece;
         }
@@ -933,6 +944,7 @@ h4 {
         transition: 0.6s all ease-in-out;
         padding: 0;
         transform: translateX(-5px);
+        cursor: pointer;
         @include modifier("hover") {
             height: 27%;
             position: relative;
@@ -941,6 +953,7 @@ h4 {
             transition: 0.6s all ease-in-out;
             margin-top: 10px;
             padding: 0;
+            cursor: pointer;
         }
     }
     .strainTitle {

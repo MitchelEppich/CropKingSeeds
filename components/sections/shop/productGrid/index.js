@@ -24,6 +24,7 @@ class Index extends Component {
     render() {
         let hoverId = this.props.misc.hoverId;
         let products = this.props.misc.strains;
+        let isSmallMediumOrLargeDevice = ["sm", "md", "lg"].includes(this.props.misc.mediaSize);
 
         products = products
             .filter(a => {
@@ -47,6 +48,9 @@ class Index extends Component {
                         key={index}
                         ref={div => (this.myElements[index] = div)}
                         onMouseEnter={() => {
+                            if (isSmallMediumOrLargeDevice) {
+                                return null;
+                            }
                             this.props.setHoverId(product._id);
                             let _index = 0;
                             while (product.price[_index] == -1) {
@@ -60,20 +64,28 @@ class Index extends Component {
                             });
                         }}
                         onMouseLeave={() => {
+                            if (isSmallMediumOrLargeDevice) {
+                                return null;
+                            }
                             this.props.setHoverId(product._id);
                         }}
                         className={
                             hoverId == product._id
                                 ? "w-64 h-64 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:h-48 lg:w-48 text-white relative sm:absolute md:absolute z-50 slowish lg:my-4 sm:my-2 md:my-2 lg:mx-8 xl:mx-8 xxl:mx-8"
-                                : "w-64 h-64 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:h-48 lg:w-48 text-white relative z-0 slowish lg:my-4 sm:my-2 md:my-2 lg:mx-8 xl:mx-8 xxl:mx-8"
+                                : "w-64 h-64 sm:cursor-pointer md:cursor-pointer sm:w-32 sm:h-32 md:w-48 md:h-48 lg:h-48 lg:w-48 text-white relative z-0 slowish lg:my-4 sm:my-2 md:my-2 lg:mx-8 xl:mx-8 xxl:mx-8"
                         }>
-                        <ProductThumbnail hoverId={hoverId} product={product} {...this.props} />
+                        <ProductThumbnail
+                            isSmallMediumOrLargeDevice={isSmallMediumOrLargeDevice}
+                            hoverId={hoverId}
+                            product={product}
+                            {...this.props}
+                        />
                     </div>
                 );
             });
 
         return (
-            <div className="sm:w-full md:w-full lg:w-3/4 xl:w-3/4 xxl:w-3/4 min-h-700 text-white">
+            <div className="sm:w-full md:w-full  lg:w-3/4 xl:w-3/4 xxl:w-3/4 min-h-700 text-white">
                 <div className="w-full justify-end flex pt-3 p-2  mb-2 text-grey-light items-center flex">
                     Sort by:
                     <select className="ml-3">
@@ -82,7 +94,9 @@ class Index extends Component {
                         <option value="Most Reviewed">Most Reviewed</option>
                     </select>
                 </div>
-                <div className="flex flex-wrap pt-6 sm:justify-center md:justify-center">{products}</div>
+                <div className="flex flex-wrap pt-6 sm:justify-center md:justify-center lg:justify-end xl:justify-end xxl:justify-end">
+                    {products}
+                </div>
             </div>
         );
     }

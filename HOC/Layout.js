@@ -30,12 +30,14 @@ class Layout extends Component {
                 }
             });
 
-        this.setMediaSize();
+        let mediaSize = this.setMediaSize();
+        if (["sm", "md", "lg"].includes(mediaSize)) {
+            this.props.toggleShowFilters();
+        }
 
         window.addEventListener("resize", () => {
             this.setMediaSize();
         });
-
         // Tawkto();
         // let Tawk_API = Tawk_API || {},
         //     Tawk_LoadStart = new Date();
@@ -50,7 +52,6 @@ class Layout extends Component {
         //     // s0.parentNode.insertBefore(s1, s0);
         // });
     }
-    componentDidUpdate() {}
 
     setMediaSize = () => {
         let mediaSizes = {
@@ -60,7 +61,6 @@ class Layout extends Component {
             xl: { min: 992, max: 1367 },
             xxl: { min: 1368, max: 999999999 }
         };
-
         for (let mediaSize of Object.keys(mediaSizes)) {
             let _mediaSizeDim = mediaSizes[mediaSize];
             let _width = window.innerWidth;
@@ -69,6 +69,7 @@ class Layout extends Component {
                 this.props.misc.mediaSize != mediaSize
             ) {
                 this.props.setMediaSize({ mediaSize: mediaSize });
+                return mediaSize;
             }
         }
     };
@@ -76,78 +77,6 @@ class Layout extends Component {
     render() {
         return (
             <div style={{ backgroundColor: "#f3f3f3", height: "100%" }}>
-                {/* <Particles
-          width="100vw"
-          height="100vh"
-          style={{ position: "absolute", zIndex: 0 }}
-          params={{
-            particles: {
-              number: { value: 80, density: { enable: true, value_area: 800 } },
-              color: { value: "#ffffff" },
-
-              shape: {
-                type: "image",
-                stroke: { width: 0, color: "#FFF" },
-                polygon: { nb_sides: 5 },
-                image: {
-                  src: "../static/img/cannabis.svg",
-                  width: 100,
-                  height: 100,
-                  color: { value: "#ffffff" }
-                }
-              },
-              opacity: {
-                value: 0.5,
-                random: false,
-                anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
-              },
-              size: {
-                value: 15,
-                random: true,
-                anim: { enable: false, speed: 40, size_min: 0.1, sync: false }
-              },
-              line_linked: {
-                enable: true,
-                distance: 150,
-                color: "#ffffff",
-                opacity: 0.4,
-                width: 1
-              },
-              move: {
-                enable: true,
-                speed: 1,
-                direction: "none",
-                random: false,
-                straight: false,
-                out_mode: "out",
-                bounce: false,
-                attract: { enable: false, rotateX: 600, rotateY: 1200 }
-              }
-            },
-            interactivity: {
-              detect_on: "canvas",
-              events: {
-                onhover: { enable: true, mode: "bubble" },
-                onclick: { enable: true, mode: "push" },
-                resize: true
-              },
-              modes: {
-                grab: { distance: 400, line_linked: { opacity: 1 } },
-                bubble: {
-                  distance: 400,
-                  size: 40,
-                  duration: 2,
-                  opacity: 8,
-                  speed: 3
-                },
-                repulse: { distance: 200, duration: 0.4 },
-                push: { particles_nb: 4 },
-                remove: { particles_nb: 2 }
-              }
-            },
-            retina_detect: true
-          }}
-        /> */}
                 {/* <Tawkto /> */}
                 {/* <Head>
                     <script crossorigin="*" async src="https://embed.tawk.to/5ae8bd0d5f7cdf4f0533c472/default" />
@@ -176,7 +105,8 @@ const mapDispatchToProps = dispatch => {
         setCurrency: input => dispatch(actions.setCurrency(input)),
         modifyPotentialQuantity: input => dispatch(actions.modifyPotentialQuantity(input)),
         setAgeVerification: input => dispatch(actions.setAgeVerification(input)),
-        setMediaSize: input => dispatch(actions.setMediaSize(input))
+        setMediaSize: input => dispatch(actions.setMediaSize(input)),
+        toggleShowFilters: () => dispatch(actions.toggleShowFilters())
     };
 };
 
