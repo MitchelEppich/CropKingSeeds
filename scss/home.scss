@@ -643,10 +643,11 @@ h4 {
         overflow: visible;
         text-align: center;
         @include modifier("hover") {
+            height: 650px;
+            width: 276px;
+            left: -50%;
             text-align: center;
             transform: translateX(15px);
-            height: 650px;
-            width: 200%;
             background-color: #fff;
             transition: 0.6s all ease-in-out;
             color: rgba(255, 255, 255, 1);
@@ -719,6 +720,81 @@ h4 {
         position: absolute;
         bottom: 0;
         transition: all 0.5s ease-in-out;
+    }
+    .plantClass {
+        height: 80%;
+        position: absolute;
+        top: 5px;
+        z-index: 0;
+        transform: translateX(-160px);
+        transition: 0.6s all ease-in-out;
+        @include modifier("hover") {
+            height: 27%;
+            position: absolute;
+            top: 0;
+            z-index: 0;
+            margin-top: 10px;
+            transition: 0.6s all ease-in-out;
+            transform: translateX(-110px);
+        }
+    }
+    .overlayClass {
+        height: 100%;
+        width: 100%;
+        background-color: #fff;
+        transition: 0.6s all ease-in-out;
+        color: rgba(255, 255, 255, 0);
+        position: relative;
+        z-index: 0;
+        overflow: visible;
+        text-align: center;
+        @include modifier("hover") {
+            text-align: center;
+            height: 650px;
+            width: 276px;
+            left: -50%;
+            overflow: hidden;
+            background-color: #fff;
+            transition: 0.6s all ease-in-out;
+            color: rgba(255, 255, 255, 1);
+            position: absolute;
+            box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+            border: 0.5px solid #cecece;
+        }
+    }
+    .packageClass {
+        height: 100%;
+        position: relative;
+        z-index: 10;
+        transition: 0.6s all ease-in-out;
+        padding: 0;
+        transform: translateX(-5px);
+        @include modifier("hover") {
+            height: 27%;
+            position: relative;
+            transform: translateX(-30px);
+            z-index: 10;
+            transition: 0.6s all ease-in-out;
+            margin-top: 10px;
+            padding: 0;
+        }
+    }
+    .strainTitle {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -43px;
+        width: 93%;
+        border-top-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        color: white;
+        text-shadow: rgb(0, 0, 0) 1px 1px 2px;
+        box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
+        @include modifier("hover") {
+            transition: 0.2s all ease-in-out;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
     }
     .bannerBuyNow {
         position: absolute;
@@ -798,7 +874,7 @@ h4 {
             text-align: center;
             height: 650px;
             width: 276px;
-            left: 0;
+            left: -80%;
             overflow: hidden;
             background-color: #fff;
             transition: 0.6s all ease-in-out;

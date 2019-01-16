@@ -20,75 +20,75 @@ import AgeVerification from "../components/sections/ageVerification";
 import Tawkto from "../components/sketches/tawkto";
 
 class Layout extends Component {
-  componentDidMount() {
-    this.props.getStrains();
-    if (this.props.checkout.viewCurrency == null)
-      this.props.setCurrency({
-        currency: {
-          label: "usd",
-          ...this.props.checkout.availableCurrency["usd"]
-        }
-      });
+    componentDidMount() {
+        this.props.getStrains();
+        if (this.props.checkout.viewCurrency == null)
+            this.props.setCurrency({
+                currency: {
+                    label: "usd",
+                    ...this.props.checkout.availableCurrency["usd"]
+                }
+            });
 
-    // window.addEventListener("resize", () => {
-    //   let breakpoints = [
-    //     0,
-    //     515,
-    //     776,
-    //     1030,
-    //     1280,
-    //     1350,
-    //     1530,
-    //     1780,
-    //     1920,
-    //     2268,
-    //     2300,
-    //     2400,
-    //     2750,
-    //     3840
-    //   ];
+        // window.addEventListener("resize", () => {
+        //   let breakpoints = [
+        //     0,
+        //     515,
+        //     776,
+        //     1030,
+        //     1280,
+        //     1350,
+        //     1530,
+        //     1780,
+        //     1920,
+        //     2268,
+        //     2300,
+        //     2400,
+        //     2750,
+        //     3840
+        //   ];
 
-    //   for (let i = 0; i < breakpoints.length - 1; i++) {
-    //     if (
-    //       window.innerWidth > breakpoints[i] &&
-    //       window.innerWidth <= breakpoints[i + 1] &&
-    //       this.props.misc.currentMediaSize != breakpoints[i + 1]
-    //     ) {
-    //       this.props.setMediaSize(breakpoints[i + 1]);
-    //     }
-    //   }
-    // });
+        //   for (let i = 0; i < breakpoints.length - 1; i++) {
+        //     if (
+        //       window.innerWidth > breakpoints[i] &&
+        //       window.innerWidth <= breakpoints[i + 1] &&
+        //       this.props.misc.currentMediaSize != breakpoints[i + 1]
+        //     ) {
+        //       this.props.setMediaSize(breakpoints[i + 1]);
+        //     }
+        //   }
+        // });
 
-    // let body = document.querySelector("#body");
-    // body.addEventListener("scroll", () => {
-    //   if (
-    //     body.scrollHeight - 100 > body.scrollTop + body.clientHeight &&
-    //     !this.props.list.listUpdating
-    //   ) {
-    //     this.props.toggleUpdatingStatus(true);
-    //     this.props.buildList(this.props.global.usedKeys);
-    //   }
-    // });
-    // Tawkto();
-    // let Tawk_API = Tawk_API || {},
-    //     Tawk_LoadStart = new Date();
-    // (function() {
-    //     let s1 = document.createElement("script");
-    //     // s0 = document.getElementsByTagName("script")[0];
-    //     s1.async = true;
-    //     s1.src = "https://embed.tawk.to/5ae8bd0d5f7cdf4f0533c472/default";
-    //     s1.charset = "UTF-8";
-    //     s1.setAttribute("crossorigin", "*");
-    //     document.body.appendChild(s1);
-    //     // s0.parentNode.insertBefore(s1, s0);
-    // });
-  }
-  componentDidUpdate() {}
+        // let body = document.querySelector("#body");
+        // body.addEventListener("scroll", () => {
+        //   if (
+        //     body.scrollHeight - 100 > body.scrollTop + body.clientHeight &&
+        //     !this.props.list.listUpdating
+        //   ) {
+        //     this.props.toggleUpdatingStatus(true);
+        //     this.props.buildList(this.props.global.usedKeys);
+        //   }
+        // });
+        // Tawkto();
+        // let Tawk_API = Tawk_API || {},
+        //     Tawk_LoadStart = new Date();
+        // (function() {
+        //     let s1 = document.createElement("script");
+        //     // s0 = document.getElementsByTagName("script")[0];
+        //     s1.async = true;
+        //     s1.src = "https://embed.tawk.to/5ae8bd0d5f7cdf4f0533c472/default";
+        //     s1.charset = "UTF-8";
+        //     s1.setAttribute("crossorigin", "*");
+        //     document.body.appendChild(s1);
+        //     // s0.parentNode.insertBefore(s1, s0);
+        // });
+    }
+    componentDidUpdate() {}
 
-  render() {
-    return (
-      <div style={{ backgroundColor: "#f3f3f3", height: "100%" }}>
-        {/* <Particles
+    render() {
+        return (
+            <div style={{ backgroundColor: "#f3f3f3", height: "100%" }}>
+                {/* <Particles
           width="100vw"
           height="100vh"
           style={{ position: "absolute", zIndex: 0 }}
@@ -160,39 +160,38 @@ class Layout extends Component {
             retina_detect: true
           }}
         /> */}
-        {/* <Tawkto /> */}
-        {/* <Head>
+                {/* <Tawkto /> */}
+                {/* <Head>
                     <script crossorigin="*" async src="https://embed.tawk.to/5ae8bd0d5f7cdf4f0533c472/default" />
                 </Head> */}
-        <Header {...this.props} />
-        {/* <AgeVerification {...this.props} /> */}
-        <div className="pt-32">
-          {" "}
-          <ShareButtons {...this.props} />
-          <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 mx-auto shadow-md">
-            {this.props.children}
-          </div>
-        </div>
-        <Cart {...this.props} />
-        <Footer {...this.props} />
-      </div>
-    );
-  }
+                <Header {...this.props} />
+                {/* <AgeVerification {...this.props} /> */}
+                <div className="pt-32">
+                    {" "}
+                    <ShareButtons {...this.props} />
+                    <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 mx-auto shadow-md">
+                        {this.props.children}
+                    </div>
+                </div>
+                <Cart {...this.props} />
+                {/* <Footer {...this.props} /> */}
+            </div>
+        );
+    }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
-    getStrains: () => dispatch(actions.getStrains()),
-    modifyCart: input => dispatch(actions.modifyCart(input)),
-    setCurrency: input => dispatch(actions.setCurrency(input)),
-    modifyPotentialQuantity: input =>
-      dispatch(actions.modifyPotentialQuantity(input)),
-    setAgeVerification: input => dispatch(actions.setAgeVerification(input))
-  };
+    return {
+        setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+        getStrains: () => dispatch(actions.getStrains()),
+        modifyCart: input => dispatch(actions.modifyCart(input)),
+        setCurrency: input => dispatch(actions.setCurrency(input)),
+        modifyPotentialQuantity: input => dispatch(actions.modifyPotentialQuantity(input)),
+        setAgeVerification: input => dispatch(actions.setAgeVerification(input))
+    };
 };
 
 export default connect(
-  state => state,
-  mapDispatchToProps
+    state => state,
+    mapDispatchToProps
 )(Layout);
