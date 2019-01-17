@@ -11,9 +11,9 @@ const Description = props => {
   });
   return (
     <div>
-      <p className="p-2 text-justify">{_product.description}</p>
-      {/* {props.viewProduct.showFullDescription ? (
-        <p>
+      {/* <p className="p-2 text-justify">{_product.description}</p> */}
+      {props.viewProduct.showFullDescription ? (
+        <p className="p-2">
           {_product.description}
           <span
             onClick={() => props.toggleFullDescription()}
@@ -22,7 +22,7 @@ const Description = props => {
           </span>
         </p>
       ) : (
-        <p>
+        <p className="p-2">
           {_product.description.substring(0, 350) + "..."}
           <span
             onClick={() => props.toggleFullDescription()}
@@ -30,7 +30,7 @@ const Description = props => {
             Show More
           </span>
         </p>
-      )} */}
+      )}
     </div>
   );
 };

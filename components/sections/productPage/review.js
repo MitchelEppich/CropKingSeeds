@@ -14,13 +14,14 @@ const review = props => {
     );
   }
   return (
-    <div className="mx-auto flex justify-center w-container mt-2 pb-4 border-b-2 border-grey-lightest p-2">
-      <div className="pr-4 w-1/4">
-        <p className="font-bold text-xl mb-1">{props.name}</p>
-        <p className="text-xs">September, 21th - 2018</p>
-        <p className="mt-2">{ratings}</p>
+    <div className="mx-auto flex justify-center lg:block md:block sm:block w-container mt-2 pb-4 border-b-2 border-grey-lightest p-2">
+      <div className="pr-4 w-1/4 md:w-full sm:w-full lg:w-full md:inline-flex sm:inline-flex lg:inline-flex md:pr-0 sm:pr-0 lg:pr-0">
+        <div className="sm:w-1/2 md:w-1/2 lg:w-1/2"><p className="font-bold text-xl mb-1">{props.name}</p>
+        <p className="text-xs">September, 21th - 2018</p></div>
+          <div className="sm:text-right sm:justify-end sm:flex md:text-right md:justify-end md:flex lg:text-right lg:justify-end lg:flex sm:w-1/2 md:w-1/2 lg:w-1/2">
+        <p className="mt-2">{ratings}</p></div>
       </div>
-      <div className="w-3/4 text-justify">
+      <div className="w-3/4 text-justify md:w-full sm:w-full lg:w-full sm:mt-4 md:mt-4 lg:mt-4">
         <p>{props.comment}</p>
       </div>
     </div>

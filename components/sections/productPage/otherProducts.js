@@ -1,8 +1,12 @@
 import ProductThumbnail from "../shop/productGrid/productThumbnail";
 
 const otherProducts = props => {
-    let fbt = props.viewProduct.fbt;
-    fbt = fbt.map((product, index) => {
+    // console.log(props)
+
+    // let fbt = props.viewProduct.fbt;
+    let fbt = props.misc.strains;
+    let qty = 3;
+    fbt = fbt.slice(0, qty).map((product, index) => {
         return (
             <div
                 key={index}
@@ -22,7 +26,7 @@ const otherProducts = props => {
         );
     });
 
-    return <div className="w-full h-300 flex flex-wrap justify-between content-center">{fbt}</div>;
+    return <div className="w-full flex flex-wrap justify-between content-center">{fbt}</div>;
 };
 
 export default otherProducts;
