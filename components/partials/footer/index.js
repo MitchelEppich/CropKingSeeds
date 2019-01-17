@@ -6,7 +6,7 @@ import { faFacebook, faInstagram, faTwitter } from "@fortawesome/free-brands-svg
 
 const Footer = props => {
     return (
-        <div className="w-full mt-24 inline-flex justify-between px-12 sm:block md:block lg:block bg-grey relative">
+        <div className="w-full mt-24 inline-flex justify-between xxl:px-12 xl:px-12 sm:block md:block lg:block bg-grey relative pb-8">
             {" "}
             <div className="mx-auto inline-flex sm:block md:block w-1300 sm:w-full md:w-full lg:w-full">
                 <div className="w-1/8 sm:w-full md:w-full lg:w-full sm:hidden md:hidden lg:hidden xl:hidden">
@@ -17,13 +17,13 @@ const Footer = props => {
                         className="mt-8"
                     />
                 </div>
-                <div className="mt-6 sm:pt-10 md:pt-10 pl-6 w-1/4 lg:w-1/3 lg:pl-2 md:w-full sm:w-full sm:pl-0 md:pl-0 sm:block md:block">
+                <div className="mt-6 sm:pt-10 md:pt-10 pl-6 w-1/4 lg:w-1/3 lg:pl-6 md:w-full sm:w-full sm:pl-0 md:pl-0 sm:block md:block">
                     {" "}
                     <h3 className="text-yellow-dark pl-2 uppercase text-2xl font-extrabold sm:pl-0 md:pl-0 sm:text-center md:text-center">
                         Menu
                     </h3>
-                    <ul className="text-white font-bold p-2 inline-flex sm:w-full sm:flex sm:mx-auto sm:justify-center md:w-full md:flex md:mx-auto md:justify-center">
-                        <div className="mr-4">
+                    <ul className="text-white font-bold px-2 inline-flex sm:w-full sm:flex sm:mx-auto sm:justify-center md:w-full md:flex md:mx-auto md:justify-center">
+                        <div className="sm:ml-4 md:ml-4">
                             <Link href="/about">
                                 <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
                                     About
@@ -33,43 +33,48 @@ const Footer = props => {
                                 <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
                                     Contact Us
                                 </li>
+                            </Link>{" "}
+                            <Link href="/grmination">
+                                <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
+                                    Germination
+                                </li>
+                            </Link>{" "}
+                            <Link href="/partners">
+                                <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
+                                    Partners
+                                </li>
                             </Link>
                             <Link href="/articles">
                                 <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
                                     Articles
                                 </li>
                             </Link>
-
-                            <Link href="/faq">
-                                <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
-                                    FAQ
+                        </div>
+                        <div className="ml-4">
+                            <Link href="/faq#delivery">
+                                <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
+                                    Delivery
                                 </li>
                             </Link>
-                        </div>
-                        <div className="ml-2">
+                            <Link href="/faq#payment">
+                                <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
+                                    Payment
+                                </li>
+                            </Link>
                             <Link href="/privacy">
                                 <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
                                     Privacy Policy
                                 </li>
                             </Link>
-                            <Link href="/faq">
-                                <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
-                                    Delivery/Payment
-                                </li>
-                            </Link>
-                            <Link href="/faq">
-                                <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
-                                    Delivery/Payment
-                                </li>
-                            </Link>
-                            <Link href="/partners">
-                                <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
-                                    Partners
-                                </li>
-                            </Link>
+
                             <Link href="/affiliates">
                                 <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
                                     Affiliates
+                                </li>
+                            </Link>
+                            <Link href="/faq">
+                                <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
+                                    FAQ
                                 </li>
                             </Link>
                         </div>
