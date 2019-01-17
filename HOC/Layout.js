@@ -91,7 +91,7 @@ class Layout extends Component {
                     </div>
                 </div>
                 <Cart {...this.props} />
-                {/* <Footer {...this.props} /> */}
+                <Footer {...this.props} />
             </div>
         );
     }
