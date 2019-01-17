@@ -30,11 +30,11 @@ const initialState = {
             width: "300vw"
         },
         lg: {
-            positions: ["translateX(660px)", "translateX(-865px)", "translateX(-2390px)"],
+            positions: ["translateX(327px)", "translateX(-582px)", "translateX(-1490px)"],
             width: "2100px"
         },
         xl: {
-            positions: ["translateX(440px)", "translateX(-865px)", "translateX(-2390px)"],
+            positions: ["translateX(440px)", "translateX(-725px)", "translateX(-1890px)"],
             width: "2700px"
         },
         xxl: {

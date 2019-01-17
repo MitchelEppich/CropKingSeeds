@@ -45,15 +45,17 @@ const Carousel = props => {
     });
 
     return (
-        <div className="sm:w-full sm:pt-4 shadow-lg h-400 pt-12 text-xl relative overflow-hidden mx-auto bg-white">
-            <div className="w-1/3 sm:w-2/3 sm:ml-16 ml-24 absolute z-0">
-                <h2 className="px-4 my-4 text-center">Step {currentStep + 1}</h2>
-                <p className="w-full slow px-4">{carousel.steps[currentStep].instruction}</p>
+        <div className="sm:w-full sm:pt-4 shadow-lg sm:h-400 md:h-400 lg:h-250 xl:h-300 xxl:h-400 xl:pt-1 xxl:pt-12 text-xl relative overflow-hidden mx-auto bg-white">
+            <div className="w-1/3 sm:mb-6 md:mb-6 sm:pin-b md:pin-b sm:h-48 md:h-48 sm:w-full md:w-full lg:ml-24 xl:ml-24 xxl:ml-24 absolute z-0">
+                <h2 className="px-4 lg:my-2 xl:my-2 xxl:my-4 text-center">Step {currentStep + 1}</h2>
+                <p className="w-full slow sm:px-24 md:px-24 lg:px-2 xl:px-4 xxl:px-4 lg:text-base">
+                    {carousel.steps[currentStep].instruction}
+                </p>
             </div>
             <div
                 style={{
                     width: carouselWidth,
-                    height: "340px",
+                    height: "100%",
                     top: "0",
                     position: "absolute",
                     transform: "translateZ(1000px) " + carouselPositions[currentStep],
