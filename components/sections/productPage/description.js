@@ -9,9 +9,9 @@ const Description = props => {
             </span>
         );
     });
+
     return (
         <div>
-            {/* <p className="p-2 text-justify">{_product.description}</p> */}
             {props.viewProduct.showFullDescription ? (
                 <p className="p-2">
                     {_product.description}

@@ -11,7 +11,7 @@ const addToCart = props => {
 
   return (
     <div className="w-full">
-      <div className="w-container mx-auto mt-4">
+      <div className="w-container sm:w-full mx-auto mt-4">
         <div className="inline-flex items-center flex w-full my-2">
           <div className="">
             <p className="w-100 text-left text-sm text-grey font-bold mx-auto">
@@ -28,7 +28,7 @@ const addToCart = props => {
           </p>
         </div>
       </div>
-      <div className="w-1/4 h-8  w-container mx-auto">
+      <div className="w-1/4 h-8 sm:w-full w-container mx-auto">
         {props.cart.potentialQuantity > 1 ? (
           <div className="inline-flex flex my-2 items-center ">
             <div>
@@ -50,7 +50,7 @@ const addToCart = props => {
         ) : null}
       </div>
 
-      <div className="w-container mx-auto">
+      <div className="w-container sm:w-full mx-auto">
         <div className="w-full ml-0 flex justify-start">
           <SeedSelectModule {...props} product={currentProduct} />
         </div>

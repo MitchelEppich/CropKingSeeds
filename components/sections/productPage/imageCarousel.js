@@ -10,21 +10,12 @@ const imageCarousel = props => {
       </div>
     );
   });
-  return (
-    <div className="w-full h-productImg flex justify-center justify-between">
+  return <div className="w-full h-productImg sm:h-300 flex md:w-400 sm:w-300">
       <div className="flex flex-wrap content-start w-12">{images}</div>
       <div className="flex flex-wrap w-3/4 mx-4">
-        <img
-          className="h-productImg mx-auto"
-          src={
-            props.viewProduct.currentProduct.images[
-              props.viewProduct.currentImage
-            ]
-          }
-        />
+        <img className="h-productImg mx-auto sm:h-250 sm:w-150 sm:my-auto md:h-300 md:w-250 md:my-auto lg:h-300 lg:w-250 lg:my-auto" src={props.viewProduct.currentProduct.images[props.viewProduct.currentImage]} />
       </div>
-    </div>
-  );
+    </div>;
 };
 
 export default imageCarousel;

@@ -10,20 +10,16 @@ const data = props => {
   pthcWidth = _product.pthc[1] * 2 + "%";
 
   let graphStyle = {
-    borderTopLeftRadius: "20px",
+    borderTopLeftRadius: "15px",
     overflow: "hidden",
-    borderBottomRightRadius: "20px"
+    borderBottomRightRadius: "15px"
   };
-  let graphDescription = {
-    borderTopLeftRadius: "20px",
-    overflow: "hidden",
-    borderBottomRightRadius: "20px"
-  };
+
   return (
     <div
       style={graphStyle}
-      className="w-3/5 mx-auto bg-grey-lightest flex flex-wrap content-start shadow border-grey-lighter border">
-      <div className="w-full text-white bg-white p-2">
+      className="w-3/5 xl:w-full lg:w-full md:w-container sm:w-full mx-auto bg-grey-lightest flex flex-wrap content-start shadow border-grey-lighter border">
+      <div className="w-full text-white bg-white">
         <div className="w-150 h-150 mx-auto">
           <p
             className={
@@ -79,7 +75,7 @@ const data = props => {
           </svg>
         </div>
       </div>
-      <div className="w-full bg-white py-1">
+      <div className="w-full bg-white">
         <div className="w-full items-center bg-grey-lightest p-1 pl-3 flex text-white justify-start my-1 border-b border-t border-grey-lighter">
           <p className="text-black font-bold my-1 mr-2  py-1">THC</p>
           <div
@@ -116,10 +112,10 @@ const data = props => {
           </div>
         </div>
         {_product.pcbn[1] > 0 ? (
-          <div className="w-full h-8 flex text-white justify-start my-2">
+          <div className="w-full items-center bg-grey-lightest p-1 pl-3 flex text-white justify-start my-1 border-b border-grey-lighter">
             <p className="text-black font-bold my-1 mr-2  py-1">CBN</p>{" "}
             <div
-              className="bg-purple pl-2 px-4 text-xs flex items-center"
+              className="bg-purple h-8 pl-2 px-4 text-xs flex items-center"
               style={{
                 width: pcbnWidth,
                 borderTopRightRadius: "5px",

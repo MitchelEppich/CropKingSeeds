@@ -29,7 +29,7 @@ const Partners = props => {
                     information in the list below.
                 </p>
             </div>
-            <div className="flex flex-wrap flex-wrap w-full mt-8">
+            <div className="flex flex-wrap justify-around w-full mt-8">
                 {showPartners()}
                 {/* <PartnerCard {...props} />
                 <PartnerCard {...props} />
