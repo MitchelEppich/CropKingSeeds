@@ -1,0 +1,38 @@
+const mongoose = require("mongoose");
+
+const Schema = mongoose.Schema;
+
+const OrderSchema = Schema({
+  billAddress: String,
+  billApartment: String,
+  billCity: String,
+  billCountry: String,
+  billEmail: String,
+  billFullName: String,
+  billPhone: String,
+  billPostalZip: String,
+  billState: String,
+  shipAddress: String,
+  shipApartment: String,
+  shipCity: String,
+  shipCountry: String,
+  shipEmail: String,
+  shipFullName: String,
+  shipPhone: String,
+  shipPostalZip: String,
+  shipState: String,
+  shipCost: Number,
+  shipDetail: String,
+  orderId: Number,
+  transactionId: Number,
+  productList: String,
+  tax: Number,
+  provTax: Number,
+  provTaxType: String,
+  currency: String,
+  coupon: String,
+  paymentMethod: String,
+  paymentStatus: String
+});
+
+module.exports = OrderSchema;

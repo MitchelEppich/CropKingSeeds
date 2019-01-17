@@ -3616,6 +3616,10 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
+jstoxml@^1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/jstoxml/-/jstoxml-1.4.4.tgz#b6476bec75007fd01df965b1a82d653685d269e8"
+
 junk@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/junk/-/junk-1.0.3.tgz#87be63488649cbdca6f53ab39bec9ccd2347f592"
