@@ -22,23 +22,27 @@ const initialState = {
         ],
         currentStep: 0,
         sm: {
-            positions: ["translateX(660px)", "translateX(-865px)", "translateX(-2390px)"],
-            width: "300vw"
+            positions: ["translateX(-0.5rem)", "translateX(calc(-100vw + 1.5rem))", "translateX(calc(-200vw + 4rem))"],
+            width: "calc(300vw - 6rem)"
         },
         md: {
-            positions: ["translateX(660px)", "translateX(-865px)", "translateX(-2390px)"],
-            width: "300vw"
+            positions: [
+                "translateX(-0.5rem)",
+                "translateX(calc(-100vw + 1.5rem))",
+                "translateX(calc(-200vw + 3.5rem))"
+            ],
+            width: "calc(300vw - 6rem)"
         },
         lg: {
-            positions: ["translateX(327px)", "translateX(-582px)", "translateX(-1490px)"],
+            positions: ["translateX(118px)", "translateX(-582px)", "translateX(-1282px)"],
             width: "2100px"
         },
         xl: {
-            positions: ["translateX(440px)", "translateX(-725px)", "translateX(-1890px)"],
+            positions: ["translateX(174px)", "translateX(-725px)", "translateX(-1625px)"],
             width: "2700px"
         },
         xxl: {
-            positions: ["translateX(660px)", "translateX(-865px)", "translateX(-2390px)"],
+            positions: ["translateX(335px)", "translateX(-865px)", "translateX(-2065px)"],
             width: "3600px"
         }
     }

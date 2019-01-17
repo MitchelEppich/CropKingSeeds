@@ -47,8 +47,8 @@ const Carousel = props => {
     return (
         <div className="sm:w-full sm:pt-4 shadow-lg sm:h-400 md:h-400 lg:h-250 xl:h-300 xxl:h-400 xl:pt-1 xxl:pt-12 text-xl relative overflow-hidden mx-auto bg-white">
             <div className="w-1/3 sm:mb-6 md:mb-6 sm:pin-b md:pin-b sm:h-48 md:h-48 sm:w-full md:w-full lg:ml-24 xl:ml-24 xxl:ml-24 absolute z-0">
-                <h2 className="px-4 lg:my-2 xl:my-2 xxl:my-4 text-center">Step {currentStep + 1}</h2>
-                <p className="w-full slow sm:px-24 md:px-24 lg:px-2 xl:px-4 xxl:px-4 lg:text-base">
+                <h2 className="px-4 sm:my-2 lg:my-2 xl:my-2 xxl:my-4 text-center">Step {currentStep + 1}</h2>
+                <p className="w-full slow sm:px-8 sm:text-sm md:text-base md:px-24 lg:px-2 xl:px-4 xxl:px-4 lg:text-base">
                     {carousel.steps[currentStep].instruction}
                 </p>
             </div>
@@ -60,7 +60,7 @@ const Carousel = props => {
                     position: "absolute",
                     transform: "translateZ(1000px) " + carouselPositions[currentStep],
                     display: "flex",
-                    justifyContent: "space-between",
+                    justifyContent: "space-around",
                     transition: "0.8s all ease-in-out"
                 }}>
                 {images}
@@ -99,7 +99,9 @@ const Carousel = props => {
                 </button>
             </div>
             <div className="w-full h-60px absolute pin-b">
-                <div className="bg-grey-light h-1px w-full px-32 mt-8 flex justify-between mx-auto">{progressDivs}</div>
+                <div className="bg-grey-light h-1px w-full sm:px-8 px-32 mt-8 flex justify-between mx-auto">
+                    {progressDivs}
+                </div>
             </div>
         </div>
     );
