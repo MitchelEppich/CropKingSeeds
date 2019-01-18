@@ -238,6 +238,12 @@ svg {
 
 ////////////////
 // ARTICLES PAGE
+.articleSlider {
+    object-fit: cover;
+    height: 600px;
+    width: 100%;
+    filter: brightness(0.5);
+}
 .scale-item {
     transform: scale(1);
     transition: transform 0.3s ease;
@@ -578,6 +584,12 @@ svg {
 
     ///////////////
     // ARTICLE PAGE
+    .articleSlider {
+        object-fit: cover;
+        height: 400px;
+        width: 100%;
+        filter: brightness(0.5);
+    }
     // END ARTICLE PAGE
     ///////////////////
 

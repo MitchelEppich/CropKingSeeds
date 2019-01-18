@@ -576,6 +576,7 @@ module.exports = {
         "60px": "60px",
         "75px": "75px",
         "100": "100px",
+        "125": "125px",
         "150": "150px",
         "200": "200px",
         "250": "250px",
@@ -590,7 +591,8 @@ module.exports = {
         "900": "900px",
         productImg: "370px",
         full: "100%",
-        screen: "100vh"
+        screen: "100vh",
+        "3xscreen": "300vh"
     },
 
     /*
@@ -803,7 +805,10 @@ module.exports = {
         "16": "4rem",
         "20": "5rem",
         "24": "6rem",
-        "32": "8rem"
+        "32": "8rem",
+        "48": "12rem",
+        "54": "15rem",
+        "64": "16rem"
     },
 
     /*
