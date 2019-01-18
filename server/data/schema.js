@@ -9,8 +9,8 @@ type Query {
   order(input: OrderInput!): Order
   allOrders: [Order]!
 
-  getNewOrderId: String
   getBitcoinData(input: BitcoinDataInput): String
+  getNewOrderId: Int
 }
 
 input BitcoinDataInput {
@@ -128,7 +128,7 @@ input OrderInput {
   shipCost: Float
   shipDetail: String
   orderId: Int
-  transactionId: Int
+  transactionId: String
   productList: String
   tax: Float
   provTax: Float
@@ -137,6 +137,10 @@ input OrderInput {
   coupon: String
   paymentMethod: String
   paymentStatus: String
+}
+
+input OrderProcessInput {
+  content: String
 }
 
 input PaymentInput {
@@ -149,13 +153,22 @@ input PaymentInput {
   cvv: String
 }
 
+type PaymentResponse {
+  transactionId: String
+  status: String
+  approvalCode: String
+  response: String
+  processor: String
+}
+
 type Mutation {
   createStrain(input: StrainInput): Strain
   typeToDom: String
   
   createOrder(input: OrderInput): Order
 
-  processPayment(input: PaymentInput): String
+  processPayment(input: PaymentInput): PaymentResponse
+  processOrder(input: OrderProcessInput): Order
 }
 
 `;

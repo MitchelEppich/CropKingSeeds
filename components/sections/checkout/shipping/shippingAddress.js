@@ -195,7 +195,7 @@ const ShippingAddress = props => {
               let _target = e.target;
               let _key = _target.id;
               let _value = _target.value;
-              let _tag = "Apartment";
+              let _tag = "Appartment";
 
               props.modifyOrderDetails({
                 orderDetails: _orderDetails,

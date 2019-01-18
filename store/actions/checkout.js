@@ -95,15 +95,16 @@ const getActions = uri => {
         let _paymentMethod = _orderDetails.payment.method.value;
 
         if (_paymentMethod == "Credit Card") {
-          processPayment(_orderDetails.payment, uri).then(res => {
-            console.log(res);
-            processOrder(_orderDetails).then(res => {
+          getNewOrderId(uri).then(res => {
+            console.log(res)
+            _orderDetails.payment.orderId = {value: res, tag: "Order_ID"}
+            processPayment(_orderDetails.payment, uri).then(res => {
               console.log(res);
-              archiveOrder().then(res => {
+              processOrder(_orderDetails, res, uri).then(res => {
                 console.log(res);
               });
             });
-          });
+          })
           // Proccess Credit Card
           // Process Order
           // Save Order
@@ -125,6 +126,10 @@ const getActions = uri => {
   return { ...objects };
 };
 const query = {
+  getNewOrderId: gql`
+  query {
+  getNewOrderId
+}`,
   getBitcoinData: gql`
     query($value: String, $currency: String) {
       getBitcoinData(input: { value: $value, currency: $currency })
@@ -133,6 +138,42 @@ const query = {
 };
 
 const mutation = {
+  processOrder: gql`
+mutation($content:String) {
+  processOrder(input:{content:$content}) {
+    _id
+    billAddress
+    billApartment
+    billCity
+    billCountry
+    billEmail
+    billFullName
+    billPhone
+    billPostalZip
+    billState
+    shipAddress
+    shipApartment
+    shipCity
+    shipCountry
+    shipEmail
+    shipFullName
+    shipPhone
+    shipPostalZip
+    shipState
+    shipCost
+    shipDetail
+    orderId
+    transactionId
+    productList
+    tax
+    provTax
+    provTaxType
+    currency
+    coupon
+    paymentMethod
+    paymentStatus
+  }
+}`,
   processPayment: gql`
     mutation(
       $orderId: String
@@ -153,31 +194,42 @@ const mutation = {
           cardHolderName: $cardHolderName
           cvv: $cvv
         }
-      )
+      ) {
+        transactionId
+        status
+        approvalCode
+        response
+        processor
+      }
     }
   `
 };
+let processOrder = async (orderDetails, res, uri) => {
+  return await new Promise(async (resolve, reject) => {
+    let _orderPost = {
+      ...buildOrderPost(orderDetails),
+      credit_card_remark: res.status,
+      Descriptor: res.processor,
+      Transaction_ID: res.transactionId,
+    }
 
-const toUrlEncoded = obj =>
-  Object.keys(obj)
-    .map(k => encodeURIComponent(k) + "=" + encodeURIComponent(obj[k]))
-    .join("&");
+    const link = new HttpLink({ uri, fetch: fetch });
+    const operation = {
+      query: mutation.processOrder,
+      variables: { content: JSON.stringify(_orderPost) }
+    };
 
-let archiveOrder = () => {
-  return new Promise((resolve, reject) => {
-    return resolve("Order Archived");
+    resolve(await makePromise(execute(link, operation))
+      .then(async data => {
+        return data.data.processOrder
+      })
+      .catch(error => console.log(error)))
   });
 };
-let processOrder = orderDetails => {
-  return new Promise((resolve, reject) => {
-    let _orderPost = buildOrderPost(orderDetails);
-    return resolve("Order Processed");
-  });
-};
-let processPayment = (paymentDetails, uri) => {
-  return new Promise(async (resolve, reject) => {
+let processPayment = async (paymentDetails, uri) => {
+  return await new Promise(async (resolve, reject) => {
     let paymentPost = {
-      orderId: 10000000 + "-KMH-1",
+      orderId: paymentDetails.orderId.value + "-KMH-1",
       amount: paymentDetails.orderTotal.value.toFixed(2),
       cardNumber: paymentDetails.cardNumber.value,
       cardType: paymentDetails.type.value,
@@ -194,11 +246,26 @@ let processPayment = (paymentDetails, uri) => {
       variables: { ...paymentPost }
     };
 
-    return await makePromise(execute(link, operation))
-      .then(data => {
-        return resolve("Payment Processed", data);
+    resolve(await makePromise(execute(link, operation))
+      .then(async data => {
+        return data.data.processPayment
       })
-      .catch(error => console.log(error));
+      .catch(error => console.log(error)))
+  });
+};
+let getNewOrderId = async (uri) => {
+  return await new Promise(async (resolve, reject) => {
+
+    const link = new HttpLink({ uri, fetch: fetch });
+    const operation = {
+      query: query.getNewOrderId
+    };
+
+    resolve(await makePromise(execute(link, operation))
+      .then(async data => {
+        return data.data.getNewOrderId
+      })
+      .catch(error => console.log(error)))
   });
 };
 
@@ -207,8 +274,7 @@ let buildOrderPost = orderDetails => {
   let orderPost = {
     Website_From: "cropkingseeds.com",
     CardHolderIp: _orderDetails.CardHolderIp,
-    Order_Date: moment().format("YY-MM-DD HH:mm:ss"),
-    Order_ID: 10000000
+    Order_Date: moment().format("YY-MM-DD HH:mm:ss")
   };
   if (_orderDetails.payment.ccExpireMonth != null) {
     let _month = _orderDetails.payment.ccExpireMonth.value;
@@ -247,7 +313,12 @@ let buildOrderPost = orderDetails => {
         let _key = obj.tag + suffix;
         if (prefix == "Bill" && _key == "Postal_Zip_Code")
           _key = "PostalZipCode";
-        orderPost[prefix + _key] = obj.value;
+        if (prefix == "Bill" && _key == "PhoneNum")
+          _key = "Phone";
+        let $key = (["Shipped_Type", "Shipping"].includes(_key) ? "" : prefix) + _key
+        let $value = obj.value;
+        if ($key == "Order_ID") $value = parseInt($value)
+        orderPost[$key] = $value;
       }
     }
   }

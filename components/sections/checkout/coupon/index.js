@@ -3,6 +3,8 @@ import React from "react";
 const Coupon = props => {
   let currency = props.checkout.viewCurrency;
 
+  let pageGroup = "payment";
+
   return (
     <div className="w-full flex items-center h-10 inline-flex mt-4 p-2 mb-8">
       <div className="w-1/3">

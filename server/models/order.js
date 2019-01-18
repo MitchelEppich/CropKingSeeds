@@ -24,7 +24,7 @@ const OrderSchema = Schema({
   shipCost: Number,
   shipDetail: String,
   orderId: Number,
-  transactionId: Number,
+  transactionId: String,
   productList: String,
   tax: Number,
   provTax: Number,

@@ -59,7 +59,8 @@
     "subscriptions-transport-ws": "^0.9.14",
     "tailwindcss": "^0.6.5",
     "webpack-bundle-analyzer": "^2.13.1",
-    "ws": "^6.0.0"
+    "ws": "^6.0.0",
+    "xml-js": "^1.6.9"
   },
   "devDependencies": {
     "babel-plugin-graphql-tag": "^1.6.0"
