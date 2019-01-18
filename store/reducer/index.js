@@ -16,6 +16,7 @@ import ShopReducer from "./shop";
 import PartnerReducer from "./partner";
 import ViewProductReducer from "./viewProduct";
 import DetailReducer from "./detail";
+import AboutReducer from "./about";
 import GerminationReducer from "./germination";
 
 const initialState = {
@@ -140,5 +141,6 @@ export default combineReducers({
     partner: PartnerReducer,
     viewProduct: ViewProductReducer,
     detail: DetailReducer,
-    germination: GerminationReducer
+    germination: GerminationReducer,
+    about: AboutReducer
 });

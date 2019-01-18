@@ -10,14 +10,25 @@ const Carousel = props => {
         let style =
             currentStep == index
                 ? {
-                      transform: "translateY(-25px)",
-                      width: "30px",
-                      height: "30px",
+                      transform: "translateY(-40px)",
+                      width: "50px",
+                      height: "50px",
                       paddingTop: "2px",
                       fontSize: "1.5rem",
-                      background: "#bb1724"
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat"
                   }
-                : { transform: "translateY(-25px)", width: "30px", height: "30px" };
+                : {
+                      transform: "translateY(-35px)",
+                      width: "40px",
+                      height: "40px",
+                      paddingTop: "2px",
+                      fontSize: "1.5rem",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat"
+                  };
         return (
             <div
                 onClick={() => {
@@ -25,21 +36,7 @@ const Carousel = props => {
                 }}
                 className="bg-white p-4 z-50 cursor-pointer scale-item"
                 key={index}>
-                <div
-                    style={style}
-                    className="bg-grey-light hover:bg-red-dark justify-center flex items-center text-center text-white ">
-                    <span
-                        onClick={() => {
-                            props.changeStep({
-                                _incrOrDecr: 0,
-                                _currentStep: index,
-                                _totalSteps: carousel.steps.length
-                            });
-                        }}
-                        style={{ margin: "0 auto", zIndex: 50, cursor: "pointer" }}>
-                        {index + 1}
-                    </span>
-                </div>
+                <div style={{ ...style, backgroundImage: "url(" + step.icon + ")" }} />
             </div>
         );
     });
