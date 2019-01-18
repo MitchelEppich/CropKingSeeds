@@ -17,7 +17,7 @@ const Footer = props => {
                         className="mt-8"
                     />
                 </div>
-                <div className="mt-6 sm:pt-10 md:pt-10 pl-6 w-1/4 lg:w-1/3 lg:pl-6 md:w-full sm:w-full sm:pl-0 md:pl-0 sm:block md:block">
+                <div className="mt-6 sm:pb-4  sm:pt-4 md:pt-10 pl-6 w-1/4 lg:w-1/3 lg:pl-6 md:w-full sm:w-full sm:pl-0 md:pl-0 sm:block md:block">
                     {" "}
                     <h3 className="text-yellow-dark pl-2 uppercase text-2xl font-extrabold sm:pl-0 md:pl-0 sm:text-center md:text-center">
                         Menu
@@ -81,7 +81,7 @@ const Footer = props => {
                     </ul>
                 </div>
                 <div
-                    className="text-white text-center mx-6 sm:mx-0 md:mx-0 sm:py-4 md:py-4 sm:bg-grey-dark
+                    className="text-white text-center mx-6 sm:mx-0 md:mx-0 sm:pt-2 sm:pb-4 md:pt-1 sm:bg-grey-dark
                   md:bg-grey-dark w-3/8 md:mt-8 pt:mt-8 md:w-full lg:w-1/3 sm:w-full sm:block md:block">
                     <h4 className="p-2 mt-4 mb-1 text-2/5xl lg:text-xl lg:mt-6 md:text-xl md:mt-6 font-extrabold">
                         Subscribe to the CKS Newsletter
