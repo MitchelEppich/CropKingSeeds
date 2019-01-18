@@ -13,7 +13,7 @@ const Carousel = props => {
                       transform: "translateY(-40px)",
                       width: "50px",
                       height: "50px",
-                      paddingTop: "2px",
+
                       fontSize: "1.5rem",
                       backgroundSize: "cover",
                       backgroundPosition: "center",
@@ -23,7 +23,7 @@ const Carousel = props => {
                       transform: "translateY(-35px)",
                       width: "40px",
                       height: "40px",
-                      paddingTop: "2px",
+
                       fontSize: "1.5rem",
                       backgroundSize: "cover",
                       backgroundPosition: "center",
@@ -34,7 +34,7 @@ const Carousel = props => {
                 onClick={() => {
                     props.changeStep({ _incrOrDecr: 0, _currentStep: index, _totalSteps: carousel.steps.length });
                 }}
-                className="bg-white p-4 z-50 cursor-pointer scale-item"
+                className="bg-white z-50 pt-3 cursor-pointer scale-item"
                 key={index}>
                 <div style={{ ...style, backgroundImage: "url(" + step.icon + ")" }} />
             </div>
