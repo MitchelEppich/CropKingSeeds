@@ -7,7 +7,7 @@ const CategoriesList = props => {
                 <h2 className="text-3/5xl font-extrabold p-2 text-center">Article Categories</h2>
             </div>
             <div className="w-full mt-2 text-center">
-                <ul className="inline-flex md:flex-wrap justify-start p-2 mx-2">
+                <ul className="inline-flex sm:flex-wrap md:flex-wrap justify-start p-2 mx-2">
                     <li className="p-1 font-bolder mx-4 md:my-2 md:mx-2 cursor-pointer step-text">
                         <h3>Growing Cannabis</h3>
                     </li>

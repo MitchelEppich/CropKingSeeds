@@ -20,6 +20,7 @@ const menu = props => {
             if (currency != null && country == currency.label) continue;
             arr.push(
                 <div
+                    key={country}
                     className="bg-white inline-flex cursor-pointer hover:bg-grey-lightest"
                     style={{
                         marginTop: "5px",
@@ -152,6 +153,7 @@ const menu = props => {
 
                                 arr.push(
                                     <div
+                                        key={i}
                                         className="ray"
                                         style={{
                                             height: `${_height}px`,

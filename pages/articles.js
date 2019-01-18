@@ -22,7 +22,7 @@ class Index extends Component {
                     <ArticleSlider {...this.props} />
                     <div
                         style={{ marginTop: "-150px" }}
-                        className="inline-flex md:flex-wrap lg:flex-wrap justify-center md:mb-24  w-full md:relative lg:relative absolute">
+                        className="inline-flex sm:flex-wrap md:flex-wrap lg:flex-wrap justify-center md:mb-24 sm:mb-24 sm:pt-12  w-full sm:relative md:relative lg:relative absolute">
                         <SmArticles {...this.props} src="SMimage-1.jpg" />
                         <SmArticles {...this.props} src="SMimage-2.jpg" />
                         <SmArticles {...this.props} src="SMimage-3.jpg" />
@@ -31,14 +31,14 @@ class Index extends Component {
                         <LgArticles {...this.props} />
                     </div>
                     <div className="w-full mt-48 xl:mt-24 lg:mt-12 flex flex-wrap">
-                        <div className="w-2/5 md:w-full">
+                        <div className="w-2/5 md:w-full sm:w-full">
                             <ArticleList {...this.props} />
                         </div>
-                        <div className="w-3/5 md:w-full">
+                        <div className="w-3/5 md:w-full sm:w-full">
                             <MdArticles {...this.props} />
                         </div>
                     </div>
-                    <div className="inline-flex md:flex-wrap justify-center w-full mt-12">
+                    <div className="inline-flex sm:flex-wrap md:flex-wrap justify-center w-full mt-12">
                         <SmArticles {...this.props} src="SMimage-2.jpg" />
                         <SmArticles {...this.props} src="SMimage-3.jpg" />
                         <SmArticles {...this.props} src="SMimage-1.jpg" />

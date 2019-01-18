@@ -867,6 +867,12 @@ svg {
 
     ///////////////
     // ARTICLE PAGE
+    .articleSlider {
+        object-fit: cover;
+        height: 300px;
+        width: 100%;
+        filter: brightness(0.5);
+    }
     // END ARTICLE PAGE
     ///////////////////
 

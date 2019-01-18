@@ -81,7 +81,7 @@ class Layout extends Component {
                 {/* <Head>
                     <script crossorigin="*" async src="https://embed.tawk.to/5ae8bd0d5f7cdf4f0533c472/default" />
                 </Head> */}
-                <Header {...this.props} />
+                {/* <Header {...this.props} /> */}
                 {/* <AgeVerification {...this.props} /> */}
                 <div className="pt-32">
                     {" "}
@@ -91,7 +91,7 @@ class Layout extends Component {
                     </div>
                 </div>
                 <Cart {...this.props} />
-                <Footer {...this.props} />
+                {/* <Footer {...this.props} /> */}
             </div>
         );
     }
