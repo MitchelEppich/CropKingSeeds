@@ -25,7 +25,8 @@ import Breadcrumb from "../components/sections/productPage/breadcrumb";
 
 class Index extends Component {
   render() {
-    return <Layout>
+    return (
+      <Layout>
         <div className="p-8 lg:px-4 lg:py-8 md:px-4 md:py-8 sm:px-2 sm:py-8">
           <Breadcrumb {...this.props} />
           <div className="flex flex-wrap justify-start pt-2">
@@ -39,11 +40,26 @@ class Index extends Component {
                 </h1>
               </div>
               <div className="mt-1 cursor-pointer ml-1 pl-10 sm:pl-0">
-                <FontAwesomeIcon icon={faCannabis} className="text-red-dark fa-lg mr-1" />
-                <FontAwesomeIcon icon={faCannabis} className="text-red-dark fa-lg mx-1" />
-                <FontAwesomeIcon icon={faCannabis} className="text-red-dark fa-lg mx-1" />
-                <FontAwesomeIcon icon={faCannabis} className="text-red-dark fa-lg mx-1" />
-                <FontAwesomeIcon icon={faCannabis} className="text-red-dark fa-lg mx-1" />
+                <FontAwesomeIcon
+                  icon={faCannabis}
+                  className="text-red-dark fa-lg mr-1"
+                />
+                <FontAwesomeIcon
+                  icon={faCannabis}
+                  className="text-red-dark fa-lg mx-1"
+                />
+                <FontAwesomeIcon
+                  icon={faCannabis}
+                  className="text-red-dark fa-lg mx-1"
+                />
+                <FontAwesomeIcon
+                  icon={faCannabis}
+                  className="text-red-dark fa-lg mx-1"
+                />
+                <FontAwesomeIcon
+                  icon={faCannabis}
+                  className="text-red-dark fa-lg mx-1"
+                />
                 <span className="ml-2 font-bold text-sm hover:text-grey-light">
                   5 Leaves (81 reviews)
                 </span>
@@ -57,17 +73,17 @@ class Index extends Component {
                     <Share {...this.props} />
                   </div>
                 </div>
-                <div className="w-1/2 mt-4 relative sm:w-full xl:w-1/2 md:w-full ml-auto xl:h-full lg:h-full md:h-250 sm:h-250 lg:mt-12 xl:mt-12 md:mt-12 sm:mt-12 lg:mr-6 xl:mr-10 md:mr-8">
+                {/* <div className="w-1/2 mt-4 relative sm:w-full xl:w-1/2 md:w-full ml-auto xl:h-full lg:h-full md:h-250 sm:h-250 lg:mt-12 xl:mt-12 md:mt-12 sm:mt-12 lg:mr-6 xl:mr-10 md:mr-8">
                   <div className="absolute pin-b xl:pin-r xl:pin lg:pin-r lg:pin md:pin-r md:pin sm:pin-r sm:pin">
-                    <Data {...this.props} />
+                    <Data {...this.props} /> 
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="w-full px-20 mt-4 xl:block xl:w-3/4 xl:px-8 xl:absolute-center lg:block lg:w-3/4 lg:px-8 lg:absolute-center md:block md:w-container md:mx-auto md:px-2 md:absolute-center sm:block sm:w-full sm:px-4 sm:absolute-center">
               <Description {...this.props} />
-
-              <Details {...this.props} />
+              <Data {...this.props} />
+              {/* <Details {...this.props} /> */}
             </div>
 
             <div className="w-full mt-12">
@@ -83,7 +99,8 @@ class Index extends Component {
             <Reviews {...this.props} />
           </div>
         </div>
-      </Layout>;
+      </Layout>
+    );
   }
 }
 
