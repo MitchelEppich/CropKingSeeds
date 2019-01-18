@@ -10,24 +10,25 @@ import Layout from "../HOC/Layout";
 import About from "../components/sections/about";
 
 class Index extends Component {
-  render() {
-    return (
-      <Layout>
-        <div className="pt-0 min-h-500">
-          <About />
-        </div>
-      </Layout>
-    );
-  }
+    render() {
+        return (
+            <Layout>
+                <div className="pt-0 min-h-500">
+                    <About {...this.props} />
+                </div>
+            </Layout>
+        );
+    }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input))
-  };
+    return {
+        setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+        setCurrentHistoryObj: index => dispatch(actions.setCurrentHistoryObj(index))
+    };
 };
 
 export default connect(
-  state => state,
-  mapDispatchToProps
+    state => state,
+    mapDispatchToProps
 )(withData(Index));

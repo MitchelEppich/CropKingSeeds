@@ -11,7 +11,7 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 const ShareButtons = props => {
   return (
-    <div className="fixed sm:hidden md:hidden pin-l mt-32">
+    <div className="fixed pin-l mt-32 z-999 md:hidden sm:hidden ">
       <div
         style={{ background: "rgba(90, 90, 90, 0.63)" }}
         className="w-16 shadow p-2 text-white rounded-lg text-right -ml-4">

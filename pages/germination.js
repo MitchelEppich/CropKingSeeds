@@ -8,8 +8,6 @@ import { connect } from "react-redux";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import Carousel from "../components/sections/germination/carousel";
-import Tips from "../components/sections/germination/tips";
-import Video from "../components/sections/germination/video";
 import OtherProducts from "../components/sections/productPage/otherProducts";
 
 class Index extends Component {
@@ -24,7 +22,7 @@ class Index extends Component {
                         </div>
                         <div className="w-full mt-8">
                             <h3 className="w-full font-black text-2xl h-12 my-2">Featured Products</h3>
-                            <OtherProducts {...this.props} />
+                            {/* <OtherProducts {...this.props} /> */}
                         </div>
                     </div>
                 </div>

@@ -14,6 +14,7 @@ import Cart from "./cart";
 import Checkout from "./checkout";
 import Navigation from "./navigation";
 import Shop from "./shop";
+import About from "./about";
 import ViewProduct from "./viewProduct";
 import Germination from "./germination";
 
@@ -26,7 +27,8 @@ const imports = {
     ...Navigation(uri),
     ...Shop(uri),
     ...ViewProduct(uri),
-    ...Germination(uri)
+    ...Germination(uri),
+    ...About(uri)
 };
 
 const actionTypes = {
