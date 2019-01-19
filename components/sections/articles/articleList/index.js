@@ -5,7 +5,7 @@ const ArticleList = props => {
         <div className="w-full p-2">
             <h2
                 style={{ borderBottom: "1px solid #cecece" }}
-                className="p-2 font-black lg:text-xl xl:text-2xl text-3xl xl:mb-1 md:mb-2 mb-8">
+                className="p-2 font-black lg:text-xl xl:text-2xl text-3xl xl:mb-1 md:mb-2 sm:mb-2 mb-8">
                 Harvesting Cannabis Articles
             </h2>
 

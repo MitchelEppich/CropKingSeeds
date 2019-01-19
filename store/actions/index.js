@@ -85,10 +85,11 @@ const actions = {
     setContext: input => {
         return { type: actionTypes.SET_CONTEXT, input: input };
     },
-    setHoverId: id => {
+    setHoverId: (id, turnOn) => {
         return {
             type: actionTypes.SET_HOVER_ID,
-            id: id
+            id: id,
+            turnOn: turnOn
         };
     },
     setGeneHoverIndex: index => {

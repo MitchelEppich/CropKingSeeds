@@ -51,7 +51,7 @@ class Index extends Component {
                             if (isSmallMediumOrLargeDevice) {
                                 return null;
                             }
-                            this.props.setHoverId(product._id);
+                            this.props.setHoverId(product._id, true);
                             let _index = 0;
                             while (product.price[_index] == -1) {
                                 _index++;
@@ -67,7 +67,7 @@ class Index extends Component {
                             if (isSmallMediumOrLargeDevice) {
                                 return null;
                             }
-                            this.props.setHoverId(product._id);
+                            this.props.setHoverId(product._id, false);
                         }}
                         className={
                             hoverId == product._id
@@ -104,7 +104,7 @@ class Index extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setHoverId: id => dispatch(actions.setHoverId(id)),
+        setHoverId: (id, turnOn) => dispatch(actions.setHoverId(id, turnOn)),
         quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
         expandProduct: id => dispatch(actions.expandProduct(id)),
         modifyCart: input => dispatch(actions.modifyCart(input)),

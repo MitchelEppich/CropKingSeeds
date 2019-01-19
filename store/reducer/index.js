@@ -87,7 +87,7 @@ const indexReducer = (state = initialState, action) => {
             }
         case actionTypes.SET_HOVER_ID:
             return updateObject(state, {
-                hoverId: state.hoverId == action.id ? null : action.id
+                hoverId: action.turnOn ? action.id : null
             });
         case actionTypes.SET_MEDIA_SIZE:
             return updateObject(state, {

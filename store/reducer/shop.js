@@ -23,7 +23,7 @@ export default (state = initialState, action) => {
             });
         case actionTypes.TOGGLE_SHOW_FILTERS:
             return updateObject(state, {
-                showFilters: !state.showFilters
+                showFilters: action.bool
             });
         default:
             return state;

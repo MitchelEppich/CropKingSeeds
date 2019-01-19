@@ -15,9 +15,8 @@ import Footer from "../components/partials/footer";
 import Head from "next/head";
 import ShareButtons from "../components/sections/shareButtons";
 import AgeVerification from "../components/sections/ageVerification";
-// import Particles from "react-particles-js";
-
-import Tawkto from "../components/sketches/tawkto";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faComments } from "@fortawesome/free-solid-svg-icons";
 
 class Layout extends Component {
     componentDidMount() {
@@ -32,24 +31,23 @@ class Layout extends Component {
 
         let mediaSize = this.setMediaSize();
         if (["sm", "md", "lg"].includes(mediaSize)) {
-            this.props.toggleShowFilters();
+            this.props.toggleShowFilters(false);
         }
-
         window.addEventListener("resize", () => {
             this.setMediaSize();
         });
-        // Tawkto();
+
         // let Tawk_API = Tawk_API || {},
         //     Tawk_LoadStart = new Date();
         // (function() {
-        //     let s1 = document.createElement("script");
-        //     // s0 = document.getElementsByTagName("script")[0];
+        //     let s1 = document.createElement("script"),
+        //         s0 = document.getElementsByTagName("script")[0];
         //     s1.async = true;
         //     s1.src = "https://embed.tawk.to/5ae8bd0d5f7cdf4f0533c472/default";
         //     s1.charset = "UTF-8";
         //     s1.setAttribute("crossorigin", "*");
         //     document.body.appendChild(s1);
-        //     // s0.parentNode.insertBefore(s1, s0);
+        //     s0.parentNode.insertBefore(s1, s0);
         // });
     }
 
@@ -64,11 +62,20 @@ class Layout extends Component {
         for (let mediaSize of Object.keys(mediaSizes)) {
             let _mediaSizeDim = mediaSizes[mediaSize];
             let _width = window.innerWidth;
+            // console.log(_width);
+            // console.log(Math.max(_mediaSizeDim.min, Math.min(_width, _mediaSizeDim.max)));
             if (
                 _width == Math.max(_mediaSizeDim.min, Math.min(_width, _mediaSizeDim.max)) &&
                 this.props.misc.mediaSize != mediaSize
             ) {
-                this.props.setMediaSize({ mediaSize: mediaSize });
+                if (["sm", "md"].includes(mediaSize)) {
+                    this.props.toggleShowFilters(false);
+                    this.props.setMediaSize({ mediaSize: mediaSize });
+                } else {
+                    this.props.toggleShowFilters(true);
+                    this.props.setMediaSize({ mediaSize: mediaSize });
+                }
+
                 return mediaSize;
             }
         }
@@ -77,11 +84,10 @@ class Layout extends Component {
     render() {
         return (
             <div style={{ backgroundColor: "#f3f3f3", height: "100%" }}>
-                {/* <Tawkto /> */}
-                {/* <Head>
-                    <script crossorigin="*" async src="https://embed.tawk.to/5ae8bd0d5f7cdf4f0533c472/default" />
-                </Head> */}
-                {/* <Header {...this.props} /> */}
+                <Head>
+                    <script src="../static/scripts/tawkto.js" />
+                </Head>
+                <Header {...this.props} />
                 {/* <AgeVerification {...this.props} /> */}
                 <div className="pt-32">
                     {" "}
@@ -90,8 +96,16 @@ class Layout extends Component {
                         {this.props.children}
                     </div>
                 </div>
+                <div
+                    className="fixed z-999 w-24 mb-24 h-24 bg-red-light pin-b pin-l text-white text-2xl pt-4 pl-4 rounded-tr-full rounded-br-full cursor-pointer"
+                    onClick={() => Tawk_API.toggle()}>
+                    <FontAwesomeIcon
+                        icon={faComments}
+                        className="fa-2x my-1 pr-1 hover:text-red-dark scale-item cursor-pointer"
+                    />
+                </div>
                 <Cart {...this.props} />
-                {/* <Footer {...this.props} /> */}
+                <Footer {...this.props} />
             </div>
         );
     }
@@ -106,7 +120,7 @@ const mapDispatchToProps = dispatch => {
         modifyPotentialQuantity: input => dispatch(actions.modifyPotentialQuantity(input)),
         setAgeVerification: input => dispatch(actions.setAgeVerification(input)),
         setMediaSize: input => dispatch(actions.setMediaSize(input)),
-        toggleShowFilters: () => dispatch(actions.toggleShowFilters())
+        toggleShowFilters: bool => dispatch(actions.toggleShowFilters(bool))
     };
 };
 

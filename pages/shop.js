@@ -44,7 +44,7 @@ class Index extends Component {
 const mapDispatchToProps = dispatch => {
     return {
         setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
-        setHoverId: id => dispatch(actions.setHoverId(id)),
+        setHoverId: (id, turnOn) => dispatch(actions.setHoverId(id, turnOn)),
         getStrains: () => dispatch(actions.getStrains()),
         toggleFilter: input => dispatch(actions.toggleFilter(input)),
         clearFilters: () => dispatch(actions.clearFilters()),
@@ -52,7 +52,7 @@ const mapDispatchToProps = dispatch => {
         modifyCart: input => dispatch(actions.modifyCart(input)),
         modifyPotentialQuantity: input => dispatch(actions.modifyPotentialQuantity(input)),
         clearCart: () => dispatch(actions.clearCart()),
-        toggleShowFilters: () => dispatch(actions.toggleShowFilters())
+        toggleShowFilters: bool => dispatch(actions.toggleShowFilters(bool))
     };
 };
 

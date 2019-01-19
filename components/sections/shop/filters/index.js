@@ -86,7 +86,7 @@ const filters = props => {
                     : " h-10 w-full absolute bg-white z-999 overflow-hidden lg:sticky xl:sticky xxl:sticky text-red-dark border border-grey-lighter cursor-pointer" // style={{ top: "140px" }}
             }>
             <p
-                onClick={() => props.toggleShowFilters()}
+                onClick={() => props.toggleShowFilters(!props.shop.showFilters)}
                 className="h-10 px-4 pt-2 leading-tight text-xl font-bold text-black shadow flex justify-between">
                 <span className="">Filters:</span>
                 <FontAwesomeIcon className="fa-lg " icon={faSlidersH} />

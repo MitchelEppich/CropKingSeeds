@@ -11,11 +11,11 @@ const MdArticles = props => {
                         filter: "brightness(0.5)"
                     }}
                 />
-                <div className="absolute pin mt-24 sm:mt-4 lg:mt-10 text-white sm:ml-0 ml-8">
+                <div className="absolute pin  mt-24 sm:mt-8 lg:mt-10 text-white sm:ml-0 ml-8">
                     <h2 className="p-2 font-black lg:text-2xl sm:text-xl text-3/5xl shadow-sm">
                         Cannabis Now Legal 30% Globally
                     </h2>
-                    <p className="w-full text-justify p-2 sm:pr-4 pr-24">
+                    <p className="sm:hidden w-full text-justify p-2 sm:pr-4 pr-24">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua.{" "}
                         <span className="lg:hidden md:hidden sm:hidden">
@@ -23,7 +23,7 @@ const MdArticles = props => {
                             commodo consequat.
                         </span>
                     </p>
-                    <div className="ml-2 text-center p-3 w-32 mx-auto mt-8 bg-red text-white cursor-pointer">
+                    <div className="ml-2 text-center p-3 w-32 mx-auto sm:mt-2 mt-8 bg-red text-white cursor-pointer">
                         Read More
                     </div>
                 </div>
