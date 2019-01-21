@@ -1,12 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faClock,
-  faGlobe,
-  faCannabis,
+  faBalanceScale,
+  faSortAmoutUp,
   faDna,
   faGlobeAmericas,
   faSeedling,
-  faChartLine
+  faChartLine,
+  faTree
 } from "@fortawesome/free-solid-svg-icons";
 
 const Details = props => {
@@ -19,7 +20,6 @@ const Details = props => {
     );
   });
 
-  console.log(props);
   return (
     <div className="bg-smoke-grey">
       <div
@@ -51,7 +51,7 @@ const Details = props => {
               <div
                 style={{ background: "#086554" }}
                 className="p-1 text-white w-10 h-10 ml-2 m-1">
-                <FontAwesomeIcon icon={faSeedling} className="fa-2x p-1" />
+                <FontAwesomeIcon icon={faTree} className="fa-2x ml-1 p-1" />
               </div>
               {/* <p className="p-2 font-bold text-grey uppercase text-sm"> */}
               {/* Yield: */}
@@ -122,7 +122,7 @@ const Details = props => {
               <div
                 style={{ background: "#23dc6e" }}
                 className="p-1 text-white w-10 h-10 ml-2 m-1">
-                <FontAwesomeIcon icon={faClock} className="fa-2x p-1" />
+                <FontAwesomeIcon icon={faSeedling} className="fa-2x p-1" />
               </div>
               {/* <p className="p-2 font-bold text-grey uppercase text-sm"> */}
               {/* Environment: */}

@@ -29,61 +29,57 @@ class Index extends Component {
       <Layout>
         <div className="p-8 lg:px-4 lg:py-8 md:px-4 md:py-8 sm:px-2 sm:py-8">
           <Breadcrumb {...this.props} />
-          <div className="flex flex-wrap justify-start pt-2">
-            <div className="w-1/3 flex flex-wrap justify-center xl:w-1/2 lg:w-1/2 md:w-500 sm:w-full">
-              <ImageCarousel {...this.props} />
-            </div>
-            <div className="flex flex-wrap content-start w-2/3 pl-4 xl:w-1/2 lg:w-1/2 md:w-full sm:w-full">
-              <div className="w-full">
-                <h1 className="pl-10 ml-1 font-black sm:pl-0">
-                  {this.props.viewProduct.currentProduct.name}
-                </h1>
+          <div className="flex flex-wrap justify-start pt-2 relative">
+            <div className="w-full inline-flex px-20 relative">
+              <div className="w-1/2 flex flex-wrap justify-center xl:w-1/2 lg:w-1/2 md:w-500 sm:w-full">
+                <ImageCarousel {...this.props} />
               </div>
-              <div className="mt-1 cursor-pointer ml-1 pl-10 sm:pl-0">
-                <FontAwesomeIcon
-                  icon={faCannabis}
-                  className="text-red-dark fa-lg mr-1"
-                />
-                <FontAwesomeIcon
-                  icon={faCannabis}
-                  className="text-red-dark fa-lg mx-1"
-                />
-                <FontAwesomeIcon
-                  icon={faCannabis}
-                  className="text-red-dark fa-lg mx-1"
-                />
-                <FontAwesomeIcon
-                  icon={faCannabis}
-                  className="text-red-dark fa-lg mx-1"
-                />
-                <FontAwesomeIcon
-                  icon={faCannabis}
-                  className="text-red-dark fa-lg mx-1"
-                />
-                <span className="ml-2 font-bold text-sm hover:text-grey-light">
-                  5 Leaves (81 reviews)
-                </span>
-              </div>
+              <div className="flex flex-wrap content-start w-1/2 pl-4 xl:w-1/2 lg:w-1/2 md:w-full sm:w-full">
+                <div className="w-full">
+                  <h1 className="pl-10 ml-1 font-black sm:pl-0">
+                    {this.props.viewProduct.currentProduct.name}
+                  </h1>
+                </div>
+                <div className="mt-1 cursor-pointer ml-1 pl-10 sm:pl-0">
+                  <FontAwesomeIcon
+                    icon={faCannabis}
+                    className="text-red-dark fa-lg mr-1"
+                  />
+                  <FontAwesomeIcon
+                    icon={faCannabis}
+                    className="text-red-dark fa-lg mx-1"
+                  />
+                  <FontAwesomeIcon
+                    icon={faCannabis}
+                    className="text-red-dark fa-lg mx-1"
+                  />
+                  <FontAwesomeIcon
+                    icon={faCannabis}
+                    className="text-red-dark fa-lg mx-1"
+                  />
+                  <FontAwesomeIcon
+                    icon={faCannabis}
+                    className="text-red-dark fa-lg mx-1"
+                  />
+                  <span className="ml-2 font-bold text-sm hover:text-grey-light">
+                    5 Leaves (81 reviews)
+                  </span>
+                </div>
 
-              <div className="w-full h-350 inline-flex mb-6 xl:block xl:h-300 lg:block lg:h-300 md:block md:h-600 sm:block sm:h-600">
-                <div className="w-1/2 mt-2 relative xl:w-full lg:w-full md:w-full sm:w-full xl:h-300  lg:h-300 md:h-300 sm:h-300">
-                  <div className="absolute pin-b xl:pin">
-                    <Genetics {...this.props} />
-                    <AddToCart {...this.props} />
-                    <Share {...this.props} />
+                <div className="w-full h-350 inline-flex mb-6 xl:block xl:h-300 lg:block lg:h-300 md:block md:h-600 sm:block sm:h-600">
+                  <div className="w-full mt-2 relative xl:w-full lg:w-full md:w-full sm:w-full xl:h-300 lg:h-300 md:h-300 sm:h-300">
+                    <div className="absolute pin-b xl:pin">
+                      <Genetics {...this.props} />
+                      <AddToCart {...this.props} />
+                      <Share {...this.props} />
+                    </div>
                   </div>
                 </div>
-                {/* <div className="w-1/2 mt-4 relative sm:w-full xl:w-1/2 md:w-full ml-auto xl:h-full lg:h-full md:h-250 sm:h-250 lg:mt-12 xl:mt-12 md:mt-12 sm:mt-12 lg:mr-6 xl:mr-10 md:mr-8">
-                  <div className="absolute pin-b xl:pin-r xl:pin lg:pin-r lg:pin md:pin-r md:pin sm:pin-r sm:pin">
-                    <Data {...this.props} /> 
-                  </div>
-                </div> */}
               </div>
             </div>
             <div className="w-full px-20 mt-4 xl:block xl:w-3/4 xl:px-8 xl:absolute-center lg:block lg:w-3/4 lg:px-8 lg:absolute-center md:block md:w-container md:mx-auto md:px-2 md:absolute-center sm:block sm:w-full sm:px-4 sm:absolute-center">
               <Description {...this.props} />
               <Data {...this.props} />
-              {/* <Details {...this.props} /> */}
             </div>
 
             <div className="w-full mt-12">
