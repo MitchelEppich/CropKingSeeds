@@ -15,10 +15,12 @@ const PaymentReview = props => {
   let _orderDetails = props.checkout.orderDetails;
   let _cart = props.cart;
 
-  let {productList, itemQuantity} = buildProductList(_cart.items);
+  let { productList, itemQuantity } = buildProductList(_cart.items);
   if (
     _orderDetails[pageGroup] == null ||
-    _orderDetails[pageGroup].updateRequested
+    _orderDetails[pageGroup].updateRequested ||
+    (_orderDetails[pageGroup].productList != null &&
+      _orderDetails[pageGroup].productList.value != productList)
   ) {
     // Product Information
 
@@ -318,9 +320,9 @@ let buildProductList = items => {
       product.genetic
     } Cannabis Seeds (${item.amount} Seeds)`;
 
-    itemQuantity += item.quantity
+    itemQuantity += item.quantity;
     productList.push(`${_name} x ${item.quantity} x ${item.price}`);
   }
 
-  return { productList: productList.toString(), itemQuantity }
+  return { productList: productList.toString(), itemQuantity };
 };

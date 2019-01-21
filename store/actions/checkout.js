@@ -10,18 +10,87 @@ import fetch from "node-fetch";
 import Navigation from "./navigation";
 
 import moment from "moment";
-import { resolve } from "../../node_modules/uri-js";
 
 const actionTypes = {
   MODIFY_ORDER_DETAILS: "MODIFY_ORDER_DETAILS",
   SET_ORDER_DETAILS: "SET_ORDER_DETAILS",
   GET_BITCOIN_DATA: "GET_BITCOIN_DATA",
   PROCESS_ORDER: "PROCESS_ORDER",
-  SET_CURRENCY: "SET_CURRENCY"
+  SET_CURRENCY: "SET_CURRENCY",
+  SET_SHIPPING_METHODS: "SET_SHIPPING_METHODS"
 };
+
+let shippingMethods = [
+  {
+    type: "Regular Shipping (No Tracking)",
+    description: "Approx. 10 to 15 business days depending on your location.",
+    price: 10
+  },
+  {
+    type: "Canada Post Express (With Tracking / No Signature Required)",
+    description: "Approx. 2 to 5 business days depending on your location.",
+    price: 30
+  },
+  {
+    type: "Regular Shipping (No Tracking)",
+    description:
+      "Approx. 7 to 14 business days within North America and up to 21 days overseas.",
+    price: 10
+  },
+  {
+    type: "Express Registered (With Tracking / Guaranteed Insurance Delivery)",
+    description:
+      "Approx. 7 to 14 business days within North America and up to 21 days overseas.",
+    note:
+      "This option guarantees delivery with a reshipment if your order is redirected.",
+    price: 30
+  },
+  {
+    type: "Regular Shipping (No Tracking)",
+    description: "Approx. 7 to 25 business days depending on your location.",
+    price: 20
+  },
+  {
+    type: "Regular Shipping (With Tracking / Stealth Shipping)",
+    description: "Approx. 7 to 25 business days depending on your location.",
+    note:
+      "The country you have selected is flagged for unreliable mail services and due to these obstacles your package will be shipped using our stealth shipment method.",
+    price: 30
+  }
+];
 
 const getActions = uri => {
   const objects = {
+    setShippingMethods: input => {
+      let _country = input.country;
+      let _state = input.state;
+
+      let _methods = [];
+
+      switch (_country) {
+        case "Canada":
+          _methods.push(shippingMethods[0], shippingMethods[1]);
+          break;
+        case "United States":
+          if (["Florida", "Tennessee", "Georgia"].includes(_state)) {
+            _methods.push(shippingMethods[3]);
+          } else {
+            _methods.push(shippingMethods[2], shippingMethods[3]);
+          }
+          break;
+        case "New Zealand":
+        case "Australia":
+          _methods.push(shippingMethods[4]);
+          break;
+        default:
+          _methods.push(shippingMethods[5]);
+      }
+
+      return {
+        type: actionTypes.SET_SHIPPING_METHODS,
+        input: _methods
+      };
+    },
     modifyOrderDetails: input => {
       let _orderDetails = input.orderDetails;
       let _group = input.group;
@@ -36,7 +105,11 @@ const getActions = uri => {
         _requestUpdateOfGroup.value
       ) {
         if (_requestUpdateOfGroup.group == "payment" && _group == "shipping") {
-          _orderDetails["billing"] = _orderDetails["shipping"];
+          if (!_orderDetails["billing"].readOnly)
+            _orderDetails["billing"] = {
+              ..._orderDetails["shipping"],
+              readOnly: true
+            };
           _orderDetails[_requestUpdateOfGroup.group]["updateRequested"] = true;
         } else
           _orderDetails[_requestUpdateOfGroup.group]["updateRequested"] = true;
@@ -96,15 +169,15 @@ const getActions = uri => {
 
         if (_paymentMethod == "Credit Card") {
           getNewOrderId(uri).then(res => {
-            console.log(res)
-            _orderDetails.payment.orderId = {value: res, tag: "Order_ID"}
+            console.log(res);
+            _orderDetails.payment.orderId = { value: res, tag: "Order_ID" };
             processPayment(_orderDetails.payment, uri).then(res => {
               console.log(res);
               processOrder(_orderDetails, res, uri).then(res => {
                 console.log(res);
               });
             });
-          })
+          });
           // Proccess Credit Card
           // Process Order
           // Save Order
@@ -127,9 +200,10 @@ const getActions = uri => {
 };
 const query = {
   getNewOrderId: gql`
-  query {
-  getNewOrderId
-}`,
+    query {
+      getNewOrderId
+    }
+  `,
   getBitcoinData: gql`
     query($value: String, $currency: String) {
       getBitcoinData(input: { value: $value, currency: $currency })
@@ -139,41 +213,42 @@ const query = {
 
 const mutation = {
   processOrder: gql`
-mutation($content:String) {
-  processOrder(input:{content:$content}) {
-    _id
-    billAddress
-    billApartment
-    billCity
-    billCountry
-    billEmail
-    billFullName
-    billPhone
-    billPostalZip
-    billState
-    shipAddress
-    shipApartment
-    shipCity
-    shipCountry
-    shipEmail
-    shipFullName
-    shipPhone
-    shipPostalZip
-    shipState
-    shipCost
-    shipDetail
-    orderId
-    transactionId
-    productList
-    tax
-    provTax
-    provTaxType
-    currency
-    coupon
-    paymentMethod
-    paymentStatus
-  }
-}`,
+    mutation($content: String) {
+      processOrder(input: { content: $content }) {
+        _id
+        billAddress
+        billApartment
+        billCity
+        billCountry
+        billEmail
+        billFullName
+        billPhone
+        billPostalZip
+        billState
+        shipAddress
+        shipApartment
+        shipCity
+        shipCountry
+        shipEmail
+        shipFullName
+        shipPhone
+        shipPostalZip
+        shipState
+        shipCost
+        shipDetail
+        orderId
+        transactionId
+        productList
+        tax
+        provTax
+        provTaxType
+        currency
+        coupon
+        paymentMethod
+        paymentStatus
+      }
+    }
+  `,
   processPayment: gql`
     mutation(
       $orderId: String
@@ -210,8 +285,8 @@ let processOrder = async (orderDetails, res, uri) => {
       ...buildOrderPost(orderDetails),
       credit_card_remark: res.status,
       Descriptor: res.processor,
-      Transaction_ID: res.transactionId,
-    }
+      Transaction_ID: res.transactionId
+    };
 
     const link = new HttpLink({ uri, fetch: fetch });
     const operation = {
@@ -219,11 +294,13 @@ let processOrder = async (orderDetails, res, uri) => {
       variables: { content: JSON.stringify(_orderPost) }
     };
 
-    resolve(await makePromise(execute(link, operation))
-      .then(async data => {
-        return data.data.processOrder
-      })
-      .catch(error => console.log(error)))
+    resolve(
+      await makePromise(execute(link, operation))
+        .then(async data => {
+          return data.data.processOrder;
+        })
+        .catch(error => console.log(error))
+    );
   });
 };
 let processPayment = async (paymentDetails, uri) => {
@@ -246,26 +323,29 @@ let processPayment = async (paymentDetails, uri) => {
       variables: { ...paymentPost }
     };
 
-    resolve(await makePromise(execute(link, operation))
-      .then(async data => {
-        return data.data.processPayment
-      })
-      .catch(error => console.log(error)))
+    resolve(
+      await makePromise(execute(link, operation))
+        .then(async data => {
+          return data.data.processPayment;
+        })
+        .catch(error => console.log(error))
+    );
   });
 };
-let getNewOrderId = async (uri) => {
+let getNewOrderId = async uri => {
   return await new Promise(async (resolve, reject) => {
-
     const link = new HttpLink({ uri, fetch: fetch });
     const operation = {
       query: query.getNewOrderId
     };
 
-    resolve(await makePromise(execute(link, operation))
-      .then(async data => {
-        return data.data.getNewOrderId
-      })
-      .catch(error => console.log(error)))
+    resolve(
+      await makePromise(execute(link, operation))
+        .then(async data => {
+          return data.data.getNewOrderId;
+        })
+        .catch(error => console.log(error))
+    );
   });
 };
 
@@ -313,11 +393,11 @@ let buildOrderPost = orderDetails => {
         let _key = obj.tag + suffix;
         if (prefix == "Bill" && _key == "Postal_Zip_Code")
           _key = "PostalZipCode";
-        if (prefix == "Bill" && _key == "PhoneNum")
-          _key = "Phone";
-        let $key = (["Shipped_Type", "Shipping"].includes(_key) ? "" : prefix) + _key
+        if (prefix == "Bill" && _key == "PhoneNum") _key = "Phone";
+        let $key =
+          (["Shipped_Type", "Shipping"].includes(_key) ? "" : prefix) + _key;
         let $value = obj.value;
-        if ($key == "Order_ID") $value = parseInt($value)
+        if ($key == "Order_ID") $value = parseInt($value);
         orderPost[$key] = $value;
       }
     }

@@ -11,21 +11,14 @@ const initialState = {
     // eur: { convert: 0.872076, symbol: "€" }
     // aud: { convert: 1.38933, symbol: "$" }
   },
-  shippingMethods: [
-    {
-      type: "Regular Shipping",
-      price: 10
-    },
-    {
-      type: "Express Registered with Tracking",
-      price: 30
-    }
-  ],
+  shippingMethods: [],
   viewCurrency: null
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.SET_SHIPPING_METHODS:
+      return updateObject(state, { shippingMethods: action.input });
     case actionTypes.MODIFY_ORDER_DETAILS:
       return updateObject(state, { orderDetails: action.input });
     case actionTypes.SET_ORDER_DETAILS:

@@ -6,6 +6,18 @@ const ShippingMethod = props => {
   let currency = props.checkout.viewCurrency;
 
   let showMethods = () => {
+    if (
+      props.checkout.orderDetails.shipping.country == null ||
+      props.checkout.orderDetails.shipping.state == null
+    )
+      return (
+        <div>
+          <p className="text-red-dark pb-8">
+            ** Please select your shipping country and state / province **
+          </p>
+        </div>
+      );
+
     let arr = [];
 
     for (let _method of methods) {
@@ -58,23 +70,20 @@ const ShippingMethod = props => {
                 </h2>
               </label>
               <span className="text-3xl text-grey-light ml-10">
-                {" "}
-                {currency != null
+                {props.checkout.orderDetails.shipping.country == null ||
+                props.checkout.orderDetails.shipping.state == null
+                  ? ""
+                  : currency != null
                   ? `${currency.symbol}${(
                       currency.convert * _method.price
                     ).toFixed(2)}`
                   : ""}
               </span>
             </div>
-            <p className="mt-2 leading-normal">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <p className="mt-2 ml-10 leading-normal">- {_method.description}</p>
+            <p className="mt-2 ml-10 leading-normal text-red-dark">{`${
+              _method.note ? "** " + _method.note : ""
+            }`}</p>
           </div>
         </div>
       );
@@ -84,7 +93,14 @@ const ShippingMethod = props => {
   };
 
   return (
-    <div className="w-full mt-8">
+    <div
+      className={`w-full mt-8 ${
+        props.checkout.orderDetails.shipping.country == null ||
+        props.checkout.orderDetails.shipping.state == null
+          ? "opacity-50 pointer-events-none unselectable"
+          : ""
+      }`}
+    >
       <h2 className="text-3xl font-extrabold mt-4 mb-6 text-black">
         Shipping Method
       </h2>

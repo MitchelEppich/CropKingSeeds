@@ -191,6 +191,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.toggleShowDifferentAddress(input)),
     modifyCart: input => dispatch(actions.modifyCart(input)),
     processOrder: input => dispatch(actions.processOrder(input)),
+    setShippingMethods: input => dispatch(actions.setShippingMethods(input)),
     clearCart: () => dispatch(actions.clearCart())
   }; // setCheckoutScreen: input => dispatch(actions.setCheckoutScreen(input)),
 };
