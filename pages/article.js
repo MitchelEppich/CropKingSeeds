@@ -10,26 +10,32 @@ import Layout from "../HOC/Layout";
 import ArticlePage from "../components/sections/articlePage";
 
 class Index extends Component {
-
-  render() {
-
-    return (
-      <Layout>
-        <div className="pt-12">
-          <ArticlePage />
-        </div>
-      </Layout>
-    );
-  }
+    render() {
+        return (
+            <Layout>
+                {this.props.misc.strains != null && this.props.misc.strains.length > 0 ? (
+                    <div className="">
+                        <ArticlePage {...this.props} />
+                    </div>
+                ) : (
+                    <p>Loading...</p>
+                )}
+            </Layout>
+        );
+    }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
-  };
+    return {
+        setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+        setHoverId: (id, turnOn) => dispatch(actions.setHoverId(id, turnOn)),
+        quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
+        modifyCart: input => dispatch(actions.modifyCart(input)),
+        modifyPotentialQuantity: input => dispatch(actions.modifyPotentialQuantity(input))
+    };
 };
 
 export default connect(
-  state => state,
-  mapDispatchToProps
+    state => state,
+    mapDispatchToProps
 )(withData(Index));
