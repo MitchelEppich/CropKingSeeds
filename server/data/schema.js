@@ -6,7 +6,11 @@ type Query {
   sendString: String
   strain(input: StrainInput!): Strain
   allStrains(filter: StrainInput): [Strain]!
+  order(input: OrderInput!): Order
+  allOrders: [Order]!
+
   getBitcoinData(input: BitcoinDataInput): String
+  getNewOrderId: Int
 }
 
 input BitcoinDataInput {
@@ -68,9 +72,103 @@ input StrainInput {
   env: String
 }
 
+type Order {
+  _id: String
+  billAddress: String
+  billApartment: String
+  billCity: String
+  billCountry: String
+  billEmail: String
+  billFullName: String
+  billPhone: String
+  billPostalZip: String
+  billState: String
+  shipAddress: String
+  shipApartment: String
+  shipCity: String
+  shipCountry: String
+  shipEmail: String
+  shipFullName: String
+  shipPhone: String
+  shipPostalZip: String
+  shipState: String
+  shipCost: Float
+  shipDetail: String
+  orderId: Int
+  transactionId: Int
+  productList: String
+  tax: Float
+  provTax: Float
+  provTaxType: String
+  currency: String
+  coupon: String
+  paymentMethod: String
+  paymentStatus: String
+}
+
+input OrderInput {
+  billAddress: String
+  billApartment: String
+  billCity: String
+  billCountry: String
+  billEmail: String
+  billFullName: String
+  billPhone: String
+  billPostalZip: String
+  billState: String
+  shipAddress: String
+  shipApartment: String
+  shipCity: String
+  shipCountry: String
+  shipEmail: String
+  shipFullName: String
+  shipPhone: String
+  shipPostalZip: String
+  shipState: String
+  shipCost: Float
+  shipDetail: String
+  orderId: Int
+  transactionId: String
+  productList: String
+  tax: Float
+  provTax: Float
+  provTaxType: String
+  currency: String
+  coupon: String
+  paymentMethod: String
+  paymentStatus: String
+}
+
+input OrderProcessInput {
+  content: String
+}
+
+input PaymentInput {
+  orderId: String
+  amount: String
+  cardNumber: String
+  cardType: String
+  cardExpiry: String
+  cardHolderName: String
+  cvv: String
+}
+
+type PaymentResponse {
+  transactionId: String
+  status: String
+  approvalCode: String
+  response: String
+  processor: String
+}
+
 type Mutation {
   createStrain(input: StrainInput): Strain
   typeToDom: String
+  
+  createOrder(input: OrderInput): Order
+
+  processPayment(input: PaymentInput): PaymentResponse
+  processOrder(input: OrderProcessInput): Order
 }
 
 `;

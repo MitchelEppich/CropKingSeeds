@@ -195,7 +195,7 @@ const ShippingAddress = props => {
               let _target = e.target;
               let _key = _target.id;
               let _value = _target.value;
-              let _tag = "Apartment";
+              let _tag = "Appartment";
 
               props.modifyOrderDetails({
                 orderDetails: _orderDetails,
@@ -305,6 +305,10 @@ const ShippingAddress = props => {
                     group: "payment"
                   }
                 });
+                props.setShippingMethods({
+                  country: _value,
+                  state: undefined
+                });
               }}
               placeholder="Country"
               className="w-full"
@@ -352,8 +356,16 @@ const ShippingAddress = props => {
                       group: "payment"
                     }
                   });
+
+                  props.setShippingMethods({
+                    country:
+                      _orderDetails.shipping.country != null
+                        ? _orderDetails.shipping.country.value
+                        : undefined,
+                    state: _value
+                  });
                 }}
-                placeholder="Province"
+                placeholder="Province or State"
                 className="w-full"
                 style={{ padding: "0.35rem" }}
               >
@@ -385,6 +397,14 @@ const ShippingAddress = props => {
                     key: _key,
                     value: _value,
                     tag: _tag
+                  });
+
+                  props.setShippingMethods({
+                    country:
+                      _orderDetails.shipping.country != null
+                        ? _orderDetails.shipping.country.value
+                        : undefined,
+                    state: _value
                   });
                 }}
                 placeholder="Province"
