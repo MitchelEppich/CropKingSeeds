@@ -136,7 +136,7 @@ const menu = props => {
                                 <FontAwesomeIcon icon={faPhone} className="" />
                             </p>
                         </div>
-                        <p className="pl-8 pr-6 p-2 uppercase font-extrabold text-lg">+1-844-CROP-KING (276-7546)</p>
+                        <p className="pl-3 pr-4 p-2 uppercase font-extrabold text-lg">+1-844-CROP-KING (276-7546)</p>
                     </a>
                 </div>
             </div>

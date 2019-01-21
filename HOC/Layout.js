@@ -79,6 +79,18 @@ class Layout extends Component {
                 return mediaSize;
             }
         }
+
+        for (let mediaSize of Object.keys(mediaSizes)) {
+            let _mediaSizeDim = mediaSizes[mediaSize];
+            let _width = window.innerWidth;
+            if (
+                _width == Math.max(_mediaSizeDim.min, Math.min(_width, _mediaSizeDim.max)) &&
+                this.props.misc.mediaSize != mediaSize
+            ) {
+                this.props.setMediaSize({ mediaSize: mediaSize });
+                return mediaSize;
+            }
+        }
     };
 
     render() {

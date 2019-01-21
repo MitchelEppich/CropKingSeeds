@@ -1,21 +1,66 @@
+import React from "react";
+import { ImageZoom } from "react-simple-image-zoom";
+
 const imageCarousel = props => {
   let images = props.viewProduct.currentProduct.images;
-  images = images.map((image, index) => {
+  let imageThumbs = images.map((image, index) => {
     return (
       <div
         key={index}
         onClick={() => props.setCurrentImage(index)}
-        className="w-12 shadow text-center cursor-pointer my-1">
-        <img className="h-12 my-2 mx-auto" src={image} />
+        className="w-16 shadow text-center cursor-pointer my-1">
+        <img className="h-20 my-2 mx-auto" src={image} />
       </div>
     );
   });
-  return <div className="w-full h-productImg sm:h-300 flex md:w-400 sm:w-300">
-      <div className="flex flex-wrap content-start w-12">{images}</div>
-      <div className="flex flex-wrap w-3/4 mx-4">
-        <img className="h-productImg mx-auto sm:h-250 sm:w-150 sm:my-auto md:h-300 md:w-250 md:my-auto lg:h-300 lg:w-250 lg:my-auto" src={props.viewProduct.currentProduct.images[props.viewProduct.currentImage]} />
+  let imageZooms = images.map((image, index) => {
+    return (
+      <ImageZoom
+        key={index}
+        portalId="portal"
+        largeImgSrc={currentImage}
+        imageWidth={1080}
+        imageHeight={860}
+        zoomContainerWidth={540}
+        activeClass="my-active"
+        portalStyle={Object.assign(
+          { ...ImageZoom.defaultPortalStyle },
+          {
+            top: "0px",
+            background: "white",
+            borderRadius: "3px",
+            boxShadow: "rgba(0, 0, 0, 0.3) 0px 2px 22px"
+          }
+        )}
+        zoomScale={1}
+        responsive={true}>
+        <img src={image} style={{ height: "400px" }} />
+      </ImageZoom>
+    );
+  });
+
+  let currentImage = imageZooms[props.viewProduct.currentImage];
+
+  return (
+    <div className="w-full relative">
+      <div className="w-full h-400 sm:h-300 inline-flex md:w-400 sm:w-300 justify-center flex">
+        <div className="flex flex-wrap content-start w-16">{imageThumbs}</div>
+        <div
+          style={{
+            width: "300px",
+            height: "420px",
+            textAlign: "center",
+            marginLeft: "30px"
+          }}
+          className="w-3/4 mx-4 z-50 bg-white">
+          {currentImage}
+        </div>
+        <div className="bg-white">
+          <div id="portal" className="bg-white rounded-lg shadow-lg" />
+        </div>
       </div>
-    </div>;
+    </div>
+  );
 };
 
 export default imageCarousel;

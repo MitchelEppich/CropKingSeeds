@@ -10,14 +10,14 @@ const data = props => {
   let pthc = _product.pthc.map(a => `${a.toFixed(2)}%`).join("-");
 
   let pcbdWidth, pcbnWidth, pthcWidth;
-  pcbdWidth = _product.pcbd[1] * 50 + "%";
-  pcbnWidth = _product.pcbn[1] * 10 + "%";
-  pthcWidth = _product.pthc[1] * 2 + "%";
-  // pcbdWidth = _product.pcbd[0] + "%";
-  // pcbnWidth = _product.pcbn[0] + "%";
-  // pthcWidth = _product.pthc[0] + "%";
+  // pcbdWidth = _product.pcbd[1] * 50 + "%";
+  // pcbnWidth = _product.pcbn[1] * 10 + "%";
+  // pthcWidth = _product.pthc[1] * 2 + "%";
+  pcbdWidth = _product.pcbd[0] + "%";
+  pcbnWidth = _product.pcbn[0] + "%";
+  pthcWidth = _product.pthc[0] + "%";
 
-  console.log("cdb", pcbdWidth, "cbn", pcbnWidth, "thc", pthcWidth);
+  // console.log("cdb", pcbdWidth, "cbn", pcbnWidth, "thc", pthcWidth);
 
   let graphStyle = {
     borderTopLeftRadius: "15px",
@@ -70,11 +70,9 @@ const data = props => {
     data = data.splice(0, 2);
   }
 
-  console.log(pthcWidth, _product.pthc);
+  // console.log(pthcWidth, _product.pthc);
   return (
-    <div
-      style={graphStyle}
-      className="w-full xl:w-full lg:w-full md:w-container sm:w-full mx-auto bg-grey-lightest flex flex-wrap content-start shadow border-grey-lighter border">
+    <div className="mt-6 w-full xl:w-full lg:w-full md:w-container sm:w-full mx-auto bg-grey-lightest flex flex-wrap content-start shadow-md border border-grey-lightest">
       <div className="w-full bg-white inline-flex">
         <div className="w-2/5 border-r-2 border-grey-lightest">
           <div className="w-300 h-300 mx-auto">
@@ -120,65 +118,11 @@ const data = props => {
                 ]}
               />
             </div>
-
-            {/* <p
-              className={
-                _product.ruderalis * 100 > 0
-                  ? "mt-10 absolute pt-2 mx-auto text-xs text-center w-150 text-black font-black"
-                  : "mt-12 absolute pt-2 mx-auto text-xs text-center w-150 text-black font-black"
-              }>
-              {_product.indica * 100}% Indica
-            </p>{" "}
-            <p
-              className={
-                _product.ruderalis * 100 > 0
-                  ? "absolute mt-16 pt-1 mx-auto text-xs text-center w-150 text-black font-black"
-                  : "absolute mt-20 pt-1 mx-auto text-xs text-center w-150 text-black font-black"
-              }>
-              {_product.sativa * 100}% Sativa
-            </p>
-            {_product.ruderalis * 100 > 0 ? (
-              <p className="absolute mt-20 pt-2 mx-auto text-xs text-center w-150 text-black font-black">
-                {_product.ruderalis * 100}% Ruderalis
-              </p>
-            ) : null}
-            <svg viewBox="0 0 45 45" width="150" height="150">
-              <path
-                d="M22.5 6.5
-                a 15.9155 15.9155 0 0 1 0 31.831
-                a 15.9155 15.9155 0 0 1 0 -31.831"
-                fill="none"
-                stroke="#2286E5"
-                strokeWidth="5"
-                strokeDasharray="100, 100"
-              />
-              <path
-                d="M22.5 6.5
-                a 15.9155 15.9155 0 0 1 0 31.831
-                a 15.9155 15.9155 0 0 1 0 -31.831"
-                fill="none"
-                stroke="#34945F"
-                strokeWidth="5"
-                strokeDasharray={
-                  _product.sativa * 100 + _product.ruderalis * 100 + ", 100"
-                }
-              />
-              <path
-                className="hover:bg-red"
-                d="M22.5 6.5
-                a 15.9155 15.9155 0 0 1 0 31.831
-                a 15.9155 15.9155 0 0 1 0 -31.831"
-                fill="none"
-                stroke="#ffed4a"
-                strokeWidth="5.5"
-                strokeDasharray={_product.ruderalis * 100 + ", 100"}
-              />
-            </svg> */}
           </div>
         </div>
-        <div className="w-2/5 bg-white border-r-2 border-grey-lightest relative">
-          <div className="bg-grey-lightest w-full">
-            <h3 className="text-grey font-bold p-2 text-center uppercase">
+        <div className="w-2/5 bg-white relative">
+          <div className="bg-red-light w-full">
+            <h3 className="text-white font-bold p-2 text-center uppercase">
               Strain Info
             </h3>
           </div>
@@ -272,7 +216,7 @@ const data = props => {
             </div>
           </div>
         </div>
-        <div className="w-2/5 bg-white">
+        <div className="w-2/5 border-l-2 border-grey-lightest ">
           {" "}
           <Details {...props} />
         </div>
