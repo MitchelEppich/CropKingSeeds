@@ -1,7 +1,7 @@
 const PartnerCard = props => {
     return (
-        <div className="w-250 h-250 text-center scale-item m-2">
-            <div className="h-full w-full shadow-md sm:m-0 lg:mx-4 lg:my-4 xl:mx-4 xl:my-4 xxl:mx-4 xxl:my-4 p-3 flex flex-wrap justify-center">
+        <div className="w-250 h-250 lg:mx-4 lg:my-4 xl:mx-4 xl:my-4 xxl:mx-4 xxl:my-4 sm:m-0 text-center scale-item m-2">
+            <div className="h-full w-full shadow-md p-3 flex flex-wrap justify-center">
                 <div className="h-32 text-center">
                     <img src={props.imgUrl} />
                 </div>

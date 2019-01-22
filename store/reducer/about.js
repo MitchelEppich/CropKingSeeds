@@ -7,8 +7,7 @@ const initialState = {
         {
             imgSrc: "../static/img/about/1.jpg",
             content:
-                "Commodo est commodo reprehenderit officia proident amet ea dolore eiusmod ea aute tempor veniam id. Ullamco deserunt esse pariatur duis elit non laboris reprehenderit aliquip cillum. Et cupidatat fugiat aute cupidatat tempor Lorem culpa officia dolor sit voluptate est. Ea deserunt mollit elit tempor veniam tempor esse culpa aliqua nisi. Occaecat culpa consectetur ut reprehenderit et officia mollit et nostrud ex eiusmod adipisicing Lorem. Deserunt ut Lorem eiusmod duis. Nulla consequat cupidatat id proident labore adipisicing exercitation esse.",
-            date: 20040420
+                "Commodo est commodo reprehenderit officia proident amet ea dolore eiusmod ea aute tempor veniam id. Ullamco deserunt esse pariatur duis elit non laboris reprehenderit aliquip cillum. Et cupidaeserunt mollit elit tempor veniam tempor esse culpa aliqua nisi. Occaecat culpa"
         },
         {
             imgSrc: "../static/img/about/2.jpg",
@@ -19,7 +18,7 @@ const initialState = {
         {
             imgSrc: "../static/img/about/3.jpg",
             content:
-                "Veniam ex enim id aute occaecat amet culpa dolore cupidatat irure magna consectetur est do. Minim incididunt voluptate nostrud duis occaecat sunt reprehenderit cillum in in quis esse sint. Aute et aliqua eu sit tempor qui elit dolore ad nulla aute. Officia adipisicing labore cupidatat id. Magna dolore ipsum laborum est cupidatat eu dolor duis magna voluptate nisi magna.",
+                "Veniam ex enim id aute occaecat amet culpa dolore cupidatat irure magna consectetur est do. Minim incididunt voluptate nostrud duis occaecat sunt reprehenderit cillum in in quis esse sint. Aute et aliqua eu sit tempor qui elit dolotat id. Magna dolore ipsum laborum est cupidatat eu dolor duis magna voluptate nisi magna.",
             date: 20040420
         },
         {
@@ -49,13 +48,13 @@ const initialState = {
         {
             imgSrc: "../static/img/about/4.jpg",
             content:
-                "Aute sit aute nulla nisi aute cupidatat pariatur excepteur aute eu ad excepteur. Cupidatat adipisicing et cillum minim officia excepteur qui irure pariatur culpa esse cupidatat cillum. Ex sit do velit fugiat id ipsum nisi. Reprehenderit tempor ex culpa aliqua velit ut minim labore nostrud consectetur qui mollit. Excepteur consequat id fugiat qui cupidatat eu nulla minim duis ea voluptate. Ut officia laboris exercitation dolor dolore amet eiusmod non fugiat.",
+                "Aute sit aute nulla nisi aute cupidatat pariatur excepteur aute eu ad excepteur. Cupidatat adipisicing et cillum minim officia excepteur qui irure pariatur culpa esse cgiat qui cupidatat eu nulla minim duis ea voluptate. Ut officia laboris exercitation dolor dolore amet eiusmod non fugiat.",
             date: 20040420
         },
         {
             imgSrc: "../static/img/about/1.jpg",
             content:
-                "Officia nulla labore exercitation proident laborum incididunt. Cillum officia sit et dolore quis consequat. Aliqua ipsum ullamco et ad. Veniam ad fugiat fugiat id proident Lorem cupidatat laborum nisi labore eiusmod officia anim nulla. Irure magna do ipsum est ea qui ad irure nulla adipisicing Lorem consequat irure laborum. Culpa minim occaecat reprehenderit cillum culpa cupidatat. Deserunt dolor irure quis commodo sint.",
+                "Officia nulla labore exercitation proident laborum incididunt. Cillum officia sit et dolore quis consequat. Aliqua ipsum ullamco et ad. Veniam ad fugiat fugiat id proident Loreulla adipisicing Lorem consequat irure laborum. Culpa minim occaecat reprehenderit cillum culpa cupidatat. Deserunt dolor irure quis commodo sint.",
             date: 20040420
         }
     ],

@@ -82,12 +82,9 @@ const menu = props => {
               WebkitTransition: "all 0.3s ease-in-out",
               zIndex: "-90"
           };
-    let phoneNumberPosition = ["md", "lg"].includes(props.misc.mediaSize)
-        ? { transform: "translateX(310px)", backgroundColor: "#F9F9F9" }
-        : { transform: "translateX(0)", backgroundColor: "#F9F9F9" };
-    if (props.misc.mediaSize == "sm") {
-        phoneNumberPosition = { right: "-310px", backgroundColor: "#F9F9F9" };
-    }
+    let phoneNumberPosition = ["sm", "md"].includes(props.misc.mediaSize)
+        ? { right: "-285px", backgroundColor: "#F9F9F9" }
+        : { transform: "translateX(0px)", backgroundColor: "#F9F9F9" };
 
     return (
         <div
