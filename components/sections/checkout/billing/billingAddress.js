@@ -98,12 +98,12 @@ const BillingAddress = props => {
   };
 
   return (
-    <div className="w-full mt-6">
-      <h2 className="text-3xl font-extrabold mt-12 mb-6 text-black">
+    <div className="w-full mt-6 px-8">
+      <h2 className="text-3/5xl font-extrabold mt-12 mb-6 text-black">
         Billing Address
       </h2>
       <div className="pl-2 mt-6 flex items-center inline-flex">
-        <label className="font-bold flex items-center cursor-pointer">
+        <label className="font-bold flex items-center cursor-pointer uppercase">
           <input
             type="checkbox"
             className="checkbox cursor-pointer"
@@ -133,8 +133,7 @@ const BillingAddress = props => {
           props.checkout.orderDetails[pageGroup].readOnly
             ? "opacity-50 pointer-events-none unselectable"
             : ""
-        }`}
-      >
+        }`}>
         <div className="w-full p-2 inline-flex">
           <div className="w-1/2">
             <input
@@ -362,8 +361,7 @@ const BillingAddress = props => {
               }}
               placeholder="Country"
               className="w-full"
-              style={{ padding: "0.35rem" }}
-            >
+              style={{ padding: "0.35rem" }}>
               {showCountries()}
             </select>
           </div>
@@ -409,8 +407,7 @@ const BillingAddress = props => {
                 }}
                 placeholder="Province"
                 className="w-full"
-                style={{ padding: "0.35rem" }}
-              >
+                style={{ padding: "0.35rem" }}>
                 {showOptions()}
               </select>
             ) : (
@@ -446,7 +443,7 @@ const BillingAddress = props => {
               />
             )}
           </div>
-          <div className="w-1/2 pl-2">
+          <div className="w-1/2 pl-2 pb-8 mb-6">
             <input
               type="text"
               name="phone"

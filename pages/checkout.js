@@ -38,7 +38,7 @@ class Index extends Component {
     return (
       <Layout>
         <div className="text-center w-full pt-12 bg-white relative">
-          <h1 className="text-4xl font-bold text-black">Checkout Preview</h1>
+          <h1 className="text-4xl font-black text-black">Checkout Preview</h1>
         </div>
         <form
           onSubmit={e => {
@@ -71,9 +71,15 @@ class Index extends Component {
                   )
                 : null;
             }
-          }}
-        >
-          <div className="w-container mx-auto pt-12 bg-white">
+          }}>
+          <div
+            style={{
+              background: "#f5f5f5",
+              borderTopLeftRadius: "10px",
+              borderTopRightRadius: "10px",
+              overflow: "hidden"
+            }}
+            className="w-container mx-auto mt-12">
             <Checkout {...this.props} />
             {this.props.misc.stepsCheckout == 0 ? (
               <div>
@@ -125,8 +131,7 @@ class Index extends Component {
                       )
                     : null;
                 }}
-                className="w-200 p-2 text-left cursor-pointer flex items-center hover:text-red"
-              >
+                className="w-200 p-2 text-left cursor-pointer flex items-center hover:text-red">
                 {this.props.misc.stepsCheckout != 0 ? (
                   <span className="flex items-center font-extrabold text-grey-light hover:text-red-dark text-2xl uppercase">
                     <FontAwesomeIcon
@@ -154,13 +159,11 @@ class Index extends Component {
                       null)
                     ? "opacity-50 unselectable pointer-events-none"
                     : ""
-                }`}
-              >
+                }`}>
                 {this.props.misc.stepsCheckout != 4 ? (
                   <button
                     className="flex items-center font-extrabold text-grey-light hover:text-red-dark text-2xl uppercase"
-                    type="submit"
-                  >
+                    type="submit">
                     Next
                     <FontAwesomeIcon
                       icon={faAngleRight}

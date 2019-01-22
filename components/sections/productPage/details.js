@@ -25,7 +25,9 @@ const Details = props => {
       <div
         style={{ background: "#128671" }}
         className="w-full border-b-8 border-white">
-        <h3 className="text-white font-bold p-2 text-center uppercase">Info</h3>
+        <h3 className="text-white font-bold p-2 text-center uppercase">
+          Extra Info
+        </h3>
       </div>
       <div className="flex xl:block lg:block md:block sm:block mt-1 pt-1">
         <div className="w-full">
@@ -36,9 +38,6 @@ const Details = props => {
                 className="p-1 text-white w-10 h-10 ml-2 m-1">
                 <FontAwesomeIcon icon={faClock} className="fa-2x p-1" />
               </div>
-              {/* <p className="p-2 font-bold text-grey uppercase text-sm"> */}
-              {/* Grow Time: */}
-              {/* </p> */}
             </div>
             <div className="w-full p-2 xl:text-sm lg:text-sm md:text-sm sm:text-sm">
               <p className="font-bold text-sm pl-6 uppercase">
@@ -53,9 +52,6 @@ const Details = props => {
                 className="p-1 text-white w-10 h-10 ml-2 m-1">
                 <FontAwesomeIcon icon={faTree} className="fa-2x ml-1 p-1" />
               </div>
-              {/* <p className="p-2 font-bold text-grey uppercase text-sm"> */}
-              {/* Yield: */}
-              {/* </p> */}
             </div>
             <div className="w-full p-2 xl:text-sm lg:text-sm md:text-sm sm:text-sm">
               <p className="font-bold text-sm pl-6 uppercase">
@@ -72,9 +68,6 @@ const Details = props => {
                 className="p-1 text-white w-10 h-10 ml-2 m-1">
                 <FontAwesomeIcon icon={faChartLine} className="fa-2x p-1" />
               </div>
-              {/* <p className="p-2 font-bold text-grey uppercase text-sm"> */}
-              {/* Difficulty: */}
-              {/* </p> */}
             </div>
             <div className="w-full p-2 xl:text-sm lg:text-sm md:text-sm sm:text-sm">
               <p className="font-bold text-sm pl-6 uppercase">
@@ -83,22 +76,6 @@ const Details = props => {
             </div>
           </div>
 
-          {/* <div className="w-full inline-flex items-center flex pl-6">
-            <div className="w-16 inline-flex items-center flex">
-              <div className="p-1 bg-green text-white w-10 h-10 ml-2 m-1">
-                <FontAwesomeIcon icon={faDna} className="fa-2x p-1" />
-              </div>
-              {/* <p className="p-2 font-bold text-grey uppercase text-sm"> */}
-          {/* Genes: */}
-          {/* </p> */}
-          {/* </div>
-            <div className="w-full p-2 xl:text-sm lg:text-sm md:text-sm sm:text-sm">
-              <p className="font-bold text-sm pl-6 uppercase">
-                {_product.genetic}
-              </p>
-            </div>
-          </div> */}
-
           <div className="w-full inline-flex items-center flex pl-6 bg-white mb-1">
             <div className="w-16 inline-flex items-center flex">
               <div
@@ -106,9 +83,6 @@ const Details = props => {
                 className="p-1 text-white w-10 h-10 ml-2 m-1">
                 <FontAwesomeIcon icon={faGlobeAmericas} className="fa-2x p-1" />
               </div>
-              {/* <p className="p-2 font-bold text-grey uppercase text-sm"> */}
-              {/* Country: */}
-              {/* </p> */}
             </div>
             <div className="w-full p-2 xl:text-sm lg:text-sm md:text-sm sm:text-sm">
               <p className="font-bold text-sm pl-6 uppercase">
@@ -124,9 +98,6 @@ const Details = props => {
                 className="p-1 text-white w-10 h-10 ml-2 m-1">
                 <FontAwesomeIcon icon={faSeedling} className="fa-2x p-1" />
               </div>
-              {/* <p className="p-2 font-bold text-grey uppercase text-sm"> */}
-              {/* Environment: */}
-              {/* </p> */}
             </div>
             <div className="w-full p-2 xl:text-sm lg:text-sm md:text-sm sm:text-sm">
               <p className="font-bold text-sm pl-6 uppercase">{_product.env}</p>

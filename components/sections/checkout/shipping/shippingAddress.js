@@ -76,8 +76,8 @@ const ShippingAddress = props => {
   };
 
   return (
-    <div className="w-full mt-6">
-      <h2 className="text-3xl font-extrabold mt-12 mb-6 text-black">
+    <div className="w-full mt-6 px-8">
+      <h2 className="text-3/5xl font-extrabold mt-12 mb-6 text-black">
         Shipping Address
       </h2>
       <div className={`w-full mt-4`}>
@@ -312,8 +312,7 @@ const ShippingAddress = props => {
               }}
               placeholder="Country"
               className="w-full"
-              style={{ padding: "0.35rem" }}
-            >
+              style={{ padding: "0.35rem" }}>
               {showCountries()}
             </select>
           </div>
@@ -367,8 +366,7 @@ const ShippingAddress = props => {
                 }}
                 placeholder="Province or State"
                 className="w-full"
-                style={{ padding: "0.35rem" }}
-              >
+                style={{ padding: "0.35rem" }}>
                 {showOptions()}
               </select>
             ) : (

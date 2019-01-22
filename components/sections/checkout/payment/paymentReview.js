@@ -73,28 +73,25 @@ const PaymentReview = props => {
     props.setOrderDetails({ orderDetails: _orderDetails });
   }
 
+  let box = {
+    border: "2px solid rgb(239, 239, 239)",
+    borderRadius: "5px",
+    overflow: "hidden"
+  };
+  let titleBox = {
+    borderBottom: "2px solid #505050",
+    color: "#fff",
+    background: "#ef5753",
+    background: "rgb(72, 72, 72)",
+    padding: "6px"
+  };
+
   return (
     <div className="w-full flex justify-end mb-6">
-      <div
-        style={{
-          border: "2px solid rgb(239, 239, 239)",
-          background: "#ffffff",
-          color: "#191919"
-        }}
-        className="w-1/3 h-200 mx-0"
-      >
-        <h3
-          style={{
-            borderBottom: "2px solid #505050",
-            color: "#1d1d1d",
-            background: "whitesmoke",
-            padding: "5px"
-          }}
-        >
-          Shipping Address
-        </h3>
+      <div style={box} className="w-1/3 h-200 mx-0 bg-white">
+        <h3 style={titleBox}>Shipping Address</h3>
         <div className="p-2">
-          <p className="mt-2">
+          <p className="mt-1">
             {_orderDetails.shipping != null ? (
               <span>
                 {_orderDetails.shipping.address.value}
@@ -150,26 +147,10 @@ const PaymentReview = props => {
           </p>
         </div>
       </div>
-      <div
-        style={{
-          border: "2px solid rgb(239, 239, 239)",
-          background: "#ffffff",
-          color: "#191919"
-        }}
-        className="w-1/3 h-200 mx-4"
-      >
-        <h3
-          style={{
-            borderBottom: "2px solid #505050",
-            color: "#1d1d1d",
-            background: "whitesmoke",
-            padding: "5px"
-          }}
-        >
-          Billing Address
-        </h3>
+      <div style={box} className="w-1/3 h-200 mx-4 bg-white">
+        <h3 style={titleBox}>Billing Address</h3>
         <div className="p-2">
-          <p className="mt-2">
+          <p className="mt-1">
             {_orderDetails.billing != null ? (
               <span>
                 {_orderDetails.billing.address.value}
@@ -225,27 +206,11 @@ const PaymentReview = props => {
           </p>
         </div>
       </div>
-      <div
-        style={{
-          border: "2px solid rgb(239, 239, 239)",
-          background: "#ffffff",
-          color: "#191919"
-        }}
-        className="w-1/3 h-200 mx-0"
-      >
-        <h3
-          style={{
-            borderBottom: "2px solid #505050",
-            color: "#1d1d1d",
-            background: "whitesmoke",
-            padding: "5px"
-          }}
-        >
-          Payment Information
-        </h3>
+      <div style={box} className="w-1/3 h-200 mx-0 bg-white">
+        <h3 style={titleBox}>Payment Information</h3>
         <div className="p-2 inline-flex w-full">
           <div className="w-3/5 text-right">
-            <p className="mt-2">Product Total:</p>
+            <p className="mt-1">Product Total:</p>
             <p className="mt-2">Shipping: </p>
             <p className="mt-2">
               Tax ({(_orderDetails[pageGroup].cumTax * 100).toFixed(2)}%):

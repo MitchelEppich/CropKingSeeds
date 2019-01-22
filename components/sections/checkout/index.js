@@ -5,11 +5,13 @@ const Checkout = props => {
   return (
     <div
       style={{
-        borderTop: "2px solid #efefef"
+        borderTop: "5px solid rgba(173, 7, 7, 0.32)",
+
+        background: "rgb(239, 87, 83)"
       }}
-      className="w-full pt-2 inline-flex text-xl font-medium">
+      className="w-full pt-2 inline-flex uppercase font-bold">
       <div
-        className={`w-1/4 mx-2 text-center text-black relative unselectable ${
+        className={`w-1/4 mx-2 text-center text-white relative unselectable ${
           props.misc.stepsCheckout == 0 ? "steps-active" : null
         }`}>
         <div
@@ -22,7 +24,7 @@ const Checkout = props => {
         </div>
       </div>
       <div
-        className={`w-1/4 mx-2 text-center text-black relative unselectable ${
+        className={`w-1/4 mx-2 text-center text-white relative unselectable ${
           props.misc.stepsCheckout == 1 ? "steps-active" : null
         }`}>
         <div
@@ -39,7 +41,7 @@ const Checkout = props => {
         </div>
       </div>
       <div
-        className={`w-1/4 mx-2 text-center text-black relative unselectable ${
+        className={`w-1/4 mx-2 text-center text-white relative unselectable ${
           props.misc.stepsCheckout == 2 ? "steps-active" : null
         }`}>
         <div
@@ -56,7 +58,7 @@ const Checkout = props => {
         </div>
       </div>
       <div
-        className={`w-1/4 mx-2 text-center text-black relative unselectable ${
+        className={`w-1/4 mx-2 text-center text-white relative unselectable ${
           props.misc.stepsCheckout == 3 ? "steps-active" : null
         }`}>
         <div
@@ -73,7 +75,7 @@ const Checkout = props => {
         </div>
       </div>
       <div
-        className={`w-1/4 mx-2 text-center text-black relative unselectable ${
+        className={`w-1/4 mx-2 text-center text-white relative unselectable ${
           props.misc.stepsCheckout == 4 ? "steps-active" : null
         }`}>
         <div
