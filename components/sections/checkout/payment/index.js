@@ -11,8 +11,10 @@ const Payment = props => {
   let _orderDetails = props.checkout.orderDetails;
 
   return (
-    <div className="w-full mt-6 mb-8">
-      <h2 className="text-3xl font-extrabold mt-12 mb-6 text-black">Payment</h2>
+    <div className="w-full mt-6 mb-8 px-8">
+      <h2 className="text-3/5xl font-extrabold mt-12 mb-6 text-black">
+        Payment
+      </h2>
       <PaymentReview {...props} />
       {["Canada", "United States"].includes(
         _orderDetails.billing.country.value

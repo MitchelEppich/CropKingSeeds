@@ -6,7 +6,7 @@ const Coupon = props => {
   let pageGroup = "payment";
 
   return (
-    <div className="w-full flex items-center h-10 inline-flex mt-4 p-2 mb-8">
+    <div className="w-full flex items-center inline-flex mt-4 p-2 px-8 mb-8">
       <div className="w-1/3">
         <div className="w-full">
           <input
@@ -40,10 +40,12 @@ const Coupon = props => {
         </div>
       </div>
       <div className="w-1/3 flex justify-end">
-        <div className="w-200 ml-2">
+        <div className="w-full text-right ml-2">
           <div className="p-2 text-center text-xl inline-flex items-center flex">
-            <p className="text-grey-light font-bold uppercase">Subtotal: </p>
-            <p className="text-red-dark p-2 font-extrabold">
+            <p className="text-grey-light p-2 font-bold uppercase">
+              Subtotal:{" "}
+            </p>
+            <p className="text-red-light text-2xl p-2 pt-1 font-extrabold">
               {currency != null
                 ? `${currency.symbol}${(
                     currency.convert * props.cart.price

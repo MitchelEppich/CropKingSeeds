@@ -33,11 +33,6 @@ const data = props => {
     );
   });
 
-  const theme = {
-    axis: { textColor: "#eee", fontSize: "22px", tickColor: "#eee" },
-    grid: { stroke: "#888", strokeWidth: 1 }
-  };
-
   let data = [
     _product.indica != null || _product.indica * 100 > 0 || _product.indica != 0
       ? {
@@ -72,11 +67,11 @@ const data = props => {
 
   // console.log(pthcWidth, _product.pthc);
   return (
-    <div className="mt-6 w-full xl:w-full lg:w-full md:w-container sm:w-full mx-auto bg-grey-lightest flex flex-wrap content-start shadow-md border border-grey-lightest">
-      <div className="w-full bg-white inline-flex">
-        <div className="w-2/5 border-r-2 border-grey-lightest">
-          <div className="w-300 h-300 mx-auto">
-            <div className="w-full h-full">
+    <div className="mt-6 w-full mx-auto bg-grey-lightest flex flex-wrap content-start shadow-md border border-grey-lightest">
+      <div className="w-full bg-white xxl:inline-flex block">
+        <div className="xxl:w-1/3 w-full border-r-2 border-grey-lightest">
+          <div className="w-300 h-300 sm:w-full mx-auto">
+            <div className="w-full h-full sm:mx-auto">
               <ResponsivePieCanvas
                 data={data}
                 pixelRatio={1}
@@ -100,7 +95,7 @@ const data = props => {
                 slicesLabelsSkipAngle={1}
                 slicesLabelsTextColor="#000000"
                 animate={true}
-                motionStiffness={90}
+                motionStiffness={0}
                 motionDamping={15}
                 legends={[
                   {
@@ -109,10 +104,9 @@ const data = props => {
                     translateY: 50,
                     itemWidth: 70,
                     itemHeight: 20,
-                    itemsSpacing: 2,
                     textAlign: "center",
                     itemsSpacing: 2,
-                    symbolSize: 10,
+                    symbolSize: 20,
                     symbolShape: "circle"
                   }
                 ]}
@@ -120,82 +114,32 @@ const data = props => {
             </div>
           </div>
         </div>
-        <div className="w-2/5 bg-white relative">
+        <div className="xxl:w-1/3 w-full bg-white relative pb-6">
           <div className="bg-red-light w-full">
             <h3 className="text-white font-bold p-2 text-center uppercase">
               Strain Info
             </h3>
           </div>
-          <div className="w-full p-1 px-4 mt-6 flex text-white justify-start my-1  inline-flex">
-            <div className="text-black font-bold my-1 mr-2 w-10 py-1">THC:</div>
-            <div className="relative bg-smoke-grey w-full rounded-lg">
-              <div className="inline-flex absolute w-full h-full">
-                <div className="absolute flex w-full h-full justify-end">
-                  <p className="text-grey my-auto text-xs font-bold pr-8">
-                    {pthc}
-                  </p>
-                </div>
-                <div
-                  className={
-                    _product.thc == "low"
-                      ? "bg-orange h-full pl-2 px-4 text-xs flex items-center absolute"
-                      : "bg-green h-full pl-2 px-4 text-xs flex items-center absolute"
-                  }
-                  style={{
-                    width: pthcWidth,
-                    borderRadius: "5px",
-                    overflow: "hidden"
-                  }}>
-                  {" "}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="w-full p-1 px-4 flex text-white justify-start my-1  inline-flex">
-            <div className="text-black font-bold my-1 mr-2 w-10 py-1">CBD:</div>
-            <div className="relative bg-smoke-grey w-full rounded-lg">
-              <div className="inline-flex absolute w-full h-full">
-                <div className="absolute flex w-full h-full justify-end">
-                  <p className="text-grey my-auto text-xs font-bold pr-8">
-                    {pcbd}
-                  </p>
-                </div>
-                <div
-                  className={
-                    _product.cbd == "low"
-                      ? "bg-orange h-full pl-2 px-2 text-xs flex items-center absolute"
-                      : "bg-green h-full pl-2 px-2 text-xs flex items-center absolute"
-                  }
-                  style={{
-                    width: pcbdWidth,
-                    borderRadius: "5px",
-                    overflow: "hidden"
-                  }}>
-                  {" "}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {_product.pcbn[1] > 0 ? (
-            <div className="w-full p-1 px-4 flex text-white justify-start my-1  inline-flex">
+          <div className="w-full mb-10">
+            <div className="w-full p-1 px-4 mt-6 flex text-white justify-start my-1  inline-flex">
               <div className="text-black font-bold my-1 mr-2 w-10 py-1">
-                CBD:
+                THC:
               </div>
               <div className="relative bg-smoke-grey w-full rounded-lg">
                 <div className="inline-flex absolute w-full h-full">
                   <div className="absolute flex w-full h-full justify-end">
                     <p className="text-grey my-auto text-xs font-bold pr-8">
-                      {pcbn}
+                      {pthc}
                     </p>
                   </div>
                   <div
                     className={
-                      "bg-purple h-full pl-2 px-2 text-xs flex items-center absolute"
+                      _product.thc == "low"
+                        ? "bg-orange h-full pl-2 px-4 text-xs flex items-center absolute"
+                        : "bg-green h-full pl-2 px-4 text-xs flex items-center absolute"
                     }
                     style={{
-                      width: pcbnWidth,
+                      width: pthcWidth,
                       borderRadius: "5px",
                       overflow: "hidden"
                     }}>
@@ -204,7 +148,63 @@ const data = props => {
                 </div>
               </div>
             </div>
-          ) : null}
+
+            <div className="w-full p-1 px-4 flex text-white justify-start my-1  inline-flex">
+              <div className="text-black font-bold my-1 mr-2 w-10 py-1">
+                CBD:
+              </div>
+              <div className="relative bg-smoke-grey w-full rounded-lg">
+                <div className="inline-flex absolute w-full h-full">
+                  <div className="absolute flex w-full h-full justify-end">
+                    <p className="text-grey my-auto text-xs font-bold pr-8">
+                      {pcbd}
+                    </p>
+                  </div>
+                  <div
+                    className={
+                      _product.cbd == "low"
+                        ? "bg-orange h-full pl-2 px-2 text-xs flex items-center absolute"
+                        : "bg-green h-full pl-2 px-2 text-xs flex items-center absolute"
+                    }
+                    style={{
+                      width: pcbdWidth,
+                      borderRadius: "5px",
+                      overflow: "hidden"
+                    }}>
+                    {" "}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {_product.pcbn[1] > 0 ? (
+              <div className="w-full p-1 px-4 flex text-white justify-start my-1  inline-flex">
+                <div className="text-black font-bold my-1 mr-2 w-10 py-1">
+                  CBN:
+                </div>
+                <div className="relative bg-smoke-grey w-full rounded-lg">
+                  <div className="inline-flex absolute w-full h-full">
+                    <div className="absolute flex w-full h-full justify-end">
+                      <p className="text-grey my-auto text-xs font-bold pr-8">
+                        {pcbn}
+                      </p>
+                    </div>
+                    <div
+                      className={
+                        "bg-purple h-full pl-2 px-2 text-xs flex items-center absolute"
+                      }
+                      style={{
+                        width: pcbnWidth,
+                        borderRadius: "5px",
+                        overflow: "hidden"
+                      }}>
+                      {" "}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : null}
+          </div>
           <div className="w-full absolute pin-b h-10 mx-auto font-bold mt-4 bg-smoke-grey items-center flex justify-center">
             <div className="inline-flex items-center flex mx-3">
               <p className="w-4 h-4 mr-2 mr-2 rounded-full bg-orange" />
@@ -216,7 +216,7 @@ const data = props => {
             </div>
           </div>
         </div>
-        <div className="w-2/5 border-l-2 border-grey-lightest ">
+        <div className="xxl:w-1/3 w-full border-l-2 border-grey-lightest ">
           {" "}
           <Details {...props} />
         </div>
