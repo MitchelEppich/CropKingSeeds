@@ -58,6 +58,26 @@ const initialState = {
                 "Officia nulla labore exercitation proident laborum incididunt. Cillum officia sit et dolore quis consequat. Aliqua ipsum ullamco et ad. Veniam ad fugiat fugiat id proident Lorem cupidatat laborum nisi labore eiusmod officia anim nulla. Irure magna do ipsum est ea qui ad irure nulla adipisicing Lorem consequat irure laborum. Culpa minim occaecat reprehenderit cillum culpa cupidatat. Deserunt dolor irure quis commodo sint.",
             date: 20040420
         }
+    ],
+    whoWeAre: [
+        {
+            title: "Our Seeds",
+            content:
+                "Proident voluptate labore sunt anim. Ad nostrud in ut voluptate laborum cillum qui ea commodo do. Proident voluptate labore sunt anim.",
+            src: "../static/img/about/1.jpg"
+        },
+        {
+            title: "Our Service",
+            content:
+                "Laboris eiusmod aute cupidatat dolore sunt sunt adipisicing non reprehenderit. Pariatur ex anim eiusmod est in ut minim minim non aute. Id culpa consectetur Lorem dolor veniam esse et minim aliquip pariatur esse aliqua sit.",
+            src: "../static/img/about/2.jpg"
+        },
+        {
+            title: "Our Mission",
+            content:
+                "Cillum sint aliqua sint et aute. Enim eiusmod aliqua adipisicing consequat culpa dolore nisi do. Ad veniam sunt veniam do minim in anim.",
+            src: "../static/img/about/3.jpg"
+        }
     ]
 };
 

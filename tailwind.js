@@ -572,6 +572,7 @@ module.exports = {
         "24": "6rem",
         "32": "8rem",
         "40": "10rem",
+        "44": "11rem",
         "48": "12rem",
         "64": "16rem",
         "60px": "60px",
@@ -733,6 +734,8 @@ module.exports = {
         "48": "12rem",
         "56": "15rem",
         "64": "16rem",
+        "50": "50px",
+        "100": "100px",
         videoPlayerPadding: "27rem"
     },
 
