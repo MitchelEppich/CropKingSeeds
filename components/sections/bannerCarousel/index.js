@@ -15,10 +15,10 @@ const BannerCarousel = props => {
     });
 
     return (
-        <div className="xxl:h-600 xl:h-400 lg:h-400 md:h-250 sm:h-250 w-full flex relative overflow-hidden">
+        <div className="xxl:h-600 xl:h-400 lg:h-400 md:h-250 sm:mt-6 sm:h-250  w-full flex relative overflow-hidden">
             {slides}
             {props.misc.activeBannerSlide == 2 ? (
-                <button className="bannerBuyNow md:hidden lg:hidden xl:hidden xxl:hidden">Buy Now</button>
+                <button className="bannerBuyNow sm:block md:hidden lg:hidden xl:hidden xxl:hidden">Buy Now</button>
             ) : null}
         </div>
     );

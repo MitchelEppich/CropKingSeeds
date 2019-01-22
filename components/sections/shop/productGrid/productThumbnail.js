@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { faSeedling, faClock, faEnvelope, faPrint, faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+    faExternalLinkAlt,
+    faSeedling,
+    faClock,
+    faEnvelope,
+    faPrint,
+    faTimes
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SeedSelectModule from "../../productPage/seedSelectModule";
 
@@ -77,7 +84,13 @@ const productThumbnail = props => {
                                           props.detail.geneColor[props.product.genetic.toLowerCase()]
                                       }`
                             }>
-                            {props.product.name}
+                            {props.product.name}{" "}
+                            {hover ? (
+                                <FontAwesomeIcon
+                                    icon={faExternalLinkAlt}
+                                    className="cursor-pointer fa-xs text-grey-light absolute z-50 mt-1 ml-5 mr-3"
+                                />
+                            ) : null}
                         </h3>
                     </div>
                 </Link>

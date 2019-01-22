@@ -29,11 +29,7 @@ const initialState = {
             width: "calc(300vw - 6rem)"
         },
         md: {
-            positions: [
-                "translateX(-0.5rem)",
-                "translateX(calc(-100vw + 1.5rem))",
-                "translateX(calc(-200vw + 3.5rem))"
-            ],
+            positions: ["translateX(calc(-4rem)", "translateX(calc(-100vw - 2rem))", "translateX(calc(-200vw))"],
             width: "calc(300vw - 6rem)"
         },
         lg: {

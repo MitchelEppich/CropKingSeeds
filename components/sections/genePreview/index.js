@@ -1,4 +1,8 @@
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+library.add(faExternalLinkAlt);
 
 const GenePreview = props => {
     let isSmallMediumDevice = ["sm", "md"].includes(props.misc.mediaSize);
@@ -7,25 +11,29 @@ const GenePreview = props => {
             name: "feminized",
             strainImg: "../static/img/feminized.png",
             packImg: "../static/img/strains/package/feminizedPack.png",
-            background: "url(../static/img/Red.png)"
+            background: "url(../static/img/Red.png)",
+            color: "#ff1111"
         },
         {
             name: "autoflower",
             strainImg: "../static/img/autoflower.png",
             packImg: "../static/img/strains/package/autoflowerPack.png",
-            background: "url(../static/img/Purple.png)"
+            background: "url(../static/img/Purple.png)",
+            color: "#8c00ff"
         },
         {
             name: "cbd",
             strainImg: "../static/img/cbd.png",
             packImg: "../static/img/strains/package/CBDPack.png",
-            background: "url(../static/img/White.png)"
+            background: "url(../static/img/White.png)",
+            color: "#D2C9C9"
         },
         {
             name: "regular",
             strainImg: "../static/img/regular.png",
             packImg: "../static/img/strains/package/RegularPack.png",
-            background: "url(../static/img/green.png)"
+            background: "url(../static/img/green.png)",
+            color: "#1C8B04"
         }
     ];
     let windows = types.map((val, index) => {
@@ -72,8 +80,17 @@ const GenePreview = props => {
                         <img src={val.packImg} style={packStyle} className="sm:hidden packClass slow" />
                         <p
                             style={headingStyle}
-                            className="headingClass absolute sm:text-3xl md:text-3/5xl lg:text-3xl xl:text-3/5xl xxl:text-3/5xl">
-                            {val.name}
+                            className="sm:w-full sm:pr-12 sm:flex sm:justify-between headingClass absolute sm:text-3xl md:text-3/5xl lg:text-3xl xl:text-3/5xl xxl:text-3/5xl">
+                            <span className="sm:w-2/3">{val.name}</span>
+                            {isSmallMediumDevice ? (
+                                <span className="sm:w-12 sm:text-right">
+                                    <FontAwesomeIcon
+                                        icon={faExternalLinkAlt}
+                                        style={{ color: val.color }}
+                                        className="p-1"
+                                    />
+                                </span>
+                            ) : null}
                         </p>
                     </div>
                 </div>
@@ -83,7 +100,9 @@ const GenePreview = props => {
 
     return (
         <div className="flex flex-wrap w-full xl:my-12 xl:h-500 mx-auto relative overflow-hidden">
-            <h2 className="w-full mt-8 mb-4 pt-2 text-center text-3/5xl font-extrabold p-2 shadow-md">Categories</h2>
+            <h2 className="w-full sm:mt-0 mt-8 mb-4 pt-2 text-center text-3/5xl font-extrabold p-2 shadow-md">
+                Categories
+            </h2>
             {windows}
         </div>
     );
