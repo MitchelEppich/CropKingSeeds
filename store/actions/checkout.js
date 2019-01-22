@@ -119,6 +119,10 @@ const getActions = uri => {
         if (_orderDetails[_group] == null) _orderDetails[_group] = {};
         _orderDetails[_group][_key] =
           _tag == null ? _value : { value: _value, tag: _tag };
+        
+        if (_key == "country" && _orderDetails[_group].state != null) {
+          _orderDetails[_group].state.value = ""
+        }
         _orderDetails[_group].updatedAt = new Date();
       } else _orderDetails[_key] = { value: _value, tag: _tag };
 

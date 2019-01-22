@@ -2,6 +2,8 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
+import MinimumSeedsWarning from "../other/minimumSeedsWarning"
+
 const ProductPreview = props => {
   let imgPack = {
     width: "60%"
@@ -60,6 +62,7 @@ const ProductPreview = props => {
               <div className="w-1/2 mr-2">
                 <div className="w-100 flex justify-between h-6 items-center">
                   <button
+                  type="button"
                     onClick={() =>
                       props.modifyCart({
                         items: props.cart.items,
@@ -114,6 +117,7 @@ const ProductPreview = props => {
                     {_item.quantity}
                   </p> */}
                   <button
+                  type="button"
                     onClick={() =>
                       props.modifyCart({
                         items: props.cart.items,
@@ -154,6 +158,7 @@ const ProductPreview = props => {
       <h2 className="text-3/5xl font-extrabold mt-12 mb-6 text-black">
         Shopping Cart
       </h2>
+      <MinimumSeedsWarning {...props} />
 
       <div className="w-full inline-flex flex-wrap mb-4 mt-2">
         {showProducts()}

@@ -31,7 +31,7 @@ const Checkout = props => {
             props.toggleStepsCheckout(1);
           }}
           className={`p-2 cursor-pointer step-text ${
-            _orderDetails["shipping"] == null
+            _orderDetails["shipping"] == null || props.misc.stepsCheckout < 1
               ? "opacity-50 pointer-events-none"
               : ""
           }`}>
@@ -48,7 +48,7 @@ const Checkout = props => {
             props.toggleStepsCheckout(2);
           }}
           className={`p-2 cursor-pointer step-text ${
-            _orderDetails["billing"] == null
+            _orderDetails["billing"] == null || props.misc.stepsCheckout < 2
               ? "opacity-50 pointer-events-none"
               : ""
           }`}>
@@ -65,7 +65,7 @@ const Checkout = props => {
             props.toggleStepsCheckout(3);
           }}
           className={`p-2 cursor-pointer step-text ${
-            _orderDetails["payment"] == null
+            _orderDetails["payment"] == null || props.misc.stepsCheckout < 3
               ? "opacity-50 pointer-events-none"
               : ""
           }`}>
@@ -82,7 +82,7 @@ const Checkout = props => {
             props.toggleStepsCheckout(4);
           }}
           className={`p-2 cursor-pointer step-text ${
-            _orderDetails["confirm"] == null
+            _orderDetails["confirm"] == null || props.misc.stepsCheckout < 4
               ? "opacity-50 pointer-events-none"
               : ""
           }`}>

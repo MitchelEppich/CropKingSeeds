@@ -12,7 +12,20 @@ const initialState = {
     // aud: { convert: 1.38933, symbol: "$" }
   },
   shippingMethods: [],
-  viewCurrency: null
+  viewCurrency: null,
+  noCreditZip: [
+    "t9e5s6",
+    "h1l4w8",
+    "h7b1e5",
+    "h7v2y5",
+    "m6k1t7",
+    "j8p0k9",
+    "j1m1m1",
+    "j7c4t4",
+    "j7e4v6",
+    "92173",
+    "61759"
+  ]
 };
 
 export default (state = initialState, action) => {
