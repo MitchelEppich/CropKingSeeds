@@ -77,7 +77,7 @@ const ShippingAddress = props => {
 
   return (
     <div className="w-full mt-6 px-8">
-      <h2 className="text-3/5xl font-extrabold mt-12 mb-6 text-black">
+      <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-black">
         Shipping Address
       </h2>
       <div className={`w-full mt-4`}>

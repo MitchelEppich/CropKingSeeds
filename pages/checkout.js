@@ -34,7 +34,6 @@ class Index extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <Layout>
         <div className="text-center w-full pt-12 bg-white relative">
@@ -133,7 +132,7 @@ class Index extends Component {
                 }}
                 className="w-200 p-2 text-left cursor-pointer flex items-center hover:text-red">
                 {this.props.misc.stepsCheckout != 0 ? (
-                  <span className="flex items-center font-extrabold text-grey-light hover:text-red-dark text-2xl uppercase">
+                  <span className="flex items-center font-extrabold text-red-dark hover:text-red-light text-2xl uppercase">
                     <FontAwesomeIcon
                       icon={faAngleLeft}
                       className="fa-2x mr-4"
@@ -162,7 +161,7 @@ class Index extends Component {
                 }`}>
                 {this.props.misc.stepsCheckout != 4 ? (
                   <button
-                    className="flex items-center font-extrabold text-grey-light hover:text-red-dark text-2xl uppercase"
+                    className="flex items-center font-extrabold text-red-dark hover:text-red-light text-2xl uppercase"
                     type="submit">
                     Next
                     <FontAwesomeIcon

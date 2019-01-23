@@ -42,7 +42,7 @@ const Footer = props => {
                   Contact Us
                 </li>
               </Link>{" "}
-              <Link href="/grmination">
+              <Link href="/germination">
                 <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
                   Germination
                 </li>
@@ -98,7 +98,7 @@ const Footer = props => {
             All the king's horses and all the king's me... they wrote a
             newsletter.
           </p>
-          <div className="inline-flex relative w-container lg:w-2/3 lg:mx-auto rounded-tr rounded-br h-10 items-center mt-4 md:mb-6 sm:mb-6 overflow-hidden">
+          <div className="inline-flex relative w-container md:w-2/3 lg:w-2/3 lg:mx-auto rounded-tr rounded-br h-10 items-center mt-4 md:mb-6 sm:mb-6 overflow-hidden">
             <input
               type="email"
               className="p-2 w-full h-10 rounded-tr rounded-br"
@@ -144,10 +144,10 @@ const Footer = props => {
             <h3 className="text-yellow-dark font-extrabold text-2xl uppercase ">
               Contact
             </h3>
-            <p className="text-white text-xl p-1 lg:text-lg">
+            <p className="text-white text-lg p-1 lg:text-lg">
               info@cropkingseeds.com
             </p>
-            <p className="text-white text-xl p-1 lg:text-lg">
+            <p className="text-white text-lg p-1 lg:text-lg">
               +1 (604) 563-0291
             </p>
           </div>
