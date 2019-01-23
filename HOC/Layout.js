@@ -108,14 +108,14 @@ class Layout extends Component {
                         {this.props.children}
                     </div>
                 </div>
-                <div
+                {/* <div
                     className="fixed z-999 w-24 mb-24 h-24 bg-red-light pin-b pin-l text-white text-2xl pt-4 pl-4 rounded-tr-full rounded-br-full cursor-pointer"
                     onClick={() => Tawk_API.toggle()}>
                     <FontAwesomeIcon
                         icon={faComments}
                         className="fa-2x my-1 pr-1 hover:text-red-dark scale-item cursor-pointer"
                     />
-                </div>
+                </div> */}
                 <Cart {...this.props} />
                 <Footer {...this.props} />
             </div>

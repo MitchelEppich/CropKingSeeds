@@ -80,10 +80,10 @@ const GenePreview = props => {
                         <img src={val.packImg} style={packStyle} className="sm:hidden packClass slow" />
                         <p
                             style={headingStyle}
-                            className="sm:w-full sm:pr-12 sm:flex sm:justify-between headingClass absolute sm:text-3xl md:text-3/5xl lg:text-3xl xl:text-3/5xl xxl:text-3/5xl">
+                            className="sm:w-full sm:pr-12 sm:flex sm:justify-between md:w-full md:pr-12 md:flex md:justify-between headingClass absolute sm:text-3xl md:text-3/5xl lg:text-3xl xl:text-3/5xl xxl:text-3/5xl">
                             <span className="sm:w-2/3">{val.name}</span>
                             {isSmallMediumDevice ? (
-                                <span className="sm:w-12 sm:text-right">
+                                <span className="sm:w-12 sm:text-right md:w-12 md:text-right">
                                     <FontAwesomeIcon
                                         icon={faExternalLinkAlt}
                                         style={{ color: val.color }}

@@ -7,29 +7,27 @@ import withData from "../lib/withData";
 import { connect } from "react-redux";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
-import ArticlePage from "../components/sections/articlePage";
-import ContactUs from "../components/sections/contactUs";
-import FAQ from "../components/sections/faq";
 
 class Index extends Component {
-  render() {
-    return (
-      <Layout>
-        <div className="pt-12">
-          <FAQ {...this.props} />
-        </div>
-      </Layout>
-    );
-  }
+    render() {
+        let questions = this.props.faq.questions.map((question, index) => {
+            return <Question {...question} {...this.props} />;
+        });
+        return (
+            <Layout>
+                <div className="pt-12">{questions}</div>
+            </Layout>
+        );
+    }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input))
-  };
+    return {
+        setVisibleScreen: input => dispatch(actions.setVisibleScreen(input))
+    };
 };
 
 export default connect(
-  state => state,
-  mapDispatchToProps
+    state => state,
+    mapDispatchToProps
 )(withData(Index));

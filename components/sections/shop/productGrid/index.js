@@ -71,7 +71,7 @@ class Index extends Component {
                         }}
                         className={
                             hoverId == product._id
-                                ? "w-64 h-64 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:h-48 lg:w-48 text-white relative sm:absolute md:absolute z-50 slowish lg:my-4 sm:my-2 md:my-2 lg:mx-8 xl:mx-8 xxl:mx-8"
+                                ? "w-64 h-64 sm:w-screen sm:h-screen md:w-48 md:h-48 lg:h-48 lg:w-48 text-white relative sm:absolute md:absolute z-50 slowish lg:my-4 sm:my-2 md:my-2 lg:mx-8 xl:mx-8 xxl:mx-8"
                                 : "w-64 h-64 sm:cursor-pointer md:cursor-pointer sm:w-32 sm:h-32 md:w-48 md:h-48 lg:h-48 lg:w-48 text-white relative z-0 slowish lg:my-4 sm:my-2 md:my-2 lg:mx-8 xl:mx-8 xxl:mx-8"
                         }>
                         <ProductThumbnail
@@ -85,8 +85,13 @@ class Index extends Component {
             });
 
         return (
-            <div className="sm:w-full md:w-full  lg:w-3/4 xl:w-3/4 xxl:w-3/4 min-h-700 text-white">
-                <div className="w-full justify-end flex pt-3 p-2  mb-2 text-grey-light items-center flex">
+            <div className="sm:w-full md:w-full lg:w-3/4 xl:w-3/4 xxl:w-3/4 min-h-700 text-white overflow-y-scroll">
+                <div
+                    className={
+                        hoverId != null && this.props.misc.mediaSize == "sm"
+                            ? "hidden"
+                            : "w-full justify-end flex pt-3 p-2  mb-2 text-grey-light items-center flex"
+                    }>
                     Sort by:
                     <select className="ml-3">
                         <option value="Newest">Newest</option>
@@ -94,7 +99,7 @@ class Index extends Component {
                         <option value="Most Reviewed">Most Reviewed</option>
                     </select>
                 </div>
-                <div className="flex flex-wrap pt-6 sm:justify-center md:justify-center lg:justify-end xl:justify-end xxl:justify-end">
+                <div className="flex flex-wrap pt-6 sm:justify-center md:justify-center lg:justify-end xl:justify-end xxl:justify-end overflow-hidden">
                     {products}
                 </div>
             </div>

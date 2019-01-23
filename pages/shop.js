@@ -17,14 +17,29 @@ class Index extends Component {
             <Layout>
                 {this.props.misc.strains != null && this.props.misc.strains.length > 0 ? (
                     <React.Fragment>
-                        <div>
-                            <h3 className="pt-10 text-grey font-extrabold text-center text-3/5xl mx-auto w-full text-center">
+                        <div
+                            className={
+                                this.props.misc.hoverId != null && this.props.misc.mediaSize == "sm" ? "fixed" : ""
+                            }>
+                            <h3
+                                className={
+                                    this.props.misc.hoverId != null && this.props.misc.mediaSize == "sm"
+                                        ? "hidden"
+                                        : "pt-10 text-grey font-extrabold text-center text-3/5xl mx-auto w-full text-center"
+                                }>
                                 Shop Cannabis Seeds
                             </h3>
-                            <div className="flex flex-wrap relative">
+                            <div
+                                className={
+                                    this.props.misc.hoverId != null && this.props.misc.mediaSize == "sm"
+                                        ? " flex flex-wrap"
+                                        : "flex flex-wrap relative"
+                                }>
                                 <div
                                     className={
-                                        "sm:w-full md:w-full lg:w-1/4 xl:w-1/4 xxl:w-1/4 slow relative mt-8 mb-12"
+                                        this.props.misc.hoverId != null && this.props.misc.mediaSize == "sm"
+                                            ? "hidden"
+                                            : "sm:w-full md:w-full lg:w-1/4 xl:w-1/4 xxl:w-1/4 slow relative mt-8 mb-12"
                                     }>
                                     <Filters {...this.props} />
                                     {/*<FeaturedStrainThumbnails {...this.props} />*/}
