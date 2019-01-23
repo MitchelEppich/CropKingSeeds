@@ -1,0 +1,132 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+
+const ContactForm = props => {
+  return (
+    <div className="w-full p-2 mt-10">
+      <div
+        style={{ boxShadow: "0 0 20px rgba(0, 0, 0, 0.18)" }}
+        className="w-700 sm:w-full sm:px-2 lg:w-600 md:w-400 lg:px-2 md:px-2 md:pt-0 h-600 sm:h-full xxl:mx-auto xl:mx-auto px-8 relative rounded-lg p-2">
+        <div className="w-full p-2">
+          <h2 className="font-extrabold text-3xl md:text-2xl sm:text-2xl p-2 mt-4">
+            Send us a message
+          </h2>
+          <p className="text-sm p-1 px-2">
+            <span className="text-red">*</span> Indicates required field
+          </p>
+        </div>
+        <div className="p-2 w-full">
+          <form>
+            <div className="w-500 lg:w-400 md:w-250 sm:w-full">
+              <div className="w-main sm:w-full mt-3 p-1">
+                <label className="p-1 font-bold">
+                  Full Name: <span className="text-red">*</span>
+                </label>{" "}
+                <input type="text" className="p-2 my-1 w-full" />
+              </div>
+              <div className="w-main sm:w-full mt-3 p-1">
+                <label className="font-bold">
+                  Email Address: <span className="text-red">*</span>
+                </label>{" "}
+                <input type="text" className="p-2 my-1 w-full" />
+              </div>
+              <div className="w-main sm:w-full mt-3 p-1">
+                <label className="font-bold">Subject:</label>
+                <select className="p-2 w-full my-1">
+                  <option className="p-2">Shipping/Delivery</option>
+                  <option className="p-2">Payments</option>
+                  <option className="p-2">Ordering Online</option>
+                  <option className="p-2">Account Information</option>
+                  <option className="p-2">Privacy/Security</option>
+                  <option className="p-2">Other</option>
+                </select>
+              </div>
+              {/* <div className="w-2/3 mt-3 p-1">
+                <label className="p-2">Order Number:</label>{" "}
+                <input type="text" className="p-2 my-1 w-full" />
+              </div> */}
+              <div className="w-main sm:w-full mt-3 p-1">
+                <label className="font-bold">Message:</label>{" "}
+                <textarea
+                  cols="20"
+                  row="500"
+                  className="p-2 my-1 w-full h-40"
+                />
+              </div>
+              <div className="w-main sm:w-full flex justify-end">
+                <div className="w-200 sm:w-full md:w-full md:justify-center flex justify-end">
+                  <button className="p-2 px-8 w-200 sm:w-full rounded uppercase font-bold text-white bg-red-dark">
+                    Submit
+                  </button>
+                  {/* <div className=" font-bolder mr-12">
+                    <Recaptcha
+                                sitekey="6LfaeIgUAAAAADYLe6wYQagF0aclHtGG0gjY4OCr"
+                                render="explicit"
+                                onloadCallback={callback}
+                            /> 
+                  </div> */}
+                </div>
+              </div>
+            </div>
+          </form>
+          <div
+            style={{
+              right: "-145px",
+              boxShadow: "0 0 20px rgba(0, 0, 0, 0.18)"
+            }}
+            className="absolute sm:w-full sm:relative overflow-hidden sm:pin my-auto pin-r pin-y w-350 h-500 sm:mt-12 md:w-300 rounded-lg shadow-lg bg-white">
+            <div className="bg-red-dark text-center text-white py-2 p-1">
+              <h2 className="p-3 py-0 text-3xl font-extrabold">Contact us</h2>
+              <p className="text-white font-bold">24 hour customer service</p>
+            </div>
+            <div className="bg-white p-2 px-6 md:px-3">
+              <div className="inline-flex mt-4 items-center w-full flex">
+                <FontAwesomeIcon
+                  icon={faPhone}
+                  className="fa-2x mr-2 text-grey opacity-25"
+                />
+                <p className="p-2 text-2xl font-black">Phone</p>
+              </div>
+              <div className="ml-10 pl-1">
+                <p className="p-1 pb-2">
+                  <span className="font-extrabold">Canada:</span> (604) 563-0291
+                </p>
+                <p className="p-1 pb-2">
+                  <span className="font-extrabold">USA:</span> +1 (844) 276-7546
+                </p>
+                <p className="p-1 pb-2">
+                  <span className="font-extrabold">Worldwide:</span> +1 (604)
+                  563-0291
+                </p>
+              </div>
+              <div className="inline-flex mt-4 items-center w-full flex">
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  className="fa-2x mr-2 text-grey opacity-25"
+                />
+                <p className="p-2 text-2xl font-black">Email</p>
+              </div>
+              <div className="ml-10 pl-1">
+                <p className="p-1 pb-2">info@cropkingseeds.com</p>
+              </div>
+              <div
+                id="tawkto"
+                className="w-full text-center mt-6 relative scale-item cursor-pointer">
+                <div className="w-full relative">
+                  <img src="../../static/img/cks_red.png" className="w-32" />
+                </div>
+                <div className="absolute -mb-2 pin-b w-full mx-auto">
+                  <h3 className="bg-red-dark w-main px-4 mx-auto shadow-md text-white uppercase font-bold p-2 rounded">
+                    Chat with the king
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ContactForm;

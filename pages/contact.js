@@ -9,6 +9,7 @@ import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import ArticlePage from "../components/sections/articlePage";
 import ContactUs from "../components/sections/contactUs";
+import Head from "next/head";
 
 class Index extends Component {
   render() {

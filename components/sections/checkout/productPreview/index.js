@@ -26,8 +26,7 @@ const ProductPreview = props => {
             overflow: "hidden",
             boxShadow: "0 2px 9px rgba(29, 29, 29, 0.12)"
           }}
-          className="relative mx-2 mt-4 bg-white item-preview w-31percent"
-        >
+          className="relative mx-2 sm:mx-0 mt-4 sm:pb-6 md:pb-2 bg-white item-preview w-3col xl:w-2col lg:w-2col md:w-full sm:w-full">
           <div className="inline-flex w-full items-center flex bg-red-light text-white">
             <div className="w-full">
               <h3 className="px-2 h-10 w-full text-xl p-2 font-bold inline-flex">
@@ -79,12 +78,9 @@ const ProductPreview = props => {
                   ${_item.per.toFixed(2)}
                 </div>
               </div>
-              <div className="w-full p-2 mt-8 flex items-center inline-flex h-12 justify-start">
-                <div className="w-full mr-2">
-                  <div
-                    style={{ width: "90px" }}
-                    className="flex justify-end h-6 items-center"
-                  >
+              <div className="w-full p-2 mt-8 flex sm:flex-col sm:mt-2 md:flex-col md:mt-2 items-center inline-flex h-12 justify-start">
+                <div className="w-full mr-2 sm:mr-0 md:mr-0">
+                  <div className="flex justify-end h-6 w-100 sm:w-full md:w-full items-center">
                     <button
                       type="button"
                       onClick={() =>
@@ -96,8 +92,7 @@ const ProductPreview = props => {
                           quantity: -1
                         })
                       }
-                      className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white"
-                    >
+                      className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white">
                       <FontAwesomeIcon
                         icon={faMinus}
                         className="fa-sm text-white cursor-pointer"
@@ -137,9 +132,7 @@ const ProductPreview = props => {
                       className="text-lg text-center w-10 border-0 font-bold pt-1 leading-none"
                       type="number"
                     />
-                    {/* <p className="leading-none font-semibold text-xl">
-                    {_item.quantity}
-                  </p> */}
+
                     <button
                       type="button"
                       onClick={() =>
@@ -151,8 +144,7 @@ const ProductPreview = props => {
                           quantity: 1
                         })
                       }
-                      className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white"
-                    >
+                      className="px-2 py-1 scale-item bg-almost-black rounded text-xl text-white">
                       <FontAwesomeIcon
                         icon={faPlus}
                         className="fa-sm text-white cursor-pointer"
@@ -160,7 +152,7 @@ const ProductPreview = props => {
                     </button>
                   </div>
                 </div>
-                <div className="text-right w-full mt-1 items-center">
+                <div className="text-right w-full mt-1 sm:mt-4 md:mt-4 items-center">
                   <p className="font-bold text-grey text-lg">
                     {currency != null
                       ? `${currency.symbol}${(
@@ -180,7 +172,7 @@ const ProductPreview = props => {
 
   return (
     <div className="w-full mt-6 mb-8 px-8">
-      <h2 className="text-3/5xl font-extrabold mt-12 mb-6 text-black">
+      <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-center text-black">
         Shopping Cart
       </h2>
       <MinimumSeedsWarning {...props} />

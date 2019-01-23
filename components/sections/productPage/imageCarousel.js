@@ -23,14 +23,14 @@ const imageCarousel = props => {
         largeImgSrc={currentImage}
         imageWidth={1080}
         imageHeight={860}
-        zoomContainerWidth={270}
+        zoomContainerWidth={400}
         activeClass="my-active "
         portalStyle={Object.assign(
           { ...ImageZoom.defaultPortalStyle },
           {
             top: "0px",
             background: "white",
-            width: "270px",
+            width: "400px",
             borderRadius: "3px",
             boxShadow: "rgba(0, 0, 0, 0.3) 0px 2px 22px"
           }
