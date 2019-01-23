@@ -2,85 +2,68 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCannabis } from "@fortawesome/free-solid-svg-icons";
 
 const ReviewStats = props => {
+  let _product = props.viewProduct.currentProduct;
+  let _quantities = _product.ratingQuantity;
+  let _total = (() => {
+    let total = 0;
+    for (let amount of _quantities) {
+      total += amount;
+    }
+    return total;
+  })();
+
+  let showRatings = () => {
+    let filter = props.viewProduct.ratingFilter;
+    let arr = [];
+    let _index = 1;
+    for (let amount of _quantities) {
+      let index = _index;
+      let percent = _quantities[_index - 1] / _total;
+      let rank = (() => {
+        let _rank = 0;
+        for (let _amount of _quantities) {
+          if (amount > _amount) _rank++;
+        }
+        return _rank;
+      })();
+      arr.push(
+        <div
+          className={`inline-flex p-1 mx-2 items-center flex w-full cursor-pointer scale-item ${
+            filter != null && index != filter ? "opacity-50" : ""
+          }`}
+          onClick={() => {
+            props.setReviewRateFilter({
+              rating: index == filter ? null : index
+            });
+          }}
+        >
+          <div className="items-center flex">
+            <span className="text-grey font-bold text-xs">{index}</span>
+            <FontAwesomeIcon icon={faCannabis} className="fa-md mx-1" />
+          </div>
+          <div className="w-full bg-grey-lightest py-3 items-center flex ml-2 relative rounded">
+            <div
+              className="bg-red-dark rounded py-3 absolute"
+              style={{
+                width: `${percent * 100}%`,
+                opacity: `${[0.2, 0.4, 0.6, 0.8, 1][rank]}`,
+                background: "#358406"
+              }}
+            />
+          </div>
+          <div className="absolute pin-r text-xs text-grey font-bold justify-end flex mr-2 opacity-50">
+            ({_quantities[index - 1]})
+          </div>
+        </div>
+      );
+      _index++;
+    }
+    return arr.reverse();
+  };
+
   return (
     <div className="w-full">
-      <div className="w-full mt-2 p-2 text-red-dark">
-        <div className="inline-flex p-1 mx-2 items-center flex w-full cursor-pointer scale-item">
-          <div className="items-center flex">
-            <span className="text-grey font-bold text-xs">5</span>
-            <FontAwesomeIcon icon={faCannabis} className="fa-md mx-1" />
-          </div>
-          <div className="w-full bg-grey-lightest py-3 items-center flex ml-2 relative rounded">
-            <div
-              className="bg-red-dark rounded py-3 absolute"
-              style={{ width: "40%", background: "#358406" }}
-            />
-          </div>
-          <div className="absolute pin-r text-xs text-grey font-bold justify-end flex mr-2 opacity-50">
-            27.5%
-          </div>
-        </div>
-        <div className="inline-flex p-1 mx-2 items-center flex w-full cursor-pointer scale-item">
-          <div className="items-center flex">
-            <span className="text-grey font-bold text-xs">4</span>
-            <FontAwesomeIcon icon={faCannabis} className="fa-md mx-1" />
-          </div>
-          <div className="w-full bg-grey-lightest py-3 items-center flex ml-2 relative rounded">
-            <div
-              className="bg-red-dark rounded py-3 absolute"
-              style={{ width: "60%", background: "#5ca232" }}
-            />
-          </div>
-          <div className="absolute pin-r text-xs text-grey font-bold justify-end flex mr-2 opacity-50">
-            38.5%
-          </div>
-        </div>
-        <div className="inline-flex p-1 mx-2 items-center flex w-full cursor-pointer scale-item">
-          <div className="items-center flex">
-            <span className="text-grey font-bold text-xs">3</span>
-            <FontAwesomeIcon icon={faCannabis} className="fa-md mx-1" />
-          </div>
-          <div className="w-full bg-grey-lightest py-3 items-center flex ml-2 relative rounded">
-            <div
-              className="bg-red-dark rounded py-3 absolute"
-              style={{ width: "20%", background: "#74b34f" }}
-            />
-          </div>
-          <div className="absolute pin-r text-xs text-grey font-bold justify-end flex mr-2 opacity-50">
-            10.5%
-          </div>
-        </div>
-        <div className="inline-flex p-1 mx-2 items-center flex w-full cursor-pointer scale-item">
-          <div className="items-center flex">
-            <span className="text-grey font-bold text-xs">2</span>
-            <FontAwesomeIcon icon={faCannabis} className="fa-md mx-1" />
-          </div>
-          <div className="w-full bg-grey-lightest py-3 items-center flex ml-2 relative rounded">
-            <div
-              className="bg-red-dark rounded py-3 absolute"
-              style={{ width: "40%", background: "#88c762" }}
-            />
-          </div>
-          <div className="absolute pin-r text-xs text-grey font-bold justify-end flex mr-2 opacity-50">
-            18.5%
-          </div>
-        </div>
-        <div className="inline-flex p-1 mx-2 items-center flex w-full cursor-pointer scale-item">
-          <div className="items-center flex">
-            <span className="text-grey font-bold text-xs">1</span>
-            <FontAwesomeIcon icon={faCannabis} className="fa-md mx-1" />
-          </div>
-          <div className="w-full bg-grey-lightest py-3 items-center flex ml-2 relative rounded">
-            <div
-              className="bg-red-dark rounded py-3 absolute"
-              style={{ width: "20%", background: "#b0dc96" }}
-            />
-          </div>
-          <div className="absolute pin-r text-xs text-grey font-bold justify-end flex mr-2 opacity-50">
-            10.5%
-          </div>
-        </div>
-      </div>
+      <div className="w-full mt-2 p-2 text-red-dark">{showRatings()}</div>
     </div>
   );
 };

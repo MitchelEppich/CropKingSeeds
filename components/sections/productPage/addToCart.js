@@ -12,7 +12,7 @@ const addToCart = props => {
   return (
     <div className="w-full">
       <div className="w-container sm:w-full mx-auto mt-4">
-        <div className="inline-flex items-center flex w-full my-2">
+        <div className="inline-flex items-center flex w-full my-2 opacity-50">
           <div className="">
             <p className="w-100 text-left text-sm text-grey font-bold mx-auto">
               Price per Pack:{" "}
@@ -29,25 +29,23 @@ const addToCart = props => {
         </div>
       </div>
       <div className="w-1/4 h-8 sm:w-full w-container mx-auto">
-        {props.cart.potentialQuantity > 1 ? (
-          <div className="inline-flex flex my-2 items-center ">
-            <div>
-              <p className="w-100 text-left text-sm text-grey font-bold mx-auto">
-                Total Price:{" "}
-              </p>
-            </div>
-
-            <p className="font-bold text-xl text-grey-darkest ml-4">
-              {currency != null
-                ? `${currency.symbol}${(
-                    currency.convert *
-                    (currentProduct.price[props.shop.quickAddToCartQty] *
-                      props.cart.potentialQuantity)
-                  ).toFixed(2)}`
-                : ""}
+        <div className="inline-flex flex my-2 items-center ">
+          <div>
+            <p className="w-100 text-left text-sm text-grey font-bold mx-auto">
+              Total Price:{" "}
             </p>
           </div>
-        ) : null}
+
+          <p className="font-bold text-xl text-grey-darkest ml-4">
+            {currency != null
+              ? `${currency.symbol}${(
+                  currency.convert *
+                  (currentProduct.price[props.shop.quickAddToCartQty] *
+                    props.cart.potentialQuantity)
+                ).toFixed(2)}`
+              : ""}
+          </p>
+        </div>
       </div>
 
       <div className="w-container sm:w-full mx-auto">
@@ -69,7 +67,8 @@ const addToCart = props => {
                   product: currentProduct,
                   quantity: props.cart.potentialQuantity
                 });
-              }}>
+              }}
+            >
               Add to Cart
             </button>
           </div>
@@ -88,7 +87,8 @@ const addToCart = props => {
                     product: currentProduct,
                     quantity: props.cart.potentialQuantity
                   });
-                }}>
+                }}
+              >
                 Buy Now
               </button>
             </Link>

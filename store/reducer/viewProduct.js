@@ -135,33 +135,34 @@ const initialState = {
         "Irure do sunt fugiat voluptate deserunt reprehenderit excepteur. Veniam id officia voluptate anim labore amet minim ut. Reprehenderit anim ullamco labore exercitation laboris ullamco elit aliqua cupidatat laborum in occaecat. Ipsum anim ad aliqua laboris non proident duis velit quis magna ut veniam labore pariatur. Non culpa elit adipisicing tempor tempor anim dolor ex qui nostrud ea deserunt pariatur."
     }
   ],
-  review: {}
+  review: {},
+  reviewCursor: 0,
+  ratingFilter: null
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_CURRENT_PRODUCT:
-      return updateObject(state, {
-        currentProduct: action.input
-      });
+      return updateObject(state, { currentProduct: action.input });
     case actionTypes.UPDATE_STRAIN:
       return updateObject(state, {});
     case actionTypes.SET_CURRENT_IMAGE:
-      return updateObject(state, {
-        currentImage: action.index
-      });
+      return updateObject(state, { currentImage: action.index });
     case actionTypes.TOGGLE_FULL_DESCRIPTION:
       return updateObject(state, {
         showFullDescription: !state.showFullDescription
       });
     case actionTypes.MODIFY_REVIEW:
+      return updateObject(state, { review: action.input });
+    case actionTypes.SET_REVIEW_CURSOR:
+      return updateObject(state, { reviewCursor: action.input });
+    case actionTypes.SET_REVIEW_RATE_FILTER:
       return updateObject(state, {
-        review: action.input
+        ratingFilter: action.input,
+        reviewCursor: 0
       });
     case actionTypes.SET_NEW_RATING:
-      return updateObject(state, {
-        newRating: action.index
-      });
+      return updateObject(state, { newRating: action.index });
     default:
       return state;
   }

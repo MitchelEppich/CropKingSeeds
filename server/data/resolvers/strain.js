@@ -52,7 +52,7 @@ const resolvers = {
         let pReviews = strain.ratingQuantity[0] + strain.ratingQuantity[1] + strain.ratingQuantity[2] + 1
 
         // Filter reviews
-        if (rating < 4 && pReviews / total > 0.1) {
+        if (rating < 4 && total >= 10 && pReviews / total > 0.1) {
           let index = [...strain.reviews].reverse().findIndex(a => {
             let rating = a.split("/&=>")[3];
             if (rating < 4) {

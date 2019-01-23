@@ -3,13 +3,17 @@ import { makePromise, execute } from "apollo-link";
 import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
 
+import { inferStrainData } from "../utilities/strain";
+
 const actionTypes = {
   SET_CURRENT_IMAGE: "SET_CURRENT_IMAGE",
   TOGGLE_FULL_DESCRIPTION: "TOGGLE_FULL_DESCRIPTION",
   SET_NEW_RATING: "SET_NEW_RATING",
   SET_CURRENT_PRODUCT: "SET_CURRENT_PRODUCT",
   UPDATE_STRAIN: "UPDATE_STRAIN",
-  MODIFY_REVIEW: "MODIFY_REVIEW"
+  MODIFY_REVIEW: "MODIFY_REVIEW",
+  SET_REVIEW_CURSOR: "SET_REVIEW_CURSOR",
+  SET_REVIEW_RATE_FILTER: "SET_REVIEW_RATE_FILTER"
 };
 
 const getActions = uri => {
@@ -30,6 +34,12 @@ const getActions = uri => {
         index: index
       };
     },
+    setReviewCursor: input => {
+      return {
+        type: actionTypes.SET_REVIEW_CURSOR,
+        input: input.cursor
+      };
+    },
     toggleFullDescription: () => {
       return {
         type: actionTypes.TOGGLE_FULL_DESCRIPTION
@@ -46,12 +56,22 @@ const getActions = uri => {
         await makePromise(execute(link, operation))
           .then(data => {
             let strain = data.data.updateStrain;
-            dispatch(objects.setCurrentProduct({ product: strain }));
+            dispatch(
+              objects.setCurrentProduct({
+                product: inferStrainData(strain)
+              })
+            );
             dispatch({
               type: actionTypes.UPDATE_STRAIN
             });
           })
           .catch(error => console.log(error));
+      };
+    },
+    setReviewRateFilter: input => {
+      return {
+        type: actionTypes.SET_REVIEW_RATE_FILTER,
+        input: input.rating
       };
     },
     modifyReview: input => {

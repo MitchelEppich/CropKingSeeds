@@ -13,9 +13,9 @@ const data = props => {
   // pcbdWidth = _product.pcbd[1] * 50 + "%";
   // pcbnWidth = _product.pcbn[1] * 10 + "%";
   // pthcWidth = _product.pthc[1] * 2 + "%";
-  pcbdWidth = _product.pcbd[0] + "%";
-  pcbnWidth = _product.pcbn[0] + "%";
-  pthcWidth = _product.pthc[0] + "%";
+  pcbdWidth = (_product.pcbd[0] / 8) * 100 + "%";
+  pcbnWidth = (_product.pcbn[0] / 4.2) * 100 + "%";
+  pthcWidth = (_product.pthc[0] / 25.51) * 100 + "%";
 
   // console.log("cdb", pcbdWidth, "cbn", pcbnWidth, "thc", pthcWidth);
 
@@ -128,7 +128,7 @@ const data = props => {
               <div className="relative bg-smoke-grey w-full rounded-lg">
                 <div className="inline-flex absolute w-full h-full">
                   <div className="absolute flex w-full h-full justify-end">
-                    <p className="text-grey my-auto text-xs font-bold pr-8">
+                    <p className="text-grey my-auto text-xs font-bold pr-8 z-40">
                       {pthc}
                     </p>
                   </div>
@@ -142,7 +142,8 @@ const data = props => {
                       width: pthcWidth,
                       borderRadius: "5px",
                       overflow: "hidden"
-                    }}>
+                    }}
+                  >
                     {" "}
                   </div>
                 </div>
@@ -156,7 +157,7 @@ const data = props => {
               <div className="relative bg-smoke-grey w-full rounded-lg">
                 <div className="inline-flex absolute w-full h-full">
                   <div className="absolute flex w-full h-full justify-end">
-                    <p className="text-grey my-auto text-xs font-bold pr-8">
+                    <p className="text-grey my-auto text-xs font-bold pr-8 z-40">
                       {pcbd}
                     </p>
                   </div>
@@ -170,7 +171,8 @@ const data = props => {
                       width: pcbdWidth,
                       borderRadius: "5px",
                       overflow: "hidden"
-                    }}>
+                    }}
+                  >
                     {" "}
                   </div>
                 </div>
@@ -185,7 +187,7 @@ const data = props => {
                 <div className="relative bg-smoke-grey w-full rounded-lg">
                   <div className="inline-flex absolute w-full h-full">
                     <div className="absolute flex w-full h-full justify-end">
-                      <p className="text-grey my-auto text-xs font-bold pr-8">
+                      <p className="text-grey my-auto text-xs font-bold pr-8 z-40">
                         {pcbn}
                       </p>
                     </div>
@@ -197,7 +199,8 @@ const data = props => {
                         width: pcbnWidth,
                         borderRadius: "5px",
                         overflow: "hidden"
-                      }}>
+                      }}
+                    >
                       {" "}
                     </div>
                   </div>

@@ -24,6 +24,32 @@ import Genetics from "../components/sections/productPage/genetics";
 import Breadcrumb from "../components/sections/productPage/breadcrumb";
 
 class Index extends Component {
+  showRating() {
+    let rating = this.props.viewProduct.currentProduct.rating || 0;
+    let totalReviews = this.props.viewProduct.currentProduct.reviews.length;
+
+    let arr = [];
+    for (let i = 0; i < 5; i++) {
+      arr.push(
+        <FontAwesomeIcon
+          key={i}
+          icon={faCannabis}
+          className={`text-red-dark fa-lg mx-1 ${
+            Math.round(rating) <= i ? "opacity-25" : ""
+          }`}
+        />
+      );
+    }
+
+    arr.push(
+      <span className="ml-2 font-bold text-sm hover:text-grey-light">
+        {rating.toFixed(1)} Leaves ({totalReviews} reviews)
+      </span>
+    );
+
+    return arr;
+  }
+
   render() {
     return (
       <Layout>
@@ -41,29 +67,7 @@ class Index extends Component {
                   </h1>
                 </div>
                 <div className="mt-1 cursor-pointer ml-1 pl-10 sm:pl-0 lg:pl-12 md:pl-8">
-                  <FontAwesomeIcon
-                    icon={faCannabis}
-                    className="text-red-dark fa-lg mr-1"
-                  />
-                  <FontAwesomeIcon
-                    icon={faCannabis}
-                    className="text-red-dark fa-lg mx-1"
-                  />
-                  <FontAwesomeIcon
-                    icon={faCannabis}
-                    className="text-red-dark fa-lg mx-1"
-                  />
-                  <FontAwesomeIcon
-                    icon={faCannabis}
-                    className="text-red-dark fa-lg mx-1"
-                  />
-                  <FontAwesomeIcon
-                    icon={faCannabis}
-                    className="text-red-dark fa-lg mx-1"
-                  />
-                  <span className="ml-2 font-bold text-sm hover:text-grey-light">
-                    5 Leaves (81 reviews)
-                  </span>
+                  {this.showRating()}
                 </div>
 
                 <div className="w-full h-350 inline-flex mb-6 xl:block xl:h-300 lg:block lg:h-300 md:block md:h-300 sm:block sm:h-300">
@@ -117,6 +121,8 @@ const mapDispatchToProps = dispatch => {
     setNewRating: index => dispatch(actions.setNewRating(index)),
     toggleFilter: input => dispatch(actions.toggleFilter(input)),
     updateStrain: input => dispatch(actions.updateStrain(input)),
+    setReviewCursor: input => dispatch(actions.setReviewCursor(input)),
+    setReviewRateFilter: input => dispatch(actions.setReviewRateFilter(input)),
     modifyReview: input => dispatch(actions.modifyReview(input))
   };
 };
