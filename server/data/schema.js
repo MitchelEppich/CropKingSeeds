@@ -46,6 +46,9 @@ type Strain {
   sativa: Float
   ruderalis: Float
   env: String
+  rating: Float
+  reviews: [String]
+  ratingQuantity: [Int]
 }
 
 input StrainInput {
@@ -70,6 +73,7 @@ input StrainInput {
   sativa: Float
   ruderalis: Float
   env: String
+  review: String
 }
 
 type Order {
@@ -163,7 +167,8 @@ type PaymentResponse {
 
 type Mutation {
   createStrain(input: StrainInput): Strain
-  typeToDom: String
+  updateStrain(input: StrainInput): Strain
+  typeToDom: [Strain]
   
   createOrder(input: OrderInput): Order
 

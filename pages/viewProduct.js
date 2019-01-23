@@ -115,7 +115,9 @@ const mapDispatchToProps = dispatch => {
     setCurrentImage: index => dispatch(actions.setCurrentImage(index)),
     toggleFullDescription: () => dispatch(actions.toggleFullDescription()),
     setNewRating: index => dispatch(actions.setNewRating(index)),
-    toggleFilter: input => dispatch(actions.toggleFilter(input))
+    toggleFilter: input => dispatch(actions.toggleFilter(input)),
+    updateStrain: input => dispatch(actions.updateStrain(input)),
+    modifyReview: input => dispatch(actions.modifyReview(input))
   };
 };
 

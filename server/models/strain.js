@@ -23,7 +23,10 @@ const StrainSchema = Schema({
   pcbd: [Number],
   pcbn: [Number],
   country: [Number],
-  sotiId: String
+  sotiId: String,
+  rating: Number,
+  reviews: [String],
+  ratingQuantity: {type: [Number], default: [0, 0, 0, 0, 0]}
 });
 
 module.exports = StrainSchema;
