@@ -17,6 +17,7 @@ import Shop from "./shop";
 import About from "./about";
 import ViewProduct from "./viewProduct";
 import Germination from "./germination";
+import Faq from "./faq";
 
 const uri = "http://localhost:3000/graphql";
 // const uri = "http://192.168.0.57:3000/graphql";
@@ -28,7 +29,8 @@ const imports = {
     ...Shop(uri),
     ...ViewProduct(uri),
     ...Germination(uri),
-    ...About(uri)
+    ...About(uri),
+    ...Faq(uri)
 };
 
 const actionTypes = {

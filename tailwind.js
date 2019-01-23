@@ -47,6 +47,7 @@ let colors = {
     "black-transparent": "rgba(0,0,0,.775)",
     "almost-white": "rgba(255, 255, 255, 0.7)",
     "almost-black": "rgba(0,0,0,0.5)",
+    "off-white": "#F3F3F3",
 
     black: "#000",
     "smoke-grey": "#eee",

@@ -85,7 +85,7 @@ class Index extends Component {
             });
 
         return (
-            <div className="sm:w-full md:w-full lg:w-3/4 xl:w-3/4 xxl:w-3/4 min-h-700 text-white overflow-y-scroll">
+            <div className="sm:w-full md:w-full lg:w-3/4 xl:w-3/4 xxl:w-3/4 min-h-700 text-white">
                 <div
                     className={
                         hoverId != null && this.props.misc.mediaSize == "sm"
@@ -99,7 +99,7 @@ class Index extends Component {
                         <option value="Most Reviewed">Most Reviewed</option>
                     </select>
                 </div>
-                <div className="flex flex-wrap pt-6 sm:justify-center md:justify-center lg:justify-end xl:justify-end xxl:justify-end overflow-hidden">
+                <div className="flex flex-wrap pt-6 sm:justify-center md:justify-center lg:justify-end xl:justify-end xxl:justify-end sm:overflow-hidden">
                     {products}
                 </div>
             </div>
