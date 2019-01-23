@@ -1,5 +1,8 @@
 import Review from "./review";
 import ReviewForm from "./reviewForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCannabis } from "@fortawesome/free-solid-svg-icons";
+import ReviewStats from "./reviewStats";
 
 const reviews = props => {
   let reviews = props.viewProduct.currentProduct.reviews.map(
@@ -28,9 +31,18 @@ const reviews = props => {
         <h3 className="w-full p-2 pl-6 font-bold text-3xl my-3 text-grey bg-smoke-grey">
           Last Reviews
         </h3>
-        {reviews}
-        <div className="w-container mx-auto text-right mt-2 font-bold text-xl text-red-dark hover:text-grey cursor-pointer">
-          <p>Read More...</p>
+        <div className="w-full px-20 mx-auto flex">
+          <div className="w-1/4">
+            {" "}
+            <ReviewStats />
+          </div>
+          <div className="w-3/4">{reviews}</div>
+        </div>
+
+        <div className="w-full px-8 mx-auto text-right mt-2">
+          <button className="w-200 sm:w-full sm:mt-6 p-2 mt-2 text-lg hover:bg-red-light bg-red-dark text-white cursor-pointer">
+            Load More...
+          </button>
         </div>
       </div>
     </div>

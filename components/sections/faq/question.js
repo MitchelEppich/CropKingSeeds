@@ -1,0 +1,31 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+
+const question = props => {
+    let currentlyExpanded = props.faq.currentlyExpanded;
+    let expand = currentlyExpanded == props.index;
+    let size = expand
+        ? { height: "auto", transition: "all 0.2s ease-in-out", backgroundColor: "#FDFDFD" }
+        : { height: "auto", transition: "all 0.2s ease-in-out", backgroundColor: "#FAFAFA" };
+    return (
+        <div
+            onClick={() => props.toggleFAQQuestion(props.index)}
+            style={size}
+            className="w-1/2 lg:w-full md:w-full sm:w-full mx-auto shadow-md my-2 cursor-pointer">
+            <p className="font-black p-2 flex justify-between">
+                <span className={expand ? "text-red-dark flex items-center" : " flex items-center"}>
+                    <span className="text-red-dark text-2xl mr-2">Q:</span>
+                    <span>{props.question}</span>
+                </span>
+                {expand ? (
+                    <FontAwesomeIcon icon={faCaretUp} className="fa-2x mx-2 mt-1" />
+                ) : (
+                    <FontAwesomeIcon icon={faCaretDown} className="fa-2x mx-2 mt-1" />
+                )}
+            </p>
+            {expand ? <p className="px-10 pb-8">{props.answer}</p> : null}
+        </div>
+    );
+};
+
+export default question;

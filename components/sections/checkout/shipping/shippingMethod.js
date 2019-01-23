@@ -108,7 +108,7 @@ const ShippingMethod = props => {
           ? "opacity-50 pointer-events-none unselectable"
           : ""
       }`}>
-      <h2 className="text-3/5xl font-extrabold mt-4 mb-6 text-black">
+      <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-black">
         Shipping Method
       </h2>
       {showMethods()}

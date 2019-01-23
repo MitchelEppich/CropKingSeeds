@@ -10,6 +10,37 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SeedSelectModule from "../../productPage/seedSelectModule";
 
+function preventDefault(e) {
+    e = e || window.event;
+    if (e.preventDefault) e.preventDefault();
+    e.returnValue = false;
+}
+
+function preventDefaultForScrollKeys(e) {
+    if (keys[e.keyCode]) {
+        preventDefault(e);
+        return false;
+    }
+}
+
+function disableScroll() {
+    if (window.addEventListener)
+        // older FF
+        window.addEventListener("DOMMouseScroll", preventDefault, false);
+    window.onwheel = preventDefault; // modern standard
+    window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+    window.ontouchmove = preventDefault; // mobile
+    document.onkeydown = preventDefaultForScrollKeys;
+}
+
+function enableScroll() {
+    if (window.removeEventListener) window.removeEventListener("DOMMouseScroll", preventDefault, false);
+    window.onmousewheel = document.onmousewheel = null;
+    window.onwheel = null;
+    window.ontouchmove = null;
+    document.onkeydown = null;
+}
+
 const productThumbnail = props => {
     let currency = props.checkout.viewCurrency;
     let hover = props.hoverId == props.product._id;
@@ -20,9 +51,10 @@ const productThumbnail = props => {
 
     return (
         <div className={overlayClass}>
-            <div className="lg:hidden xl:hidden xxl:hidden">
+            <div className="xl:hidden xxl:hidden">
                 <FontAwesomeIcon
                     onClick={() => {
+                        enableScroll();
                         props.setHoverId(props.product._id, false);
                     }}
                     icon={faTimes}
@@ -35,6 +67,7 @@ const productThumbnail = props => {
                 className={packageClass}
                 onClick={() => {
                     if (props.isSmallMediumOrLargeDevice) {
+                        disableScroll();
                         props.setHoverId(props.product._id, true);
                         let _index = 0;
                         while (props.product.price[_index] == -1) {
@@ -54,6 +87,7 @@ const productThumbnail = props => {
                 className={plantClass}
                 onClick={() => {
                     if (props.isSmallMediumOrLargeDevice) {
+                        disableScroll();
                         props.setHoverId(props.product._id, true);
                         let _index = 0;
                         while (props.product.price[_index] == -1) {
@@ -73,7 +107,7 @@ const productThumbnail = props => {
                 onClick={() => {
                     props.setCurrentProduct({ product: props.product });
                 }}
-                className={hover ? "overflow-hidden w-full bg-white ml-1" : "relative"}>
+                className={hover ? "overflow-hidden w-full bg-white" : "relative"}>
                 <Link href="/viewProduct" as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}>
                     <div style={{ zIndex: "1000", width: "92%" }} className="absolute w-full">
                         <h3

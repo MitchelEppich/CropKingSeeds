@@ -11,17 +11,17 @@
 // @access public
 // @param {String} $element - Element's name
 @mixin element($element) {
-  &__#{$element} {
-    @content;
-  }
+    &__#{$element} {
+        @content;
+    }
 }
 // Block Modifier
 // @access public
 // @param {String} $modifier - Modifier's name
 @mixin modifier($modifier) {
-  &--#{$modifier} {
-    @content;
-  }
+    &--#{$modifier} {
+        @content;
+    }
 }
 //EXAMPLE FONT FACE IMPORT WITH TWO WEIGHTS
 // @font-face {
@@ -44,52 +44,52 @@
 //ELEMENTS
 body,
 html {
-  font-family: "Nunito Sans", sans-serif;
-  color: #252525;
-  font-size: 15px;
-  padding: 0;
-  margin: 0;
-  background: white;
-  font-weight: 500;
+    font-family: "Nunito Sans", sans-serif;
+    color: #252525;
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+    background: white;
+    font-weight: 500;
 }
 button:focus,
 input:focus,
 textarea:focus {
-  outline: none;
+    outline: none;
 }
 h1,
 h2,
 h3,
 h4,
 h5 {
-  font-family: "Nunito Sans", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 input,
 select,
 textarea {
-  border: 2px solid #ececec;
-  border-radius: 3px;
-  font-weight: 600;
+    border: 2px solid #ececec;
+    border-radius: 3px;
+    font-weight: 600;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 li {
-  list-style: none;
+    list-style: none;
 }
 option {
-  font-weight: 600;
+    font-weight: 600;
 }
 select.sizeable-opt {
-  font-size: 95%;
+    font-size: 95%;
 }
 svg {
-  height: 100%;
-  &:not(:root) {
-    display: inline-block;
-  }
+    height: 100%;
+    &:not(:root) {
+        display: inline-block;
+    }
 }
 // img {
 //     width: auto;
@@ -98,135 +98,135 @@ svg {
 
 //CLASSES
 .absolute-center {
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin-top: auto;
-  margin-bottom: auto;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 .checkbox {
-  height: 24px;
-  width: 24px;
-  margin-right: 5px;
-  background-color: #eee;
-  border-radius: 50%;
-  vertical-align: text-top;
+    height: 24px;
+    width: 24px;
+    margin-right: 5px;
+    background-color: #eee;
+    border-radius: 50%;
+    vertical-align: text-top;
 }
 .checkbox:checked {
-  background-color: #b8b8b8;
+    background-color: #b8b8b8;
 }
 
 .example {
-  background-color: red;
+    background-color: red;
 }
 .hr {
-  @include element("filters") {
-    width: 95%;
-    height: 2px;
-    box-shadow: 0 2px 0 0 rgba(189, 188, 188, 0.3);
-  }
-  @include element("cart") {
-    width: 90%;
-    height: 1px;
-    box-shadow: 0 2px 0 0 #d4d4d4;
-  }
-  @include element("germinationSteps") {
-    width: 75%;
-    height: 10px;
-    position: absolute;
-    left: 12.25%;
-    top: 5px;
-    box-shadow: 0 10px 0 0 #d4d4d4;
-  }
-  @include element("cms") {
-    width: 100%;
-    height: 1px;
-    background-color: rgba(239, 87, 83, 0.2);
-  }
+    @include element("filters") {
+        width: 95%;
+        height: 2px;
+        box-shadow: 0 2px 0 0 rgba(189, 188, 188, 0.3);
+    }
+    @include element("cart") {
+        width: 90%;
+        height: 1px;
+        box-shadow: 0 2px 0 0 #d4d4d4;
+    }
+    @include element("germinationSteps") {
+        width: 75%;
+        height: 10px;
+        position: absolute;
+        left: 12.25%;
+        top: 5px;
+        box-shadow: 0 10px 0 0 #d4d4d4;
+    }
+    @include element("cms") {
+        width: 100%;
+        height: 1px;
+        background-color: rgba(239, 87, 83, 0.2);
+    }
 }
 .menu {
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.58);
-  background-position: 0% 10%;
-  background-size: cover;
-  background-repeat: no-repeat;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.58);
+    background-position: 0% 10%;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .li--viewProduct {
-  list-style: inside;
+    list-style: inside;
 }
 .preserv-3d {
-  transform-style: preserve-3d;
+    transform-style: preserve-3d;
 }
 
 .ray_box {
-  /*HEADER ANIMATION */
-  left: 170px;
-  top: 5px;
-  right: 0;
-  position: absolute;
-  bottom: 0;
-  width: 30px;
-  height: 30px;
-  -webkit-animation: ray_anim 300s linear infinite;
-  animation: ray_anim 300s linear infinite;
-  z-index: -5;
+    /*HEADER ANIMATION */
+    left: 170px;
+    top: 5px;
+    right: 0;
+    position: absolute;
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    -webkit-animation: ray_anim 300s linear infinite;
+    animation: ray_anim 300s linear infinite;
+    z-index: -5;
 }
 .ray {
-  /*HEADER ANIMATION */
-  background: linear-gradient(to top, rgba(255, 0, 0, 0), rgb(255, 72, 0));
-  transform-origin: center top;
-  border-radius: 200% 200% 0 0;
-  position: absolute;
-  z-index: 10;
-  opacity: 0.6;
-  left: 50%;
+    /*HEADER ANIMATION */
+    background: linear-gradient(to top, rgba(255, 0, 0, 0), rgb(255, 72, 0));
+    transform-origin: center top;
+    border-radius: 200% 200% 0 0;
+    position: absolute;
+    z-index: 10;
+    opacity: 0.6;
+    left: 50%;
 }
 .slow {
-  transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 .slowish {
-  transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 .test2 {
-  background: #ff0707;
-  height: 90px;
-  width: 100%;
-  overflow-x: hidden;
-  margin-left: -8px;
-  margin-top: -53px;
-  transform: translateZ(-1em) rotate(-3deg);
+    background: #ff0707;
+    height: 90px;
+    width: 100%;
+    overflow-x: hidden;
+    margin-left: -8px;
+    margin-top: -53px;
+    transform: translateZ(-1em) rotate(-3deg);
 }
 .text-content::first-letter {
-  font-weight: bold;
-  color: black;
-  font-size: 36px;
-  float: left;
-  margin: 4px 4px 0px 0px;
-  line-height: 0.8;
+    font-weight: bold;
+    color: black;
+    font-size: 36px;
+    float: left;
+    margin: 4px 4px 0px 0px;
+    line-height: 0.8;
 }
 .text-shadow {
-  text-shadow: 1px 1px 7px black;
+    text-shadow: 1px 1px 7px black;
 }
 .unselectable {
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 //ANIMATIONS
 @keyframes ray_anim {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
 }
 // END UNIVERSAL
 ///////////////////////////////
@@ -234,13 +234,13 @@ svg {
 ////////////////
 // AFFILIATES PAGE
 .affiliatesBanner {
-  background-image: url("../static/img/affiliatesBanner.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 60vh;
-  padding: 50px 100px 0 100px;
+    background-image: url("../static/img/affiliatesBanner.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 60vh;
+    padding: 50px 100px 0 100px;
 }
 // END AFFILIATES PAGE
 ////////////////////
@@ -248,18 +248,18 @@ svg {
 ////////////////
 // ARTICLES PAGE
 .articleSlider {
-  object-fit: cover;
-  height: 600px;
-  width: 100%;
-  filter: brightness(0.5);
+    object-fit: cover;
+    height: 600px;
+    width: 100%;
+    filter: brightness(0.5);
 }
 .scale-item {
-  transform: scale(1);
-  transition: transform 0.3s ease;
+    transform: scale(1);
+    transition: transform 0.3s ease;
 }
 .scale-item:hover {
-  transform: scale(1.04);
-  transition: transform 0.3s ease;
+    transform: scale(1.04);
+    transition: transform 0.3s ease;
 }
 // END ARTICLES PAGE
 ////////////////////
@@ -267,34 +267,34 @@ svg {
 ////////////////
 // CHECKOUT PAGE
 .item-preview {
-  border: 1px solid rgba(206, 206, 206, 0.3);
-  box-shadow: 0px 1px 2px rgba(206, 206, 206, 0.3);
-  transform: scale(1);
-  transition: transform 0.6s ease;
+    border: 1px solid rgba(206, 206, 206, 0.3);
+    box-shadow: 0px 1px 2px rgba(206, 206, 206, 0.3);
+    transform: scale(1);
+    transition: transform 0.6s ease;
 }
 .item-preview:hover {
-  transform: scale(1.04);
-  transition: transform 0.6s ease;
+    transform: scale(1.04);
+    transition: transform 0.6s ease;
 }
 .step-text {
-  color: white;
-  font-family: "Nunito Sans", sans-serif;
-  transform: scale(1);
-  transition: transform 0.2s ease;
+    color: white;
+    font-family: "Nunito Sans", sans-serif;
+    transform: scale(1);
+    transition: transform 0.2s ease;
 }
 .step-text:hover {
-  color: white;
-  transform: scale(1.04);
-  transition: transform 0.2s ease;
+    color: white;
+    transform: scale(1.04);
+    transition: transform 0.2s ease;
 }
 .steps-active:before {
-  content: "";
-  border: solid 0.5em transparent;
-  border-top-color: rgb(146, 3, 0);
-  position: absolute;
-  top: -0.5em;
-  left: 50%;
-  margin-left: -0.25em;
+    content: "";
+    border: solid 0.5em transparent;
+    border-top-color: rgb(146, 3, 0);
+    position: absolute;
+    top: -0.5em;
+    left: 50%;
+    margin-left: -0.25em;
 }
 // END CHECKOUT PAGE
 ////////////////////
@@ -302,12 +302,12 @@ svg {
 //////////////////
 // CMS
 .cmsMenuArrows {
-  transform: scale(1);
-  transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.04);
+    transform: scale(1);
     transition: transform 0.3s ease;
-  }
+    &:hover {
+        transform: scale(1.04);
+        transition: transform 0.3s ease;
+    }
 }
 //END CMS
 /////////
@@ -315,9 +315,9 @@ svg {
 //////////////////
 //GERMINATION PAGE
 .germinationCarouselImg {
-  width: 551.11px;
-  height: 310px;
-  margin-top: 30px;
+    width: 551.11px;
+    height: 310px;
+    margin-top: 30px;
 }
 // END GERMINATION PAGE
 ///////////////////////
@@ -325,42 +325,42 @@ svg {
 /////////////
 // HOME PAGE
 .bannerBuyNow {
-  position: absolute;
-  width: 14rem;
-  left: calc(50% - 7rem);
-  bottom: 1.5rem;
-  background-color: rgba(0, 0, 0, 0.5);
-  transition: all 0.3s ease-in-out;
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
+    position: absolute;
+    width: 14rem;
+    left: calc(50% - 7rem);
+    bottom: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
 }
 .genePreview {
-  width: 25%;
-  transition: all 0.5s ease-in-out;
-  background-position: center;
-  background-size: 500px 500px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  border: 5px solid #fff;
-  cursor: pointer;
+    width: 25%;
+    transition: all 0.5s ease-in-out;
+    background-position: center;
+    background-size: 500px 500px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    border: 5px solid #fff;
+    cursor: pointer;
 }
 .headingClass {
-  transform: translateX(90px);
-  position: absolute;
-  bottom: 0;
-  transition: all 0.5s ease-in-out;
+    transform: translateX(90px);
+    position: absolute;
+    bottom: 0;
+    transition: all 0.5s ease-in-out;
 }
 .packClass {
-  transform: rotate(90deg);
-  margin: 80px 165px;
-  width: 240px;
+    transform: rotate(90deg);
+    margin: 80px 165px;
+    width: 240px;
 }
 .screenClass {
-  transform: translateX(-445px) rotate(-90deg);
-  transition: all 0.5s ease-in-out;
-  width: 160%;
-  height: 100%;
+    transform: translateX(-445px) rotate(-90deg);
+    transition: all 0.5s ease-in-out;
+    width: 160%;
+    height: 100%;
 }
 // END HOME PAGE
 ////////////////
@@ -368,79 +368,78 @@ svg {
 ////////////
 //SHOP PAGE
 .overlayClass {
-  height: 100%;
-  width: 100%;
-  background-color: #fff;
-  transition: 0.5s all ease-in-out;
-  color: rgba(255, 255, 255, 0);
-  position: relative;
-  z-index: 0;
-  overflow: visible;
-  text-align: center;
-
-  @include modifier("hover") {
-    text-align: center;
-    transform: translateX(-60px);
-    height: 635px;
-    width: 145%;
+    height: 100%;
+    width: 100%;
     background-color: #fff;
     transition: 0.5s all ease-in-out;
-    color: rgba(255, 255, 255, 1);
-    position: absolute;
-    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
-      0 5px 15px 0 rgba(0, 0, 0, 0.08);
-    border: 0.5px solid #cecece;
-  }
+    color: rgba(255, 255, 255, 0);
+    position: relative;
+    z-index: 0;
+    overflow: visible;
+    text-align: center;
+
+    @include modifier("hover") {
+        text-align: center;
+        transform: translateX(-60px);
+        height: 635px;
+        width: 145%;
+        background-color: #fff;
+        transition: 0.5s all ease-in-out;
+        color: rgba(255, 255, 255, 1);
+        position: absolute;
+        box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+        border: 0.5px solid #cecece;
+    }
 }
 .packageClass {
-  height: 100%;
-  position: relative;
-  z-index: 10;
-  transition: 0.5s all ease-in-out;
-  padding: 0.5rem 3rem;
-  @include modifier("hover") {
-    height: 38%;
+    height: 100%;
     position: relative;
-    transform: translateX(-50px);
     z-index: 10;
     transition: 0.5s all ease-in-out;
-    margin-top: 10px;
     padding: 0.5rem 3rem;
-  }
+    @include modifier("hover") {
+        height: 38%;
+        position: relative;
+        transform: translateX(-50px);
+        z-index: 10;
+        transition: 0.5s all ease-in-out;
+        margin-top: 10px;
+        padding: 0.5rem 3rem;
+    }
 }
 .plantClass {
-  height: 82%;
-  position: absolute;
-  top: 15px;
-  z-index: 0;
-  transform: translateX(-250px);
-  transition: 0.5s all ease-in-out;
-  @include modifier("hover") {
-    height: 36%;
+    height: 82%;
     position: absolute;
-    top: 8px;
+    top: 15px;
     z-index: 0;
-    margin-top: 10px;
+    transform: translateX(-250px);
     transition: 0.5s all ease-in-out;
-    transform: translateX(-180px);
-  }
+    @include modifier("hover") {
+        height: 36%;
+        position: absolute;
+        top: 8px;
+        z-index: 0;
+        margin-top: 10px;
+        transition: 0.5s all ease-in-out;
+        transform: translateX(-180px);
+    }
 }
 .strainTitle {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: -43px;
-  width: 93%;
-  border-top-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  color: white;
-  text-shadow: rgb(0, 0, 0) 1px 1px 2px;
-  box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
-  @include modifier("hover") {
-    transition: 0.2s all ease-in-out;
-    &:hover {
-      transform: scale(1.1);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -43px;
+    width: 93%;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+    text-shadow: rgb(0, 0, 0) 1px 1px 2px;
+    box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
+    @include modifier("hover") {
+        transition: 0.2s all ease-in-out;
+        &:hover {
+            transform: scale(1.1);
+        }
     }
-  }
 }
 // END SHOP PAGE
 ////////////////
@@ -448,29 +447,29 @@ svg {
 //////////////////
 //VIEWPRODUCT PAGE
 .active-border {
-  position: relative;
-  text-align: center;
-  width: 110px;
-  height: 110px;
-  border-radius: 100%;
-  background-color: #39b4cc;
-  background-image: linear-gradient(250deg, transparent 50%, #a2ecfb 50%),
-    linear-gradient(0deg, #a2ecfb 50%, transparent 50%);
+    position: relative;
+    text-align: center;
+    width: 110px;
+    height: 110px;
+    border-radius: 100%;
+    background-color: #39b4cc;
+    background-image: linear-gradient(250deg, transparent 50%, #a2ecfb 50%),
+        linear-gradient(0deg, #a2ecfb 50%, transparent 50%);
 }
 .circle {
-  position: relative;
-  top: 5px;
-  left: 5px;
-  text-align: center;
-  width: 100px;
-  height: 100px;
-  border-radius: 100%;
-  background-color: #e6f4f7;
+    position: relative;
+    top: 5px;
+    left: 5px;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color: #e6f4f7;
 }
 .prec {
-  top: 30px;
-  position: relative;
-  font-size: 30px;
+    top: 30px;
+    position: relative;
+    font-size: 30px;
 }
 // END VIEWPRODUCT PAGE
 ///////////////////////
@@ -479,773 +478,786 @@ svg {
 //MEDIA QUERIES
 // XXL
 @media only screen and (max-width: 1921px) {
-  ////////////
-  // UNIVERSAL
-  // END UNIVERSAL
-  ////////////////
+    ////////////
+    // UNIVERSAL
+    // END UNIVERSAL
+    ////////////////
 
-  ///////////////
-  // ARTICLE PAGE
-  // END ARTICLE PAGE
-  ///////////////////
+    ///////////////
+    // ARTICLE PAGE
+    // END ARTICLE PAGE
+    ///////////////////
 
-  ////////////////
-  // CHECKOUT PAGE
-  // END CHECKOUT PAGE
-  ////////////////////
+    ////////////////
+    // CHECKOUT PAGE
+    // END CHECKOUT PAGE
+    ////////////////////
 
-  ///////////////////
-  // GERMINATION PAGE
-  // END GERMINATION PAGE
-  ///////////////////////
+    ///////////////////
+    // GERMINATION PAGE
+    // END GERMINATION PAGE
+    ///////////////////////
 
-  ////////////
-  // HOME PAGE
-  .bannerBuyNow {
-    color: white;
-    padding: 0.5rem 2rem;
-    border: 1px solid white;
-    position: absolute;
-    width: 14rem;
-    left: calc(50% - 7rem);
-    bottom: 3rem;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease-in-out;
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.8);
+    ////////////
+    // HOME PAGE
+    .bannerBuyNow {
+        color: white;
+        padding: 0.5rem 2rem;
+        border: 1px solid white;
+        position: absolute;
+        width: 14rem;
+        left: calc(50% - 7rem);
+        bottom: 3rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
     }
-  }
-  .genePreview {
-    width: 25%;
-    height: 500px;
-    z-index: 10;
-    transition: all 0.5s ease-in-out;
-    background-position: center;
-    background-size: 500px 500px;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    border: 5px solid #fff;
-    cursor: pointer;
-  }
-  .headingClass {
-    transform: translateX(17px);
-    position: absolute;
-    bottom: 0;
-    transition: all 0.5s ease-in-out;
-  }
-  .packClass {
-    transform: rotate(90deg);
-    margin: 80px 128px;
-    width: 240px;
-  }
-  .screenClass {
-    transform: translateX(-445px) rotate(-90deg);
-    transition: all 0.5s ease-in-out;
-    width: 160%;
-    height: 100%;
-  }
-
-  // END HOME PAGE
-  ////////////////
-
-  ////////////
-  // SHOP PAGE
-  .overlayClass {
-    height: 100%;
-    width: 100%;
-    background-color: #fff;
-    transition: 0.5s all ease-in-out;
-    color: rgba(255, 255, 255, 0);
-    position: relative;
-    z-index: 0;
-    overflow: visible;
-    text-align: center;
-    @include modifier("hover") {
-      text-align: center;
-      transform: translateX(-60px);
-      height: 655px;
-      width: 145%;
-      padding: 10px;
-      background-color: #fff;
-      transition: 0.5s all ease-in-out;
-      color: rgba(255, 255, 255, 1);
-      position: absolute;
-      z-index: 1000;
-      box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
-        0 5px 15px 0 rgba(0, 0, 0, 0.08);
-      border: 0.5px solid #cecece;
+    .genePreview {
+        width: 25%;
+        height: 500px;
+        z-index: 10;
+        transition: all 0.5s ease-in-out;
+        background-position: center;
+        background-size: 500px 500px;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        border: 5px solid #fff;
+        cursor: pointer;
     }
-  }
-  // END SHOP PAGE
-  ////////////////
+    .headingClass {
+        transform: translateX(17px);
+        position: absolute;
+        bottom: 0;
+        transition: all 0.5s ease-in-out;
+    }
+    .packClass {
+        transform: rotate(90deg);
+        margin: 80px 128px;
+        width: 240px;
+    }
+    .screenClass {
+        transform: translateX(-445px) rotate(-90deg);
+        transition: all 0.5s ease-in-out;
+        width: 160%;
+        height: 100%;
+    }
 
-  ///////////////////
-  // VIEWPRODUCT PAGE
-  // END VIEWPRODUCT PAGE
-  ///////////////////////
+    // END HOME PAGE
+    ////////////////
+
+    ////////////
+    // SHOP PAGE
+    .overlayClass {
+        height: 100%;
+        width: 100%;
+        background-color: #fff;
+        transition: 0.5s all ease-in-out;
+        color: rgba(255, 255, 255, 0);
+        position: relative;
+        z-index: 0;
+        overflow: visible;
+        text-align: center;
+        @include modifier("hover") {
+            text-align: center;
+            transform: translateX(-60px);
+            height: 655px;
+            width: 145%;
+            padding: 10px;
+            background-color: #fff;
+            transition: 0.5s all ease-in-out;
+            color: rgba(255, 255, 255, 1);
+            position: absolute;
+            z-index: 1000;
+            box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+            border: 0.5px solid #cecece;
+        }
+    }
+    // END SHOP PAGE
+    ////////////////
+
+    ///////////////////
+    // VIEWPRODUCT PAGE
+    // END VIEWPRODUCT PAGE
+    ///////////////////////
 }
 
 // XL
 @media only screen and (max-width: 1367px) {
-  ////////////
-  // UNIVERSAL
-  // END UNIVERSAL
-  ////////////////
+    ////////////
+    // UNIVERSAL
+    // END UNIVERSAL
+    ////////////////
 
-  ////////////////
-  // AFFILIATES PAGE
-  .affiliatesBanner {
-    background-image: url("../static/img/affiliatesBanner.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 60vh;
-    padding: 100px 50px 0 50px;
-  }
-  // END AFFILIATES PAGE
-  ////////////////////
-
-  ///////////////
-  // ARTICLE PAGE
-  .articleSlider {
-    object-fit: cover;
-    height: 400px;
-    width: 100%;
-    filter: brightness(0.5);
-  }
-  // END ARTICLE PAGE
-  ///////////////////
-
-  ////////////////
-  // CHECKOUT PAGE
-  // END CHECKOUT PAGE
-  ////////////////////
-
-  ///////////////////
-  // GERMINATION PAGE
-  .germinationCarouselImg {
-    width: 371px;
-    height: 208.69px;
-    margin-top: 30px;
-  }
-  // END GERMINATION PAGE
-  ///////////////////////
-  ////////////
-  // HOME PAGE
-  .bannerBuyNow {
-    position: absolute;
-    padding: 0.5rem 2rem;
-    width: 14rem;
-    left: calc(50% - 7rem);
-    bottom: 3rem;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease-in-out;
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.8);
+    ////////////////
+    // AFFILIATES PAGE
+    .affiliatesBanner {
+        background-image: url("../static/img/affiliatesBanner.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 60vh;
+        padding: 100px 50px 0 50px;
     }
-  }
-  .genePreview {
-    width: 25%;
-    height: 350px;
-    z-index: 10;
-    transition: all 0.5s ease-in-out;
-    background-position: center;
-    background-size: 500px 500px;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    border: 5px solid #fff;
-    cursor: pointer;
-  }
-  .headingClass {
-    transform: translateX(17px);
-    position: absolute;
-    bottom: 0;
-    transition: all 0.5s ease-in-out;
-  }
-  .packClass {
-    transform: rotate(90deg);
-    margin: 97px 100px;
-    width: 155px;
-  }
-  .screenClass {
-    transform: translateX(-300px) rotate(-90deg);
-    transition: all 0.5s ease-in-out;
-    width: 170%;
-    height: 100%;
-  }
+    // END AFFILIATES PAGE
+    ////////////////////
 
-  // END HOME PAGE
-  ////////////////
+    ///////////////
+    // ARTICLE PAGE
+    .articleSlider {
+        object-fit: cover;
+        height: 400px;
+        width: 100%;
+        filter: brightness(0.5);
+    }
+    // END ARTICLE PAGE
+    ///////////////////
 
-  ////////////
-  // SHOP PAGE
-  // END SHOP PAGE
-  ////////////////
+    ////////////////
+    // CHECKOUT PAGE
+    // END CHECKOUT PAGE
+    ////////////////////
 
-  ///////////////////
-  // VIEWPRODUCT PAGE
-  // END VIEWPRODUCT PAGE
-  ///////////////////////
+    ///////////////////
+    // GERMINATION PAGE
+    .germinationCarouselImg {
+        width: 371px;
+        height: 208.69px;
+        margin-top: 30px;
+    }
+    // END GERMINATION PAGE
+    ///////////////////////
+    ////////////
+    // HOME PAGE
+    .bannerBuyNow {
+        position: absolute;
+        padding: 0.5rem 2rem;
+        width: 14rem;
+        left: calc(50% - 7rem);
+        bottom: 3rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    }
+    .genePreview {
+        width: 25%;
+        height: 350px;
+        z-index: 10;
+        transition: all 0.5s ease-in-out;
+        background-position: center;
+        background-size: 500px 500px;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        border: 5px solid #fff;
+        cursor: pointer;
+    }
+    .headingClass {
+        transform: translateX(17px);
+        position: absolute;
+        bottom: 0;
+        transition: all 0.5s ease-in-out;
+    }
+    .packClass {
+        transform: rotate(90deg);
+        margin: 97px 100px;
+        width: 155px;
+    }
+    .screenClass {
+        transform: translateX(-300px) rotate(-90deg);
+        transition: all 0.5s ease-in-out;
+        width: 170%;
+        height: 100%;
+    }
+
+    // END HOME PAGE
+    ////////////////
+
+    ////////////
+    // SHOP PAGE
+    // END SHOP PAGE
+    ////////////////
+
+    ///////////////////
+    // VIEWPRODUCT PAGE
+    // END VIEWPRODUCT PAGE
+    ///////////////////////
 }
 
 // LG
 @media screen and (max-width: 991px) {
-  ////////////
-  // UNIVERSAL
-  // END UNIVERSAL
-  ////////////////
+    ////////////
+    // UNIVERSAL
+    // END UNIVERSAL
+    ////////////////
 
-  ////////////////
-  // AFFILIATES PAGE
-  .affiliatesBanner {
-    background-image: url("../static/img/affiliatesBanner.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 60vh;
-    padding: 40px 50px 0 50px;
-  }
-  // END AFFILIATES PAGE
-  ////////////////////
-
-  ///////////////
-  // ARTICLE PAGE
-  // END ARTICLE PAGE
-  ///////////////////
-
-  ////////////////
-  // CHECKOUT PAGE
-  // END CHECKOUT PAGE
-  ////////////////////
-
-  ///////////////////
-  // GERMINATION PAGE
-  .germinationCarouselImg {
-    width: 284.44px;
-    height: 160px;
-    margin-top: 30px;
-  }
-  // END GERMINATION PAGE
-  ///////////////////////
-
-  ////////////
-  // HOME PAGE
-  .bannerBuyNow {
-    position: absolute;
-    padding: 0.5rem 2rem;
-    width: 14rem;
-    left: calc(50% - 7rem);
-    bottom: 4rem;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease-in-out;
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.8);
+    ////////////////
+    // AFFILIATES PAGE
+    .affiliatesBanner {
+        background-image: url("../static/img/affiliatesBanner.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 60vh;
+        padding: 40px 50px 0 50px;
     }
-  }
-  .genePreview {
-    width: 25%;
-    height: 300px;
-    z-index: 10;
-    transition: all 0.5s ease-in-out;
-    background-position: center;
-    background-size: 500px 500px;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    border: 5px solid #fff;
-    cursor: pointer;
-  }
-  .headingClass {
-    transform: translateX(10px);
-    position: absolute;
-    bottom: 0;
-    transition: all 0.5s ease-in-out;
-  }
-  .packClass {
-    transform: rotate(90deg);
-    margin: 98px 90px;
-    width: 125px;
-  }
-  .screenClass {
-    transform: translateX(-260px) rotate(-90deg);
-    transition: all 0.5s ease-in-out;
-    width: 190%;
-    height: 100%;
-  }
+    // END AFFILIATES PAGE
+    ////////////////////
 
-  // END HOME PAGE
-  ////////////////
+    ///////////////
+    // ARTICLE PAGE
+    // END ARTICLE PAGE
+    ///////////////////
 
-  ////////////
-  // SHOP PAGE
+    ////////////////
+    // CHECKOUT PAGE
+    // END CHECKOUT PAGE
+    ////////////////////
 
-  .overlayClass {
-    height: 100%;
-    width: 100%;
-    background-color: #fff;
-    transition: 0.6s all ease-in-out;
-    color: rgba(255, 255, 255, 0);
-    position: relative;
-    z-index: 0;
-    overflow: visible;
-    text-align: center;
-    @include modifier("hover") {
-      height: 700px;
-      width: 276px;
-      left: -25%;
-      padding: 10px 10px;
-      text-align: center;
-      transform: translateX(15px);
-      background-color: #fff;
-      transition: 0.6s all ease-in-out;
-      color: rgba(255, 255, 255, 1);
-      position: relative;
-      box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
-        0 5px 15px 0 rgba(0, 0, 0, 0.08);
-      border: 0.5px solid #cecece;
+    ///////////////////
+    // GERMINATION PAGE
+    .germinationCarouselImg {
+        width: 284.44px;
+        height: 160px;
+        margin-top: 30px;
     }
-  }
-  .packageClass {
-    height: 88%;
-    position: relative;
-    z-index: 10;
-    transition: 0.6s all ease-in-out;
-    padding: 0.5rem 3rem;
-    cursor: pointer;
-    @include modifier("hover") {
-      height: 38%;
-      position: relative;
-      transform: translateX(-50px);
-      z-index: 10;
-      transition: 0.6s all ease-in-out;
-      margin-top: 10px;
-      padding: 0.5rem 3rem;
-      cursor: pointer;
-    }
-  }
-  .plantClass {
-    height: 80%;
-    position: absolute;
-    top: 25px;
-    z-index: 0;
-    transform: translateX(-180px);
-    transition: 0.6s all ease-in-out;
-    cursor: pointer;
-    @include modifier("hover") {
-      height: 36%;
-      position: absolute;
-      top: 8px;
-      z-index: 0;
-      margin-top: 10px;
-      transition: 0.6s all ease-in-out;
-      transform: translateX(-160px);
-      cursor: pointer;
-    }
-  }
-  .strainTitle {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -43px;
-    width: 93%;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    color: white;
-    text-shadow: rgb(0, 0, 0) 1px 1px 2px;
-    box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
-    @include modifier("hover") {
-      transition: 0.2s all ease-in-out;
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-  }
-  // END SHOP PAGE
-  ////////////////
+    // END GERMINATION PAGE
+    ///////////////////////
 
-  ///////////////////
-  // VIEWPRODUCT PAGE
-  // END VIEWPRODUCT PAGE
-  ///////////////////////
+    ////////////
+    // HOME PAGE
+    .bannerBuyNow {
+        position: absolute;
+        padding: 0.5rem 2rem;
+        width: 14rem;
+        left: calc(50% - 7rem);
+        bottom: 4rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    }
+    .genePreview {
+        width: 25%;
+        height: 300px;
+        z-index: 10;
+        transition: all 0.5s ease-in-out;
+        background-position: center;
+        background-size: 500px 500px;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        border: 5px solid #fff;
+        cursor: pointer;
+    }
+    .headingClass {
+        transform: translateX(10px);
+        position: absolute;
+        bottom: 0;
+        transition: all 0.5s ease-in-out;
+    }
+    .packClass {
+        transform: rotate(90deg);
+        margin: 98px 90px;
+        width: 125px;
+    }
+    .screenClass {
+        transform: translateX(-260px) rotate(-90deg);
+        transition: all 0.5s ease-in-out;
+        width: 190%;
+        height: 100%;
+    }
+
+    // END HOME PAGE
+    ////////////////
+
+    ////////////
+    // SHOP PAGE
+
+    .overlayClass {
+        height: 100%;
+        width: 100%;
+        background-color: #fff;
+        transition: 0.6s all ease-in-out;
+        color: rgba(255, 255, 255, 0);
+        position: relative;
+        z-index: 0;
+        overflow: visible;
+        text-align: center;
+        @include modifier("hover") {
+            height: 700px;
+            width: 276px;
+            left: -25%;
+            padding: 10px 10px;
+            text-align: center;
+            transform: translateX(15px);
+            background-color: #fff;
+            transition: 0.6s all ease-in-out;
+            color: rgba(255, 255, 255, 1);
+            position: relative;
+            box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+            border: 0.5px solid #cecece;
+        }
+    }
+    .packageClass {
+        height: 88%;
+        position: relative;
+        z-index: 10;
+        transition: 0.6s all ease-in-out;
+        padding: 0.5rem 3rem;
+        cursor: pointer;
+        @include modifier("hover") {
+            height: 38%;
+            position: relative;
+            transform: translateX(-50px);
+            z-index: 10;
+            transition: 0.6s all ease-in-out;
+            margin-top: 10px;
+            padding: 0.5rem 3rem;
+            cursor: pointer;
+        }
+    }
+    .plantClass {
+        height: 80%;
+        position: absolute;
+        top: 25px;
+        z-index: 0;
+        transform: translateX(-180px);
+        transition: 0.6s all ease-in-out;
+        cursor: pointer;
+        @include modifier("hover") {
+            height: 36%;
+            position: absolute;
+            top: 8px;
+            z-index: 0;
+            margin-top: 10px;
+            transition: 0.6s all ease-in-out;
+            transform: translateX(-160px);
+            cursor: pointer;
+        }
+    }
+    .strainTitle {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -43px;
+        width: 93%;
+        border-top-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        color: white;
+        text-shadow: rgb(0, 0, 0) 1px 1px 2px;
+        box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
+        @include modifier("hover") {
+            transition: 0.2s all ease-in-out;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+    // END SHOP PAGE
+    ////////////////
+
+    ///////////////////
+    // VIEWPRODUCT PAGE
+    // END VIEWPRODUCT PAGE
+    ///////////////////////
 }
 
 // MD
 @media screen and (max-width: 767px) {
-  ////////////
-  // UNIVERSAL
-  // END UNIVERSAL
-  ////////////////
+    ////////////
+    // UNIVERSAL
+    // END UNIVERSAL
+    ////////////////
 
-  ////////////////
-  // AFFILIATES PAGE
-  .affiliatesBanner {
-    background-image: url("../static/img/affiliatesBanner.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 47vh;
-    padding: 40px 50px 0 50px;
-  }
-  // END AFFILIATES PAGE
-  ////////////////////
-
-  ///////////////
-  // ARTICLE PAGE
-  .articleSlider {
-    object-fit: cover;
-    height: 300px;
-    width: 100%;
-    filter: brightness(0.5);
-  }
-  // END ARTICLE PAGE
-  ///////////////////
-
-  ////////////////
-  // CHECKOUT PAGE
-  // END CHECKOUT PAGE
-  ////////////////////
-
-  ///////////////////
-  // GERMINATION PAGE
-  .germinationCarouselImg {
-    width: 284.44px;
-    height: 160px;
-    margin-top: 30px;
-  }
-  // END GERMINATION PAGE
-  ///////////////////////
-
-  ////////////
-  // HOME PAGE
-  .bannerBuyNow {
-    position: absolute;
-    padding: 0.5rem 1rem;
-    width: 10rem;
-    left: calc(50% - 5rem);
-    bottom: 7%;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease-in-out;
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.8);
+    ////////////////
+    // AFFILIATES PAGE
+    .affiliatesBanner {
+        background-image: url("../static/img/affiliatesBanner.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 55vh;
+        padding: 40px 50px 0 50px;
     }
-  }
-  .genePreview {
-    width: 100%;
-    height: 60px;
-    transition: all 0.5s ease-in-out;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    border: 5px solid #fff;
-    cursor: pointer;
-  }
-  .headingClass {
-    transform: translateX(20px);
-    position: absolute;
-    bottom: 0;
-    transition: all 0.5s ease-in-out;
-  }
-  .packClass {
-    transform: rotate(90deg);
-    margin: 48px 106px;
-    width: 100px;
-  }
-  .screenClass {
-    transform: translateX(0) rotate(0deg);
-    transition: all 0.5s ease-in-out;
-    width: 100%;
-    height: 100%;
-  }
+    // END AFFILIATES PAGE
+    ////////////////////
 
-  // END HOME PAGE
-  ////////////////
-
-  ////////////
-  // SHOP PAGE
-
-  .overlayClass {
-    height: 100%;
-    width: 100%;
-    background-color: #fff;
-    transition: 0.6s all ease-in-out;
-    color: rgba(255, 255, 255, 0);
-    position: relative;
-    z-index: 0;
-    overflow: visible;
-    text-align: center;
-    @include modifier("hover") {
-      text-align: center;
-      height: 650px;
-      width: 300px;
-      left: -50%;
-      overflow: hidden;
-      background-color: #fff;
-      transition: 0.6s all ease-in-out;
-      color: rgba(255, 255, 255, 1);
-      position: relative;
-      box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
-        0 5px 15px 0 rgba(0, 0, 0, 0.08);
-      border: 0.5px solid #cecece;
+    ///////////////
+    // ARTICLE PAGE
+    .articleSlider {
+        object-fit: cover;
+        height: 300px;
+        width: 100%;
+        filter: brightness(0.5);
     }
-  }
+    // END ARTICLE PAGE
+    ///////////////////
 
-  .packageClass {
-    height: 100%;
-    position: relative;
-    z-index: 10;
-    transition: 0.6s all ease-in-out;
-    padding: 0;
-    transform: translateX(-5px);
-    cursor: pointer;
-    @include modifier("hover") {
-      height: 27%;
-      position: relative;
-      transform: translateX(-30px);
-      z-index: 10;
-      transition: 0.6s all ease-in-out;
-      margin-top: 10px;
-      padding: 0;
-      cursor: pointer;
-    }
-  }
-  .plantClass {
-    height: 80%;
-    position: absolute;
-    top: 5px;
-    z-index: 0;
-    transform: translateX(-160px);
-    transition: 0.6s all ease-in-out;
-    cursor: pointer;
-    @include modifier("hover") {
-      height: 27%;
-      position: absolute;
-      top: 0;
-      z-index: 0;
-      margin-top: 10px;
-      transition: 0.6s all ease-in-out;
-      transform: translateX(-110px);
-      cursor: pointer;
-    }
-  }
-  .strainTitle {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -43px;
-    width: 93%;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    color: white;
-    text-shadow: rgb(0, 0, 0) 1px 1px 2px;
-    box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
-    @include modifier("hover") {
-      transition: 0.2s all ease-in-out;
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-  }
-  // END SHOP PAGE
-  ////////////////
+    ////////////////
+    // CHECKOUT PAGE
+    // END CHECKOUT PAGE
+    ////////////////////
 
-  ///////////////////
-  // VIEWPRODUCT PAGE
-  // END VIEWPRODUCT PAGE
-  ///////////////////////
+    ///////////////////
+    // GERMINATION PAGE
+    .germinationCarouselImg {
+        width: 284.44px;
+        height: 160px;
+        margin-top: 30px;
+    }
+    // END GERMINATION PAGE
+    ///////////////////////
+
+    ////////////
+    // HOME PAGE
+    .bannerBuyNow {
+        position: absolute;
+        padding: 0.5rem 1rem;
+        width: 10rem;
+        left: calc(50% - 5rem);
+        bottom: 7%;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    }
+    .genePreview {
+        width: 100%;
+        height: 60px;
+        transition: all 0.5s ease-in-out;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        border: 5px solid #fff;
+        cursor: pointer;
+    }
+    .headingClass {
+        transform: translateX(20px);
+        position: absolute;
+        bottom: 0;
+        transition: all 0.5s ease-in-out;
+    }
+    .packClass {
+        transform: rotate(90deg);
+        margin: 48px 106px;
+        width: 100px;
+    }
+    .screenClass {
+        transform: translateX(0) rotate(0deg);
+        transition: all 0.5s ease-in-out;
+        width: 100%;
+        height: 100%;
+    }
+
+    // END HOME PAGE
+    ////////////////
+
+    ////////////
+    // SHOP PAGE
+
+    .overlayClass {
+        height: 100%;
+        width: 100%;
+        background-color: #fff;
+        transition: 0.6s all ease-in-out;
+        color: rgba(255, 255, 255, 0);
+        position: relative;
+        z-index: 0;
+        overflow: visible;
+        text-align: center;
+        @include modifier("hover") {
+            text-align: center;
+            height: 650px;
+            width: 300px;
+            left: -50%;
+            overflow: hidden;
+            background-color: #fff;
+            transition: 0.6s all ease-in-out;
+            color: rgba(255, 255, 255, 1);
+            position: relative;
+            box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+            border: 0.5px solid #cecece;
+        }
+    }
+
+    .packageClass {
+        height: 100%;
+        position: relative;
+        z-index: 10;
+        transition: 0.6s all ease-in-out;
+        padding: 0;
+        transform: translateX(-5px);
+        cursor: pointer;
+        @include modifier("hover") {
+            height: 27%;
+            position: relative;
+            transform: translateX(-30px);
+            z-index: 10;
+            transition: 0.6s all ease-in-out;
+            margin-top: 10px;
+            padding: 0;
+            cursor: pointer;
+        }
+    }
+    .plantClass {
+        height: 80%;
+        position: absolute;
+        top: 5px;
+        z-index: 0;
+        transform: translateX(-160px);
+        transition: 0.6s all ease-in-out;
+        cursor: pointer;
+        @include modifier("hover") {
+            height: 27%;
+            position: absolute;
+            top: 0;
+            z-index: 0;
+            margin-top: 10px;
+            transition: 0.6s all ease-in-out;
+            transform: translateX(-110px);
+            cursor: pointer;
+        }
+    }
+    .strainTitle {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -43px;
+        width: 93%;
+        border-top-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        color: white;
+        text-shadow: rgb(0, 0, 0) 1px 1px 2px;
+        box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
+        @include modifier("hover") {
+            transition: 0.2s all ease-in-out;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+    // END SHOP PAGE
+    ////////////////
+
+    ///////////////////
+    // VIEWPRODUCT PAGE
+    // END VIEWPRODUCT PAGE
+    ///////////////////////
 }
 
 // SM
 @media only screen and (max-width: 479px) {
-  ////////////
-  // UNIVERSAL
+    ////////////
+    // UNIVERSAL
 
-  // END UNIVERSAL
-  ////////////////
+    // END UNIVERSAL
+    ////////////////
 
-  ///////////////
-  // ARTICLE PAGE
-
-  // END ARTICLE PAGE
-  ///////////////////
-
-  ////////////////
-  // CHECKOUT PAGE
-
-  // END CHECKOUT PAGE
-  ////////////////////
-
-  ///////////////////
-  // GERMINATION PAGE
-
-  // END GERMINATION PAGE
-  ///////////////////////
-
-  ////////////
-  // HOME PAGE
-  .bannerBuyNow {
-    padding: 0.6rem 1rem;
-    width: 14rem;
-    bottom: 1.5rem;
-    left: calc(50% - 7rem);
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease-in-out;
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.8);
+    ////////////////
+    // AFFILIATES PAGE
+    .affiliatesBanner {
+        background-image: url("../static/img/affiliatesBanner.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 70vh;
+        padding: 40px 50px 0 50px;
     }
-  }
-  .genePreview {
-    width: 100%;
-    height: 60px;
-    transition: all 0.5s ease-in-out;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    border: 5px solid #fff;
-    cursor: pointer;
-  }
-  .headingClass {
-    transform: translateX(20px);
-    position: absolute;
-    bottom: 7px;
-    transition: all 0.5s ease-in-out;
-  }
-  .packClass {
-    transform: rotate(90deg);
-    margin: 48px 106px;
-    width: 100px;
-  }
-  .screenClass {
-    transform: translateX(0) rotate(0deg);
-    transition: all 0.5s ease-in-out;
-    width: 100%;
-    height: 100%;
-  }
-  .genePreview {
-    width: 100%;
-    height: 60px;
-    transition: all 0.5s ease-in-out;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    border: 5px solid #fff;
-    cursor: pointer;
-  }
-  .headingClass {
-    transform: translateX(20px);
-    position: absolute;
-    bottom: 7px;
-    transition: all 0.5s ease-in-out;
-  }
-  .packClass {
-    transform: rotate(90deg);
-    margin: 48px 106px;
-    width: 100px;
-  }
-  .screenClass {
-    transform: translateX(0) rotate(0deg);
-    transition: all 0.5s ease-in-out;
-    width: 100%;
-    height: 100%;
-  }
-  // END HOME PAGE
-  ////////////////
+    // END AFFILIATES PAGE
+    ////////////////////
 
-  ////////////
-  // SHOP PAGE
+    ///////////////
+    // ARTICLE PAGE
 
-  .overlayClass {
-    height: 100%;
-    width: 100%;
-    background-color: #fff;
-    transition: 0.6s all ease-in-out;
-    color: rgba(255, 255, 255, 0);
-    position: relative;
-    z-index: 0;
-    overflow: visible;
-    text-align: center;
-    @include modifier("hover") {
-      text-align: center;
-      height: 650px;
-      width: 276px;
-      left: -80%;
-      overflow: hidden;
-      background-color: #fff;
-      transition: 0.6s all ease-in-out;
-      color: rgba(255, 255, 255, 1);
-      position: relative;
-      box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
-        0 5px 15px 0 rgba(0, 0, 0, 0.08);
-      border: 0.5px solid #cecece;
+    // END ARTICLE PAGE
+    ///////////////////
+
+    ////////////////
+    // CHECKOUT PAGE
+
+    // END CHECKOUT PAGE
+    ////////////////////
+
+    ///////////////////
+    // GERMINATION PAGE
+
+    // END GERMINATION PAGE
+    ///////////////////////
+
+    ////////////
+    // HOME PAGE
+    .bannerBuyNow {
+        padding: 0.6rem 1rem;
+        width: 14rem;
+        bottom: 1.5rem;
+        left: calc(50% - 7rem);
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
     }
-  }
-  .packageClass {
-    height: 100%;
-    position: relative;
-    z-index: 10;
-    transition: 0.6s all ease-in-out;
-    padding: 0;
-    transform: translateX(-5px);
-    cursor: pointer;
-    @include modifier("hover") {
-      height: 27%;
-      position: relative;
-      transform: translateX(-30px);
-      z-index: 10;
-      transition: 0.6s all ease-in-out;
-      margin-top: 10px;
-      padding: 0;
-      cursor: pointer;
+    .genePreview {
+        width: 100%;
+        height: 60px;
+        transition: all 0.5s ease-in-out;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        border: 5px solid #fff;
+        cursor: pointer;
     }
-  }
-  .plantClass {
-    height: 80%;
-    position: absolute;
-    top: 5px;
-    z-index: 0;
-    transform: translateX(-110px);
-    transition: 0.6s all ease-in-out;
-    cursor: pointer;
-    @include modifier("hover") {
-      height: 27%;
-      position: absolute;
-      top: 0;
-      z-index: 0;
-      margin-top: 10px;
-      transition: 0.6s all ease-in-out;
-      transform: translateX(-110px);
-      cursor: pointer;
+    .headingClass {
+        transform: translateX(20px);
+        position: absolute;
+        bottom: 7px;
+        transition: all 0.5s ease-in-out;
     }
-  }
-  .strainTitle {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -43px;
-    width: 93%;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    color: white;
-    text-shadow: rgb(0, 0, 0) 1px 1px 2px;
-    box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
-    @include modifier("hover") {
-      transition: 0.2s all ease-in-out;
-      &:hover {
-        transform: scale(1.1);
-      }
+    .packClass {
+        transform: rotate(90deg);
+        margin: 48px 106px;
+        width: 100px;
     }
-  }
-  // END SHOP PAGE
-  ////////////////
+    .screenClass {
+        transform: translateX(0) rotate(0deg);
+        transition: all 0.5s ease-in-out;
+        width: 100%;
+        height: 100%;
+    }
+    .genePreview {
+        width: 100%;
+        height: 60px;
+        transition: all 0.5s ease-in-out;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        border: 5px solid #fff;
+        cursor: pointer;
+    }
+    .headingClass {
+        transform: translateX(20px);
+        position: absolute;
+        bottom: 7px;
+        transition: all 0.5s ease-in-out;
+    }
+    .packClass {
+        transform: rotate(90deg);
+        margin: 48px 106px;
+        width: 100px;
+    }
+    .screenClass {
+        transform: translateX(0) rotate(0deg);
+        transition: all 0.5s ease-in-out;
+        width: 100%;
+        height: 100%;
+    }
+    // END HOME PAGE
+    ////////////////
 
-  ///////////////////
-  // VIEWPRODUCT PAGE
+    ////////////
+    // SHOP PAGE
 
-  // END VIEWPRODUCT PAGE
-  ///////////////////////
+    .overlayClass {
+        height: 100%;
+        width: 100%;
+        background-color: #fff;
+        transition: 0.6s all ease-in-out;
+        color: rgba(255, 255, 255, 0);
+        position: relative;
+        z-index: 0;
+        overflow: visible;
+        text-align: center;
+        @include modifier("hover") {
+            text-align: center;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: #fff;
+            transition: 0.6s all ease-in-out;
+            transform: translateX(-8px);
+            color: rgba(255, 255, 255, 1);
+            position: absolute;
+            padding: 0;
+            box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+            border: 0.5px solid #cecece;
+            z-index: 99999;
+        }
+    }
+    .packageClass {
+        height: 100%;
+        position: relative;
+        z-index: 10;
+        transition: 0.6s all ease-in-out;
+        padding: 0;
+        transform: translateX(-5px);
+        cursor: pointer;
+        @include modifier("hover") {
+            height: 27%;
+            position: relative;
+            transform: translateX(-30px);
+            z-index: 10;
+            transition: 0.6s all ease-in-out;
+            margin-top: 10px;
+            padding: 0;
+            cursor: pointer;
+        }
+    }
+    .plantClass {
+        height: 80%;
+        position: absolute;
+        top: 5px;
+        z-index: 0;
+        transform: translateX(-110px);
+        transition: 0.6s all ease-in-out;
+        cursor: pointer;
+        @include modifier("hover") {
+            height: 27%;
+            position: absolute;
+            top: 0;
+            z-index: 0;
+            margin-top: 10px;
+            transition: 0.6s all ease-in-out;
+            transform: translateX(-110px);
+            cursor: pointer;
+        }
+    }
+    .strainTitle {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -43px;
+        width: 93%;
+        border-top-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        color: white;
+        text-shadow: rgb(0, 0, 0) 1px 1px 2px;
+        box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
+        @include modifier("hover") {
+            transition: 0.2s all ease-in-out;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+    // END SHOP PAGE
+    ////////////////
 
-  //////////////////////
-  //SHOP PAGE THUMBAILS
-  //////////////////////
+    ///////////////////
+    // VIEWPRODUCT PAGE
+
+    // END VIEWPRODUCT PAGE
+    ///////////////////////
+
+    //////////////////////
+    //SHOP PAGE THUMBAILS
+    //////////////////////
 }

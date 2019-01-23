@@ -79,18 +79,6 @@ class Layout extends Component {
                 return mediaSize;
             }
         }
-
-        for (let mediaSize of Object.keys(mediaSizes)) {
-            let _mediaSizeDim = mediaSizes[mediaSize];
-            let _width = window.innerWidth;
-            if (
-                _width == Math.max(_mediaSizeDim.min, Math.min(_width, _mediaSizeDim.max)) &&
-                this.props.misc.mediaSize != mediaSize
-            ) {
-                this.props.setMediaSize({ mediaSize: mediaSize });
-                return mediaSize;
-            }
-        }
     };
 
     render() {
@@ -109,12 +97,10 @@ class Layout extends Component {
                     </div>
                 </div>
                 <div
-                    className="fixed z-999 w-24 mb-24 h-24 bg-red-light pin-b pin-l text-white text-2xl pt-4 pl-4 rounded-tr-full rounded-br-full cursor-pointer"
+                    className="fixed z-999 w-24 mb-24 h-24 bg-red-light pin-b pin-l text-white text-center text-lg pt-2 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item"
                     onClick={() => Tawk_API.toggle()}>
-                    <FontAwesomeIcon
-                        icon={faComments}
-                        className="fa-2x my-1 pr-1 hover:text-red-dark scale-item cursor-pointer"
-                    />
+                    <FontAwesomeIcon icon={faComments} className="fa-2x my-1 pr-1  cursor-pointer" />
+                    <h3>CHAT</h3>
                 </div>
                 <Cart {...this.props} />
                 <Footer {...this.props} />
