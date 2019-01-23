@@ -23,15 +23,6 @@ const uri = "http://localhost:3000/graphql";
 // const uri = "http://192.168.0.57:3000/graphql";
 
 const imports = {
-<<<<<<< HEAD
-  ...Cart(uri),
-  ...Checkout(uri),
-  ...Navigation(uri),
-  ...Shop(uri),
-  ...ViewProduct(uri),
-  ...Germination(uri),
-  ...About(uri)
-=======
     ...Cart(uri),
     ...Checkout(uri),
     ...Navigation(uri),
@@ -40,7 +31,6 @@ const imports = {
     ...Germination(uri),
     ...About(uri),
     ...Faq(uri)
->>>>>>> 365d89fe93ea034b108bf6bb5ef8c90bda8f4e99
 };
 
 const actionTypes = {
