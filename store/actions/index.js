@@ -112,14 +112,15 @@ const actions = {
       const link = new HttpLink({ uri, fetch: fetch });
       const operation = { query: query.allStrains };
 
-      await makePromise(execute(link, operation))
+      return await makePromise(execute(link, operation))
         .then(data => {
           let _strains = data.data.allStrains;
           let _new = [];
           for (let strain of _strains) {
             _new.push(inferStrainData(strain));
           }
-          Promise.resolve(dispatch(actions.setStrains(_new)));
+          dispatch(actions.setStrains(_new));
+          return Promise.resolve(_new);
         })
         .catch(error => console.log(error));
     };

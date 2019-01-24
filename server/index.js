@@ -70,6 +70,10 @@ app
       })
     );
 
+    server.get("/product/:_id", (req, res) => {
+      app.render(req, res, "/", {});
+    });
+
     server.get("*", (req, res) => {
       return handle(req, res);
     });

@@ -10,7 +10,8 @@ const imageCarousel = props => {
       <div
         key={index}
         onClick={() => props.setCurrentImage(index)}
-        className="w-16 shadow text-center cursor-pointer my-1">
+        className="w-16 shadow text-center cursor-pointer my-1"
+      >
         <img className="h-20 my-2 mx-auto" src={image} />
       </div>
     );
@@ -36,7 +37,8 @@ const imageCarousel = props => {
           }
         )}
         zoomScale={1}
-        responsive={true}>
+        responsive={true}
+      >
         <img
           style={{ objectFit: "contain" }}
           className="cursor-pointer flex my-auto xxl:h-400 xl:h-400 w-full h-300"
@@ -59,7 +61,8 @@ const imageCarousel = props => {
             textAlign: "center",
             marginLeft: "30px"
           }}
-          className="w-3/4 mx-4 z-50 bg-white flex my-auto">
+          className="w-3/4 mx-4 z-50 bg-white flex my-auto"
+        >
           <div className="text-xs bg-almost-white shadow flex pin-b pin-r rounded absolute text-black p-1 mr-4 mb-6 opacity-75 md:hidden sm:hidden">
             <FontAwesomeIcon icon={faSearchPlus} className="mr-1" />
             Zoom

@@ -24,6 +24,15 @@ import Genetics from "../components/sections/productPage/genetics";
 import Breadcrumb from "../components/sections/productPage/breadcrumb";
 
 class Index extends Component {
+  componentDidMount() {
+    let product = this.props.viewProduct.currentProduct;
+    let _index = 0;
+    while (product.price[_index] == -1) {
+      _index++;
+    }
+    this.props.quickAddToCartQty(_index);
+  }
+
   showRating() {
     let rating = this.props.viewProduct.currentProduct.rating || 0;
     let totalReviews = this.props.viewProduct.currentProduct.reviews.length;
