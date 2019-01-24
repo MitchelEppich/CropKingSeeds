@@ -13,7 +13,7 @@ const ShippingMethod = props => {
       return (
         <div>
           <p className="text-red-dark pb-8 font-bold">
-            ** Please select your shipping country and state / province **
+            ** Please select your Shipping Country and State / Province **
           </p>
         </div>
       );
@@ -24,8 +24,8 @@ const ShippingMethod = props => {
       arr.push(
         <div className="w-full inline-flex">
           <div className="p-2 w-full">
-            <div className="inline-flex items-top flex w-full border-b-2 pb-4 border-grey-lightest">
-              <div className="w-7/8">
+            <div className="inline-flex items-top sm:flex-col flex w-full border-b-2 pb-4 border-grey-lightest">
+              <div className="w-7/8 sm:w-full">
                 <label className="items-center flex cursor-pointer">
                   <input
                     type="checkbox"
@@ -67,15 +67,18 @@ const ShippingMethod = props => {
                       });
                     }}
                   />
-                  <h2 className="font-extrabold text-grey hover:text-grey-light ml-2">
+                  <h2 className="font-extrabold text-grey hover:text-grey-light ml-2 sm:text-xl">
                     {_method.type}
                   </h2>
                 </label>
-                <p className="mt-2 ml-10 leading-normal">
+                <p className="mt-2 ml-10 sm:ml-2 leading-normal">
                   - {_method.description}
                 </p>
+                <p className="mt-2 text-center font-extrabold leading-normal opacity-75 text-sm p-2 text-red-dark">{`${
+                  _method.note ? "** " + _method.note + " **" : ""
+                }`}</p>
               </div>
-              <div className="w-1/8">
+              <div className="w-1/8 sm:w-full sm:mt-4 sm:flex sm:justify-end">
                 <div className="text-2xl text-red-light font-extrabold">
                   {props.checkout.orderDetails.shipping.country == null ||
                   props.checkout.orderDetails.shipping.state == null
@@ -88,10 +91,6 @@ const ShippingMethod = props => {
                 </div>
               </div>
             </div>
-
-            <p className="mt-2 text-center font-extrabold leading-normal uppercase text-sm p-2 text-red-dark">{`${
-              _method.note ? "** " + _method.note : ""
-            }`}</p>
           </div>
         </div>
       );

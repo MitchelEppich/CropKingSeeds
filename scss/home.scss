@@ -294,7 +294,18 @@ svg {
     position: absolute;
     top: -0.5em;
     left: 50%;
-    margin-left: -0.25em;
+    // margin-left: -0.25em;
+    margin-left: -8px;
+}
+
+.steps-active-mobile:before {
+    content: "";
+    border: solid 0.6em transparent;
+    border-left-color: #920300;
+    position: absolute;
+    top: 7px;
+    left: 10%;
+    margin-left: -0.35em;
 }
 // END CHECKOUT PAGE
 ////////////////////
@@ -987,7 +998,6 @@ svg {
             border: 0.5px solid #cecece;
         }
     }
-
     .packageClass {
         height: 100%;
         position: relative;

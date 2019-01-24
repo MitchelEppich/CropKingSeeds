@@ -18,11 +18,11 @@ const Payment = props => {
   );
 
   return (
-    <div className="w-full mt-6 mb-8 px-8">
+    <div className="w-full px-8 mb-6 sm:px-4">
       <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-black">
         Payment
       </h2>
-      <div className="mb-8">
+      <div className="mb-4">
         <MinimumSeedsWarning {...props} />
       </div>
 

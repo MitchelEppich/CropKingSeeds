@@ -77,7 +77,7 @@ class Layout extends Component {
                 <div className="pt-32">
                     {" "}
                     <ShareButtons {...this.props} />
-                    <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md">
+                    <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:min-w-900 xl:w-main lg:w-700 md:w-main mx-auto shadow-md">
                         {this.props.children}
                     </div>
                 </div>

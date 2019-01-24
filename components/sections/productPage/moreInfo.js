@@ -4,7 +4,7 @@ import {} from "@fortawesome/free-brands-svg-icons";
 
 const moreInfo = props => {
   return (
-    <div className="w-full px-12 mt-6">
+    <div className="w-full px-12 mt-6 sm:px-2">
       {/* <h3 className="w-full p-2 pl-6 font-bold text-3xl my-3 text-grey bg-smoke-grey">
         Information on {props.viewProduct.currentProduct.name}
       </h3> */}
@@ -26,7 +26,8 @@ const moreInfo = props => {
         <video
           className="mb-4 mt-2 w-3/5 px-5 md:px-2 xm:px-2 sm:w-full h-full md:w-full lg:w-full"
           controls
-          width="600">
+          width="600"
+        >
           <source src="/media/examples/flower.webm" type="video/webm" />
           <source src="/media/examples/flower.mp4" type="video/mp4" />
           Sorry, your browser doesn't support embedded videos.
