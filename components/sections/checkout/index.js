@@ -20,7 +20,7 @@ const Checkout = props => {
             props.toggleStepsCheckout(0);
           }}
           className={`p-2 cursor-pointer step-text`}>
-          1. Products Review
+          1. <span className="sm:hidden md:hidden lg:hidden">Products Review</span>
         </div>
       </div>
       <div
@@ -37,7 +37,7 @@ const Checkout = props => {
               ? "opacity-50 pointer-events-none"
               : ""
           }`}>
-          2. Shipping Details
+          2. <span className="sm:hidden md:hidden lg:hidden">Shipping Details</span>
         </div>
       </div>
       <div
@@ -54,7 +54,7 @@ const Checkout = props => {
               ? "opacity-50 pointer-events-none"
               : ""
           }`}>
-          3. Billing Address
+          3. <span className="sm:hidden md:hidden lg:hidden">Billing Address</span>
         </div>
       </div>
       <div
@@ -71,7 +71,7 @@ const Checkout = props => {
               ? "opacity-50 pointer-events-none"
               : ""
           }`}>
-          4. Payment
+          4. <span className="sm:hidden md:hidden lg:hidden">Payment</span>
         </div>
       </div>
       <div
@@ -88,7 +88,7 @@ const Checkout = props => {
               ? "opacity-50 pointer-events-none"
               : ""
           }`}>
-          5. Confirmation
+          5. <span className="sm:hidden md:hidden lg:hidden">Confirmation</span>
         </div>
       </div>
     </div>

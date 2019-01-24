@@ -42,12 +42,8 @@ const GenePreview = props => {
             screenStyle,
             packStyle = { opacity: 0 };
 
-        if (props.misc.geneHoverIndex == index) {
-            strainImgStyle = {
-                ...strainImgStyle,
-                transform: "translateY(100%)",
-                opacity: 0
-            };
+        if (props.misc.geneHoverIndex == index || props.misc.mediaSize == "lg") {
+            strainImgStyle = { ...strainImgStyle, transform: "translateY(100%)", opacity: 0 };
             headingStyle = { opacity: 0 };
             screenStyle = { transform: "translateX(-130px) rotate(-90deg)" };
             packStyle = { opacity: 1 };

@@ -294,7 +294,18 @@ svg {
     position: absolute;
     top: -0.5em;
     left: 50%;
-    margin-left: -0.25em;
+    // margin-left: -0.25em;
+    margin-left: -8px;
+}
+
+.steps-active-mobile:before {
+    content: "";
+    border: solid 0.6em transparent;
+    border-left-color: #920300;
+    position: absolute;
+    top: 7px;
+    left: 10%;
+    margin-left: -0.35em;
 }
 // END CHECKOUT PAGE
 ////////////////////
@@ -973,11 +984,12 @@ svg {
         overflow: visible;
         text-align: center;
         @include modifier("hover") {
+            height: 600px;
+            width: 276px;
+            left: -25%;
+            padding: 10px 10px;
             text-align: center;
-            height: 650px;
-            width: 300px;
-            left: -50%;
-            overflow: hidden;
+            transform: translateX(15px);
             background-color: #fff;
             transition: 0.6s all ease-in-out;
             color: rgba(255, 255, 255, 1);
@@ -986,7 +998,6 @@ svg {
             border: 0.5px solid #cecece;
         }
     }
-
     .packageClass {
         height: 100%;
         position: relative;

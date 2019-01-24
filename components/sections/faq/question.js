@@ -11,7 +11,7 @@ const question = props => {
         <div
             onClick={() => props.toggleFAQQuestion(props.index)}
             style={size}
-            className="w-1/2 lg:w-full md:w-full sm:w-full mx-auto shadow-md my-2 cursor-pointer">
+            className="w-1/2 lg:w-full md:w-full sm:w-full mx-auto shadow my-3 cursor-pointer">
             <p className="font-black p-2 flex justify-between">
                 <span className={expand ? "text-red-dark flex items-center" : " flex items-center"}>
                     <span className="text-red-dark text-2xl mr-2">Q:</span>

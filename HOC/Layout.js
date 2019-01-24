@@ -18,7 +18,7 @@ import Head from "next/head";
 import ShareButtons from "../components/sections/shareButtons";
 import AgeVerification from "../components/sections/ageVerification";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComments } from "@fortawesome/free-solid-svg-icons";
+import { faComments, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 
 class Layout extends Component {
   componentDidMount() {
@@ -69,8 +69,6 @@ class Layout extends Component {
     for (let mediaSize of Object.keys(mediaSizes)) {
       let _mediaSizeDim = mediaSizes[mediaSize];
       let _width = window.innerWidth;
-      // console.log(_width);
-      // console.log(Math.max(_mediaSizeDim.min, Math.min(_width, _mediaSizeDim.max)));
       if (
         _width ==
           Math.max(_mediaSizeDim.min, Math.min(_width, _mediaSizeDim.max)) &&
@@ -100,19 +98,25 @@ class Layout extends Component {
         <div className="pt-32">
           {" "}
           <ShareButtons {...this.props} />
-          <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md">
+          <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:min-w-900 xl:w-main lg:w-700 md:w-main mx-auto shadow-md">
             {this.props.children}
           </div>
         </div>
         <div
-          className="fixed z-999 w-24 mb-24 h-24 bg-red-light pin-b pin-l text-white text-center text-lg pt-2 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item"
+          className="sm:hidden md:hidden lg:hidden fixed z-999 w-24 mb-48 h-24 bg-red-light pin-b pin-l text-white text-center text-lg pt-4 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item"
           onClick={() => Tawk_API.toggle()}
         >
+          <FontAwesomeIcon icon={faComments} className="fa-3x cursor-pointer" />
+          {/* <h3>CHAT</h3> */}
+        </div>
+        <div
+          className="fixed z-999 w-16 mb-24 h-16 bg-red-light pin-b pin-l text-white text-center text-lg pt-2 rounded-br-full rounded-tr-full cursor-pointer hover:bg-red-dark scale-item"
+          onClick={() => window.scrollTo(0, 0)}
+        >
           <FontAwesomeIcon
-            icon={faComments}
+            icon={faCaretUp}
             className="fa-2x my-1 pr-1  cursor-pointer"
           />
-          <h3>CHAT</h3>
         </div>
         <Cart {...this.props} />
         <Footer {...this.props} />

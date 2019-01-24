@@ -22,10 +22,7 @@ const menu = props => {
                 <div
                     key={country}
                     className="bg-white inline-flex cursor-pointer hover:bg-grey-lightest"
-                    style={{
-                        marginTop: "5px",
-                        height: "34px"
-                    }}
+                    style={{ marginTop: "5px", height: "34px" }}
                     onClick={() => {
                         props.setCurrency({
                             currency: {
@@ -33,16 +30,14 @@ const menu = props => {
                                 ...props.checkout.availableCurrency[country]
                             }
                         });
-                        props.setVisibleScreen({
-                            input: "viewCurrency"
-                        });
+                        props.setVisibleScreen({ input: "viewCurrency" });
                     }}>
-                    <div className="w-12  p-2 items-center flex justify-center">
+                    <div className="w-12 p-2 sm:w-8 sm:p-1 items-center flex justify-center">
                         <p>
                             <img src={`../../static/img/currency/currency_${country}.png`} className="w-10" />
                         </p>
                     </div>
-                    <p className="px-6 pt-2 p-1 uppercase text-center font-extrabold text-lg ">
+                    <p className="px-6 pt-2 p-1 uppercase text-center font-extrabold text-lg sm:px-4 sm:text-sm">
                         {country.toUpperCase()}
                     </p>
                 </div>
@@ -55,15 +50,15 @@ const menu = props => {
         ? {
               transform: "translateX(0px)",
               transition: "all 0.2s ease-in-out",
-              WebkitTransition: "all 0.2s ease-in-out",
-              width: "122px",
-              height: "43px"
+              WebkitTransition: "all 0.2s ease-in-out"
+              // width: "122px",
+              // height: "43px"
           }
         : {
-              transform: "translateX(-122px)",
+              transform: "translateX(-130px)",
               transition: "all 0.2s ease-in-out",
               WebkitTransition: "all 0.2s ease-in-out",
-              width: "122px",
+              // width: "122px",
               height: `${8 + (availableCurrencyLength - 1) * 39}px`
           };
 
@@ -103,7 +98,7 @@ const menu = props => {
                 <div className="w-1/2 relative">
                     <div
                         style={viewCurrency}
-                        className="fixed h-100 overflow-hidden pin-l bg-white shadow-md rounded cursor-pointer mt-10 -mr-1">
+                        className="fixed h-12 overflow-hidden sm:h-10 pin-l bg-white shadow-md rounded cursor-pointer mt-10 -mr-1">
                         {" "}
                         <div className="w-full wrap flex-wrap">{showCurrency()}</div>
                     </div>

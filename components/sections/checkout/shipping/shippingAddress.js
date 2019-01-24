@@ -76,13 +76,13 @@ const ShippingAddress = props => {
   };
 
   return (
-    <div className="w-full mt-6 px-8">
+    <div className="w-full mt-6 px-8 sm:px-4">
       <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-black">
         Shipping Address
       </h2>
       <div className={`w-full mt-4`}>
-        <div className="w-full p-2 inline-flex">
-          <div className="w-1/2">
+        <div className="w-full p-2 inline-flex sm:flex-col">
+          <div className="w-1/2 sm:w-full sm:pl-0 sm:mt-4">
             <input
               type="text"
               name="name"
@@ -114,7 +114,7 @@ const ShippingAddress = props => {
               required
             />
           </div>
-          <div className="w-1/2 pl-2">
+          <div className="w-1/2 pl-2 sm:w-full sm:pl-0 sm:mt-4">
             <input
               type="email"
               name="email"
@@ -209,8 +209,8 @@ const ShippingAddress = props => {
             className="p-2 w-full"
           />
         </div>
-        <div className="w-full p-2 inline-flex">
-          <div className="w-1/3">
+        <div className="w-full p-2 sm:flex-col inline-flex">
+          <div className="w-1/3 sm:w-full">
             <input
               type="text"
               name="ship-zip"
@@ -242,7 +242,7 @@ const ShippingAddress = props => {
               required
             />
           </div>
-          <div className="w-1/3 px-2">
+          <div className="w-1/3 px-2 sm:w-full sm:px-0 sm:mt-4">
             <input
               type="text"
               name="ship-city"
@@ -274,7 +274,7 @@ const ShippingAddress = props => {
               required
             />
           </div>
-          <div className="w-1/3">
+          <div className="w-1/3 sm:w-full sm:mt-4">
             <select
               id="country"
               name="ship-country"
@@ -317,8 +317,8 @@ const ShippingAddress = props => {
             </select>
           </div>
         </div>
-        <div className="w-full p-2 inline-flex">
-          <div className="w-1/2">
+        <div className="w-full p-2 inline-flex sm:flex-col">
+          <div className="w-1/2 sm:w-full sm:pl-0">
             {props.checkout.orderDetails[pageGroup] != null &&
             props.checkout.orderDetails[pageGroup].country != null &&
             ["Canada", "United States"].includes(
@@ -410,7 +410,7 @@ const ShippingAddress = props => {
               />
             )}
           </div>
-          <div className="w-1/2 pl-2">
+          <div className="w-1/2 pl-2 sm:w-full sm:pl-0 sm:mt-4">
             <input
               type="text"
               name="phone"

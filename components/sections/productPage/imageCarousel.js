@@ -41,7 +41,7 @@ const imageCarousel = props => {
       >
         <img
           style={{ objectFit: "contain" }}
-          className="cursor-pointer flex my-auto xxl:h-400 xl:h-400 w-full h-300"
+          className="cursor-pointer flex my-auto sm:h-200 xxl:h-400 xl:h-400 w-full h-300"
           src={image}
         />
       </ImageZoom>
@@ -51,8 +51,8 @@ const imageCarousel = props => {
   let currentImage = imageZooms[props.viewProduct.currentImage];
 
   return (
-    <div className="w-full relative">
-      <div className="w-full h-400 sm:h-300 md:h-300 inline-flex justify-center flex">
+    <div className="w-full relative lg:flex lg:justify-center">
+      <div className="w-full h-400 sm:h-200 md:h-300 lg:h-300 lg:w-3/4 inline-flex justify-center flex">
         <div className="flex flex-wrap content-start w-16">{imageThumbs}</div>
         <div
           style={{
@@ -61,7 +61,7 @@ const imageCarousel = props => {
             textAlign: "center",
             marginLeft: "30px"
           }}
-          className="w-3/4 mx-4 z-50 bg-white flex my-auto"
+          className="w-3/4 mx-4 z-50 bg-white flex sm:h-200 sm:mb-32 lg:mx-0 lg:my-0 my-auto"
         >
           <div className="text-xs bg-almost-white shadow flex pin-b pin-r rounded absolute text-black p-1 mr-4 mb-6 opacity-75 md:hidden sm:hidden">
             <FontAwesomeIcon icon={faSearchPlus} className="mr-1" />

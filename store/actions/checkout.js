@@ -42,7 +42,7 @@ let shippingMethods = [
     description:
       "Approx. 7 to 14 business days within North America and up to 21 days overseas.",
     note:
-      "This option guarantees delivery with a reshipment if your order is redirected.",
+      "This option guarantees Delivery with a Reshipment if your order is redirected.",
     price: 30
   },
   {
@@ -54,7 +54,7 @@ let shippingMethods = [
     type: "Regular Shipping (With Tracking / Stealth Shipping)",
     description: "Approx. 7 to 25 business days depending on your location.",
     note:
-      "The country you have selected is flagged for unreliable mail services and due to these obstacles your package will be shipped using our stealth shipment method.",
+      "The Country you have selected is flagged for Unreliable Mail services and due to these obstacles your package will be shipped using our stealth shipment method.",
     price: 30
   }
 ];

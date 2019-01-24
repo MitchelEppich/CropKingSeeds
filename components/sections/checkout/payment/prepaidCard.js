@@ -43,7 +43,7 @@ const PrepaidCard = props => {
         className="h-10 inline-flex w-full cursor-pointer"
       >
         <div className="w-4/5 p-2 flex items-center">
-          <p>Pay with a Prepaid Card</p>
+          <p className="sm:text-sm md:text-sm">Pay with a Prepaid Card</p>
         </div>
         <div className="w-1/5 justify-end flex">
           <div className="h-10 w-10 text-center py-2 bg-semi-transparent ">
@@ -52,7 +52,7 @@ const PrepaidCard = props => {
         </div>
       </div>
       {props.misc.visibleScreen.includes("prepaidCard") ? (
-        <div className="w-600 mx-auto p-2">
+        <div className="w-600 sm:w-full mx-auto p-2">
           {/* <div className="w-full mt-2 text-center opacity-75">
             <p className="text-sm p-2">Cards Accepted:</p>
             <img src="../static/img/cards.png" width="100px" />
@@ -100,8 +100,8 @@ const PrepaidCard = props => {
               />
             </div>
           </div>
-          <div className="w-full inline-flex mt-2">
-            <div className="w-1/3 mr-1 inline-flex">
+          <div className="w-full inline-flex mt-2 sm:flex-col">
+            <div className="w-1/3 mr-1 inline-flex sm:w-full sm:mx-0">
               <select
                 placeholder=""
                 className="p-2 w-full"
@@ -147,7 +147,7 @@ const PrepaidCard = props => {
                 <option value="12">December</option>
               </select>
             </div>
-            <div className="w-1/3 ml-1 inline-flex">
+            <div className="w-1/3 ml-1 inline-flex sm:mx-0 sm:mt-2 sm:w-full">
               <select
                 placeholder=""
                 className="p-2 w-full"
@@ -192,8 +192,8 @@ const PrepaidCard = props => {
                 })()}
               </select>
             </div>
-            <div className="w-1/3 inline-flex relative">
-              <div className="ml-2 w-full">
+            <div className="w-1/3 inline-flex sm:w-full sm:mt-2 relative">
+              <div className="ml-2 sm:ml-0 w-full">
                 <input
                   type="text"
                   placeholder="Security Code"
@@ -232,6 +232,11 @@ const PrepaidCard = props => {
                 />
               </div>
             </div>
+          </div>
+          <div className="w-200 p-2 mx-auto mt-6 text-center">
+            <p className="text-center p-2 font-extrabold bg-red-dark text-white hover:bg-grey-light cursor-pointer">
+              Pay Now
+            </p>
           </div>
         </div>
       ) : null}

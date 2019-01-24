@@ -46,9 +46,9 @@ const cart = props => {
   return (
     <div
       style={viewCart}
-      className="w-500 sm:w-screen md:w-screen text-black text-3xl sm:w-screen max-w-screen z-40 pin-t pin-r h-screen bg-white fixed pb-12 shadow-lg pt-32">
-      <div className="relative h-20 w-full fixed">
-        <div className="absolute w-full">
+      className="w-500 sm:w-screen lg:w-400 md:w-400 text-black text-3xl sm:w-300 max-w-screen z-40 pin-t pin-r h-screen bg-white fixed pb-12 shadow-lg pt-32">
+      <div className="relative h-20 sm:h-32 md:h-32 w-full">
+        <div className="absolute w-full sm:mt-12 md:mt-10">
           <p
             onClick={() =>
               props.setVisibleScreen({
@@ -90,17 +90,17 @@ const cart = props => {
                 input: "viewCart"
               })
             }
-            className={`mx-auto ml-16 bg-red-dark  py-1 h-12 text-lg block px-8 py-2  hover:bg-grey font-extrabold hover:text-white slow text-white  ${
+            className={`mx-auto ml-16 bg-red-dark md:ml-6 sm:ml-6 lg:ml-8 py-1 h-12 text-lg block px-8 py-2  hover:bg-grey font-extrabold hover:text-white slow text-white ${
               items.length == 0 ? "opacity-50 pointer-events-none" : ""
             }`}>
             Checkout
           </button>
         </Link>
-        <div className="flex mr-4 items-center">
-          <p className="inline-block mr-4 text-xl font-medium text-grey">
+        <div className="flex mr-4 items-center sm:mx-4">
+          <p className="inline-block mr-4 text-xl font-medium text-grey sm:text-lg">
             Subtotal:
           </p>
-          <p className="inline-block text-2xl font-extrabold text-red-dark">
+          <p className="inline-block text-2xl font-extrabold sm:text-xl text-red-dark">
             {currency != null
               ? `${currency.symbol}${(
                   currency.convert * props.cart.price

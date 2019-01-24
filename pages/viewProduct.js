@@ -84,7 +84,10 @@ class Index extends Component {
                     <div className="absolute pin-b xl:pin lg:w-full md:w-full sm:w-full">
                       <Genetics {...this.props} />
                       <AddToCart {...this.props} />
-                      <Share {...this.props} />
+                      <Share
+                        copyToClipboard={this.copyToClipboard}
+                        {...this.props}
+                      />
                     </div>
                   </div>
                 </div>
