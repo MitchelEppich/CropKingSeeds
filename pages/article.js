@@ -10,12 +10,28 @@ import Layout from "../HOC/Layout";
 import ArticlePage from "../components/sections/articlePage";
 
 class Index extends Component {
+    componentDidMount() {
+        document.getElementById("copyArticleLink").addEventListener("click", () => {
+            let link = document.querySelector("#articleLinkText");
+            link.select();
+            document.execCommand("copy");
+            alert("Link copied successfully!");
+        });
+    }
+
     render() {
         return (
             <Layout>
                 {this.props.misc.strains != null && this.props.misc.strains.length > 0 ? (
                     <div className="">
                         <ArticlePage {...this.props} />
+                        <input
+                            id="articleLinkText"
+                            value={
+                                "localhost:3000/product/" +
+                                this.props.article.currentArticle.name.toLowerCase().replace(/ /g, "-")
+                            }
+                        />
                     </div>
                 ) : (
                     <p>Loading...</p>

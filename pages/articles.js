@@ -22,7 +22,7 @@ class Index extends Component {
                     <ArticleSlider {...this.props} />
                     <div
                         style={{ marginTop: "-150px" }}
-                        className="inline-flex sm:flex-wrap md:flex-wrap lg:flex-wrap justify-center md:mb-24 sm:mb-24 sm:pt-48 w-full sm:relative md:relative lg:relative xl:relative  absolute">
+                        className="inline-flex sm:flex-wrap md:flex-wrap lg:flex-wrap justify-center md:mb-24 md:pt-48 sm:mb-24 sm:pt-48 w-full sm:relative md:relative lg:relative xl:relative  absolute">
                         <SmArticles {...this.props} src="SMimage-1.jpg" />
                         <SmArticles {...this.props} src="SMimage-2.jpg" />
                         <SmArticles {...this.props} src="SMimage-3.jpg" />

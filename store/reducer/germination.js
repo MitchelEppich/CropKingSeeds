@@ -25,7 +25,7 @@ const initialState = {
         ],
         currentStep: 0,
         sm: {
-            positions: ["translateX(-0.5rem)", "translateX(calc(-100vw + 1.5rem))", "translateX(calc(-200vw + 4rem))"],
+            positions: ["translateX(0rem)", "translateX(calc(-100vw + 2rem))", "translateX(calc(-200vw + 4rem))"],
             width: "calc(300vw - 6rem)"
         },
         md: {
@@ -37,7 +37,7 @@ const initialState = {
             width: "2100px"
         },
         xl: {
-            positions: ["translateX(174px)", "translateX(-725px)", "translateX(-1625px)"],
+            positions: ["translateX(440px)", "translateX(-535px)", "translateX(-1505px)"],
             width: "2700px"
         },
         xxl: {
