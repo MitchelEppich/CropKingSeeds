@@ -262,7 +262,12 @@ const menu = props => {
                                     className="text-white p-2 h-12 ml-auto mr-4 w-12 flex justify-end bg-semi-transparent cursor-pointer">
                                     <FontAwesomeIcon icon={faBars} className="fa-2x" />
                                 </div>
-                                <div style={showMobileNav} className="w-full fixed bg-red-dark z-50">
+                                <div
+                                    onClick={() => {
+                                        props.setVisibleScreen({ input: "showMobileNav" });
+                                    }}
+                                    style={showMobileNav}
+                                    className="w-full fixed bg-red-dark z-50">
                                     <ul
                                         className={
                                             isMobileNavVisible

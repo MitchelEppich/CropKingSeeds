@@ -48,6 +48,9 @@ const productThumbnail = props => {
     let plantClass = hover ? "plantClass--hover" : "plantClass";
     let overlayClass = hover ? "overlayClass--hover" : "overlayClass";
     let productIdentifier = props.product.sotiId + [5, 10, 25][props.shop.quickAddToCartQty];
+    let name = props.product.name;
+    let nameSize = name.length < 14 ? "text-lg" : "text-base";
+    let titleColorBackground = " bg-" + props.detail.geneColor[props.product.genetic.toLowerCase()];
 
     return (
         <div className={overlayClass}>
@@ -105,6 +108,8 @@ const productThumbnail = props => {
 
             <div
                 onClick={() => {
+                    enableScroll();
+                    props.setHoverId(null, false);
                     props.setCurrentProduct({ product: props.product });
                 }}
                 className={hover ? "overflow-hidden w-full bg-white" : "relative"}>
@@ -114,11 +119,11 @@ const productThumbnail = props => {
                             className={
                                 hover
                                     ? "w-full mt-2 mb-2 text-black font-black text-2xl text-center cursor-pointer strainTitle--hover"
-                                    : `text-center sm:text-xs text-lg text-grey p-2 font-extrabold z-50 strainTitle bg-${
-                                          props.detail.geneColor[props.product.genetic.toLowerCase()]
-                                      }`
+                                    : "text-center sm:text-xs text-grey p-2 font-extrabold z-50 strainTitle " +
+                                      nameSize +
+                                      titleColorBackground
                             }>
-                            {props.product.name}{" "}
+                            {name}
                             {hover ? (
                                 <FontAwesomeIcon
                                     icon={faExternalLinkAlt}

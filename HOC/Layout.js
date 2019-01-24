@@ -16,7 +16,7 @@ import Head from "next/head";
 import ShareButtons from "../components/sections/shareButtons";
 import AgeVerification from "../components/sections/ageVerification";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComments } from "@fortawesome/free-solid-svg-icons";
+import { faComments, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 
 class Layout extends Component {
     componentDidMount() {
@@ -36,19 +36,6 @@ class Layout extends Component {
         window.addEventListener("resize", () => {
             this.setMediaSize();
         });
-
-        // let Tawk_API = Tawk_API || {},
-        //     Tawk_LoadStart = new Date();
-        // (function() {
-        //     let s1 = document.createElement("script"),
-        //         s0 = document.getElementsByTagName("script")[0];
-        //     s1.async = true;
-        //     s1.src = "https://embed.tawk.to/5ae8bd0d5f7cdf4f0533c472/default";
-        //     s1.charset = "UTF-8";
-        //     s1.setAttribute("crossorigin", "*");
-        //     document.body.appendChild(s1);
-        //     s0.parentNode.insertBefore(s1, s0);
-        // });
     }
 
     setMediaSize = () => {
@@ -62,8 +49,6 @@ class Layout extends Component {
         for (let mediaSize of Object.keys(mediaSizes)) {
             let _mediaSizeDim = mediaSizes[mediaSize];
             let _width = window.innerWidth;
-            // console.log(_width);
-            // console.log(Math.max(_mediaSizeDim.min, Math.min(_width, _mediaSizeDim.max)));
             if (
                 _width == Math.max(_mediaSizeDim.min, Math.min(_width, _mediaSizeDim.max)) &&
                 this.props.misc.mediaSize != mediaSize
@@ -97,10 +82,15 @@ class Layout extends Component {
                     </div>
                 </div>
                 <div
-                    className="fixed z-999 w-24 mb-24 h-24 bg-red-light pin-b pin-l text-white text-center text-lg pt-2 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item"
+                    className="sm:hidden md:hidden lg:hidden fixed z-999 w-24 mb-48 h-24 bg-red-light pin-b pin-l text-white text-center text-lg pt-4 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item"
                     onClick={() => Tawk_API.toggle()}>
-                    <FontAwesomeIcon icon={faComments} className="fa-2x my-1 pr-1  cursor-pointer" />
-                    <h3>CHAT</h3>
+                    <FontAwesomeIcon icon={faComments} className="fa-3x cursor-pointer" />
+                    {/* <h3>CHAT</h3> */}
+                </div>
+                <div
+                    className="fixed z-999 w-16 mb-24 h-16 bg-red-light pin-b pin-l text-white text-center text-lg pt-2 rounded-br-full rounded-tr-full cursor-pointer hover:bg-red-dark scale-item"
+                    onClick={() => window.scrollTo(0, 0)}>
+                    <FontAwesomeIcon icon={faCaretUp} className="fa-2x my-1 pr-1  cursor-pointer" />
                 </div>
                 <Cart {...this.props} />
                 <Footer {...this.props} />

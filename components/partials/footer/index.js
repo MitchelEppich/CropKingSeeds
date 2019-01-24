@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { faSignInAlt, faArrowRight, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faInstagram, faTwitter, faGooglePlus } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = props => {
     return (
@@ -117,24 +117,47 @@ const Footer = props => {
                             Follow us
                         </h3>
                         <div className="pl-2 inline-flex mt-2 sm:w-full sm:mx-auto sm:justify-center md:w-full md:mx-auto md:justify-center md:text-right sm:text-right">
-                            <FontAwesomeIcon
-                                icon={faInstagram}
-                                className="fa-2x text-white mx-2 cursor-pointer hover:text-grey-light"
-                            />
-                            <FontAwesomeIcon
-                                icon={faFacebook}
-                                className="fa-2x text-white mx-2 cursor-pointer hover:text-grey-light"
-                            />
-                            <FontAwesomeIcon
-                                icon={faTwitter}
-                                className="fa-2x text-white mx-2 cursor-pointer hover:text-grey-light"
-                            />
+                            <a
+                                className="text-white"
+                                target="_blank"
+                                href="https://www.instagram.com/cropkingseeds/?hl=en">
+                                <FontAwesomeIcon
+                                    icon={faInstagram}
+                                    className="fa-2x text-white mx-2 cursor-pointer hover:text-grey-light"
+                                />
+                            </a>
+                            <a
+                                className="text-white"
+                                target="_blank"
+                                href="https://www.facebook.com/cropkingseedsreview/">
+                                <FontAwesomeIcon
+                                    icon={faFacebook}
+                                    className="fa-2x text-white mx-2 cursor-pointer hover:text-grey-light"
+                                />
+                            </a>
+                            <a
+                                className="text-white"
+                                target="_blank"
+                                href="https://twitter.com/CropKingSeed?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
+                                <FontAwesomeIcon
+                                    icon={faTwitter}
+                                    className="fa-2x text-white mx-2 cursor-pointer hover:text-grey-light"
+                                />
+                            </a>
+                            <a className="text-white" target="_blank" href="https://plus.google.com/+CropKingSeeds">
+                                <FontAwesomeIcon
+                                    icon={faGooglePlus}
+                                    className="fa-2x text-white mx-2 cursor-pointer hover:text-grey-light"
+                                />
+                            </a>
                         </div>
                     </div>
                     <div className="mt-16 text-right sm:text-center md:text-center lg:text-center">
                         <h3 className="text-yellow-dark font-extrabold text-2xl uppercase ">Contact</h3>
                         <p className="text-white text-xl p-1 lg:text-lg">info@cropkingseeds.com</p>
-                        <p className="text-white text-xl p-1 lg:text-lg">+1 (604) 563-0291</p>
+                        <a className="no-underline" href="tel:+1-844-276-7546">
+                            <p className="text-white text-xl p-1 lg:text-lg">+1-844-276-7546</p>
+                        </a>
                     </div>
                 </div>
             </div>
