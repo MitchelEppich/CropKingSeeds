@@ -4,6 +4,7 @@
 
 import React, { Component } from "react";
 import withData from "../lib/withData";
+import Link from "next/link";
 import { connect } from "react-redux";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
@@ -20,8 +21,15 @@ import BillingAddress from "../components/sections/checkout/billing/";
 import Payment from "../components/sections/checkout/payment";
 import Checkout from "../components/sections/checkout";
 import Confirmation from "../components/sections/checkout/confirmation";
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAngleLeft,
+  faAngleRight,
+  faPlus,
+  faCartPlus,
+  faCartArrowDown
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SideSteps from "../components/sections/checkout/sideSteps";
 
 class Index extends Component {
   componentDidMount() {
@@ -70,7 +78,8 @@ class Index extends Component {
                   )
                 : null;
             }
-          }}>
+          }}
+        >
           <div
             style={{
               background: "#f5f5f5",
@@ -78,14 +87,28 @@ class Index extends Component {
               borderTopRightRadius: "10px",
               overflow: "hidden"
             }}
-            className="w-container mx-auto mt-12">
+            className="w-main sm:w-full mx-auto mt-12"
+          >
             <Checkout {...this.props} />
+            {/* <SideSteps {...this.props} /> */}
+
             {this.props.misc.stepsCheckout == 0 ? (
               <div>
                 <ProductPreview {...this.props} />
+                <div className="w-main mx-auto flex justify-end">
+                  <Link href="/shop">
+                    <p className="font-extrabold text-xl cursor-pointer scale-item text-red-light p-2 items-center flex">
+                      Continue Shopping{" "}
+                      <FontAwesomeIcon
+                        icon={faCartArrowDown}
+                        className="ml-2 fa-lg"
+                      />
+                    </p>
+                  </Link>
+                </div>
                 <hr
                   style={{ border: "1px solid rgb(228, 228, 228)" }}
-                  className="my-6"
+                  className="my-2"
                 />
                 <Coupon {...this.props} />
               </div>
@@ -130,7 +153,8 @@ class Index extends Component {
                       )
                     : null;
                 }}
-                className="w-200 p-2 text-left cursor-pointer flex items-center hover:text-red">
+                className="w-200 p-2 text-left cursor-pointer flex items-center hover:text-red"
+              >
                 {this.props.misc.stepsCheckout != 0 ? (
                   <span className="flex items-center font-extrabold text-red-dark hover:text-red-light text-2xl uppercase">
                     <FontAwesomeIcon
@@ -158,11 +182,13 @@ class Index extends Component {
                       null)
                     ? "opacity-50 unselectable pointer-events-none"
                     : ""
-                }`}>
+                }`}
+              >
                 {this.props.misc.stepsCheckout != 4 ? (
                   <button
                     className="flex items-center font-extrabold text-red-dark hover:text-red-light text-2xl uppercase"
-                    type="submit">
+                    type="submit"
+                  >
                     Next
                     <FontAwesomeIcon
                       icon={faAngleRight}

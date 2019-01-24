@@ -81,14 +81,16 @@ const PaymentReview = props => {
   let titleBox = {
     borderBottom: "2px solid #505050",
     color: "#fff",
-    background: "#ef5753",
-    background: "rgb(72, 72, 72)",
+    // background: "#ef5753",
+    background: "rgb(239, 87, 83)",
     padding: "6px"
   };
 
   return (
-    <div className="w-full flex justify-end mb-6">
-      <div style={box} className="w-1/3 h-200 mx-0 bg-white">
+    <div className="w-full flex justify-end mb-6 lg:flex-col md:flex-col sm:flex-col">
+      <div
+        style={box}
+        className="w-1/3 h-200 lg:w-full lg:mt-2 sm:w-full sm:mt-2 md:w-full md:mt-2 mx-0 bg-white">
         <h3 style={titleBox}>Shipping Address</h3>
         <div className="p-2">
           <p className="mt-1">
@@ -147,7 +149,9 @@ const PaymentReview = props => {
           </p>
         </div>
       </div>
-      <div style={box} className="w-1/3 h-200 mx-4 bg-white">
+      <div
+        style={box}
+        className="w-1/3 h-200 lg:w-full lg:mt-2 sm:w-full sm:mt-2 md:w-full md:mt-2 xxl:mx-4 xl:mx-4 bg-white">
         <h3 style={titleBox}>Billing Address</h3>
         <div className="p-2">
           <p className="mt-1">
@@ -206,7 +210,9 @@ const PaymentReview = props => {
           </p>
         </div>
       </div>
-      <div style={box} className="w-1/3 h-200 mx-0 bg-white">
+      <div
+        style={box}
+        className="w-1/3 h-200 lg:w-full lg:mt-2 sm:w-full sm:h-full sm:mt-2 md:w-full md:mt-2 mx-0 bg-white">
         <h3 style={titleBox}>Payment Information</h3>
         <div className="p-2 inline-flex w-full">
           <div className="w-3/5 text-right">
@@ -221,7 +227,7 @@ const PaymentReview = props => {
             </p>
           </div>
           <div className="w-2/5 pl-4 text-left">
-            <p className="mt-2">
+            <p className="mt-1">
               {currency != null
                 ? `${currency.symbol}${(
                     currency.convert * _orderDetails[pageGroup].cartTotal.value
@@ -255,11 +261,11 @@ const PaymentReview = props => {
         <div className="p-2 mt-4 border-t-2 border-grey-lightest inline-flex w-full">
           <div className="w-3/5 text-right">
             {" "}
-            <p className="font-bold">Total:</p>{" "}
+            <p className="font-extrabold text-grey-light text-lg uppercase">Total:</p>{" "}
           </div>
           <div className="w-2/5 text-left pl-4">
             {" "}
-            <p className="font-bold">
+            <p className="font-extrabold text-lg">
               {currency != null
                 ? `${currency.symbol}${(
                     currency.convert * _orderDetails[pageGroup].orderTotal.value

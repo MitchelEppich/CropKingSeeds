@@ -105,6 +105,8 @@ const productThumbnail = props => {
 
             <div
                 onClick={() => {
+                     enableScroll();
+                     props.setHoverId(null, false);
                     props.setCurrentProduct({ product: props.product });
                 }}
                 className={hover ? "overflow-hidden w-full bg-white" : "relative"}>
