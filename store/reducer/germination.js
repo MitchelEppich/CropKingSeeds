@@ -25,19 +25,23 @@ const initialState = {
         ],
         currentStep: 0,
         sm: {
-            positions: ["translateX(0rem)", "translateX(calc(-100vw + 2rem))", "translateX(calc(-200vw + 4rem))"],
+            positions: ["translateX(0rem)", "translateX(calc(-100vw))", "translateX(calc(-200vw))"],
             width: "calc(300vw - 6rem)"
         },
         md: {
-            positions: ["translateX(calc(-4rem)", "translateX(calc(-100vw - 2rem))", "translateX(calc(-200vw))"],
+            positions: [
+                "translateX(calc(-3.75rem)",
+                "translateX(calc(-100vw - 1.75rem))",
+                "translateX(calc(-200vw + 0.25rem))"
+            ],
             width: "calc(300vw - 6rem)"
         },
         lg: {
-            positions: ["translateX(118px)", "translateX(-582px)", "translateX(-1282px)"],
+            positions: ["translateX(303px)", "translateX(-582px)", "translateX(-1467px)"],
             width: "2100px"
         },
         xl: {
-            positions: ["translateX(440px)", "translateX(-535px)", "translateX(-1505px)"],
+            positions: ["translateX(245px)", "translateX(-725px)", "translateX(-1695px)"],
             width: "2700px"
         },
         xxl: {

@@ -109,13 +109,13 @@ const productThumbnail = props => {
             <div
                 onClick={() => {
                     enableScroll();
-                    props.setHoverId(null, false);
                     props.setCurrentProduct({ product: props.product });
                 }}
                 className={hover ? "overflow-hidden w-full bg-white" : "relative"}>
                 <Link href="/viewProduct" as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}>
                     <div style={{ zIndex: "1000", width: "92%" }} className="absolute w-full">
                         <h3
+                            onClick={() => props.setHoverId(null, false)}
                             className={
                                 hover
                                     ? "w-full mt-2 mb-2 text-black font-black text-2xl text-center cursor-pointer strainTitle--hover"

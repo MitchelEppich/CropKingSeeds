@@ -111,11 +111,8 @@ class Layout extends Component {
                 </div>
 
                 <div
-                    className={
-                        window.scrollY > window.innerHeight
-                            ? "fixed z-999 w-16 mb-24 h-16 bg-red-light pin-b pin-l text-white text-center text-lg pt-2 rounded-br-full rounded-tr-full cursor-pointer hover:bg-red-dark scale-item"
-                            : "fixed z-999 w-16 mb-24 h-16 bg-red-light pin-b pin-l text-white text-center text-lg pt-2 rounded-br-full rounded-tr-full cursor-pointer hover:bg-red-dark scale-item hidden"
-                    }
+                    id="jumpToTop"
+                    className="fixed z-999 w-16 mb-24 h-16 bg-red-light pin-b pin-l text-white text-center hidden text-lg pt-2 rounded-br-full rounded-tr-full cursor-pointer hover:bg-red-dark scale-item"
                     onClick={() => window.scrollTo(0, 0)}>
                     <FontAwesomeIcon icon={faCaretUp} className="fa-2x my-1 pr-1  cursor-pointer" />
                 </div>
