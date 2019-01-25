@@ -19,7 +19,9 @@ class Index extends Component {
                     <React.Fragment>
                         <div
                             className={
-                                this.props.misc.hoverId != null && this.props.misc.mediaSize == "sm" ? "fixed" : ""
+                                this.props.misc.hoverId != null && this.props.misc.mediaSize == "sm"
+                                    ? "fixed"
+                                    : "relative"
                             }>
                             <h3
                                 className={

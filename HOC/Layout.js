@@ -56,6 +56,8 @@ class Layout extends Component {
         window.addEventListener("resize", () => {
             this.setMediaSize();
         });
+        let cartRect = document.querySelector("#cart").getBoundingClientRect();
+        this.props.setCartPosition(cartRect);
     }
 
     setMediaSize = () => {
@@ -107,11 +109,17 @@ class Layout extends Component {
                     <FontAwesomeIcon icon={faComments} className="fa-3x cursor-pointer" />
                     {/* <h3>CHAT</h3> */}
                 </div>
+
                 <div
-                    className="fixed z-999 w-16 mb-24 h-16 bg-red-light pin-b pin-l text-white text-center text-lg pt-2 rounded-br-full rounded-tr-full cursor-pointer hover:bg-red-dark scale-item"
+                    className={
+                        window.scrollY > window.innerHeight
+                            ? "fixed z-999 w-16 mb-24 h-16 bg-red-light pin-b pin-l text-white text-center text-lg pt-2 rounded-br-full rounded-tr-full cursor-pointer hover:bg-red-dark scale-item"
+                            : "fixed z-999 w-16 mb-24 h-16 bg-red-light pin-b pin-l text-white text-center text-lg pt-2 rounded-br-full rounded-tr-full cursor-pointer hover:bg-red-dark scale-item hidden"
+                    }
                     onClick={() => window.scrollTo(0, 0)}>
                     <FontAwesomeIcon icon={faCaretUp} className="fa-2x my-1 pr-1  cursor-pointer" />
                 </div>
+
                 <Cart {...this.props} />
                 <Footer {...this.props} />
             </div>
@@ -129,7 +137,8 @@ const mapDispatchToProps = dispatch => {
         setAgeVerification: input => dispatch(actions.setAgeVerification(input)),
         setMediaSize: input => dispatch(actions.setMediaSize(input)),
         setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
-        toggleShowFilters: bool => dispatch(actions.toggleShowFilters(bool))
+        toggleShowFilters: bool => dispatch(actions.toggleShowFilters(bool)),
+        setCartPosition: posObj => dispatch(actions.setCartPosition(posObj))
     };
 };
 

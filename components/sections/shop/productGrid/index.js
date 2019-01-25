@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import withData from "../../../../lib/withData";
 import { connect } from "react-redux";
 import actions from "../../../../store/actions";
-import { TimelineLite } from "gsap";
+import { TimelineLite, TweenMax } from "gsap";
+import { Transition } from "react-transition-group";
 import ProductThumbnail from "./productThumbnail";
 
 class Index extends Component {
@@ -10,8 +11,14 @@ class Index extends Component {
         super(props);
         this.myTween = new TimelineLite({ paused: true });
         this.myElements = [];
+        this.state = {
+            show: null
+        };
+        this.toggleComponent = this.toggleComponent.bind(this);
     }
-
+    toggleComponent(index) {
+        this.setState({ show: index != this.state.show ? index : null });
+    }
     componentDidMount() {
         this.myTween.staggerTo(this.myElements, 0.5, { autoAlpha: 1, y: -30 }, 0.1);
         this.myTween.restart();
@@ -21,7 +28,25 @@ class Index extends Component {
         this.myTween.set(this.myElements, { autoAlpha: 1, y: -30 });
     }
 
+    flyToCart(toggle, index) {
+        toggle(index);
+        // myElements[index].style.position = "absolute";
+        // myElements[index].style.display = "inline-block";
+        // let tween = new TimelineLite({
+        //     paused: true
+        // }).to(myElements[index], 2.5, {
+        //     x: 0,
+        //     y: -2000,
+        //     opacity: 0
+        // });
+        // tween.restart();
+        // setTimeout(() => {
+        //     myElements[index].style.display = "none";
+        // }, 3000);
+    }
+
     render() {
+        const { show } = this.state;
         let hoverId = this.props.misc.hoverId;
         let products = this.props.misc.strains;
         let isSmallMediumOrLargeDevice = ["sm", "md", "lg"].includes(this.props.misc.mediaSize);
@@ -44,43 +69,75 @@ class Index extends Component {
             })
             .map((product, index) => {
                 return (
-                    <div
-                        key={index}
-                        ref={div => (this.myElements[index] = div)}
-                        onMouseEnter={() => {
-                            if (isSmallMediumOrLargeDevice) {
-                                return null;
-                            }
-                            this.props.setHoverId(product._id, true);
-                            let _index = 0;
-                            while (product.price[_index] == -1) {
-                                _index++;
-                            }
-                            this.props.quickAddToCartQty(_index);
-                            this.props.modifyPotentialQuantity({
-                                potentialQuantity: this.props.cart.potentialQuantity,
-                                action: "SET",
-                                quantity: 1
-                            });
-                        }}
-                        onMouseLeave={() => {
-                            if (isSmallMediumOrLargeDevice) {
-                                return null;
-                            }
-                            this.props.setHoverId(product._id, false);
-                        }}
-                        className={
-                            hoverId == product._id
-                                ? "w-64 h-64 sm:w-screen sm:h-screen md:w-48 md:h-48 lg:h-48 lg:w-48 text-white relative sm:absolute z-50 slowish lg:my-4 sm:my-2 md:my-2 lg:mx-8 xl:mx-8 xxl:mx-8"
-                                : "w-64 h-64 sm:cursor-pointer md:cursor-pointer sm:w-32 sm:h-32 md:w-48 md:h-48 lg:h-48 lg:w-48 text-white relative z-0 slowish lg:my-4 sm:my-2 md:my-2 lg:mx-8 xl:mx-8 xxl:mx-8"
-                        }>
-                        <ProductThumbnail
-                            isSmallMediumOrLargeDevice={isSmallMediumOrLargeDevice}
-                            hoverId={hoverId}
-                            product={product}
-                            {...this.props}
-                        />
-                    </div>
+                    <React.Fragment key={index}>
+                        <Transition
+                            timeout={1000}
+                            mountOnEnter
+                            unmountOnExit
+                            in={show == index}
+                            addEndListener={(node, done) => {
+                                TweenMax.to(node, 0.5, {
+                                    x: show == index ? 0 : 1000,
+                                    y: show == index ? 0 : -1000,
+                                    autoAlpha: show == index ? 1 : 0,
+                                    onComplete: this.setState({ show: null })
+                                });
+                            }}>
+                            <div
+                                ref={div => (this.myElements[index + products.length] = div)}
+                                className={
+                                    hoverId == product._id
+                                        ? "w-64 h-64 sm:w-screen sm:h-screen md:w-48 md:h-48 lg:h-48 lg:w-48 text-white relative sm:absolute z-50 slowish lg:my-4 sm:my-2 md:my-2 lg:mx-8 xl:mx-8 xxl:mx-8"
+                                        : "w-64 h-64 sm:cursor-pointer md:cursor-pointer sm:w-32 sm:h-32 md:w-48 md:h-48 relative lg:h-48 lg:w-48 z-50 text-white z-0 slowish lg:my-4 sm:my-2 md:my-2 lg:mx-8 xl:mx-8 xxl:mx-8"
+                                }>
+                                <ProductThumbnail
+                                    isSmallMediumOrLargeDevice={isSmallMediumOrLargeDevice}
+                                    hoverId={hoverId}
+                                    product={product}
+                                    {...this.props}
+                                />
+                            </div>
+                        </Transition>
+                        <div
+                            ref={div => (this.myElements[index] = div)}
+                            onMouseEnter={() => {
+                                if (isSmallMediumOrLargeDevice) {
+                                    return null;
+                                }
+                                this.props.setHoverId(product._id, true);
+                                let _index = 0;
+                                while (product.price[_index] == -1) {
+                                    _index++;
+                                }
+                                this.props.quickAddToCartQty(_index);
+                                this.props.modifyPotentialQuantity({
+                                    potentialQuantity: this.props.cart.potentialQuantity,
+                                    action: "SET",
+                                    quantity: 1
+                                });
+                            }}
+                            onMouseLeave={() => {
+                                if (isSmallMediumOrLargeDevice) {
+                                    return null;
+                                }
+                                this.props.setHoverId(product._id, false);
+                            }}
+                            className={
+                                hoverId == product._id
+                                    ? "w-64 h-64 sm:w-screen sm:h-screen md:w-48 md:h-48 lg:h-48 lg:w-48 text-white relative sm:absolute z-50 slowish lg:my-4 sm:my-2 md:my-2 lg:mx-8 xl:mx-8 xxl:mx-8"
+                                    : "w-64 h-64 sm:cursor-pointer md:cursor-pointer sm:w-32 sm:h-32 md:w-48 md:h-48 lg:h-48 lg:w-48 text-white relative z-0 slowish lg:my-4 sm:my-2 md:my-2 lg:mx-8 xl:mx-8 xxl:mx-8"
+                            }>
+                            <ProductThumbnail
+                                isSmallMediumOrLargeDevice={isSmallMediumOrLargeDevice}
+                                hoverId={hoverId}
+                                index={index}
+                                product={product}
+                                {...this.props}
+                                flyToCart={this.flyToCart}
+                                toggle={this.toggleComponent}
+                            />
+                        </div>
+                    </React.Fragment>
                 );
             });
 

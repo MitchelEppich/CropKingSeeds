@@ -188,6 +188,7 @@ const productThumbnail = props => {
                                             product: props.product,
                                             quantity: props.cart.potentialQuantity
                                         });
+                                        props.flyToCart(props.toggle, props.index);
                                     }}>
                                     Add to Cart
                                 </button>

@@ -223,7 +223,7 @@ const menu = props => {
                                             }}
                                             className="text-center cursor-pointer mt-1 text-white">
                                             <div className="">
-                                                <FontAwesomeIcon icon={faShoppingCart} className="fa-lg" />
+                                                <FontAwesomeIcon id="cart" icon={faShoppingCart} className="fa-lg" />
 
                                                 <span
                                                     style={{
@@ -249,12 +249,12 @@ const menu = props => {
                             </div>
 
                             {/* MOBILE MENU */}
-                            <div className={"justify-end w-full xl:hidden xxl:hidden"}>
-                                <div
-                                    onClick={() => {
-                                        props.setVisibleScreen({ input: "showMobileNav" });
-                                    }}
-                                    className="text-white p-2 h-12 ml-auto mr-4 w-12 flex justify-end bg-semi-transparent cursor-pointer">
+                            <div
+                                onClick={() => {
+                                    props.setVisibleScreen({ input: "showMobileNav" });
+                                }}
+                                className={"justify-end w-full xl:hidden xxl:hidden"}>
+                                <div className="text-white p-2 h-12 ml-auto mr-4 w-12 flex justify-end bg-semi-transparent cursor-pointer">
                                     <FontAwesomeIcon icon={faBars} className="fa-2x" />
                                 </div>
                                 <div style={showMobileNav} className="w-full fixed bg-red-dark z-50">
@@ -305,16 +305,15 @@ const menu = props => {
                                             </li>
                                         </Link>
                                         <li
+                                            onClick={() => {
+                                                props.setVisibleScreen({ input: "viewCart" });
+                                            }}
                                             className={
                                                 isMobileNavVisible
                                                     ? "font-extrabold text-2xl p-2 slowish hover:bg-red-navMobile cursor-pointer scale-item"
                                                     : "font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish hidden"
                                             }>
-                                            <div
-                                                onClick={() => {
-                                                    props.setVisibleScreen({ input: "viewCart" });
-                                                }}
-                                                className="text-center cursor-pointer mt-1 text-white">
+                                            <div className="text-center cursor-pointer mt-1 text-white">
                                                 <div className="">
                                                     <FontAwesomeIcon icon={faShoppingCart} className="fa-lg" />
 
