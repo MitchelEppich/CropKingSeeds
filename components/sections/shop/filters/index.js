@@ -3,8 +3,8 @@ import { faSlidersH } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const filters = props => {
-    let activeButton = "border buttonStyle p-2 m-1 font-bold slow";
-    let notActiveButton = "text-grey border bg-grey-lightest border-grey-lightest p-2 m-1 font-bold slow";
+    let activeButton = "border buttonStyle p-2 m-1 font-bold slowish";
+    let notActiveButton = "text-grey border bg-grey-lightest border-grey-lightest p-2 m-1 font-bold slowish";
 
     let buttonStyle = {
         borderTopLeftRadius: "10px",
@@ -82,7 +82,7 @@ const filters = props => {
         <div
             className={
                 props.shop.showFilters
-                    ? "h-600 lg:h-700 xl:h-700 w-full absolute bg-white z-999 lg:sticky xl:sticky xxl:sticky text-red-dark border border-grey-lighter cursor-pointer"
+                    ? "h-600 lg:h-700 xl:h-700 w-full absolute bg-white z-999 xxl:z-0 lg:sticky xl:sticky xxl:sticky text-red-dark border border-grey-lighter cursor-pointer"
                     : " h-10 w-full absolute bg-white z-999 overflow-hidden lg:sticky xl:sticky xxl:sticky text-red-dark border border-grey-lighter cursor-pointer" // style={{ top: "140px" }}
             }>
             <p

@@ -56,8 +56,8 @@ class Layout extends Component {
         window.addEventListener("resize", () => {
             this.setMediaSize();
         });
-        let cartRect = document.querySelector("#cart").getBoundingClientRect();
-        this.props.setCartPosition(cartRect);
+        // let cartRect = document.querySelector("#cart").getBoundingClientRect();
+        // this.props.setCartPosition(cartRect);
     }
 
     setMediaSize = () => {

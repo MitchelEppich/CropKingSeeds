@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faShoppingCart, faDollarSign, faPhone, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faShoppingCart, faDollarSign, faPhone, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 const menu = props => {
