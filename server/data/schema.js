@@ -5,17 +5,34 @@ const typeDefs = `
 type Query {
   sendString: String
   strain(input: StrainInput!): Strain
-  allStrains(filter: StrainInput): [Strain]!
+  allStrains(filter: StrainFilter): [Strain]!
   order(input: OrderInput!): Order
-  allOrders: [Order]!
+  allOrders(filter: OrderFilter): [Order]!
 
   getBitcoinData(input: BitcoinDataInput): String
   getNewOrderId: Int
+  getCoupon(coupon: String, ip: String): Coupon
+}
+
+type Coupon {
+  error: String
+  code: String
+  type: String
+  amount: Float
+  minimumOrder: Float
+  usage: String
+  itemName: String
 }
 
 input BitcoinDataInput {
   currency: String
   value: String
+}
+
+input OrderFilter {
+  OR: [OrderFilter!]
+  ip: String
+  coupon: String
 }
 
 input StrainFilter {
@@ -108,6 +125,7 @@ type Order {
   coupon: String
   paymentMethod: String
   paymentStatus: String
+  ip: String
 }
 
 input OrderInput {
@@ -141,6 +159,7 @@ input OrderInput {
   coupon: String
   paymentMethod: String
   paymentStatus: String
+  ip: String
 }
 
 input OrderProcessInput {

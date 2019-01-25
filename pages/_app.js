@@ -34,11 +34,7 @@ export default withRedux(makeStore)(
       return (
         <Provider store={store}>
           <Container>
-            <Component
-              {...pageProps}
-              supportedBrowser={supportedBrowser}
-              router={router}
-            />
+            <Component {...pageProps} supportedBrowser={supportedBrowser} />
           </Container>
         </Provider>
       );

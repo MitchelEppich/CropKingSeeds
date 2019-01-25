@@ -26,14 +26,19 @@ const initialState = {
     "92173",
     "61759",
     "h8r1m6"
-  ]
+  ],
+  error: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_SHIPPING_METHODS:
       return updateObject(state, { shippingMethods: action.input });
+    case actionTypes.SET_ERROR:
+      return updateObject(state, { error: action.input });
     case actionTypes.MODIFY_ORDER_DETAILS:
+      return updateObject(state, { orderDetails: action.input });
+    case actionTypes.APPLY_COUPON:
       return updateObject(state, { orderDetails: action.input });
     case actionTypes.SET_ORDER_DETAILS:
       return updateObject(state, { orderDetails: action.input });

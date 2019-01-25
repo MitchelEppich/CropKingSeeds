@@ -17,7 +17,9 @@ const actionTypes = {
   GET_BITCOIN_DATA: "GET_BITCOIN_DATA",
   PROCESS_ORDER: "PROCESS_ORDER",
   SET_CURRENCY: "SET_CURRENCY",
-  SET_SHIPPING_METHODS: "SET_SHIPPING_METHODS"
+  SET_SHIPPING_METHODS: "SET_SHIPPING_METHODS",
+  APPLY_COUPON: "APPLY_COUPON",
+  SET_ERROR: "SET_ERROR"
 };
 
 let shippingMethods = [
@@ -61,6 +63,9 @@ let shippingMethods = [
 
 const getActions = uri => {
   const objects = {
+    setError: input => {
+      return { type: actionTypes.SET_ERROR, input: input.value };
+    },
     setShippingMethods: input => {
       let _country = input.country;
       let _state = input.state;
@@ -86,10 +91,7 @@ const getActions = uri => {
           _methods.push(shippingMethods[5]);
       }
 
-      return {
-        type: actionTypes.SET_SHIPPING_METHODS,
-        input: _methods
-      };
+      return { type: actionTypes.SET_SHIPPING_METHODS, input: _methods };
     },
     modifyOrderDetails: input => {
       let _orderDetails = input.orderDetails;
@@ -105,7 +107,10 @@ const getActions = uri => {
         _requestUpdateOfGroup.value
       ) {
         if (_requestUpdateOfGroup.group == "payment" && _group == "shipping") {
-          if (!_orderDetails["billing"].readOnly)
+          if (
+            _orderDetails["billing"] != null &&
+            !_orderDetails["billing"].readOnly
+          )
             _orderDetails["billing"] = {
               ..._orderDetails["shipping"],
               readOnly: true
@@ -119,19 +124,37 @@ const getActions = uri => {
         if (_orderDetails[_group] == null) _orderDetails[_group] = {};
         _orderDetails[_group][_key] =
           _tag == null ? _value : { value: _value, tag: _tag };
-        
+
         if (_key == "country" && _orderDetails[_group].state != null) {
-          _orderDetails[_group].state.value = ""
+          _orderDetails[_group].state.value = "";
         }
         _orderDetails[_group].updatedAt = new Date();
-      } else _orderDetails[_key] = { value: _value, tag: _tag };
+      } else if (_tag != null)
+        _orderDetails[_key] = { value: _value, tag: _tag };
+      else _orderDetails[_key] = _value;
 
       return { type: actionTypes.MODIFY_ORDER_DETAILS, input: _orderDetails };
     },
     setOrderDetails: input => {
-      return {
-        type: actionTypes.SET_ORDER_DETAILS,
-        input: input.orderDetails
+      return { type: actionTypes.SET_ORDER_DETAILS, input: input.orderDetails };
+    },
+    applyCoupon: input => {
+      return async dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = { query: query.getCoupon, variables: { ...input } };
+
+        let _orderDetails = input.orderDetails;
+
+        await makePromise(execute(link, operation))
+          .then(data => {
+            let _coupon = data.data.getCoupon;
+            _orderDetails.coupon = _coupon;
+            dispatch({
+              type: actionTypes.APPLY_COUPON,
+              input: _orderDetails
+            });
+          })
+          .catch(error => console.log(error));
       };
     },
     getBitcoinData: input => {
@@ -158,16 +181,11 @@ const getActions = uri => {
       };
     },
     setCurrency: input => {
-      return {
-        type: actionTypes.SET_CURRENCY,
-        input: input.currency
-      };
+      return { type: actionTypes.SET_CURRENCY, input: input.currency };
     },
     processOrder: input => {
       return async dispatch => {
-        dispatch({
-          type: actionTypes.PROCESS_ORDER
-        });
+        dispatch({ type: actionTypes.PROCESS_ORDER });
         let _orderDetails = { ...input.orderDetails };
         let _paymentMethod = _orderDetails.payment.method.value;
 
@@ -211,6 +229,19 @@ const query = {
   getBitcoinData: gql`
     query($value: String, $currency: String) {
       getBitcoinData(input: { value: $value, currency: $currency })
+    }
+  `,
+  getCoupon: gql`
+    query($coupon: String) {
+      getCoupon(coupon: $coupon) {
+        error
+        code
+        type
+        amount
+        minimumOrder
+        usage
+        itemName
+      }
     }
   `
 };
@@ -357,7 +388,7 @@ let buildOrderPost = orderDetails => {
   let _orderDetails = orderDetails;
   let orderPost = {
     Website_From: "cropkingseeds.com",
-    CardHolderIp: _orderDetails.CardHolderIp,
+    CardHolderIp: _orderDetails.cardHolderIp,
     Order_Date: moment().format("YY-MM-DD HH:mm:ss")
   };
   if (_orderDetails.payment.ccExpireMonth != null) {
@@ -370,7 +401,7 @@ let buildOrderPost = orderDetails => {
     delete _orderDetails.payment.ccExpireMonth;
     delete _orderDetails.payment.ccExpireYear;
   }
-  delete _orderDetails.CardHolderIp;
+  delete _orderDetails.cardHolderIp;
   for (let key of Object.keys(_orderDetails)) {
     if (key == "undefined") continue;
     let prefix = (() => {

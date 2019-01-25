@@ -23,7 +23,9 @@ import { faComments, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 class Layout extends Component {
   componentDidMount() {
     this.props.getStrains().then(strains => {
-      let url = this.props.router.asPath.slice(1);
+      const isClient = typeof document !== "undefined";
+      if (!isClient) return;
+      let url = Router.asPath.slice(1);
       if (url && url.length != 0) {
         let qr;
         if (url.includes("product/")) {
@@ -33,7 +35,6 @@ class Layout extends Component {
             let index = strains.findIndex(a => {
               return a.name.toLowerCase().replace(" ", "-") == qr;
             });
-            console.log(strains, index);
             this.props.setCurrentProduct({ product: strains[index] });
             Router.push("/viewProduct", "/product/" + qr);
           }
@@ -86,7 +87,6 @@ class Layout extends Component {
       }
     }
   };
-
   render() {
     return (
       <div style={{ backgroundColor: "#f3f3f3", height: "100%" }}>
@@ -136,6 +136,7 @@ const mapDispatchToProps = dispatch => {
     setAgeVerification: input => dispatch(actions.setAgeVerification(input)),
     setMediaSize: input => dispatch(actions.setMediaSize(input)),
     setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
+    setIsClient: input => dispatch(actions.setIsClient(input)),
     toggleShowFilters: bool => dispatch(actions.toggleShowFilters(bool))
   };
 };

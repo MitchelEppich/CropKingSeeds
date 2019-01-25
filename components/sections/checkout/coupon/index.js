@@ -2,7 +2,7 @@ import React from "react";
 
 const Coupon = props => {
   let currency = props.checkout.viewCurrency;
-
+  let _orderDetails = props.checkout.orderDetails;
   let pageGroup = "payment";
 
   return (
@@ -15,7 +15,6 @@ const Coupon = props => {
             placeholder="Coupon Code"
             className="p-3 w-full"
             onChange={e => {
-              let _orderDetails = props.checkout.orderDetails;
               let _target = e.target;
               let _key = _target.id;
               let _value = _target.value;
@@ -34,11 +33,41 @@ const Coupon = props => {
       </div>
       <div className="w-1/3 lg:w-full md:w-full sm:w-full">
         <div className="w-200 w-200 lg:w-full lg:mt-4 md:w-full md:mt-4 sm:w-full sm:mt-4 xl:ml-2 xxl:ml-2">
-          <div className="p-2 xxl:p-3 xl:p-3 bg-grey-light text-white font-bold text-center text-lg cursor-pointer hover:bg-grey ">
+          <div
+            className="p-2 xxl:p-3 xl:p-3 bg-grey-light text-white font-bold text-center text-lg cursor-pointer hover:bg-grey "
+            onClick={() => {
+              let _coupon = _orderDetails.payment.coupon;
+              if (_coupon == null) return;
+              props.applyCoupon({
+                coupon: _coupon.value,
+                orderDetails: _orderDetails,
+                ip: _orderDetails.cardHolderIp
+              });
+            }}
+          >
             Apply
           </div>
         </div>
       </div>
+      {_orderDetails.coupon != null && _orderDetails.coupon.error == null ? (
+        <div
+          className="cursor-pointer"
+          onClick={() => {
+            props.modifyOrderDetails({
+              orderDetails: _orderDetails,
+              key: "coupon",
+              value: null
+            });
+          }}
+        >
+          <p>{_orderDetails.coupon.code}</p>
+        </div>
+      ) : null}
+      {_orderDetails.coupon != null && _orderDetails.coupon.error != null ? (
+        <div>
+          <p>{_orderDetails.coupon.error}</p>
+        </div>
+      ) : null}
       <div className="w-1/3 lg:w-full md:w-full sm:w-full flex justify-end">
         <div className="w-full text-right  xl:ml-2 xxl:ml-2">
           <div className="p-2 text-center text-xl inline-flex items-center flex">

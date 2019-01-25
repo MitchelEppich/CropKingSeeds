@@ -9,6 +9,7 @@ import Cash from "./cash";
 import Transfer from "./transfer";
 
 import MinimumSeedsWarning from "../other/minimumSeedsWarning";
+import MinimumOrderWarning from "../other/minimumOrderWarning";
 
 const Payment = props => {
   let _orderDetails = props.checkout.orderDetails;
@@ -24,6 +25,7 @@ const Payment = props => {
       </h2>
       <div className="mb-4">
         <MinimumSeedsWarning {...props} />
+        <MinimumOrderWarning {...props} />
       </div>
 
       <PaymentReview {...props} />

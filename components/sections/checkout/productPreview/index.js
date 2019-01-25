@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import MinimumSeedsWarning from "../other/minimumSeedsWarning";
+import MinimumOrderWarning from "../other/minimumOrderWarning";
 
 const ProductPreview = props => {
   let imgPack = {
@@ -26,7 +27,8 @@ const ProductPreview = props => {
             overflow: "hidden",
             boxShadow: "0 2px 9px rgba(29, 29, 29, 0.12)"
           }}
-          className="relative mx-2 sm:mx-0 mt-4 bg-white item-preview w-3col xl:w-2col lg:w-full md:w-full sm:w-full">
+          className="relative mx-2 sm:mx-0 mt-4 bg-white item-preview w-3col xl:w-2col lg:w-full md:w-full sm:w-full"
+        >
           <div className="inline-flex w-full items-center flex bg-red-light text-white">
             <div className="w-full">
               <h3 className="px-2 h-10 w-full text-xl p-2 font-bold inline-flex sm:text-sm sm:items-center">
@@ -75,7 +77,11 @@ const ProductPreview = props => {
                   Per pack:
                 </div>
                 <div className="px-2 sm:text-left sm:w-full md:w-full md:text-left font-bold w-1/2 text-grey uppercase text-sm text-right">
-                  ${_item.per.toFixed(2)}
+                  {currency != null
+                    ? `${currency.symbol}${(
+                        currency.convert * (_item.per || 0)
+                      ).toFixed(2)}`
+                    : ""}
                 </div>
               </div>
               <div className="w-full absolute z-50 sm:flex-col pin-l pin-b mb-4 p-2 sm:p-1 sm:mb-0 flex items-center inline-flex ">
@@ -92,7 +98,8 @@ const ProductPreview = props => {
                           quantity: -1
                         })
                       }
-                      className="px-2 py-1 scale-item bg-almost-black rounded text-xl sm:text-sm text-white">
+                      className="px-2 py-1 scale-item bg-almost-black rounded text-xl sm:text-sm text-white"
+                    >
                       <FontAwesomeIcon
                         icon={faMinus}
                         className="fa-sm text-white cursor-pointer"
@@ -144,7 +151,8 @@ const ProductPreview = props => {
                           quantity: 1
                         })
                       }
-                      className="px-2 py-1 scale-item bg-almost-black rounded text-xl sm:text-sm text-white">
+                      className="px-2 py-1 scale-item bg-almost-black rounded text-xl sm:text-sm text-white"
+                    >
                       <FontAwesomeIcon
                         icon={faPlus}
                         className="fa-sm text-white cursor-pointer"
@@ -176,6 +184,7 @@ const ProductPreview = props => {
         Shopping Cart
       </h2>
       <MinimumSeedsWarning {...props} />
+      <MinimumOrderWarning {...props} />
 
       <div className="w-full inline-flex flex-wrap mb-4 mt-2">
         {showProducts()}

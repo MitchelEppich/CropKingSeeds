@@ -31,17 +31,44 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideSteps from "../components/sections/checkout/sideSteps";
 
+import ErrorHandler from "../components/sections/checkout/errorHandler";
+
 class Index extends Component {
   componentDidMount() {
     this.props.toggleStepsCheckout(0);
     let _orderDetails = this.props.checkout.orderDetails;
+    getCustomerIP(ip => {
+      if (ip == null) {
+        ip = "00.00.00.00";
+      }
+      this.props.modifyOrderDetails({
+        orderDetails: _orderDetails,
+        key: "cardHolderIp",
+        value: ip
+      });
+    });
     this.props.modifyOrderDetails({
       orderDetails: _orderDetails,
       requestUpdateOfGroup: { group: "payment", value: true }
     });
   }
 
+  componentDidUpdate() {
+    let error = ErrorHandler(this.props);
+    if (JSON.stringify(error) != JSON.stringify(this.props.checkout.error)) {
+      this.props.setError({ value: error });
+    }
+  }
+
   render() {
+    let _orderDetails = this.props.checkout.orderDetails;
+    let _stepsCheckout = this.props.misc.stepsCheckout;
+    let _error = this.props.checkout.error;
+
+    let error =
+      ((_error[100] || _error[104]) && _stepsCheckout == 0) ||
+      (_error[103] && (_stepsCheckout == 0 || _stepsCheckout == 3));
+
     return (
       <Layout>
         <div className="text-center w-full pt-12 bg-white relative">
@@ -51,31 +78,20 @@ class Index extends Component {
           onSubmit={e => {
             e.preventDefault();
             // this.props.toggleStepsCheckout(1);
-            if (this.props.misc.stepsCheckout == 3) {
-              getCustomerIP(ip => {
-                if (ip == null) {
-                  console.log("Failed to fetch IP");
-                  return;
-                }
-                this.props
-                  .processOrder({
-                    orderDetails: {
-                      ...this.props.checkout.orderDetails,
-                      CardHolderIp: ip
-                    }
-                  })
-                  .then(res => {
-                    console.log(res);
-                    this.props.toggleStepsCheckout(
-                      this.props.misc.stepsCheckout + 1
-                    );
-                  });
-              });
+            if (_stepsCheckout == 3) {
+              this.props
+                .processOrder({
+                  orderDetails: {
+                    ..._orderDetails
+                  }
+                })
+                .then(res => {
+                  console.log(res);
+                  this.props.toggleStepsCheckout(_stepsCheckout + 1);
+                });
             } else {
-              this.props.misc.stepsCheckout < 4
-                ? this.props.toggleStepsCheckout(
-                    this.props.misc.stepsCheckout + 1
-                  )
+              _stepsCheckout < 4
+                ? this.props.toggleStepsCheckout(_stepsCheckout + 1)
                 : null;
             }
           }}
@@ -92,7 +108,7 @@ class Index extends Component {
             <Checkout {...this.props} />
             {/* <SideSteps {...this.props} /> */}
 
-            {this.props.misc.stepsCheckout == 0 ? (
+            {_stepsCheckout == 0 ? (
               <div>
                 <ProductPreview {...this.props} />
                 <div className="w-main mx-auto flex justify-end">
@@ -114,7 +130,7 @@ class Index extends Component {
               </div>
             ) : null}
 
-            {this.props.misc.stepsCheckout == 1 ? (
+            {_stepsCheckout == 1 ? (
               <div>
                 <Shipping {...this.props} />
                 <hr
@@ -125,17 +141,11 @@ class Index extends Component {
               </div>
             ) : null}
 
-            {this.props.misc.stepsCheckout == 2 ? (
-              <BillingAddress {...this.props} />
-            ) : null}
+            {_stepsCheckout == 2 ? <BillingAddress {...this.props} /> : null}
 
-            {this.props.misc.stepsCheckout == 3 ? (
-              <Payment {...this.props} />
-            ) : null}
+            {_stepsCheckout == 3 ? <Payment {...this.props} /> : null}
 
-            {this.props.misc.stepsCheckout == 4 ? (
-              <Confirmation {...this.props} />
-            ) : null}
+            {_stepsCheckout == 4 ? <Confirmation {...this.props} /> : null}
           </div>
 
           <div className="w-container mx-auto">
@@ -147,15 +157,13 @@ class Index extends Component {
             <div className="w-full inline-flex justify-between">
               <div
                 onClick={() => {
-                  this.props.misc.stepsCheckout > 0
-                    ? this.props.toggleStepsCheckout(
-                        this.props.misc.stepsCheckout - 1
-                      )
+                  _stepsCheckout > 0
+                    ? this.props.toggleStepsCheckout(_stepsCheckout - 1)
                     : null;
                 }}
                 className="w-200 p-2 text-left cursor-pointer flex items-center hover:text-red"
               >
-                {this.props.misc.stepsCheckout != 0 ? (
+                {_stepsCheckout != 0 ? (
                   <span className="flex items-center font-extrabold text-red-dark hover:text-red-light text-2xl uppercase">
                     <FontAwesomeIcon
                       icon={faAngleLeft}
@@ -172,19 +180,10 @@ class Index extends Component {
 
               <div
                 className={`w-200 p-2 text-right justify-end cursor-pointer flex items-center hover:text-red ${
-                  Object.keys(this.props.cart.items).length == 0 ||
-                  (this.props.misc.stepsCheckout == 3 &&
-                    this.props.checkout.orderDetails.payment != null &&
-                    this.props.checkout.orderDetails.payment.method == null) ||
-                  (this.props.checkout.orderDetails.shipping != null &&
-                    this.props.misc.stepsCheckout == 1 &&
-                    this.props.checkout.orderDetails.shipping.shippingCost ==
-                      null)
-                    ? "opacity-50 unselectable pointer-events-none"
-                    : ""
+                  error ? "opacity-50 unselectable pointer-events-none" : ""
                 }`}
               >
-                {this.props.misc.stepsCheckout != 4 ? (
+                {_stepsCheckout != 4 ? (
                   <button
                     className="flex items-center font-extrabold text-red-dark hover:text-red-light text-2xl uppercase"
                     type="submit"
@@ -220,6 +219,8 @@ const mapDispatchToProps = dispatch => {
     modifyCart: input => dispatch(actions.modifyCart(input)),
     processOrder: input => dispatch(actions.processOrder(input)),
     setShippingMethods: input => dispatch(actions.setShippingMethods(input)),
+    setError: input => dispatch(actions.setError(input)),
+    applyCoupon: input => dispatch(actions.applyCoupon(input)),
     clearCart: () => dispatch(actions.clearCart())
   }; // setCheckoutScreen: input => dispatch(actions.setCheckoutScreen(input)),
 };

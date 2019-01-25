@@ -32,7 +32,8 @@ const OrderSchema = Schema({
   currency: String,
   coupon: String,
   paymentMethod: String,
-  paymentStatus: String
+  paymentStatus: String,
+  ip: String
 });
 
 module.exports = OrderSchema;

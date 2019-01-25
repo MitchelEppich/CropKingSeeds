@@ -14,6 +14,28 @@ const strainFilters = ({ OR = [], genetic }) => {
   return filters;
 };
 
+// Order filters
+const orderFilters = ({ OR = [], coupon, ip }) => {
+  const filter = coupon || ip ? {} : null;
+
+  if (coupon) {
+    filter.coupon = coupon;
+  }
+  if (ip) {
+    filter.ip = ip;
+  }
+
+  let filters = filter ? [filter] : [];
+  for (let i = 0; i < OR.length; i++) {
+    filters = filters.concat(orderFilters(OR[i]));
+  }
+
+
+
+  return filters;
+};
+
 module.exports = {
-  strainFilters
+  strainFilters,
+  orderFilters
 };
