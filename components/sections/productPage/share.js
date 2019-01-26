@@ -46,13 +46,13 @@ const Share = props => {
                             className="fa-2x p-1 mx-2 lg:mx-1 md:mx-1 hover:text-grey scale-item cursor-pointer"
                         />{" "}
                     </a>
-                    {/* {document.queryCommandSupported("copy") ? (
+                    {document.queryCommandSupported("copy") ? (
                         <FontAwesomeIcon
-                            onClick={e => props.copyToClipboard(e)}
+                            id="copyLinkButton"
                             icon={faLink}
                             className="fa-2x p-1 ml-2 lg:ml-1 md:ml-1 hover:text-grey scale-item cursor-pointer"
                         />
-                    ) : null} */}
+                    ) : null}
                 </div>
             </div>
         </div>

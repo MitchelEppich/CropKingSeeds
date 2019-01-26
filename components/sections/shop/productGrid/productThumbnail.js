@@ -118,7 +118,6 @@ const productThumbnail = props => {
       <div
         onClick={() => {
           enableScroll();
-          props.setHoverId(null, false);
           props.setCurrentProduct({ product: props.product });
         }}
         className={hover ? "overflow-hidden w-full bg-white" : "relative"}
@@ -132,6 +131,7 @@ const productThumbnail = props => {
             className="absolute w-full"
           >
             <h3
+              onClick={() => props.setHoverId(null, false)}
               className={
                 hover
                   ? "w-full mt-2 mb-2 text-black font-black text-2xl text-center cursor-pointer strainTitle--hover"

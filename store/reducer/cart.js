@@ -5,7 +5,8 @@ const initialState = {
   items: {},
   price: 0,
   potentialQuantity: 1,
-  discount: 0
+  cartPosition: null,
+  discount: null
 };
 
 export default (state = initialState, action) => {
@@ -21,6 +22,10 @@ export default (state = initialState, action) => {
         items: action.items,
         price: action.price,
         discount: action.discount
+      });
+    case actionTypes.SET_CART_POSITION:
+      return updateObject(state, {
+        cartPosition: action.posObj
       });
     default:
       return state;

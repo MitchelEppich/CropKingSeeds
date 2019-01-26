@@ -57,6 +57,8 @@ class Layout extends Component {
     window.addEventListener("resize", () => {
       this.setMediaSize();
     });
+    // let cartRect = document.querySelector("#cart").getBoundingClientRect();
+    // this.props.setCartPosition(cartRect);
   }
 
   setMediaSize = () => {
@@ -87,18 +89,19 @@ class Layout extends Component {
       }
     }
   };
+
   render() {
     return (
       <div style={{ backgroundColor: "#f3f3f3", height: "100%" }}>
         <Head>
-          <script src="../static/scripts/tawkto.js" />
+          <script src="../static/scripts/functions.js" />
         </Head>
         <Header {...this.props} />
         {/* <AgeVerification {...this.props} /> */}
         <div className="pt-32">
           {" "}
           <ShareButtons {...this.props} />
-          <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:min-w-900 xl:w-main lg:w-700 md:w-main mx-auto shadow-md">
+          <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md">
             {this.props.children}
           </div>
         </div>
@@ -109,8 +112,10 @@ class Layout extends Component {
           <FontAwesomeIcon icon={faComments} className="fa-3x cursor-pointer" />
           {/* <h3>CHAT</h3> */}
         </div>
+
         <div
-          className="fixed z-999 w-16 mb-24 h-16 bg-red-light pin-b pin-l text-white text-center text-lg pt-2 rounded-br-full rounded-tr-full cursor-pointer hover:bg-red-dark scale-item"
+          id="jumpToTop"
+          className="fixed z-999 w-16 mb-24 h-16 bg-red-light pin-b pin-l text-white text-center hidden text-lg pt-2 rounded-br-full rounded-tr-full cursor-pointer hover:bg-red-dark scale-item"
           onClick={() => window.scrollTo(0, 0)}
         >
           <FontAwesomeIcon
@@ -118,6 +123,7 @@ class Layout extends Component {
             className="fa-2x my-1 pr-1  cursor-pointer"
           />
         </div>
+
         <Cart {...this.props} />
         <Footer {...this.props} />
       </div>
@@ -136,8 +142,8 @@ const mapDispatchToProps = dispatch => {
     setAgeVerification: input => dispatch(actions.setAgeVerification(input)),
     setMediaSize: input => dispatch(actions.setMediaSize(input)),
     setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
-    setIsClient: input => dispatch(actions.setIsClient(input)),
-    toggleShowFilters: bool => dispatch(actions.toggleShowFilters(bool))
+    toggleShowFilters: bool => dispatch(actions.toggleShowFilters(bool)),
+    setCartPosition: posObj => dispatch(actions.setCartPosition(posObj))
   };
 };
 

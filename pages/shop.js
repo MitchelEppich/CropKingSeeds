@@ -19,13 +19,15 @@ class Index extends Component {
                     <React.Fragment>
                         <div
                             className={
-                                this.props.misc.hoverId != null && this.props.misc.mediaSize == "sm" ? "fixed" : ""
+                                this.props.misc.hoverId != null && this.props.misc.mediaSize == "sm"
+                                    ? "fixed"
+                                    : "relative"
                             }>
                             <h3
                                 className={
                                     this.props.misc.hoverId != null && this.props.misc.mediaSize == "sm"
                                         ? "hidden"
-                                        : "pt-10 text-grey font-extrabold text-center text-3/5xl mx-auto w-full text-center"
+                                        : "mt-5 text-grey font-extrabold text-center text-3/5xl mx-auto w-full text-center"
                                 }>
                                 Shop Cannabis Seeds
                             </h3>

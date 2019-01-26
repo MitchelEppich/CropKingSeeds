@@ -451,7 +451,7 @@ module.exports = {
         none: "0",
         sm: ".125rem",
         default: ".25rem",
-        lg: ".5rem",
+        lg: "10px",
         full: "9999px"
     },
 

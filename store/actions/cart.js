@@ -12,7 +12,8 @@ import Navigation from "./navigation";
 const actionTypes = {
   CLEAR_CART: "CLEAR_CART",
   MODIFY_CART: "MODIFY_CART",
-  MODIFY_POTENTIAL_QUANTITY: "MODIFY_POTENTIAL_QUANTITY"
+  MODIFY_POTENTIAL_QUANTITY: "MODIFY_POTENTIAL_QUANTITY",
+  SET_CART_POSITION: "SET_CART_POSITION"
 };
 
 const getActions = uri => {
@@ -177,6 +178,12 @@ const getActions = uri => {
         items: _items,
         price: _price,
         discount: _discount
+      };
+    },
+    setCartPosition: posObj => {
+      return {
+        type: actionTypes.SET_CART_POSITION,
+        posObj: posObj
       };
     }
   };

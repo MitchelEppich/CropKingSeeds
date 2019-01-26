@@ -19,6 +19,7 @@ import DetailReducer from "./detail";
 import AboutReducer from "./about";
 import GerminationReducer from "./germination";
 import FaqReducer from "./faq";
+import ArticleReducer from "./article";
 
 const initialState = {
   visibleScreen: ["dogs"], // When [] show main screen
@@ -145,5 +146,6 @@ export default combineReducers({
   detail: DetailReducer,
   germination: GerminationReducer,
   about: AboutReducer,
-  faq: FaqReducer
+  faq: FaqReducer,
+  article: ArticleReducer
 });

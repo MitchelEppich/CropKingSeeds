@@ -5,7 +5,8 @@ import {
   faShoppingCart,
   faDollarSign,
   faPhone,
-  faBars
+  faBars,
+  faTimes
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebookF,
@@ -246,7 +247,7 @@ const menu = props => {
                     </li>
                   </Link>
                   <li
-                    className={`font-extrabold text-2xl px-2 ${
+                    className={`font-extrabold text-2xl px-2 cursor-pointer scale-item ${
                       route.includes("checkout")
                         ? "unselectable opacity-50 pointer-events-none"
                         : "cursor-pointer scale-item"
@@ -260,6 +261,7 @@ const menu = props => {
                     >
                       <div className="">
                         <FontAwesomeIcon
+                          id="cart"
                           icon={faShoppingCart}
                           className="fa-lg"
                         />
@@ -289,13 +291,13 @@ const menu = props => {
               </div>
 
               {/* MOBILE MENU */}
-              <div className={"justify-end w-full xl:hidden xxl:hidden"}>
-                <div
-                  onClick={() => {
-                    props.setVisibleScreen({ input: "showMobileNav" });
-                  }}
-                  className="text-white p-2 h-12 ml-auto mr-4 w-12 flex justify-end bg-semi-transparent cursor-pointer"
-                >
+              <div
+                onClick={() => {
+                  props.setVisibleScreen({ input: "showMobileNav" });
+                }}
+                className={"justify-end w-full xl:hidden xxl:hidden"}
+              >
+                <div className="text-white p-2 h-12 ml-auto mr-4 w-12 flex justify-end bg-semi-transparent cursor-pointer">
                   <FontAwesomeIcon icon={faBars} className="fa-2x" />
                 </div>
                 <div
@@ -344,33 +346,31 @@ const menu = props => {
                     </Link>
                     <Link href="/contact">
                       <li
-                        className={
+                        className={`${
+                          route.includes("checkout")
+                            ? "unselectable opacity-50 pointer-events-none"
+                            : "cursor-pointer scale-item"
+                        }
+                        ${
                           isMobileNavVisible
                             ? "font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish"
                             : "font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish hidden"
-                        }
+                        }`}
                       >
                         Contact
                       </li>
                     </Link>
                     <li
-                      className={`${
-                        route.includes("checkout")
-                          ? "unselectable opacity-50 pointer-events-none"
-                          : "cursor-pointer scale-item"
+                      onClick={() => {
+                        props.setVisibleScreen({ input: "viewCart" });
+                      }}
+                      className={
+                        isMobileNavVisible
+                          ? "font-extrabold text-2xl p-2 slowish hover:bg-red-navMobile cursor-pointer scale-item"
+                          : "font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish hidden"
                       }
-                        ${
-                          isMobileNavVisible
-                            ? "font-extrabold text-2xl p-2 slowish hover:bg-red-navMobile"
-                            : "font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile slowish hidden"
-                        }`}
                     >
-                      <div
-                        onClick={() => {
-                          props.setVisibleScreen({ input: "viewCart" });
-                        }}
-                        className="text-center cursor-pointer mt-1 text-white"
-                      >
+                      <div className="text-center cursor-pointer mt-1 text-white">
                         <div className="">
                           <FontAwesomeIcon
                             icon={faShoppingCart}

@@ -12,9 +12,16 @@ import Link from "next/link";
 
 class Index extends Component {
     render() {
-        let questions = this.props.faq.questions.map((question, index) => {
+        let questions = this.props.faq.questions.slice(0, 2).map((question, index) => {
             return <Question key={index} index={index} {...question} {...this.props} />;
         });
+        let deliveryQuestions = this.props.faq.questions.slice(2, 6).map((question, index) => {
+            return <Question key={index} index={index} {...question} {...this.props} />;
+        });
+        let paymentQuestions = this.props.faq.questions.slice(6).map((question, index) => {
+            return <Question key={index} index={index} {...question} {...this.props} />;
+        });
+
         return (
             <Layout>
                 <div className="mt-12 w-1/2 mx-auto text-center font-black">
@@ -28,6 +35,14 @@ class Index extends Component {
                     </p>
                 </div>
                 <div className="pt-12">{questions}</div>
+                <h2 id="delivery" className="w-1/2 lg:w-full md:w-full sm:w-full mx-auto mt-8">
+                    Delivery
+                </h2>
+                <div className="">{deliveryQuestions}</div>
+                <h2 id="payment" className="w-1/2 lg:w-full md:w-full sm:w-full mx-auto mt-8">
+                    Payment
+                </h2>
+                <div className="">{paymentQuestions}</div>
             </Layout>
         );
     }
