@@ -2,6 +2,8 @@ const MinimumOrderWarning = props => {
   let _orderDetails = props.checkout.orderDetails;
   let currency = props.checkout.viewCurrency;
 
+  if (_orderDetails.coupon == null) return <div />;
+
   return (
     <div>
       {props.checkout.error[104] != null ? (

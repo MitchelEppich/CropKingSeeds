@@ -97,6 +97,11 @@ svg {
 // }
 
 //CLASSES
+.crown-icon {
+  filter: invert(12%) sepia(100%) saturate(5014%) hue-rotate(350deg)
+    brightness(80%) contrast(88%);
+}
+
 .absolute-center {
   position: absolute;
   margin-left: auto;
