@@ -30,7 +30,8 @@ class Index extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input))
+    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+    sendEmail: input => dispatch(actions.sendEmail(input)),
   };
 };
 

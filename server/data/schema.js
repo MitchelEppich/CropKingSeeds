@@ -186,12 +186,23 @@ type PaymentResponse {
   processor: String
 }
 
+input EmailInput {
+  name: String
+  email: String
+  subject: String
+  body: String
+}
+
 type Mutation {
   createStrain(input: StrainInput): Strain
   updateStrain(input: StrainInput): Strain
   typeToDom: [Strain]
   
   createOrder(input: OrderInput): Order
+
+
+  sendEmail(input: EmailInput): String
+  subscribeToNewsletter(email: String): String
 
   processPayment(input: PaymentInput): PaymentResponse
   processOrder(input: OrderProcessInput): Order

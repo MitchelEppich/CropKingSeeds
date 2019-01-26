@@ -22,7 +22,7 @@ import FaqReducer from "./faq";
 import ArticleReducer from "./article";
 
 const initialState = {
-  visibleScreen: ["dogs"], // When [] show main screen
+  visibleScreen: [], // When [] show main screen
   strains: null,
   hoverId: null,
   geneHoverIndex: null,
@@ -66,7 +66,8 @@ const initialState = {
     { transform: " translateX(0)", transition: "1s all ease-in-out" },
     { transform: " translateX(100%)", transition: "1s all ease-in-out" }
   ],
-  mediaSize: "xl"
+  mediaSize: "xl",
+  newsletterEmail: null
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -91,6 +92,12 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         hoverId: action.turnOn ? action.id : null
       });
+    case actionTypes.SET_EMAIL:
+      return updateObject(state, {
+        newsletterEmail: action.input
+      });
+    case actionTypes.SUBSCRIBE_TO_NEWSLETTER:
+      return updateObject(state, {});
     case actionTypes.SET_MEDIA_SIZE:
       return updateObject(state, {
         mediaSize: action.input

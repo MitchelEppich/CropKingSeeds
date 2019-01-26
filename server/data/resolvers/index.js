@@ -1,7 +1,13 @@
 const StrainResolvers = require("./strain");
 const OrderResolvers = require("./order");
 
+const nodemailer = require("nodemailer");
+
+const emailTemplates = require("../emails");
+
 const axios = require("axios");
+
+const { Email } = require("../../models");
 
 const Strain = StrainResolvers.Strain;
 const Order = OrderResolvers.Order;
@@ -30,6 +36,41 @@ const resolvers = {
   Mutation: {
     ...StrainResolvers.Mutation,
     ...OrderResolvers.Mutation,
+    subscribeToNewsletter: async (_, input) => {
+      let email = new Email({
+        ...input
+      });
+
+      email.save();
+
+      return input.email + " has been subscribed to the newsletter!";
+    },
+    sendEmail: async (_, { input }) => {
+      let transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: "growreel.noreply@gmail.com",
+          pass: "etydthavvvnkdqxf"
+        }
+      });
+
+      let mailOptions = emailTemplates.contact({
+            ...input,
+          });
+      // switch (input.type) {
+      //   case "contact":
+      //     mailOptions = emailTemplates.contact({
+      //       ...input,
+      //     });
+      //     break;
+      // }
+
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          // Do nothing
+        }
+      });
+    },
     processPayment: async (_, { input }) => {
       // console.log(processBambora(input))
       return await processPivotal(input);

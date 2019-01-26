@@ -46,7 +46,10 @@ const actionTypes = {
   TOGGLE_STEPS_CHECKOUT: "TOGGLE_STEPS_CHECKOUT",
   SHOW_DIFFERENT_ADDRESS: "SHOW_DIFFERENT_ADDRESS",
   SET_AGE_VERIFICATION: "SET_AGE_VERIFICATION",
-  SET_MEDIA_SIZE: "SET_MEDIA_SIZE"
+  SET_MEDIA_SIZE: "SET_MEDIA_SIZE",
+  SUBSCRIBE_TO_NEWSLETTER: "SUBSCRIBE_TO_NEWSLETTER",
+  SET_EMAIL: "SET_EMAIL",
+  SEND_EMAIL: "SEND_EMAIL"
 };
 
 const actions = {
@@ -125,6 +128,46 @@ const actions = {
         .catch(error => console.log(error));
     };
   },
+  setEmail: input => {
+    return {
+      type: actionTypes.SET_EMAIL,
+      input: input.email
+    }
+  },
+  subscribeToNewsletter: input => {
+    return dispatch => {
+      const link = new HttpLink({ uri, fetch: fetch });
+      const operation = {
+        query: mutation.subscribeToNewsletter,
+        variables: { ...input }
+      };
+
+      makePromise(execute(link, operation))
+        .then(data => {
+          dispatch({
+            type: actionTypes.SUBSCRIBE_TO_NEWSLETTER
+          });
+        })
+        .catch(error => console.log(error));
+    };
+  },
+  sendEmail: input => {
+    return dispatch => {
+      const link = new HttpLink({ uri, fetch: fetch });
+      const operation = {
+        query: mutation.sendEmail,
+        variables: { ...input }
+      };
+
+      makePromise(execute(link, operation))
+        .then(data => {
+          dispatch({
+            type: actionTypes.SEND_EMAIL
+          });
+        })
+        .catch(error => console.log(error));
+    };
+  },
   setStrains: strains => {
     return {
       type: actionTypes.SET_STRAINS,
@@ -167,7 +210,17 @@ const query = {
   `
 };
 
-const mutation = {};
+const mutation = {
+  subscribeToNewsletter: gql`
+    mutation($email: String) {
+      subscribeToNewsletter(email: $email)
+    }
+  `,
+  sendEmail: gql`
+  mutation($email:String, $body:String, $name:String, $subject:String) {
+  sendEmail(input: {email: $email, body:$body, name:$name, subject:$subject})
+}`
+};
 
 export default {
   // TYPES

@@ -66,7 +66,11 @@ const ReviewStats = props => {
   return (
     <div className="w-full">
       <div className="w-full mt-2 py-2 text-red-dark">{showRatings()}</div>
-      <div className="text-center w-full mt-2 text-sm font-extrabold underline scale-item text-red-light cursor-pointer"><p>Clear Filter</p></div>
+      <div className="text-center w-full mt-2 text-sm font-extrabold underline scale-item text-red-light cursor-pointer"           onClick={() => {
+            props.setReviewRateFilter({
+              rating: null
+            });
+          }}><p>Clear Filter</p></div>
     </div>
   );
 };

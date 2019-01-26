@@ -144,6 +144,9 @@ const mapDispatchToProps = dispatch => {
     setAgeVerification: input => dispatch(actions.setAgeVerification(input)),
     setMediaSize: input => dispatch(actions.setMediaSize(input)),
     setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
+    setEmail: input => dispatch(actions.setEmail(input)),
+    subscribeToNewsletter: input =>
+      dispatch(actions.subscribeToNewsletter(input)),
     toggleShowFilters: bool => dispatch(actions.toggleShowFilters(bool)),
     setCartPosition: posObj => dispatch(actions.setCartPosition(posObj))
   };

@@ -17,29 +17,42 @@ const ContactForm = props => {
           </p>
         </div>
         <div className="p-2 w-full">
-          <form>
+          <form onSubmit={(e) => {
+            e.preventDefault()
+            const form = event.target;
+            const formData = new window.FormData(form);
+
+            props.sendEmail({
+              name: formData.get("name"),
+              body: formData.get("body"),
+              email: formData.get("email"),
+              subject: formData.get("subject")
+            })
+
+            form.reset();
+          }}>
             <div className="w-500 lg:w-400 md:w-full sm:w-full">
               <div className="w-main sm:w-full md:w-full mt-3 p-1">
                 <label className="p-1 font-bold">
                   Full Name: <span className="text-red">*</span>
                 </label>{" "}
-                <input type="text" className="p-2 my-1 w-full" />
+                <input type="text" name="name" className="p-2 my-1 w-full" />
               </div>
               <div className="w-main sm:w-full md:w-full mt-3 p-1">
                 <label className="font-bold">
                   Email Address: <span className="text-red">*</span>
                 </label>{" "}
-                <input type="text" className="p-2 my-1 w-full" />
+                <input type="text" name="email" className="p-2 my-1 w-full" />
               </div>
               <div className="w-main sm:w-full md:w-full mt-3 p-1">
                 <label className="font-bold">Subject:</label>
-                <select className="p-2 w-full my-1">
-                  <option className="p-2">Shipping/Delivery</option>
-                  <option className="p-2">Payments</option>
-                  <option className="p-2">Ordering Online</option>
-                  <option className="p-2">Account Information</option>
-                  <option className="p-2">Privacy/Security</option>
-                  <option className="p-2">Other</option>
+                <select className="p-2 w-full my-1" name="subject">
+                  <option className="p-2" value="Shipping/Delivery">Shipping/Delivery</option>
+                  <option className="p-2" value="Payments">Payments</option>
+                  <option className="p-2" value="Ordering Online">Ordering Online</option>
+                  <option className="p-2" value="Account Information">Account Information</option>
+                  <option className="p-2" value="Privacy/Security">Privacy/Security</option>
+                  <option className="p-2" value="Other">Other</option>
                 </select>
               </div>
               {/* <div className="w-2/3 mt-3 p-1">
@@ -49,6 +62,7 @@ const ContactForm = props => {
               <div className="w-main sm:w-full md:w-full mt-3 p-1">
                 <label className="font-bold">Message:</label>{" "}
                 <textarea
+                name="body"
                   cols="20"
                   row="500"
                   className="p-2 my-1 w-full h-40"
@@ -56,7 +70,7 @@ const ContactForm = props => {
               </div>
               <div className="w-main sm:w-full md:w-full flex justify-end">
                 <div className="w-200 sm:w-full md:w-full md:justify-center flex justify-end">
-                  <button className="p-2 sm:p-3 md:p-3 px-8 w-200 sm:w-full md:w-full  uppercase font-bold text-white bg-red-dark hover:bg-red-light">
+                  <button type="submit" className="p-2 sm:p-3 md:p-3 px-8 w-200 sm:w-full md:w-full  uppercase font-bold text-white bg-red-dark hover:bg-red-light">
                     Submit
                   </button>
                   {/* <div className=" font-bolder mr-12">
