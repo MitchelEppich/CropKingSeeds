@@ -23,6 +23,9 @@ import Description from "../components/sections/productPage/description";
 import Genetics from "../components/sections/productPage/genetics";
 import Breadcrumb from "../components/sections/productPage/breadcrumb";
 
+let rating;
+let totalReviews;
+
 class Index extends Component {
   componentDidMount() {
     let product = this.props.viewProduct.currentProduct;
@@ -34,27 +37,15 @@ class Index extends Component {
   }
 
   showRating() {
-    let rating = this.props.viewProduct.currentProduct.rating || 0;
-    let totalReviews = this.props.viewProduct.currentProduct.reviews.length;
+    rating = this.props.viewProduct.currentProduct.rating || 0;
+    totalReviews = this.props.viewProduct.currentProduct.reviews.length;
 
     let arr = [];
     for (let i = 0; i < 5; i++) {
       arr.push(
-        <FontAwesomeIcon
-          key={i}
-          icon={faCannabis}
-          className={`text-red-dark fa-lg mx-1 ${
-            Math.round(rating) <= i ? "opacity-25" : ""
-          }`}
-        />
+        <img src="../../static/img/CrownIcon_Inv.svg" className="w-8 h-8" />
       );
     }
-
-    arr.push(
-      <span className="ml-2 font-bold text-sm hover:text-grey-light">
-        {rating.toFixed(1)} Leaves ({totalReviews} reviews)
-      </span>
-    );
 
     return arr;
   }
@@ -71,15 +62,41 @@ class Index extends Component {
               </div>
               <div className="flex flex-wrap content-start w-1/2 pl-4 md:pl-0 sm:pl-0 xl:w-1/2 lg:w-full md:w-full sm:w-full md:pt-6 md:mt-6 sm:pt-6 sm:mt-6 sm:border-t-2 sm:border-grey-lightest md:border-t-2 md:border-grey-lightest">
                 <div className="w-full">
-                  <h1 className="pl-10 ml-1 font-black lg:pl-12 sm:pl-0 md:pl-8">
+                  <h1 className="pl-10 ml-1 font-black lg:pl-12 sm:pl-0 md:pl-0">
                     {this.props.viewProduct.currentProduct.name}
                   </h1>
                 </div>
-                <div className="mt-1 cursor-pointer ml-1 pl-10 sm:pl-0 lg:pl-12 md:pl-8">
-                  {this.showRating()}
+                <div className="mt-1 relative cursor-pointer ml-1 pl-10 sm:pl-0 lg:pl-12 md:pl-0 w-full sm:mb-8 md:mb-8">
+                  <div
+                    className="inline-flex bg-red-light"
+                    style={{
+                      width: `${150 * (rating / 5)}px`,
+                      height: "17px",
+                      marginTop: "7px"
+                    }}
+                  />
+                  <div
+                    className="inline-flex bg-grey-lightest"
+                    style={{
+                      width: `${150 * ((5 - rating) / 5)}px`,
+                      height: "17px",
+                      marginTop: "7px"
+                    }}
+                  />
+                  <div
+                    style={{
+                      opacity: "50%"
+                    }}
+                    className="absolute pl-10 sm:pl-0 md:pl-0 lg:pl-12 pin-l inline-flex md:flex-col sm:flex-col"
+                  >
+                    <div className="">{this.showRating()}{" "}</div>
+                    <div className="ml-2 font-bold text-sm hover:text-grey-light items-center flex sm:w-full">
+                      {rating.toFixed(1)} <span className="sm:hidden md:hidden mx-1 ">Crowns</span> ({totalReviews} reviews)
+                    </div>
+                  </div>
                 </div>
 
-                <div className="w-full h-350 inline-flex mb-6 xl:block xl:h-300 lg:block lg:h-300 md:block md:h-300 sm:block sm:h-300">
+                <div className="w-full h-350 inline-flex mb-6 xl:block xl:h-300 lg:block lg:h-300 md:block md:h-300 sm:block sm:h-300 relative">
                   <div className="w-full mt-2 relative xl:w-full lg:w-full md:w-full sm:w-full xl:h-300 lg:h-300 md:h-300 sm:h-300">
                     <div className="absolute pin-b xl:pin lg:w-full md:w-full sm:w-full">
                       <Genetics {...this.props} />
@@ -90,6 +107,11 @@ class Index extends Component {
                       />
                     </div>
                   </div>
+                  {/* <img
+                    src="../../static/img/topseller.png"
+                    style={{ transform: "rotateZ(8deg)" }}
+                    className="absolute pin-t pin-r w-24 mr-32 pt-12 opacity-50"
+                  /> */}
                 </div>
               </div>
             </div>

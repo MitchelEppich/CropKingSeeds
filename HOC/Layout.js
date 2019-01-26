@@ -18,7 +18,7 @@ import Head from "next/head";
 import ShareButtons from "../components/sections/shareButtons";
 import AgeVerification from "../components/sections/ageVerification";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComments, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { faComments, faCaretUp, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 
 class Layout extends Component {
   componentDidMount() {
@@ -98,7 +98,7 @@ class Layout extends Component {
         <div className="pt-32">
           {" "}
           <ShareButtons {...this.props} />
-          <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:min-w-900 xl:w-main lg:w-700 md:w-main mx-auto shadow-md">
+          <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md">
             {this.props.children}
           </div>
         </div>
@@ -110,12 +110,14 @@ class Layout extends Component {
           {/* <h3>CHAT</h3> */}
         </div>
         <div
-          className="fixed z-999 w-16 mb-24 h-16 bg-red-light pin-b pin-l text-white text-center text-lg pt-2 rounded-br-full rounded-tr-full cursor-pointer hover:bg-red-dark scale-item"
-          onClick={() => window.scrollTo(0, 0)}
+        // style={{borderRadius: "50%"}}
+          className="fixed z-40 w-12 mb-12 mr-4 h-12 bg-red-light pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-red-dark scale-item items-center flex shadow-md"
+          onClick={() => 
+                window.scrollTo(0, 0)}
         >
           <FontAwesomeIcon
-            icon={faCaretUp}
-            className="fa-2x my-1 pr-1  cursor-pointer"
+            icon={faAngleUp}
+            className="fa-2x cursor-pointer"
           />
         </div>
         <Cart {...this.props} />

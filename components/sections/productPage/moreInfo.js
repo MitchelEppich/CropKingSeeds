@@ -4,7 +4,7 @@ import {} from "@fortawesome/free-brands-svg-icons";
 
 const moreInfo = props => {
   return (
-    <div className="w-full px-12 mt-6 sm:px-2">
+    <div className="w-full px-12 md:px-8 mt-6 sm:px-6">
       {/* <h3 className="w-full p-2 pl-6 font-bold text-3xl my-3 text-grey bg-smoke-grey">
         Information on {props.viewProduct.currentProduct.name}
       </h3> */}

@@ -99,7 +99,7 @@ class Index extends Component {
                         <option value="Most Reviewed">Most Reviewed</option>
                     </select>
                 </div>
-                <div className="flex flex-wrap pt-6 sm:justify-center md:justify-center lg:justify-end xl:justify-end xxl:justify-end sm:overflow-hidden">
+                <div className="flex flex-wrap pt-6 sm:justify-center md:justify-center lg:justify-start xl:justify-start xxl:justify-start sm:overflow-hidden">
                     {products}
                 </div>
             </div>

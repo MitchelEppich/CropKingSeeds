@@ -15,7 +15,7 @@ class Index extends Component {
   render() {
     return (
       <Layout>
-        <div className="pt-12">
+        <div className="pt-6">
           <ContactUs {...this.props} />
         </div>
       </Layout>

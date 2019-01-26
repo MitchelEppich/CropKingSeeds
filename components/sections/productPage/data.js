@@ -67,11 +67,11 @@ const data = props => {
 
   // console.log(pthcWidth, _product.pthc);
   return (
-    <div className="mt-6 w-full mx-auto bg-grey-lightest flex flex-wrap content-start shadow-md border border-grey-lightest">
+    <div style={{boxShadow: "0 0px 9px rgba(95, 95, 95, 0.35)"}} className="mt-6 w-full mx-auto bg-grey-lightest flex flex-wrap content-start border border-grey-lightest">
       <div className="w-full bg-white xxl:inline-flex block">
-        <div className="xxl:w-1/3 w-full border-r-2 border-grey-lightest">
+        <div className="xxl:w-1/3 w-full border-r-2 border-grey-lightest sm:border-0 md:border-0">
           <div className="w-300 h-300 sm:w-full mx-auto">
-            <div className="w-full h-full sm:mx-auto">
+            <div className="w-full h-full sm:mx-auto md:mx-auto">
               <ResponsivePieCanvas
                 data={data}
                 pixelRatio={1}
@@ -114,7 +114,7 @@ const data = props => {
             </div>
           </div>
         </div>
-        <div className="xxl:w-1/3 w-full bg-white relative pb-6">
+        <div className="xxl:w-1/3 w-full bg-white sm:pt-2 sm:mt-3 sm:border-t-4 sm:border-grey-lightest md:pt-2 md:mt-3 md:border-t-4 md:border-grey-lightest relative pb-6">
           <div className="bg-red-light w-full">
             <h3 className="text-white font-bold p-2 text-center uppercase">
               Strain Info
@@ -128,7 +128,7 @@ const data = props => {
               <div className="relative bg-smoke-grey w-full rounded-lg">
                 <div className="inline-flex absolute w-full h-full">
                   <div className="absolute flex w-full h-full justify-end">
-                    <p className="text-grey my-auto text-xs font-bold pr-8 z-40">
+                    <p className="text-grey my-auto text-xs font-bold pr-8 sm:pr-1 z-40">
                       {pthc}
                     </p>
                   </div>
@@ -157,7 +157,7 @@ const data = props => {
               <div className="relative bg-smoke-grey w-full rounded-lg">
                 <div className="inline-flex absolute w-full h-full">
                   <div className="absolute flex w-full h-full justify-end">
-                    <p className="text-grey my-auto text-xs font-bold pr-8 z-40">
+                    <p className="text-grey my-auto text-xs font-bold pr-8 sm:pr-1 z-40">
                       {pcbd}
                     </p>
                   </div>
@@ -187,7 +187,7 @@ const data = props => {
                 <div className="relative bg-smoke-grey w-full rounded-lg">
                   <div className="inline-flex absolute w-full h-full">
                     <div className="absolute flex w-full h-full justify-end">
-                      <p className="text-grey my-auto text-xs font-bold pr-8 z-40">
+                      <p className="text-grey my-auto text-xs font-bold pr-8 sm:pr-1 z-40">
                         {pcbn}
                       </p>
                     </div>
@@ -219,7 +219,7 @@ const data = props => {
             </div>
           </div>
         </div>
-        <div className="xxl:w-1/3 w-full border-l-2 border-grey-lightest ">
+        <div className="xxl:w-1/3 w-full border-l-2 sm:pt-2 sm:mt-3 sm:border-t-4 sm:border-grey-lightest md:pt-2 md:mt-3 md:border-t-4 border-grey-lightest ">
           {" "}
           <Details {...props} />
         </div>

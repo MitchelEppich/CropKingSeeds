@@ -36,7 +36,7 @@ const reviews = props => {
     // Add Back Button
     arr.push(
       <button
-        className={`w-32 sm:w-full sm:mt-6 p-2 mt-2 text-lg hover:bg-red-light bg-red-dark text-white cursor-pointer ${
+        className={`w-32 sm:w-full sm:w-12 sm:mt-6 sm:mx-0 sm:mr-1 p-2 mt-2 mx-2 hover:bg-red-dark bg-red-light text-grey-light font-extrabold hover:text-white cursor-pointer text-white font-extrabold cursor-pointer ${
           cursor <= 0 ? "unselectable opacity-50 pointer-events-none" : ""
         }`}
         onClick={() => {
@@ -58,7 +58,7 @@ const reviews = props => {
       let value = i;
       arr.push(
         <button
-          className={`w-12 sm:w-full sm:mt-6 p-2 mt-2 text-lg hover:bg-red-light bg-red-dark text-white cursor-pointer ${
+          className={`w-10 sm:w-full sm:mx-1 sm:mt-6 p-2 mt-2 text-lg hover:bg-red-dark bg-red-light font-bold mx-1 text-white cursor-pointer  ${
             cursor == i ? "opacity-75" : ""
           }`}
           onClick={() => {
@@ -73,13 +73,15 @@ const reviews = props => {
     // Add Next Button
     arr.push(
       <button
-        className={`w-32 sm:w-full sm:mt-6 p-2 mt-2 text-lg hover:bg-red-light bg-red-dark text-white cursor-pointer ${
+        className={`w-32 sm:w-12 sm:w-full sm:mx-0 sm:ml-1 sm:mt-6 p-2 mt-2 mx-2 text-lg hover:bg-red-dark bg-red-light text-white font-extrabold cursor-pointer ${
           (cursor + 1) * 5 >= _reviews.length
             ? "unselectable opacity-50 pointer-events-none"
             : ""
         }`}
         onClick={() => {
-          props.setReviewCursor({ cursor: props.viewProduct.reviewCursor + 1 });
+          props.setReviewCursor({
+            cursor: props.viewProduct.reviewCursor + 1
+          });
         }}
       >
         Next
@@ -103,34 +105,36 @@ const reviews = props => {
         <h3 className="w-full p-2 pl-6 font-bold text-3xl my-3 text-grey bg-smoke-grey">
           Last Reviews
         </h3>
-        <div className="w-full px-20 mx-auto flex">
-          <div className="w-1/4">
+        <div className="w-full xxl:px-20 sm:px-2 lg:px-8 xl:px-8 md:px-8 mx-auto flex sm:flex-col lg:flex-col md:flex-col">
+          <div className="w-1/4 sm:w-full md:w-full lg:w-full">
             {" "}
             <ReviewStats {...props} />
           </div>
-          <div className="w-3/4 bg-smoke-grey mt-5 mb-3 ml-2 rounded">
-            {_reviews.length != 0 ? (
-              reviews
-            ) : (
-              <div className="h-full w-full flex items-center">
-                <div className="flex-col w-full">
-                  <div className="w-full font-bold text-lg my-2">
-                    <p className="text-center">
-                      Looks like there are no reviews!
-                    </p>
-                  </div>
-                  <div className="w-full">
-                    <p className="text-center">
-                      {props.viewProduct.ratingFilter != null &&
-                      props.viewProduct.ratingFilter < 4
-                        ? "Customers are very happy."
-                        : "Be the first the leave a review."}
-                    </p>
+          <div className="w-3/4 sm:w-full md:w-full lg:w-full mt-5 mb-3 ml-2 sm:ml-0 rounded ">
+            <div className="bg-white w-full">
+              {_reviews.length != 0 ? (
+                reviews
+              ) : (
+                <div className="h-150 w-full flex items-center">
+                  <div className="flex-col w-full">
+                    <div className="w-full font-bold text-lg my-2">
+                      <p className="text-center">
+                        Looks like there are no reviews!
+                      </p>
+                    </div>
+                    <div className="w-full">
+                      <p className="text-center">
+                        {props.viewProduct.ratingFilter != null &&
+                        props.viewProduct.ratingFilter < 4
+                          ? "Customers are very happy."
+                          : "Be the first the leave a review."}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-            <div className="w-full ml-12 px-8 text-center mt-2">
+              )}
+            </div>
+            <div className="w-full px-8 text-center mt-2 sm:px-2 sm:inline-flex md:px-2 md:inline-flex">
               {_reviews.length != 0 ? showPages() : null}
             </div>
           </div>

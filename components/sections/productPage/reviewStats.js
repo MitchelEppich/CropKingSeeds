@@ -28,7 +28,7 @@ const ReviewStats = props => {
       })();
       arr.push(
         <div
-          className={`inline-flex p-1 mx-2 items-center flex w-full cursor-pointer scale-item ${
+          className={`inline-flex p-1 items-center flex w-full cursor-pointer scale-item ${
             filter != null && index != filter ? "opacity-50" : ""
           }`}
           onClick={() => {
@@ -39,7 +39,9 @@ const ReviewStats = props => {
         >
           <div className="items-center flex">
             <span className="text-grey font-bold text-xs">{index}</span>
-            <FontAwesomeIcon icon={faCannabis} className="fa-md mx-1" />
+            <div>
+        <img src="../../static/img/CrownIcon.svg" className="ml-1 w-6 h-6 crown-icon items-center flex" />
+      </div>
           </div>
           <div className="w-full bg-grey-lightest py-3 items-center flex ml-2 relative rounded">
             <div
@@ -63,7 +65,8 @@ const ReviewStats = props => {
 
   return (
     <div className="w-full">
-      <div className="w-full mt-2 p-2 text-red-dark">{showRatings()}</div>
+      <div className="w-full mt-2 py-2 text-red-dark">{showRatings()}</div>
+      <div className="text-center w-full mt-2 text-sm font-extrabold underline scale-item text-red-light cursor-pointer"><p>Clear Filter</p></div>
     </div>
   );
 };

@@ -29,7 +29,6 @@ import {
   faCartArrowDown
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import SideSteps from "../components/sections/checkout/sideSteps";
 
 class Index extends Component {
   componentDidMount() {
@@ -41,7 +40,11 @@ class Index extends Component {
     });
   }
 
+  
+
+
   render() {
+    let itemscart = Object.keys(this.props.cart.items);
     return (
       <Layout>
         <div className="text-center w-full pt-12 bg-white relative">
@@ -90,21 +93,23 @@ class Index extends Component {
             className="w-main sm:w-full mx-auto mt-12"
           >
             <Checkout {...this.props} />
-            {/* <SideSteps {...this.props} /> */}
+            
+           
 
             {this.props.misc.stepsCheckout == 0 ? (
               <div>
                 <ProductPreview {...this.props} />
                 <div className="w-main mx-auto flex justify-end">
-                  <Link href="/shop">
+                   
+                   <Link href="/shop">
                     <p className="font-extrabold text-xl cursor-pointer scale-item text-red-light p-2 items-center flex">
-                      Continue Shopping{" "}
+                     {itemscart.length > 0 ?   "Continue Shopping" : "Go to Shop Page"} 
                       <FontAwesomeIcon
                         icon={faCartArrowDown}
                         className="ml-2 fa-lg"
                       />
                     </p>
-                  </Link>
+                   </Link> 
                 </div>
                 <hr
                   style={{ border: "1px solid rgb(228, 228, 228)" }}

@@ -68,7 +68,8 @@ const imageCarousel = props => {
             Zoom
           </div>
           {currentImage}
-        </div>
+          
+         </div>
         <div className="bg-white md:hidden sm:hidden">
           <div id="portal" className="bg-white rounded-lg shadow-lg" />
         </div>

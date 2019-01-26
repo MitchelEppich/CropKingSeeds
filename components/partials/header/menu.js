@@ -64,7 +64,7 @@ const menu = props => {
 
     showMobileNav = isMobileNavVisible
         ? {
-              height: "320px",
+              height: "285px",
               transition: "all 0.4s ease-in-out",
               WebkitTransition: "all 0.3s ease-in-out",
               zIndex: "-90",

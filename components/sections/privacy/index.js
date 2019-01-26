@@ -3,7 +3,7 @@ import React from "react";
 const Privacy = props => {
   return (
     <div className="w-full">
-      <div className="w-full relative inline-flex">
+      <div className="w-full relative inline-flex md:flex-col lg:flex-col sm:flex-col">
         <div className="w-full">
           <img
             src="../static/img/privacy.jpg"
@@ -11,12 +11,8 @@ const Privacy = props => {
             // style={{ filter: "opacity(0.6)" }}
           />
         </div>
-        <div
-          style={{
-            boxShadow: "0 4px 26px rgba(0, 0, 0, 0.42)",
-            borderRadius: "15px"
-          }}
-          className="w-800 h-500 bg-white pin absolute m-auto">
+        <div         
+          className="w-800 h-500 lg:w-full md:w-full sm:w-full md:h-400 bg-white lg:pin-t xl:pin xxl:pin absolute md:relative sm:relative lg:relative m-auto xl:shadow xx:shadow">
           <div className="justify-center w-full mt-6 inline-flex items-center flex">
             <div className="">
               <img src="../static/img/cropkingseed2s.png" className="w-24" />
@@ -29,7 +25,7 @@ const Privacy = props => {
           </div>
           <div
             style={{ width: "90%" }}
-            className="h-300 mx-auto mt-3 p-2 px-12 overflow-y-auto">
+            className="h-300 mx-auto mt-3 md:h-250 p-2 px-12 overflow-y-auto">
             <p className="py-2">
               Magna proident irure quis consectetur sit elit do esse sunt
               reprehenderit est id irure. Enim officia minim consectetur amet
