@@ -67,7 +67,9 @@ class Index extends Component {
 
     let error =
       ((_error[100] || _error[104]) && _stepsCheckout == 0) ||
-      (_error[103] && (_stepsCheckout == 0 || _stepsCheckout == 3));
+      (_error[103] && _stepsCheckout == 0) ||
+      (_error[102] && _stepsCheckout == 1) ||
+      (Object.keys(_error).length != 0 && _stepsCheckout == 3);
 
     return (
       <Layout>
@@ -177,10 +179,13 @@ class Index extends Component {
               <span
                 style={{ height: "40px", borderLeft: "2px solid #ececec" }}
               />
-
               <div
                 className={`w-200 p-2 text-right justify-end cursor-pointer flex items-center hover:text-red ${
-                  error ? "opacity-50 unselectable pointer-events-none" : ""
+                  _stepsCheckout >= 3
+                    ? "opacity-0 unselectable pointer-events-none"
+                    : error
+                    ? "opacity-50 unselectable pointer-events-none"
+                    : ""
                 }`}
               >
                 {_stepsCheckout != 4 ? (

@@ -8,6 +8,7 @@ import SeedSelectModule from "./seedSelectModule";
 const addToCart = props => {
   let currentProduct = props.viewProduct.currentProduct;
   let currency = props.checkout.viewCurrency;
+  let _coupon = props.checkout.orderDetails.coupon;
 
   return (
     <div className="w-full">
@@ -65,7 +66,8 @@ const addToCart = props => {
                   action: "APPEND",
                   productIdentifier: _identifier,
                   product: currentProduct,
-                  quantity: props.cart.potentialQuantity
+                  quantity: props.cart.potentialQuantity,
+                  coupon: _coupon
                 });
               }}
             >
@@ -85,7 +87,8 @@ const addToCart = props => {
                     action: "APPEND",
                     productIdentifier: _identifier,
                     product: currentProduct,
-                    quantity: props.cart.potentialQuantity
+                    quantity: props.cart.potentialQuantity,
+                    coupon: _coupon
                   });
                 }}
               >

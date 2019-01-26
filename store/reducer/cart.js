@@ -4,7 +4,8 @@ import { updateObject } from "../utility";
 const initialState = {
   items: {},
   price: 0,
-  potentialQuantity: 1
+  potentialQuantity: 1,
+  discount: 0
 };
 
 export default (state = initialState, action) => {
@@ -18,7 +19,8 @@ export default (state = initialState, action) => {
     case actionTypes.MODIFY_CART:
       return updateObject(state, {
         items: action.items,
-        price: action.price
+        price: action.price,
+        discount: action.discount
       });
     default:
       return state;

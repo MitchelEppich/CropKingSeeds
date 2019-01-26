@@ -11,6 +11,7 @@ const ProductPreview = props => {
   };
 
   let currency = props.checkout.viewCurrency;
+  let _coupon = props.checkout.orderDetails.coupon;
 
   let showProducts = () => {
     let _arr = [];
@@ -19,6 +20,9 @@ const ProductPreview = props => {
     for (let item of Object.keys(_items)) {
       let _item = _items[item];
       let _product = _item.product;
+
+      let hasSale = _item.sale != null;
+
       _arr.push(
         <div
           key={item}
@@ -60,7 +64,7 @@ const ProductPreview = props => {
                   Package:
                 </div>{" "}
                 <div className="px-2 sm:text-left sm:w-full md:w-full md:text-left font-bold w-1/2 text-grey uppercase text-sm text-right">
-                  {_item.amount} Packs
+                  {_item.amount} Pack
                 </div>
               </div>
               <div className="sm:mt-0 mt-2 w-full inline-flex items-center flex">
@@ -84,6 +88,21 @@ const ProductPreview = props => {
                     : ""}
                 </div>
               </div>
+              {hasSale ? (
+                <div className="sm:mt-0 mt-2 w-full inline-flex items-center flex">
+                  <div className="sm:hidden md:hidden font-bold w-1/2 text-grey-light uppercase text-xs">
+                    {" "}
+                    Sale Price:
+                  </div>
+                  <div className="px-2 sm:text-left sm:w-full md:w-full md:text-left font-bold w-1/2 text-red-dark uppercase text-sm text-right">
+                    {currency != null
+                      ? `${currency.symbol}${(
+                          currency.convert * (_item.sale || 0)
+                        ).toFixed(2)}`
+                      : ""}
+                  </div>
+                </div>
+              ) : null}
               <div className="w-full absolute z-50 sm:flex-col pin-l pin-b mb-4 p-2 sm:p-1 sm:mb-0 flex items-center inline-flex ">
                 <div className="w-full mr-2 sm:mr-0 md:mr-0">
                   <div className="flex justify-end h-6 w-100 sm:w-full items-center">
@@ -95,7 +114,8 @@ const ProductPreview = props => {
                           action: "MODIFY",
                           productIdentifier: item,
                           product: _product,
-                          quantity: -1
+                          quantity: -1,
+                          coupon: _coupon
                         })
                       }
                       className="px-2 py-1 scale-item bg-almost-black rounded text-xl sm:text-sm text-white"
@@ -112,10 +132,10 @@ const ProductPreview = props => {
                           props.modifyCart({
                             items: props.cart.items,
                             action: "SET",
-                            price: _item.price,
                             productIdentifier: item,
                             product: _product,
-                            quantity: 1
+                            quantity: 1,
+                            coupon: _coupon
                           });
                         }
                       }}
@@ -129,10 +149,10 @@ const ProductPreview = props => {
                         props.modifyCart({
                           items: props.cart.items,
                           action: "SET",
-                          price: _item.price,
                           productIdentifier: item,
                           product: _product,
-                          quantity: parseInt(_value)
+                          quantity: parseInt(_value),
+                          coupon: _coupon
                         });
                       }}
                       value={_item.quantity || ""}
@@ -148,7 +168,8 @@ const ProductPreview = props => {
                           action: "MODIFY",
                           productIdentifier: item,
                           product: _product,
-                          quantity: 1
+                          quantity: 1,
+                          coupon: _coupon
                         })
                       }
                       className="px-2 py-1 scale-item bg-almost-black rounded text-xl sm:text-sm text-white"
@@ -161,7 +182,11 @@ const ProductPreview = props => {
                   </div>
                 </div>
                 <div className="text-right w-full mt-1 sm:mt-2 md:mt-2 items-center">
-                  <p className="font-bold text-grey text-lg">
+                  <p
+                    className={`font-bold ${
+                      hasSale ? "text-red-dark" : "text-grey"
+                    } text-lg`}
+                  >
                     {currency != null
                       ? `${currency.symbol}${(
                           currency.convert * (_item.price || 0)

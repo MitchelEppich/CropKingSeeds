@@ -9,6 +9,8 @@ import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
 import Navigation from "./navigation";
 
+import Cart from "./cart";
+
 import moment from "moment";
 
 const actionTypes = {
@@ -25,22 +27,26 @@ const actionTypes = {
 let shippingMethods = [
   {
     type: "Regular Shipping (No Tracking)",
+    tag: "Regular Shipping",
     description: "Approx. 10 to 15 business days depending on your location.",
     price: 10
   },
   {
     type: "Canada Post Express (With Tracking / No Signature Required)",
+    tag: "Express Registered with Tracking",
     description: "Approx. 2 to 5 business days depending on your location.",
     price: 30
   },
   {
     type: "Regular Shipping (No Tracking)",
+    tag: "Regular Shipping",
     description:
       "Approx. 7 to 14 business days within North America and up to 21 days overseas.",
     price: 10
   },
   {
     type: "Express Registered (With Tracking / Guaranteed Insurance Delivery)",
+    tag: "Express Registered with Tracking",
     description:
       "Approx. 7 to 14 business days within North America and up to 21 days overseas.",
     note:
@@ -49,11 +55,13 @@ let shippingMethods = [
   },
   {
     type: "Regular Shipping (No Tracking)",
+    tag: "Regular Shipping",
     description: "Approx. 7 to 25 business days depending on your location.",
     price: 20
   },
   {
     type: "Regular Shipping (With Tracking / Stealth Shipping)",
+    tag: "Regular Shipping",
     description: "Approx. 7 to 25 business days depending on your location.",
     note:
       "The Country you have selected is flagged for Unreliable Mail services and due to these obstacles your package will be shipped using our stealth shipment method.",
@@ -140,21 +148,47 @@ const getActions = uri => {
     },
     applyCoupon: input => {
       return async dispatch => {
-        const link = new HttpLink({ uri, fetch: fetch });
-        const operation = { query: query.getCoupon, variables: { ...input } };
+        let _items = { ...input.items };
+        let _orderDetails = { ...input.orderDetails };
+        delete input.items;
+        delete input.orderDetails;
 
-        let _orderDetails = input.orderDetails;
+        let _action = input.action;
+        delete input.action;
 
-        await makePromise(execute(link, operation))
-          .then(data => {
-            let _coupon = data.data.getCoupon;
+        let _coupon;
+
+        switch (_action) {
+          case "APPEND":
+            const link = new HttpLink({ uri, fetch: fetch });
+            const operation = {
+              query: query.getCoupon,
+              variables: { ...input }
+            };
+            _coupon = (await makePromise(execute(link, operation))).data
+              .getCoupon;
             _orderDetails.coupon = _coupon;
-            dispatch({
-              type: actionTypes.APPLY_COUPON,
-              input: _orderDetails
-            });
+            break;
+          case "REMOVE":
+            delete _orderDetails.coupon;
+            _coupon = input.coupon;
+            break;
+        }
+
+        // Send Coupon to Cart for logic
+        let CartActions = Cart(uri);
+        dispatch(
+          CartActions.refreshCart({
+            items: _items,
+            itemId: _coupon.itemId,
+            coupon: _action == "REMOVE" ? null : _coupon
           })
-          .catch(error => console.log(error));
+        );
+
+        dispatch({
+          type: actionTypes.APPLY_COUPON,
+          input: _orderDetails
+        });
       };
     },
     getBitcoinData: input => {
@@ -189,23 +223,28 @@ const getActions = uri => {
         let _orderDetails = { ...input.orderDetails };
         let _paymentMethod = _orderDetails.payment.method.value;
 
+        // console.log(buildOrderPost(_orderDetails));
+
         if (_paymentMethod == "Credit Card") {
+          // Get New Order ID
           getNewOrderId(uri).then(res => {
-            console.log(res);
             _orderDetails.payment.orderId = { value: res, tag: "Order_ID" };
+            // Process Credit Card
             processPayment(_orderDetails.payment, uri).then(res => {
-              console.log(res);
-              processOrder(_orderDetails, res, uri).then(res => {
-                console.log(res);
-              });
+              // Process Order
+              processOrder(_orderDetails, res, uri);
             });
           });
-          // Proccess Credit Card
-          // Process Order
-          // Save Order
         } else {
-          // Process Order
-          // Save Order
+          // Get New Order ID
+          getNewOrderId(uri).then(res => {
+            _orderDetails.payment.orderId = { value: res, tag: "Order_ID" };
+            console.log(res);
+            // Process Order
+            processOrder(_orderDetails, res, uri).then(res => {
+              console.log(res);
+            });
+          });
         }
 
         // const link = new HttpLink({ uri, fetch: fetch });
@@ -241,6 +280,7 @@ const query = {
         minimumOrder
         usage
         itemName
+        itemId
       }
     }
   `
@@ -314,14 +354,18 @@ const mutation = {
     }
   `
 };
+
 let processOrder = async (orderDetails, res, uri) => {
   return await new Promise(async (resolve, reject) => {
     let _orderPost = {
-      ...buildOrderPost(orderDetails),
-      credit_card_remark: res.status,
-      Descriptor: res.processor,
-      Transaction_ID: res.transactionId
+      ...buildOrderPost(orderDetails)
     };
+
+    if (res != null) {
+      _orderPost.credit_card_remark = res.status;
+      _orderPost.Descriptor = res.processor;
+      _orderPost.Transaction_ID = res.transactionId;
+    }
 
     const link = new HttpLink({ uri, fetch: fetch });
     const operation = {
@@ -403,7 +447,7 @@ let buildOrderPost = orderDetails => {
   }
   delete _orderDetails.cardHolderIp;
   for (let key of Object.keys(_orderDetails)) {
-    if (key == "undefined") continue;
+    if (key == "undefined" || key == "coupon") continue;
     let prefix = (() => {
       switch (key) {
         case "shipping":
@@ -418,7 +462,7 @@ let buildOrderPost = orderDetails => {
       if (_key == "undefined") continue;
       let obj = _orderDetails[key][_key];
       if (obj.value == null) continue;
-      if (obj.tag.includes(" ")) {
+      if (obj.tag != null && obj.tag.includes(" ")) {
         let _obj = obj.value.split(" ");
         for (let item of obj.tag.split(" ")) {
           orderPost[prefix + item] = _obj.shift();

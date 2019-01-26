@@ -25,7 +25,11 @@ const Coupon = props => {
                 group: pageGroup,
                 key: _key,
                 value: _value,
-                tag: _tag
+                tag: _tag,
+                requestUpdateOfGroup: {
+                  value: true,
+                  group: "payment"
+                }
               });
             }}
           />
@@ -39,9 +43,11 @@ const Coupon = props => {
               let _coupon = _orderDetails.payment.coupon;
               if (_coupon == null) return;
               props.applyCoupon({
+                action: "APPEND",
                 coupon: _coupon.value,
                 orderDetails: _orderDetails,
-                ip: _orderDetails.cardHolderIp
+                ip: _orderDetails.cardHolderIp,
+                items: props.cart.items
               });
             }}
           >
@@ -53,10 +59,13 @@ const Coupon = props => {
         <div
           className="cursor-pointer"
           onClick={() => {
-            props.modifyOrderDetails({
+            let _coupon = _orderDetails.coupon;
+            if (_coupon == null) return;
+            props.applyCoupon({
+              action: "REMOVE",
+              coupon: _coupon,
               orderDetails: _orderDetails,
-              key: "coupon",
-              value: null
+              items: props.cart.items
             });
           }}
         >

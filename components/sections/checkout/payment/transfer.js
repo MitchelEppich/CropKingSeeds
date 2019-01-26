@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Transfer = props => {
   let pageGroup = "payment";
-  let paymentType = "E-Transfer";
+  let paymentType = "Interac E Transfer";
 
   return (
     <div className="w-full mb-6 ">
@@ -21,7 +21,8 @@ const Transfer = props => {
               _orderDetails[pageGroup]["method"].value == paymentType
                 ? undefined
                 : {
-                    value: paymentType
+                    value: paymentType,
+                    tag: "Payment_Method"
                   },
             tag: undefined,
             requestUpdateOfGroup: { value: true, group: pageGroup }
@@ -54,7 +55,7 @@ const Transfer = props => {
           </div>
           <div className="w-200 p-2 mx-auto mt-6 text-center">
             <p className="text-center p-2 font-extrabold bg-red-dark text-white hover:bg-grey-light cursor-pointer">
-              Pay Now
+              <button type="submit">Pay Now</button>
             </p>
           </div>
         </div>

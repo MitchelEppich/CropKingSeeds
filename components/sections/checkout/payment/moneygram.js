@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Moneygram = props => {
   let pageGroup = "payment";
-  let paymentType = "Moneygram";
+  let paymentType = "MoneyGram";
 
   return (
     <div className="w-full mb-6 ">
@@ -21,7 +21,8 @@ const Moneygram = props => {
               _orderDetails[pageGroup]["method"].value == paymentType
                 ? undefined
                 : {
-                    value: paymentType
+                    value: paymentType,
+                    tag: "Payment_Method"
                   },
             tag: undefined,
             requestUpdateOfGroup: { value: true, group: pageGroup }
@@ -35,7 +36,7 @@ const Moneygram = props => {
         className="h-10 mb-2 inline-flex w-full cursor-pointer"
       >
         <div className="w-4/5 p-2 flex items-center">
-          <p className="sm:text-sm md:text-sm">Pay with Moneygram</p>
+          <p className="sm:text-sm md:text-sm">Pay with MoneyGram</p>
         </div>
         <div className="w-1/5 justify-end flex">
           <div className="h-10 w-10 text-center py-2 bg-semi-transparent ">
@@ -58,7 +59,7 @@ const Moneygram = props => {
           </div>
           <div className="w-200 p-2 mx-auto mt-6 text-center">
             <p className="text-center p-2 font-extrabold bg-red-dark text-white hover:bg-grey-light cursor-pointer">
-              Pay Now
+              <button type="submit">Pay Now</button>
             </p>
           </div>
         </div>

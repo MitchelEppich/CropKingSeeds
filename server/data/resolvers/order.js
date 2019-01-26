@@ -2,6 +2,8 @@ const { Order } = require("../../models");
 
 const { orderFilters } = require("./functions");
 
+const StrainResolver = require("./strain");
+
 // const { PubSub, withFilter } = require("graphql-subscriptions");
 
 // const pubsub = new PubSub();
@@ -20,7 +22,7 @@ const resolvers = {
       return Order.find(query);
     },
     getNewOrderId: async (_, {}) => {
-      return (await Order.find({}))[0].orderId + 1;
+      return (await Order.find({})).slice(-1)[0].orderId + 1;
     },
     getCoupon: async (_, input) => {
       // Get coupon details
@@ -48,6 +50,17 @@ const resolvers = {
       // Check if code exists
       if (res.NoCode._text == "1") return { error: "Invalid Code Entered" };
 
+      let company = res.Company._text;
+
+      // Check if code is for CKS
+      if (company != "cropkingseeds.com")
+        return { error: "Invalid Code Entered" };
+
+      let active = res.Active._text;
+
+      // Check if code is active
+      if (!active) return { error: "Coupon has Expired" };
+
       let { startDate, endDate } = (() => {
         let _ = res.DateValidity._text;
 
@@ -61,7 +74,7 @@ const resolvers = {
         return {};
       })();
 
-      // Check if code is stil active
+      // Check if code is within set date
       if (
         startDate != null &&
         endDate != null &&
@@ -122,13 +135,23 @@ const resolvers = {
         }
       })();
 
+      let itemName = res.DiscountItemName._text;
+      let itemId = (async () => {
+        if (itemName == null) return undefined;
+
+        return (await StrainResolver.Query.allStrains(null, {
+          filter: { OR: [{ nameContains: itemName }] }
+        }))[0].sotiId;
+      })();
+
       return {
         code: res.PromoCode._text,
         type,
         amount,
         minimumOrder,
         usage,
-        itemName: res.DiscountItemName._text
+        itemId,
+        itemName
       };
     }
   },

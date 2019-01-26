@@ -1,9 +1,12 @@
 // Strain filters
-const strainFilters = ({ OR = [], genetic }) => {
-  const filter = genetic ? {} : null;
+const strainFilters = ({ OR = [], genetic, nameContains }) => {
+  const filter = genetic || nameContains ? {} : null;
 
   if (genetic) {
     filter.genetic = genetic;
+  }
+  if (nameContains) {
+    filter.name = { $regex: `.*(?i)${nameContains}.*` };
   }
 
   let filters = filter ? [filter] : [];
@@ -29,8 +32,6 @@ const orderFilters = ({ OR = [], coupon, ip }) => {
   for (let i = 0; i < OR.length; i++) {
     filters = filters.concat(orderFilters(OR[i]));
   }
-
-
 
   return filters;
 };

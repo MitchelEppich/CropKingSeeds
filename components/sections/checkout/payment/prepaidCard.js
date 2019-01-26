@@ -9,7 +9,7 @@ import StringMask from "string-mask";
 
 const PrepaidCard = props => {
   let pageGroup = "payment";
-  let paymentType = "Prepaid Card";
+  let paymentType = "Credit Card";
 
   let ccNumberFormat = new StringMask("0000-0000-0000-0000");
 
@@ -62,6 +62,7 @@ const PrepaidCard = props => {
               <input
                 type="text"
                 id="cardNumber"
+                required
                 value={
                   props.checkout.orderDetails[pageGroup] != null &&
                   props.checkout.orderDetails[pageGroup].cardNumber != null
@@ -107,6 +108,7 @@ const PrepaidCard = props => {
                 className="p-2 w-full"
                 id="ccExpireMonth"
                 defaultValue=""
+                required
                 value={
                   props.checkout.orderDetails[pageGroup] != null &&
                   props.checkout.orderDetails[pageGroup].ccExpireMonth != null
@@ -153,6 +155,7 @@ const PrepaidCard = props => {
                 className="p-2 w-full"
                 id="ccExpireYear"
                 defaultValue=""
+                required
                 value={
                   props.checkout.orderDetails[pageGroup] != null &&
                   props.checkout.orderDetails[pageGroup].ccExpireYear != null
@@ -204,6 +207,7 @@ const PrepaidCard = props => {
                       ? props.checkout.orderDetails[pageGroup].cvv.value || ""
                       : undefined
                   }
+                  required
                   onChange={e => {
                     let _orderDetails = props.checkout.orderDetails;
                     let _target = e.target;
@@ -235,7 +239,7 @@ const PrepaidCard = props => {
           </div>
           <div className="w-200 p-2 mx-auto mt-6 text-center">
             <p className="text-center p-2 font-extrabold bg-red-dark text-white hover:bg-grey-light cursor-pointer">
-              Pay Now
+              <button type="submit">Pay Now</button>
             </p>
           </div>
         </div>

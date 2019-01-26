@@ -22,6 +22,7 @@ type Coupon {
   minimumOrder: Float
   usage: String
   itemName: String
+  itemId: String
 }
 
 input BitcoinDataInput {
@@ -38,6 +39,7 @@ input OrderFilter {
 input StrainFilter {
   OR: [StrainFilter!]
   genetic: Int
+  nameContains: String
 }
 
 type Strain {

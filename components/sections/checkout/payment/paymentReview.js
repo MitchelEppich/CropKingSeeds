@@ -48,6 +48,16 @@ const PaymentReview = props => {
     let shippingFee = _orderDetails.shipping.shippingCost.value;
     let taxFee = cartTotal * cumTax;
 
+    // Discount
+    let _coupon = _orderDetails.coupon;
+    let discount = _cart.discount || 0;
+    let discountAmt;
+    if (_coupon.type == "%") {
+      discountAmt = `${_coupon.amount.toFixed(2)}%`;
+    } else if (_coupon.type == "$") {
+      discountAmt = currency.symbol;
+    }
+
     let orderTotal = creditFee + shippingFee + cartTotal + taxFee;
 
     _orderDetails[pageGroup] = {
@@ -58,6 +68,8 @@ const PaymentReview = props => {
       taxFee,
       cumTax,
       creditTax,
+      discount,
+      discountAmt,
       tax: { value: tax, tag: "tax" },
       provTax: { value: provTax, tag: "prov_tax" },
       taxType: { value: taxType, tag: "prov_tax_type" },
@@ -90,7 +102,8 @@ const PaymentReview = props => {
     <div className="w-full flex justify-end mb-6 lg:flex-col md:flex-col sm:flex-col">
       <div
         style={box}
-        className="w-1/3 h-200 lg:w-full lg:mt-2 sm:w-full sm:mt-2 md:w-full md:mt-2 mx-0 bg-white">
+        className="w-1/3 h-200 lg:w-full lg:mt-2 sm:w-full sm:mt-2 md:w-full md:mt-2 mx-0 bg-white"
+      >
         <h3 style={titleBox}>Shipping Address</h3>
         <div className="p-2">
           <p className="mt-1">
@@ -151,7 +164,8 @@ const PaymentReview = props => {
       </div>
       <div
         style={box}
-        className="w-1/3 h-200 lg:w-full lg:mt-2 sm:w-full sm:mt-2 md:w-full md:mt-2 xxl:mx-4 xl:mx-4 bg-white">
+        className="w-1/3 h-200 lg:w-full lg:mt-2 sm:w-full sm:mt-2 md:w-full md:mt-2 xxl:mx-4 xl:mx-4 bg-white"
+      >
         <h3 style={titleBox}>Billing Address</h3>
         <div className="p-2">
           <p className="mt-1">
@@ -212,7 +226,8 @@ const PaymentReview = props => {
       </div>
       <div
         style={box}
-        className="w-1/3 h-200 lg:w-full lg:mt-2 sm:w-full sm:h-full sm:mt-2 md:w-full md:mt-2 mx-0 bg-white">
+        className="w-1/3 h-200 lg:w-full lg:mt-2 sm:w-full sm:h-full sm:mt-2 md:w-full md:mt-2 mx-0 bg-white"
+      >
         <h3 style={titleBox}>Payment Information</h3>
         <div className="p-2 inline-flex w-full">
           <div className="w-3/5 text-right">
@@ -225,12 +240,21 @@ const PaymentReview = props => {
               Credit Card Tax (
               {(_orderDetails[pageGroup].creditTax * 100).toFixed(2)}%):{" "}
             </p>
+            {_orderDetails.coupon != null &&
+            _orderDetails.coupon.code != null ? (
+              <p className="mt-2 text-red-dark">
+                Discount ({_orderDetails[pageGroup].discountAmt}
+                ):{" "}
+              </p>
+            ) : null}
           </div>
           <div className="w-2/5 pl-4 text-left">
             <p className="mt-1">
               {currency != null
                 ? `${currency.symbol}${(
-                    currency.convert * _orderDetails[pageGroup].cartTotal.value
+                    currency.convert *
+                    (_orderDetails[pageGroup].cartTotal.value +
+                      _orderDetails[pageGroup].discount)
                   ).toFixed(2)}`
                 : ""}
             </p>
@@ -256,12 +280,30 @@ const PaymentReview = props => {
                   ).toFixed(2)}`
                 : ""}
             </p>
+            {_orderDetails.coupon != null &&
+            _orderDetails.coupon.code != null ? (
+              <p className="mt-2 text-red-dark">
+                {currency != null
+                  ? `${currency.symbol}${(
+                      currency.convert * _orderDetails[pageGroup].discount
+                    ).toFixed(2)}`
+                  : ""}
+              </p>
+            ) : null}
           </div>
         </div>
-        <div className="p-2 mt-4 border-t-2 border-grey-lightest inline-flex w-full">
+        <div
+          className={`${
+            _orderDetails.coupon != null && _orderDetails.coupon.code != null
+              ? "p-1"
+              : "p-2 mt-4"
+          } border-t-2 border-grey-lightest inline-flex w-full`}
+        >
           <div className="w-3/5 text-right">
             {" "}
-            <p className="font-extrabold text-grey-light text-lg uppercase">Total:</p>{" "}
+            <p className="font-extrabold text-grey-light text-lg uppercase">
+              Total:
+            </p>{" "}
           </div>
           <div className="w-2/5 text-left pl-4">
             {" "}

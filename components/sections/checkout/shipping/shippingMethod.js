@@ -51,11 +51,15 @@ const ShippingMethod = props => {
                         group: pageGroup,
                         key: _key,
                         value: _value,
-                        tag: _tag
+                        tag: _tag,
+                        requestUpdateOfGroup: {
+                          value: true,
+                          group: "payment"
+                        }
                       });
 
                       _key = "shippingDetail";
-                      _value = _method.type;
+                      _value = _method.tag;
                       _tag = "Shipped_Type";
 
                       props.modifyOrderDetails({
@@ -106,7 +110,8 @@ const ShippingMethod = props => {
         props.checkout.orderDetails.shipping.state == null
           ? "opacity-50 pointer-events-none unselectable"
           : ""
-      }`}>
+      }`}
+    >
       <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-black">
         Shipping Method
       </h2>

@@ -29,14 +29,7 @@ const CreditCard = props => {
                 ? undefined
                 : {
                     value: paymentType,
-                    tag: "Payment_Method",
-                    oridSuffix: "-KMH-7"
-                    // amount: 0, // Cost of cart -input
-                    // ccno: -1, // Card Number -input
-                    // cvvno: -1, // Card CVV Number -input
-                    // cctype: "", // Card Type -input
-                    // ccexpire: "", // Card Expiry -input
-                    // ccname: "", // Card Holder Name -input
+                    tag: "Payment_Method"
                   },
             tag: undefined,
             requestUpdateOfGroup: { value: true, group: pageGroup }
@@ -68,6 +61,7 @@ const CreditCard = props => {
             <input
               type="text"
               id="cardHolder"
+              required
               value={
                 props.checkout.orderDetails[pageGroup] != null
                   ? props.checkout.orderDetails[pageGroup].cardHolder || ""
@@ -97,6 +91,7 @@ const CreditCard = props => {
               <input
                 type="text"
                 id="cardNumber"
+                required
                 value={
                   props.checkout.orderDetails[pageGroup] != null &&
                   props.checkout.orderDetails[pageGroup].cardNumber != null
@@ -162,6 +157,7 @@ const CreditCard = props => {
                 className="p-2 w-full"
                 id="ccExpireMonth"
                 defaultValue=""
+                required
                 value={
                   props.checkout.orderDetails[pageGroup] != null &&
                   props.checkout.orderDetails[pageGroup].ccExpireMonth != null
@@ -208,6 +204,7 @@ const CreditCard = props => {
                 className="p-2 w-full"
                 id="ccExpireYear"
                 defaultValue=""
+                required
                 value={
                   props.checkout.orderDetails[pageGroup] != null &&
                   props.checkout.orderDetails[pageGroup].ccExpireYear != null
@@ -253,6 +250,7 @@ const CreditCard = props => {
                   type="text"
                   placeholder="Security Code"
                   id="cvv"
+                  required
                   value={
                     props.checkout.orderDetails[pageGroup] != null &&
                     props.checkout.orderDetails[pageGroup].cvv != null
@@ -290,7 +288,7 @@ const CreditCard = props => {
           </div>
           <div className="w-200 p-2 mx-auto mt-6 text-center">
             <p className="text-center p-2 font-extrabold bg-red-dark text-white hover:bg-grey-light cursor-pointer">
-              Pay Now
+              <button type="submit">Pay Now</button>
             </p>
           </div>
         </div>

@@ -22,6 +22,27 @@ const getActions = uri => {
         type: actionTypes.CLEAR_CART
       };
     },
+    refreshCart: input => {
+      return dispatch => {
+        let _items = input.items;
+        let _coupon = input.coupon;
+        for (let key of Object.keys(_items)) {
+          if (input.itemId == null || key.includes(input.itemId)) {
+            let _item = _items[key];
+            dispatch(
+              objects.modifyCart({
+                items: _items,
+                action: "SET",
+                productIdentifier: key,
+                product: _item.product,
+                quantity: _item.quantity,
+                coupon: _coupon
+              })
+            );
+          }
+        }
+      };
+    },
     modifyPotentialQuantity: input => {
       let _potentialQuantity = input.potentialQuantity;
       let _action = input.action;
@@ -60,9 +81,23 @@ const getActions = uri => {
         };
       })();
 
+      let _coupon = input.coupon;
+      let sale = (() => {
+        if (_coupon == null) return undefined;
+
+        if (_coupon.itemId == _product.sotiId || _coupon.type == "%") {
+          if (_coupon.type == "%") {
+            return _per * (1 - _coupon.amount / 100);
+          } else if (_coupon.type == "$") {
+            return Math.max(0, _per - _coupon.amount);
+          }
+        }
+        return undefined;
+      })();
+
       let _quantity = input.quantity;
 
-      let _item;
+      let _item, price;
 
       switch (_action) {
         case "REMOVE":
@@ -72,33 +107,39 @@ const getActions = uri => {
           if (_productIdentifier in _items) {
             _quantity += _items[_productIdentifier].quantity;
           }
+          price = (sale == null ? _per : sale) * _quantity;
           _items[_productIdentifier] = {
             product: _product,
             quantity: _quantity,
-            price: _per * _quantity,
+            price,
             per: _per,
+            sale,
             amount: _amount
           };
           break;
         case "MODIFY":
           _item = _items[_productIdentifier];
           _quantity = Math.max(0, _quantity + _item.quantity);
+          price = (sale == null ? _per : sale) * _quantity;
           if (_quantity == 0) delete _items[_productIdentifier];
           else {
             _items[_productIdentifier] = {
               ..._item,
               quantity: _quantity,
-              price: _per * _quantity,
+              price,
+              sale,
               per: _per
             };
           }
           break;
         case "SET":
+          price = (sale == null ? _per : sale) * _quantity;
           _item = _items[_productIdentifier];
           _items[_productIdentifier] = {
             ..._item,
             quantity: _quantity,
-            price: _per * _quantity,
+            price,
+            sale,
             per: _per
           };
         default:
@@ -113,10 +154,29 @@ const getActions = uri => {
           return a + b;
         }, 0);
 
+      let _discount = (() => {
+        if (_coupon == null) return 0;
+        if (_coupon.type == "%") {
+          return Object.values(_items)
+            .map(a => {
+              if (isNaN(a.price) || isNaN(a.sale)) return 0;
+              return (a.per - a.sale) * a.quantity;
+            })
+            .reduce((a, b) => {
+              return a + b;
+            }, 0);
+        } else if (_coupon.type == "$") {
+          let _ = _coupon.amount;
+          _price = Math.max(0, _price - _);
+          return _;
+        }
+      })();
+
       return {
         type: actionTypes.MODIFY_CART,
         items: _items,
-        price: _price
+        price: _price,
+        discount: _discount
       };
     }
   };
