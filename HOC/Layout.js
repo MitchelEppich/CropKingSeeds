@@ -18,7 +18,11 @@ import Head from "next/head";
 import ShareButtons from "../components/sections/shareButtons";
 import AgeVerification from "../components/sections/ageVerification";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComments, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import {
+  faComments,
+  faCaretUp,
+  faAngleUp
+} from "@fortawesome/free-solid-svg-icons";
 
 class Layout extends Component {
   componentDidMount() {
@@ -114,14 +118,12 @@ class Layout extends Component {
         </div>
 
         <div
+          // style={{borderRadius: "50%"}}
           id="jumpToTop"
-          className="fixed z-999 w-16 mb-24 h-16 bg-red-light pin-b pin-l text-white text-center hidden text-lg pt-2 rounded-br-full rounded-tr-full cursor-pointer hover:bg-red-dark scale-item"
+          className="fixed z-999 w-12 mb-12 mr-4 h-12 bg-red-light pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-red-dark scale-item items-center flex shadow-md"
           onClick={() => window.scrollTo(0, 0)}
         >
-          <FontAwesomeIcon
-            icon={faCaretUp}
-            className="fa-2x my-1 pr-1  cursor-pointer"
-          />
+          <FontAwesomeIcon icon={faAngleUp} className="fa-2x cursor-pointer" />
         </div>
 
         <Cart {...this.props} />

@@ -6,7 +6,8 @@ const ContactForm = props => {
     <div className="w-full p-2 mt-10">
       <div
         style={{ boxShadow: "0 0 20px rgba(0, 0, 0, 0.18)" }}
-        className="w-700 sm:w-full sm:px-2 lg:w-600 md:w-full lg:px-2 md:px-2 md:pt-0 h-600 sm:h-full md:h-full md:px-2 xxl:mx-auto xl:mx-auto px-8 relative rounded-lg p-2">
+        className="w-700 sm:w-full sm:px-2 lg:w-600 md:w-full lg:px-2 md:px-2 md:pt-0 h-600 sm:h-full md:h-full md:px-2 xxl:mx-auto xl:mx-auto px-8 relative rounded-lg p-2"
+      >
         <div className="w-full p-2">
           <h2 className="font-extrabold text-3xl md:text-2xl sm:text-2xl p-2 mt-4">
             Send us a message
@@ -55,7 +56,7 @@ const ContactForm = props => {
               </div>
               <div className="w-main sm:w-full md:w-full flex justify-end">
                 <div className="w-200 sm:w-full md:w-full md:justify-center flex justify-end">
-                  <button className="p-2 sm:p-3 md:p-3 px-8 w-200 sm:w-full md:w-full xxl:rounded xl:rounded lg:rounded uppercase font-bold text-white bg-red-dark">
+                  <button className="p-2 sm:p-3 md:p-3 px-8 w-200 sm:w-full md:w-full  uppercase font-bold text-white bg-red-dark hover:bg-red-light">
                     Submit
                   </button>
                   {/* <div className=" font-bolder mr-12">
@@ -71,7 +72,8 @@ const ContactForm = props => {
           </form>
           <div
             style={{ right: "-145px" }}
-            className="absolute sm:w-full sm:relative md:w-full md:relative overflow-hidden sm:pin md:pin my-auto pin-r pin-y w-350 h-500 md:mt-12 sm:mt-12 rounded-lg xxl:shadow-lg xl:shadow-lg lg:shadow-lg bg-white">
+            className="absolute sm:w-full sm:relative md:w-full md:relative overflow-hidden sm:pin md:pin my-auto pin-r pin-y w-350 h-500 md:mt-12 sm:mt-12 xxl:shadow-lg xl:shadow-lg lg:shadow-lg bg-white"
+          >
             <div className="bg-red-dark text-center text-white py-2 p-1">
               <h2 className="p-3 py-0 text-3xl font-extrabold">Contact us</h2>
               <p className="text-white font-bold">24 hour customer service</p>
@@ -108,12 +110,13 @@ const ContactForm = props => {
               </div>
               <div
                 id="tawkto"
-                className="w-full text-center mt-10 relative scale-item cursor-pointer">
+                className="w-full text-center mt-10 relative scale-item cursor-pointer"
+              >
                 <div className="w-full relative">
                   <img src="../../static/img/cks_red.png" className="w-32" />
                 </div>
                 <div className="absolute -mb-2 pin-b w-full mx-auto">
-                  <h3 className="bg-red-dark w-main px-4 mx-auto shadow-md text-white uppercase font-bold p-2 rounded">
+                  <h3 className="bg-red-dark w-main px-4 mx-auto shadow-md text-white uppercase font-bold p-2">
                     Chat with the king
                   </h3>
                 </div>

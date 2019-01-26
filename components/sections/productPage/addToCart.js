@@ -12,7 +12,7 @@ const addToCart = props => {
 
   return (
     <div className="w-full">
-      <div className="w-container sm:w-full mx-auto mt-4">
+      <div className="w-container sm:w-full md:w-full mx-auto mt-4">
         <div className="inline-flex items-center flex w-full my-2 opacity-50">
           <div className="">
             <p className="w-100 text-left text-sm text-grey font-bold mx-auto">
@@ -29,7 +29,7 @@ const addToCart = props => {
           </p>
         </div>
       </div>
-      <div className="w-1/4 h-8 sm:w-full w-container mx-auto">
+      <div className="w-1/4 h-8 sm:w-full md:w-full w-container mx-auto">
         <div className="inline-flex flex my-2 items-center ">
           <div>
             <p className="w-100 text-left text-sm text-grey font-bold mx-auto">
@@ -49,7 +49,7 @@ const addToCart = props => {
         </div>
       </div>
 
-      <div className="w-container sm:w-full mx-auto">
+      <div className="w-container sm:w-full md:w-full mx-auto">
         <div className="w-full ml-0 flex justify-start">
           <SeedSelectModule {...props} product={currentProduct} />
         </div>

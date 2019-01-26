@@ -42,8 +42,13 @@ function enableScroll() {
   document.onkeydown = null;
 }
 
+let showRating;
+let rating;
+let totalReviews;
+
 const productThumbnail = props => {
   let currency = props.checkout.viewCurrency;
+
   let _coupon = props.checkout.orderDetails.coupon;
 
   let hover = props.hoverId == props.product._id;
@@ -56,6 +61,23 @@ const productThumbnail = props => {
   let nameSize = name.length < 14 ? "text-lg" : "text-base";
   let titleColorBackground =
     " bg-" + props.detail.geneColor[props.product.genetic.toLowerCase()];
+
+  let rating = props.product.rating || 0;
+
+  let showRating = () => {
+    rating = props.product.rating || 0;
+    totalReviews =
+      props.product.review == null ? 0 : props.product.review.length;
+    let arr = [];
+    for (let i = 0; i < 5; i++) {
+      arr.push(
+        <div>
+          <img src="../../static/img/CrownIcon_Inv.svg" className="w-8 h-8" />
+        </div>
+      );
+    }
+    return arr;
+  };
 
   return (
     <div className={overlayClass}>
@@ -131,7 +153,9 @@ const productThumbnail = props => {
             className="absolute w-full"
           >
             <h3
-              onClick={() => props.setHoverId(null, false)}
+              onClick={() => {
+                props.setHoverId(null, false);
+              }}
               className={
                 hover
                   ? "w-full mt-2 mb-2 text-black font-black text-2xl text-center cursor-pointer strainTitle--hover"
@@ -167,7 +191,7 @@ const productThumbnail = props => {
                 : "hidden slow"
             }
           >
-            <span className="ml-1 text-grey font-bolder uppercase">
+            <span className="p-2 ml-1 text-grey font-bolder uppercase text-grey">
               {props.product.genetic} {props.product.type}
             </span>
           </p>
@@ -179,9 +203,35 @@ const productThumbnail = props => {
               "/product/" + props.product.name.toLowerCase().replace(/ /g, "-")
             }
           >
-            <p className="cursor-pointer hover:text-grey">
-              {props.product.description.substring(0, 45) + "..."}
-            </p>
+            <div className="w-150 relative text-left justify-center flex mx-auto">
+              <div
+                className="inline-flex bg-red-light"
+                style={{
+                  width: `${150 * (rating / 5)}px`,
+                  height: "17px",
+                  marginTop: "7px"
+                }}
+              />
+              <div
+                className="inline-flex bg-grey-lightest"
+                style={{
+                  width: `${150 * ((5 - rating) / 5)}px`,
+                  height: "17px",
+                  marginTop: "7px"
+                }}
+              />
+              <div className="absolute pin-l inline-flex ">{showRating()} </div>
+            </div>
+
+            {/* <div
+              style={{ opacity: "50%" }}
+              className="absolute pl-10 pin-l inline-flex"
+            >
+              <p className="inline-flex">{showRating()}</p>
+              {/* <span className="ml-2 font-bold text-sm hover:text-grey-light items-center flex">
+                {rating.toFixed(1)} Crowns ({totalReviews} reviews)
+              </span> 
+            </div> */}
           </Link>
         </div>
         <div
@@ -264,9 +314,11 @@ const productThumbnail = props => {
               : "hidden slow"
           }
         >
-          <div className="w-1/2 mr-1 bg-grey-lightest pb-2">
-            <p className="text-xs mt-2 text-grey pt-2 px-2">Price per Pack:</p>{" "}
-            <p className="text-2xl text-grey px-2 ">
+          <div className="w-1/2 mr-1 border-grey-lightest border pb-2">
+            <p className="text-xs font-bold text-grey p-2 bg-grey-lightest">
+              Price per Pack:
+            </p>{" "}
+            <p className="text-lg pt-2 font-bold text-grey px-2">
               {currency != null
                 ? `${currency.symbol}${(
                     currency.convert *
@@ -277,9 +329,11 @@ const productThumbnail = props => {
                 : ""}
             </p>
           </div>
-          <div className="w-1/2 ml-1 bg-grey-lightest pb-2">
-            <p className="text-xs mt-2 text-grey pt-2 px-2">Total Price:</p>
-            <p className="text-2xl text-grey px-2">
+          <div className="w-1/2 ml-1 border-grey-lightest border pb-2">
+            <p className="text-xs font-bold text-grey p-2 bg-grey-lightest">
+              Total Price:
+            </p>
+            <p className="text-lg pt-2 font-bold text-grey px-2">
               {currency != null
                 ? `${currency.symbol}${(
                     currency.convert *
@@ -293,7 +347,7 @@ const productThumbnail = props => {
         <div
           className={hover ? "w-full mx-auto text-center p-1" : "hidden slow"}
         >
-          <p className="text-sm italic font-extrabold text-red-dark text-right mr-6">
+          <p className="text-sm italic font-extrabold pt-2 text-red-dark text-right mr-6">
             In stock
           </p>
         </div>

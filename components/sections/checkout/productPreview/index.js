@@ -13,6 +13,8 @@ const ProductPreview = props => {
   let currency = props.checkout.viewCurrency;
   let _coupon = props.checkout.orderDetails.coupon;
 
+  let _itemscart = Object.keys(props.cart.items);
+
   let showProducts = () => {
     let _arr = [];
 
@@ -212,7 +214,19 @@ const ProductPreview = props => {
       <MinimumOrderWarning {...props} />
 
       <div className="w-full inline-flex flex-wrap mb-4 mt-2">
-        {showProducts()}
+      {_itemscart.length > 0 ? (          
+        
+        showProducts()
+        ) : (
+          <div className="w-full text-center text-base">
+            <p className="text-3xl mb-2 mt-12 font-extrabold">
+              Sorry, your cart is empty!
+            </p>
+            <p>Looks like you have no items in your shopping cart.</p>
+            <p>Check back after more shopping.</p>
+          </div>
+        )}
+
       </div>
     </div>
   );

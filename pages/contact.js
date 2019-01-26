@@ -11,27 +11,30 @@ import ArticlePage from "../components/sections/articlePage";
 import ContactUs from "../components/sections/contactUs";
 
 class Index extends Component {
-    componentDidMount() {
-        document.getElementById("tawkto").addEventListener("click", () => Tawk_API.toggle());
-    }
-    render() {
-        return (
-            <Layout>
-                <div className="pt-12">
-                    <ContactUs {...this.props} />
-                </div>
-            </Layout>
-        );
-    }
+  componentDidMount() {
+    document
+      .getElementById("tawkto")
+      .addEventListener("click", () => Tawk_API.toggle());
+  }
+
+  render() {
+    return (
+      <Layout>
+        <div className="pt-6">
+          <ContactUs {...this.props} />
+        </div>
+      </Layout>
+    );
+  }
 }
 
 const mapDispatchToProps = dispatch => {
-    return {
-        setVisibleScreen: input => dispatch(actions.setVisibleScreen(input))
-    };
+  return {
+    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input))
+  };
 };
 
 export default connect(
-    state => state,
-    mapDispatchToProps
+  state => state,
+  mapDispatchToProps
 )(withData(Index));

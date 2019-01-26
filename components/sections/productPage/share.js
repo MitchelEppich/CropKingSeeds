@@ -4,7 +4,7 @@ import { faLink } from "@fortawesome/free-solid-svg-icons";
 
 const Share = props => {
     return (
-        <div className="text-white mt-6 sm:w-full shadow border border-grey-lightest w-container mx-auto">
+        <div className="text-white mt-6 sm:w-full md:w-full shadow border border-grey-lightest w-container mx-auto">
             <div className="bg-white h-8 items-center flex font-extrabold w-full justify-between text-grey-lighter inline-flex">
                 {/* <div className="mr-2 items-center h-8 p-2 bg-grey-light font-bold pt-3 flex uppercase text-white">
           Share

@@ -17,7 +17,16 @@ const reviewForm = props => {
           props.modifyReview({ key, value, review });
         }}
       >
-        <FontAwesomeIcon
+      <div>
+          <img src="../../static/img/CrownIcon.svg" 
+          className={`
+          ${
+            _review.rating > i
+              ? "cursor-pointer h-8 w-8 crown-icon text-red-dark"
+              : "cursor-pointer h-8 w-8 crown-icon text-red-dark opacity-25"
+          } `} />
+        </div>
+        {/* <FontAwesomeIcon
           key={i}
           icon={faCannabis}
           className={`fa-2x
@@ -26,14 +35,14 @@ const reviewForm = props => {
               ? "cursor-pointer text-red-dark mx-1"
               : "cursor-pointer text-red-dark mx-1 opacity-25"
           } `}
-        />
+        /> */}
       </div>
     );
   }
 
   return (
     <form
-      className="min-h-300 my-2 mb-12 w-container mx-auto"
+      className="min-h-300 my-2 mb-12 w-container sm:w-full sm:px-4 mx-auto"
       onSubmit={e => {
         e.preventDefault();
         let review = `${
@@ -103,16 +112,18 @@ const reviewForm = props => {
           className="w-full p-2 sm:p-2 h-200 my-2 mx-auto"
         />
       </div>
-      <div className="w-full inline-flex sm:block">
-        <div className="w-1/2 sm:w-full content-center flex mx-2 mt-4">
-          <p className="flex items-center mr-2 font-bold sm:text-sm sm:mx-auto">
+      <div className="w-full inline-flex sm:block md:block">
+        <div className="w-3/5 sm:w-full md:w-full md:mx-0 content-center flex mx-2 mt-2">
+          <p className="flex items-center mr-2 text-sm font-bold sm:text-sm sm:mx-auto">
             {" "}
-            {reviewIcons}
+            <span className="text-base text-grey-light font-normal mr-2">Select here:</span> {reviewIcons}
           </p>
         </div>
-        <div className="w-1/2 sm:w-full justify-end mr-auto flex">
+        <div className="w-2/5 sm:w-full justify-end mr-auto flex md:w-full md:justify-center">
+        <div>
+          </div>
           <button
-            className={`w-1/2 sm:w-full sm:mt-6 p-2 mt-2 text-xl hover:bg-red-light bg-red-dark text-white cursor-pointer ${
+            className={`w-1/2 sm:w-full sm:mt-6 md:w-full md:mt-4 p-2 mt-2 text-xl hover:bg-red-light bg-red-dark text-white cursor-pointer ${
               _review.rating == null
                 ? "opacity-50 unselectable pointer-events-none"
                 : ""

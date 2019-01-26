@@ -29,7 +29,7 @@ const Details = props => {
           Extra Info
         </h3>
       </div>
-      <div className="flex xl:block lg:block md:block sm:block mt-1 pt-1">
+      <div className="flex xl:block lg:block md:block sm:block mt-0 pt-1 md:mt-0 md:pt-0 sm:mt-0 sm:pt-0">
         <div className="w-full">
           <div className="w-full inline-flex items-center flex pl-6 bg-white mb-1">
             <div className="w-16 inline-flex">

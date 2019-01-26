@@ -29,7 +29,6 @@ import {
   faCartArrowDown
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import SideSteps from "../components/sections/checkout/sideSteps";
 
 import ErrorHandler from "../components/sections/checkout/errorHandler";
 
@@ -64,6 +63,8 @@ class Index extends Component {
     let _orderDetails = this.props.checkout.orderDetails;
     let _stepsCheckout = this.props.misc.stepsCheckout;
     let _error = this.props.checkout.error;
+
+    let itemsCart = Object.keys(this.props.cart.items);
 
     let error =
       ((_error[100] || _error[104]) && _stepsCheckout == 0) ||
@@ -108,7 +109,6 @@ class Index extends Component {
             className="w-main sm:w-full mx-auto mt-12"
           >
             <Checkout {...this.props} />
-            {/* <SideSteps {...this.props} /> */}
 
             {_stepsCheckout == 0 ? (
               <div>
@@ -116,7 +116,9 @@ class Index extends Component {
                 <div className="w-main mx-auto flex justify-end">
                   <Link href="/shop">
                     <p className="font-extrabold text-xl cursor-pointer scale-item text-red-light p-2 items-center flex">
-                      Continue Shopping{" "}
+                      {itemsCart.length > 0
+                        ? "Continue Shopping"
+                        : "Go to Shop Page"}
                       <FontAwesomeIcon
                         icon={faCartArrowDown}
                         className="ml-2 fa-lg"
