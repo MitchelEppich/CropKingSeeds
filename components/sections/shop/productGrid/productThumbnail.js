@@ -166,7 +166,7 @@ const productThumbnail = props => {
                         </span>
                     </p>
                 </div>
-                <div className={hover ? "text-grey px-6 p-2 text-sm" : "hidden slow"}>
+                <div className={hover ? "text-grey px-6 p-2 sm:pt-0 text-sm" : "hidden slow"}>
                     <Link href="/viewProduct" as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}>
                         <div className="w-150 relative text-left justify-center flex mx-auto">
                             <div
@@ -199,7 +199,7 @@ const productThumbnail = props => {
             </div> */}
                     </Link>
                 </div>
-                <div className={hover ? "w-full p-2 px-4 inline-flex text-grey text-center" : "hidden slow"}>
+                <div className={hover ? "w-full p-2 px-4 inline-flex text-grey text-center sm:hidden" : "hidden slow"}>
                     <div className="w-1/2 text-sm mr-2 inline-flex bg-grey-lightest text-center">
                         <div className="text-center w-full pt-1 inline-flex flex items-center justify-between">
                             <FontAwesomeIcon icon={faClock} className="fa-lg ml-2 mb-1" />
@@ -228,7 +228,7 @@ const productThumbnail = props => {
                             <div className="w-full">
                                 <SeedSelectModule {...props} product={props.product} />
                             </div>
-                            <div className="w-full inline-flex mt-2">
+                            <div className="w-full inline-flex sm:mt-0 mt-2">
                                 <button
                                     className="bg-red-dark mr-1 w-full text-center text-white h-10 px-2 py-2 hover:bg-grey"
                                     onClick={() => {

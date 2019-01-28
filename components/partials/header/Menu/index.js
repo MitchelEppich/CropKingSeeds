@@ -170,7 +170,7 @@ const menu = props => {
                     </div>
                     <div className="inline-flex w-full sm:block md:block lg:block">
                         <div className="w-1/4 sm:w-full md:w-full lg:w-full flex justify-start">
-                            <div className="pt-px pr-px pb-15px pl-3px sm:pb-2 sm:pr-1 flex shadow-md -mt-54px sm:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-130 rounded-full bg-semi-transparent justify-center content-center items-center">
+                            <div className="pt-px pr-px pb-15px pl-3px sm:pb-2 sm:pr-1 flex shadow-md -mt-54px sm:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-130 rounded-full bg-crimson justify-center content-center items-center">
                                 <img
                                     src="../static/img/cks-logo-header.png"
                                     onClick={() => console.log(props)}
@@ -248,7 +248,7 @@ const menu = props => {
                                 <div className="text-white p-2 h-12 ml-auto mr-4 w-12 flex justify-end bg-semi-transparent cursor-pointer">
                                     <FontAwesomeIcon icon={faBars} className="fa-2x" />
                                 </div>
-                                <div style={showMobileNav} className="w-full fixed bg-red-dark z-50">
+                                <div style={showMobileNav} className="w-full fixed pin-l bg-red-dark z-50">
                                     <ul
                                         className={
                                             isMobileNavVisible
