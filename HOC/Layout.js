@@ -23,6 +23,7 @@ import {
   faCaretUp,
   faAngleUp
 } from "@fortawesome/free-solid-svg-icons";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 class Layout extends Component {
   componentDidMount() {
@@ -96,7 +97,7 @@ class Layout extends Component {
 
   render() {
     return (
-      <div style={{ backgroundColor: "#f3f3f3", height: "100%" }}>
+      <div id="top" style={{ backgroundColor: "#f3f3f3", height: "100%" }}>
         <Head>
           <script src="../static/scripts/functions.js" />
         </Head>
@@ -116,17 +117,18 @@ class Layout extends Component {
           <FontAwesomeIcon icon={faComments} className="fa-3x cursor-pointer" />
           {/* <h3>CHAT</h3> */}
         </div>
-
-        <div // style={{borderRadius: "50%"}}
-          id="jumpToTop"
-          className="fixed z-999 w-12 mb-12 mr-4 h-12 bg-red-light pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-red-dark scale-item items-center flex shadow-md"
-          onClick={() => window.scrollTo(0, 0)}
-        >
-          <FontAwesomeIcon
-            icon={faAngleUp}
-            className="fa-2x cursor-pointer flex justify-center mt-1"
-          />
-        </div>
+        <AnchorLink className="items-center flex" href="#top">
+          <div
+            id="jumpToTop"
+            className="fixed z-999 w-12 mb-12 mr-4 h-12 bg-red-light pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-red-dark scale-item items-center flex shadow-md"
+            // onClick={() => window.scrollTo(0, 0)}
+          >
+            <FontAwesomeIcon
+              icon={faAngleUp}
+              className="fa-2x cursor-pointer flex justify-center mt-1"
+            />
+          </div>
+        </AnchorLink>
 
         <Cart {...this.props} />
         <Footer {...this.props} />

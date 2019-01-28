@@ -22,6 +22,7 @@ import Share from "../components/sections/productPage/share";
 import Description from "../components/sections/productPage/description";
 import Genetics from "../components/sections/productPage/genetics";
 import Breadcrumb from "../components/sections/productPage/breadcrumb";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 let rating;
 let totalReviews;
@@ -66,6 +67,7 @@ class Index extends Component {
                     {this.props.viewProduct.currentProduct.name}
                   </h1>
                 </div>
+
                 <div className="mt-1 relative cursor-pointer ml-1 pl-10 sm:pl-0 lg:pl-12 md:pl-0 w-full sm:mb-8 md:mb-8">
                   <div
                     className="inline-flex bg-red-light"
@@ -84,17 +86,19 @@ class Index extends Component {
                     }}
                   />
                   <div
-                    style={{
-                      opacity: "50%"
-                    }}
+                    style={{ opacity: "50%" }}
                     className="absolute pl-10 sm:pl-0 md:pl-0 lg:pl-12 pin-l inline-flex md:flex-col sm:flex-col"
                   >
                     <div className="">{this.showRating()} </div>
-                    <div className="ml-2 font-bold text-sm hover:text-grey-light items-center flex sm:w-full">
-                      {rating.toFixed(1)}{" "}
-                      <span className="sm:hidden md:hidden mx-1 ">Crowns</span>{" "}
-                      ({totalReviews} reviews)
-                    </div>
+                    <AnchorLink className="items-center flex" href="#reviews">
+                      <div className="ml-2 font-bold text-sm hover:text-grey-light items-center flex sm:w-full">
+                        {rating.toFixed(1)}{" "}
+                        <span className="sm:hidden md:hidden mx-1 ">
+                          Crowns
+                        </span>{" "}
+                        ({totalReviews} reviews)
+                      </div>
+                    </AnchorLink>
                   </div>
                 </div>
 
@@ -136,7 +140,9 @@ class Index extends Component {
               </h3>
               <MoreInfo {...this.props} />
             </div>
-            <Reviews {...this.props} />
+            <div>
+              <Reviews {...this.props} />
+            </div>
           </div>
         </div>
       </Layout>

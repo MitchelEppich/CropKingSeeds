@@ -105,7 +105,10 @@ const reviews = props => {
         <h3 className="w-full p-2 pl-6 font-bold text-3xl my-3 text-grey bg-smoke-grey">
           Last Reviews
         </h3>
-        <div className="w-full xxl:px-20 sm:px-2 lg:px-8 xl:px-8 md:px-8 mx-auto flex sm:flex-col lg:flex-col md:flex-col">
+        <div
+          id="reviews"
+          className="w-full xxl:px-20 sm:px-2 lg:px-8 xl:px-8 md:px-8 mx-auto flex sm:flex-col lg:flex-col md:flex-col"
+        >
           <div className="w-1/4 sm:w-full md:w-full lg:w-full">
             {" "}
             <ReviewStats {...props} />
