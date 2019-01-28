@@ -16,10 +16,10 @@ class Index extends Component {
             return <Question key={index} index={index} {...question} {...this.props} />;
         });
         let deliveryQuestions = this.props.faq.questions.slice(2, 6).map((question, index) => {
-            return <Question key={index} index={index} {...question} {...this.props} />;
+            return <Question key={index} index={index + 2} {...question} {...this.props} />;
         });
         let paymentQuestions = this.props.faq.questions.slice(6).map((question, index) => {
-            return <Question key={index} index={index} {...question} {...this.props} />;
+            return <Question key={index} index={index + 6} {...question} {...this.props} />;
         });
 
         return (

@@ -73,6 +73,7 @@ let colors = {
     "red-lighter": "#f9acaa",
     "red-lightest": "#fcebea",
     "red-sativa": "#E53B3A",
+    crimson: "#600706",
 
     "orange-feminized": "#FFC90A",
     "orange-darkest": "#462a16",
@@ -517,7 +518,10 @@ module.exports = {
         "1/16": "6.25%",
         "60px": "60px",
         "75px": "75px",
+        "80px": "80px",
         "100": "100px",
+        "125": "125px",
+        "130": "130px",
         "150": "150px",
         "175": "175px",
         "200": "200px",
@@ -580,8 +584,10 @@ module.exports = {
         "64": "16rem",
         "60px": "60px",
         "75px": "75px",
+        "80px": "80px",
         "100": "100px",
         "125": "125px",
+        "130": "130px",
         "150": "150px",
         "175": "175px",
         "200": "200px",
@@ -722,6 +728,9 @@ module.exports = {
 
     padding: {
         px: "1px",
+
+        "3px": "3px",
+        "15px": "15px",
         "0": "0",
         "1": "0.25rem",
         "2": "0.5rem",
@@ -819,6 +828,7 @@ module.exports = {
         "32": "8rem",
         "48": "12rem",
         "54": "15rem",
+        "54px": "54px",
         "64": "16rem"
     },
 
