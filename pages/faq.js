@@ -25,14 +25,24 @@ class Index extends Component {
       .slice(2, 6)
       .map((question, index) => {
         return (
-          <Question key={index} index={index} {...question} {...this.props} />
+          <Question
+            key={index}
+            index={index + 2}
+            {...question}
+            {...this.props}
+          />
         );
       });
     let paymentQuestions = this.props.faq.questions
       .slice(6)
       .map((question, index) => {
         return (
-          <Question key={index} index={index} {...question} {...this.props} />
+          <Question
+            key={index}
+            index={index + 6}
+            {...question}
+            {...this.props}
+          />
         );
       });
 
@@ -48,13 +58,12 @@ class Index extends Component {
               />
             </div>
             <div className="p-2 flex justify-end absolute pin-r bg-red text-white cursor-pointer w-10 h-12 slowish hover:bg-grey-light">
-              <FontAwesomeIcon
-                icon={faSearch}
-                className="fa-lg pt-1"
-              />
+              <FontAwesomeIcon icon={faSearch} className="fa-lg pt-1" />
             </div>
           </div>
-          <h1 className="mt-8 text-grey font-extrabold text-center text-3/5xl mx-auto w-full text-center mb-3">Frequently Asked Questions</h1>
+          <h1 className="mt-8 text-grey font-extrabold text-center text-3/5xl mx-auto w-full text-center mb-3">
+            Frequently Asked Questions
+          </h1>
           <p>
             Can't find the answer to your question? Feel free to{" "}
             <Link href="/contact">
