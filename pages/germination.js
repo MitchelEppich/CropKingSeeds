@@ -14,9 +14,9 @@ class Index extends Component {
   render() {
     return (
       <Layout>
-        <div className="pt-4 mb-24">
-          <div className="text-center w-full py-4">
-            <h1 className="text-3/5xl md:text-3xl sm:text-3xl text-center w-full font-extrabold p-2">
+        <div className="mb-24">
+          <div className="text-center w-full pb-8">
+            <h1 className="mt-5 text-grey font-extrabold text-center text-3/5xl mx-auto w-full text-center">
               Germination
             </h1>
           </div>

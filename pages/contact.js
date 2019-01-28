@@ -20,7 +20,7 @@ class Index extends Component {
   render() {
     return (
       <Layout>
-        <div className="pt-6">
+        <div className="pt-1">
           <ContactUs {...this.props} />
         </div>
       </Layout>
@@ -31,7 +31,7 @@ class Index extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
-    sendEmail: input => dispatch(actions.sendEmail(input)),
+    sendEmail: input => dispatch(actions.sendEmail(input))
   };
 };
 

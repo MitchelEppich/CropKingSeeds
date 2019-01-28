@@ -117,13 +117,15 @@ class Layout extends Component {
           {/* <h3>CHAT</h3> */}
         </div>
 
-        <div
-          // style={{borderRadius: "50%"}}
+        <div // style={{borderRadius: "50%"}}
           id="jumpToTop"
           className="fixed z-999 w-12 mb-12 mr-4 h-12 bg-red-light pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-red-dark scale-item items-center flex shadow-md"
           onClick={() => window.scrollTo(0, 0)}
         >
-          <FontAwesomeIcon icon={faAngleUp} className="fa-2x cursor-pointer" />
+          <FontAwesomeIcon
+            icon={faAngleUp}
+            className="fa-2x cursor-pointer flex justify-center mt-1"
+          />
         </div>
 
         <Cart {...this.props} />

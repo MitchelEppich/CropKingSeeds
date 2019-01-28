@@ -15,7 +15,7 @@ import {
 
 const Footer = props => {
   return (
-    <div className="w-full border-b-8 border-grey-dark mt-24 inline-flex justify-between xxl:px-12 xl:px-12 sm:block md:block lg:block bg-grey relative pb-1 sm:pb-0 md:pb-0 lg:pb-0">
+    <div className="w-full border-b-8 border-grey-dark mt-10 inline-flex justify-between xxl:px-12 xl:px-12 sm:block md:block lg:block bg-grey relative pb-1 sm:pb-0 md:pb-0 lg:pb-0">
       {" "}
       <div className="mx-auto inline-flex sm:block md:block w-1300 sm:w-full md:w-full lg:w-full">
         <div className="w-1/8 sm:w-full md:w-full lg:w-full sm:hidden md:hidden lg:hidden xl:hidden">
@@ -107,15 +107,20 @@ const Footer = props => {
               id=""
               value={props.misc.newsletterEmail || ""}
               placeholder="Email address"
-              onChange={(e) => {
-                  let value = e.target.value
-                  props.setEmail({email : value})
+              onChange={e => {
+                let value = e.target.value;
+                props.setEmail({ email: value });
               }}
             />
-            <div className="absolute pin-r pl-2 h-10  bg-yellow-dark text-grey cursor-pointer hover:bg-grey-dark hover:text-yellow-dark w-16" onClick={() => {
-                props.subscribeToNewsletter({email: props.misc.newsletterEmail})
-                props.setEmail({email : null})
-            }}>
+            <div
+              className="absolute pin-r pl-2 h-10  bg-yellow-dark text-grey cursor-pointer hover:bg-grey-dark hover:text-yellow-dark w-16"
+              onClick={() => {
+                props.subscribeToNewsletter({
+                  email: props.misc.newsletterEmail
+                });
+                props.setEmail({ email: null });
+              }}
+            >
               <FontAwesomeIcon icon={faAngleRight} className="fa-2x h-10 " />
             </div>
           </div>

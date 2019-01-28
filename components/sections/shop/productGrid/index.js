@@ -48,7 +48,7 @@ class Index extends Component {
                   multiple: filter == "genetic" ? true : false
                 })
               }
-              className="text-grey border bg-grey-lightest flex justify-center cursor-pointer hover:bg-red-dark hover:text-white items-center rounded-tl-lg rounded-br-lg border-grey-lightest p-2 m-1 font-bold slowish"
+              className="capitalize text-grey border bg-grey-lightest flex justify-center cursor-pointer hover:bg-red-dark hover:text-white items-center rounded-tl-lg rounded-br-lg border-grey-lightest p-2 m-1 font-bold slowish"
             >
               {label || value}
               <FontAwesomeIcon className="fa-sm ml-2" icon={faTimes} />
@@ -128,7 +128,7 @@ class Index extends Component {
           }
         >
           <div className="flex flex-wrap">
-            <p className="w-full mb-1">Active Filters:</p>
+            <p className="w-full mb-1 pl-2 font-bold uppercase opacity-50">Active Filters:</p>
             {activeFilters}
           </div>
           <div>
