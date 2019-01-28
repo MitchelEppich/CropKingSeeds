@@ -728,7 +728,6 @@ module.exports = {
 
     padding: {
         px: "1px",
-
         "3px": "3px",
         "15px": "15px",
         "0": "0",
@@ -747,6 +746,7 @@ module.exports = {
         "20": "5rem",
         "24": "6rem",
         "32": "8rem",
+        "40": "10rem",
         "48": "12rem",
         "56": "15rem",
         "64": "16rem",
@@ -789,6 +789,7 @@ module.exports = {
         "22": "5.5rem",
         "24": "6rem",
         "25": "6.3rem",
+        "25%": "calc(25% - 40px)",
         "32": "8rem",
         "48": "12rem",
         "54": "15rem",

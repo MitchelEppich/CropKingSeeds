@@ -140,7 +140,7 @@ const menu = props => {
             <div style={{ background: "rgba(93, 9, 9, 0.71)" }} className="w-full h-12">
                 <div
                     style={{ marginTop: "3px" }}
-                    className="w-container sm:w-full md:w-full lg:w-full mx-auto text-center relative">
+                    className="w-full xxl:px-64 xl:px-48 lg:px-40 md:pr-16 md:pl-48 sm:pl-24 sm:w-full md:w-full lg:w-full mx-auto text-center relative">
                     <div className="ray_box">
                         {(() => {
                             let arr = [];
@@ -169,8 +169,8 @@ const menu = props => {
                         })()}
                     </div>
                     <div className="inline-flex w-full sm:block md:block lg:block">
-                        <div className="w-1/4 sm:w-full md:w-full lg:w-full flex justify-center pl-2">
-                            <div className="pt-px pr-px pb-15px pl-3px sm:pb-2 sm:pr-1 flex shadow-md -mt-54px sm:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-130 rounded-full bg-crimson justify-center content-center items-center">
+                        <div className="w-1/4 sm:w-full md:w-full lg:w-full flex justify-start">
+                            <div className="pt-px pr-px pb-15px pl-3px sm:pb-2 sm:pr-1 flex shadow-md -mt-54px sm:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-130 rounded-full bg-semi-transparent justify-center content-center items-center">
                                 <img
                                     src="../static/img/cks-logo-header.png"
                                     onClick={() => console.log(props)}
