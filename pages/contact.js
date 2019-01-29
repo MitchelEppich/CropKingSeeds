@@ -11,31 +11,30 @@ import ArticlePage from "../components/sections/articlePage";
 import ContactUs from "../components/sections/contactUs";
 
 class Index extends Component {
-  componentDidMount() {
-    document
-      .getElementById("tawkto")
-      .addEventListener("click", () => Tawk_API.toggle());
-  }
+    componentDidMount() {
+        document.getElementById("tawkto").addEventListener("click", () => Tawk_API.toggle());
+    }
 
-  render() {
-    return (
-      <Layout>
-        <div className="pt-1">
-          <ContactUs {...this.props} />
-        </div>
-      </Layout>
-    );
-  }
+    render() {
+        return (
+            <Layout>
+                <div className="pt-1">
+                    <ContactUs {...this.props} />
+                </div>
+            </Layout>
+        );
+    }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
-    sendEmail: input => dispatch(actions.sendEmail(input))
-  };
+    return {
+        setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+        sendEmail: input => dispatch(actions.sendEmail(input)),
+        refreshEmailForm: () => dispatch(actions.refreshEmailForm())
+    };
 };
 
 export default connect(
-  state => state,
-  mapDispatchToProps
+    state => state,
+    mapDispatchToProps
 )(withData(Index));

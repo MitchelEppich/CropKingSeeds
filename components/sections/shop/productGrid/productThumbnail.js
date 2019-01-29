@@ -56,7 +56,8 @@ const productThumbnail = props => {
     let overlayClass = hover ? "overlayClass--hover" : "overlayClass";
     let productIdentifier = props.product.sotiId + [5, 10, 25][props.shop.quickAddToCartQty];
     let name = props.product.name;
-    let nameSize = name.length < 14 ? "text-lg" : "text-base";
+    let nameSizeHover = name.length < 14 ? "text-lg" : "text-base";
+    let nameSize = name.length < 14 ? "text-2xl" : "text-xl";
     let titleColorBackground = " bg-" + props.detail.geneColor[props.product.genetic.toLowerCase()];
 
     let rating = props.product.rating || 0;
@@ -143,9 +144,10 @@ const productThumbnail = props => {
                             }}
                             className={
                                 hover
-                                    ? "w-full mt-2 mb-2 text-black font-black text-2xl text-center cursor-pointer strainTitle--hover"
+                                    ? "w-full mt-2 mb-2 text-black font-black text-center cursor-pointer strainTitle--hover " +
+                                      nameSize
                                     : "text-center sm:text-xs text-grey p-2 font-extrabold z-50 strainTitle " +
-                                      nameSize +
+                                      nameSizeHover +
                                       titleColorBackground
                             }>
                             {name}

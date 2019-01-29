@@ -4,9 +4,34 @@ import { updateObject } from "../utility";
 const initialState = {
     questions: [
         {
+            question: "How do we package and ship your Crop King Seeds?",
+            answer:
+                "Crop King Seeds come in special packaging that is sealed for freshness.  All of our orders are shipped discreetly and with complete privacy"
+        },
+        {
+            question: "Can you have seeds delivered without the authentic packaging?",
+            answer:
+                "Authentic Crop King Seeds packaging can only be sent to Canadian customers. We are unable to send empty packaging separately to other countries."
+        },
+        {
+            question: "What is the price of shipping? And what are appropriate delivery times?",
+            answer:
+                "A. $10 Regular Shipping Canada: 2 – 7 business days depending on your area.Remote areas are up to 7 days.Large cities and cities closer to Vancouver can be 2 – 5 days. USA: Up to 2 weeks. International: All countries except Australia and New Zealand are required to pay $30.00 shipping.Australia and New Zealand can take up to 3 weeks.We will not be responsible for seized merchandise to Australia or New Zealand. B.$30 or $60 Express Registered with Tracking Guaranteed Delivery with insurance, depending on country of destination. 5-7 business days within North America.No Signature Required Importing seeds to some countries can be difficult.Approximately 5% of our orders are seized.Choosing the $30 or $60 Express shipping option guarantees delivery of your order; in case of seizure by customs we will reship.Only $10 Regular shipping fee applies to Australia and New Zealand. NOTE: Regular parcel shipments within Canada can take 5-10 days to be delivered.Express shipments take 2-5 days for delivery, and come with a free grinder."
+        },
+        {
+            question: "Which payment methods are accepted?",
+            answer:
+                "We accept US and Canadian dollars, Visa, Mastercard and Bitcoin.  We accept Interac E-Transfers for Canadians Only. Our mailing address is provided upon check-out"
+        },
+        {
+            question: "What currency is used to purchase seeds?",
+            answer:
+                "The prices for our seeds displayed are in US dollars. If you are a Canadian customer you are charged the amount displayed in Canadian dollars. Since we are a global company we choose to process in US dollars for all orders outside Canada."
+        },
+        {
             question: "Who can buy Crop King Seeds?",
             answer:
-                "Exercitation esse quis non sunt ullamco laborum ad anim dolore fugiat nostrud dolore commodo. Proident veniam id Lorem do elit quis aute cupidatat veniam irure pariatur. Aliquip dolore reprehenderit anim aliquip nostrud in labore dolore laboris nulla aliquip ipsum exercitation. Aute aliquip ut sit ut proident qui aute velit officia culpa fugiat deserunt. Sit ea officia eiusmod ad pariatur quis anim sit non laborum irure est consequat. Aliqua excepteur culpa mollit culpa adipisicing pariatur duis mollit laboris laboris in cupidatat nostrud cupidatat. Enim proident sunt labore quis sint eiusmod et quis eu amet Lorem."
+                "We ship to all countries. Canadian customers receive seeds in our original packaging. Customers from all other countries receive seeds inside random objects such as pens, flashlights, birthday cards and other items. Anyone can buy our seeds as long as they are over 19 years of age. Only authentic Crop King Seeds are found inside our famous packaging. Be careful of knock-offs"
         },
         {
             question: "How old do I have to be to buy seeds?",
@@ -14,34 +39,39 @@ const initialState = {
                 "Quis est consequat magna id dolore. Id mollit nisi velit cillum minim labore minim culpa. Exercitation sit aliqua consectetur voluptate pariatur do magna consequat ex non ex ex consequat in. Id tempor veniam mollit ea esse sit sunt qui consequat aute tempor sint incididunt. Cillum proident ullamco velit sunt aliqua sint eu ex. Exercitation esse fugiat in nisi commodo laboris ea cillum elit reprehenderit exercitation. Fugiat occaecat dolore anim ea incididunt sint nisi dolor officia consequat."
         },
         {
-            question: "How do we package and ship your Crop King Seeds?",
+            question: "How do you know we wont keep your money and not send your seeds?",
             answer:
-                "Elit id proident tempor eu. Sit veniam ut consequat occaecat pariatur ad veniam culpa quis dolor. Aliqua esse aliqua occaecat nostrud exercitation non. Ea dolor voluptate non mollit excepteur exercitation mollit labore ut. Eiusmod sint consectetur anim mollit voluptate veniam. Officia fugiat ut proident mollit veniam labore pariatur labore excepteur. Minim anim ullamco non veniam irure laborum exercitation nulla non ad aliqua cupidatat voluptate exercitation."
+                "We have spent 12 years building our company and the seed business is all about word-of-mouth referrals.  We have no interest in keeping your money.  We will make more money by ensuring you are delivered a quality product, so you can tell your friends and family."
         },
         {
-            question: "Can you have seeds delivered without the authentic packaging?",
+            question: "Where is Crop King Seeds located and is our privacy guaranteed?",
             answer:
-                "Aliquip culpa cillum occaecat nostrud ad excepteur duis. Cupidatat anim quis duis tempor nisi magna id eu do ad eu ad. Do irure occaecat anim sunt adipisicing ea fugiat aliqua ea consequat. Ad tempor anim irure et. Esse magna id nulla anim nisi sit ullamco sit magna."
+                "Our main office is in Vancouver, British Columbia, on the West coast of Canada.  We do not keep a record of your credit card number on file. We do not sell email addresses either."
         },
         {
-            question: "What are our shipping options?",
+            question: "How can my store/company become a distributor of Crop King Seeds?",
             answer:
-                "Adipisicing aliqua aliqua qui ipsum incididunt deserunt aute laborum amet fugiat incididunt velit mollit in. Quis tempor sit in ullamco incididunt amet Lorem enim ea irure est nostrud officia fugiat. Ea minim elit eiusmod aliquip ex non mollit commodo dolore excepteur pariatur. Aute ullamco officia et id ex."
+                "We are always looking for new retail distributors for Crop King Seeds.  You will find that your customers will come back to buy more packs directly from you.   Contact us with information about your store and why you would like to be a distributor."
         },
         {
-            question: "What is the price of shipping? And what are appropriate delivery times?",
+            question: "Do we have a retail location to buy Crop King Seeds in person?",
             answer:
-                "Consectetur excepteur irure qui magna. Nostrud aute pariatur minim proident id incididunt et excepteur duis veniam aliquip. Incididunt esse duis anim mollit elit elit fugiat ipsum labore culpa veniam veniam occaecat. Nostrud labore cupidatat consectetur fugiat occaecat ea ex tempor non est nulla nostrud non nisi. Velit id enim duis velit ut. Duis mollit sint amet nisi pariatur cupidatat nostrud commodo non. Laborum exercitation non nostrud ut sit."
+                "Yes, Crop King Seeds are sold in many retail and online stores.  Please look through our list of stores provided in the website banner to find a retail location closest to you."
         },
         {
-            question: "Which payment methods are accepted?",
+            question: "What is the best method to germinate Crop King Seeds?",
             answer:
-                "Eu velit velit elit voluptate. Sunt duis amet tempor qui velit qui do ipsum nisi dolore do consectetur proident aliqua. Sunt esse irure incididunt aute proident consequat culpa fugiat esse duis nisi magna. Culpa nisi veniam deserunt veniam ullamco. Cillum duis reprehenderit et incididunt non consectetur."
+                "The best method for germinating seeds is the cup of water & paper towel method. For detailed instructions, See the germination page on this website to learn how to germinate Crop King Seeds."
         },
         {
-            question: "What currency is used to purchase seeds?",
+            question: "What is the Crop King Guarantee?",
             answer:
-                "In magna ut culpa enim aliqua sit officia ullamco velit dolore. Cillum magna culpa tempor elit consectetur ipsum consequat aliqua labore esse ea commodo. Minim sit anim excepteur nostrud ut eiusmod fugiat. Consectetur consectetur incididunt minim qui qui commodo anim culpa minim ad ipsum. Aute incididunt aliqua nisi labore aliqua consectetur sunt elit et. Quis reprehenderit laboris occaecat reprehenderit ea minim et deserunt. Voluptate ad et deserunt culpa tempor commodo veniam anim officia nisi in culpa enim."
+                "At Crop King Seeds we stand by our product. Our seeds are inspected, tested and handpicked to be mature and viable. Each strain differs somewhat in size, shape and colour. Some seeds such as White Widow will actually be paler in appearance, or “white”, which is completely normal. An immature seed is green in colour or has a husk still attached to it. The guarantee is for germination only and does not extend to growing in your choice of medium such as soil."
+        },
+        {
+            question: "Can a feminized seed turn out to be male or hermaphrodite?",
+            answer:
+                "Yes, in rare circumstances this can happen. On average it is about 1 in 1000. This is caused by stress during the germination process. Always watch your plants carefully for characteristics of hermaphrodism. If you do begin to see such traits, move the plant to another room or dispose of it immediately to ensure you do not seed out your own plants or those of your neighbours."
         }
     ],
     currentlyExpanded: null
