@@ -8,6 +8,19 @@ import ProductThumbnail from "./productThumbnail";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+let sortingFunctions = {
+  alpha: (a, b) => {
+    if (a.name < b.name) return -1;
+    if (a.name > b.name) return 1;
+    return 0;
+  },
+  alphaR: (a, b) => {
+    if (a.name < b.name) return 1;
+    if (a.name > b.name) return -1;
+    return 0;
+  }
+};
+
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -74,6 +87,11 @@ class Index extends Component {
         if (_filter.thc != null && _filter.thc != a.thc) _pass = false;
         return _pass;
       })
+      .sort(
+        this.props.shop.sort != null
+          ? sortingFunctions[this.props.shop.sort]
+          : undefined
+      )
       .map((product, index) => {
         return (
           <div
@@ -135,10 +153,19 @@ class Index extends Component {
           </div>
           <div className="inline-flex">
             <p className="font-bold opacity-50 flex items-center">Sort by:</p>
-            <select className="ml-3">
-              <option value="Newest">Newest</option>
-              <option value="Most Popular">Most Popular</option>
-              <option value="Most Reviewed">Most Reviewed</option>
+            <select
+              className="ml-3"
+              defaultValue=""
+              onChange={e => {
+                let value = e.target.value;
+                this.props.setSort({ value });
+              }}
+            >
+              <option value="" disabled>
+                Select
+              </option>
+              <option value="alpha">↑ A - Z </option>
+              <option value="alphaR">↓ Z - A </option>
             </select>
           </div>
         </div>

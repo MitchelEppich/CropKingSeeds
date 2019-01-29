@@ -26,7 +26,8 @@ const StrainSchema = Schema({
   sotiId: String,
   rating: Number,
   reviews: [String],
-  ratingQuantity: {type: [Number], default: [0, 0, 0, 0, 0]}
+  ratingQuantity: { type: [Number], default: [0, 0, 0, 0, 0] },
+  featured: Boolean
 });
 
 module.exports = StrainSchema;

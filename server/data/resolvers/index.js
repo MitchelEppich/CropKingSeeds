@@ -55,8 +55,8 @@ const resolvers = {
       });
 
       let mailOptions = emailTemplates.contact({
-            ...input,
-          });
+        ...input
+      });
       // switch (input.type) {
       //   case "contact":
       //     mailOptions = emailTemplates.contact({

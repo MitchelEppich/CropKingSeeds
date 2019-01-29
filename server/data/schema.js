@@ -8,7 +8,8 @@ type Query {
   allStrains(filter: StrainFilter): [Strain]!
   order(input: OrderInput!): Order
   allOrders(filter: OrderFilter): [Order]!
-
+  
+  getFeaturedList: [Strain]!
   getBitcoinData(input: BitcoinDataInput): String
   getNewOrderId: Int
   getCoupon(coupon: String, ip: String): Coupon
@@ -68,6 +69,7 @@ type Strain {
   rating: Float
   reviews: [String]
   ratingQuantity: [Int]
+  featured: Boolean
 }
 
 input StrainInput {
@@ -93,6 +95,7 @@ input StrainInput {
   ruderalis: Float
   env: String
   review: String
+  featured: Boolean
 }
 
 type Order {

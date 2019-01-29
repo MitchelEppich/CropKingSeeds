@@ -79,6 +79,7 @@ const mapDispatchToProps = dispatch => {
     modifyPotentialQuantity: input =>
       dispatch(actions.modifyPotentialQuantity(input)),
     clearCart: () => dispatch(actions.clearCart()),
+    setSort: input => dispatch(actions.setSort(input)),
     toggleShowFilters: bool => dispatch(actions.toggleShowFilters(bool))
   };
 };
