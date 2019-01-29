@@ -36,11 +36,13 @@ const reviews = props => {
     // Add Back Button
     arr.push(
       <button
-        className={`w-32 sm:w-full sm:w-12 sm:mt-6 sm:mx-0 sm:mr-1 p-2 mt-2 mx-2 hover:bg-red-dark bg-red-light text-grey-light font-extrabold hover:text-white cursor-pointer text-white font-extrabold cursor-pointer ${
+        className={`w-32 sm:w-12 sm:w-full sm:mx-0 sm:ml-1 sm:mt-6 p-2 mt-2 mx-2 text-lg hover:bg-red-dark bg-red-light rounded text-white font-extrabold cursor-pointer ${
           cursor <= 0 ? "unselectable opacity-50 pointer-events-none" : ""
         }`}
         onClick={() => {
-          props.setReviewCursor({ cursor: props.viewProduct.reviewCursor - 1 });
+          props.setReviewCursor({
+            cursor: props.viewProduct.reviewCursor - 1
+          });
         }}
       >
         Back
@@ -58,7 +60,7 @@ const reviews = props => {
       let value = i;
       arr.push(
         <button
-          className={`w-10 sm:w-full sm:mx-1 sm:mt-6 p-2 mt-2 text-lg hover:bg-red-dark bg-red-light font-bold mx-1 text-white cursor-pointer  ${
+          className={`w-10 sm:w-full sm:mx-1 sm:mt-6 p-2 mt-2 text-lg hover:bg-red-dark bg-red-light font-bold rounded mx-1 text-white cursor-pointer  ${
             cursor == i ? "opacity-75" : ""
           }`}
           onClick={() => {
@@ -73,7 +75,7 @@ const reviews = props => {
     // Add Next Button
     arr.push(
       <button
-        className={`w-32 sm:w-12 sm:w-full sm:mx-0 sm:ml-1 sm:mt-6 p-2 mt-2 mx-2 text-lg hover:bg-red-dark bg-red-light text-white font-extrabold cursor-pointer ${
+        className={`w-32 sm:w-12 sm:w-full sm:mx-0 sm:ml-1 sm:mt-6 p-2 mt-2 mx-2 text-lg hover:bg-red-dark bg-red-light rounded text-white font-extrabold cursor-pointer ${
           (cursor + 1) * 5 >= _reviews.length
             ? "unselectable opacity-50 pointer-events-none"
             : ""
@@ -119,7 +121,7 @@ const reviews = props => {
                 reviews
               ) : (
                 <div className="h-150 w-full flex items-center">
-                  <div className="flex-col w-full">
+                  <div className="w-full">
                     <div className="w-full font-bold text-lg my-2">
                       <p className="text-center">
                         Looks like there are no reviews!

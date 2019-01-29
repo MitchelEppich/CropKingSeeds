@@ -52,7 +52,7 @@ let colors = {
     black: "#000",
     "smoke-grey": "#eee",
     "grey-darkest": "#3d4852",
-    "grey-darker": "#606f7b",
+    "grey-darker": "#181818",
     // "grey-dark": "#8795a1",
     "grey-dark": "#272727",
     grey: "#202020",
@@ -63,7 +63,7 @@ let colors = {
     "red-shopCart": "#9a1815",
     "red-navMobile": "rgba(103, 7, 6, 0.31)",
     "red-darkest": "#3b0d0c",
-    "red-darker": "#621b18",
+    "red-darker": "#a90000",
     "red-dark": "#bb1724", //red design Dre
     // "red-dark": "#A31621" old red,
     // "red-dark": "#960000",
@@ -725,7 +725,6 @@ module.exports = {
   | Class name: .p{side?}-{size}
   |
   */
-
     padding: {
         px: "1px",
         "3px": "3px",

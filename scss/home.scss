@@ -24,27 +24,27 @@
     }
 }
 //EXAMPLE FONT FACE IMPORT WITH TWO WEIGHTS
-// @font-face {
-//     font-family: "proxima nova";
-//     src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff") format("truetype");
-//     font-weight: thin;
-//     font-style: normal;
-//     font-display: swap;
-// }
-// @font-face {
-//     font-family: "proxima nova";
-//     src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff") format("truetype");
-//     font-weight: normal;
-//     font-style: normal;
-//     font-display: swap;
-// }
+@font-face {
+    font-family: "proxima nova";
+    src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff") format("truetype");
+    font-weight: thin;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "proxima nova";
+    src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 
 ////////////////////////
 // UNIVERSAL
 //ELEMENTS
 body,
 html {
-    font-family: "Nunito Sans", sans-serif;
+    font-family: "proxima nova", sans-serif;
     color: #252525;
     font-size: 15px;
     padding: 0;
@@ -62,7 +62,7 @@ h2,
 h3,
 h4,
 h5 {
-    font-family: "Nunito Sans", sans-serif;
+    font-family: "proxima nova", sans-serif;
 }
 input,
 select,
@@ -103,6 +103,10 @@ svg {
 //CLASSES
 .crown-icon {
     filter: invert(12%) sepia(100%) saturate(5014%) hue-rotate(350deg) brightness(80%) contrast(88%);
+}
+
+.shadow-text {
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.45);
 }
 
 .absolute-center {

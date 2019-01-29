@@ -12,7 +12,7 @@ const ShippingMethod = props => {
     )
       return (
         <div>
-          <p className="text-red-dark pb-8 font-bold">
+          <p className="text-red-dark w-full text-sm font-bold opacity-50 uppercase">
             ** Please select your Shipping Country and State / Province **
           </p>
         </div>
@@ -26,59 +26,63 @@ const ShippingMethod = props => {
           <div className="p-2 w-full">
             <div className="inline-flex items-top sm:flex-col flex w-full border-b-2 pb-4 border-grey-lightest">
               <div className="w-7/8 sm:w-full">
-                <label className="items-center flex cursor-pointer">
-                  <input
-                    type="checkbox"
-                    className="checkbox"
-                    id="method"
-                    checked={
-                      props.checkout.orderDetails[pageGroup] != null &&
-                      props.checkout.orderDetails[pageGroup].shippingCost !=
-                        null
-                        ? props.checkout.orderDetails[pageGroup].shippingCost
-                            .value == _method.price
-                        : false
-                    }
-                    onChange={e => {
-                      let _orderDetails = props.checkout.orderDetails;
-                      let _target = e.target;
-                      let _key = "shippingCost";
-                      let _value = _method.price;
-                      let _tag = "Shipping";
+                <label className="items-center flex cursor-pointer inline-flex">
+                  <div className="w-6">
+                    <input
+                      type="checkbox"
+                      className="checkbox"
+                      id="method"
+                      checked={
+                        props.checkout.orderDetails[pageGroup] != null &&
+                        props.checkout.orderDetails[pageGroup].shippingCost !=
+                          null
+                          ? props.checkout.orderDetails[pageGroup].shippingCost
+                              .value == _method.price
+                          : false
+                      }
+                      onChange={e => {
+                        let _orderDetails = props.checkout.orderDetails;
+                        let _target = e.target;
+                        let _key = "shippingCost";
+                        let _value = _method.price;
+                        let _tag = "Shipping";
 
-                      props.modifyOrderDetails({
-                        orderDetails: _orderDetails,
-                        group: pageGroup,
-                        key: _key,
-                        value: _value,
-                        tag: _tag,
-                        requestUpdateOfGroup: {
-                          value: true,
-                          group: "payment"
-                        }
-                      });
+                        props.modifyOrderDetails({
+                          orderDetails: _orderDetails,
+                          group: pageGroup,
+                          key: _key,
+                          value: _value,
+                          tag: _tag,
+                          requestUpdateOfGroup: {
+                            value: true,
+                            group: "payment"
+                          }
+                        });
 
-                      _key = "shippingDetail";
-                      _value = _method.tag;
-                      _tag = "Shipped_Type";
+                        _key = "shippingDetail";
+                        _value = _method.tag;
+                        _tag = "Shipped_Type";
 
-                      props.modifyOrderDetails({
-                        orderDetails: _orderDetails,
-                        group: pageGroup,
-                        key: _key,
-                        value: _value,
-                        tag: _tag
-                      });
-                    }}
-                  />
-                  <h2 className="font-extrabold text-grey hover:text-grey-light ml-2 sm:text-xl">
-                    {_method.type}
-                  </h2>
+                        props.modifyOrderDetails({
+                          orderDetails: _orderDetails,
+                          group: pageGroup,
+                          key: _key,
+                          value: _value,
+                          tag: _tag
+                        });
+                      }}
+                    />
+                  </div>
+                  <div className="w-full">
+                    <h2 className="font-extrabold text-grey hover:text-grey-light text-xl ml-2 sm:text-xl">
+                      {_method.type}
+                    </h2>
+                  </div>
                 </label>
-                <p className="mt-2 ml-10 sm:ml-2 leading-normal">
+                <p className="mt-2 text-sm font-bold ml-10 sm:ml-2 leading-normal text-grey-light">
                   - {_method.description}
                 </p>
-                <p className="mt-2 text-center font-extrabold leading-normal opacity-75 text-sm p-2 text-red-dark">{`${
+                <p className="mt-6 text-red-dark w-2/3 ml-10 text-sm font-bold opacity-25 uppercase">{`${
                   _method.note ? "** " + _method.note + " **" : ""
                 }`}</p>
               </div>

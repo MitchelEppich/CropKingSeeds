@@ -145,6 +145,63 @@ const ContactForm = props => {
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
+=======
+              </div>
+            </div>
+          </form>
+          <div
+            style={{ right: "-145px" }}
+            className="absolute sm:w-full sm:relative md:w-full md:relative overflow-hidden sm:pin md:pin my-auto pin-r pin-y w-350 h-500 md:mt-12 sm:mt-12 xxl:shadow-lg xl:shadow-lg lg:shadow-lg bg-white"
+          >
+            <div className="bg-red-dark text-center text-white py-2 p-1">
+              <h2 className="p-3 py-0 text-3xl font-extrabold">Contact us</h2>
+              <p className="text-white font-bold">24 hour customer service</p>
+            </div>
+            <div className="bg-white p-2 px-6 md:px-3">
+              <div className="inline-flex mt-4 items-center w-full flex">
+                <FontAwesomeIcon
+                  icon={faPhone}
+                  className="fa-2x mr-2 text-grey opacity-25"
+                />
+                <p className="p-2 text-2xl font-black">Phone</p>
+              </div>
+              <div className="ml-10 pl-1">
+                <p className="p-1 pb-2">
+                  <span className="font-extrabold">Canada:</span> (604) 563-0291
+                </p>
+                <p className="p-1 pb-2">
+                  <span className="font-extrabold">USA:</span> +1 (844) 276-7546
+                </p>
+                <p className="p-1 pb-2">
+                  <span className="font-extrabold">Worldwide:</span> +1 (604)
+                  563-0291
+                </p>
+              </div>
+              <div className="inline-flex mt-4 items-center w-full flex">
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  className="fa-2x mr-2 text-grey opacity-25"
+                />
+                <p className="p-2 text-2xl font-black">Email</p>
+              </div>
+              <div className="ml-10 pl-1">
+                <p className="p-1 pb-2">info@cropkingseeds.com</p>
+              </div>
+              <div
+                id="tawkto"
+                className="w-full text-center mt-10 relative scale-item cursor-pointer"
+              >
+                <div className="w-full relative">
+                  <img src="../../static/img/cks_red.png" className="w-32" />
+                </div>
+                <div className="absolute -mb-2 pin-b w-full mx-auto">
+                  <p className="bg-red-dark text-sm w-main rounded px-4 mx-auto shadow-md text-white uppercase font-bold p-2">
+                    Chat with the king
+                  </p>
+                </div>
+              </div>
+>>>>>>> 75816a23b2b9e13059b88ceb61641b02fd30fff2
             </div>
         </div>
     );
