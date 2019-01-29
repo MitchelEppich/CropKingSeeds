@@ -49,13 +49,15 @@ const PaymentReview = props => {
     let taxFee = cartTotal * cumTax;
 
     // Discount
-    let _coupon = _orderDetails.coupon;
     let discount = _cart.discount || 0;
     let discountAmt;
-    if (_coupon.type == "%") {
-      discountAmt = `${_coupon.amount.toFixed(2)}%`;
-    } else if (_coupon.type == "$") {
-      discountAmt = currency.symbol;
+    let _coupon = _orderDetails.coupon;
+    if (_coupon != null) {
+      if (_coupon.type == "%") {
+        discountAmt = `${_coupon.amount.toFixed(2)}%`;
+      } else if (_coupon.type == "$") {
+        discountAmt = currency.symbol;
+      }
     }
 
     let orderTotal = creditFee + shippingFee + cartTotal + taxFee;
