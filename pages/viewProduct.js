@@ -140,7 +140,7 @@ class Index extends Component {
               </h3>
               <MoreInfo {...this.props} />
             </div>
-            <div>
+            <div className="w-full">
               <Reviews {...this.props} />
             </div>
           </div>

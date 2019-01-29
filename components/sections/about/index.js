@@ -11,9 +11,9 @@ const About = props => {
       <div
         onClick={() => props.setCurrentHistoryObj(index)}
         key={index}
-        className="m-3 sm:m-2 md:w-16 sm:w-16 sm:h-12 md:h-12 w-1/4 h-16 xl:h-12 xl:m-2 cursor-pointer"
+        className="m-3 sm:m-2 md:w-16 sm:w-16 sm:h-16 md:h-16 w-1/4 h-16 xl:h-16 xl:m-2 cursor-pointer"
       >
-        <img src={val.imgSrc} className="rounded w-full h-full shadow-md" />
+        <img src={val.imgSrc} className="w-full h-full shadow-md" />
       </div>
     );
   });
@@ -23,7 +23,10 @@ const About = props => {
         key={index}
         className="w-250 md:my-5 sm:my-5  flex flex-wrap justify-center content-start "
       >
-        <img className="h-150 w-150 rounded-full shadow-md" src={val.src} />
+        <img
+          className="h-150 w-150 rounded-full border-8 border-grey-lighter scale-item"
+          src={val.src}
+        />
         <h2 className="w-250 my-5 mx-auto text-center uppercase ">
           {val.title}
         </h2>
@@ -44,7 +47,7 @@ const About = props => {
             History
           </h3>
         </div>
-        <div className="w-full p-2">
+        <div className="w-full pb-6 px-4">
           <div className="flex lg:flex-wrap md:flex-wrap sm:flex-wrap lg:justify-center mt-4 h-250 xl:h-200 lg:h-500 md:h-600 sm:h-650">
             <div className="w-1/3 sm:h-200 md:h-250 sm:w-full md:w-full lg:w-1/2 lg:pt-16 xl:pl-3 xl:pt-2 md:text-center">
               <img
@@ -70,7 +73,7 @@ const About = props => {
       </div>
       <div className="w-full mt-24">
         <div>
-          <h3 className="font-extrabold text-center mb-8 text-3/5xl text-grey-light uppercase">
+          <h3 className="font-extrabold text-center mb-8 text-3xl text-grey-light uppercase">
             Who We Are
           </h3>
         </div>

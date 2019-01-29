@@ -9,17 +9,17 @@ const review = props => {
   let ratings = [];
   for (let i = 0; i < 5; i++) {
     ratings.push(
-      <div>
+      <div key={i}>
         <img src="../../static/img/CrownIcon_Inv.svg" className="w-8 h-8" />
       </div>
     );
   }
- 
+
   rating = props.rating != null ? props.rating : 0;
   return (
-    <div className="mx-auto flex justify-center lg:block md:block sm:block sm:w-full w-full sm:ml-0 sm:pl-2 pl-2 mb-2 pb-4 shadow rounded p-2">
+    <div className="lg:block md:block sm:block sm:w-full w-full sm:ml-0 sm:pl-2 pl-2 mb-2 pb-4 shadow rounded p-2 inline-flex">
       <div className="pr-4 w-1/4 md:w-full sm:w-full lg:w-full md:inline-flex sm:inline-flex lg:inline-flex md:pr-0 sm:pr-0 lg:pr-0">
-        <div className="sm:w-1/2 md:w-1/2 lg:w-1/2 pl-2">
+        <div className="sm:w-1/2 md:w-1/2 lg:w-1/2 w-1/2 pl-2">
           <p className="font-bold text-lg mb-1">{props.name}</p>
           <p className="text-xs pl-2">{moment(props.date).fromNow()}</p>
         </div>
@@ -47,7 +47,9 @@ const review = props => {
         </div>
       </div>
       <div className="w-3/4 px-6 p-2 text-justify md:w-full sm:w-full lg:w-full sm:px-2 sm:mt-4 md:mt-4 lg:mt-4 text-sm">
-        <p>{props.body}</p>
+        <div className="w-full">
+          <p>{props.body}</p>
+        </div>
       </div>
     </div>
   );

@@ -8,10 +8,10 @@ const MinimumOrderWarning = props => {
     <div>
       {props.checkout.error[104] != null ? (
         <div className="w-full py-2">
-          <p className="text-red-dark w-full text-sm text-center font-bold opacity-75">
+          <p className="text-red-dark w-full text-sm text-center font-bold opacity-50 uppercase">
             ** The applied coupons require a{" "}
-            <span className="font-black">MINIMUM</span> order of{" "}
-            <span className="font-black">
+            <span className="underline">MINIMUM</span> order of{" "}
+            <span className="underline">
               {currency != null
                 ? `${currency.symbol}${(
                     currency.convert * (_orderDetails.coupon.minimumOrder || 0)

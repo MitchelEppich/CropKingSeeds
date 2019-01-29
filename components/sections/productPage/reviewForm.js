@@ -17,14 +17,16 @@ const reviewForm = props => {
           props.modifyReview({ key, value, review });
         }}
       >
-      <div>
-          <img src="../../static/img/CrownIcon.svg" 
-          className={`
+        <div>
+          <img
+            src="../../static/img/CrownIcon.svg"
+            className={`
           ${
             _review.rating > i
               ? "cursor-pointer h-8 w-8 crown-icon text-red-dark"
               : "cursor-pointer h-8 w-8 crown-icon text-red-dark opacity-25"
-          } `} />
+          } `}
+          />
         </div>
         {/* <FontAwesomeIcon
           key={i}
@@ -116,14 +118,16 @@ const reviewForm = props => {
         <div className="w-3/5 sm:w-full md:w-full md:mx-0 content-center flex mx-2 mt-2">
           <p className="flex items-center mr-2 text-sm font-bold sm:text-sm sm:mx-auto">
             {" "}
-            <span className="text-base text-grey-light font-normal mr-2">Select here:</span> {reviewIcons}
+            <span className="text-base text-grey-light opacity-75 font-bold mr-2">
+              Select here:
+            </span>{" "}
+            {reviewIcons}
           </p>
         </div>
         <div className="w-2/5 sm:w-full justify-end mr-auto flex md:w-full md:justify-center">
-        <div>
-          </div>
+          <div />
           <button
-            className={`w-1/2 sm:w-full sm:mt-6 md:w-full md:mt-4 p-2 mt-2 text-xl hover:bg-red-light bg-red-dark text-white cursor-pointer ${
+            className={`w-1/2 sm:w-full sm:mt-6 md:w-full md:mt-4 p-2 mt-2 text-xl hover:bg-red-light bg-red-dark text-lg text-white rounded cursor-pointer ${
               _review.rating == null
                 ? "opacity-50 unselectable pointer-events-none"
                 : ""

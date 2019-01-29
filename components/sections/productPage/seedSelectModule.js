@@ -18,14 +18,16 @@ const seedSelectModule = props => {
               : "bg-white text-grey w-1/3 h-10 flex mr-1 text-lg flex-wrap text-center justify-center leading-normal uppercase font-bold border border-grey-lightest hover:bg-grey-light hover:text-white"
           } ${
             price == -1 ? "opacity-50 pointer-events-none unselectable" : ""
-          }`}>
+          }`}
+        >
           {[5, 10, 25][index]}
           <span
             className={
               props.shop.quickAddToCartQty === index
-                ? " text-sm h-6 pt-1 ml-1"
-                : "text-sm h-6 pt-1 ml-1"
-            }>
+                ? "text-sm h-6 ml-1 flex items-center"
+                : "text-sm h-6 ml-1 flex items-center"
+            }
+          >
             {" "}
             seeds
           </span>
@@ -46,7 +48,8 @@ const seedSelectModule = props => {
               quantity: -1
             })
           }
-          className="w-8 bg-grey-light text-sm text-white">
+          className="w-8 bg-grey-light text-sm text-white"
+        >
           <FontAwesomeIcon
             icon={faMinus}
             className="fa-lg text-white cursor-pointer"
@@ -83,7 +86,8 @@ const seedSelectModule = props => {
               quantity: 1
             })
           }
-          className="w-8 bg-grey-light text-sm text-white">
+          className="w-8 bg-grey-light text-sm text-white"
+        >
           <FontAwesomeIcon
             icon={faPlus}
             className="fa-lg text-white cursor-pointer"
