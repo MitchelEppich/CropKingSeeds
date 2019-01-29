@@ -15,7 +15,7 @@ import {
 
 const Footer = props => {
   return (
-    <div className="w-full border-b-8 border-grey-dark mt-10 inline-flex justify-between xxl:px-12 xl:px-12 sm:block md:block lg:block bg-grey relative pb-1 sm:pb-0 md:pb-0 lg:pb-0">
+    <div className="w-full border-b-8 border-grey-darker mt-10 bg-grey inline-flex justify-between xxl:px-12 xl:px-12 sm:block md:block lg:block relative pb-1 sm:pb-0 md:pb-0 lg:pb-0">
       {" "}
       <div className="mx-auto inline-flex sm:block md:block w-1300 sm:w-full md:w-full lg:w-full">
         <div className="w-1/8 sm:w-full md:w-full lg:w-full sm:hidden md:hidden lg:hidden xl:hidden">
@@ -26,13 +26,13 @@ const Footer = props => {
             className="mt-8"
           />
         </div>
-        <div className="mt-6 sm:pb-4  sm:pt-4 md:pt-10 pl-6 w-1/4 lg:w-1/3 lg:pl-6 md:w-full sm:w-full sm:pl-0 md:pl-0 sm:block md:block">
+        <div className="mt-6 sm:pb-4 xl:pl-0 sm:pt-4 md:pt-10 pl-6 w-1/4 lg:w-1/3 lg:pl-6 md:w-full sm:w-full sm:pl-0 md:pl-0 sm:block md:block">
           {" "}
-          <h3 className="text-yellow-dark pl-2 uppercase text-2xl font-extrabold sm:pl-0 md:pl-0 sm:text-center md:text-center">
+          <h3 style={{background: "rgba(23, 23, 23, 0.84)"}} className="text-red-darker bg-almost-black p-1 text-center pl-2 uppercase text-2xl font-extrabold sm:pl-0 md:pl-0 sm:text-center md:text-center">
             Menu
           </h3>
-          <ul className="text-white font-bold px-2 inline-flex sm:w-full sm:flex sm:mx-auto sm:justify-center md:w-full md:flex md:mx-auto md:justify-center">
-            <div className="sm:ml-4 md:ml-4">
+          <ul className="text-white font-bold px-2 inline-flex sm:w-full sm:flex sm:mx-auto sm:justify-center md:w-full md:flex md:mx-auto md:justify-center w-full">
+            <div className="sm:ml-4 md:ml-4 w-1/2 text-right">
               <Link href="/about">
                 <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
                   About
@@ -59,7 +59,7 @@ const Footer = props => {
                 </li>
               </Link>
             </div>
-            <div className="ml-4">
+            <div className="ml-4 w-1/2 text-left">
               <Link href="/faq#delivery">
                 <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
                   Delivery
@@ -90,8 +90,7 @@ const Footer = props => {
           </ul>
         </div>
         <div
-          className="text-white text-center mx-6 sm:mx-0 md:mx-0 sm:pt-2 sm:pb-4 md:pt-1 sm:bg-grey-dark
-                  md:bg-grey-dark w-3/8 md:mt-8 pt:mt-8 md:w-full lg:w-1/3 sm:w-full sm:block md:block"
+          className="text-white text-center mx-6 sm:mx-0 md:mx-0 sm:pt-2 sm:pb-4 md:pt-1 sm:bg-grey-dark md:bg-grey-dark w-3/8 xl:w-2/4 md:mt-8 pt:mt-8 md:w-full lg:w-1/3 sm:w-full sm:block md:block"
         >
           <h4 className="p-2 mt-4 mb-1 text-2/5xl lg:text-xl lg:mt-6 md:text-xl md:mt-6 font-extrabold">
             Subscribe to the CKS Newsletter
@@ -113,7 +112,7 @@ const Footer = props => {
               }}
             />
             <div
-              className="absolute pin-r pl-2 h-10  bg-yellow-dark text-grey cursor-pointer hover:bg-grey-dark hover:text-yellow-dark w-16"
+              className="absolute pin-r pl-2 h-10  bg-red-darker text-white cursor-pointer hover:bg-grey-dark hover:text-red-darker w-16"
               onClick={() => {
                 props.subscribeToNewsletter({
                   email: props.misc.newsletterEmail
@@ -129,14 +128,14 @@ const Footer = props => {
             className="p-2 px-8 bg-yellow-dark text-white text-2xl w-container mt-2 mx-auto rounded font-bold text-center cursor-pointer hover:bg-grey-light">
             Subscribe
           </div> */}
-          <p className="p-2 mt-10 w-container mx-auto text-center sm:hidden md:hidden lg:hidden">
+          <p className="p-2 mt-10 w-container mx-auto text-center sm:hidden md:hidden text-xl lg:hidden">
             Copyright © 2019 Crop King Seeds
           </p>
         </div>
-        <div className="p-2 mr-4 w-1/5 sm:w-full md:w-full lg:w-1/3 sm:mx-0 md:mx-0 sm:p-0 md:p-0 sm:block md:block md:mt-8 pt:mt-8 ">
+        <div className="p-2 mr-4 w-1/5 xl:w-1/4 sm:w-full md:w-full lg:w-1/3 sm:mx-0 md:mx-0 sm:p-0 md:p-0 sm:block md:block md:mt-8 pt:mt-8">
           {" "}
-          <div className="mt-4 text-white sm:text-center md:text-center lg:text-center text-right">
-            <h3 className="text-yellow-dark font-extrabold text-2xl uppercase sm:text-center md:text-center lg:text-center">
+          <div className="mt-4 text-white sm:text-center md:text-center lg:text-center text-center">
+            <h3 style={{background: "rgba(23, 23, 23, 0.84)"}}  className="text-red-darker bg-almost-black p-1 text-center font-extrabold text-2xl uppercase sm:text-center md:text-center lg:text-center">
               Follow us
             </h3>
             <div className="pl-2 inline-flex mt-2 sm:w-full sm:mx-auto sm:justify-center md:w-full md:mx-auto md:justify-center md:text-right sm:text-right">
@@ -147,7 +146,7 @@ const Footer = props => {
               >
                 <FontAwesomeIcon
                   icon={faInstagram}
-                  className="fa-2x text-white mx-2 cursor-pointer hover:text-grey-light"
+                  className="fa-2x pt-1 text-white mx-1 cursor-pointer hover:text-grey-light"
                 />
               </a>
               <a
@@ -157,7 +156,7 @@ const Footer = props => {
               >
                 <FontAwesomeIcon
                   icon={faFacebook}
-                  className="fa-2x text-white mx-2 cursor-pointer hover:text-grey-light"
+                  className="fa-2x pt-1 text-white mx-1 cursor-pointer hover:text-grey-light"
                 />
               </a>
               <a
@@ -167,7 +166,7 @@ const Footer = props => {
               >
                 <FontAwesomeIcon
                   icon={faTwitter}
-                  className="fa-2x text-white mx-2 cursor-pointer hover:text-grey-light"
+                  className="fa-2x pt-1 text-white mx-1 cursor-pointer hover:text-grey-light"
                 />
               </a>
               <a
@@ -177,14 +176,14 @@ const Footer = props => {
               >
                 <FontAwesomeIcon
                   icon={faGooglePlus}
-                  className="fa-2x text-white mx-2 cursor-pointer hover:text-grey-light"
+                  className="fa-2x pt-1 text-white cursor-pointer hover:text-grey-light"
                 />
               </a>
             </div>
           </div>
-          <div className="mt-16 text-right sm:text-center md:text-center lg:text-center">
-            <h3 className="text-yellow-dark font-extrabold text-2xl uppercase ">
-              Contact
+          <div className="mt-12 pt-2 text-center sm:text-center md:text-center lg:text-center">
+            <h3 style={{background: "rgba(23, 23, 23, 0.84)"}} className="text-red-darker bg-almost-black p-1 text-center font-extrabold text-2xl uppercase ">
+              Contact us
             </h3>
             <p className="text-white text-xl p-1 lg:text-lg">
               info@cropkingseeds.com

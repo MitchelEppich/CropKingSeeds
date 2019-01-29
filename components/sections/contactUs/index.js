@@ -11,8 +11,13 @@ const ContactUs = props => {
         <p className="p-2 px-8 md:px-2 sm:px-2 mx-auto md:w-full sm:w-full w-container text-lg font-bold text-center">
           We provide full support worldwide to address any questions or comments
           you may have. Please view our{" "}
-          <Link href="/faq"><span className="text-red cursor-pointer"> FAQ Page</span></Link> to see if we have answered
-          your question(s) already!
+          <Link href="/faq">
+            <span className="text-red-dark cursor-pointer hover:text-grey">
+              {" "}
+              FAQ Page
+            </span>
+          </Link>{" "}
+          to see if we have answered your question(s) already!
         </p>
       </div>
 

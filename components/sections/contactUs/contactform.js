@@ -86,7 +86,7 @@ const ContactForm = props => {
                 <div className="w-200 sm:w-full md:w-full md:justify-center flex justify-end">
                   <button
                     type="submit"
-                    className="p-2 sm:p-3 md:p-3 px-4 w-150 sm:w-full md:w-full  uppercase font-bold text-white rounded bg-red-dark hover:bg-red-light"
+                    className="p-2 sm:p-3 md:p-3 px-4 w-150 sm:w-full md:w-full  text-lg uppercase font-bold text-white rounded bg-red-dark hover:bg-red-light"
                   >
                     Submit
                   </button>
@@ -147,9 +147,9 @@ const ContactForm = props => {
                   <img src="../../static/img/cks_red.png" className="w-32" />
                 </div>
                 <div className="absolute -mb-2 pin-b w-full mx-auto">
-                  <h3 className="bg-red-dark w-main rounded px-4 mx-auto shadow-md text-white uppercase font-bold p-2">
+                  <p className="bg-red-dark text-sm w-main rounded px-4 mx-auto shadow-md text-white uppercase font-bold p-2">
                     Chat with the king
-                  </h3>
+                  </p>
                 </div>
               </div>
             </div>

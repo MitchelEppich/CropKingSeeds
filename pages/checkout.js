@@ -83,11 +83,7 @@ class Index extends Component {
             // this.props.toggleStepsCheckout(1);
             if (_stepsCheckout == 3) {
               this.props
-                .processOrder({
-                  orderDetails: {
-                    ..._orderDetails
-                  }
-                })
+                .processOrder({ orderDetails: { ..._orderDetails } })
                 .then(res => {
                   console.log(res);
                   this.props.toggleStepsCheckout(_stepsCheckout + 1);
@@ -113,9 +109,9 @@ class Index extends Component {
             {_stepsCheckout == 0 ? (
               <div>
                 <ProductPreview {...this.props} />
-                <div className="w-main mx-auto flex justify-end">
+                <div className="w-full flex justify-end">
                   <Link href="/shop">
-                    <p className="font-extrabold text-xl cursor-pointer scale-item text-red-light p-2 items-center flex">
+                    <p className="font-extrabold text-xl cursor-pointer scale-item text-red-light p-2 mr-6 items-center flex">
                       {itemsCart.length > 0
                         ? "Continue Shopping"
                         : "Go to Shop Page"}
@@ -152,7 +148,7 @@ class Index extends Component {
             {_stepsCheckout == 4 ? <Confirmation {...this.props} /> : null}
           </div>
 
-          <div className="w-container mx-auto">
+          <div className="w-main mx-auto">
             <hr
               style={{ border: "1px solid rgba(228, 228, 228, 0.3)" }}
               className=""
@@ -168,7 +164,7 @@ class Index extends Component {
                 className="w-200 p-2 text-left cursor-pointer flex items-center hover:text-red"
               >
                 {_stepsCheckout != 0 ? (
-                  <span className="flex items-center font-extrabold text-red-dark hover:text-red-light text-2xl uppercase">
+                  <span className="flex items-center font-extrabold text-red-light hover:text-red-light text-2xl uppercase">
                     <FontAwesomeIcon
                       icon={faAngleLeft}
                       className="fa-2x mr-4"
@@ -192,7 +188,7 @@ class Index extends Component {
               >
                 {_stepsCheckout != 4 ? (
                   <button
-                    className="flex items-center font-extrabold text-red-dark hover:text-red-light text-2xl uppercase"
+                    className="flex items-center font-extrabold text-red-light hover:text-red-light text-2xl uppercase"
                     type="submit"
                   >
                     Next

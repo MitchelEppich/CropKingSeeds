@@ -128,11 +128,13 @@ class Index extends Component {
           }
         >
           <div className="flex flex-wrap">
-            <p className="w-full mb-1 pl-2 font-bold uppercase opacity-50">Active Filters:</p>
+            <p className="w-full mb-1 pl-2 font-bold opacity-50">
+              Active Filters:
+            </p>
             {activeFilters}
           </div>
-          <div>
-            Sort by:
+          <div className="inline-flex">
+            <p className="font-bold opacity-50 flex items-center">Sort by:</p>
             <select className="ml-3">
               <option value="Newest">Newest</option>
               <option value="Most Popular">Most Popular</option>

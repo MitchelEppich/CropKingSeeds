@@ -111,16 +111,19 @@ class Layout extends Component {
           </div>
         </div>
         <div
-          className="sm:hidden md:hidden lg:hidden fixed z-999 w-24 mb-48 h-24 bg-red-light pin-b pin-l text-white text-center text-lg pt-4 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item"
+          className="sm:hidden md:hidden lg:hidden fixed z-999 w-20 mb-48 h-16 bg-red-darker pin-b pin-l text-white text-center text-lg pt-3 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item shadow-md"
           onClick={() => Tawk_API.toggle()}
         >
-          <FontAwesomeIcon icon={faComments} className="fa-3x cursor-pointer" />
+          <FontAwesomeIcon
+            icon={faComments}
+            className="ml-2 fa-2x cursor-pointer"
+          />
           {/* <h3>CHAT</h3> */}
         </div>
         <AnchorLink className="items-center flex" href="#top">
           <div
             id="jumpToTop"
-            className="fixed z-999 w-12 mb-12 mr-4 h-12 bg-red-light pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-red-dark scale-item items-center flex shadow-md"
+            className="fixed z-999 w-12 mb-12 mr-4 h-12 bg-red-darker pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-red-dark scale-item items-center flex rounded shadow-md"
             // onClick={() => window.scrollTo(0, 0)}
           >
             <FontAwesomeIcon
