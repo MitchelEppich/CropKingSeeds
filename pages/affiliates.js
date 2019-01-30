@@ -30,7 +30,7 @@ class Index extends Component {
                 target="_blank"
                 href="https://affiliates.cropkingseeds.com/signup.php"
               >
-                <button className="px-12 sm:my-2 sm:px-8 md:my-2 md:mx-2 md:px-8 py-2 text-lg uppercase font-bold rounded bg-red-dark text-white">
+                <button className="px-12 sm:my-2 sm:px-8 md:my-2 md:mx-2 md:px-8 py-2 text-lg uppercase font-bold rounded bg-red-dark text-white hover:bg-red-light">
                   sign up
                 </button>
               </a>
@@ -38,7 +38,7 @@ class Index extends Component {
                 target="_blank"
                 href="https://affiliates.cropkingseeds.com/index.php"
               >
-                <button className="sm:my-2 md:my-2 md:mx-2 lg:ml-12 px-10 py-2 text-lg uppercase font-bold rounded bg-white text-red-dark">
+                <button className="sm:my-2 md:my-2 md:mx-2 lg:ml-12 px-10 py-2 text-lg uppercase font-bold rounded bg-white text-red-dark hover:bg-grey-darker hover:text-white">
                   login
                 </button>
               </a>

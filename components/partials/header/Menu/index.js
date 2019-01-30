@@ -69,7 +69,7 @@ const menu = props => {
 
     showMobileNav = isMobileNavVisible
         ? {
-              height: "320px",
+              height: "285px",
               transition: "all 0.4s ease-in-out",
               WebkitTransition: "all 0.3s ease-in-out",
               zIndex: "-90",
@@ -103,7 +103,7 @@ const menu = props => {
                 <div className="w-1/2 relative">
                     <div
                         style={viewCurrency}
-                        className="fixed h-12 overflow-hidden sm:h-10 pin-l bg-white shadow-md rounded cursor-pointer mt-10 -mr-1">
+                        className="fixed h-12 z-50 overflow-hidden sm:h-10 pin-l bg-white shadow-md rounded cursor-pointer mt-10 -ml-1">
                         {" "}
                         <div className="w-full wrap flex-wrap">{showCurrency()}</div>
                     </div>
@@ -114,7 +114,7 @@ const menu = props => {
                             })
                         }
                         style={{ background: "#f9f9f9" }}
-                        className="absolute pin-l shadow-md my-auto rounded -mr-2 inline-flex cursor-pointer scale-item">
+                        className="absolute pin-l shadow-md my-auto rounded -ml-2 inline-flex cursor-pointer scale-item">
                         <p className="px-6 pt-2 p-1 uppercase text-center font-extrabold sm:px-4 text-lg sm:text-sm">
                             {currency != null ? currency.label.toUpperCase() : ""}
                         </p>
@@ -127,7 +127,7 @@ const menu = props => {
                     <a
                         href="tel:+1-844-276-7546"
                         style={phoneNumberPosition}
-                        className="no-underline text-grey absolute inline-flex pin-r shadow-md my-auto rounded -ml-4">
+                        className="no-underline text-grey absolute inline-flex pin-r shadow-md my-auto rounded -mr-2">
                         <div className="w-12 rounded bg-yellow-dark p-2  items-center flex justify-center">
                             <p>
                                 <FontAwesomeIcon icon={faPhone} className="" />

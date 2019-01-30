@@ -78,7 +78,7 @@ const ContactForm = props => {
                                     <div className="w-200 sm:w-full md:w-full md:justify-center flex justify-end">
                                         <button
                                             type="submit"
-                                            className="p-2 sm:p-3 md:p-3 px-4 w-150 sm:w-full md:w-full  uppercase font-bold text-white rounded bg-red-dark hover:bg-red-light">
+                                            className="p-2 sm:p-3 md:p-3 px-4 w-150 sm:w-full md:w-full text-lg uppercase font-bold text-white rounded bg-red-dark hover:bg-red-light">
                                             Submit
                                         </button>
                                         {/* <div className=" font-bolder mr-12">
@@ -104,8 +104,8 @@ const ContactForm = props => {
                     )}
                     <div
                         style={{ right: "-145px" }}
-                        className="absolute sm:w-full sm:relative md:w-full md:relative overflow-hidden sm:pin md:pin my-auto pin-r pin-y w-350 h-500 md:mt-12 sm:mt-12 xxl:shadow-lg xl:shadow-lg lg:shadow-lg bg-white">
-                        <div className="bg-red-dark text-center text-white py-2 p-1">
+                        className="absolute sm:w-full sm:relative md:w-full md:relative overflow-hidden sm:pin md:pin my-auto pin-r pin-y w-350 h-500 sm:border-t-2 sm:border-grey-lightest md:border-t-2 md:border-grey-lightest md:mt-8 md:pt-8 sm:pt-8 sm:mt-8 xxl:shadow-lg xl:shadow-lg lg:shadow-lg bg-white">
+                        <div className="bg-red-dark text-center text-white py-2 p-1 sm:rounded md:rounded">
                             <h2 className="p-3 py-0 text-3xl font-extrabold">Contact us</h2>
                             <p className="text-white font-bold">24 hour customer service</p>
                         </div>
@@ -137,7 +137,7 @@ const ContactForm = props => {
                                     <img src="../../static/img/cks_red.png" className="w-32" />
                                 </div>
                                 <div className="absolute -mb-2 pin-b w-full mx-auto">
-                                    <h3 className="bg-red-dark w-main rounded px-4 mx-auto shadow-md text-white uppercase font-bold p-2">
+                                    <h3 className="bg-red-dark w-main rounded px-4 text-sm mx-auto shadow-md text-white uppercase font-bold p-2">
                                         Chat with the king
                                     </h3>
                                 </div>
