@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const slide = props => {
     let positionIndex = props.position + props.index;
     if (props.position + props.index >= props.misc.bannerSlides.length) {
@@ -12,7 +14,11 @@ const slide = props => {
             }}
             style={{ ...position, ...props.style }}
             className={"xxl:h-600 xl:h-400 lg:h-400 md:h-250 sm:h-44 w-full z-0 absolute bg-" + props.color}>
-            {props.index == 2 ? <button className="bannerBuyNow sm:hidden">Buy Now</button> : null}
+            {props.index == 2 ? (
+                <Link href="http://localhost:3000/product/gelato">
+                    <button className="bannerBuyNow sm:hidden">Buy Now</button>
+                </Link>
+            ) : null}
         </div>
     );
 };

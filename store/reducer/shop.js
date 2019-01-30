@@ -4,7 +4,8 @@ import { updateObject } from "../utility";
 const initialState = {
     activeFilters: {},
     quickAddToCartQty: 0,
-    showFilters: true
+    showFilters: true,
+    cartAnimation: false
 };
 
 export default (state = initialState, action) => {
@@ -25,6 +26,10 @@ export default (state = initialState, action) => {
             return updateObject(state, {
                 showFilters: action.bool
             });
+        case actionTypes.RESET_CART_ANIMATION:
+            return updateObject(state, { cartAnimation: false });
+        case actionTypes.TOGGLE_CART_ANIMATION:
+            return updateObject(state, { cartAnimation: true });
         default:
             return state;
     }

@@ -40,16 +40,12 @@ function enableScroll() {
     window.ontouchmove = null;
     document.onkeydown = null;
 }
-
 let showRating;
 let rating;
 let totalReviews;
-
 const productThumbnail = props => {
     let currency = props.checkout.viewCurrency;
-
     let _coupon = props.checkout.orderDetails.coupon;
-
     let hover = props.hoverId == props.product._id;
     let packageClass = hover ? "packageClass--hover" : "packageClass";
     let plantClass = hover ? "plantClass--hover" : "plantClass";
@@ -242,6 +238,7 @@ const productThumbnail = props => {
                                             quantity: props.cart.potentialQuantity,
                                             coupon: _coupon
                                         });
+                                        props.toggleCartAnimation();
                                     }}>
                                     Add to Cart
                                 </button>

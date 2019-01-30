@@ -18,6 +18,7 @@ import About from "./about";
 import ViewProduct from "./viewProduct";
 import Germination from "./germination";
 import Faq from "./faq";
+import Cms from "./cms";
 
 import { inferStrainData } from "../utilities/strain";
 
@@ -32,7 +33,8 @@ const imports = {
     ...ViewProduct(uri),
     ...Germination(uri),
     ...About(uri),
-    ...Faq(uri)
+    ...Faq(uri),
+    ...Cms(uri)
 };
 
 const actionTypes = {

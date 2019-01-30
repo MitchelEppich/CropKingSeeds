@@ -20,6 +20,7 @@ import AboutReducer from "./about";
 import GerminationReducer from "./germination";
 import FaqReducer from "./faq";
 import ArticleReducer from "./article";
+import CmsReducer from "./cms";
 
 const initialState = {
     visibleScreen: [], // When [] show main screen
@@ -137,5 +138,6 @@ export default combineReducers({
     germination: GerminationReducer,
     about: AboutReducer,
     faq: FaqReducer,
-    article: ArticleReducer
+    article: ArticleReducer,
+    cms: CmsReducer
 });

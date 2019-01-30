@@ -12,7 +12,9 @@ const actionTypes = {
     QUICK_ADD_TO_CART_QTY: "QUICK_ADD_TO_CART_QTY",
     TOGGLE_FILTER: "TOGGLE_FILTER",
     CLEAR_FILTERS: "CLEAR_FILTERS",
-    TOGGLE_SHOW_FILTERS: "TOGGLE_SHOW_FILTERS"
+    TOGGLE_SHOW_FILTERS: "TOGGLE_SHOW_FILTERS",
+    RESET_CART_ANIMATION: "RESET_CART_ANIMATION",
+    TOGGLE_CART_ANIMATION: "TOGGLE_CART_ANIMATION"
 };
 
 const getActions = uri => {
@@ -58,6 +60,16 @@ const getActions = uri => {
         },
         toggleShowFilters: bool => {
             return { type: actionTypes.TOGGLE_SHOW_FILTERS, bool: bool };
+        },
+        resetCartAnimation: () => {
+            return {
+                type: actionTypes.RESET_CART_ANIMATION
+            };
+        },
+        toggleCartAnimation: () => {
+            return {
+                type: actionTypes.TOGGLE_CART_ANIMATION
+            };
         }
     };
 

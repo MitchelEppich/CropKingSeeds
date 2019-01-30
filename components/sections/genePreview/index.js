@@ -95,10 +95,8 @@ const GenePreview = props => {
     });
 
     return (
-        <div className="flex flex-wrap w-full xl:my-12 xl:h-500 mx-auto relative overflow-hidden">
-            <h2 className="w-full sm:mt-0 mt-8 mb-4 pt-2 text-center text-3/5xl font-extrabold p-2 shadow-md">
-                Categories
-            </h2>
+        <div className="flex flex-wrap w-full xl:mb-4 xl:h-500 mx-auto relative overflow-hidden">
+            <h2 className="w-full sm:mt-0 mt-8 mb-2 pt-2 text-center h-16 text-3/5xl font-extrabold p-2">Categories</h2>
             {windows}
         </div>
     );

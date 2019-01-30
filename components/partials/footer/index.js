@@ -87,31 +87,35 @@ const Footer = props => {
                         Subscribe to the CKS Newsletter
                     </h4>
                     <p className="p-2 w-container mx-auto text-center">
-                        All the king's horses and all the king's me... they wrote a newsletter.
+                        All the king's horses and all the king's men... they wrote a newsletter.
                     </p>
-                    <div className="inline-flex relative w-container lg:w-2/3 lg:mx-auto rounded-tr rounded-br h-10 items-center mt-4 md:mb-6 sm:mb-6 overflow-hidden">
-                        <input
-                            type="email"
-                            className="p-2 w-full h-10 rounded-tr rounded-br"
-                            id=""
-                            value={props.misc.newsletterEmail || ""}
-                            placeholder="Email address"
-                            onChange={e => {
-                                let value = e.target.value;
-                                props.setEmail({ email: value });
-                            }}
-                        />
-                        <div
-                            className="absolute pin-r pl-2 h-10  bg-red-darker text-white cursor-pointer hover:bg-grey-dark hover:text-red-darker w-16"
-                            onClick={() => {
-                                props.subscribeToNewsletter({
-                                    email: props.misc.newsletterEmail
-                                });
-                                props.setEmail({ email: null });
-                            }}>
-                            <FontAwesomeIcon icon={faAngleRight} className="fa-2x h-10 " />
+                    {!props.misc.subscribedToNewsletter ? (
+                        <div className="inline-flex relative w-container lg:w-2/3 lg:mx-auto rounded-tr rounded-br h-10 items-center mt-4 md:mb-6 sm:mb-6 overflow-hidden">
+                            <input
+                                type="email"
+                                className="p-2 w-full h-10 rounded-tr rounded-br"
+                                id=""
+                                value={props.misc.newsletterEmail || ""}
+                                placeholder="Email address"
+                                onChange={e => {
+                                    let value = e.target.value;
+                                    props.setEmail({ email: value });
+                                }}
+                            />
+                            <div
+                                className="absolute pin-r pl-2 h-10  bg-red-darker text-white cursor-pointer hover:bg-grey-dark hover:text-red-darker w-16"
+                                onClick={() => {
+                                    props.subscribeToNewsletter({
+                                        email: props.misc.newsletterEmail
+                                    });
+                                    props.setEmail({ email: null });
+                                }}>
+                                <FontAwesomeIcon icon={faAngleRight} className="fa-2x h-10 " />
+                            </div>
                         </div>
-                    </div>
+                    ) : (
+                        <p className="text-2xl mt-4">Thank you for subscribing!</p>
+                    )}
                     {/* <div
             style={{ textShadow: "0 1px 4px #000" }}
             className="p-2 px-8 bg-yellow-dark text-white text-2xl w-container mt-2 mx-auto rounded font-bold text-center cursor-pointer hover:bg-grey-light">

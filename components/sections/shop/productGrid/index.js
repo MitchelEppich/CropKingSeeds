@@ -32,8 +32,11 @@ class Index extends Component {
                 filter == "genetic"
                     ? [...this.props.shop.activeFilters[filter]]
                     : [this.props.shop.activeFilters[filter]];
-            let label = filter == "type" || filter == "genetic" ? null : filter + "%";
+            let label = filter == "type" || filter == "genetic" || filter == "merchandise" ? null : filter + "%";
             return filtersArr.map((value, index) => {
+                if (value == "all") {
+                    value += " (Merchandise)";
+                }
                 return (
                     <span
                         key={index}
@@ -147,7 +150,8 @@ const mapDispatchToProps = dispatch => {
         modifyCart: input => dispatch(actions.modifyCart(input)),
         setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
         modifyPotentialQuantity: input => dispatch(actions.modifyPotentialQuantity(input)),
-        toggleFilter: input => dispatch(actions.toggleFilter(input))
+        toggleFilter: input => dispatch(actions.toggleFilter(input)),
+        toggleCartAnimation: () => dispatch(actions.toggleCartAnimation())
     };
 };
 
