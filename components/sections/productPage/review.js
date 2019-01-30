@@ -19,13 +19,13 @@ const review = props => {
   return (
     <div className="lg:block md:block sm:block sm:w-full w-full sm:ml-0 sm:pl-2 pl-2 mb-2 pb-4 shadow rounded p-2 inline-flex">
       <div className="pr-4 w-1/4 md:w-full sm:w-full lg:w-full md:inline-flex sm:inline-flex lg:inline-flex md:pr-0 sm:pr-0 lg:pr-0">
-        <div className="sm:w-1/2 md:w-1/2 lg:w-1/2 w-1/2 pl-2">
+        <div className="sm:w-full md:w-full lg:w-full xl:w-full w-1/2 pl-2">
           <p className="font-bold text-lg mb-1">{props.name}</p>
-          <p className="text-xs pl-2">{moment(props.date).fromNow()}</p>
+          <p className="text-xs w-full">{moment(props.date).fromNow()}</p>
         </div>
         <div className="sm:text-right sm:justify-end sm:flex md:text-right md:justify-end md:flex lg:text-right lg:justify-end lg:flex sm:w-1/2 md:w-1/2 lg:w-1/2">
           {/* <p className="mt-2 pl-1 text-xs">{ratings}</p> */}
-          <div className="w-150 relative text-left justify-center flex mx-auto">
+          <div className="ml-1 w-150 relative text-left justify-center flex mx-auto">
             <div
               className="inline-flex bg-red-light"
               style={{
@@ -46,7 +46,7 @@ const review = props => {
           </div>
         </div>
       </div>
-      <div className="w-3/4 px-6 p-2 text-justify md:w-full sm:w-full lg:w-full sm:px-2 sm:mt-4 md:mt-4 lg:mt-4 text-sm">
+      <div className="w-3/4 xl:ml-6 lg:ml-6 xxl:ml-6 px-3 p-2 text-justify md:w-full sm:w-full lg:w-full sm:px-2 sm:mt-4 md:mt-4 lg:mt-4 text-sm">
         <div className="w-full">
           <p>{props.body}</p>
         </div>

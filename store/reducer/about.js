@@ -2,92 +2,102 @@ import actionTypes from "../actions";
 import { updateObject } from "../utility";
 
 const initialState = {
-    currentHistoryObj: 0,
-    historyObjs: [
-        {
-            imgSrc: "../static/img/about/1.jpg",
-            content:
-                "Commodo est commodo reprehenderit officia proident amet ea dolore eiusmod ea aute tempor veniam id. Ullamco deserunt esse pariatur duis elit non laboris reprehenderit aliquip cillum. Et cupidaeserunt mollit elit tempor veniam tempor esse culpa aliqua nisi. Occaecat culpa"
-        },
-        {
-            imgSrc: "../static/img/about/2.jpg",
-            content:
-                "Ipsum elit labore est magna anim. Qui elit est incididunt aliquip minim. Nisi consectetur dolor aute Lorem. Excepteur eiusmod id consequat id id. Laborum ullamco commodo esse minim adipisicing elit ut id voluptate pariatur irure ullamco dolor velit. Nulla culpa ad in incididunt culpa ea aliquip dolor. Exercitation et quis duis aute.",
-            date: 20040420
-        },
-        {
-            imgSrc: "../static/img/about/3.jpg",
-            content:
-                "Veniam ex enim id aute occaecat amet culpa dolore cupidatat irure magna consectetur est do. Minim incididunt voluptate nostrud duis occaecat sunt reprehenderit cillum in in quis esse sint. Aute et aliqua eu sit tempor qui elit dolotat id. Magna dolore ipsum laborum est cupidatat eu dolor duis magna voluptate nisi magna.",
-            date: 20040420
-        },
-        {
-            imgSrc: "../static/img/about/4.jpg",
-            content:
-                "Sit incididunt eu enim voluptate enim tempor. Elit est dolore elit ipsum id. Ut nulla proident mollit exercitation aliquip pariatur.",
-            date: 20040420
-        },
-        {
-            imgSrc: "../static/img/about/1.jpg",
-            content:
-                "Cupidatat tempor culpa voluptate id qui eiusmod anim Lorem anim occaecat ipsum. Voluptate incididunt officia anim mollit ex adipisicing aute laboris duis minim adipisicing. Ipsum amet sint velit ea reprehenderit tempor aute laborum et reprehenderit dolor ea. Reprehenderit quis eiusmod id voluptate aliqua enim mollit pariatur laboris ad.",
-            date: 20040420
-        },
-        {
-            imgSrc: "../static/img/about/2.jpg",
-            content:
-                "Magna deserunt cillum aliqua qui culpa id aliquip occaecat dolore proident in. Aute in ea occaecat incididunt. Magna veniam laboris id dolore qui cupidatat in non Lorem sint et ipsum nulla. Magna culpa consequat quis culpa enim consectetur laborum cupidatat minim mollit ut in.",
-            date: 20040420
-        },
-        {
-            imgSrc: "../static/img/about/3.jpg",
-            content:
-                "Enim fugiat minim excepteur velit velit mollit reprehenderit officia enim. Mollit commodo minim ad labore cupidatat consequat aute nulla cupidatat consequat id exercitation. Do nisi ullamco et et anim dolore non aute ea eiusmod pariatur.",
-            date: 20040420
-        },
-        {
-            imgSrc: "../static/img/about/4.jpg",
-            content:
-                "Aute sit aute nulla nisi aute cupidatat pariatur excepteur aute eu ad excepteur. Cupidatat adipisicing et cillum minim officia excepteur qui irure pariatur culpa esse cgiat qui cupidatat eu nulla minim duis ea voluptate. Ut officia laboris exercitation dolor dolore amet eiusmod non fugiat.",
-            date: 20040420
-        },
-        {
-            imgSrc: "../static/img/about/1.jpg",
-            content:
-                "Officia nulla labore exercitation proident laborum incididunt. Cillum officia sit et dolore quis consequat. Aliqua ipsum ullamco et ad. Veniam ad fugiat fugiat id proident Loreulla adipisicing Lorem consequat irure laborum. Culpa minim occaecat reprehenderit cillum culpa cupidatat. Deserunt dolor irure quis commodo sint.",
-            date: 20040420
-        }
-    ],
-    whoWeAre: [
-        {
-            title: "Our Seeds",
-            content:
-                "Proident voluptate labore sunt anim. Ad nostrud in ut voluptate laborum cillum qui ea commodo do. Proident voluptate labore sunt anim.",
-            src: "../static/img/about/1.jpg"
-        },
-        {
-            title: "Our Service",
-            content:
-                "Laboris eiusmod aute cupidatat dolore sunt sunt adipisicing non reprehenderit. Pariatur ex anim eiusmod est in ut minim minim non aute. Id culpa consectetur Lorem dolor veniam esse et minim aliquip pariatur esse aliqua sit.",
-            src: "../static/img/about/2.jpg"
-        },
-        {
-            title: "Our Mission",
-            content:
-                "Cillum sint aliqua sint et aute. Enim eiusmod aliqua adipisicing consequat culpa dolore nisi do. Ad veniam sunt veniam do minim in anim.",
-            src: "../static/img/about/3.jpg"
-        }
-    ]
+  currentHistoryObj: 0,
+  historyObjs: [
+    {
+      imgSrc: "../static/img/about/CKSCOVERREAL.jpg",
+      title: "Packaging and printing materials",
+      content:
+        "We design and have our state of the art unique packaging so that we can begin selling to retailers and individuals across Canada.",
+      date: "20130105"
+    },
+    {
+      imgSrc: "../static/img/about/hemp-roots.jpg",
+      title: "Our first location",
+      content:
+        "Crop King gets its first location in Calgary, Alberta Canada called “Hemp Roots” they make their initial first purchase and continue to be one of our best retailers with monthly refill orders and happy customers returning to try a new strain.",
+      date: "20130115"
+    },
+    {
+      imgSrc: "../static/img/about/Vancouver_Dominion_Building1.jpg",
+      title: "Open our office in Downtown Vancouver",
+      content:
+        "Our customers kept asking us if they could buy in person from our own store so we decided to get our own office at the Dominion building on Hastings Street in Vancouver. Its small and all we need until we can afford to expand. Hopefully we will get a larger office but this is great for now..",
+      date: "20131101"
+    },
+    {
+      imgSrc: "../static/img/about/magazine-1024x718.jpg",
+      title: "Magazine & Newspaper Advertising",
+      content:
+        "We begin purchasing print advertising in major magazines and websites. People now start to realize that Crop King is here to stay and is poised to grow our brand in all markets around the world.",
+      date: "20131130"
+    },
+    {
+      imgSrc: "../static/img/about/Poster-12x18.jpg",
+      title: "10 new strains released",
+      content:
+        "Crop King releases 10 new strains including Auto Flowering & our Dwarf Low Flyer. This completes our line of world class strains where we can now start entering our strains into 420 competitions.",
+      date: "20131201"
+    },
+    {
+      imgSrc: "../static/img/about/420.jpg",
+      title: "Tent for 420 event",
+      content:
+        "We invest in a custom Crop King Tent for outdoor events. We use it at the art gallery for the 420 event on April 20th.",
+      date: "20140420"
+    },
+    {
+      imgSrc: "../static/img/about/11937914_1177191535631131_748491331_n.jpg",
+      title: "World’s First Marijuana Vehicle Wrap",
+      content:
+        "Crop King Seeds is happy to introduce the first ever vehicle wrap cruising all over Denver, Colorado in partnership with IBake Radio.",
+      date: "20150220"
+    },
+    {
+      imgSrc:
+        "../static/img/about/Our-White-Cookies-made-it-to-Hightimes-top-10-strains-of-2015.jpg",
+      title: "High Times Magazine Top 10 Strains of 2015",
+      content: "We released new strains to our seeds line.",
+      date: "20151221"
+    },
+    {
+      imgSrc: "../static/img/about/White-Cookies.jpg",
+      title: "Announcement Partnership with Grow420guide Channel",
+      content:
+        "Crop King Seeds is announcing a partnership with the world’s largest Youtube channel for growing marijuana. Grow 420 Guide. For years, this large growing channel has featured the best advice for growing techniques from beginners to advanced growers. They will be growing our strains and helping people learn along the way. This will also add to our forum traffic the very best growers to help you optimize your grow show.",
+      date: "20160112"
+    }
+  ],
+  whoWeAre: [
+    {
+      title: "Our Seeds",
+      content:
+        "Proident voluptate labore sunt anim. Ad nostrud in ut voluptate laborum cillum qui ea commodo do. Proident voluptate labore sunt anim.",
+      src: "../static/img/about/1.jpg"
+    },
+    {
+      title: "Our Service",
+      content:
+        "Laboris eiusmod aute cupidatat dolore sunt sunt adipisicing non reprehenderit. Pariatur ex anim eiusmod est in ut minim minim non aute. Id culpa consectetur Lorem dolor veniam esse et minim aliquip pariatur esse aliqua sit.",
+      src: "../static/img/about/2.jpg"
+    },
+    {
+      title: "Our Mission",
+      content:
+        "Cillum sint aliqua sint et aute. Enim eiusmod aliqua adipisicing consequat culpa dolore nisi do. Ad veniam sunt veniam do minim in anim.",
+      src: "../static/img/about/3.jpg"
+    }
+  ]
 };
 
 export default (state = initialState, action) => {
-    switch (action.type) {
-        case actionTypes.SET_CURRENT_HISTORYOBJ:
-            return updateObject(state, {
-                currentHistoryObj: action.index
-            });
+  switch (action.type) {
+    case actionTypes.SET_CURRENT_HISTORYOBJ:
+      return updateObject(state, {
+        currentHistoryObj: action.index
+      });
 
-        default:
-            return state;
-    }
+    default:
+      return state;
+  }
 };

@@ -279,6 +279,17 @@ svg {
 ////////////////////
 
 ////////////////
+// ABOUT PAGE
+.about-img {
+  height: 100%;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+// END ARTICLES PAGE
+////////////////////
+
+////////////////
 // CHECKOUT PAGE
 .item-preview {
   border: 1px solid rgba(206, 206, 206, 0.3);
@@ -497,6 +508,10 @@ svg {
   top: 30px;
   position: relative;
   font-size: 30px;
+}
+
+.glass {
+  opacity: 0;
 }
 // END VIEWPRODUCT PAGE
 ///////////////////////
