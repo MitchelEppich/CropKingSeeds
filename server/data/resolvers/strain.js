@@ -16,6 +16,22 @@ const resolvers = {
     allStrains: (_, { filter }) => {
       let query = filter ? { $or: strainFilters(filter) } : {};
       return Strain.find(query);
+    },
+    getFeaturedList: async (_, { input }) => {
+      let featuredNeeded = 10;
+      let featuredStrains = await Strain.find({
+        featured: true
+      }).limit(featuredNeeded);
+
+      let leftSpaces = featuredNeeded - featuredStrains.length;
+      if (leftSpaces != 0) {
+        let extraStrains = await Strain.aggregate([
+          { $sample: { size: leftSpaces } }
+        ]);
+        featuredStrains.push(...extraStrains);
+      }
+
+      return featuredStrains;
     }
   },
   Strain: {},
@@ -49,7 +65,11 @@ const resolvers = {
         for (let value of ratingQuantity) {
           total += value;
         }
-        let pReviews = strain.ratingQuantity[0] + strain.ratingQuantity[1] + strain.ratingQuantity[2] + 1
+        let pReviews =
+          strain.ratingQuantity[0] +
+          strain.ratingQuantity[1] +
+          strain.ratingQuantity[2] +
+          1;
 
         // Filter reviews
         if (rating < 4 && total >= 10 && pReviews / total > 0.1) {

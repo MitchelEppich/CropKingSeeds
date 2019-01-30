@@ -70,7 +70,8 @@ const initialState = {
     mediaSize: "xl",
     newsletterEmail: null,
     subscribedToNewsletter: false,
-    emailSent: false
+    emailSent: false,
+    featuredStrains: null
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -85,10 +86,14 @@ const indexReducer = (state = initialState, action) => {
             } else if (_clearAll) {
                 return updateObject(state, { visibleScreen: [action.input] });
             } else {
-                return updateObject(state, { visibleScreen: [...state.visibleScreen, action.input] });
+                return updateObject(state, {
+                    visibleScreen: [...state.visibleScreen, action.input]
+                });
             }
         case actionTypes.SET_HOVER_ID:
-            return updateObject(state, { hoverId: action.turnOn ? action.id : null });
+            return updateObject(state, {
+                hoverId: action.turnOn ? action.id : null
+            });
         case actionTypes.SET_EMAIL:
             return updateObject(state, { newsletterEmail: action.input });
         case actionTypes.SEND_EMAIL:
@@ -104,7 +109,9 @@ const indexReducer = (state = initialState, action) => {
         case actionTypes.SET_AGE_VERIFICATION:
             return updateObject(state, { ageVerification: action.input });
         case actionTypes.SHOW_DIFFERENT_ADDRESS:
-            return updateObject(state, { showDifferentAddress: !state.showDifferentAddress });
+            return updateObject(state, {
+                showDifferentAddress: !state.showDifferentAddress
+            });
         case actionTypes.SET_CONTEXT:
             return updateObject(state, { context: action.input });
         case actionTypes.SET_GENE_HOVER_INDEX:
@@ -121,6 +128,8 @@ const indexReducer = (state = initialState, action) => {
             return updateObject(state, { activeBannerSlide: slideIndex });
         case actionTypes.SET_STRAINS:
             return updateObject(state, { strains: [...action.strains] });
+        case actionTypes.GET_FEATURED_LIST:
+            return updateObject(state, { featuredStrains: [...action.input] });
         default:
             return state;
     }

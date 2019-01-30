@@ -5,7 +5,8 @@ const initialState = {
     activeFilters: {},
     quickAddToCartQty: 0,
     showFilters: true,
-    cartAnimation: false
+    cartAnimation: false,
+    sort: null
 };
 
 export default (state = initialState, action) => {
@@ -30,6 +31,10 @@ export default (state = initialState, action) => {
             return updateObject(state, { cartAnimation: false });
         case actionTypes.TOGGLE_CART_ANIMATION:
             return updateObject(state, { cartAnimation: true });
+        case actionTypes.SET_SORT:
+            return updateObject(state, {
+                sort: action.input
+            });
         default:
             return state;
     }

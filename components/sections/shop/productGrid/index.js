@@ -8,6 +8,19 @@ import ProductThumbnail from "./productThumbnail";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+let sortingFunctions = {
+    alpha: (a, b) => {
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
+        return 0;
+    },
+    alphaR: (a, b) => {
+        if (a.name < b.name) return 1;
+        if (a.name > b.name) return -1;
+        return 0;
+    }
+};
+
 class Index extends Component {
     constructor(props) {
         super(props);
@@ -32,11 +45,8 @@ class Index extends Component {
                 filter == "genetic"
                     ? [...this.props.shop.activeFilters[filter]]
                     : [this.props.shop.activeFilters[filter]];
-            let label = filter == "type" || filter == "genetic" || filter == "merchandise" ? null : filter + "%";
+            let label = filter == "type" || filter == "genetic" ? null : filter + "%";
             return filtersArr.map((value, index) => {
-                if (value == "all") {
-                    value += " (Merchandise)";
-                }
                 return (
                     <span
                         key={index}
@@ -70,6 +80,7 @@ class Index extends Component {
                 if (_filter.thc != null && _filter.thc != a.thc) _pass = false;
                 return _pass;
             })
+            .sort(this.props.shop.sort != null ? sortingFunctions[this.props.shop.sort] : undefined)
             .map((product, index) => {
                 return (
                     <div
@@ -119,18 +130,26 @@ class Index extends Component {
                     className={
                         hoverId != null && this.props.misc.mediaSize == "sm"
                             ? "hidden"
-                            : "w-full justify-between flex pt-3 sm:pt-0 p-2 sm:my-2 mt-5 mb-2 text-grey-light items-center flex-wrap"
+                            : "w-full justify-between flex pt-3 p-2 mt-5 mb-2 text-grey-light items-center flex"
                     }>
-                    <div className="flex flex-wrap mb-1 ">
-                        <p className="w-full mb-1 pl-2 font-bold uppercase opacity-50">Active Filters:</p>
+                    <div className="flex flex-wrap">
+                        <p className="w-full mb-1 pl-2 font-bold opacity-50">Active Filters:</p>
                         {activeFilters}
                     </div>
-                    <div>
-                        Sort by:
-                        <select className="ml-3">
-                            <option value="Newest">Newest</option>
-                            <option value="Most Popular">Most Popular</option>
-                            <option value="Most Reviewed">Most Reviewed</option>
+                    <div className="inline-flex">
+                        <p className="font-bold opacity-50 flex items-center">Sort by:</p>
+                        <select
+                            className="ml-3"
+                            defaultValue=""
+                            onChange={e => {
+                                let value = e.target.value;
+                                this.props.setSort({ value });
+                            }}>
+                            <option value="" disabled>
+                                Select
+                            </option>
+                            <option value="alpha">↑ A - Z </option>
+                            <option value="alphaR">↓ Z - A </option>
                         </select>
                     </div>
                 </div>
@@ -150,8 +169,7 @@ const mapDispatchToProps = dispatch => {
         modifyCart: input => dispatch(actions.modifyCart(input)),
         setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
         modifyPotentialQuantity: input => dispatch(actions.modifyPotentialQuantity(input)),
-        toggleFilter: input => dispatch(actions.toggleFilter(input)),
-        toggleCartAnimation: () => dispatch(actions.toggleCartAnimation())
+        toggleFilter: input => dispatch(actions.toggleFilter(input))
     };
 };
 

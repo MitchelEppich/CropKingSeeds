@@ -11,7 +11,6 @@ import Question from "../components/sections/faq/question";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SeachBar from "../components/sections/faq/searchBar";
-import SearchBar from "../components/sections/faq/searchBar";
 
 class Index extends Component {
     render() {

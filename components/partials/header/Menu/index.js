@@ -2,10 +2,14 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faShoppingCart, faDollarSign, faPhone, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
-import CartIcon from "./cartIcon";
+
 import Router from "next/router";
 
 const menu = props => {
+    let menuStyle = {
+        // backgroundImage: "url(../static/img/red.png)",
+    };
+
     const isClient = typeof document !== "undefined";
     let route = isClient ? Router.route : "";
 
@@ -207,8 +211,29 @@ const menu = props => {
                                         <div
                                             onClick={() => {
                                                 props.setVisibleScreen({ input: "viewCart" });
-                                            }}>
-                                            <CartIcon {...props} />
+                                            }}
+                                            className="text-center cursor-pointer mt-1 text-white">
+                                            <div className="">
+                                                <FontAwesomeIcon id="cart" icon={faShoppingCart} className="fa-lg" />
+
+                                                <span
+                                                    style={{
+                                                        height: "28px",
+                                                        width: "28px",
+                                                        borderRadius: "50%",
+                                                        background: "#ffca0f",
+                                                        position: "absolute",
+                                                        marginTop: "-10px",
+                                                        color: "#404040",
+                                                        fontSize: "16px",
+                                                        textAlign: "center",
+                                                        paddingTop: "6px",
+                                                        marginTop: "-14px",
+                                                        marginLeft: "-5px"
+                                                    }}>
+                                                    {Object.keys(props.cart.items).length}
+                                                </span>
+                                            </div>
                                         </div>
                                     </li>
                                 </ul>
@@ -284,7 +309,29 @@ const menu = props => {
                                                     ? "font-extrabold text-2xl p-2 slowish hover:bg-red-navMobile cursor-pointer scale-item"
                                                     : "font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish hidden"
                                             }>
-                                            <CartIcon {...props} />
+                                            <div className="text-center cursor-pointer mt-1 text-white">
+                                                <div className="">
+                                                    <FontAwesomeIcon icon={faShoppingCart} className="fa-lg" />
+
+                                                    <span
+                                                        style={{
+                                                            height: "28px",
+                                                            width: "28px",
+                                                            borderRadius: "50%",
+                                                            background: "#ffca0f",
+                                                            position: "absolute",
+                                                            marginTop: "-10px",
+                                                            color: "#404040",
+                                                            fontSize: "16px",
+                                                            textAlign: "center",
+                                                            paddingTop: "6px",
+                                                            marginTop: "-14px",
+                                                            marginLeft: "-5px"
+                                                        }}>
+                                                        {Object.keys(props.cart.items).length}
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </li>
                                     </ul>
                                 </div>

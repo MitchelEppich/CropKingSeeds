@@ -52,7 +52,8 @@ const actionTypes = {
     SUBSCRIBE_TO_NEWSLETTER: "SUBSCRIBE_TO_NEWSLETTER",
     SET_EMAIL: "SET_EMAIL",
     SEND_EMAIL: "SEND_EMAIL",
-    REFRESH_EMAIL_FORM: "REFRESH_EMAIL_FORM"
+    REFRESH_EMAIL_FORM: "REFRESH_EMAIL_FORM",
+    GET_FEATURED_LIST: "GET_FEATURED_LIST"
 };
 
 const actions = {
@@ -179,10 +180,53 @@ const actions = {
     },
     refreshEmailForm: () => {
         return { type: actionTypes.REFRESH_EMAIL_FORM };
+    },
+    getFeaturedList: () => {
+        return async dispatch => {
+            const link = new HttpLink({ uri, fetch: fetch });
+            const operation = { query: query.getFeaturedStrains };
+
+            return await makePromise(execute(link, operation))
+                .then(data => {
+                    let _strains = data.data.getFeaturedList;
+                    let _new = [];
+                    for (let strain of _strains) {
+                        _new.push(inferStrainData(strain));
+                    }
+                    dispatch({
+                        type: actionTypes.GET_FEATURED_LIST,
+                        input: _new
+                    });
+                    return Promise.resolve(_new);
+                })
+                .catch(error => console.log(error));
+        };
     }
 };
 
 const query = {
+    getFeaturedStrains: gql`
+        {
+            getFeaturedList {
+                _id
+                name
+                strainImg
+                packageImg
+                description
+                genetic
+                flowerTime
+                difficulty
+                type
+                sotiId
+                indica
+                sativa
+                ruderalis
+                env
+                rating
+                featured
+            }
+        }
+    `,
     allStrains: gql`
         query {
             allStrains {
