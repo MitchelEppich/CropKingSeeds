@@ -130,9 +130,14 @@ class Index extends Component {
             </div>
           </div>
           {/* <Graph {...this.props} /> */}
-          <button className="w-1/4 sm:w-2/3 md:w-2/3 lg:w-1/3 xl:w-1/2 xxl:w-200 xxl:mx-48 block uppercase mx-auto px-12 py-3 text-lg uppercase font-bold rounded bg-red-dark text-white hover:bg-grey">
-            join now!
-          </button>
+          <a
+            target="_blank"
+            href="https://affiliates.cropkingseeds.com/signup.php"
+          >
+            <button className="w-1/4 sm:w-2/3 md:w-2/3 lg:w-1/3 xl:w-1/2 xxl:w-200 xxl:mx-48 block uppercase mx-auto px-12 py-3 text-lg uppercase font-bold rounded bg-red-dark text-white hover:bg-grey">
+              join now!
+            </button>
+          </a>
         </div>
       </Layout>
     );

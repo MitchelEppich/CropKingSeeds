@@ -30,6 +30,41 @@ const resolvers = {
         .then(res => {
           return res.data;
         });
+    },
+    getExchangeRates: async _ => {
+      return await axios
+        .get("https://www.cksoti.com/checkexchangerate")
+        .then(res => {
+          res = JSON.parse(
+            convert.xml2json(
+              res.data
+                .toLowerCase()
+                .replace("<br/><?xml?>", "</Data>")
+                .replace(
+                  '<?xml version="1.0" encoding="utf-8"?>',
+                  '<?xml version="1.0" encoding="utf-8"?><Data>'
+                ),
+              { compact: true, spaces: 4 }
+            )
+          )["Data"];
+
+          let exchange = {};
+          for (let rate of Object.keys(res)) {
+            if (!rate.includes("rate")) continue;
+            let _rate = rate.replace("rate", "");
+            let convert = res[rate]._text.split(" ")[0].slice(1);
+
+            if (_rate == "usd") convert = 1;
+            if (_rate == "cdn") {
+              _rate = "cad";
+              convert = (1 + parseFloat(convert)).toFixed(4);
+            }
+
+            exchange[_rate] = { convert, symbol: "$" };
+          }
+
+          return JSON.stringify(exchange);
+        });
     }
   },
   Strain,
@@ -72,8 +107,8 @@ const resolvers = {
       });
     },
     processPayment: async (_, { input }) => {
-      // console.log(processBambora(input))
-      return await processPivotal(input);
+      console.log(await processBambora(input));
+      // return await processPivotal(input);
     }
   }
 };
@@ -81,9 +116,9 @@ const resolvers = {
 let processBambora = async input => {
   // Does not work
   let content = {
-    merchant_id: "225812615",
-    order_number: "100000000",
-    amount: 1.0,
+    // merchant_id: "225812615",
+    // order_number: "100000000",
+    amount: parseInt(input.amount),
     payment_method: "card",
     card: {
       name: input.cardHolderName,
@@ -94,28 +129,44 @@ let processBambora = async input => {
     }
   };
 
+  console.log(content);
+
+  console.log(
+    JSON.stringify({
+      amount: 100.11,
+      payment_method: "card",
+      card: {
+        name: "John Doe",
+        number: "4030000010001234",
+        expiry_month: "02",
+        expiry_year: "14",
+        cvd: "123"
+      }
+    })
+  );
+
+  let reqData = {
+    amount: 100.11,
+    payment_method: "card",
+    card: {
+      name: "John Doe",
+      number: "4030000010001234",
+      expiry_month: "02",
+      expiry_year: "14",
+      cvd: "123"
+    }
+  };
+
   console.log(
     (await axios({
       method: "post",
       headers: {
-        "Content-Type": "application/json",
         Authorization:
-          "Passcode MjI1ODEyNjE1OjMyZjYzMGI2NzRGMjRBNzM5NDFFZTIzYjkyMzc4NzRB"
+          "Passcode MjI1ODEyNjE1OjMyZjYzMGI2NzRGMjRBNzM5NDFFZTIzYjkyMzc4NzRB",
+        "content-type": "application/json"
       },
-      url: "https://api.na.bambora.com/v1/payments/",
-      data: JSON.stringify({
-        merchant_id: "225812615",
-        order_number: "100000000",
-        amount: 54,
-        payment_method: "card",
-        card: {
-          name: "asfdasd asdfas",
-          number: "4030000010001234",
-          expiry_month: "07",
-          expiry_year: "21",
-          cvd: "123"
-        }
-      })
+      url: "https://api.na.bambora.com/v1/payments",
+      data: reqData
     })).data
   );
 };
