@@ -27,8 +27,10 @@ const Partners = props => {
           If your company has the same high standards as Crop King Seeds, then
           contact us to put your information in the list below.
         </p>
-        <div className="p-3 bg-red-dark text-white mx-auto mt-8 text-center cursor-pointer h-12 pt-3 xl:w-64 lg:w-64 md:w-48 sm:w-48 xxl:w-64 text-2xl font-extrabold scale-item rounded shadow-md hover:bg-grey">
-          Join Us!
+        <div className="p-3 bg-red-dark text-white mx-auto mt-8 text-center cursor-pointer h-12 pt-3 xl:w-64 lg:w-64 md:w-48 sm:w-48 xxl:w-64 text-2xl font-extrabold scale-item rounded shadow-md hover:bg-red-light">
+          <a href="tel:+1-844-276-7546" className="text-white">
+            Join Us!{" "}
+          </a>
         </div>
       </div>
       <div className="flex flex-wrap justify-center sm:w-full w-5/6 md:w-full lg:w-full mx-auto mt-8">

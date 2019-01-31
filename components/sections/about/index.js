@@ -17,7 +17,7 @@ const About = props => {
     let activeThumb =
       currentItem == index
         ? {
-            transform: "scale(1.08)",
+            transform: "scale(1.3)",
             transition: "all .3s ease"
           }
         : {
@@ -86,10 +86,10 @@ const About = props => {
     return (
       <div
         key={index}
-        className="w-250 md:my-5 sm:my-5  flex flex-wrap justify-center content-start "
+        className="w-250 md:my-5 sm:my-5 flex flex-wrap justify-center content-start "
       >
         <img
-          className="h-150 w-150 rounded-full border-8 border-grey-lighter scale-item"
+          className="h-200 w-200 rounded-full border-8 border-grey-lighter scale-item"
           src={val.src}
         />
         <h2 className="w-250 my-5 mx-auto text-center uppercase ">

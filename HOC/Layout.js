@@ -18,134 +18,148 @@ import Head from "next/head";
 import ShareButtons from "../components/sections/shareButtons";
 import AgeVerification from "../components/sections/ageVerification";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComments, faCaretUp, faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import {
+  faComments,
+  faCaretUp,
+  faAngleUp
+} from "@fortawesome/free-solid-svg-icons";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
 class Layout extends Component {
-    componentDidMount() {
-        this.props.getStrains().then(strains => {
-            const isClient = typeof document !== "undefined";
-            if (!isClient) return;
-            let url = Router.asPath.slice(1);
-            if (url && url.length != 0) {
-                let qr;
-                if (url.includes("product/")) {
-                    qr = url.slice("product/".length);
-                    if (qr) {
-                        // Find product with name
-                        let index = strains.findIndex(a => {
-                            return a.name.toLowerCase().replace(" ", "-") == qr;
-                        });
-                        this.props.setCurrentProduct({ product: strains[index] });
-                        Router.push("/viewProduct", "/product/" + qr);
-                    }
-                }
-            }
-        });
-
-        if (this.props.checkout.viewCurrency == null)
-            this.props.setCurrency({
-                currency: {
-                    label: "usd",
-                    ...this.props.checkout.availableCurrency["usd"]
-                }
+  componentDidMount() {
+    this.props.getStrains().then(strains => {
+      const isClient = typeof document !== "undefined";
+      if (!isClient) return;
+      let url = Router.asPath.slice(1);
+      if (url && url.length != 0) {
+        let qr;
+        if (url.includes("product/")) {
+          qr = url.slice("product/".length);
+          if (qr) {
+            // Find product with name
+            let index = strains.findIndex(a => {
+              return a.name.toLowerCase().replace(" ", "-") == qr;
             });
-
-        let mediaSize = this.setMediaSize();
-        if (["sm", "md", "lg"].includes(mediaSize)) {
-            this.props.toggleShowFilters(false);
+            this.props.setCurrentProduct({ product: strains[index] });
+            Router.push("/viewProduct", "/product/" + qr);
+          }
         }
-        window.addEventListener("resize", () => {
-            this.setMediaSize();
-        });
-        // let cartRect = document.querySelector("#cart").getBoundingClientRect();
-        // this.props.setCartPosition(cartRect);
+      }
+    });
+
+    if (this.props.checkout.viewCurrency == null)
+      this.props.setCurrency({
+        currency: {
+          label: "usd",
+          ...this.props.checkout.availableCurrency["usd"]
+        }
+      });
+
+    let mediaSize = this.setMediaSize();
+    if (["sm", "md", "lg"].includes(mediaSize)) {
+      this.props.toggleShowFilters(false);
     }
+    window.addEventListener("resize", () => {
+      this.setMediaSize();
+    });
+    // let cartRect = document.querySelector("#cart").getBoundingClientRect();
+    // this.props.setCartPosition(cartRect);
+  }
 
-    setMediaSize = () => {
-        let mediaSizes = {
-            sm: { min: 100, max: 479 },
-            md: { min: 480, max: 767 },
-            lg: { min: 768, max: 991 },
-            xl: { min: 992, max: 1367 },
-            xxl: { min: 1368, max: 999999999 }
-        };
-        for (let mediaSize of Object.keys(mediaSizes)) {
-            let _mediaSizeDim = mediaSizes[mediaSize];
-            let _width = window.innerWidth;
-            if (
-                _width == Math.max(_mediaSizeDim.min, Math.min(_width, _mediaSizeDim.max)) &&
-                this.props.misc.mediaSize != mediaSize
-            ) {
-                if (["sm", "md"].includes(mediaSize)) {
-                    this.props.toggleShowFilters(false);
-                    this.props.setMediaSize({ mediaSize: mediaSize });
-                } else {
-                    this.props.toggleShowFilters(true);
-                    this.props.setMediaSize({ mediaSize: mediaSize });
-                }
-
-                return mediaSize;
-            }
-        }
+  setMediaSize = () => {
+    let mediaSizes = {
+      sm: { min: 100, max: 479 },
+      md: { min: 480, max: 767 },
+      lg: { min: 768, max: 991 },
+      xl: { min: 992, max: 1367 },
+      xxl: { min: 1368, max: 999999999 }
     };
+    for (let mediaSize of Object.keys(mediaSizes)) {
+      let _mediaSizeDim = mediaSizes[mediaSize];
+      let _width = window.innerWidth;
+      if (
+        _width ==
+          Math.max(_mediaSizeDim.min, Math.min(_width, _mediaSizeDim.max)) &&
+        this.props.misc.mediaSize != mediaSize
+      ) {
+        if (["sm", "md"].includes(mediaSize)) {
+          this.props.toggleShowFilters(false);
+          this.props.setMediaSize({ mediaSize: mediaSize });
+        } else {
+          this.props.toggleShowFilters(true);
+          this.props.setMediaSize({ mediaSize: mediaSize });
+        }
 
-    render() {
-        return (
-            <div id="top" className="w-full bg-off-white">
-                <Head>
-                    <script src="../static/scripts/functions.js" />
-                </Head>
-                <Header {...this.props} />
-                {/* <AgeVerification {...this.props} /> */}
-                <div className="pt-32">
-                    {" "}
-                    <ShareButtons {...this.props} />
-                    <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md">
-                        {this.props.children}
-                    </div>
-                </div>
-                <div
-                    className="sm:hidden md:hidden lg:hidden fixed z-999 w-20 mb-48 h-16 bg-red-darker pin-b pin-l text-white text-center text-lg pt-3 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item shadow-md"
-                    onClick={() => Tawk_API.toggle()}>
-                    <FontAwesomeIcon icon={faComments} className="ml-2 fa-2x cursor-pointer" />
-                    {/* <h3>CHAT</h3> */}
-                </div>
-                <AnchorLink className="items-center flex" href="#top">
-                    <div
-                        id="jumpToTop"
-                        className="fixed z-999 w-12 mb-12 mr-4 h-12 bg-red-darker pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-red-dark scale-item items-center flex rounded shadow-md"
-                        // onClick={() => window.scrollTo(0, 0)}
-                    >
-                        <FontAwesomeIcon icon={faAngleUp} className="fa-2x cursor-pointer flex justify-center mt-1" />
-                    </div>
-                </AnchorLink>
-
-                <Cart {...this.props} />
-                <Footer {...this.props} />
-            </div>
-        );
+        return mediaSize;
+      }
     }
+  };
+
+  render() {
+    return (
+      <div id="top" className="w-full bg-off-white">
+        <Head>
+          <script src="../static/scripts/functions.js" />
+        </Head>
+        <Header {...this.props} />
+        {/* <AgeVerification {...this.props} /> */}
+        <div className="pt-32">
+          {" "}
+          <ShareButtons {...this.props} />
+          <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md">
+            {this.props.children}
+          </div>
+        </div>
+        <div
+          className="sm:hidden md:hidden lg:hidden fixed z-999 w-20 mb-48 h-16 bg-red-darker pin-b pin-l text-white text-center text-lg pt-3 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item shadow-md"
+          onClick={() => Tawk_API.toggle()}
+        >
+          <FontAwesomeIcon
+            icon={faComments}
+            className="ml-2 fa-2x cursor-pointer"
+          />
+          {/* <h3>CHAT</h3> */}
+        </div>
+        <AnchorLink className="items-center flex" href="#top">
+          <div
+            id="jumpToTop"
+            className="fixed z-999 w-12 mb-12 mr-4 h-12 bg-red-darker pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-red-dark scale-item items-center flex rounded shadow-md"
+            // onClick={() => window.scrollTo(0, 0)}
+          >
+            <FontAwesomeIcon
+              icon={faAngleUp}
+              className="fa-2x cursor-pointer flex justify-center mt-1"
+            />
+          </div>
+        </AnchorLink>
+
+        <Cart {...this.props} />
+        <Footer {...this.props} />
+      </div>
+    );
+  }
 }
 
 const mapDispatchToProps = dispatch => {
-    return {
-        setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
-        getStrains: () => dispatch(actions.getStrains()),
-        modifyCart: input => dispatch(actions.modifyCart(input)),
-        setCurrency: input => dispatch(actions.setCurrency(input)),
-        modifyPotentialQuantity: input => dispatch(actions.modifyPotentialQuantity(input)),
-        setAgeVerification: input => dispatch(actions.setAgeVerification(input)),
-        setMediaSize: input => dispatch(actions.setMediaSize(input)),
-        setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
-        setEmail: input => dispatch(actions.setEmail(input)),
-        subscribeToNewsletter: input => dispatch(actions.subscribeToNewsletter(input)),
-        toggleShowFilters: bool => dispatch(actions.toggleShowFilters(bool)),
-        setCartPosition: posObj => dispatch(actions.setCartPosition(posObj))
-    };
+  return {
+    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+    getStrains: () => dispatch(actions.getStrains()),
+    modifyCart: input => dispatch(actions.modifyCart(input)),
+    setCurrency: input => dispatch(actions.setCurrency(input)),
+    modifyPotentialQuantity: input =>
+      dispatch(actions.modifyPotentialQuantity(input)),
+    setAgeVerification: input => dispatch(actions.setAgeVerification(input)),
+    setMediaSize: input => dispatch(actions.setMediaSize(input)),
+    setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
+    setEmail: input => dispatch(actions.setEmail(input)),
+    subscribeToNewsletter: input =>
+      dispatch(actions.subscribeToNewsletter(input)),
+    toggleShowFilters: bool => dispatch(actions.toggleShowFilters(bool)),
+    setCartPosition: posObj => dispatch(actions.setCartPosition(posObj))
+  };
 };
 
 export default connect(
-    state => state,
-    mapDispatchToProps
+  state => state,
+  mapDispatchToProps
 )(Layout);

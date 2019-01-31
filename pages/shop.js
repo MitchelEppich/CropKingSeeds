@@ -80,7 +80,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.modifyPotentialQuantity(input)),
     clearCart: () => dispatch(actions.clearCart()),
     setSort: input => dispatch(actions.setSort(input)),
-    toggleShowFilters: bool => dispatch(actions.toggleShowFilters(bool))
+    toggleShowFilters: bool => dispatch(actions.toggleShowFilters(bool)),
+    toggleCartAnimation: input => dispatch(actions.toggleCartAnimation(input))
   };
 };
 
