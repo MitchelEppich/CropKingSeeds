@@ -1,12 +1,5 @@
 import Link from "next/link";
-import {
-    faExternalLinkAlt,
-    faSeedling,
-    faClock,
-    faEnvelope,
-    faPrint,
-    faTimes
-} from "@fortawesome/free-solid-svg-icons";
+import { faExternalLinkAlt, faSeedling, faClock, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SeedSelectModule from "../../productPage/seedSelectModule";
 
@@ -132,7 +125,7 @@ const productThumbnail = props => {
                     props.setCurrentProduct({ product: props.product });
                 }}
                 className={hover ? "overflow-hidden w-full bg-white" : "relative"}>
-                <Link href="/viewProduct" as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}>
+                <Link href="/product" as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}>
                     <div style={{ zIndex: "1000", width: "92%" }} className="absolute w-full">
                         <h3
                             onClick={() => {
@@ -165,7 +158,7 @@ const productThumbnail = props => {
                     </p>
                 </div>
                 <div className={hover ? "text-grey px-6 p-2 sm:pt-0 text-sm" : "hidden slow"}>
-                    <Link href="/viewProduct" as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}>
+                    <Link href="/product" as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}>
                         <div className="w-150 relative text-left justify-center flex mx-auto">
                             <div
                                 className="inline-flex bg-red-light"
@@ -187,14 +180,14 @@ const productThumbnail = props => {
                         </div>
 
                         {/* <div
-              style={{ opacity: "50%" }}
-              className="absolute pl-10 pin-l inline-flex"
-            >
-              <p className="inline-flex">{showRating()}</p>
-              {/* <span className="ml-2 font-bold text-sm hover:text-grey-light items-center flex">
-                {rating.toFixed(1)} Crowns ({totalReviews} reviews)
-              </span> 
-            </div> */}
+                        style={{ opacity: "50%" }}
+                        className="absolute pl-10 pin-l inline-flex"
+                        >
+                        <p className="inline-flex">{showRating()}</p>
+                        {/* <span className="ml-2 font-bold text-sm hover:text-grey-light items-center flex">
+                            {rating.toFixed(1)} Crowns ({totalReviews} reviews)
+                        </span> 
+                        </div> */}
                     </Link>
                 </div>
                 <div className={hover ? "w-full p-2 px-4 inline-flex text-grey text-center sm:hidden" : "hidden slow"}>

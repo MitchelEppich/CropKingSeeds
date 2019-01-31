@@ -34,14 +34,27 @@ class Layout extends Component {
                     if (qr) {
                         // Find product with name
                         let index = strains.findIndex(a => {
-                            return a.name.toLowerCase().replace(" ", "-") == qr;
+                            return (
+                                a.name
+                                    .toLowerCase()
+                                    .split(" ")
+                                    .join("-") == qr
+                            );
                         });
-                        this.props.setCurrentProduct({ product: strains[index] });
-                        Router.push("/viewProduct", "/product/" + qr);
+
+                        this.props.setCurrentProduct({ product: strains[index] }).then(res => {
+                            let product = this.props.viewProduct.currentProduct;
+                            let _index = 0;
+                            while (product.price[_index] == -1) {
+                                _index++;
+                            }
+                            this.props.quickAddToCartQty(_index);
+                        });
                     }
                 }
             }
         });
+        this.props.getFeaturedList().then(res => {});
 
         if (this.props.checkout.viewCurrency == null)
             this.props.setCurrency({
@@ -102,7 +115,7 @@ class Layout extends Component {
                     {" "}
                     <ShareButtons {...this.props} />
                     <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md">
-                        {this.props.children}
+                        {this.props.misc.strains != null ? this.props.children : <p>Loading...</p>}
                     </div>
                 </div>
                 <div
@@ -114,9 +127,8 @@ class Layout extends Component {
                 <AnchorLink className="items-center flex" href="#top">
                     <div
                         id="jumpToTop"
-                        className="fixed z-999 w-12 mb-12 mr-4 h-12 bg-red-darker pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-red-dark scale-item items-center flex rounded shadow-md"
-                        // onClick={() => window.scrollTo(0, 0)}
-                    >
+                        onClick={() => window.scrollTo(0, 0)}
+                        className="fixed z-999 w-12 pb-2 mb-12 mr-4 h-12 bg-red-darker pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-red-dark scale-item items-center flex rounded shadow-md">
                         <FontAwesomeIcon icon={faAngleUp} className="fa-2x cursor-pointer flex justify-center mt-1" />
                     </div>
                 </AnchorLink>
@@ -141,7 +153,9 @@ const mapDispatchToProps = dispatch => {
         setEmail: input => dispatch(actions.setEmail(input)),
         subscribeToNewsletter: input => dispatch(actions.subscribeToNewsletter(input)),
         toggleShowFilters: bool => dispatch(actions.toggleShowFilters(bool)),
-        setCartPosition: posObj => dispatch(actions.setCartPosition(posObj))
+        setCartPosition: posObj => dispatch(actions.setCartPosition(posObj)),
+        getFeaturedList: () => dispatch(actions.getFeaturedList()),
+        quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input))
     };
 };
 

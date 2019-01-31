@@ -191,7 +191,9 @@ const actions = {
                     let _strains = data.data.getFeaturedList;
                     let _new = [];
                     for (let strain of _strains) {
-                        _new.push(inferStrainData(strain));
+                        let $strain = inferStrainData(strain);
+                        $strain = { ...$strain, _id: $strain._id + "f" };
+                        _new.push($strain);
                     }
                     dispatch({
                         type: actionTypes.GET_FEATURED_LIST,
@@ -210,19 +212,29 @@ const query = {
             getFeaturedList {
                 _id
                 name
+                price
                 strainImg
                 packageImg
                 description
+                effect
                 genetic
+                yield
                 flowerTime
                 difficulty
                 type
+                og
+                pthc
+                pcbd
+                pcbn
+                country
                 sotiId
-                indica
-                sativa
-                ruderalis
                 env
+                sativa
+                indica
+                ruderalis
                 rating
+                reviews
+                ratingQuantity
                 featured
             }
         }
@@ -255,6 +267,7 @@ const query = {
                 rating
                 reviews
                 ratingQuantity
+                featured
             }
         }
     `

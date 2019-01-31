@@ -1,63 +1,56 @@
+import ProductThumbnail from "../productGrid/productThumbnail";
 
 const index = props => {
+    let hoverId = props.misc.hoverId;
+    let products = props.misc.featuredStrains;
+    let isSmallMediumOrLargeDevice = ["sm", "md", "lg"].includes(props.misc.mediaSize);
 
-  let hoverIndex = props.misc.hoverIndex;
-
-  let thumbnails = props.misc.strains.map((product, index)=> {
-    if(index > 2)return null;
-    let packageStyle = hoverIndex == index ? 
-    {
-      height: "200px", width: "120px", position: "absolute", zIndex: 10, margin: "0 50px", transition: "0.5s all ease-in-out",
-      transform: "translateX(-30px)",
-      backgroundImage: "url(" + product.packageImg + ")",
-      backgroundPosition: "center",
-      backgroundSize: "cover"
-    } 
-    : 
-    {
-      height: "200px", width: "120px", position: "absolute", zIndex: 10, margin: "0 50px", transition: "0.5s all ease-in-out",
-      transform: "translateX(0)",
-      backgroundImage: "url(" + product.packageImg + ")",
-      backgroundPosition: "center",
-      backgroundSize: "cover"
-    };
-
-    let plantStyle = hoverIndex == index ? 
-    {
-      height: "200px", position: "absolute", zIndex: 0, margin: "0 50px", transition: "0.5s all ease-in-out",
-      transform: "translateX(30px)"
-    } 
-    : 
-    {
-      height: "200px", position: "absolute", zIndex: 0, margin: "0 50px", transition: "0.5s all ease-in-out",
-      transform: "translateX(0)"
-    };
-
-    let overlayStyle = hoverIndex == index ? 
-    {
-      height: "99%", width: "86%", padding: "20px", backgroundColor: "rgba(0,0,0,0.5)", transition: "0.5s all ease-in-out",
-      color: "rgba(255,255,255,1)", transform: "translateX(14px) translateY(1px)"
-    } 
-    : 
-    {
-      height: "0px", width: "86%", backgroundColor: "rgba(0,0,0,0.5)", transition: "0.5s all ease-in-out",
-      color: "rgba(255,255,255,0)", transform: "translateX(14px) translateY(1px)"
-    };
-
-    return(
-      <div key={index} onMouseEnter={() => props.setHoverIndex(index)} onMouseLeave={() => props.setHoverIndex(index)} className="w-64 h-64 m-8 text-white">
-        <div style={packageStyle}>
-          <div style={overlayStyle}>Overlay words</div>
+    products = products.map((product, index) => {
+        return (
+            <div
+                key={index}
+                onMouseEnter={() => {
+                    if (isSmallMediumOrLargeDevice) {
+                        return null;
+                    }
+                    props.setHoverId(product._id, true);
+                    let _index = 0;
+                    while (product.price[_index] == -1) {
+                        _index++;
+                    }
+                    props.quickAddToCartQty(_index);
+                    props.modifyPotentialQuantity({
+                        potentialQuantity: props.cart.potentialQuantity,
+                        action: "SET",
+                        quantity: 1
+                    });
+                }}
+                onMouseLeave={() => {
+                    if (isSmallMediumOrLargeDevice) {
+                        return null;
+                    }
+                    props.setHoverId(product._id, false);
+                }}
+                className={
+                    hoverId == product._id
+                        ? "w-64 h-64 sm:w-screen sm:h-screen sm:pin-t sm:mt-4 md:w-48 md:h-48 lg:h-48 lg:w-48 text-white relative sm:absolute z-50 slowishish lg:my-4 sm:my-0 md:my-2 lg:mx-8 xl:mx-8 xxl:mx-8"
+                        : "w-64 h-64 sm:cursor-pointer md:cursor-pointer sm:w-32 sm:h-32 md:w-48 md:h-48 lg:h-48 lg:w-48 text-white relative z-0 slowishish lg:my-4 sm:my-2 md:my-2 lg:mx-8 xl:mx-8 xxl:mx-8"
+                }>
+                <ProductThumbnail
+                    isSmallMediumOrLargeDevice={isSmallMediumOrLargeDevice}
+                    hoverId={hoverId}
+                    index={index}
+                    product={product}
+                    {...props}
+                />
+            </div>
+        );
+    });
+    return (
+        <div className="flex flex-wrap w-full pt-6 sm:justify-center md:justify-center lg:justify-start xl:justify-start xxl:justify-around sm:overflow-hidden">
+            {isSmallMediumOrLargeDevice ? products.slice(0, 4) : products}
         </div>
-      <img src={product.strainImg} style={plantStyle} />
-    </div>
     );
-  });
+};
 
-  return (
-      <div className="w-full h-screen text-white">
-        {thumbnails}
-      </div>
-  );
-}
 export default index;

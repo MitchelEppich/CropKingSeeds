@@ -46,6 +46,7 @@
         "react-anchor-link-smooth-scroll": "^1.0.11",
         "react-apollo": "^2.1.11",
         "react-dom": "^16.4.2",
+        "react-no-ssr": "^1.1.0",
         "react-p5-wrapper": "^0.0.4",
         "react-particles-js": "^2.4.2",
         "react-recaptcha": "^2.3.10",

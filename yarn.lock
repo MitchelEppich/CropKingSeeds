@@ -1175,7 +1175,7 @@ babel-plugin-wrap-in-js@^1.1.1:
     babel-plugin-transform-strict-mode "^6.6.5"
     babel-template "^6.7.0"
 
-babel-runtime@^6.2.0, babel-runtime@^6.22.0, babel-runtime@^6.26.0, babel-runtime@^6.6.1:
+babel-runtime@6.x.x, babel-runtime@^6.2.0, babel-runtime@^6.22.0, babel-runtime@^6.26.0, babel-runtime@^6.6.1:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   dependencies:
@@ -5554,7 +5554,6 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
 react-anchor-link-smooth-scroll@^1.0.11:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/react-anchor-link-smooth-scroll/-/react-anchor-link-smooth-scroll-1.0.11.tgz#e53f55b89382df0d85470ebd20e6b349d62eb19d"
-  integrity sha512-PaAFtqs00eXbbYPTaiG7sEL2EkVfs+PiarzMnMN66JQWamORiNOzyhumW2tImKeKFUZeFdifqz9iJy/2e4RLnw==
 
 react-apollo@^2.1.11:
   version "2.3.3"
@@ -5624,6 +5623,12 @@ react-motion@^0.5.2:
     performance-now "^0.2.0"
     prop-types "^15.5.8"
     raf "^3.1.0"
+
+react-no-ssr@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-no-ssr/-/react-no-ssr-1.1.0.tgz#313b48d2e26020f969ed98e472f10481604e3cc8"
+  dependencies:
+    babel-runtime "6.x.x"
 
 react-p5-wrapper@^0.0.4:
   version "0.0.4"

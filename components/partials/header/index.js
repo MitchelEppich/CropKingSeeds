@@ -1,4 +1,4 @@
-import Menu from "./Menu";
+import Menu from "./menu";
 import NotificationBar from "./notificationBar";
 
 const Header = props => {
