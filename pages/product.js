@@ -15,7 +15,6 @@ import Reviews from "../components/sections/productPage/reviews";
 import Details from "../components/sections/productPage/details";
 import Data from "../components/sections/productPage/data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCannabis } from "@fortawesome/free-solid-svg-icons";
 import {} from "@fortawesome/free-brands-svg-icons";
 import Share from "../components/sections/productPage/share";
 import Description from "../components/sections/productPage/description";

@@ -46,7 +46,7 @@ class Index extends Component {
                                             : "sm:w-full md:w-full lg:w-2/5 xl:w-1/3 xxl:w-1/4 slow relative mt-8 mb-12"
                                     }>
                                     <Filters {...this.props} />
-                                    <h3 className="text-center mx-auto my-2 sm:mt-10 md:mt-10 md:mb-0 text-2xl w-full">
+                                    <h3 className="text-center mx-auto  mt-8 sm:mt-10 md:mt-20 md:mb-0 text-2xl w-full">
                                         Featured Strains
                                     </h3>
                                     <FeaturedStrainThumbnails {...this.props} />
