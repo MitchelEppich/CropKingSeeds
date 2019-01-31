@@ -20,6 +20,7 @@ import AgeVerification from "../components/sections/ageVerification";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComments, faCaretUp, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import Loader from "../components/sections/loader";
 
 class Layout extends Component {
     componentDidMount() {
@@ -115,7 +116,13 @@ class Layout extends Component {
                     {" "}
                     <ShareButtons {...this.props} />
                     <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md">
-                        {this.props.misc.strains != null ? this.props.children : <p>Loading...</p>}
+                        {this.props.misc.strains != null ? (
+                            this.props.children
+                        ) : (
+                            <div className="h-screen w-full">
+                                <Loader {...this.props} />
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div

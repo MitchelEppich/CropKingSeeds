@@ -171,7 +171,12 @@ const menu = props => {
                     </div>
                     <div className="inline-flex w-full sm:block md:block lg:block">
                         <div className="w-1/4 sm:w-full md:w-full lg:w-full flex justify-start">
-                            <div className="pt-px pr-px pb-15px pl-3px sm:pb-2 sm:pr-1 flex shadow-md -mt-54px sm:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-130 rounded-full bg-crimson justify-center content-center items-center">
+                            <div
+                                className={
+                                    props.misc.strains != null
+                                        ? "opacity-1 slow pt-px pr-px pb-15px pl-3px sm:pb-2 sm:pr-1 flex shadow-md -mt-54px sm:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-130 rounded-full bg-crimson justify-center content-center items-center"
+                                        : "opacity-0 slow pt-px pr-px pb-15px pl-3px sm:pb-2 sm:pr-1 flex shadow-md -mt-54px sm:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-130 rounded-full bg-crimson justify-center content-center items-center"
+                                }>
                                 <img
                                     src="../static/img/cks-logo-header.png"
                                     onClick={() => console.log(props)}
