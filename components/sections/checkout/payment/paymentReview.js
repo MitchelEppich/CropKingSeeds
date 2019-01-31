@@ -43,10 +43,10 @@ const PaymentReview = props => {
       _orderDetails[pageGroup].method.value == "Credit Card"
         ? 0.1
         : 0;
-    let creditFee = cartTotal * creditTax;
     let cumTax = tax + provTax;
     let shippingFee = _orderDetails.shipping.shippingCost.value;
-    let taxFee = cartTotal * cumTax;
+    let taxFee = (cartTotal + shippingFee) * cumTax;
+    let creditFee = (cartTotal + shippingFee + taxFee) * creditTax;
 
     // Discount
     let discount = _cart.discount || 0;

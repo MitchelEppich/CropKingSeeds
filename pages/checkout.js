@@ -61,7 +61,7 @@ class Index extends Component {
         details: {
           browser: { value: browser, tag: "Browser" },
           device: { value: device, tag: "Device" },
-          ip: { value: ip, tag: "cardHolderIp" }
+          ip: { value: ip, tag: "CardHolderIp" }
         }
       };
 
@@ -103,7 +103,12 @@ class Index extends Component {
             // this.props.toggleStepsCheckout(1);
             if (_stepsCheckout == 3) {
               this.props
-                .processOrder({ orderDetails: { ..._orderDetails } })
+                .processOrder({
+                  orderDetails: {
+                    ..._orderDetails,
+                    currency: this.props.checkout.availableCurrency
+                  }
+                })
                 .then(res => {
                   console.log(res);
                   this.props.toggleStepsCheckout(_stepsCheckout + 1);

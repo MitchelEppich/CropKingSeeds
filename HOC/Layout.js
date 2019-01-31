@@ -56,6 +56,7 @@ class Layout extends Component {
         });
         this.props.getFeaturedList().then(res => {});
 
+        this.props.getExchangeRates();
         if (this.props.checkout.viewCurrency == null)
             this.props.setCurrency({
                 currency: {
@@ -144,6 +145,7 @@ const mapDispatchToProps = dispatch => {
     return {
         setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
         getStrains: () => dispatch(actions.getStrains()),
+        getExchangeRates: () => dispatch(actions.getExchangeRates()),
         modifyCart: input => dispatch(actions.modifyCart(input)),
         setCurrency: input => dispatch(actions.setCurrency(input)),
         modifyPotentialQuantity: input => dispatch(actions.modifyPotentialQuantity(input)),

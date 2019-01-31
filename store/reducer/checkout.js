@@ -6,10 +6,7 @@ const initialState = {
   bitcoinData: {},
   orderOutput: {},
   availableCurrency: {
-    usd: { convert: 1, symbol: "$" },
-    cad: { convert: 1.32714, symbol: "$" }
-    // eur: { convert: 0.872076, symbol: "€" }
-    // aud: { convert: 1.38933, symbol: "$" }
+    usd: { convert: 1, symbol: "$" }
   },
   shippingMethods: [],
   viewCurrency: null,
@@ -48,6 +45,8 @@ export default (state = initialState, action) => {
       return updateObject(state, { orderOutput: action.input });
     case actionTypes.SET_CURRENCY:
       return updateObject(state, { viewCurrency: action.input });
+    case actionTypes.GET_EXCHANGE_RATES:
+      return updateObject(state, { availableCurrency: action.input });
     default:
       return state;
   }

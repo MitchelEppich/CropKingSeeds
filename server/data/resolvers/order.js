@@ -169,6 +169,8 @@ const resolvers = {
     processOrder: async (_, { input }) => {
       let _input = JSON.parse(input.content);
 
+      console.log("ABOUT TO SEND", input);
+
       let res = (await axios({
         method: "post",
         headers: {
@@ -177,6 +179,8 @@ const resolvers = {
         url: "https://www.cksoti.com/save-order-customer-details",
         data: toUrlEncoded(_input)
       })).data;
+
+      console.log(_input);
 
       resolvers.Mutation.createOrder(null, {
         input: {

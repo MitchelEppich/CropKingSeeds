@@ -21,7 +21,8 @@ const actionTypes = {
   SET_CURRENCY: "SET_CURRENCY",
   SET_SHIPPING_METHODS: "SET_SHIPPING_METHODS",
   APPLY_COUPON: "APPLY_COUPON",
-  SET_ERROR: "SET_ERROR"
+  SET_ERROR: "SET_ERROR",
+  GET_EXCHANGE_RATES: "GET_EXCHANGE_RATES"
 };
 
 let shippingMethods = [
@@ -214,6 +215,24 @@ const getActions = uri => {
           .catch(error => console.log(error));
       };
     },
+    getExchangeRates: input => {
+      return async dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = {
+          query: query.getExchangeRates
+        };
+
+        await makePromise(execute(link, operation))
+          .then(data => {
+            let _rates = JSON.parse(data.data.getExchangeRates);
+            dispatch({
+              type: actionTypes.GET_EXCHANGE_RATES,
+              input: _rates
+            });
+          })
+          .catch(error => console.log(error));
+      };
+    },
     setCurrency: input => {
       return { type: actionTypes.SET_CURRENCY, input: input.currency };
     },
@@ -223,36 +242,52 @@ const getActions = uri => {
         let _orderDetails = { ...input.orderDetails };
         let _paymentMethod = _orderDetails.payment.method.value;
 
-        // console.log(buildOrderPost(_orderDetails));
+        console.log(buildOrderPost(_orderDetails));
 
-        if (_paymentMethod == "Credit Card") {
-          // Get New Order ID
-          getNewOrderId(uri).then(res => {
-            _orderDetails.payment.orderId = { value: res, tag: "Order_ID" };
-            // Process Credit Card
-            processPayment(_orderDetails.payment, uri).then(res => {
-              // Process Order
-              processOrder(_orderDetails, res, uri);
-            });
-          });
-        } else {
-          // Get New Order ID
-          getNewOrderId(uri).then(res => {
-            _orderDetails.payment.orderId = { value: res, tag: "Order_ID" };
-            console.log(res);
-            // Process Order
-            processOrder(_orderDetails, res, uri).then(res => {
-              console.log(res);
-            });
-          });
-        }
+        // Set Order ID
+        let orderId = await getNewOrderId(uri);
+        _orderDetails.payment.orderId = { value: orderId, tag: "Order_ID" };
 
-        // const link = new HttpLink({ uri, fetch: fetch });
-        // const operation = { query: query.getBitcoinData, variables: { ...input } };
+        console.log(orderId);
 
-        // await makePromise(execute(link, operation))
-        //   .then(data => {})
-        //   .catch(error => console.log(error));
+        // Process Payment
+        let ccResponse = await (async () => {
+          if (_paymentMethod == "Credit Card") {
+            let _orderAmount = _orderDetails.payment.cartTotal.value;
+            if (_orderAmount <= 300)
+              return await processPayment(_orderDetails.payment, uri);
+            return { status: "Missing" };
+          }
+          return null;
+        })();
+
+        console.log(ccResponse);
+
+        // Process Order
+        let response = await processOrder(_orderDetails, ccResponse, uri);
+
+        console.log(response);
+        // if (_paymentMethod == "Credit Card" && _orderAmount <= 300) {
+        //   // Get New Order ID
+        //   getNewOrderId(uri).then(res => {
+        //     _orderDetails.payment.orderId = { value: res, tag: "Order_ID" };
+        //     // Process Credit Card
+        //     processPayment(_orderDetails.payment, uri).then(res => {
+        //       // Process Order
+        //       processOrder(_orderDetails, res, uri);
+        //     });
+        //   });
+        // } else {
+        //   // Get New Order ID
+        //   getNewOrderId(uri).then(res => {
+        //     _orderDetails.payment.orderId = { value: res, tag: "Order_ID" };
+        //     console.log(res);
+        //     // Process Order
+        //     processOrder(_orderDetails, res, uri).then(res => {
+        //       console.log(res);
+        //     });
+        //   });
+        // }
       };
     }
   };
@@ -268,6 +303,11 @@ const query = {
   getBitcoinData: gql`
     query($value: String, $currency: String) {
       getBitcoinData(input: { value: $value, currency: $currency })
+    }
+  `,
+  getExchangeRates: gql`
+    {
+      getExchangeRates
     }
   `,
   getCoupon: gql`
@@ -367,6 +407,14 @@ let processOrder = async (orderDetails, res, uri) => {
       _orderPost.Transaction_ID = res.transactionId;
     }
 
+    // if (_orderPost.BillCountry == "Canada") {
+    //   let currency = orderDetails.currency["cad"];
+    //   // We need to convert to canadian
+    //   for (let tag of ["Order_Amt", "Shipping", "Total"]) {
+    //     _orderPost[tag] = (_orderPost[tag] * currency.convert).toFixed(2);
+    //   }
+    // }
+
     const link = new HttpLink({ uri, fetch: fetch });
     const operation = {
       query: mutation.processOrder,
@@ -432,7 +480,6 @@ let buildOrderPost = orderDetails => {
   let _orderDetails = orderDetails;
   let orderPost = {
     Website_From: "cropkingseeds.com",
-    CardHolderIp: _orderDetails.cardHolderIp,
     Order_Date: moment().format("YY-MM-DD HH:mm:ss")
   };
   if (_orderDetails.payment.ccExpireMonth != null) {
@@ -447,7 +494,7 @@ let buildOrderPost = orderDetails => {
   }
   delete _orderDetails.cardHolderIp;
   for (let key of Object.keys(_orderDetails)) {
-    if (key == "undefined" || key == "coupon") continue;
+    if (key == "undefined" || key == "coupon" || key == "currency") continue;
     let prefix = (() => {
       switch (key) {
         case "shipping":
@@ -458,10 +505,11 @@ let buildOrderPost = orderDetails => {
           return "";
       }
     })();
+
     for (let _key of Object.keys(_orderDetails[key])) {
       if (_key == "undefined") continue;
       let obj = _orderDetails[key][_key];
-      if (obj.value == null) continue;
+      if (obj == null || obj.value == null) continue;
       if (obj.tag != null && obj.tag.includes(" ")) {
         let _obj = obj.value.split(" ");
         for (let item of obj.tag.split(" ")) {
@@ -476,6 +524,10 @@ let buildOrderPost = orderDetails => {
         let $key =
           (["Shipped_Type", "Shipping"].includes(_key) ? "" : prefix) + _key;
         let $value = obj.value;
+        if (_key == "prov_tax" || _key == "tax")
+          $value *=
+            _orderDetails.payment.cartTotal.value +
+            _orderDetails.payment.shippingFee.value;
         if ($key == "Order_ID") $value = parseInt($value);
         orderPost[$key] = $value;
       }
