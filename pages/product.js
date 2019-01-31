@@ -7,7 +7,7 @@ import withData from "../lib/withData";
 import { connect } from "react-redux";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
-import Router from "next/router";
+
 import AddToCart from "../components/sections/productPage/addToCart";
 import OtherProducts from "../components/sections/productPage/otherProducts";
 import MoreInfo from "../components/sections/productPage/moreInfo";
@@ -23,26 +23,9 @@ import Breadcrumb from "../components/sections/productPage/breadcrumb";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 // import ImageCarousel from "../components/sections/productPage/imageCarousel";
 import Ratings from "../components/sections/productPage/ratings";
-import Loader from "../components/sections/loader";
 
 class Index extends Component {
-    componentDidMount() {
-        setTimeout(() => {
-            const isClient = typeof document !== "undefined";
-            if (!isClient) return;
-            let url = Router.asPath.slice(1);
-            if (url && url.length != 0) {
-                if (url.includes("product/")) {
-                    if (
-                        !this.props.viewProduct.currentProduct ||
-                        this.props.viewProduct.currentProduct.reviews == null
-                    ) {
-                        Router.push("/404", url);
-                    }
-                }
-            }
-        }, 7000);
-    }
+    componentDidMount() {}
     render() {
         return (
             <Layout>
@@ -108,11 +91,6 @@ class Index extends Component {
                                                 <Share copyToClipboard={this.copyToClipboard} {...this.props} />
                                             </div>
                                         </div>
-                                        {/* <img
-                    src="../../static/img/topseller.png"
-                    style={{ transform: "rotateZ(8deg)" }}
-                    className="absolute pin-t pin-r w-24 mr-32 pt-12 opacity-50"
-                  /> */}
                                     </div>
                                 </div>
                             </div>
@@ -141,9 +119,7 @@ class Index extends Component {
                         </div>
                     </div>
                 ) : (
-                    <div className="h-screen w-full">
-                        <Loader {...this.props} />
-                    </div>
+                    <p>Loading...</p>
                 )}
             </Layout>
         );

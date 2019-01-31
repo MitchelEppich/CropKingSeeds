@@ -99,12 +99,9 @@ class Layout extends Component {
                     this.props.toggleShowFilters(true);
                     this.props.setMediaSize({ mediaSize: mediaSize });
                 }
-
-                return mediaSize;
             }
         }
     };
-
     render() {
         return (
             <div id="top" className="w-full bg-off-white">

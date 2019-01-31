@@ -8,6 +8,7 @@ const reviewForm = props => {
   for (let i = 0; i < 5; i++) {
     reviewIcons.push(
       <div
+        key={i}
         id="rating"
         onClick={e => {
           let review = _review;

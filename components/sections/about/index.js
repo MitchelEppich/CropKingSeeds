@@ -17,7 +17,7 @@ const About = props => {
     let activeThumb =
       currentItem == index
         ? {
-            transform: "scale(1.3)",
+            transform: "scale(1.15)",
             transition: "all .3s ease"
           }
         : {
@@ -52,8 +52,8 @@ const About = props => {
         }}
         className={`${
           currentItem != 0
-            ? "cursor-pointer hover:text-grey text-red-light"
-            : "opacity-25 cursor-default text-red"
+            ? "cursor-pointer hover:text-grey text-red-light slowish"
+            : "opacity-0 cursor-default text-red slowish"
         }`}
       >
         <FontAwesomeIcon icon={faAngleLeft} className="fa-3x mx-2" />
@@ -73,8 +73,8 @@ const About = props => {
         }}
         className={`${
           currentItem != props.about.historyObjs.length - 1
-            ? "cursor-pointer hover:text-grey text-red-light"
-            : "opacity-25 cursor-default text-red"
+            ? "cursor-pointer hover:text-grey text-red-light slowish"
+            : "opacity-0 cursor-default text-red slowish"
         }`}
       >
         <FontAwesomeIcon icon={faAngleRight} className="fa-3x mx-2" />

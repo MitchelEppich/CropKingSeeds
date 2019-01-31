@@ -36,6 +36,7 @@ const reviews = props => {
     // Add Back Button
     arr.push(
       <button
+        key={arr}
         className={`w-32 sm:w-12 sm:w-full sm:mx-0 sm:ml-1 sm:mt-6 p-2 mt-2 mx-2 text-lg hover:bg-red-dark bg-red-light rounded text-white font-extrabold cursor-pointer ${
           cursor <= 0 ? "unselectable opacity-50 pointer-events-none" : ""
         }`}
@@ -60,6 +61,7 @@ const reviews = props => {
       let value = i;
       arr.push(
         <button
+          key={i}
           className={`w-10 sm:w-full sm:mx-1 sm:mt-6 p-2 mt-2 text-lg hover:bg-red-dark bg-red-light font-bold rounded mx-1 text-white cursor-pointer  ${
             cursor == i ? "opacity-75" : ""
           }`}
@@ -75,6 +77,7 @@ const reviews = props => {
     // Add Next Button
     arr.push(
       <button
+        key={arr}
         className={`w-32 sm:w-12 sm:w-full sm:mx-0 sm:ml-1 sm:mt-6 p-2 mt-2 mx-2 text-lg hover:bg-red-dark bg-red-light rounded text-white font-extrabold cursor-pointer ${
           (cursor + 1) * 5 >= _reviews.length
             ? "unselectable opacity-50 pointer-events-none"
