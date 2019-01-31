@@ -7,8 +7,13 @@ const Coupon = props => {
   let _orderDetails = props.checkout.orderDetails;
   let pageGroup = "payment";
 
+  let threshold = props.checkout.freeShippingThreshold
+  let toFreeShipping = threshold - props.cart.price;
+  let freeShipping = toFreeShipping < 0 || toFreeShipping == threshold;
+  let marginBottom = freeShipping ? 4 : 0
+
   return (
-    <div className="w-full flex items-center inline-flex lg:flex-col md:flex-col sm:flex-col mt-4 lg:mt-0 md:mt-0 sm:mt-0 p-2 lg:px-6 px-8 xl:mb-8 xxl:mb-8 mb-4">
+    <div className={`w-full flex items-center inline-flex lg:flex-col md:flex-col sm:flex-col mt-4 lg:mt-0 md:mt-0 sm:mt-0 p-2 lg:px-6 px-8 xl:mb-${marginBottom * 2} xxl:mb-${marginBottom * 2} mb-${marginBottom}`}>
       <div className="w-1/2 inline-flex lg:w-full md:w-full sm:w-full items-center flex">
         <div className="w-1/2 lg:w-full md:w-full sm:w-full">
           <div className="w-full">

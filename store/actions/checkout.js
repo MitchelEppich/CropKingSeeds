@@ -79,8 +79,10 @@ const getActions = uri => {
       let _country = input.country;
       let _state = input.state;
 
-      let _methods = [];
+      let _cartTotal = input.cartTotal;
+      let _freeShippingThreshold = input.freeShippingThreshold;
 
+      let _methods = [];
       switch (_country) {
         case "Canada":
           _methods.push(shippingMethods[0], shippingMethods[1]);
@@ -98,6 +100,11 @@ const getActions = uri => {
           break;
         default:
           _methods.push(shippingMethods[5]);
+      }
+
+      if (_cartTotal >= _freeShippingThreshold) {
+        if (_methods.length == 2) _methods = [{ ..._methods[1] }];
+        _methods[0].price = 0;
       }
 
       return { type: actionTypes.SET_SHIPPING_METHODS, input: _methods };
@@ -135,7 +142,7 @@ const getActions = uri => {
           _tag == null ? _value : { value: _value, tag: _tag };
 
         if (_key == "country" && _orderDetails[_group].state != null) {
-          _orderDetails[_group].state.value = "";
+          _orderDetails[_group].state = undefined;
         }
         _orderDetails[_group].updatedAt = new Date();
       } else if (_tag != null)

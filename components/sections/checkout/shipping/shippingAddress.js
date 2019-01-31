@@ -307,12 +307,15 @@ const ShippingAddress = props => {
                 });
                 props.setShippingMethods({
                   country: _value,
-                  state: undefined
+                  state: undefined,
+                  cartTotal: props.cart.price,
+                  freeShippingThreshold: props.checkout.freeShippingThreshold
                 });
               }}
               placeholder="Country"
               className="w-full"
-              style={{ padding: "0.35rem" }}>
+              style={{ padding: "0.35rem" }}
+            >
               {showCountries()}
             </select>
           </div>
@@ -361,12 +364,15 @@ const ShippingAddress = props => {
                       _orderDetails.shipping.country != null
                         ? _orderDetails.shipping.country.value
                         : undefined,
-                    state: _value
+                    state: _value,
+                    cartTotal: props.cart.price,
+                    freeShippingThreshold: props.checkout.freeShippingThreshold
                   });
                 }}
                 placeholder="Province or State"
                 className="w-full"
-                style={{ padding: "0.35rem" }}>
+                style={{ padding: "0.35rem" }}
+              >
                 {showOptions()}
               </select>
             ) : (
@@ -402,7 +408,9 @@ const ShippingAddress = props => {
                       _orderDetails.shipping.country != null
                         ? _orderDetails.shipping.country.value
                         : undefined,
-                    state: _value
+                    state: _value,
+                    cartTotal: props.cart.price,
+                    freeShippingThreshold: props.checkout.freeShippingThreshold
                   });
                 }}
                 placeholder="Province"

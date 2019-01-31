@@ -91,11 +91,13 @@ const ShippingMethod = props => {
                   {props.checkout.orderDetails.shipping.country == null ||
                   props.checkout.orderDetails.shipping.state == null
                     ? ""
-                    : currency != null
-                    ? `${currency.symbol}${(
-                        currency.convert * _method.price
-                      ).toFixed(2)}`
-                    : ""}
+                    : _method.price != 0
+                    ? currency != null
+                      ? `${currency.symbol}${(
+                          currency.convert * _method.price
+                        ).toFixed(2)}`
+                      : ""
+                    : "FREE"}
                 </div>
               </div>
             </div>

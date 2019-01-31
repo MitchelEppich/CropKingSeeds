@@ -24,7 +24,8 @@ const initialState = {
     "61759",
     "h8r1m6"
   ],
-  error: false
+  error: false,
+  freeShippingThreshold: 300
 };
 
 export default (state = initialState, action) => {

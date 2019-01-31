@@ -15,6 +15,10 @@ const PaymentReview = props => {
   let _orderDetails = props.checkout.orderDetails;
   let _cart = props.cart;
 
+  let couponActive =
+    _orderDetails.coupon != null && _orderDetails.coupon.code != null;
+  let ccFeeActive = _orderDetails[pageGroup].creditFee.value != 0;
+
   let { productList, itemQuantity } = buildProductList(_cart.items);
   if (
     _orderDetails[pageGroup] == null ||
@@ -235,13 +239,12 @@ const PaymentReview = props => {
           <div className="w-3/5 text-right">
             <p className="mt-1">Product Total:</p>
             <p className="mt-2">Shipping: </p>
-            <p className="mt-2">
-              Tax ({(_orderDetails[pageGroup].cumTax * 100).toFixed(2)}%):
-            </p>
-            <p className="mt-2">
-              Credit Card Tax (
-              {(_orderDetails[pageGroup].creditTax * 100).toFixed(2)}%):{" "}
-            </p>
+            {_orderDetails[pageGroup].creditFee.value != 0 ? (
+              <p className="mt-2">
+                Credit Card Tax (
+                {(_orderDetails[pageGroup].creditTax * 100).toFixed(2)}%):{" "}
+              </p>
+            ) : null}
             {_orderDetails.coupon != null &&
             _orderDetails.coupon.code != null ? (
               <p className="mt-2 text-red-dark">
@@ -249,6 +252,9 @@ const PaymentReview = props => {
                 ):{" "}
               </p>
             ) : null}
+            <p className="mt-2">
+              Tax ({(_orderDetails[pageGroup].cumTax * 100).toFixed(2)}%):
+            </p>
           </div>
           <div className="w-2/5 pl-4 text-left">
             <p className="mt-1">
@@ -261,27 +267,25 @@ const PaymentReview = props => {
                 : ""}
             </p>
             <p className="mt-2">
-              {currency != null
-                ? `${currency.symbol}${(
-                    currency.convert *
-                    _orderDetails[pageGroup].shippingFee.value
-                  ).toFixed(2)}`
-                : ""}
+              {_orderDetails[pageGroup].shippingFee.value != 0
+                ? currency != null
+                  ? `${currency.symbol}${(
+                      currency.convert *
+                      _orderDetails[pageGroup].shippingFee.value
+                    ).toFixed(2)}`
+                  : ""
+                : "FREE"}
             </p>
-            <p className="mt-2">
-              {currency != null
-                ? `${currency.symbol}${(
-                    currency.convert * _orderDetails[pageGroup].taxFee
-                  ).toFixed(2)}`
-                : ""}
-            </p>
-            <p className="mt-2">
-              {currency != null
-                ? `${currency.symbol}${(
-                    currency.convert * _orderDetails[pageGroup].creditFee.value
-                  ).toFixed(2)}`
-                : ""}
-            </p>
+            {_orderDetails[pageGroup].creditFee.value != 0 ? (
+              <p className="mt-2">
+                {currency != null
+                  ? `${currency.symbol}${(
+                      currency.convert *
+                      _orderDetails[pageGroup].creditFee.value
+                    ).toFixed(2)}`
+                  : ""}
+              </p>
+            ) : null}
             {_orderDetails.coupon != null &&
             _orderDetails.coupon.code != null ? (
               <p className="mt-2 text-red-dark">
@@ -292,13 +296,22 @@ const PaymentReview = props => {
                   : ""}
               </p>
             ) : null}
+            <p className="mt-2">
+              {currency != null
+                ? `${currency.symbol}${(
+                    currency.convert * _orderDetails[pageGroup].taxFee
+                  ).toFixed(2)}`
+                : ""}
+            </p>
           </div>
         </div>
         <div
           className={`${
-            _orderDetails.coupon != null && _orderDetails.coupon.code != null
+            couponActive && ccFeeActive
               ? "p-1"
-              : "p-2 mt-4"
+              : ccFeeActive | couponActive
+              ? "p-2 mt-5"
+              : "p-2 mt-12"
           } border-t-2 border-grey-lightest inline-flex w-full`}
         >
           <div className="w-3/5 text-right">
