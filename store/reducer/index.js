@@ -71,7 +71,8 @@ const initialState = {
     newsletterEmail: null,
     subscribedToNewsletter: false,
     emailSent: false,
-    featuredStrains: null
+    featuredStrains: null,
+    searchValue: null
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -130,6 +131,8 @@ const indexReducer = (state = initialState, action) => {
             return updateObject(state, { strains: [...action.strains] });
         case actionTypes.GET_FEATURED_LIST:
             return updateObject(state, { featuredStrains: [...action.input] });
+        case actionTypes.SET_SEARCH:
+            return updateObject(state, { searchValue: action.value });
         default:
             return state;
     }

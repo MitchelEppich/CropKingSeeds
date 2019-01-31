@@ -7,6 +7,20 @@ const question = props => {
     let size = expand
         ? { height: "auto", transition: "all 0.2s ease-in-out", backgroundColor: "#FDFDFD" }
         : { height: "auto", transition: "all 0.2s ease-in-out", backgroundColor: "#FAFAFA" };
+    let answer;
+    if (typeof props.answer == "string") {
+        // console.log(props.answer);
+        answer = props.answer;
+    } else {
+        answer = props.answer.map((value, index) => {
+            return (
+                <p key={index} className="my-1">
+                    {value}
+                </p>
+            );
+        });
+    }
+    // console.log(typeof props.answer);
     return (
         <div
             onClick={() => props.toggleFAQQuestion(props.index)}
@@ -23,7 +37,7 @@ const question = props => {
                     <FontAwesomeIcon icon={faCaretDown} className="fa-2x mx-2 mt-1" />
                 )}
             </p>
-            {expand ? <p className="px-10 pb-8">{props.answer}</p> : null}
+            {expand ? <p className="px-10 pb-8">{answer}</p> : null}
         </div>
     );
 };

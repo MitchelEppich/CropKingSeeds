@@ -21,6 +21,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComments, faCaretUp, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Loader from "../components/sections/loader";
+import SearchBar from "../components/partials/header/searchBar";
 
 class Layout extends Component {
     componentDidMount() {
@@ -111,6 +112,7 @@ class Layout extends Component {
                     <script src="../static/scripts/functions.js" />
                 </Head>
                 <Header {...this.props} />
+                <SearchBar {...this.props} />
                 {/* <AgeVerification {...this.props} /> */}
                 <div className="pt-32">
                     {" "}
@@ -162,7 +164,8 @@ const mapDispatchToProps = dispatch => {
         toggleShowFilters: bool => dispatch(actions.toggleShowFilters(bool)),
         setCartPosition: posObj => dispatch(actions.setCartPosition(posObj)),
         getFeaturedList: () => dispatch(actions.getFeaturedList()),
-        quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input))
+        quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
+        setSearch: value => dispatch(actions.setSearch(value))
     };
 };
 

@@ -53,7 +53,8 @@ const actionTypes = {
     SET_EMAIL: "SET_EMAIL",
     SEND_EMAIL: "SEND_EMAIL",
     REFRESH_EMAIL_FORM: "REFRESH_EMAIL_FORM",
-    GET_FEATURED_LIST: "GET_FEATURED_LIST"
+    GET_FEATURED_LIST: "GET_FEATURED_LIST",
+    SET_SEARCH: "SET_SEARCH"
 };
 
 const actions = {
@@ -202,6 +203,12 @@ const actions = {
                     return Promise.resolve(_new);
                 })
                 .catch(error => console.log(error));
+        };
+    },
+    setSearch: value => {
+        return {
+            type: actionTypes.SET_SEARCH,
+            value: value
         };
     }
 };

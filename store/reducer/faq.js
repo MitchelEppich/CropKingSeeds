@@ -15,8 +15,11 @@ const initialState = {
         },
         {
             question: "What is the price of shipping? And what are appropriate delivery times?",
-            answer:
-                "A. $10 Regular Shipping Canada: 2 – 7 business days depending on your area.Remote areas are up to 7 days.Large cities and cities closer to Vancouver can be 2 – 5 days. USA: Up to 2 weeks. International: All countries except Australia and New Zealand are required to pay $30.00 shipping.Australia and New Zealand can take up to 3 weeks.We will not be responsible for seized merchandise to Australia or New Zealand. B.$30 or $60 Express Registered with Tracking Guaranteed Delivery with insurance, depending on country of destination. 5-7 business days within North America.No Signature Required Importing seeds to some countries can be difficult.Approximately 5% of our orders are seized.Choosing the $30 or $60 Express shipping option guarantees delivery of your order; in case of seizure by customs we will reship.Only $10 Regular shipping fee applies to Australia and New Zealand. NOTE: Regular parcel shipments within Canada can take 5-10 days to be delivered.Express shipments take 2-5 days for delivery, and come with a free grinder."
+            answer: [
+                "A. $10 Regular Shipping Canada: 2 – 7 business days depending on your area.Remote areas are up to 7 days.Large cities and cities closer to Vancouver can be 2 – 5 days. USA: Up to 2 weeks. International: All countries except Australia and New Zealand are required to pay $30.00 shipping.Australia and New Zealand can take up to 3 weeks.We will not be responsible for seized merchandise to Australia or New Zealand.",
+                "B.$30 or $60 Express Registered with Tracking Guaranteed Delivery with insurance, depending on country of destination. 5-7 business days within North America.No Signature Required Importing seeds to some countries can be difficult.Approximately 5% of our orders are seized.Choosing the $30 or $60 Express shipping option guarantees delivery of your order; in case of seizure by customs we will reship.Only $10 Regular shipping fee applies to Australia and New Zealand. ",
+                "NOTE: Regular parcel shipments within Canada can take 5-10 days to be delivered.Express shipments take 2-5 days for delivery, and come with a free grinder."
+            ]
         },
         {
             question: "Which payment methods are accepted?",
@@ -26,17 +29,12 @@ const initialState = {
         {
             question: "What currency is used to purchase seeds?",
             answer:
-                "The prices for our seeds displayed are in US dollars. If you are a Canadian customer you are charged the amount displayed in Canadian dollars. Since we are a global company we choose to process in US dollars for all orders outside Canada."
+                "The prices for our seeds displayed are in US dollars or Canadian dollars. If you are a Canadian customer you are charged the amount displayed in Canadian dollars. Since we are a global company we choose to process in US dollars for all orders outside Canada."
         },
         {
             question: "Who can buy Crop King Seeds?",
             answer:
                 "We ship to all countries. Canadian customers receive seeds in our original packaging. Customers from all other countries receive seeds inside random objects such as pens, flashlights, birthday cards and other items. Anyone can buy our seeds as long as they are over 19 years of age. Only authentic Crop King Seeds are found inside our famous packaging. Be careful of knock-offs"
-        },
-        {
-            question: "How old do I have to be to buy seeds?",
-            answer:
-                "Quis est consequat magna id dolore. Id mollit nisi velit cillum minim labore minim culpa. Exercitation sit aliqua consectetur voluptate pariatur do magna consequat ex non ex ex consequat in. Id tempor veniam mollit ea esse sit sunt qui consequat aute tempor sint incididunt. Cillum proident ullamco velit sunt aliqua sint eu ex. Exercitation esse fugiat in nisi commodo laboris ea cillum elit reprehenderit exercitation. Fugiat occaecat dolore anim ea incididunt sint nisi dolor officia consequat."
         },
         {
             question: "How do you know we wont keep your money and not send your seeds?",
