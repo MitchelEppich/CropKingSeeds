@@ -20,8 +20,10 @@ class Index extends Component {
             Sign up using our application below.
           </h3>
 
-          <div className="p-3 bg-red-dark text-white mt-8 mx-auto text-center cursor-pointer h-12 pt-3 w-64 text-2xl font-extrabold scale-item hover:bg-grey rounded shadow-md">
-            Join Us!
+          <div className="p-3 bg-red-dark text-white mt-8 mx-auto text-center cursor-pointer h-12 pt-3 w-64 text-2xl font-extrabold scale-item hover:bg-red-light rounded shadow-md">
+            <a href="tel:+1-844-276-7546" className="text-white">
+              Join Us!{" "}
+            </a>
           </div>
         </div>
       </Layout>
