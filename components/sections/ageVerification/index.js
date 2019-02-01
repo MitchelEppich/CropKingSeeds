@@ -49,7 +49,7 @@ const AgeVerification = props => {
   };
 
   return (
-    <div className="w-full h-full bg-white z-50 fixed overflow-y-hidden">
+    <div className="w-full h-full bg-white z-999 fixed overflow-y-hidden">
       <form
         onSubmit={e => {
           e.preventDefault();

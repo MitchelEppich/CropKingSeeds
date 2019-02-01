@@ -46,6 +46,22 @@ class Index extends Component {
     }
   }
 
+  updateShippingMethod() {
+    let _orderDetails = this.props.checkout.orderDetails;
+    if (
+      _orderDetails.shipping != null &&
+      _orderDetails.shipping.country != null &&
+      _orderDetails.shipping.state != null
+    ) {
+      this.props.setShippingMethods({
+        country: _orderDetails.shipping.country.value,
+        state: _orderDetails.shipping.state.value,
+        cartTotal: this.props.cart.price,
+        freeShippingThreshold: this.props.checkout.freeShippingThreshold
+      });
+    }
+  }
+
   render() {
     let _orderDetails = this.props.checkout.orderDetails;
     let _stepsCheckout = this.props.misc.stepsCheckout;
