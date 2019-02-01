@@ -33,44 +33,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ErrorHandler from "../components/sections/checkout/errorHandler";
 
-import { detect } from "detect-browser";
-const _browser = detect();
-
-function getPlatformType() {
-  if (navigator.userAgent.match(/mobile/i)) {
-    return "Mobile";
-  } else if (navigator.userAgent.match(/iPad|Android|Touch/i)) {
-    return "Tablet";
-  } else {
-    return "Desktop";
-  }
-}
-
 class Index extends Component {
   componentDidMount() {
-    let browser = _browser != null ? _browser.name : "unknown";
-    let device = getPlatformType();
-
     this.props.toggleStepsCheckout(0);
-    let _orderDetails = this.props.checkout.orderDetails;
-    getCustomerIP(ip => {
-      if (ip == null) {
-        ip = "00.00.00.00";
-      }
-      _orderDetails = {
-        ..._orderDetails,
-        details: {
-          browser: { value: browser, tag: "Browser" },
-          device: { value: device, tag: "Device" },
-          ip: { value: ip, tag: "CardHolderIp" }
-        }
-      };
-
-      this.props.modifyOrderDetails({
-        orderDetails: _orderDetails,
-        requestUpdateOfGroup: { group: "payment", value: true }
-      });
-    });
     this.updateShippingMethod();
   }
 

@@ -57,7 +57,7 @@ const resolvers = {
             if (_rate == "usd") convert = 1;
             if (_rate == "cdn") {
               _rate = "cad";
-              convert = (1 + parseFloat(convert)).toFixed(4);
+              // convert = (1 + parseFloat(convert)).toFixed(4);
             }
 
             exchange[_rate] = { convert, symbol: "$" };
@@ -107,8 +107,8 @@ const resolvers = {
       });
     },
     processPayment: async (_, { input }) => {
-      console.log(await processBambora(input));
-      // return await processPivotal(input);
+      // console.log(await processBambora(input));
+      return await processPivotal(input);
     }
   }
 };
@@ -221,7 +221,7 @@ let processPivotal = async input => {
 
   return {
     transactionId: res.UNIQUEREF._text,
-    status: res.RESPONSECODE._text == "A" ? "Approved" : "Denied",
+    status: res.RESPONSECODE._text == "A" ? "Approved" : "Declined",
     approvalCode: res.APPROVALCODE._text || "",
     response: res.RESPONSETEXT._text,
     processor: "Pivotal 3 VT"

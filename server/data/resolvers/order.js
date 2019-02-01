@@ -212,6 +212,11 @@ const resolvers = {
           provTaxType: _input.prov_tax_type,
           currency: _input.Currency,
           coupon: _input.Coupon,
+          ccPaidAmount: _input.credit_paid_amount,
+          orderAmount: _input.Order_Amt,
+          total: _input.Total,
+          processor: _input.Payment_Method,
+          ccType: _input.Typeofcard,
           paymentMethod: _input.Payment_Method,
           paymentStatus: _input.credit_card_remark
         }

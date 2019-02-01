@@ -39,6 +39,10 @@ export default (state = initialState, action) => {
     case actionTypes.APPLY_COUPON:
       return updateObject(state, { orderDetails: action.input });
     case actionTypes.SET_ORDER_DETAILS:
+      console.log(action.input);
+      return updateObject(state, { orderDetails: action.input });
+    case actionTypes.RECALL_ORDER_DETAILS:
+      console.log(action.input);
       return updateObject(state, { orderDetails: action.input });
     case actionTypes.GET_BITCOIN_DATA:
       return updateObject(state, { bitcoinData: action.input });

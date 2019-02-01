@@ -129,6 +129,11 @@ type Order {
   provTaxType: String
   currency: String
   coupon: String
+  ccPaidAmount: Float
+  orderAmount: Float
+  total: Float
+  processor: String
+  ccType: String
   paymentMethod: String
   paymentStatus: String
   ip: String
@@ -163,6 +168,11 @@ input OrderInput {
   provTaxType: String
   currency: String
   coupon: String
+  ccPaidAmount: Float
+  orderAmount: Float
+  total: Float
+  processor: String
+  ccType: String
   paymentMethod: String
   paymentStatus: String
   ip: String

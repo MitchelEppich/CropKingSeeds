@@ -13,7 +13,8 @@ const actionTypes = {
   CLEAR_CART: "CLEAR_CART",
   MODIFY_CART: "MODIFY_CART",
   MODIFY_POTENTIAL_QUANTITY: "MODIFY_POTENTIAL_QUANTITY",
-  SET_CART_POSITION: "SET_CART_POSITION"
+  SET_CART_POSITION: "SET_CART_POSITION",
+  RECALL_CART: "RECALL_CART"
 };
 
 const getActions = uri => {
@@ -173,11 +174,38 @@ const getActions = uri => {
         }
       })();
 
-      return {
-        type: actionTypes.MODIFY_CART,
+      let _obj = {
         items: _items,
         price: _price,
         discount: _discount
+      };
+
+      sessionStorage.setItem("cart", JSON.stringify(_obj));
+
+      return {
+        type: actionTypes.MODIFY_CART,
+        ..._obj
+      };
+    },
+    recallCart: () => {
+      return dispatch => {
+        return new Promise((resolve, reject) => {
+          let recall = sessionStorage.getItem("cart");
+          let _obj = {
+            items: {},
+            price: 0,
+            discount: 0
+          };
+          if (recall != null) {
+            _obj = JSON.parse(recall);
+            resolve(_obj);
+          }
+
+          dispatch({
+            type: actionTypes.RECALL_CART,
+            ..._obj
+          });
+        });
       };
     },
     setCartPosition: posObj => {

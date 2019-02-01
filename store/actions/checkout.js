@@ -22,7 +22,8 @@ const actionTypes = {
   SET_SHIPPING_METHODS: "SET_SHIPPING_METHODS",
   APPLY_COUPON: "APPLY_COUPON",
   SET_ERROR: "SET_ERROR",
-  GET_EXCHANGE_RATES: "GET_EXCHANGE_RATES"
+  GET_EXCHANGE_RATES: "GET_EXCHANGE_RATES",
+  RECALL_ORDER_DETAILS: "RECALL_ORDER_DETAILS"
 };
 
 let shippingMethods = [
@@ -149,7 +150,38 @@ const getActions = uri => {
         _orderDetails[_key] = { value: _value, tag: _tag };
       else _orderDetails[_key] = _value;
 
+      sessionStorage.setItem("orderDetails", JSON.stringify(_orderDetails));
       return { type: actionTypes.MODIFY_ORDER_DETAILS, input: _orderDetails };
+    },
+    recallOrderDetails: input => {
+      return dispatch => {
+        return new Promise((resolve, reject) => {
+          let recall = sessionStorage.getItem("orderDetails");
+          let _obj = {};
+          if (recall != null) {
+            _obj = JSON.parse(recall);
+            resolve(_obj);
+          }
+
+          if (_obj.payment != null && _obj.payment.coupon != null) {
+            let _coupon = _obj.payment.coupon;
+            dispatch(
+              objects.applyCoupon({
+                action: "APPEND",
+                coupon: _coupon.value,
+                orderDetails: _obj,
+                ip: _obj.cardHolderIp,
+                items: input.items
+              })
+            );
+          }
+
+          dispatch({
+            type: actionTypes.RECALL_ORDER_DETAILS,
+            input: _obj
+          });
+        });
+      };
     },
     setOrderDetails: input => {
       return { type: actionTypes.SET_ORDER_DETAILS, input: input.orderDetails };
@@ -192,6 +224,8 @@ const getActions = uri => {
             coupon: _action == "REMOVE" ? null : _coupon
           })
         );
+
+        sessionStorage.setItem("orderDetails", JSON.stringify(_orderDetails));
 
         dispatch({
           type: actionTypes.APPLY_COUPON,
@@ -241,6 +275,7 @@ const getActions = uri => {
       };
     },
     setCurrency: input => {
+      input.currency.convert = 1; // THIS IS TO ENSURE ALL PRICES ARE EQUAL
       return { type: actionTypes.SET_CURRENCY, input: input.currency };
     },
     processOrder: input => {
@@ -262,11 +297,33 @@ const getActions = uri => {
           if (_paymentMethod == "Credit Card") {
             let _orderAmount = _orderDetails.payment.cartTotal.value;
             if (_orderAmount <= 300)
-              return await processPayment(_orderDetails.payment, uri);
+              return await processPayment(
+                {
+                  payment: _orderDetails.payment,
+                  currency: _orderDetails.currency
+                },
+                uri
+              );
             return { status: "Missing" };
           }
           return null;
         })();
+
+        if (ccResponse != null) {
+          if (ccResponse.currency != null)
+            _orderDetails.payment.currency.value = ccResponse.currency;
+          // if (ccResponse.processor != null && _paymentMethod == "Credit Card")
+          //   _orderDetails.payment.method.value = (() => {
+          //     switch (ccResponse.processor) {
+          //       case "Pivotal 3 VT":
+          //         return "Pivotal/Global1 - Kingmerch";
+          //       case "Bambora FD":
+          //         return "Bambora FD - Vancoast Seeds";
+          //       default:
+          //         return "Credit Card";
+          //     }
+          //   })();
+        }
 
         console.log(ccResponse);
 
@@ -274,27 +331,6 @@ const getActions = uri => {
         let response = await processOrder(_orderDetails, ccResponse, uri);
 
         console.log(response);
-        // if (_paymentMethod == "Credit Card" && _orderAmount <= 300) {
-        //   // Get New Order ID
-        //   getNewOrderId(uri).then(res => {
-        //     _orderDetails.payment.orderId = { value: res, tag: "Order_ID" };
-        //     // Process Credit Card
-        //     processPayment(_orderDetails.payment, uri).then(res => {
-        //       // Process Order
-        //       processOrder(_orderDetails, res, uri);
-        //     });
-        //   });
-        // } else {
-        //   // Get New Order ID
-        //   getNewOrderId(uri).then(res => {
-        //     _orderDetails.payment.orderId = { value: res, tag: "Order_ID" };
-        //     console.log(res);
-        //     // Process Order
-        //     processOrder(_orderDetails, res, uri).then(res => {
-        //       console.log(res);
-        //     });
-        //   });
-        // }
       };
     }
   };
@@ -410,7 +446,17 @@ let processOrder = async (orderDetails, res, uri) => {
 
     if (res != null) {
       _orderPost.credit_card_remark = res.status;
-      _orderPost.Descriptor = res.processor;
+      _orderPost.credit_card_paid_amount = res.amount;
+      _orderPost.Descriptor = (() => {
+        switch (res.processor) {
+          case "Pivotal 3 VT":
+            return "King Merch";
+          case "Bambora FD":
+            return "Vancoast Seeds";
+          default:
+            return "";
+        }
+      })();
       _orderPost.Transaction_ID = res.transactionId;
     }
 
@@ -421,6 +467,9 @@ let processOrder = async (orderDetails, res, uri) => {
     //     _orderPost[tag] = (_orderPost[tag] * currency.convert).toFixed(2);
     //   }
     // }
+
+    console.log(_orderPost);
+    return;
 
     const link = new HttpLink({ uri, fetch: fetch });
     const operation = {
@@ -437,18 +486,30 @@ let processOrder = async (orderDetails, res, uri) => {
     );
   });
 };
-let processPayment = async (paymentDetails, uri) => {
+let processPayment = async (details, uri) => {
   return await new Promise(async (resolve, reject) => {
+    let _payment = details.payment;
+    let _currency = details.currency["cad"];
+
+    let amount = (
+      _payment.orderTotal.value *
+      (_payment.currency.value == "USD" ? _currency.convert : 1)
+    ).toFixed(2);
+
+    let currency =
+      _payment.currency.value == "USD" ? "CAD" : _payment.currency.value;
+
+    let cardExpiry = _payment.expiryDate.value.split("-");
+    cardExpiry = cardExpiry[1] + cardExpiry[0];
+
     let paymentPost = {
-      orderId: paymentDetails.orderId.value + "-KMH-1",
-      amount: paymentDetails.orderTotal.value.toFixed(2),
-      cardNumber: paymentDetails.cardNumber.value,
-      cardType: paymentDetails.type.value,
-      cardExpiry: `${paymentDetails.ccExpireMonth.value}${
-        paymentDetails.ccExpireYear.value
-      }`,
-      cardHolderName: paymentDetails.cardHolder,
-      cvv: paymentDetails.cvv.value
+      orderId: _payment.orderId.value + "-KMH-1",
+      amount,
+      cardNumber: _payment.cardNumber.value,
+      cardType: _payment.type.value,
+      cardExpiry,
+      cardHolderName: _payment.cardHolder,
+      cvv: _payment.cvv.value
     };
 
     const link = new HttpLink({ uri, fetch: fetch });
@@ -459,8 +520,9 @@ let processPayment = async (paymentDetails, uri) => {
 
     resolve(
       await makePromise(execute(link, operation))
-        .then(async data => {
-          return data.data.processPayment;
+        .then(data => {
+          console.log(data);
+          return { ...data.data.processPayment, amount, currency };
         })
         .catch(error => console.log(error))
     );
@@ -496,8 +558,8 @@ let buildOrderPost = orderDetails => {
       value: `${_year}-${_month}`,
       tag: "Expiry_Date"
     };
-    delete _orderDetails.payment.ccExpireMonth;
-    delete _orderDetails.payment.ccExpireYear;
+    // delete _orderDetails.payment.ccExpireMonth;
+    // delete _orderDetails.payment.ccExpireYear;
   }
   delete _orderDetails.cardHolderIp;
   for (let key of Object.keys(_orderDetails)) {
@@ -514,7 +576,12 @@ let buildOrderPost = orderDetails => {
     })();
 
     for (let _key of Object.keys(_orderDetails[key])) {
-      if (_key == "undefined") continue;
+      if (
+        _key == "undefined" ||
+        _key == "ccExpireMonth" ||
+        _key == "ccExpireYear"
+      )
+        continue;
       let obj = _orderDetails[key][_key];
       if (obj == null || obj.value == null) continue;
       if (obj.tag != null && obj.tag.includes(" ")) {

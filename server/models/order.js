@@ -31,6 +31,11 @@ const OrderSchema = Schema({
   provTaxType: String,
   currency: String,
   coupon: String,
+  ccPaidAmount: Number,
+  orderAmount: Number,
+  total: Number,
+  processor: String,
+  ccType: String,
   paymentMethod: String,
   paymentStatus: String,
   ip: String

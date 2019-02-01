@@ -13,6 +13,12 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.CLEAR_CART:
       return updateObject(state, { items: {} });
+    case actionTypes.RECALL_CART:
+      return updateObject(state, {
+        items: action.items,
+        price: action.price,
+        discount: action.discount
+      });
     case actionTypes.MODIFY_POTENTIAL_QUANTITY:
       return updateObject(state, {
         potentialQuantity: action.input

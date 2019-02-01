@@ -15,9 +15,7 @@ const PaymentReview = props => {
   let _orderDetails = props.checkout.orderDetails;
   let _cart = props.cart;
 
-  let couponActive =
-    _orderDetails.coupon != null && _orderDetails.coupon.code != null;
-  let ccFeeActive = _orderDetails[pageGroup].creditFee.value != 0;
+  let couponActive, ccFeeActive;
 
   let { productList, itemQuantity } = buildProductList(_cart.items);
   if (
@@ -64,6 +62,9 @@ const PaymentReview = props => {
       }
     }
 
+    // Set Currency
+    let currency = props.checkout.viewCurrency.label.toUpperCase();
+
     let orderTotal = creditFee + shippingFee + cartTotal + taxFee;
 
     _orderDetails[pageGroup] = {
@@ -83,12 +84,18 @@ const PaymentReview = props => {
       orderTotal: { value: orderTotal, tag: "Total" },
       productList: { value: productList, tag: "productlist" },
       itemQuantity: { value: itemQuantity, tag: "Order_Qty" },
-      currency: { value: "USD", tag: "Currency" }
+      currency: { value: currency, tag: "Currency" }
     };
 
     _orderDetails[pageGroup].updatedAt = _orderDetails.payment.updatedAt;
 
     props.setOrderDetails({ orderDetails: _orderDetails });
+  } else {
+    couponActive =
+      _orderDetails.coupon != null && _orderDetails.coupon.code != null;
+    ccFeeActive =
+      _orderDetails[pageGroup].creditFee != null &&
+      _orderDetails[pageGroup].creditFee.value != 0;
   }
 
   let box = {
