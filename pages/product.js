@@ -7,7 +7,7 @@ import withData from "../lib/withData";
 import { connect } from "react-redux";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
-
+import FeaturedStrainThumbnails from "../components/sections/shop/featuredStrainThumbnails";
 import AddToCart from "../components/sections/productPage/addToCart";
 import OtherProducts from "../components/sections/productPage/otherProducts";
 import MoreInfo from "../components/sections/productPage/moreInfo";
@@ -21,28 +21,14 @@ import Description from "../components/sections/productPage/description";
 import Genetics from "../components/sections/productPage/genetics";
 import Breadcrumb from "../components/sections/productPage/breadcrumb";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import Loader from "../components/sections/loader";
 import ImageCarousel from "../components/sections/productPage/imageCarousel";
 import Ratings from "../components/sections/productPage/ratings";
-let zoomLib, ImageZoom;
 class Index extends Component {
-    componentDidMount() {
-        const isBrowser = typeof window !== "undefined";
-        zoomLib = isBrowser ? require("react-simple-image-zoom") : null;
-        ImageZoom = zoomLib.ImageZoom;
-        this.props.setImageZoom(ImageZoom);
-        // console.log(ImageZoom);
-    }
-    shouldComponentUpdate(nextProps, nextState) {
-        if (this.props.viewProduct.currentImage != nextProps.viewProduct.currentImage) {
-            return true;
-        }
-        return true;
-    }
     render() {
-        // console.log(this.props.viewProduct.ImageZoom);
         return (
             <Layout>
-                {this.props.viewProduct.ImageZoom != null &&
+                {this.props.misc.featuredStrains &&
                 this.props.viewProduct.currentProduct &&
                 this.props.viewProduct.currentProduct.reviews != null ? (
                     <div className="p-8 lg:px-4 lg:py-8 md:px-4 md:py-8 sm:px-2 sm:py-8">
@@ -50,7 +36,7 @@ class Index extends Component {
                         <div className="flex flex-wrap justify-start pt-2 relative">
                             <div className="w-full xxl:inline-flex xl:inline-flex px-8 xxl:px-20 relative block">
                                 <div className="w-1/2 flex flex-wrap justify-center xl:w-1/2 lg:w-full md:w-full sm:w-full">
-                                    <ImageCarousel ImageZoom={this.props.viewProduct.ImageZoom} {...this.props} />
+                                    {/* <ImageCarousel  {...this.props} /> */}
                                 </div>
                                 <div className="flex flex-wrap content-start w-1/2 pl-4 md:pl-0 sm:pl-0 xl:w-1/2 lg:w-full md:w-full sm:w-full md:pt-6 md:mt-6 sm:pt-6 sm:mt-6 sm:border-t-2 sm:border-grey-lightest md:border-t-2 md:border-grey-lightest">
                                     <div className="w-full">
@@ -118,22 +104,25 @@ class Index extends Component {
                                     Frequently Bought Together
                                 </h3>
                                 <div className="px-8 w-full mt-2">
-                                    <OtherProducts {...this.props} />
+                                    <FeaturedStrainThumbnails count={3} {...this.props} />
+                                    {/* <OtherProducts {...this.props} /> */}
                                 </div>
                             </div>
-                            <div>
+                            {/* <div>
                                 <h3 className="w-full p-2 pl-6 font-bold text-3xl my-3 text-grey bg-smoke-grey">
                                     Information on {this.props.viewProduct.currentProduct.name}
                                 </h3>
                                 <MoreInfo {...this.props} />
-                            </div>
+                            </div> */}
                             <div className="w-full">
                                 <Reviews {...this.props} />
                             </div>
                         </div>
                     </div>
                 ) : (
-                    <p>Loading...</p>
+                    <div className="h-screen w-full">
+                        <Loader {...this.props} />
+                    </div>
                 )}
             </Layout>
         );
@@ -143,7 +132,7 @@ class Index extends Component {
 const mapDispatchToProps = dispatch => {
     return {
         setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
-        setHoverId: id => dispatch(actions.setHoverId(id)),
+        setHoverId: (id, turnOn) => dispatch(actions.setHoverId(id, turnOn)),
         quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
         modifyCart: input => dispatch(actions.modifyCart(input)),
         modifyPotentialQuantity: input => dispatch(actions.modifyPotentialQuantity(input)),
@@ -156,7 +145,11 @@ const mapDispatchToProps = dispatch => {
         setReviewRateFilter: input => dispatch(actions.setReviewRateFilter(input)),
         modifyReview: input => dispatch(actions.modifyReview(input)),
         toggleCartAnimation: () => dispatch(actions.toggleCartAnimation()),
-        setImageZoom: imz => dispatch(actions.setImageZoom(imz))
+        setImageZoom: imz => dispatch(actions.setImageZoom(imz)),
+        setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
+        expandProduct: id => dispatch(actions.expandProduct(id)),
+        expandProduct: id => dispatch(actions.expandProduct(id)),
+        setCurrentProduct: input => dispatch(actions.setCurrentProduct(input))
     };
 };
 

@@ -54,7 +54,8 @@ const actionTypes = {
     SEND_EMAIL: "SEND_EMAIL",
     REFRESH_EMAIL_FORM: "REFRESH_EMAIL_FORM",
     GET_FEATURED_LIST: "GET_FEATURED_LIST",
-    SET_SEARCH: "SET_SEARCH"
+    SET_SEARCH: "SET_SEARCH",
+    ADD_TALK_TO_LISTENER: "ADD_TALK_TO_LISTENER"
 };
 
 const actions = {
@@ -209,6 +210,12 @@ const actions = {
         return {
             type: actionTypes.SET_SEARCH,
             value: value
+        };
+    },
+    addTalkToListener: bool => {
+        return {
+            type: actionTypes.ADD_TALK_TO_LISTENER,
+            bool: bool
         };
     }
 };

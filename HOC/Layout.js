@@ -109,7 +109,9 @@ class Layout extends Component {
                     <script src="../static/scripts/functions.js" />
                 </Head>
                 <Header {...this.props} />
-                {this.props.misc.hoverId == null ? <SearchBar {...this.props} /> : null}
+                {this.props.misc.hoverId == null || ["md", "lg", "xl", "xxl"].includes(this.props.misc.mediaSize) ? (
+                    <SearchBar {...this.props} />
+                ) : null}
                 {/* <AgeVerification {...this.props} /> */}
                 <div className="pt-32">
                     {" "}

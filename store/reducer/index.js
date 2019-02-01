@@ -72,7 +72,8 @@ const initialState = {
     subscribedToNewsletter: false,
     emailSent: false,
     featuredStrains: null,
-    searchValue: null
+    searchValue: null,
+    addTalkToListener: false
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -133,6 +134,8 @@ const indexReducer = (state = initialState, action) => {
             return updateObject(state, { featuredStrains: [...action.input] });
         case actionTypes.SET_SEARCH:
             return updateObject(state, { searchValue: action.value });
+        case actionTypes.ADD_TALK_TO_LISTENER:
+            return updateObject(state, { addTalkToListener: action.bool });
         default:
             return state;
     }

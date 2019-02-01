@@ -134,8 +134,8 @@ svg {
 .cks-logo-loader {
     display: inline-block;
     position: absolute;
-    top: calc(25% - 4.7px);
-    left: calc(50% - 59.1px);
+    top: -2px;
+    left: calc(50% - 59px);
 }
 .example {
     background-color: red;
@@ -171,14 +171,15 @@ svg {
     background-size: cover;
     background-repeat: no-repeat;
 }
-
+.loader {
+    position: relative;
+    top: 25%;
+}
 .lds-ring {
     display: inline-block;
     position: relative;
     width: 150px;
     height: 150px;
-    top: calc(25% - 10px);
-    left: calc(50% - 75px);
 }
 .lds-ring div {
     box-sizing: border-box;
@@ -187,10 +188,10 @@ svg {
     width: 150px;
     height: 150px;
     margin: 6px;
-    border: 15px solid #600706;
+    border: 15px solid #f9acaa;
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #600706 transparent transparent transparent;
+    border-color: #f9acaa transparent transparent transparent;
 }
 .lds-ring div:nth-child(1) {
     animation-delay: -0.45s;

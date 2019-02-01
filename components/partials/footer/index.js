@@ -93,10 +93,8 @@ const Footer = props => {
                                 event.preventDefault();
                                 const form = event.target;
                                 const formData = new window.FormData(form);
-                                if (props.misc.newsletterEmail != null || props.misc.newsletterEmail.trim() != "") {
-                                    props.subscribeToNewsletter({ email: formData.get("email") });
-                                    props.setEmail({ email: null });
-                                }
+                                props.subscribeToNewsletter({ email: formData.get("email") });
+                                props.setEmail({ email: null });
                             }}
                             className="inline-flex relative w-container lg:w-2/3 lg:mx-auto rounded-tr rounded-br h-10 items-center mt-4 md:mb-6 sm:mb-6 overflow-hidden">
                             <input
@@ -109,6 +107,7 @@ const Footer = props => {
                                 onChange={e => {
                                     let value = e.target.value;
                                     props.setEmail({ email: value });
+                                    e.target.setCustomValidity("");
                                 }}
                                 onInvalid={e => {
                                     e.target.setCustomValidity('Must be valid email and should contain "@"');

@@ -28,7 +28,7 @@ class Index extends Component {
     }
     render() {
         return (
-            <React.Fragment>
+            <div className="loader h-150 mx-auto text-center">
                 <div ref={div => (this.myElement = div)} className="lds-ring">
                     <div />
                     <div />
@@ -40,7 +40,7 @@ class Index extends Component {
                     onClick={() => console.log(props)}
                     className="cks-logo-loader z-999 p-0 w-130 scale-item cursor-pointer"
                 />
-            </React.Fragment>
+            </div>
         );
     }
 }
