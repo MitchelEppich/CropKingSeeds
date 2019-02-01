@@ -21,21 +21,36 @@ import Description from "../components/sections/productPage/description";
 import Genetics from "../components/sections/productPage/genetics";
 import Breadcrumb from "../components/sections/productPage/breadcrumb";
 import AnchorLink from "react-anchor-link-smooth-scroll";
-// import ImageCarousel from "../components/sections/productPage/imageCarousel";
+import ImageCarousel from "../components/sections/productPage/imageCarousel";
 import Ratings from "../components/sections/productPage/ratings";
-
+let zoomLib, ImageZoom;
 class Index extends Component {
-    componentDidMount() {}
+    componentDidMount() {
+        const isBrowser = typeof window !== "undefined";
+        zoomLib = isBrowser ? require("react-simple-image-zoom") : null;
+        ImageZoom = zoomLib.ImageZoom;
+        this.props.setImageZoom(ImageZoom);
+        // console.log(ImageZoom);
+    }
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.props.viewProduct.currentImage != nextProps.viewProduct.currentImage) {
+            return true;
+        }
+        return true;
+    }
     render() {
+        // console.log(this.props.viewProduct.ImageZoom);
         return (
             <Layout>
-                {this.props.viewProduct.currentProduct && this.props.viewProduct.currentProduct.reviews != null ? (
+                {this.props.viewProduct.ImageZoom != null &&
+                this.props.viewProduct.currentProduct &&
+                this.props.viewProduct.currentProduct.reviews != null ? (
                     <div className="p-8 lg:px-4 lg:py-8 md:px-4 md:py-8 sm:px-2 sm:py-8">
                         <Breadcrumb {...this.props} />
                         <div className="flex flex-wrap justify-start pt-2 relative">
                             <div className="w-full xxl:inline-flex xl:inline-flex px-8 xxl:px-20 relative block">
                                 <div className="w-1/2 flex flex-wrap justify-center xl:w-1/2 lg:w-full md:w-full sm:w-full">
-                                    {/* <ImageCarousel {...this.props} /> */}
+                                    <ImageCarousel ImageZoom={this.props.viewProduct.ImageZoom} {...this.props} />
                                 </div>
                                 <div className="flex flex-wrap content-start w-1/2 pl-4 md:pl-0 sm:pl-0 xl:w-1/2 lg:w-full md:w-full sm:w-full md:pt-6 md:mt-6 sm:pt-6 sm:mt-6 sm:border-t-2 sm:border-grey-lightest md:border-t-2 md:border-grey-lightest">
                                     <div className="w-full">
@@ -82,7 +97,6 @@ class Index extends Component {
                                             </AnchorLink>
                                         </div>
                                     </div>
-
                                     <div className="w-full h-350 inline-flex mb-6 xl:block xl:h-300 lg:block lg:h-300 md:block md:h-300 sm:block sm:h-300 relative">
                                         <div className="w-full mt-2 relative xl:w-full lg:w-full md:w-full sm:w-full xl:h-300 lg:h-300 md:h-300 sm:h-300">
                                             <div className="absolute pin-b xl:pin lg:w-full md:w-full sm:w-full">
@@ -141,7 +155,8 @@ const mapDispatchToProps = dispatch => {
         setReviewCursor: input => dispatch(actions.setReviewCursor(input)),
         setReviewRateFilter: input => dispatch(actions.setReviewRateFilter(input)),
         modifyReview: input => dispatch(actions.modifyReview(input)),
-        toggleCartAnimation: () => dispatch(actions.toggleCartAnimation())
+        toggleCartAnimation: () => dispatch(actions.toggleCartAnimation()),
+        setImageZoom: imz => dispatch(actions.setImageZoom(imz))
     };
 };
 

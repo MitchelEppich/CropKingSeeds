@@ -29,7 +29,7 @@ const initialState = {
         {
             question: "What currency is used to purchase seeds?",
             answer:
-                "The prices for our seeds displayed are in US dollars or Canadian dollars. If you are a Canadian customer you are charged the amount displayed in Canadian dollars. Since we are a global company we choose to process in US dollars for all orders outside Canada."
+                "The prices for our seeds displayed are in US dollars. If you are a Canadian customer you are charged the amount displayed in Canadian dollars. Since we are a global company we choose to process in US dollars for all orders outside Canada."
         },
         {
             question: "Who can buy Crop King Seeds?",
@@ -72,7 +72,8 @@ const initialState = {
                 "Yes, in rare circumstances this can happen. On average it is about 1 in 1000. This is caused by stress during the germination process. Always watch your plants carefully for characteristics of hermaphrodism. If you do begin to see such traits, move the plant to another room or dispose of it immediately to ensure you do not seed out your own plants or those of your neighbours."
         }
     ],
-    currentlyExpanded: null
+    currentlyExpanded: null,
+    searchValue: null
 };
 
 export default (state = initialState, action) => {
@@ -80,6 +81,10 @@ export default (state = initialState, action) => {
         case actionTypes.TOGGLE_FAQ_QUESTION:
             return updateObject(state, {
                 currentlyExpanded: state.currentlyExpanded == action.index ? null : action.index
+            });
+        case actionTypes.SET_FAQ_SEARCH:
+            return updateObject(state, {
+                searchValue: action.value
             });
         default:
             return state;

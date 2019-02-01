@@ -1,7 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCannabis, faSearchPlus } from "@fortawesome/free-solid-svg-icons";
-import ImageZoom from "react-simple-image-zoom";
 
 const imageCarousel = props => {
     let images = props.viewProduct.currentProduct.images;
@@ -15,38 +14,36 @@ const imageCarousel = props => {
             </div>
         );
     });
+    let ImageZoom = props.ImageZoom;
+    // console.log(images[props.viewProduct.currentImage]);
     let imageZooms = images.map((image, index) => {
-        return (
-            // <div />
-            <ImageZoom
-                key={index}
-                portalId="portal"
-                largeImgSrc={currentImage}
-                imageWidth={1080}
-                imageHeight={860}
-                zoomContainerWidth={400}
-                activeClass="my-active "
-                portalStyle={Object.assign(
-                    { ...ImageZoom.defaultPortalStyle },
-                    {
-                        top: "0px",
-                        background: "white",
-                        width: "400px",
-                        borderRadius: "3px",
-                        boxShadow: "rgba(0, 0, 0, 0.3) 0px 2px 22px"
-                    }
-                )}
-                zoomScale={1}
-                responsive={true}>
-                <img
-                    style={{ objectFit: "contain" }}
-                    className="cursor-pointer flex my-auto sm:h-200 xxl:h-400 xl:h-400 w-full h-300"
-                    src={image}
-                />
-            </ImageZoom>
+        return React.createElement(
+            ImageZoom,
+            {
+                portalId: "portal",
+                // largeImgSrc: images[props.viewProduct.currentImage],
+                imageWidth: 1080,
+                imageHeight: 860,
+                zoomContainerWidth: 400,
+                activeClass: "my-active ",
+                portalStyle: {
+                    ...ImageZoom.defaultPortalStyle,
+                    top: "0px",
+                    // background: "white",
+                    width: "400px",
+                    borderRadius: "3px",
+                    boxShadow: "rgba(0, 0, 0, 0.3) 0px 2px 22px"
+                },
+                zoomScale: 1,
+                responsive: true
+            },
+            <img
+                style={{ objectFit: "contain" }}
+                className="cursor-pointer flex my-auto sm:h-200 xxl:h-400 xl:h-400 w-full h-300"
+                src={images[props.viewProduct.currentImage]}
+            />
         );
     });
-
     let currentImage = imageZooms[props.viewProduct.currentImage];
 
     return (
