@@ -309,7 +309,8 @@ const ShippingAddress = props => {
                   country: _value,
                   state: undefined,
                   cartTotal: props.cart.price,
-                  freeShippingThreshold: props.checkout.freeShippingThreshold
+                  freeShippingThreshold: props.checkout.freeShippingThreshold,
+                  orderDetails: _orderDetails
                 });
               }}
               placeholder="Country"
@@ -366,7 +367,8 @@ const ShippingAddress = props => {
                         : undefined,
                     state: _value,
                     cartTotal: props.cart.price,
-                    freeShippingThreshold: props.checkout.freeShippingThreshold
+                    freeShippingThreshold: props.checkout.freeShippingThreshold,
+                    orderDetails: _orderDetails
                   });
                 }}
                 placeholder="Province or State"
@@ -410,7 +412,8 @@ const ShippingAddress = props => {
                         : undefined,
                     state: _value,
                     cartTotal: props.cart.price,
-                    freeShippingThreshold: props.checkout.freeShippingThreshold
+                    freeShippingThreshold: props.checkout.freeShippingThreshold,
+                    orderDetails: _orderDetails
                   });
                 }}
                 placeholder="Province"

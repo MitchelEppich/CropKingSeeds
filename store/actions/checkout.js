@@ -83,6 +83,8 @@ const getActions = uri => {
       let _cartTotal = input.cartTotal;
       let _freeShippingThreshold = input.freeShippingThreshold;
 
+      let _orderDetails = input.orderDetails;
+
       let _methods = [];
       switch (_country) {
         case "Canada":
@@ -108,7 +110,16 @@ const getActions = uri => {
         _methods[0].price = 0;
       }
 
-      return { type: actionTypes.SET_SHIPPING_METHODS, input: _methods };
+      if (_orderDetails.shipping != null) {
+        _orderDetails.shipping.shippingCost = undefined;
+        _orderDetails.shipping.shippingDetail = undefined;
+      }
+
+      return {
+        type: actionTypes.SET_SHIPPING_METHODS,
+        methods: _methods,
+        orderDetails: _orderDetails
+      };
     },
     modifyOrderDetails: input => {
       let _orderDetails = input.orderDetails;
