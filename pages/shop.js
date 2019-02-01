@@ -77,7 +77,8 @@ const mapDispatchToProps = dispatch => {
         clearCart: () => dispatch(actions.clearCart()),
         setSort: input => dispatch(actions.setSort(input)),
         expandProduct: id => dispatch(actions.expandProduct(id)),
-        setCurrentProduct: input => dispatch(actions.setCurrentProduct(input))
+        setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
+        toggleCartAnimation: () => dispatch(actions.toggleCartAnimation())
     };
 };
 
