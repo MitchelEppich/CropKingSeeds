@@ -110,6 +110,7 @@ const getActions = uri => {
         _methods[0].price = 0;
       }
 
+      // Clear shipping choice
       if (_orderDetails.shipping != null) {
         _orderDetails.shipping.shippingCost = undefined;
         _orderDetails.shipping.shippingDetail = undefined;

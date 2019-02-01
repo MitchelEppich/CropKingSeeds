@@ -45,6 +45,7 @@ class Index extends Component {
       this.props.setError({ value: error });
     }
 
+    // Update if price has changed
     if (this.props.cart.price != prevProps.cart.price) {
       this.updateShippingMethod();
     }
