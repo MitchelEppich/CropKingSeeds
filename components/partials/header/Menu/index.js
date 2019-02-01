@@ -174,13 +174,13 @@ const menu = props => {
                             <div
                                 className={
                                     props.misc.strains != null
-                                        ? "opacity-1 slow pt-px pr-px pb-15px pl-3px sm:pb-2 sm:pr-1 flex shadow-md -mt-54px sm:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-130 rounded-full bg-crimson justify-center content-center items-center"
-                                        : "opacity-0 slow pt-px pr-px pb-15px pl-3px sm:pb-2 sm:pr-1 flex shadow-md -mt-54px sm:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-130 rounded-full bg-crimson justify-center content-center items-center"
+                                        ? "opacity-1 slow sm:pb-2 sm:pr-1 flex shadow-md -mt-54px sm:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-125 rounded-full bg-crimson justify-center content-center items-center"
+                                        : "opacity-0 slow sm:pb-2 sm:pr-1 flex shadow-md -mt-54px sm:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-125 rounded-full bg-crimson justify-center content-center items-center"
                                 }>
                                 <img
                                     src="../static/img/cks-logo-header.png"
                                     onClick={() => console.log(props)}
-                                    className="z-999 p-0 w-125 sm:w-75px scale-item cursor-pointer"
+                                    className="z-999 cks-logo-header p-0 w-125 sm:w-75px scale-item cursor-pointer"
                                 />
                             </div>
                         </div>
