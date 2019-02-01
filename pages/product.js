@@ -36,7 +36,7 @@ class Index extends Component {
                         <div className="flex flex-wrap justify-start pt-2 relative">
                             <div className="w-full xxl:inline-flex xl:inline-flex px-8 xxl:px-20 relative block">
                                 <div className="w-1/2 flex flex-wrap justify-center xl:w-1/2 lg:w-full md:w-full sm:w-full">
-                                    {/* <ImageCarousel  {...this.props} /> */}
+                                    <ImageCarousel {...this.props} />
                                 </div>
                                 <div className="flex flex-wrap content-start w-1/2 pl-4 md:pl-0 sm:pl-0 xl:w-1/2 lg:w-full md:w-full sm:w-full md:pt-6 md:mt-6 sm:pt-6 sm:mt-6 sm:border-t-2 sm:border-grey-lightest md:border-t-2 md:border-grey-lightest">
                                     <div className="w-full">

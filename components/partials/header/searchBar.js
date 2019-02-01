@@ -16,8 +16,14 @@ const SearchBar = props => {
                 }
             }}
             style={style}
-            className="w-full h-16 mx-auto pt-1">
-            <div className="mx-auto flex block w-300 h-10 bg-white pl-4 border-0 text-grey rounded-lg shadow-md overflow-hidden">
+            className="w-1300 h-16 mx-auto pt-1">
+            <div className="mx-auto flex block w-400 h-10 bg-white pl-4 border-0 text-grey rounded-lg shadow-md overflow-hidden">
+                <input
+                    className="w-full h-full bg-white pl-4 border-0 text-grey font-normal"
+                    placeholder="What are you looking for?"
+                    onChange={e => props.setSearch(e.target.value)}
+                    defaultValue={props.misc.searchValue != null ? props.misc.searchValue : null}
+                />
                 <input
                     className="w-full h-full bg-white pl-4 border-0 text-grey font-normal"
                     placeholder="What are you looking for?"

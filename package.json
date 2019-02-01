@@ -49,6 +49,7 @@
         "react-apollo": "^2.1.11",
         "react-dom": "^16.4.2",
         "react-draft-wysiwyg": "^1.13.1",
+        "react-image-magnify": "^2.7.4",
         "react-no-ssr": "^1.1.0",
         "react-p5-wrapper": "^0.0.4",
         "react-particles-js": "^2.4.2",
