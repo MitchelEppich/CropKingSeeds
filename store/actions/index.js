@@ -56,7 +56,8 @@ const actionTypes = {
   GET_FEATURED_LIST: "GET_FEATURED_LIST",
   RECALL_AGE_VERIFICATION: "RECALL_AGE_VERIFICATION",
   SET_SEARCH: "SET_SEARCH",
-  ADD_TALK_TO_LISTENER: "ADD_TALK_TO_LISTENER"
+  ADD_TALK_TO_LISTENER: "ADD_TALK_TO_LISTENER",
+  SET_CURRENT_EVENT: "SET_CURRENT_EVENT"
 };
 
 const actions = {
@@ -65,6 +66,12 @@ const actions = {
       type: actionTypes.SET_VISIBLE_SCREEN,
       input: input.input,
       clearAll: input.clearAll
+    };
+  },
+  setCurrentEvent: index => {
+    return {
+      type: actionTypes.SET_CURRENT_EVENT,
+      index: index
     };
   },
   setMediaSize: input => {

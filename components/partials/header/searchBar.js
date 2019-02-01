@@ -16,9 +16,9 @@ const SearchBar = props => {
         }
       }}
       style={style}
-      className="w-1300 h-16 mx-auto pt-1"
+      className="w-full h-16 mx-auto pt-1"
     >
-      <div className="mx-auto flex block w-400 h-10 bg-white pl-4 border-0 text-grey rounded-lg shadow-md overflow-hidden">
+      <div className="mx-auto flex block w-400 h-10 bg-white pl-4 border-0 text-grey rounded shadow-md overflow-hidden">
         <input
           className="w-full h-full bg-white pl-4 border-0 text-grey font-normal"
           placeholder="What are you looking for?"
@@ -32,7 +32,7 @@ const SearchBar = props => {
             onClick={e => {
               if (Router.asPath.includes("/shop")) e.preventDefault();
             }}
-            className="bg-yellow w-12 border-0 pt-1 pl-3 leading-loose"
+            className="bg-yellow-dark w-12 border-0 pt-1 pl-3 leading-loose"
           >
             <FontAwesomeIcon icon={faSearch} className="fa-lg mt-1" />
           </a>

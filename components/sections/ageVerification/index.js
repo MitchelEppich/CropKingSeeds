@@ -48,8 +48,14 @@ const AgeVerification = props => {
     return arr;
   };
 
+  let styleFullScreen = {
+    top: "0",
+    zIndex: "9999",
+    background: "white",
+    position: "fixed"
+  };
   return (
-    <div className="w-full h-full bg-white z-999 fixed overflow-y-hidden">
+    <div style={styleFullScreen} className="w-full h-full overflow-y-hidden">
       <form
         onSubmit={e => {
           e.preventDefault();

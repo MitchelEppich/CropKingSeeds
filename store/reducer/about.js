@@ -5,67 +5,59 @@ const initialState = {
   currentHistoryObj: 0,
   historyObjs: [
     {
-      imgSrc: "../static/img/about/CKSCOVERREAL.jpg",
-      title: "Packaging and printing materials",
+      imgSrc: "../static/img/about/1.jpg",
       content:
-        "We design and have our state of the art unique packaging so that we can begin selling to retailers and individuals across Canada.",
-      date: "20130105"
+        "The idea for Crop King Seeds forms. Starting out with one employee shipping from an apartment, selling for a year. In 2005 operations are put on hold",
+      date: "2014"
     },
     {
-      imgSrc: "../static/img/about/hemp-roots.jpg",
-      title: "Our first location",
+      imgSrc: "../static/img/about/2.jpg",
+
       content:
-        "Crop King gets its first location in Calgary, Alberta Canada called “Hemp Roots” they make their initial first purchase and continue to be one of our best retailers with monthly refill orders and happy customers returning to try a new strain.",
-      date: "20130115"
+        "Crop King employees travel around the world and tour the best cannabis farms to select and grow our seed genetics. Within the next month we had developed our website, packaging and began marketing ourselves to the public",
+      date: "December 2012 - January 2013"
     },
     {
-      imgSrc: "../static/img/about/Vancouver_Dominion_Building1.jpg",
-      title: "Open our office in Downtown Vancouver",
+      imgSrc: "../static/img/about/3.jpg",
       content:
-        "Our customers kept asking us if they could buy in person from our own store so we decided to get our own office at the Dominion building on Hastings Street in Vancouver. Its small and all we need until we can afford to expand. Hopefully we will get a larger office but this is great for now..",
-      date: "20131101"
+        "A need for a storefront was in high demand by our customers, thus the opening of our first Crop King Seeds office on Hastings Street in Vancouver. The smaller sized office reflected the humble beginnings of the company, with dreams to expand in the future",
+      date: "November 1, 2013"
     },
     {
-      imgSrc: "../static/img/about/magazine-1024x718.jpg",
-      title: "Magazine & Newspaper Advertising",
+      imgSrc: "../static/img/about/4.jpg",
       content:
-        "We begin purchasing print advertising in major magazines and websites. People now start to realize that Crop King is here to stay and is poised to grow our brand in all markets around the world.",
-      date: "20131130"
+        "The spread of Crop King Seeds lands us our 100th location in Nova Scotia, a new office with 2 full time employees and the development of a 24 hour customer service line. To top it off, we participated in our first trade show, the “Green Rush Financial Conference” and won a prize for best booth!",
+      date: "June 27, 2014"
     },
     {
-      imgSrc: "../static/img/about/Poster-12x18.jpg",
-      title: "10 new strains released",
+      imgSrc: "../static/img/about/5.jpg",
       content:
-        "Crop King releases 10 new strains including Auto Flowering & our Dwarf Low Flyer. This completes our line of world class strains where we can now start entering our strains into 420 competitions.",
-      date: "20131201"
+        "Crop King Seeds sponsors the Trailer Park Boys movie. When the Boys visited the Kush Cup Canada show (sponsored by Crop King) we got the chance to hang out with the cannabis icons in person.",
+      date: "February, 2015"
     },
     {
-      imgSrc: "../static/img/about/420.jpg",
-      title: "Tent for 420 event",
+      imgSrc: "../static/img/about/6.jpg",
       content:
-        "We invest in a custom Crop King Tent for outdoor events. We use it at the art gallery for the 420 event on April 20th.",
-      date: "20140420"
+        "Our “White Cookies” strain (White Widow + Girl Guide Cookies) makes the ‘Top 10 Strains of 2015’ featured in the High Times Magazine. ",
+      date: "December, 2015"
     },
     {
-      imgSrc: "../static/img/about/11937914_1177191535631131_748491331_n.jpg",
-      title: "World’s First Marijuana Vehicle Wrap",
+      imgSrc: "../static/img/about/7.jpg",
       content:
-        "Crop King Seeds is happy to introduce the first ever vehicle wrap cruising all over Denver, Colorado in partnership with IBake Radio.",
-      date: "20150220"
+        "Crop King Seeds is growing fast with booths at dozens of trade shows and entertaining people with our very own Crop King Seeds mascot.",
+      date: "2016"
     },
     {
-      imgSrc:
-        "../static/img/about/Our-White-Cookies-made-it-to-Hightimes-top-10-strains-of-2015.jpg",
-      title: "High Times Magazine Top 10 Strains of 2015",
-      content: "We released new strains to our seeds line.",
-      date: "20151221"
+      imgSrc: "../static/img/about/8.jpg",
+      content:
+        "Crop King Seeds is growing fast with booths at dozens of trade shows and entertaining people with our very own Crop King Seeds mascot",
+      date: "2016"
     },
     {
-      imgSrc: "../static/img/about/White-Cookies.jpg",
-      title: "Announcement Partnership with Grow420guide Channel",
+      imgSrc: "../static/img/about/1.jpg",
       content:
-        "Crop King Seeds is announcing a partnership with the world’s largest Youtube channel for growing marijuana. Grow 420 Guide. For years, this large growing channel has featured the best advice for growing techniques from beginners to advanced growers. They will be growing our strains and helping people learn along the way. This will also add to our forum traffic the very best growers to help you optimize your grow show.",
-      date: "20160112"
+        "We are progressively growing both as a company and worldwide. With almost 40 strains available, 24 hour customer service, and our trusted satisfaction guarantee, Crop King Seeds continues to be a leader in the expanding cannabis industry. ",
+      date: "Today"
     }
   ],
   whoWeAre: [
@@ -73,19 +65,19 @@ const initialState = {
       title: "Our Seeds",
       content:
         "Proident voluptate labore sunt anim. Ad nostrud in ut voluptate laborum cillum qui ea commodo do. Proident voluptate labore sunt anim.",
-      src: "../static/img/about/1.jpg"
+      src: "../static/img/about/who/1.jpg"
     },
     {
       title: "Our Service",
       content:
         "Laboris eiusmod aute cupidatat dolore sunt sunt adipisicing non reprehenderit. Pariatur ex anim eiusmod est in ut minim minim non aute. Id culpa consectetur Lorem dolor veniam esse et minim aliquip pariatur esse aliqua sit.",
-      src: "../static/img/about/2.jpg"
+      src: "../static/img/about/who/2.jpg"
     },
     {
       title: "Our Mission",
       content:
         "Cillum sint aliqua sint et aute. Enim eiusmod aliqua adipisicing consequat culpa dolore nisi do. Ad veniam sunt veniam do minim in anim.",
-      src: "../static/img/about/3.jpg"
+      src: "../static/img/about/who/3.jpg"
     }
   ]
 };
