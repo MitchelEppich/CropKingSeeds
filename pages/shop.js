@@ -43,10 +43,10 @@ class Index extends Component {
                                     className={
                                         this.props.misc.hoverId != null && this.props.misc.mediaSize == "sm"
                                             ? "hidden"
-                                            : "sm:w-full md:w-full lg:w-2/5 xl:w-1/3 xxl:w-1/4 slow relative mt-8 mb-12"
+                                            : "sm:w-full md:w-full lg:w-2/5 xl:w-1/3 xxl:w-1/4 slow relative mt-8 mb-12 sm:mb-0"
                                     }>
                                     <Filters {...this.props} />
-                                    <h3 className="text-center mx-auto  mt-8 sm:mt-10 md:mt-20 md:mb-0 text-2xl w-full">
+                                    <h3 className="text-center mx-auto mt-8 sm:mt-10 md:mt-20 md:mb-0 bg-red-dark text-white p-2 text-3xl w-full">
                                         Featured Strains
                                     </h3>
                                     <FeaturedStrainThumbnails {...this.props} />
@@ -77,7 +77,8 @@ const mapDispatchToProps = dispatch => {
         clearCart: () => dispatch(actions.clearCart()),
         setSort: input => dispatch(actions.setSort(input)),
         expandProduct: id => dispatch(actions.expandProduct(id)),
-        setCurrentProduct: input => dispatch(actions.setCurrentProduct(input))
+        setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
+        toggleCartAnimation: () => dispatch(actions.toggleCartAnimation())
     };
 };
 

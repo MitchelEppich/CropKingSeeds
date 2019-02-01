@@ -24,6 +24,8 @@ import {
   faAngleUp
 } from "@fortawesome/free-solid-svg-icons";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import Loader from "../components/sections/loader";
+import SearchBar from "../components/partials/header/searchBar";
 
 import { detect } from "detect-browser";
 const _browser = detect();
@@ -166,6 +168,10 @@ class Layout extends Component {
           <script src="../static/scripts/functions.js" />
         </Head>
         <Header {...this.props} />
+        {this.props.misc.hoverId == null ||
+        ["md", "lg", "xl", "xxl"].includes(this.props.misc.mediaSize) ? (
+          <SearchBar {...this.props} />
+        ) : null}
         {this.props.misc.ageVerification == null ||
         !this.props.misc.ageVerification.verified ? (
           <AgeVerification {...this.props} />
@@ -177,7 +183,9 @@ class Layout extends Component {
             {this.props.misc.strains != null ? (
               this.props.children
             ) : (
-              <p>Loading...</p>
+              <div className="h-screen w-full">
+                <Loader {...this.props} />
+              </div>
             )}
           </div>
         </div>
@@ -232,7 +240,8 @@ const mapDispatchToProps = dispatch => {
     recallCart: () => dispatch(actions.recallCart()),
     recallAgeVerification: () => dispatch(actions.recallAgeVerification()),
     recallOrderDetails: input => dispatch(actions.recallOrderDetails(input)),
-    quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input))
+    quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
+    setSearch: value => dispatch(actions.setSearch(value))
   };
 };
 

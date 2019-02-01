@@ -13,7 +13,8 @@ const actionTypes = {
     UPDATE_STRAIN: "UPDATE_STRAIN",
     MODIFY_REVIEW: "MODIFY_REVIEW",
     SET_REVIEW_CURSOR: "SET_REVIEW_CURSOR",
-    SET_REVIEW_RATE_FILTER: "SET_REVIEW_RATE_FILTER"
+    SET_REVIEW_RATE_FILTER: "SET_REVIEW_RATE_FILTER",
+    SET_IMAGE_ZOOM: "SET_IMAGE_ZOOM"
 };
 
 const getActions = uri => {
@@ -110,6 +111,9 @@ const getActions = uri => {
         },
         setNewRating: index => {
             return { type: actionTypes.SET_NEW_RATING, index: index };
+        },
+        setImageZoom: imz => {
+            return { type: actionTypes.SET_IMAGE_ZOOM, imz: imz };
         }
     };
 

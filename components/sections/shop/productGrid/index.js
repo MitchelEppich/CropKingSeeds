@@ -67,6 +67,15 @@ class Index extends Component {
         products = products
             .filter(a => {
                 let _filter = this.props.shop.activeFilters;
+                if (this.props.misc.searchValue != null) {
+                    // console.log(JSON.stringify(a));
+                    if (
+                        !JSON.stringify(a)
+                            .toLowerCase()
+                            .includes(this.props.misc.searchValue)
+                    )
+                        return false;
+                }
                 if (Object.keys(_filter).length == 0) return true;
                 let _pass = true;
                 if (_filter.type != null && _filter.type != a.type.toLowerCase()) _pass = false;

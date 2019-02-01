@@ -23,7 +23,7 @@ import Cms from "./cms";
 import { inferStrainData } from "../utilities/strain";
 
 const uri = "http://localhost:3000/graphql";
-// const uri = "http://192.168.0.57:3000/graphql";
+// const uri = "http://192.168.0.22:3000/graphql";
 
 const imports = {
   ...Cart(uri),
@@ -54,7 +54,9 @@ const actionTypes = {
   SEND_EMAIL: "SEND_EMAIL",
   REFRESH_EMAIL_FORM: "REFRESH_EMAIL_FORM",
   GET_FEATURED_LIST: "GET_FEATURED_LIST",
-  RECALL_AGE_VERIFICATION: "RECALL_AGE_VERIFICATION"
+  RECALL_AGE_VERIFICATION: "RECALL_AGE_VERIFICATION",
+  SET_SEARCH: "SET_SEARCH",
+  ADD_TALK_TO_LISTENER: "ADD_TALK_TO_LISTENER"
 };
 
 const actions = {
@@ -216,6 +218,18 @@ const actions = {
           return Promise.resolve(_new);
         })
         .catch(error => console.log(error));
+    };
+  },
+  setSearch: value => {
+    return {
+      type: actionTypes.SET_SEARCH,
+      value: value
+    };
+  },
+  addTalkToListener: bool => {
+    return {
+      type: actionTypes.ADD_TALK_TO_LISTENER,
+      bool: bool
     };
   }
 };

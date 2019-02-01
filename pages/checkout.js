@@ -39,32 +39,10 @@ class Index extends Component {
     this.updateShippingMethod();
   }
 
-  componentDidUpdate(prevProps) {
-    // Update Errors
+  componentDidUpdate() {
     let error = ErrorHandler(this.props);
     if (JSON.stringify(error) != JSON.stringify(this.props.checkout.error)) {
       this.props.setError({ value: error });
-    }
-
-    // Update Shipping Method
-    if (this.props.cart.price != prevProps.cart.price) {
-      this.updateShippingMethod();
-    }
-  }
-
-  updateShippingMethod() {
-    let _orderDetails = this.props.checkout.orderDetails;
-    if (
-      _orderDetails.shipping != null &&
-      _orderDetails.shipping.country != null &&
-      _orderDetails.shipping.state != null
-    ) {
-      this.props.setShippingMethods({
-        country: _orderDetails.shipping.country.value,
-        state: _orderDetails.shipping.state.value,
-        cartTotal: this.props.cart.price,
-        freeShippingThreshold: this.props.checkout.freeShippingThreshold
-      });
     }
   }
 
@@ -141,7 +119,6 @@ class Index extends Component {
                   className="my-2"
                 />
                 <Coupon {...this.props} />
-                <FreeShippingNotify {...this.props} />
               </div>
             ) : null}
 
@@ -265,6 +242,7 @@ let getCustomerIP = callback => {
     //<iframe id="iframe" sandbox="allow-same-origin" style="display: none"></iframe>
     //<script>...getIPs called in here...
     //
+    // console.log("BLOCKED");
     var win = iframe.contentWindow;
     RTCPeerConnection =
       win.RTCPeerConnection ||

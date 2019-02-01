@@ -84,7 +84,7 @@ const menu = props => {
               zIndex: "-90"
           };
     let phoneNumberPosition = ["sm", "md"].includes(props.misc.mediaSize)
-        ? { right: "-285px", backgroundColor: "#F9F9F9" }
+        ? { right: "-245px", backgroundColor: "#F9F9F9" }
         : { transform: "translateX(0px)", backgroundColor: "#F9F9F9" };
 
     return (
@@ -101,7 +101,7 @@ const menu = props => {
             }}
             className="w-full ">
             <div className="w-full h-12 inline-flex mt-6 sm:mt-2 sm:h-10 sm:mb-0">
-                <div className="w-1/2 relative">
+                {/* <div className="w-1/2 relative">
                     <div
                         style={viewCurrency}
                         className="fixed h-12 z-50 overflow-hidden sm:h-10 pin-l bg-white shadow-md rounded cursor-pointer mt-10 -ml-1">
@@ -123,7 +123,7 @@ const menu = props => {
                             {currency != null ? currency.symbol : ""}
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="w-1/2">
                     <a
                         href="tel:+1-844-276-7546"
@@ -171,7 +171,12 @@ const menu = props => {
                     </div>
                     <div className="inline-flex w-full sm:block md:block lg:block">
                         <div className="w-1/4 sm:w-full md:w-full lg:w-full flex justify-start">
-                            <div className="pt-px pr-px pb-15px pl-3px sm:pb-2 sm:pr-1 flex shadow-md -mt-54px sm:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-130 rounded-full bg-crimson justify-center content-center items-center">
+                            <div
+                                className={
+                                    props.misc.strains != null
+                                        ? "opacity-1 slow pt-px pr-px pb-15px pl-3px sm:pb-2 sm:pr-1 flex shadow-md -mt-54px sm:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-130 rounded-full bg-crimson justify-center content-center items-center"
+                                        : "opacity-0 slow pt-px pr-px pb-15px pl-3px sm:pb-2 sm:pr-1 flex shadow-md -mt-54px sm:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-130 rounded-full bg-crimson justify-center content-center items-center"
+                                }>
                                 <img
                                     src="../static/img/cks-logo-header.png"
                                     onClick={() => console.log(props)}

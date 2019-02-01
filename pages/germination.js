@@ -27,7 +27,7 @@ class Index extends Component {
                         </div>
                         <div className="w-full mt-8">
                             <h3 className="w-full font-black text-2xl h-12 my-2">Featured Products</h3>
-                            <FeaturedStrainThumbnails {...this.props} />
+                            <FeaturedStrainThumbnails count={4} {...this.props} />
                         </div>
                     </div>
                 </div>

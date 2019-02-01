@@ -4,7 +4,8 @@ import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
 
 const actionTypes = {
-    TOGGLE_FAQ_QUESTION: "TOGGLE_FAQ_QUESTION"
+    TOGGLE_FAQ_QUESTION: "TOGGLE_FAQ_QUESTION",
+    SET_FAQ_SEARCH: "SET_FAQ_SEARCH"
 };
 
 const getActions = uri => {
@@ -13,6 +14,12 @@ const getActions = uri => {
             return {
                 type: actionTypes.TOGGLE_FAQ_QUESTION,
                 index: index
+            };
+        },
+        setFaqSearch: value => {
+            return {
+                type: actionTypes.SET_FAQ_SEARCH,
+                value: value
             };
         }
     };

@@ -1,5 +1,5 @@
 import Menu from "./menu";
-import NotificationBar from "./notificationBar";
+// import SearchBar from "./searchBar";
 
 const Header = props => {
     let HeaderStyle = {
@@ -12,7 +12,7 @@ const Header = props => {
     return (
         <div style={HeaderStyle} className="preserve-3d">
             <Menu {...props} />
-            {props.misc.notification != null ? <NotificationBar {...props} /> : null}
+            {/* <SearchBar {...props} /> */}
         </div>
     );
 };

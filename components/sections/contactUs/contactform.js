@@ -39,13 +39,32 @@ const ContactForm = props => {
                   <label className="p-1 font-bold">
                     Full Name: <span className="text-red">*</span>
                   </label>{" "}
-                  <input type="text" name="name" className="p-2 my-1 w-full" />
+                  <input
+                    required
+                    type="text"
+                    name="name"
+                    className="p-2 my-1 w-full"
+                  />
                 </div>
                 <div className="w-main sm:w-full md:w-full mt-3 p-1">
                   <label className="font-bold">
                     Email Address: <span className="text-red">*</span>
                   </label>{" "}
-                  <input type="text" name="email" className="p-2 my-1 w-full" />
+                  <input
+                    type="email"
+                    name="email"
+                    required="required"
+                    className="p-2 my-1 w-full"
+                    onChange={e => {
+                      e.target.setCustomValidity("");
+                    }}
+                    onInvalid={e => {
+                      e.target.setCustomValidity(
+                        'Must be valid email and should contain "@"'
+                      );
+                    }}
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,3}$"
+                  />
                 </div>
                 <div className="w-main sm:w-full md:w-full mt-3 p-1">
                   <label className="font-bold">Subject:</label>
@@ -75,11 +94,15 @@ const ContactForm = props => {
                 <input type="text" className="p-2 my-1 w-full" />
               </div> */}
                 <div className="w-main sm:w-full md:w-full mt-3 p-1">
-                  <label className="font-bold">Message:</label>{" "}
+                  <label className="font-bold">
+                    Message:<span className="text-red">*</span>
+                  </label>{" "}
                   <textarea
+                    required
                     name="body"
                     cols="20"
                     row="500"
+                    maxLength="150"
                     className="p-2 my-1 w-full h-40"
                   />
                 </div>
@@ -87,7 +110,7 @@ const ContactForm = props => {
                   <div className="w-200 sm:w-full md:w-full md:justify-center flex justify-end">
                     <button
                       type="submit"
-                      className="p-2 sm:p-3 md:p-3 px-4 w-150 sm:w-full md:w-full text-lg uppercase font-bold text-white rounded bg-red-dark hover:bg-red-light"
+                      className="p-2 sm:p-3 md:p-3 px-4 w-150 sm:w-full md:w-full text-lg text-white rounded bg-red-dark hover:bg-red-light"
                     >
                       Submit
                     </button>
@@ -160,7 +183,7 @@ const ContactForm = props => {
                   <img src="../../static/img/cks_red.png" className="w-32" />
                 </div>
                 <div className="absolute -mb-2 pin-b w-full mx-auto">
-                  <h3 className="bg-red-dark w-main rounded px-4 text-sm mx-auto shadow-md text-white uppercase font-bold p-2">
+                  <h3 className="bg-red-dark w-main rounded px-4 text-sm mx-auto shadow-md text-white uppercase p-2">
                     Chat with the king
                   </h3>
                 </div>

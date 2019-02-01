@@ -12,7 +12,20 @@ import ContactUs from "../components/sections/contactUs";
 
 class Index extends Component {
     componentDidMount() {
-        document.getElementById("tawkto").addEventListener("click", () => Tawk_API.toggle());
+        if (!this.props.misc.addTalkToListener) {
+            if (document.getElementById("tawkto")) {
+                document.getElementById("tawkto").addEventListener("click", () => Tawk_API.toggle());
+                this.props.addTalkToListener(true);
+            }
+        }
+    }
+    componentDidUpdate() {
+        if (!this.props.misc.addTalkToListener) {
+            if (document.getElementById("tawkto")) {
+                document.getElementById("tawkto").addEventListener("click", () => Tawk_API.toggle());
+                this.props.addTalkToListener(true);
+            }
+        }
     }
 
     render() {
@@ -30,7 +43,8 @@ const mapDispatchToProps = dispatch => {
     return {
         setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
         sendEmail: input => dispatch(actions.sendEmail(input)),
-        refreshEmailForm: () => dispatch(actions.refreshEmailForm())
+        refreshEmailForm: () => dispatch(actions.refreshEmailForm()),
+        addTalkToListener: bool => dispatch(actions.addTalkToListener(bool))
     };
 };
 

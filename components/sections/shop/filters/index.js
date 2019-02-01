@@ -59,7 +59,7 @@ const filters = props => {
         <div
             className={
                 props.shop.showFilters
-                    ? "h-650 lg:h-825 xl:h-750 w-full absolute bg-white z-999 xxl:z-0 xl:z-0 lg:z-0 lg:sticky xl:sticky xxl:sticky text-red-dark border border-grey-lighter cursor-pointer"
+                    ? "h-550 lg:h-550 xl:h-550 w-full absolute bg-white z-999 xxl:z-0 xl:z-0 lg:z-0 lg:sticky xl:sticky xxl:sticky text-red-dark border border-grey-lighter cursor-pointer"
                     : " h-10 w-full absolute bg-white z-999 overflow-hidden lg:sticky xl:sticky xxl:sticky text-red-dark border border-grey-lighter cursor-pointer" // style={{ top: "140px" }}
             }>
             <p
@@ -89,12 +89,12 @@ const filters = props => {
             </ul>
 
             <hr className="hr__filters" />
-            <ul className="leading-loose flex flex-wrap pl-4">
+            {/* <ul className="leading-loose flex flex-wrap pl-4">
                 <li className="text-red-dark font-bold w-full text-xl">Merchandise</li>
                 {showFilter(["clothing", "accessories", "all"], "merchandise")}
             </ul>
 
-            <hr className="hr__filters" />
+            <hr className="hr__filters" /> */}
 
             <button
                 style={{ width: "95%" }}

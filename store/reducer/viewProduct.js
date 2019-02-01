@@ -137,7 +137,8 @@ const initialState = {
     ],
     review: {},
     reviewCursor: 0,
-    ratingFilter: null
+    ratingFilter: null,
+    ImageZoom: null
 };
 
 export default (state = initialState, action) => {
@@ -163,6 +164,8 @@ export default (state = initialState, action) => {
             });
         case actionTypes.SET_NEW_RATING:
             return updateObject(state, { newRating: action.index });
+        case actionTypes.SET_IMAGE_ZOOM:
+            return updateObject(state, { ImageZoom: action.imz });
         default:
             return state;
     }
