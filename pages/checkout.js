@@ -39,10 +39,14 @@ class Index extends Component {
     this.updateShippingMethod();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     let error = ErrorHandler(this.props);
     if (JSON.stringify(error) != JSON.stringify(this.props.checkout.error)) {
       this.props.setError({ value: error });
+    }
+
+    if (this.props.cart.price != prevProps.cart.price) {
+      this.updateShippingMethod();
     }
   }
 
@@ -57,7 +61,8 @@ class Index extends Component {
         country: _orderDetails.shipping.country.value,
         state: _orderDetails.shipping.state.value,
         cartTotal: this.props.cart.price,
-        freeShippingThreshold: this.props.checkout.freeShippingThreshold
+        freeShippingThreshold: this.props.checkout.freeShippingThreshold,
+        orderDetails: _orderDetails
       });
     }
   }
@@ -135,6 +140,7 @@ class Index extends Component {
                   className="my-2"
                 />
                 <Coupon {...this.props} />
+                <FreeShippingNotify {...this.props} />
               </div>
             ) : null}
 
