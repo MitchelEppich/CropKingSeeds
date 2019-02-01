@@ -24,12 +24,6 @@ const SearchBar = props => {
                     onChange={e => props.setSearch(e.target.value)}
                     defaultValue={props.misc.searchValue != null ? props.misc.searchValue : null}
                 />
-                <input
-                    className="w-full h-full bg-white pl-4 border-0 text-grey font-normal"
-                    placeholder="What are you looking for?"
-                    onChange={e => props.setSearch(e.target.value)}
-                    defaultValue={props.misc.searchValue != null ? props.misc.searchValue : ""}
-                />
                 <Link href="/shop" as={"/shop?" + props.misc.searchValue}>
                     <a
                         onClick={e => {
