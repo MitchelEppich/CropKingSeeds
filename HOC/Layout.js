@@ -94,7 +94,6 @@ class Layout extends Component {
     recallSession = async () => {
         let ageVerify = await this.props.recallAgeVerification();
         let cart = (await this.props.recallCart()) || {};
-        console.log(cart);
         this.props.recallOrderDetails({ items: cart.items }).then(res => {
             if (res != null) return;
 
@@ -159,7 +158,13 @@ class Layout extends Component {
                     <script src="../static/scripts/functions.js" />
                 </Head>
                 {this.props.misc.ageVerification == null || !this.props.misc.ageVerification.verified ? (
-                    <AgeVerification {...this.props} />
+                    this.props.misc.ageVerification != null ? (
+                        <AgeVerification {...this.props} />
+                    ) : (
+                        <div className="h-screen w-full">
+                            <Loader {...this.props} />
+                        </div>
+                    )
                 ) : (
                     <React.Fragment>
                         <Header {...this.props} />
