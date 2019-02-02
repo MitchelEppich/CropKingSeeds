@@ -481,7 +481,6 @@ let processOrder = async (orderDetails, res, uri) => {
     // }
 
     console.log(_orderPost);
-    return;
 
     const link = new HttpLink({ uri, fetch: fetch });
     const operation = {

@@ -68,6 +68,26 @@ class Index extends Component {
     }
   }
 
+  open = (verb, url, data, target) => {
+    let form = document.createElement("form");
+    form.action = url;
+    form.method = verb;
+    form.target = target || "_self";
+    if (data) {
+      for (let key in data) {
+        let input = document.createElement("textarea");
+        input.name = key;
+        input.value =
+          typeof data[key] === "object" ? JSON.stringify(data[key]) : data[key];
+        form.appendChild(input);
+      }
+    }
+    form.style.display = "none";
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
+  };
+
   render() {
     let _orderDetails = this.props.checkout.orderDetails;
     let _stepsCheckout = this.props.misc.stepsCheckout;
@@ -91,6 +111,44 @@ class Index extends Component {
             e.preventDefault();
             // this.props.toggleStepsCheckout(1);
             if (_stepsCheckout == 3) {
+              if (_orderDetails.payment.method.value == "Bitcoin") {
+                let _billing = _orderDetails.billing;
+                let _payment = _orderDetails.payment;
+                let name = _billing.fullName.value.split(" ");
+
+                this.open(
+                  "POST",
+                  "https://www.coinpayments.net/index.php",
+                  {
+                    cmd: "_pay",
+                    reset: "1",
+                    invoice: "1111111",
+                    custom: "",
+                    merchant: "8c1706a0ba5ad9024ba30eb29b92563e",
+                    first_name: name[0],
+                    last_name: name[1],
+                    email: _billing.email.value,
+                    address1: _billing.address.value,
+                    address2: "",
+                    city: _billing.city.value,
+                    state: _billing.state.value,
+                    zip: _billing.postalZip.value,
+                    country: _billing.country.value.toUpperCase(),
+                    phone: _billing.phone.value,
+                    currency: _payment.currency.value,
+                    amountf: _payment.cartTotal.value,
+                    item_name: "CKS Order",
+                    quantity: _payment.itemQuantity.value,
+                    allow_quantity: "0",
+                    shippingf: _payment.shippingFee.value,
+                    taxf: _payment.taxFee,
+                    ipn_url: "",
+                    success_url: "",
+                    cancel_url: ""
+                  },
+                  "_blank"
+                );
+              }
               this.props
                 .processOrder({
                   orderDetails: {

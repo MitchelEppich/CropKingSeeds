@@ -36,6 +36,7 @@ const OrderSchema = Schema({
   total: Number,
   processor: String,
   ccType: String,
+  orderDate: String,
   paymentMethod: String,
   paymentStatus: String,
   ip: String

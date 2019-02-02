@@ -169,18 +169,14 @@ const resolvers = {
     processOrder: async (_, { input }) => {
       let _input = JSON.parse(input.content);
 
-      console.log("ABOUT TO SEND", input);
-
-      let res = (await axios({
-        method: "post",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        url: "https://www.cksoti.com/save-order-customer-details",
-        data: toUrlEncoded(_input)
-      })).data;
-
-      console.log(_input);
+      // let res = (await axios({
+      //   method: "post",
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded"
+      //   },
+      //   url: "https://www.cksoti.com/save-order-customer-details",
+      //   data: toUrlEncoded(_input)
+      // })).data;
 
       resolvers.Mutation.createOrder(null, {
         input: {
@@ -217,6 +213,7 @@ const resolvers = {
           total: _input.Total,
           processor: _input.Payment_Method,
           ccType: _input.Typeofcard,
+          orderDate: _input.Order_Date,
           paymentMethod: _input.Payment_Method,
           paymentStatus: _input.credit_card_remark
         }
