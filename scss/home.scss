@@ -140,9 +140,9 @@ img {
   left: calc(50% - 59px);
 }
 .cks-logo-header {
-    top: -17.7px;
-    left: 3.5px;
-    position: absolute;
+  top: -17.7px;
+  left: 3.5px;
+  position: absolute;
 }
 .example {
   background-color: red;
@@ -226,17 +226,17 @@ img {
 }
 
 .ray_box {
-    /*HEADER ANIMATION */
-    left: 140px;
-    top: 5px;
-    right: 0;
-    position: absolute;
-    bottom: 0;
-    width: 30px;
-    height: 30px;
-    -webkit-animation: ray_anim 300s linear infinite;
-    animation: ray_anim 300s linear infinite;
-    z-index: -5;
+  /*HEADER ANIMATION */
+  left: 140px;
+  top: 5px;
+  right: 0;
+  position: absolute;
+  bottom: 0;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: ray_anim 300s linear infinite;
+  animation: ray_anim 300s linear infinite;
+  z-index: -5;
 }
 .ray {
   /*HEADER ANIMATION */
@@ -250,71 +250,72 @@ img {
 
 //react autosuggest
 .react-autosuggest__container {
-    position: relative;
-    z-index: 50;
+  position: relative;
+  z-index: 50;
 }
 
 .react-autosuggest__input {
-    width: calc(300px - 3rem);
-    height: 2.5rem;
-    padding: 1px 20px;
-    font-family: Helvetica, sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    border-radius: 10px;
-    border: none;
-    z-index: 50;
+  width: calc(300px - 3rem);
+  height: 2.5rem;
+  padding: 1px 20px;
+  font-family: Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  z-index: 50;
 }
 
 .react-autosuggest__input--focused {
-    outline: none;
-    z-index: 50;
+  outline: none;
+  z-index: 50;
 }
 
 .react-autosuggest__input--open {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    z-index: 50;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: 50;
 }
 
 .react-autosuggest__suggestions-container {
-    display: none;
-    z-index: 50;
+  display: none;
+  z-index: 50;
 }
 
 .react-autosuggest__suggestions-container--open {
-    display: block;
-    position: absolute;
-    top: 51px;
-    width: 280px;
-    background-color: #fff;
-    font-family: Helvetica, sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    max-height: 100px;
-    overflow-y: auto;
-    z-index: 999;
-    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+  display: block;
+  position: absolute;
+  top: 51px;
+  width: 280px;
+  background-color: #fff;
+  font-family: Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  max-height: 100px;
+  overflow-y: auto;
+  z-index: 999;
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
+    0 5px 15px 0 rgba(0, 0, 0, 0.08);
 }
 
 .react-autosuggest__suggestions-list {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    z-index: 50;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  z-index: 50;
 }
 
 .react-autosuggest__suggestion {
-    cursor: pointer;
-    padding: 10px 20px;
-    z-index: 50;
+  cursor: pointer;
+  padding: 10px 20px;
+  z-index: 50;
 }
 
 .react-autosuggest__suggestion--highlighted {
-    background-color: #ddd;
-    z-index: 50;
+  background-color: #ddd;
+  z-index: 50;
 }
 //////////////////
 
@@ -524,91 +525,91 @@ img {
 ////////////
 //SHOP PAGE
 .overlayClass {
-    height: 100%;
-    width: 100%;
-    transition: 0.4s all ease-in-out;
-    color: rgba(255, 255, 255, 0);
-    position: relative;
-    z-index: 99999999999999;
-    overflow: visible;
-    text-align: center;
+  height: 100%;
+  width: 100%;
+  transition: 0.4s all ease-in-out;
+  color: rgba(255, 255, 255, 0);
+  position: relative;
+  z-index: 99999999999999;
+  overflow: visible;
+  text-align: center;
 
-    @include modifier("hover") {
-        text-align: center;
-        transform: translateX(-60px);
-        height: 635px;
-        width: 145%;
-        background-color: #fff;
-        transition: 0.4s all ease-in-out;
-        color: rgba(255, 255, 255, 1);
-        position: absolute;
-        box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
-        border: 0.5px solid #cecece;
-        z-index: 99999999999999;
-    }
+  @include modifier("hover") {
+    text-align: center;
+    transform: translateX(-60px);
+    height: 635px;
+    width: 145%;
+    background-color: #fff;
+    transition: 0.4s all ease-in-out;
+    color: rgba(255, 255, 255, 1);
+    position: absolute;
+    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
+      0 5px 15px 0 rgba(0, 0, 0, 0.08);
+    border: 0.5px solid #cecece;
+    z-index: 99999999999999;
+  }
 }
 .packageClass {
+  height: 14rem;
+  width: 240px;
+  position: relative;
+  transform: translateX(-15px);
+  z-index: 10;
+  transition: 0.3s all ease-in-out;
+  padding: 5.5rem 3rem 0.5rem 3rem;
+  text-align: right;
+  @include modifier("hover") {
     height: 14rem;
     width: 240px;
     position: relative;
-    transform: translateX(-15px);
+    transform: translateX(-10px);
     z-index: 10;
     transition: 0.3s all ease-in-out;
     padding: 5.5rem 3rem 0.5rem 3rem;
     text-align: right;
-    @include modifier("hover") {
-        height: 14rem;
-        width: 240px;
-        position: relative;
-        transform: translateX(-10px);
-        z-index: 10;
-        transition: 0.3s all ease-in-out;
-        padding: 5.5rem 3rem 0.5rem 3rem;
-        text-align: right;
-    }
+  }
 }
 .package-pins {
+  transition: 0.3s all ease-in-out;
+  right: 0;
+  height: 3.5rem;
+  @include modifier("hover") {
     transition: 0.3s all ease-in-out;
     right: 0;
     height: 3.5rem;
-    @include modifier("hover") {
-        transition: 0.3s all ease-in-out;
-        right: 0;
-        height: 3.5rem;
-    }
+  }
 }
 .plantClass {
+  height: 12rem;
+  position: absolute;
+  top: 8px;
+  z-index: 0;
+  transform: translateX(-150px);
+  transition: 0.3s all ease-in-out;
+  @include modifier("hover") {
     height: 12rem;
     position: absolute;
-    top: 8px;
+    top: 15px;
     z-index: 0;
-    transform: translateX(-150px);
     transition: 0.3s all ease-in-out;
-    @include modifier("hover") {
-        height: 12rem;
-        position: absolute;
-        top: 15px;
-        z-index: 0;
-        transition: 0.3s all ease-in-out;
-        transform: translateX(-70px);
-    }
+    transform: translateX(-70px);
+  }
 }
 .strainTitle {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -43px;
-    width: 93%;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    color: white;
-    text-shadow: rgb(0, 0, 0) 1px 1px 2px;
-    box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -43px;
+  width: 93%;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: white;
+  text-shadow: rgb(0, 0, 0) 1px 1px 2px;
+  box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
+  transition: 0.3s all ease-in-out;
+  @include modifier("hover") {
     transition: 0.3s all ease-in-out;
-    @include modifier("hover") {
-        transition: 0.3s all ease-in-out;
-        &:hover {
-            transform: scale(1.1);
-        }
+    &:hover {
+      transform: scale(1.1);
     }
   }
 }
