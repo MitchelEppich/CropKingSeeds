@@ -7,7 +7,6 @@ const { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
 const { execute, subscribe } = require("graphql");
 const { createServer } = require("http");
 const { SubscriptionServer } = require("subscriptions-transport-ws");
-
 require("dotenv").config();
 
 // our packages
@@ -25,10 +24,7 @@ const subscriptionsEndpoint = `ws://${url}:${port}${subscriptionsPath}`;
 // const subscriptionsEndpoint = `ws://192.168.0.57:3000${subscriptionsPath}`;
 
 mongoose.Promise = global.Promise;
-mongoose.connect(
-    process.env.M_URL,
-    { useNewUrlParser: true }
-);
+mongoose.connect(process.env.M_URL, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "Connection error:"));
 db.once("open", () => console.log("We are connected!"));
