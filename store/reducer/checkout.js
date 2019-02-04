@@ -35,6 +35,8 @@ export default (state = initialState, action) => {
         shippingMethods: action.methods,
         orderDetails: action.orderDetails
       });
+    case actionTypes.ACQUIRE_ORDER_ID:
+      return updateObject(state, { orderDetails: action.input });
     case actionTypes.SET_ERROR:
       return updateObject(state, { error: action.input });
     case actionTypes.MODIFY_ORDER_DETAILS:

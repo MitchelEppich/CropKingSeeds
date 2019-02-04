@@ -23,7 +23,8 @@ const actionTypes = {
   APPLY_COUPON: "APPLY_COUPON",
   SET_ERROR: "SET_ERROR",
   GET_EXCHANGE_RATES: "GET_EXCHANGE_RATES",
-  RECALL_ORDER_DETAILS: "RECALL_ORDER_DETAILS"
+  RECALL_ORDER_DETAILS: "RECALL_ORDER_DETAILS",
+  ACQUIRE_ORDER_ID: "ACQUIRE_ORDER_ID"
 };
 
 let shippingMethods = [
@@ -290,6 +291,33 @@ const getActions = uri => {
       input.currency.convert = 1; // THIS IS TO ENSURE ALL PRICES ARE EQUAL
       return { type: actionTypes.SET_CURRENCY, input: input.currency };
     },
+    acquireOrderId: input => {
+      return async dispatch => {
+        let _orderDetails = input.orderDetails;
+
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = {
+          query: query.getNewOrderId
+        };
+
+        return await makePromise(execute(link, operation))
+          .then(data => {
+            let orderId = data.data.getNewOrderId;
+
+            _orderDetails.payment.orderId = {
+              value: orderId,
+              tag: "Order_ID"
+            };
+
+            dispatch({
+              type: actionTypes.ACQUIRE_ORDER_ID,
+              input: _orderDetails
+            });
+            return orderId;
+          })
+          .catch(error => console.log(error));
+      };
+    },
     processOrder: input => {
       return async dispatch => {
         dispatch({ type: actionTypes.PROCESS_ORDER });
@@ -297,12 +325,6 @@ const getActions = uri => {
         let _paymentMethod = _orderDetails.payment.method.value;
 
         console.log(buildOrderPost(_orderDetails));
-
-        // Set Order ID
-        let orderId = await getNewOrderId(uri);
-        _orderDetails.payment.orderId = { value: orderId, tag: "Order_ID" };
-
-        console.log(orderId);
 
         // Process Payment
         let ccResponse = await (async () => {

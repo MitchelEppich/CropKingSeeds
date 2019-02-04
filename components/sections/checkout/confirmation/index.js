@@ -1,4 +1,8 @@
 const Confirmation = props => {
+  let _orderDetails = props.checkout.orderDetails;
+  let orderId = _orderDetails.payment.orderId.value.toString();
+  let fOrderId = [orderId.slice(0, 4), "-", orderId.slice(4), "-CKS"].join("");
+
   return (
     <div className="w-full mt-6 text-center">
       <h1 className="text-5xl font-extrabold mt-12 mb-4 text-black">
@@ -13,7 +17,7 @@ const Confirmation = props => {
         width="500px"
       />
       <h4 className="text-center mt-8 font-extrabold">January, 17, 2019</h4>
-      <h2 className="mt-4">Order # 867442129</h2>
+      <h2 className="mt-4">Order #{fOrderId}</h2>
       <br />
       <br />
       <br />
