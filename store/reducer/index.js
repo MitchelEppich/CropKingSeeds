@@ -73,7 +73,38 @@ const initialState = {
   emailSent: false,
   featuredStrains: null,
   searchValue: null,
-  addTalkToListener: false
+  addTalkToListener: false,
+  currentEventObj: 0,
+  upcomingEvents: [
+    {
+      name: "420 Event Cannabis",
+      desc:
+        "Proident occaecat nostrud duis mollit voluptate ullamco cillum magna irure excepteur reprehenderit officia labore.",
+      date: "20121020",
+      img: "../../static/img/eventBanner.jpg"
+    },
+    {
+      name: "Hawaii Cannabis Expo",
+      desc:
+        "Proident occaecat nostrud duis mollit voluptate ullamco cillum magna irure excepteur reprehenderit officia labore.",
+      date: "20041225",
+      img: "../../static/img/eventBanner2.jpg"
+    },
+    {
+      name: "Cypress Hill Live Vancouver",
+      desc:
+        "Proident occaecat nostrud duis mollit voluptate ullamco cillum magna irure excepteur reprehenderit officia labore.",
+      date: "20340205",
+      img: "../../static/img/eventBanner3.jpg"
+    },
+    {
+      name: "Hawaii Cannabis Expo",
+      desc:
+        "This is crazy occaecat nostrud duis mollit voluptate ullamco cillum magna irure excepteur reprehenderit o",
+      date: "20191013",
+      img: "../../static/img/eventBanner2.jpg"
+    }
+  ]
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -95,6 +126,10 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.SET_HOVER_ID:
       return updateObject(state, {
         hoverId: action.turnOn ? action.id : null
+      });
+    case actionTypes.SET_CURRENT_EVENT:
+      return updateObject(state, {
+        currentEventObj: action.index
       });
     case actionTypes.SET_EMAIL:
       return updateObject(state, { newsletterEmail: action.input });

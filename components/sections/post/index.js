@@ -2,8 +2,8 @@ import Link from "next/link";
 
 const Post = props => {
   return (
-    <div className="mx-auto bg-white flex flex-wrap my-3 md:mt-4 sm:mt-4">
-      <div className="sm:w-full md:w-full sm:h-250 md:h-200 w-1/2 p-4 xxl:mt-12 h-300 lg:h-250 shadow-lg">
+    <div className="mx-auto bg-white flex flex-wrap my-3 md:mt-4 sm:mt-4 shadow-lg">
+      <div className="sm:w-full md:w-full sm:h-250 md:h-200 w-1/2 p-4 xxl:mt-12 h-300 lg:h-250 ">
         <h2 className="text-center font-extrabold xl:mt-8 xxl:text-4xl xl:text-4xl lg:text-4xl sm:text-3xl text-red-dark ">
           Germination
         </h2>
@@ -18,12 +18,18 @@ const Post = props => {
           </div>
         </Link>
       </div>
-      <div className="sm:w-full md:w-full px-1 sm:h-150 md:h-250 w-1/2 xl:mt-4 lg:mt-4 overflow-hidden">
-        <img
-          src="../static/img/cannabis.jpg"
-          alt="germination-post"
-          className="w-full"
-        />
+      <div className="sm:w-full md:w-full px-1 sm:h-150 md:h-250 w-1/2 xl:mt-4 lg:mt-4 overflow-hidden relative">
+        <div className="pt-2 text-center absolute w-full">
+          <iframe
+            className="shadow-lg rounded overflow-hidden"
+            transform="translateZ(5deg)"
+            width="560"
+            height="312"
+            src="https://growreel.com/embed/5bc119ae674e3139208e8047"
+            frameBorder="0"
+            autoPlay={false}
+          />
+        </div>
       </div>
     </div>
   );

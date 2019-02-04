@@ -53,7 +53,8 @@ const mapDispatchToProps = dispatch => {
     nextBannerSlide: () => dispatch(actions.nextBannerSlide()),
     toggleTransitionStatus: () => dispatch(actions.toggleTransitionStatus()),
     getStrains: () => dispatch(actions.getStrains()),
-    toggleFilter: input => dispatch(actions.toggleFilter(input))
+    toggleFilter: input => dispatch(actions.toggleFilter(input)),
+    setCurrentEvent: input => dispatch(actions.setCurrentEvent(input))
   };
 };
 

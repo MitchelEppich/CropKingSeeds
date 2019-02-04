@@ -8,16 +8,16 @@ const About = props => {
   let content = currentHistoryObj.content;
 
   let currentItem = props.about.currentHistoryObj;
-  let title = currentHistoryObj.title;
   let currentImgSrc = currentHistoryObj.imgSrc;
-  let date = moment(currentHistoryObj.date).format("MMM, Do - YYYY");
+  let date = currentHistoryObj.date;
+  // let date = moment(currentHistoryObj.date).format("MMM, Do - YYYY");
 
   let historyThumbnails = props.about.historyObjs.map((val, index) => {
     //check thumbnail active and scale when active
     let activeThumb =
       currentItem == index
         ? {
-            transform: "scale(1.15)",
+            transform: "scale(1.10)",
             transition: "all .3s ease"
           }
         : {
@@ -92,9 +92,6 @@ const About = props => {
           className="h-200 w-200 rounded-full border-8 border-grey-lighter scale-item"
           src={val.src}
         />
-        <h2 className="w-250 my-5 mx-auto text-center uppercase ">
-          {val.title}
-        </h2>
         <p className="w-250 mx-auto text-center">{val.content}</p>
       </div>
     );
@@ -118,7 +115,6 @@ const About = props => {
               {carouselImg}
             </div>
             <div className="w-1/3 sm:w-full md:w-full sm:hidden md:hidden lg:hidden relative">
-              <h3 className="font-bold text-xl p-2 px-6">{title}</h3>
               <p className="p-2 w-full text-justify px-6 xl:pb-8">{content}</p>
               <p className="text-center font-bold text-xl mt-12 absolute pin-b pin-x">
                 {date}
@@ -128,7 +124,6 @@ const About = props => {
               {historyThumbnails}
             </div>
             <div className="w-1/3 h-full lg:w-full sm:w-full md:w-full xxl:hidden xl:hidden">
-              <h3 className="font-bold text-xl p-2 px-6">{title}</h3>
               <p className="p-2 w-full text-justify px-6">{content}</p>
               <p className="text-center font-bold text-xl mt-12 ">{date}</p>
             </div>

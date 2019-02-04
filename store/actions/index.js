@@ -38,6 +38,7 @@ const imports = {
 };
 
 const actionTypes = {
+<<<<<<< HEAD
     SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN",
     SET_CHECKOUT_SCREEN: "SET_CHECKOUT_SCREEN",
     SET_HOVER_ID: "SET_HOVER_ID",
@@ -83,6 +84,60 @@ const actions = {
         let _ageVerification = input.ageVerification;
         let _group = input.group;
         let _value = input.value;
+=======
+  SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN",
+  SET_CHECKOUT_SCREEN: "SET_CHECKOUT_SCREEN",
+  SET_HOVER_ID: "SET_HOVER_ID",
+  SET_GENE_HOVER_INDEX: "SET_GENE_HOVER_INDEX",
+  NEXT_BANNER_SLIDE: "NEXT_BANNER_SLIDE",
+  SET_STRAINS: "SET_STRAINS",
+  SET_CONTEXT: "SET_CONTEXT",
+  TOGGLE_STEPS_CHECKOUT: "TOGGLE_STEPS_CHECKOUT",
+  SHOW_DIFFERENT_ADDRESS: "SHOW_DIFFERENT_ADDRESS",
+  SET_AGE_VERIFICATION: "SET_AGE_VERIFICATION",
+  SET_MEDIA_SIZE: "SET_MEDIA_SIZE",
+  SUBSCRIBE_TO_NEWSLETTER: "SUBSCRIBE_TO_NEWSLETTER",
+  SET_EMAIL: "SET_EMAIL",
+  SEND_EMAIL: "SEND_EMAIL",
+  REFRESH_EMAIL_FORM: "REFRESH_EMAIL_FORM",
+  GET_FEATURED_LIST: "GET_FEATURED_LIST",
+  RECALL_AGE_VERIFICATION: "RECALL_AGE_VERIFICATION",
+  SET_SEARCH: "SET_SEARCH",
+  ADD_TALK_TO_LISTENER: "ADD_TALK_TO_LISTENER",
+  SET_CURRENT_EVENT: "SET_CURRENT_EVENT"
+};
+
+const actions = {
+  setVisibleScreen: input => {
+    return {
+      type: actionTypes.SET_VISIBLE_SCREEN,
+      input: input.input,
+      clearAll: input.clearAll
+    };
+  },
+  setCurrentEvent: index => {
+    return {
+      type: actionTypes.SET_CURRENT_EVENT,
+      index: index
+    };
+  },
+  setMediaSize: input => {
+    return {
+      type: actionTypes.SET_MEDIA_SIZE,
+      input: input.mediaSize
+    };
+  },
+  toggleStepsCheckout: input => {
+    return {
+      type: actionTypes.TOGGLE_STEPS_CHECKOUT,
+      input: input
+    };
+  },
+  setAgeVerification: input => {
+    let _ageVerification = input.ageVerification;
+    let _group = input.group;
+    let _value = input.value;
+>>>>>>> 5d1c94d0d4a0692a9014b041be08fcd07d1b46a6
 
         if (_ageVerification == null) _ageVerification = {};
 
