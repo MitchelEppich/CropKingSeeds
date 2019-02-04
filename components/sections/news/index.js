@@ -4,7 +4,7 @@ import moment from "moment";
 
 const news = props => {
   let styleImg = {
-    // height: "460px",
+    height: "460px",
     width: "100%",
     overflow: "hidden",
     objectFit: "cover",
