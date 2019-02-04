@@ -12,7 +12,6 @@ type Query {
   getFeaturedList: [Strain]!
   getBitcoinData(input: BitcoinDataInput): String
   getExchangeRates: String
-  getNewOrderId: Int
   getCoupon(coupon: String, ip: String): Coupon
 }
 
@@ -214,6 +213,7 @@ type Mutation {
   
   createOrder(input: OrderInput): Order
 
+  acquireOrderId: Int
 
   sendEmail(input: EmailInput): String
   subscribeToNewsletter(email: String): String

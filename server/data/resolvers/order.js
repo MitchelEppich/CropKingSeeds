@@ -21,9 +21,6 @@ const resolvers = {
       let query = filter ? { $or: orderFilters(filter) } : {};
       return Order.find(query);
     },
-    getNewOrderId: async (_, {}) => {
-      return (await Order.find({})).slice(-1)[0].orderId + 1;
-    },
     getCoupon: async (_, input) => {
       // Get coupon details
       let res = (await axios({
@@ -158,25 +155,41 @@ const resolvers = {
   Order: {},
   Subscription: {},
   Mutation: {
-    createOrder: (_, { input }) => {
+    acquireOrderId: async (_, {}) => {
+      let orderId = (await Order.find({})).slice(-1)[0].orderId + 1;
       let order = new Order({
+        orderId
+      });
+      order.save();
+      return orderId;
+    },
+    createOrder: async (_, { input }) => {
+      let order;
+      // Check if orderId has already been acquired
+      order = (await Order.find({ orderId: input.orderId }))[0];
+
+      // If it exist, remove as it is just a placeholder
+      if (order != null) order.remove();
+
+      // Create a new object
+      order = new Order({
         ...input
       });
-      console.log(input, order);
+
       order.save();
       return order.toObject();
     },
     processOrder: async (_, { input }) => {
       let _input = JSON.parse(input.content);
 
-      // let res = (await axios({
-      //   method: "post",
-      //   headers: {
-      //     "Content-Type": "application/x-www-form-urlencoded"
-      //   },
-      //   url: "https://www.cksoti.com/save-order-customer-details",
-      //   data: toUrlEncoded(_input)
-      // })).data;
+      let res = (await axios({
+        method: "post",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        url: "https://www.cksoti.com/save-order-customer-details",
+        data: toUrlEncoded(_input)
+      })).data;
 
       resolvers.Mutation.createOrder(null, {
         input: {
@@ -218,6 +231,8 @@ const resolvers = {
           paymentStatus: _input.credit_card_remark
         }
       });
+
+      return "Order Processed.";
     }
   }
 };

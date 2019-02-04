@@ -288,7 +288,7 @@ const getActions = uri => {
       };
     },
     setCurrency: input => {
-      input.currency.convert = 1; // THIS IS TO ENSURE ALL PRICES ARE EQUAL
+      input.currency.convert = 1; // THIS IS TO ENSURE ALL PRICES ARE EQUAL, because we charge the same amount regardless the currency
       return { type: actionTypes.SET_CURRENCY, input: input.currency };
     },
     acquireOrderId: input => {
@@ -297,12 +297,12 @@ const getActions = uri => {
 
         const link = new HttpLink({ uri, fetch: fetch });
         const operation = {
-          query: query.getNewOrderId
+          query: mutation.acquireOrderId
         };
 
         return await makePromise(execute(link, operation))
           .then(data => {
-            let orderId = data.data.getNewOrderId;
+            let orderId = data.data.acquireOrderId;
 
             _orderDetails.payment.orderId = {
               value: orderId,
@@ -404,6 +404,11 @@ const query = {
 };
 
 const mutation = {
+  acquireOrderId: gql`
+    mutation {
+      acquireOrderId
+    }
+  `,
   processOrder: gql`
     mutation($content: String) {
       processOrder(input: { content: $content }) {
