@@ -1,4 +1,5 @@
 const fs = require("fs-extra");
+const strains = require("./strains");
 
 module.exports = () => {
     const fileObj = {};
@@ -6,13 +7,27 @@ module.exports = () => {
     const walkSync = dir => {
         // Get all files of the current directory & iterate over them
         const files = fs.readdirSync(dir);
-        console.log(dir);
-        console.log(files);
+        let noMap = ["_app.js", "_document.js", "animation.js", "article.js", "articles.js", "cms.js"];
         files.forEach(file => {
+            if (noMap.includes(file)) {
+                return;
+            }
+            if (file == "product.js") {
+                const filePath = `${dir}${file}`;
+                const fileStat = fs.statSync(filePath);
+                for (let i = 0; i < strains.length; i++) {
+                    const fileName =
+                        filePath.substr(0, filePath.lastIndexOf(".")).replace("pages/", "") + "/" + strains[i];
+                    fileObj[`/${fileName}`] = {
+                        page: `/${fileName}`,
+                        lastModified: fileStat.mtime
+                    };
+                }
+                return;
+            }
             // Construct whole file-path & retrieve file's stats
             const filePath = `${dir}${file}`;
             const fileStat = fs.statSync(filePath);
-
             if (fileStat.isDirectory()) {
                 // Recurse one folder deeper
                 walkSync(`${filePath}/`);
@@ -30,7 +45,7 @@ module.exports = () => {
     };
 
     // Start recursion to fill `fileObj`
-    walkSync("bundles/pages/");
+    walkSync("pages/");
 
     return fileObj;
 };

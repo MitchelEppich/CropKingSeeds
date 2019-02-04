@@ -12,6 +12,16 @@ import ProductGrid from "../components/sections/shop/productGrid";
 import FeaturedStrainThumbnails from "../components/sections/shop/featuredStrainThumbnails";
 
 class Index extends Component {
+    printStrains() {
+        for (let i = 0; i < this.props.misc.strains.length; i++) {
+            console.log(
+                this.props.misc.strains[i].name
+                    .toLowerCase()
+                    .split(" ")
+                    .join("-")
+            );
+        }
+    }
     render() {
         return (
             <Layout>
@@ -19,6 +29,7 @@ class Index extends Component {
                 this.props.misc.featuredStrains != null &&
                 this.props.misc.strains.length > 0 ? (
                     <React.Fragment>
+                        {/* {this.printStrains()} */}
                         <div
                             className={
                                 this.props.misc.hoverId != null && this.props.misc.mediaSize == "sm"

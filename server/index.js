@@ -73,7 +73,6 @@ app.prepare()
 
         const ws = createServer(server);
         ws.listen(port, url, () => {
-            // remove url before heroku!!
             console.log(`Apollo Server is now running on https://${url}:${port}`);
             // Set up the WebSocket for handling GraphQL subscriptions
             new SubscriptionServer(
