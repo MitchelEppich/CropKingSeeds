@@ -75,36 +75,6 @@ const initialState = {
   searchValue: null,
   addTalkToListener: false,
   currentEventObj: 0,
-  upcomingEvents: [
-    {
-      name: "420 Event Cannabis",
-      desc:
-        "Proident occaecat nostrud duis mollit voluptate ullamco cillum magna irure excepteur reprehenderit officia labore.",
-      date: "20121020",
-      img: "../../static/img/eventBanner.jpg"
-    },
-    {
-      name: "Hawaii Cannabis Expo",
-      desc:
-        "Proident occaecat nostrud duis mollit voluptate ullamco cillum magna irure excepteur reprehenderit officia labore.",
-      date: "20041225",
-      img: "../../static/img/eventBanner2.jpg"
-    },
-    {
-      name: "Cypress Hill Live Vancouver",
-      desc:
-        "Proident occaecat nostrud duis mollit voluptate ullamco cillum magna irure excepteur reprehenderit officia labore.",
-      date: "20340205",
-      img: "../../static/img/eventBanner3.jpg"
-    },
-    {
-      name: "Hawaii Cannabis Expo",
-      desc:
-        "This is crazy occaecat nostrud duis mollit voluptate ullamco cillum magna irure excepteur reprehenderit o",
-      date: "20191013",
-      img: "../../static/img/eventBanner2.jpg"
-    }
-  ],
   featuredNews: [],
   news: {}
 };
@@ -113,18 +83,41 @@ const indexReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_VISIBLE_SCREEN:
       let _clearAll = action.clearAll;
-      let screenIndex = state.visibleScreen.indexOf(action.input);
-      let screens = state.visibleScreen;
-      if (screenIndex > -1) {
-        screens.splice(screenIndex, 1);
-        return updateObject(state, { visibleScreen: [...screens] });
-      } else if (_clearAll) {
-        return updateObject(state, { visibleScreen: [action.input] });
-      } else {
-        return updateObject(state, {
-          visibleScreen: [...state.visibleScreen, action.input]
-        });
+      if (_clearAll) {
+        return updateObject(state, { visibleScreen: [] });
       }
+      let _group = action.group;
+      let screens = state.visibleScreen;
+      let { $input, screenIndex } = (() => {
+        let $input;
+        if (_group == null) {
+          $input = action.input;
+          return {
+            $input,
+            screenIndex: screens.indexOf($input)
+          };
+        } else {
+          $input = _group + "::" + action.input;
+          return {
+            $input,
+            screenIndex: screens.findIndex(a => {
+              return a.includes(_group);
+            })
+          };
+        }
+      })();
+
+      if (screenIndex > -1) {
+        let _ = screens[screenIndex];
+        screens.splice(screenIndex, 1);
+        if ($input == _)
+          return updateObject(state, { visibleScreen: [...screens] });
+      }
+
+      return updateObject(state, {
+        visibleScreen: [...state.visibleScreen, $input]
+      });
+
     case actionTypes.SET_HOVER_ID:
       return updateObject(state, {
         hoverId: action.turnOn ? action.id : null

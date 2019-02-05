@@ -671,6 +671,57 @@ img {
 // END SHOP PAGE
 ////////////////
 
+//////////////////////
+// FEATURED STRAINS
+.featuredStrainsPackage {
+    height: 14rem;
+    position: relative;
+    z-index: 10;
+    transition: 0.2s all ease-in-out;
+    padding: 5.5rem 3rem 0.5rem 3rem;
+    text-align: right;
+    @include modifier("hover") {
+        transform: scale(1.05);
+        transition: 0.2s all ease-in-out;
+        height: 14rem;
+        position: relative;
+        z-index: 10;
+        padding: 5.5rem 3rem 0.5rem 3rem;
+    }
+}
+
+.featuredStrainsPlant {
+    height: 13rem;
+    position: absolute;
+    top: 102px;
+    z-index: 0;
+    transform: translateX(0px);
+    transition: 0.4s all ease-in-out;
+    @include modifier("hover") {
+        height: 13rem;
+        position: absolute;
+        top: 102px;
+        z-index: 0;
+        transition: 0.4s all ease-in-out;
+        transform: translateX(100px);
+    }
+}
+
+.featuredStrainsPackage-pins {
+    height: 3.5rem;
+    position: absolute;
+    transform: rotate(0deg) scale(1) translateX(-60px);
+    transition: 0.4s transform linear;
+    @include modifier("hover") {
+        height: 3.5rem;
+        transform: rotate(2deg) scale(1.05) translateX(123px);
+        position: absolute;
+        transition: 0.4s transform linear;
+    }
+}
+//END FEATURED STRAINS
+//////////////////////
+
 //////////////////
 //VIEWPRODUCT PAGE
 #zoomedImg img {
