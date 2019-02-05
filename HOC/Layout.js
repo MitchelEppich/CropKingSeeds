@@ -198,7 +198,7 @@ class Layout extends Component {
               </div>
             </div>
             <div
-              className="sm:hidden md:hidden lg:hidden fixed z-999 w-20 mb-48 h-16 bg-red-darker pin-b pin-l text-white text-center text-lg pt-3 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item shadow-md"
+              className="pulse sm:hidden md:hidden lg:hidden fixed z-999 w-20 mb-48 h-16 bg-red-darker pin-b pin-l text-white text-center text-lg pt-3 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item shadow-md"
               onClick={() => Tawk_API.toggle()}
             >
               <FontAwesomeIcon
