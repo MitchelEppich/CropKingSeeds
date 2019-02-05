@@ -12,6 +12,10 @@ import Media from "../components/sections/media";
 import News from "../components/sections/news";
 
 class Index extends Component {
+  componentDidMount() {
+    this.props.getAllNews();
+  }
+
   render() {
     return (
       <Layout>
@@ -26,6 +30,7 @@ class Index extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+    getAllNews: () => dispatch(actions.getAllNews()),
     setCurrentEvent: input => dispatch(actions.setCurrentEvent(input))
   };
 };

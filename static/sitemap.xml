@@ -2,12 +2,12 @@
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
         <url>
             <loc>https://cropkingeeds/about</loc>
-            <lastmod>2019-01-29</lastmod>
+            <lastmod>2019-01-21</lastmod>
             <changefreq>yearly</changefreq>
             <priority>0.3</priority>
         </url>,<url>
             <loc>https://cropkingeeds/affiliates</loc>
-            <lastmod>2019-01-31</lastmod>
+            <lastmod>2019-01-30</lastmod>
             <changefreq>yearly</changefreq>
             <priority>0.3</priority>
         </url>,<url>
@@ -22,7 +22,7 @@
             <priority>0.3</priority>
         </url>,<url>
             <loc>https://cropkingeeds/faq</loc>
-            <lastmod>2019-01-31</lastmod>
+            <lastmod>2019-02-01</lastmod>
             <changefreq>yearly</changefreq>
             <priority>0.3</priority>
         </url>,<url>
@@ -237,12 +237,12 @@
             <priority>0.6</priority>
         </url>,<url>
             <loc>https://cropkingeeds/shop</loc>
-            <lastmod>2019-02-04</lastmod>
+            <lastmod>2019-02-05</lastmod>
             <changefreq>yearly</changefreq>
             <priority>0.3</priority>
         </url>,<url>
             <loc>https://cropkingeeds/_error</loc>
-            <lastmod>2018-12-21</lastmod>
+            <lastmod>2018-12-27</lastmod>
             <changefreq>yearly</changefreq>
             <priority>0.3</priority>
         </url>
