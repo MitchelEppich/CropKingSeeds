@@ -94,7 +94,6 @@ class Layout extends Component {
     recallSession = async () => {
         let ageVerify = await this.props.recallAgeVerification();
         let cart = (await this.props.recallCart()) || {};
-        console.log("Hre");
         this.props.recallOrderDetails({ items: cart.items }).then(res => {
             if (Object.keys(res).length != 0) return;
 
