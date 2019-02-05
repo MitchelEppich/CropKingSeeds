@@ -165,42 +165,12 @@ const AgeVerification = props => {
               </div>
             ) : null}
             <div className="absolute pin-b pin-x pb-4">
-              <div className="w-full inline-flex p-2 mx-auto justify-center mt-2 ">
-                <p className="text-sm text-grey-light">
-                  <label className="items-center flex mx-auto justify-center">
-                    <input
-                      type="checkbox"
-                      name="terms"
-                      id="terms"
-                      onChange={e => {
-                        let _ageVerification = props.misc.ageVerification;
-                        let _target = e.target;
-                        let _key = _target.id;
-                        let _value = _target.checked;
-
-                        props.setAgeVerification({
-                          ageVerification: _ageVerification,
-                          group: _key,
-                          value: _value
-                        });
-                      }}
-                      className="mr-2 checkbox"
-                    />{" "}
-                    By clicking here you agree to{" "}
-                    <Link href="/conditions">
-                      <span className="ml-1">the Terms and Conditions</span>
-                    </Link>
-                  </label>
-                </p>
-              </div>
               <div
                 className={`w-full inline-flex p-2 mx-auto justify-center mt-2 ${
                   props.misc.ageVerification == null ||
                   props.misc.ageVerification.country == null ||
                   (props.misc.ageVerification.state == null &&
-                    props.misc.ageVerification.country == "Canada") ||
-                  props.misc.ageVerification.terms == null ||
-                  !props.misc.ageVerification.terms
+                    props.misc.ageVerification.country == "Canada")
                     ? "unselectable pointer-events-none opacity-50"
                     : ""
                 }`}

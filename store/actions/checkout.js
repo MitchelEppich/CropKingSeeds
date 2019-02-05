@@ -24,7 +24,9 @@ const actionTypes = {
   SET_ERROR: "SET_ERROR",
   GET_EXCHANGE_RATES: "GET_EXCHANGE_RATES",
   RECALL_ORDER_DETAILS: "RECALL_ORDER_DETAILS",
-  ACQUIRE_ORDER_ID: "ACQUIRE_ORDER_ID"
+  ACQUIRE_ORDER_ID: "ACQUIRE_ORDER_ID",
+  GET_BLOCKED_ZIPS: "GET_BLOCKED_ZIPS",
+  GET_BLOCKED_IPS: "GET_BLOCKED_IPS"
 };
 
 let shippingMethods = [
@@ -163,7 +165,16 @@ const getActions = uri => {
         _orderDetails[_key] = { value: _value, tag: _tag };
       else _orderDetails[_key] = _value;
 
-      sessionStorage.setItem("orderDetails", JSON.stringify(_orderDetails));
+      sessionStorage.setItem(
+        "orderDetails",
+        JSON.stringify(
+          (() => {
+            let o = { ..._orderDetails };
+            delete o.payment;
+            return o;
+          })()
+        )
+      );
       return { type: actionTypes.MODIFY_ORDER_DETAILS, input: _orderDetails };
     },
     recallOrderDetails: input => {
@@ -238,7 +249,16 @@ const getActions = uri => {
           })
         );
 
-        sessionStorage.setItem("orderDetails", JSON.stringify(_orderDetails));
+        sessionStorage.setItem(
+          "orderDetails",
+          JSON.stringify(
+            (() => {
+              let o = { ..._orderDetails };
+              delete o.payment;
+              return o;
+            })()
+          )
+        );
 
         dispatch({
           type: actionTypes.APPLY_COUPON,
@@ -282,6 +302,42 @@ const getActions = uri => {
             dispatch({
               type: actionTypes.GET_EXCHANGE_RATES,
               input: _rates
+            });
+          })
+          .catch(error => console.log(error));
+      };
+    },
+    getBlockedIps: () => {
+      return async dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = {
+          query: query.getBlockedIps
+        };
+
+        await makePromise(execute(link, operation))
+          .then(data => {
+            let input = data.data.allBlockedIps;
+            dispatch({
+              type: actionTypes.GET_BLOCKED_IPS,
+              input
+            });
+          })
+          .catch(error => console.log(error));
+      };
+    },
+    getBlockedZips: () => {
+      return async dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = {
+          query: query.getBlockedZips
+        };
+
+        await makePromise(execute(link, operation))
+          .then(data => {
+            let input = data.data.allBlockedZips;
+            dispatch({
+              type: actionTypes.GET_BLOCKED_ZIPS,
+              input
             });
           })
           .catch(error => console.log(error));
@@ -372,6 +428,16 @@ const getActions = uri => {
   return { ...objects };
 };
 const query = {
+  getBlockedIps: gql`
+    query {
+      allBlockedIps
+    }
+  `,
+  getBlockedZips: gql`
+    query {
+      allBlockedZips
+    }
+  `,
   getNewOrderId: gql`
     query {
       getNewOrderId

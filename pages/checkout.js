@@ -37,6 +37,9 @@ class Index extends Component {
   componentDidMount() {
     this.props.toggleStepsCheckout(0);
     this.updateShippingMethod();
+
+    this.props.getBlockedIps();
+    this.props.getBlockedZips();
   }
 
   componentDidUpdate(prevProps) {
@@ -313,6 +316,8 @@ const mapDispatchToProps = dispatch => {
     setShippingMethods: input => dispatch(actions.setShippingMethods(input)),
     setError: input => dispatch(actions.setError(input)),
     applyCoupon: input => dispatch(actions.applyCoupon(input)),
+    getBlockedIps: () => dispatch(actions.getBlockedIps()),
+    getBlockedZips: () => dispatch(actions.getBlockedZips()),
     clearCart: () => dispatch(actions.clearCart()),
     acquireOrderId: input => dispatch(actions.acquireOrderId(input))
   }; // setCheckoutScreen: input => dispatch(actions.setCheckoutScreen(input)),

@@ -10,20 +10,8 @@ const initialState = {
   },
   shippingMethods: [],
   viewCurrency: null,
-  noCreditZip: [
-    "t9e5s6",
-    "h1l4w8",
-    "h7b1e5",
-    "h7v2y5",
-    "m6k1t7",
-    "j8p0k9",
-    "j1m1m1",
-    "j7c4t4",
-    "j7e4v6",
-    "92173",
-    "61759",
-    "h8r1m6"
-  ],
+  noCreditZip: [],
+  blockedIps: [],
   error: false,
   freeShippingThreshold: 300
 };
@@ -35,6 +23,10 @@ export default (state = initialState, action) => {
         shippingMethods: action.methods,
         orderDetails: action.orderDetails
       });
+    case actionTypes.GET_BLOCKED_IPS:
+      return updateObject(state, { blockedIps: action.input });
+    case actionTypes.GET_BLOCKED_ZIPS:
+      return updateObject(state, { noCreditZip: action.input });
     case actionTypes.ACQUIRE_ORDER_ID:
       return updateObject(state, { orderDetails: action.input });
     case actionTypes.SET_ERROR:

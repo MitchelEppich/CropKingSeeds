@@ -44,6 +44,8 @@ class Layout extends Component {
   componentDidMount() {
     this.recallSession();
 
+    this.props.getFeaturedNews();
+
     this.props.getStrains().then(strains => {
       const isClient = typeof document !== "undefined";
       if (!isClient) return;
@@ -244,6 +246,8 @@ const mapDispatchToProps = dispatch => {
     getFeaturedList: () => dispatch(actions.getFeaturedList()),
     getExchangeRates: () => dispatch(actions.getExchangeRates()),
     recallCart: () => dispatch(actions.recallCart()),
+    getAllNews: () => dispatch(actions.getAllNews()),
+    getFeaturedNews: () => dispatch(actions.getFeaturedNews()),
     recallAgeVerification: () => dispatch(actions.recallAgeVerification()),
     recallOrderDetails: input => dispatch(actions.recallOrderDetails(input)),
     quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),

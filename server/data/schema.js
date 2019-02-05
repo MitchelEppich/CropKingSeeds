@@ -8,11 +8,23 @@ type Query {
   allStrains(filter: StrainFilter): [Strain]!
   order(input: OrderInput!): Order
   allOrders(filter: OrderFilter): [Order]!
-  
+  news(input: NewsInput!): News
+  allNews: [News]!
+  allFeaturedNews: [News]!
+  allBlockedZips: [String]!
+  allBlockedIps: [String]!
+
   getFeaturedList: [Strain]!
   getBitcoinData(input: BitcoinDataInput): String
   getExchangeRates: String
   getCoupon(coupon: String, ip: String): Coupon
+}
+
+type BlockedIp {
+  value: String
+}
+type BlockedZip {
+  value: String
 }
 
 type Coupon {
@@ -206,12 +218,41 @@ input EmailInput {
   body: String
 }
 
+type News {
+  _id: String
+  title: String
+  body: String
+  date: String
+  url: String
+  imageUrl: String
+  location: String
+  locationUrl:String
+  sponsored: Boolean
+  category: String
+  featured: Boolean
+}
+
+input NewsInput {
+  title: String
+  body: String
+  date: String
+  url: String
+  imageUrl: String
+  location: String
+  locationUrl:String
+  sponsored: Boolean
+  category: String
+  featured: Boolean
+}
+
 type Mutation {
   createStrain(input: StrainInput): Strain
   updateStrain(input: StrainInput): Strain
   typeToDom: [Strain]
   
   createOrder(input: OrderInput): Order
+
+  createNewsEntry(input: NewsInput): News
 
   acquireOrderId: Int
 

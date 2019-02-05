@@ -7,7 +7,7 @@ const emailTemplates = require("../emails");
 
 const axios = require("axios");
 
-const { Email } = require("../../models");
+const { Email, News, BlockedIp, BlockedZip } = require("../../models");
 
 const Strain = StrainResolvers.Strain;
 const Order = OrderResolvers.Order;
@@ -20,6 +20,21 @@ const resolvers = {
   Query: {
     ...StrainResolvers.Query,
     ...OrderResolvers.Query,
+    news: (_, { input }) => {
+      return News.findOne(input);
+    },
+    allNews: async _ => {
+      return News.find({});
+    },
+    allBlockedIps: async _ => {
+      return (await BlockedIp.find({})).map(a => a.value);
+    },
+    allBlockedZips: async _ => {
+      return (await BlockedZip.find({})).map(a => a.value);
+    },
+    allFeaturedNews: async _ => {
+      return News.find({ featured: true });
+    },
     getBitcoinData: async (_, { input }) => {
       return await axios
         .get(
@@ -71,7 +86,17 @@ const resolvers = {
   Mutation: {
     ...StrainResolvers.Mutation,
     ...OrderResolvers.Mutation,
-    subscribeToNewsletter: async (_, input) => {
+    createNewsEntry: async (_, { input }) => {
+      let newsEntry = new News({
+        ...input
+      });
+      console.log(input);
+
+      newsEntry.save();
+
+      return newsEntry;
+    },
+    subscribeToNewsletter: async (_, { input }) => {
       let email = new Email({
         ...input
       });
