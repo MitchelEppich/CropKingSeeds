@@ -632,6 +632,9 @@ img {
 .imgCarousel {
     height: 450px !important;
 }
+.imgCarousel div {
+    z-index: 9999;
+}
 
 .active-border {
     position: relative;
@@ -975,6 +978,19 @@ img {
         height: 385px !important;
         width: auto !important;
     }
+    .package-pins {
+        @include modifier("product") {
+            transition: 0.2s all ease-in-out;
+            height: 1rem;
+        }
+        @include modifier("productZoom") {
+            transition: 0.2s all ease-in-out;
+            height: 6.5rem;
+            top: 130px;
+            right: 1.5rem;
+            position: absolute;
+        }
+    }
     // END VIEWPRODUCT PAGE
     ///////////////////////
 }
@@ -1142,9 +1158,9 @@ img {
         }
         @include modifier("productZoom") {
             transition: 0.2s all ease-in-out;
-            height: 7rem;
-            top: 170px;
-            right: 5rem;
+            height: 6.5rem;
+            top: 140px;
+            right: 7.5rem;
             position: absolute;
         }
     }
@@ -1431,9 +1447,9 @@ img {
         }
         @include modifier("productZoom") {
             transition: 0.2s all ease-in-out;
-            height: 7rem;
-            top: 170px;
-            right: 5rem;
+            height: 5rem;
+            top: 120px;
+            right: 3rem;
             position: absolute;
         }
     }
@@ -1833,13 +1849,13 @@ img {
 
         @include modifier("product") {
             transition: 0.4s all ease-in-out;
-            height: 1rem;
+            height: 1.2rem;
         }
         @include modifier("productZoom") {
             transition: 0.4s all ease-in-out;
-            height: 7rem;
-            top: 170px;
-            right: 5rem;
+            height: 4rem;
+            top: 80px;
+            right: 2rem;
             position: absolute;
         }
     }
