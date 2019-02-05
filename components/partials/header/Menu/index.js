@@ -73,7 +73,7 @@ const menu = props => {
               height: "285px",
               transition: "all 0.4s ease-in-out",
               WebkitTransition: "all 0.3s ease-in-out",
-              zIndex: "-90",
+              zIndex: "60",
               color: "transparent",
               padding: "50px 0 0 0"
           }
@@ -81,7 +81,7 @@ const menu = props => {
               height: "0px",
               transition: "all 0.4s ease-in-out",
               WebkitTransition: "all 0.3s ease-in-out",
-              zIndex: "-90"
+              zIndex: "60"
           };
     let phoneNumberPosition = ["sm", "md"].includes(props.misc.mediaSize)
         ? { right: "-245px", backgroundColor: "#F9F9F9" }
@@ -174,8 +174,8 @@ const menu = props => {
                             <div
                                 className={
                                     props.misc.strains != null
-                                        ? "opacity-1 slow sm:pb-2 sm:pr-1 flex shadow-md -mt-54px sm:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-125 rounded-full bg-crimson justify-center content-center items-center"
-                                        : "opacity-0 slow sm:pb-2 sm:pr-1 flex shadow-md -mt-54px sm:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-125 rounded-full bg-crimson justify-center content-center items-center"
+                                        ? "opacity-1 slow  flex shadow-md -mt-54px sm:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-125 rounded-full bg-crimson justify-center content-center items-center"
+                                        : "opacity-0 slow  flex shadow-md -mt-54px sm:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-125 rounded-full bg-crimson justify-center content-center items-center"
                                 }>
                                 <img
                                     src="../static/img/cks-logo-header.png"
@@ -226,11 +226,11 @@ const menu = props => {
                                 onClick={() => {
                                     props.setVisibleScreen({ input: "showMobileNav" });
                                 }}
-                                className={"justify-end w-full xl:hidden xxl:hidden"}>
+                                className="justify-end w-full xl:hidden xxl:hidden">
                                 <div className="text-white p-2 h-12 ml-auto mr-4 w-12 flex justify-end bg-semi-transparent cursor-pointer">
                                     <FontAwesomeIcon icon={faBars} className="fa-2x" />
                                 </div>
-                                <div style={showMobileNav} className="w-full fixed pin-l bg-red-dark z-50">
+                                <div style={showMobileNav} className="w-full fixed pin-l bg-red-dark">
                                     <ul
                                         className={
                                             isMobileNavVisible
