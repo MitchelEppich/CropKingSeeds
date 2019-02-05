@@ -1,15 +1,30 @@
 const fs = require("fs-extra");
-const strains = require("./strains");
 
-module.exports = () => {
+module.exports = strains => {
     const fileObj = {};
 
-    const walkSync = dir => {
+    const walkSync = (dir, strains) => {
         // Get all files of the current directory & iterate over them
         const files = fs.readdirSync(dir);
         let noMap = ["_app.js", "_document.js", "animation.js", "article.js", "articles.js", "cms.js"];
         files.forEach(file => {
             if (noMap.includes(file)) {
+                return;
+            }
+            let changefreq = "yearly",
+                priority = 0.3;
+            if (file == "index.js") {
+                const filePath = `${dir}${file}`;
+                const fileStat = fs.statSync(filePath);
+                const cleanFileName = "";
+
+                // Add this file to `fileObj`
+                fileObj[`/${cleanFileName}`] = {
+                    page: `/${cleanFileName}`,
+                    lastModified: fileStat.mtime,
+                    changefreq: "weekly",
+                    priority: 1.0
+                };
                 return;
             }
             if (file == "product.js") {
@@ -20,7 +35,9 @@ module.exports = () => {
                         filePath.substr(0, filePath.lastIndexOf(".")).replace("pages/", "") + "/" + strains[i];
                     fileObj[`/${fileName}`] = {
                         page: `/${fileName}`,
-                        lastModified: fileStat.mtime
+                        lastModified: fileStat.mtime,
+                        changefreq: "monthly",
+                        priority: 0.6
                     };
                 }
                 return;
@@ -38,14 +55,16 @@ module.exports = () => {
                 // Add this file to `fileObj`
                 fileObj[`/${cleanFileName}`] = {
                     page: `/${cleanFileName}`,
-                    lastModified: fileStat.mtime
+                    lastModified: fileStat.mtime,
+                    changefreq: changefreq,
+                    priority: priority
                 };
             }
         });
     };
 
     // Start recursion to fill `fileObj`
-    walkSync("pages/");
+    walkSync("pages/", strains);
 
     return fileObj;
 };

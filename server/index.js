@@ -1,3 +1,6 @@
+const { inferStrainData } = require("../store/utilities/strain");
+const siteMapBuilder = require("../scripts/postBuild.js");
+const redirects = require("../scripts/redirects.js");
 const next = require("next");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -8,7 +11,7 @@ const { execute, subscribe } = require("graphql");
 const { createServer } = require("http");
 const { SubscriptionServer } = require("subscriptions-transport-ws");
 require("dotenv").config();
-
+const resolvers = require("./data/resolvers");
 // our packages
 const schema = require("./data/schema");
 
@@ -30,18 +33,31 @@ db.on("error", console.error.bind(console, "Connection error:"));
 db.once("open", () => console.log("We are connected!"));
 
 app.prepare()
-    .then(() => {
+    .then(async () => {
         const server = express();
+
+        //sitemap
+        let strains = await resolvers.Query.allStrains(null, {});
+        strains = strains.map((strain, index) => {
+            return inferStrainData(strain)
+                .name.toLowerCase()
+                .split(" ")
+                .join("-");
+        });
+        siteMapBuilder(strains);
+
+        // 301 redirects
+        redirects.forEach(({ from, to, type = 301, method = "get" }) => {
+            server[method](from, (req, res) => {
+                res.redirect(type, to);
+            });
+        });
 
         server.use(
             cors({
                 origin: "*"
             })
         );
-
-        // server.get("/watch/:_id", (req, res) => {
-        //   app.render(req, res, "/", {});
-        // });
 
         server.use(
             "/graphql",

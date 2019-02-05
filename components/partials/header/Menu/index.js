@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faShoppingCart, faDollarSign, faPhone, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import CartIcon from "./cartIcon";
-
+import SearchBar from "../searchBar";
 import Router from "next/router";
 
 const menu = props => {
@@ -188,6 +188,7 @@ const menu = props => {
                             {/* MAIN MENU */}
                             <div className="sm:hidden md:hidden lg:hidden w-full">
                                 <ul className="flex justify-around text-white mt-1 uppercase w-full">
+                                    <li className="w-300" />
                                     <Link href="/">
                                         <li className="font-extrabold text-xl pt-3 p-2 cursor-pointer slowish hover:text-yellow-dark">
                                             Home
@@ -196,11 +197,6 @@ const menu = props => {
                                     <Link href="/shop">
                                         <li className="font-extrabold text-xl pt-3 p-2 cursor-pointer slowish hover:text-yellow-dark">
                                             Shop
-                                        </li>
-                                    </Link>
-                                    <Link href="/germination">
-                                        <li className="font-extrabold text-xl pt-3 p-2 cursor-pointer slowish hover:text-yellow-dark">
-                                            Germination
                                         </li>
                                     </Link>
                                     <Link href="/contact">
