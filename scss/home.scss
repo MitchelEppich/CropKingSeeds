@@ -252,7 +252,7 @@ img {
 }
 
 .react-autosuggest__input {
-    width: calc(400px - 4rem);
+    width: calc(400px - 3rem);
     height: 2rem;
     padding: 1px 20px;
     font-family: Helvetica, sans-serif;
@@ -523,7 +523,7 @@ img {
 .overlayClass {
     height: 100%;
     width: 100%;
-    transition: 0.2s all ease-in-out;
+    transition: 0.3s all ease-in-out;
     color: rgba(255, 255, 255, 0);
     position: relative;
     z-index: 99999999999999;
@@ -536,7 +536,7 @@ img {
         height: 635px;
         width: 145%;
         background-color: #fff;
-        transition: 0.2s all ease-in-out;
+        transition: 0.3s all ease-in-out;
         color: rgba(255, 255, 255, 1);
         position: absolute;
         box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
@@ -550,7 +550,7 @@ img {
     position: relative;
     transform: translateX(-15px);
     z-index: 10;
-    transition: 0.2s all ease-in-out;
+    transition: 0.3s all ease-in-out;
     padding: 5.5rem 3rem 0.5rem 3rem;
     text-align: right;
     @include modifier("hover") {
@@ -559,17 +559,17 @@ img {
         position: relative;
         transform: translateX(-10px);
         z-index: 10;
-        transition: 0.2s all ease-in-out;
+        transition: 0.3s all ease-in-out;
         padding: 5.5rem 3rem 0.5rem 3rem;
         text-align: right;
     }
 }
 .package-pins {
-    transition: 0.2s all ease-in-out;
+    transition: 0.3s all ease-in-out;
     right: 0;
     height: 3.5rem;
     @include modifier("hover") {
-        transition: 0.2s all ease-in-out;
+        transition: 0.3s all ease-in-out;
         right: 0;
         height: 3.5rem;
     }
@@ -612,9 +612,9 @@ img {
     color: white;
     text-shadow: rgb(0, 0, 0) 1px 1px 2px;
     box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
-    transition: 0.2s all ease-in-out;
+    transition: 0.3s all ease-in-out;
     @include modifier("hover") {
-        transition: 0.2s all ease-in-out;
+        transition: 0.3s all ease-in-out;
         &:hover {
             transform: scale(1.1);
         }
@@ -631,6 +631,9 @@ img {
 
 .imgCarousel {
     height: 450px !important;
+}
+.imgCarousel div {
+    z-index: 9999;
 }
 
 .active-border {
@@ -752,7 +755,7 @@ img {
     .overlayClass {
         height: 100%;
         width: 100%;
-        transition: 0.2s all ease-in-out;
+        transition: 0.4s all ease-in-out;
         color: rgba(255, 255, 255, 0);
         position: relative;
         // z-index: 99999999999999;
@@ -765,7 +768,7 @@ img {
             width: 145%;
             padding: 10px;
             background-color: #fff;
-            transition: 0.2s all ease-in-out;
+            transition: 0.4s all ease-in-out;
             color: rgba(255, 255, 255, 1);
             position: absolute;
             // z-index: 99999999999999;
@@ -814,7 +817,7 @@ img {
     }
 
     .react-autosuggest__input {
-        width: calc(250px - 3rem);
+        width: calc(225px - 3rem);
         height: 2rem;
         padding: 1px 20px;
         font-family: Helvetica, sans-serif;
@@ -975,6 +978,19 @@ img {
         height: 385px !important;
         width: auto !important;
     }
+    .package-pins {
+        @include modifier("product") {
+            transition: 0.2s all ease-in-out;
+            height: 1rem;
+        }
+        @include modifier("productZoom") {
+            transition: 0.2s all ease-in-out;
+            height: 6.5rem;
+            top: 130px;
+            right: 1.5rem;
+            position: absolute;
+        }
+    }
     // END VIEWPRODUCT PAGE
     ///////////////////////
 }
@@ -1086,7 +1102,7 @@ img {
     .overlayClass {
         height: 100%;
         width: 100%;
-        transition: 0.2s all ease-in-out;
+        transition: 0.4s all ease-in-out;
         color: rgba(255, 255, 255, 0);
         position: relative;
         z-index: 0;
@@ -1100,7 +1116,7 @@ img {
             text-align: center;
             transform: translateX(15px);
             background-color: #fff;
-            transition: 0.2s all ease-in-out;
+            transition: 0.4s all ease-in-out;
             color: rgba(255, 255, 255, 1);
             position: relative;
             box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
@@ -1111,7 +1127,7 @@ img {
         height: 12rem;
         position: relative;
         z-index: 10;
-        transition: 0.2s all ease-in-out;
+        transition: 0.4s all ease-in-out;
         transform: translateX(-32px);
         padding: 4.5rem 3.5rem 0.5rem 3rem;
         cursor: pointer;
@@ -1120,18 +1136,18 @@ img {
             position: relative;
             transform: translateX(-50px);
             z-index: 10;
-            transition: 0.2s all ease-in-out;
+            transition: 0.4s all ease-in-out;
             margin-top: 10px;
             padding: 4.5rem 3.5rem 0.5rem 3rem;
             cursor: pointer;
         }
     }
     .package-pins {
-        transition: 0.2s all ease-in-out;
+        transition: 0.4s all ease-in-out;
         right: 0;
         height: 3rem;
         @include modifier("hover") {
-            transition: 0.2s all ease-in-out;
+            transition: 0.4s all ease-in-out;
             right: 0;
             height: 3rem;
         }
@@ -1142,9 +1158,9 @@ img {
         }
         @include modifier("productZoom") {
             transition: 0.2s all ease-in-out;
-            height: 7rem;
-            top: 170px;
-            right: 5rem;
+            height: 6.5rem;
+            top: 140px;
+            right: 7.5rem;
             position: absolute;
         }
     }
@@ -1175,11 +1191,11 @@ img {
         border-top-left-radius: 10px;
         border-bottom-right-radius: 10px;
         color: white;
-        transition: 0.2s all ease-in-out;
+        transition: 0.4s all ease-in-out;
         text-shadow: rgb(0, 0, 0) 1px 1px 2px;
         box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
         @include modifier("hover") {
-            transition: 0.2s all ease-in-out;
+            transition: 0.4s all ease-in-out;
             &:hover {
                 transform: scale(1.1);
             }
@@ -1210,6 +1226,74 @@ img {
         -webkit-animation: ray_anim 300s linear infinite;
         animation: ray_anim 300s linear infinite;
         z-index: -5;
+    }
+    //react autosuggest
+    .react-autosuggest__container {
+        position: relative;
+        z-index: 55;
+    }
+
+    .react-autosuggest__input {
+        width: calc(250px - 3rem);
+        height: 2rem;
+        padding: 1px 20px;
+        font-family: Helvetica, sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+        border-radius: 10px 0 0 10px;
+        border: none;
+        z-index: 55;
+    }
+
+    .react-autosuggest__input--focused {
+        outline: none;
+        z-index: 55;
+    }
+
+    .react-autosuggest__input--open {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        z-index: 55;
+    }
+
+    .react-autosuggest__suggestions-container {
+        display: none;
+        z-index: 55;
+    }
+
+    .react-autosuggest__suggestions-container--open {
+        display: block;
+        position: absolute;
+        top: 51px;
+        width: 250px;
+        background-color: #fff;
+        font-family: Helvetica, sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 55;
+        box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+    }
+
+    .react-autosuggest__suggestions-list {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        z-index: 55;
+    }
+
+    .react-autosuggest__suggestion {
+        cursor: pointer;
+        padding: 10px 20px;
+        z-index: 55;
+    }
+
+    .react-autosuggest__suggestion--highlighted {
+        background-color: #ddd;
+        z-index: 55;
     }
     // END UNIVERSAL
     ////////////////
@@ -1307,7 +1391,7 @@ img {
     .overlayClass {
         height: 100%;
         width: 100%;
-        transition: 0.2s all ease-in-out;
+        transition: 0.4s all ease-in-out;
         color: rgba(255, 255, 255, 0);
         position: relative;
         z-index: 0;
@@ -1321,7 +1405,7 @@ img {
             text-align: center;
             transform: translateX(15px);
             background-color: #fff;
-            transition: 0.2s all ease-in-out;
+            transition: 0.4s all ease-in-out;
             color: rgba(255, 255, 255, 1);
             position: relative;
             box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
@@ -1329,40 +1413,62 @@ img {
         }
     }
     .packageClass {
-        height: 100%;
+        height: 10rem;
         position: relative;
         z-index: 10;
-        transition: 0.2s all ease-in-out;
-        padding: 0;
-        transform: translateX(-5px);
+        transition: 0.4s all ease-in-out;
+        padding: 3.6rem 4rem 0.5rem 3rem;
+        transform: translateX(-37px);
         cursor: pointer;
         @include modifier("hover") {
-            height: 27%;
+            height: 10rem;
             position: relative;
             transform: translateX(-30px);
             z-index: 10;
-            transition: 0.2s all ease-in-out;
+            transition: 0.4s all ease-in-out;
             margin-top: 10px;
-            padding: 0;
+            padding: 3.6rem 4rem 0.5rem 3rem;
             cursor: pointer;
         }
     }
+    .package-pins {
+        transition: 0.4s all ease-in-out;
+        right: 0;
+        height: 2.7rem;
+        @include modifier("hover") {
+            transition: 0.4s all ease-in-out;
+            right: 0;
+            height: 2.7rem;
+        }
+
+        @include modifier("product") {
+            transition: 0.2s all ease-in-out;
+            height: 1rem;
+        }
+        @include modifier("productZoom") {
+            transition: 0.2s all ease-in-out;
+            height: 5rem;
+            top: 120px;
+            right: 3rem;
+            position: absolute;
+        }
+    }
     .plantClass {
-        height: 80%;
+        height: 9rem;
         position: absolute;
-        top: 5px;
+        top: 15px;
         z-index: 0;
-        transform: translateX(-160px);
+        transform: translateX(-100px);
         transition: 0.4s all ease-in-out;
         cursor: pointer;
         @include modifier("hover") {
-            height: 27%;
+            height: 9rem;
             position: absolute;
             top: 0;
             z-index: 0;
-            margin-top: 10px;
+            top: 0px;
             transition: 0.4s all ease-in-out;
-            transform: translateX(-110px);
+            transform: translateX(-30px);
             cursor: pointer;
         }
     }
@@ -1374,11 +1480,11 @@ img {
         border-top-left-radius: 10px;
         border-bottom-right-radius: 10px;
         color: white;
-        transition: 0.2s all ease-in-out;
+        transition: 0.4s all ease-in-out;
         text-shadow: rgb(0, 0, 0) 1px 1px 2px;
         box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
         @include modifier("hover") {
-            transition: 0.2s all ease-in-out;
+            transition: 0.4s all ease-in-out;
             &:hover {
                 transform: scale(1.1);
             }
@@ -1401,6 +1507,11 @@ img {
 @media only screen and (max-width: 479px) {
     ////////////
     // UNIVERSAL
+    .cks-logo-header {
+        top: -0.5rem;
+        left: 3.3px;
+        position: absolute;
+    }
     .ray_box {
         /*HEADER ANIMATION */
         left: calc(6rem + 25px);
@@ -1413,6 +1524,74 @@ img {
         -webkit-animation: ray_anim 300s linear infinite;
         animation: ray_anim 300s linear infinite;
         z-index: -5;
+    }
+    //react autosuggest
+    .react-autosuggest__container {
+        position: relative;
+        z-index: 35;
+    }
+
+    .react-autosuggest__input {
+        width: calc(100vw - 5rem);
+        height: 2rem;
+        padding: 1px 20px;
+        font-family: Helvetica, sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+        border-radius: 10px 0 0 10px;
+        border: none;
+        z-index: 35;
+    }
+
+    .react-autosuggest__input--focused {
+        outline: none;
+        z-index: 35;
+    }
+
+    .react-autosuggest__input--open {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        z-index: 35;
+    }
+
+    .react-autosuggest__suggestions-container {
+        display: none;
+        z-index: 35;
+    }
+
+    .react-autosuggest__suggestions-container--open {
+        display: block;
+        position: absolute;
+        top: 51px;
+        width: 100%;
+        background-color: #fff;
+        font-family: Helvetica, sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 35;
+        box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+    }
+
+    .react-autosuggest__suggestions-list {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        z-index: 35;
+    }
+
+    .react-autosuggest__suggestion {
+        cursor: pointer;
+        padding: 10px 20px;
+        z-index: 35;
+    }
+
+    .react-autosuggest__suggestion--highlighted {
+        background-color: #ddd;
+        z-index: 35;
     }
     // END UNIVERSAL
     ////////////////
@@ -1616,7 +1795,7 @@ img {
     .overlayClass {
         height: 100%;
         width: 100%;
-        transition: 0.2s all ease-in-out;
+        transition: 0.4s all ease-in-out;
         color: rgba(255, 255, 255, 0);
         position: relative;
         z-index: 0;
@@ -1627,9 +1806,9 @@ img {
             height: 100%;
             width: 100%;
             left: 0;
-            top: -1.5rem;
+            top: -4.5rem;
             background-color: #fff;
-            transition: 0.2s all ease-in-out;
+            transition: 0.4s all ease-in-out;
             transform: translateX(-8px);
             color: rgba(255, 255, 255, 1);
             position: absolute;
@@ -1640,56 +1819,78 @@ img {
         }
     }
     .packageClass {
-        height: 100%;
+        height: 7rem;
         position: relative;
         z-index: 10;
-        transition: 0.2s all ease-in-out;
-        padding: 0;
-        transform: translateX(-5px);
+        transition: 0.4s all ease-in-out;
+        padding: 2.3rem 5.5rem 0.5rem 3rem;
+        transform: translateX(-63px);
         cursor: pointer;
         @include modifier("hover") {
-            height: 27%;
+            height: 10rem;
             position: relative;
-            transform: translateX(-30px);
+            transform: translateX(10px);
             z-index: 10;
-            transition: 0.2s all ease-in-out;
+            transition: 0.4s all ease-in-out;
             margin-top: 10px;
-            padding: 0;
+            padding: 3.7rem 4.5rem 0.5rem 3rem;
             cursor: pointer;
         }
     }
+    .package-pins {
+        transition: 0.4s all ease-in-out;
+        right: 0;
+        height: 2rem;
+        @include modifier("hover") {
+            transition: 0.4s all ease-in-out;
+            right: 0;
+            height: 2.8rem;
+        }
+
+        @include modifier("product") {
+            transition: 0.4s all ease-in-out;
+            height: 1.2rem;
+        }
+        @include modifier("productZoom") {
+            transition: 0.4s all ease-in-out;
+            height: 4rem;
+            top: 80px;
+            right: 2rem;
+            position: absolute;
+        }
+    }
     .plantClass {
-        height: 80%;
+        height: 6rem;
         position: absolute;
-        top: 5px;
+        top: 20px;
         z-index: 0;
-        transform: translateX(-110px);
+        transform: translateX(-70px);
         transition: 0.4s all ease-in-out;
         cursor: pointer;
         @include modifier("hover") {
-            height: 27%;
+            height: 8rem;
             position: absolute;
             top: 0;
             z-index: 0;
-            margin-top: 10px;
+            top: 15px;
             transition: 0.4s all ease-in-out;
-            transform: translateX(-110px);
+            transform: translateX(-20px);
             cursor: pointer;
         }
     }
     .strainTitle {
         margin-left: auto;
         margin-right: auto;
-        margin-top: -43px;
+        margin-top: -33px;
         width: 93%;
         border-top-left-radius: 10px;
         border-bottom-right-radius: 10px;
         color: white;
-        transition: 0.2s all ease-in-out;
+        transition: 0.4s all ease-in-out;
         text-shadow: rgb(0, 0, 0) 1px 1px 2px;
         box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
         @include modifier("hover") {
-            transition: 0.2s all ease-in-out;
+            transition: 0.4s all ease-in-out;
             &:hover {
                 transform: scale(1.1);
             }

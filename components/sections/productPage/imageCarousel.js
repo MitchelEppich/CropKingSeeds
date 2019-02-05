@@ -64,7 +64,12 @@ const imageCarousel = props => {
                             isHintEnabled: true
                         }}
                     />
-                    <img className="package-pins--productZoom" src="../static/img/strains/pins/OrangeCrown_150.png" />
+                    {image.includes("package") && window.innerWidth > 390 ? (
+                        <img
+                            className="package-pins--productZoom"
+                            src="../static/img/strains/pins/OrangeCrown_150.png"
+                        />
+                    ) : null}
                 </div>
             </div>
         );

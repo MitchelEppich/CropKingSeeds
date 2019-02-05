@@ -1,7 +1,6 @@
 module.exports = [
-  //   "https://www.cropkingseeds.com/newsletter/",
+  "https://www.cropkingseeds.com/newsletter/",
   "https://www.cropkingseeds.com/daily-hive/",
-  // "https://www.cropkingseeds.com/news/",
   "https://www.cropkingseeds.com/top-seed-company-canadian-cannabis-awards-217/	",
   "https://www.cropkingseeds.com/cannabis-seeds-for-sale-with-delivery-to-boston/	",
   "https://www.cropkingseeds.com/affordable-marijuana-seeds-for-sale-in-kitchener/",
