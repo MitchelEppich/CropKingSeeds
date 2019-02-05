@@ -104,7 +104,9 @@ const initialState = {
       date: "20191013",
       img: "../../static/img/eventBanner2.jpg"
     }
-  ]
+  ],
+  featuredNews: [],
+  news: {}
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -126,6 +128,14 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.SET_HOVER_ID:
       return updateObject(state, {
         hoverId: action.turnOn ? action.id : null
+      });
+    case actionTypes.GET_FEATURED_NEWS:
+      return updateObject(state, {
+        featuredNews: action.input
+      });
+    case actionTypes.GET_ALL_NEWS:
+      return updateObject(state, {
+        news: action.input
       });
     case actionTypes.SET_CURRENT_EVENT:
       return updateObject(state, {

@@ -39,7 +39,7 @@ function getPlatformType() {
 class Layout extends Component {
     componentDidMount() {
         this.recallSession();
-
+        this.getFeaturedNews();
         this.props.getStrains().then(strains => {
             const isClient = typeof document !== "undefined";
             if (!isClient) return;
@@ -100,7 +100,6 @@ class Layout extends Component {
 
             let browser = _browser != null ? _browser.name : "unknown";
             let device = getPlatformType();
-
             let _orderDetails = this.props.checkout.orderDetails;
             getCustomerIP(ip => {
                 if (ip == null) {
@@ -229,9 +228,12 @@ const mapDispatchToProps = dispatch => {
         getFeaturedList: () => dispatch(actions.getFeaturedList()),
         getExchangeRates: () => dispatch(actions.getExchangeRates()),
         recallCart: () => dispatch(actions.recallCart()),
+        getAllNews: () => dispatch(actions.getAllNews()),
+        getFeaturedNews: () => dispatch(actions.getFeaturedNews()),
         recallAgeVerification: () => dispatch(actions.recallAgeVerification()),
         recallOrderDetails: input => dispatch(actions.recallOrderDetails(input)),
         quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
+        modifyOrderDetails: input => dispatch(actions.modifyOrderDetails(input)),
         setSearch: value => dispatch(actions.setSearch(value))
     };
 };
@@ -240,3 +242,73 @@ export default connect(
     state => state,
     mapDispatchToProps
 )(Layout);
+
+let getCustomerIP = callback => {
+    var ip_dups = {};
+
+    //compatibility for firefox and chrome
+    var RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+    var useWebKit = !!window.webkitRTCPeerConnection;
+
+    //bypass naive webrtc blocking using an iframe
+    if (!RTCPeerConnection) {
+        //NOTE: you need to have an iframe in the page right above the script tag
+        //
+        //<iframe id="iframe" sandbox="allow-same-origin" style="display: none"></iframe>
+        //<script>...getIPs called in here...
+        //
+        // console.log("BLOCKED");
+        var win = iframe.contentWindow;
+        RTCPeerConnection = win.RTCPeerConnection || win.mozRTCPeerConnection || win.webkitRTCPeerConnection;
+        useWebKit = !!win.webkitRTCPeerConnection;
+    }
+
+    //minimal requirements for data connection
+    var mediaConstraints = {
+        optional: [{ RtpDataChannels: true }]
+    };
+
+    var servers = { iceServers: [{ urls: "stun:stun.services.mozilla.com" }] };
+
+    //construct a new RTCPeerConnection
+    var pc = new RTCPeerConnection(servers, mediaConstraints);
+
+    function handleCandidate(candidate) {
+        //match just the IP address
+        var ip_regex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/;
+        var ip_addr = ip_regex.exec(candidate)[1];
+
+        //remove duplicates
+        if (ip_dups[ip_addr] === undefined) callback(ip_addr);
+
+        ip_dups[ip_addr] = true;
+    }
+
+    //listen for candidate events
+    pc.onicecandidate = function(ice) {
+        //skip non-candidate events
+        if (ice.candidate) handleCandidate(ice.candidate.candidate);
+    };
+
+    //create a bogus data channel
+    pc.createDataChannel("");
+
+    //create an offer sdp
+    pc.createOffer(
+        function(result) {
+            //trigger the stun server request
+            pc.setLocalDescription(result, function() {}, function() {});
+        },
+        function() {}
+    );
+
+    //wait for a while to let everything done
+    setTimeout(function() {
+        //read candidate info from local description
+        var lines = pc.localDescription.sdp.split("\n");
+
+        lines.forEach(function(line) {
+            if (line.indexOf("a=candidate:") === 0) handleCandidate(line);
+        });
+    }, 1000);
+};

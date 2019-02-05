@@ -23,7 +23,7 @@ import Cms from "./cms";
 import { inferStrainData } from "../utilities/strain";
 
 const uri = "http://localhost:3000/graphql";
-// const uri = "http://192.168.0.22:3000/graphql";
+// const uri = "http://159.203.5.200:3000/graphql";
 
 const imports = {
     ...Cart(uri),
@@ -57,7 +57,10 @@ const actionTypes = {
     RECALL_AGE_VERIFICATION: "RECALL_AGE_VERIFICATION",
     SET_SEARCH: "SET_SEARCH",
     ADD_TALK_TO_LISTENER: "ADD_TALK_TO_LISTENER",
-    SET_CURRENT_EVENT: "SET_CURRENT_EVENT"
+    SET_CURRENT_EVENT: "SET_CURRENT_EVENT",
+
+    GET_ALL_NEWS: "GET_ALL_NEWS",
+    GET_FEATURED_NEWS: "GET_FEATURED_NEWS"
 };
 
 const actions = {
@@ -94,20 +97,28 @@ const actions = {
         if (_ageVerification == null) _ageVerification = {};
 
         _ageVerification[_group] = _value;
+        if (_group == "country") _ageVerification.state = null;
 
         sessionStorage.setItem("ageVerify", JSON.stringify(_ageVerification));
 
         return { type: actionTypes.SET_AGE_VERIFICATION, input: _ageVerification };
     },
     recallAgeVerification: () => {
-        let recall = sessionStorage.getItem("ageVerify");
-        let _obj = {};
-        if (recall != null) {
-            _obj = JSON.parse(recall);
-        }
-        return {
-            type: actionTypes.RECALL_AGE_VERIFICATION,
-            input: _obj
+        return dispatch => {
+            return new Promise((resolve, reject) => {
+                let recall = sessionStorage.getItem("ageVerify");
+                let _obj = {};
+                if (recall != null) {
+                    _obj = JSON.parse(recall);
+                }
+
+                resolve(_obj);
+
+                dispatch({
+                    type: actionTypes.RECALL_AGE_VERIFICATION,
+                    input: _obj
+                });
+            });
         };
     },
     toggleShowDifferentAddress: input => {
@@ -238,10 +249,86 @@ const actions = {
             type: actionTypes.ADD_TALK_TO_LISTENER,
             bool: bool
         };
+    },
+    getAllNews: () => {
+        return dispatch => {
+            const link = new HttpLink({ uri, fetch: fetch });
+            const operation = {
+                query: query.getAllNews
+            };
+
+            makePromise(execute(link, operation))
+                .then(data => {
+                    let categoryNews = {};
+                    let news = data.data.allNews;
+
+                    for (let _news of news) {
+                        if (categoryNews[_news.category] == null) categoryNews[_news.category] = [];
+                        categoryNews[_news.category].push(_news);
+                    }
+
+                    dispatch({
+                        type: actionTypes.GET_ALL_NEWS,
+                        input: categoryNews
+                    });
+                })
+                .catch(error => console.log(error));
+        };
+    },
+    getFeaturedNews: () => {
+        return dispatch => {
+            const link = new HttpLink({ uri, fetch: fetch });
+            const operation = {
+                query: query.getFeaturedNews
+            };
+
+            makePromise(execute(link, operation))
+                .then(data => {
+                    let news = data.data.allFeaturedNews;
+
+                    dispatch({
+                        type: actionTypes.GET_FEATURED_NEWS,
+                        input: news
+                    });
+                })
+                .catch(error => console.log(error));
+        };
     }
 };
 
 const query = {
+    getAllNews: gql`
+        query {
+            allNews {
+                _id
+                title
+                body
+                date
+                url
+                imageUrl
+                location
+                locationUrl
+                sponsored
+                category
+            }
+        }
+    `,
+    getFeaturedNews: gql`
+        query {
+            allFeaturedNews {
+                _id
+                title
+                body
+                date
+                url
+                imageUrl
+                location
+                locationUrl
+                sponsored
+                category
+            }
+        }
+    `,
     getFeaturedStrains: gql`
         {
             getFeaturedList {

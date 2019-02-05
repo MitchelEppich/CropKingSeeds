@@ -31,12 +31,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import Router from "next/router";
+
 import ErrorHandler from "../components/sections/checkout/errorHandler";
 
 class Index extends Component {
   componentDidMount() {
     this.props.toggleStepsCheckout(0);
     this.updateShippingMethod();
+
+    this.props.getBlockedIps();
+    this.props.getBlockedZips();
   }
 
   componentDidUpdate(prevProps) {
@@ -109,73 +114,89 @@ class Index extends Component {
         <form
           onSubmit={e => {
             e.preventDefault();
+
             // this.props.toggleStepsCheckout(1);
             if (_stepsCheckout == 3) {
-              this.props
-                .acquireOrderId({ orderDetails: _orderDetails })
-                .then(res => {
-                  let orderId = res.toString();
-                  if (_orderDetails.payment.method.value == "Bitcoin") {
-                    let _billing = _orderDetails.billing;
-                    let _payment = _orderDetails.payment;
-                    let name = _billing.fullName.value.split(" ");
+              if (
+                !this.props.checkout.blockedIps.includes(
+                  _orderDetails.details.ip.value
+                )
+              ) {
+                this.props
+                  .acquireOrderId({ orderDetails: _orderDetails })
+                  .then(res => {
+                    let orderId = res.toString();
+                    if (_orderDetails.payment.method.value == "Bitcoin") {
+                      let _billing = _orderDetails.billing;
+                      let _payment = _orderDetails.payment;
+                      let name = _billing.fullName.value.split(" ");
 
-                    let fOrderId = [
-                      orderId.slice(0, 4),
-                      "-",
-                      orderId.slice(4),
-                      "-CKS"
-                    ].join("");
+                      let fOrderId = [
+                        orderId.slice(0, 4),
+                        "-",
+                        orderId.slice(4),
+                        "-CKS"
+                      ].join("");
 
-                    this.open(
-                      "POST",
-                      "https://www.coinpayments.net/index.php",
-                      {
-                        cmd: "_pay",
-                        reset: "1",
-                        invoice: fOrderId,
-                        custom: "",
-                        merchant: "8c1706a0ba5ad9024ba30eb29b92563e",
-                        first_name: name[0],
-                        last_name: name[1],
-                        email: _billing.email.value,
-                        address1: _billing.address.value,
-                        address2:
-                          _billing.apartment != null
-                            ? _billing.apartment.value
-                            : "",
-                        city: _billing.city.value,
-                        state: _billing.state.value,
-                        zip: _billing.postalZip.value,
-                        country: _billing.country.value.toUpperCase(),
-                        phone: _billing.phone.value,
-                        currency: _payment.currency.value,
-                        amountf: _payment.cartTotal.value,
-                        item_name: fOrderId,
-                        quantity: _payment.itemQuantity.value,
-                        allow_quantity: "0",
-                        shippingf: _payment.shippingFee.value,
-                        taxf: _payment.taxFee,
-                        ipn_url: "",
-                        success_url: "",
-                        cancel_url: ""
-                      },
-                      "_blank"
-                    );
-                  }
-                  this.props
-                    .processOrder({
-                      orderId,
-                      orderDetails: {
-                        ..._orderDetails,
-                        currency: this.props.checkout.availableCurrency
-                      }
-                    })
-                    .then(res => {
-                      console.log(res);
-                      this.props.toggleStepsCheckout(_stepsCheckout + 1);
-                    });
-                });
+                      this.open(
+                        "POST",
+                        "https://www.coinpayments.net/index.php",
+                        {
+                          cmd: "_pay",
+                          reset: "1",
+                          invoice: fOrderId,
+                          custom: "",
+                          merchant: "8c1706a0ba5ad9024ba30eb29b92563e",
+                          first_name: name[0],
+                          last_name: name[1],
+                          email: _billing.email.value,
+                          address1: _billing.address.value,
+                          address2:
+                            _billing.apartment != null
+                              ? _billing.apartment.value
+                              : "",
+                          city: _billing.city.value,
+                          state: _billing.state.value,
+                          zip: _billing.postalZip.value,
+                          country: _billing.country.value.toUpperCase(),
+                          phone: _billing.phone.value,
+                          currency: _payment.currency.value,
+                          amountf: _payment.cartTotal.value,
+                          item_name: fOrderId,
+                          quantity: _payment.itemQuantity.value,
+                          allow_quantity: "0",
+                          shippingf: _payment.shippingFee.value,
+                          taxf: _payment.taxFee,
+                          ipn_url: "",
+                          success_url: "",
+                          cancel_url: ""
+                        },
+                        "_blank"
+                      );
+                    }
+                    this.props
+                      .processOrder({
+                        orderId,
+                        orderDetails: {
+                          ..._orderDetails,
+                          currency: this.props.checkout.availableCurrency
+                        }
+                      })
+                      .then(res => {
+                        console.log(res);
+                        this.props.toggleStepsCheckout(_stepsCheckout + 1);
+                      });
+                  });
+              } else {
+                // Purge the store.
+                this.props.purgeCart();
+                this.props.purgeOrderDetails({ orderDetails: _orderDetails });
+
+                // Redirect to 404
+                const isClient = typeof document !== "undefined";
+                if (!isClient) return;
+                Router.push("/404");
+              }
             } else {
               _stepsCheckout < 4
                 ? this.props.toggleStepsCheckout(_stepsCheckout + 1)
@@ -313,7 +334,11 @@ const mapDispatchToProps = dispatch => {
     setShippingMethods: input => dispatch(actions.setShippingMethods(input)),
     setError: input => dispatch(actions.setError(input)),
     applyCoupon: input => dispatch(actions.applyCoupon(input)),
+    getBlockedIps: () => dispatch(actions.getBlockedIps()),
+    getBlockedZips: () => dispatch(actions.getBlockedZips()),
     clearCart: () => dispatch(actions.clearCart()),
+    purgeCart: () => dispatch(actions.purgeCart()),
+    purgeOrderDetails: input => dispatch(actions.purgeOrderDetails(input)),
     acquireOrderId: input => dispatch(actions.acquireOrderId(input))
   }; // setCheckoutScreen: input => dispatch(actions.setCheckoutScreen(input)),
 };
@@ -322,79 +347,3 @@ export default connect(
   state => state,
   mapDispatchToProps
 )(withData(Index));
-
-let getCustomerIP = callback => {
-  var ip_dups = {};
-
-  //compatibility for firefox and chrome
-  var RTCPeerConnection =
-    window.RTCPeerConnection ||
-    window.mozRTCPeerConnection ||
-    window.webkitRTCPeerConnection;
-  var useWebKit = !!window.webkitRTCPeerConnection;
-
-  //bypass naive webrtc blocking using an iframe
-  if (!RTCPeerConnection) {
-    //NOTE: you need to have an iframe in the page right above the script tag
-    //
-    //<iframe id="iframe" sandbox="allow-same-origin" style="display: none"></iframe>
-    //<script>...getIPs called in here...
-    //
-    // console.log("BLOCKED");
-    var win = iframe.contentWindow;
-    RTCPeerConnection =
-      win.RTCPeerConnection ||
-      win.mozRTCPeerConnection ||
-      win.webkitRTCPeerConnection;
-    useWebKit = !!win.webkitRTCPeerConnection;
-  }
-
-  //minimal requirements for data connection
-  var mediaConstraints = {
-    optional: [{ RtpDataChannels: true }]
-  };
-
-  var servers = { iceServers: [{ urls: "stun:stun.services.mozilla.com" }] };
-
-  //construct a new RTCPeerConnection
-  var pc = new RTCPeerConnection(servers, mediaConstraints);
-
-  function handleCandidate(candidate) {
-    //match just the IP address
-    var ip_regex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/;
-    var ip_addr = ip_regex.exec(candidate)[1];
-
-    //remove duplicates
-    if (ip_dups[ip_addr] === undefined) callback(ip_addr);
-
-    ip_dups[ip_addr] = true;
-  }
-
-  //listen for candidate events
-  pc.onicecandidate = function(ice) {
-    //skip non-candidate events
-    if (ice.candidate) handleCandidate(ice.candidate.candidate);
-  };
-
-  //create a bogus data channel
-  pc.createDataChannel("");
-
-  //create an offer sdp
-  pc.createOffer(
-    function(result) {
-      //trigger the stun server request
-      pc.setLocalDescription(result, function() {}, function() {});
-    },
-    function() {}
-  );
-
-  //wait for a while to let everything done
-  setTimeout(function() {
-    //read candidate info from local description
-    var lines = pc.localDescription.sdp.split("\n");
-
-    lines.forEach(function(line) {
-      if (line.indexOf("a=candidate:") === 0) handleCandidate(line);
-    });
-  }, 1000);
-};

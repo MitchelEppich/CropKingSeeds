@@ -24,7 +24,10 @@ const actionTypes = {
   SET_ERROR: "SET_ERROR",
   GET_EXCHANGE_RATES: "GET_EXCHANGE_RATES",
   RECALL_ORDER_DETAILS: "RECALL_ORDER_DETAILS",
-  ACQUIRE_ORDER_ID: "ACQUIRE_ORDER_ID"
+  ACQUIRE_ORDER_ID: "ACQUIRE_ORDER_ID",
+  GET_BLOCKED_ZIPS: "GET_BLOCKED_ZIPS",
+  GET_BLOCKED_IPS: "GET_BLOCKED_IPS",
+  PURGE_ORDER_DETAILS: "PURGE_ORDER_DETAILS"
 };
 
 let shippingMethods = [
@@ -163,8 +166,26 @@ const getActions = uri => {
         _orderDetails[_key] = { value: _value, tag: _tag };
       else _orderDetails[_key] = _value;
 
-      sessionStorage.setItem("orderDetails", JSON.stringify(_orderDetails));
+      sessionStorage.setItem(
+        "orderDetails",
+        JSON.stringify(
+          (() => {
+            let o = { ..._orderDetails };
+            delete o.payment;
+            return o;
+          })()
+        )
+      );
       return { type: actionTypes.MODIFY_ORDER_DETAILS, input: _orderDetails };
+    },
+    purgeOrderDetails: input => {
+      let _orderDetails = { details: input.orderDetails.details };
+      sessionStorage.setItem("orderDetails", JSON.stringify(_orderDetails));
+
+      return {
+        type: actionTypes.PURGE_ORDER_DETAILS,
+        input: _orderDetails
+      };
     },
     recallOrderDetails: input => {
       return dispatch => {
@@ -173,8 +194,8 @@ const getActions = uri => {
           let _obj = {};
           if (recall != null) {
             _obj = JSON.parse(recall);
-            resolve(_obj);
           }
+          resolve(_obj);
 
           if (_obj.payment != null && _obj.payment.coupon != null) {
             let _coupon = _obj.payment.coupon;
@@ -238,7 +259,16 @@ const getActions = uri => {
           })
         );
 
-        sessionStorage.setItem("orderDetails", JSON.stringify(_orderDetails));
+        sessionStorage.setItem(
+          "orderDetails",
+          JSON.stringify(
+            (() => {
+              let o = { ..._orderDetails };
+              delete o.payment;
+              return o;
+            })()
+          )
+        );
 
         dispatch({
           type: actionTypes.APPLY_COUPON,
@@ -287,8 +317,44 @@ const getActions = uri => {
           .catch(error => console.log(error));
       };
     },
+    getBlockedIps: () => {
+      return async dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = {
+          query: query.getBlockedIps
+        };
+
+        await makePromise(execute(link, operation))
+          .then(data => {
+            let input = data.data.allBlockedIps;
+            dispatch({
+              type: actionTypes.GET_BLOCKED_IPS,
+              input
+            });
+          })
+          .catch(error => console.log(error));
+      };
+    },
+    getBlockedZips: () => {
+      return async dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = {
+          query: query.getBlockedZips
+        };
+
+        await makePromise(execute(link, operation))
+          .then(data => {
+            let input = data.data.allBlockedZips;
+            dispatch({
+              type: actionTypes.GET_BLOCKED_ZIPS,
+              input
+            });
+          })
+          .catch(error => console.log(error));
+      };
+    },
     setCurrency: input => {
-      input.currency.convert = 1; // THIS IS TO ENSURE ALL PRICES ARE EQUAL
+      input.currency.convert = 1; // THIS IS TO ENSURE ALL PRICES ARE EQUAL, because we charge the same amount regardless the currency
       return { type: actionTypes.SET_CURRENCY, input: input.currency };
     },
     acquireOrderId: input => {
@@ -297,12 +363,12 @@ const getActions = uri => {
 
         const link = new HttpLink({ uri, fetch: fetch });
         const operation = {
-          query: query.getNewOrderId
+          query: mutation.acquireOrderId
         };
 
         return await makePromise(execute(link, operation))
           .then(data => {
-            let orderId = data.data.getNewOrderId;
+            let orderId = data.data.acquireOrderId;
 
             _orderDetails.payment.orderId = {
               value: orderId,
@@ -372,6 +438,16 @@ const getActions = uri => {
   return { ...objects };
 };
 const query = {
+  getBlockedIps: gql`
+    query {
+      allBlockedIps
+    }
+  `,
+  getBlockedZips: gql`
+    query {
+      allBlockedZips
+    }
+  `,
   getNewOrderId: gql`
     query {
       getNewOrderId
@@ -404,6 +480,11 @@ const query = {
 };
 
 const mutation = {
+  acquireOrderId: gql`
+    mutation {
+      acquireOrderId
+    }
+  `,
   processOrder: gql`
     mutation($content: String) {
       processOrder(input: { content: $content }) {
