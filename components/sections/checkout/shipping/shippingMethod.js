@@ -22,7 +22,7 @@ const ShippingMethod = props => {
 
     for (let _method of methods) {
       arr.push(
-        <div className="w-full inline-flex">
+        <div key={arr} className="w-full inline-flex">
           <div className="p-2 w-full">
             <div className="inline-flex items-top sm:flex-col flex w-full border-b-2 pb-4 border-grey-lightest">
               <div className="w-7/8 sm:w-full">

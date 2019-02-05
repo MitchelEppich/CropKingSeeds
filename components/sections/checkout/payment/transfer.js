@@ -54,11 +54,12 @@ const Transfer = props => {
             </p>
           </div>
           <div className="w-200 p-2 mx-auto mt-6 text-center">
-            <p className="text-center p-2 font-extrabold bg-red-dark text-white hover:bg-grey-light cursor-pointer rounded">
-              <button type="submit" className="font-bold text-white">
-                Pay Now
-              </button>
-            </p>
+            <button
+              type="submit"
+              className="w-full font-bold text-white text-center p-2 font-extrabold bg-red-dark text-white text-xl hover:bg-grey-light cursor-pointer rounded"
+            >
+              Pay Now
+            </button>
           </div>
         </div>
       ) : null}

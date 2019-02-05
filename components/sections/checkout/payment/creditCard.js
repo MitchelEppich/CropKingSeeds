@@ -7,9 +7,22 @@ import moment from "moment";
 
 import StringMask from "string-mask";
 
+// let _orderDetails = props.checkout.orderDetails;
+// let _target = e.target;
+// let _key = _target.id;
+// let _value = _target.checked;
+
+// props.modifyOrderDetails({
+//   orderDetails: _orderDetails,
+//   group: pageGroup,
+//   key: _key, // isPrepaid
+//   value: _value // True | False
+// });
+
 const CreditCard = props => {
   let pageGroup = "payment";
   let paymentType = "Credit Card";
+  let orderDetails = props.checkout.orderDetails;
 
   let ccNumberFormat = new StringMask("0000-0000-0000-0000");
 
@@ -58,33 +71,57 @@ const CreditCard = props => {
             <img src="../static/img/cards.png" width="100px" />
           </div>
           <div className="w-full mt-6">
-            <input
-              type="text"
-              id="cardHolder"
-              required
-              value={
-                props.checkout.orderDetails[pageGroup] != null
-                  ? props.checkout.orderDetails[pageGroup].cardHolder || ""
-                  : undefined
-              }
-              onChange={e => {
-                let _orderDetails = props.checkout.orderDetails;
-                let _target = e.target;
-                let _key = _target.id;
-                let _value = _target.value;
-                let _tag = undefined;
+            <label className="p-2 mb-2 flex items-center">
+              <input
+                id="isPrepaid"
+                onChange={e => {
+                  let _orderDetails = props.checkout.orderDetails;
+                  let _target = e.target;
+                  let _key = _target.id;
+                  let _value = _target.checked;
+                  console.log("here", _value, props.checkout.orderDetails);
 
-                props.modifyOrderDetails({
-                  orderDetails: _orderDetails,
-                  group: pageGroup,
-                  key: _key,
-                  value: _value,
-                  tag: _tag
-                });
-              }}
-              placeholder="Card Holder Name ..."
-              className="p-2 w-full"
-            />
+                  props.modifyOrderDetails({
+                    orderDetails: _orderDetails,
+                    group: pageGroup,
+                    key: _key,
+                    value: _value
+                  });
+                }}
+                type="checkbox"
+                className="mr-2"
+              />
+              Are you using a Prepaid Card?
+            </label>
+            {props.checkout.orderDetails.payment.isPrepaid != true ? (
+              <input
+                type="text"
+                id="cardHolder"
+                required
+                value={
+                  props.checkout.orderDetails[pageGroup] != null
+                    ? props.checkout.orderDetails[pageGroup].cardHolder || ""
+                    : undefined
+                }
+                onChange={e => {
+                  let _orderDetails = props.checkout.orderDetails;
+                  let _target = e.target;
+                  let _key = _target.id;
+                  let _value = _target.value;
+                  let _tag = undefined;
+
+                  props.modifyOrderDetails({
+                    orderDetails: _orderDetails,
+                    group: pageGroup,
+                    key: _key,
+                    value: _value,
+                    tag: _tag
+                  });
+                }}
+                placeholder="Card Holder Name ..."
+                className="p-2 w-full mt-2"
+              />
+            ) : null}
           </div>
           <div className="w-full mt-2 text-center relative inline-flex">
             <div className="w-full">
@@ -237,7 +274,9 @@ const CreditCard = props => {
                   for (let i = 0; i < 10; i++) {
                     let _year = startYear + i;
                     arr.push(
-                      <option value={_year.toString().slice(2)}>{_year}</option>
+                      <option key={arr} value={_year.toString().slice(2)}>
+                        {_year}
+                      </option>
                     );
                   }
                   return arr;
@@ -287,11 +326,12 @@ const CreditCard = props => {
             </div>
           </div>
           <div className="w-200 p-2 mx-auto mt-6 text-center">
-            <p className="text-center p-2 font-extrabold bg-red-dark text-white hover:bg-grey-light cursor-pointer rounded">
-              <button type="submit" className="font-bold text-white">
-                Pay Now
-              </button>
-            </p>
+            <button
+              type="submit"
+              className="w-full font-bold text-white text-center p-2 font-extrabold bg-red-dark text-white text-xl hover:bg-grey-light cursor-pointer rounded"
+            >
+              Pay Now
+            </button>
           </div>
         </div>
       ) : null}

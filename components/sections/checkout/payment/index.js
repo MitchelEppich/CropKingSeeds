@@ -36,13 +36,13 @@ const Payment = props => {
       ) : (
         <div />
       )}
-      {["Canada", "United States"].includes(
+      {/* {["Canada", "United States"].includes(
         _orderDetails.billing.country.value
       ) && allowCC ? (
         <PrepaidCard {...props} />
       ) : (
         <div />
-      )}
+      )} */}
       <Bitcoin {...props} />
       {_orderDetails.billing.country.value != "Canada" ? (
         <Moneygram {...props} />

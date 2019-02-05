@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCannabis } from "@fortawesome/free-solid-svg-icons";
+import { faCannabis, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
 
 const news = props => {
@@ -30,23 +30,36 @@ const news = props => {
           props.setCurrentEvent(index);
           console.log(props.misc.upcomingEvents[index], index);
         }}
-        className="w-full mx-4 scale-item cursor-pointer"
+        className="w-full mx-4 scale-item cursor-pointer border-b-2 border-grey-lightest"
       >
-        <div className="w-full p-2 border-b-2 border-grey-lightest">
-          <h3
-            className={`px-2 p-1 font-bold text-2xl ${
-              currentEvents == val ? "text-red-dark" : "text-grey"
-            } `}
-          >
-            <FontAwesomeIcon
-              icon={faCannabis}
-              className={` ${
+        <div className="w-full p-2 inline-flex">
+          <div className="w-3/4">
+            <h3
+              className={`px-2 p-1 font-bold text-2xl ${
                 currentEvents == val ? "text-red-dark" : "text-grey"
-              } fa-md mr-2  opacity-50`}
-            />{" "}
-            {val.name}
-          </h3>
-          <p className="px-2 text-sm font-bold">{formatDate}</p>
+              } `}
+            >
+              <FontAwesomeIcon
+                icon={faCannabis}
+                className={` ${
+                  currentEvents == val ? "text-red-dark" : "text-grey"
+                } fa-md mr-2  opacity-50`}
+              />{" "}
+              {val.name}
+            </h3>
+          </div>
+          <div className="w-1/4 items-center flex justify-end">
+            <p className="justify-end flex text-right opacity-75 font-bold text-sm">
+              Event
+            </p>
+          </div>
+        </div>
+        <div>
+          <p className="px-2 text-sm font-bold">{formatDate} </p>
+          <p className="px-2 text-sm hover:text-grey-light pt-4">
+            <FontAwesomeIcon icon={faMapMarkerAlt} className="opacity-50" /> San
+            Francisco, United States
+          </p>
           <p className="p-2">{val.desc}</p>
         </div>
       </div>
