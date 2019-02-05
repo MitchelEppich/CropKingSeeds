@@ -14,7 +14,8 @@ const actionTypes = {
   MODIFY_CART: "MODIFY_CART",
   MODIFY_POTENTIAL_QUANTITY: "MODIFY_POTENTIAL_QUANTITY",
   SET_CART_POSITION: "SET_CART_POSITION",
-  RECALL_CART: "RECALL_CART"
+  RECALL_CART: "RECALL_CART",
+  PURGE_CART: "PURGE_CART"
 };
 
 const getActions = uri => {
@@ -187,6 +188,12 @@ const getActions = uri => {
         ..._obj
       };
     },
+    purgeCart: () => {
+      sessionStorage.removeItem("cart");
+      return {
+        type: actionTypes.PURGE_CART
+      };
+    },
     recallCart: () => {
       return dispatch => {
         return new Promise((resolve, reject) => {
@@ -199,6 +206,8 @@ const getActions = uri => {
           if (recall != null) {
             _obj = JSON.parse(recall);
             resolve(_obj);
+          } else {
+            resolve({});
           }
 
           dispatch({

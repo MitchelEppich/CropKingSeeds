@@ -26,7 +26,8 @@ const actionTypes = {
   RECALL_ORDER_DETAILS: "RECALL_ORDER_DETAILS",
   ACQUIRE_ORDER_ID: "ACQUIRE_ORDER_ID",
   GET_BLOCKED_ZIPS: "GET_BLOCKED_ZIPS",
-  GET_BLOCKED_IPS: "GET_BLOCKED_IPS"
+  GET_BLOCKED_IPS: "GET_BLOCKED_IPS",
+  PURGE_ORDER_DETAILS: "PURGE_ORDER_DETAILS"
 };
 
 let shippingMethods = [
@@ -177,6 +178,15 @@ const getActions = uri => {
       );
       return { type: actionTypes.MODIFY_ORDER_DETAILS, input: _orderDetails };
     },
+    purgeOrderDetails: input => {
+      let _orderDetails = { details: input.orderDetails.details };
+      sessionStorage.setItem("orderDetails", JSON.stringify(_orderDetails));
+
+      return {
+        type: actionTypes.PURGE_ORDER_DETAILS,
+        input: _orderDetails
+      };
+    },
     recallOrderDetails: input => {
       return dispatch => {
         return new Promise((resolve, reject) => {
@@ -184,8 +194,8 @@ const getActions = uri => {
           let _obj = {};
           if (recall != null) {
             _obj = JSON.parse(recall);
-            resolve(_obj);
           }
+          resolve(_obj);
 
           if (_obj.payment != null && _obj.payment.coupon != null) {
             let _coupon = _obj.payment.coupon;

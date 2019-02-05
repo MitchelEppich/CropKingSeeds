@@ -104,14 +104,21 @@ const actions = {
     return { type: actionTypes.SET_AGE_VERIFICATION, input: _ageVerification };
   },
   recallAgeVerification: () => {
-    let recall = sessionStorage.getItem("ageVerify");
-    let _obj = {};
-    if (recall != null) {
-      _obj = JSON.parse(recall);
-    }
-    return {
-      type: actionTypes.RECALL_AGE_VERIFICATION,
-      input: _obj
+    return dispatch => {
+      return new Promise((resolve, reject) => {
+        let recall = sessionStorage.getItem("ageVerify");
+        let _obj = {};
+        if (recall != null) {
+          _obj = JSON.parse(recall);
+        }
+
+        resolve(_obj);
+
+        dispatch({
+          type: actionTypes.RECALL_AGE_VERIFICATION,
+          input: _obj
+        });
+      });
     };
   },
   toggleShowDifferentAddress: input => {

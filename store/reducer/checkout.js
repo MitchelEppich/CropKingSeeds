@@ -33,6 +33,8 @@ export default (state = initialState, action) => {
       return updateObject(state, { error: action.input });
     case actionTypes.MODIFY_ORDER_DETAILS:
       return updateObject(state, { orderDetails: action.input });
+    case actionTypes.PURGE_ORDER_DETAILS:
+      return updateObject(state, { orderDetails: action.input });
     case actionTypes.APPLY_COUPON:
       return updateObject(state, { orderDetails: action.input });
     case actionTypes.SET_ORDER_DETAILS:
