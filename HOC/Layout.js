@@ -39,7 +39,7 @@ function getPlatformType() {
 class Layout extends Component {
     componentDidMount() {
         this.recallSession();
-        this.getFeaturedNews();
+        this.props.getFeaturedNews();
         this.props.getStrains().then(strains => {
             const isClient = typeof document !== "undefined";
             if (!isClient) return;
@@ -94,9 +94,9 @@ class Layout extends Component {
     recallSession = async () => {
         let ageVerify = await this.props.recallAgeVerification();
         let cart = (await this.props.recallCart()) || {};
-        console.log(cart);
+        console.log("Hre");
         this.props.recallOrderDetails({ items: cart.items }).then(res => {
-            if (res != null) return;
+            if (Object.keys(res).length != 0) return;
 
             let browser = _browser != null ? _browser.name : "unknown";
             let device = getPlatformType();
@@ -105,7 +105,6 @@ class Layout extends Component {
                 if (ip == null) {
                     ip = "00.00.00.00";
                 }
-                console.log(_orderDetails);
                 _orderDetails = {
                     ..._orderDetails,
                     details: {
