@@ -37,7 +37,7 @@ import ErrorHandler from "../components/sections/checkout/errorHandler";
 
 class Index extends Component {
   componentDidMount() {
-    this.props.toggleStepsCheckout(0);
+    this.props.toggleStepsCheckout(3);
     this.updateShippingMethod();
 
     this.props.getBlockedIps();
@@ -127,8 +127,8 @@ class Index extends Component {
                   .then(res => {
                     let orderId = res.toString();
                     if (_orderDetails.payment.method.value == "Bitcoin") {
-                      let _billing = _orderDetails.billing;
-                      let _payment = _orderDetails.payment;
+                      let _billing = { ..._orderDetails.billing };
+                      let _payment = { ..._orderDetails.payment };
                       let name = _billing.fullName.value.split(" ");
 
                       let fOrderId = [
