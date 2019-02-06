@@ -38,14 +38,14 @@ app
     const server = express();
 
     //sitemap
-    // let strains = await resolvers.Query.allStrains(null, {});
-    // strains = strains.map((strain, index) => {
-    //     return inferStrainData(strain)
-    //         .name.toLowerCase()
-    //         .split(" ")
-    //         .join("-");
-    // });
-    // siteMapBuilder(strains);
+    let strains = await resolvers.Query.allStrains(null, {});
+    strains = strains.map((strain, index) => {
+      return inferStrainData(strain)
+        .name.toLowerCase()
+        .split(" ")
+        .join("-");
+    });
+    siteMapBuilder(strains);
 
     // 301 redirects
     redirects.forEach(({ from, to, type = 301, method = "get" }) => {

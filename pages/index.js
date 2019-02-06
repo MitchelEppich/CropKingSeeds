@@ -20,6 +20,11 @@ class Index extends Component {
     // this.runLoop(5000, this.props.nextBannerSlide);
   }
   componentDidMount() {
+    this.props.setCurrentEvent({
+      index: 0,
+      currentEventObj: this.props.misc.currentEventObj,
+      events: this.props.misc.featuredNews
+    });
     this.runLoop(1000, () => {
       if (moment().diff(this.props.misc.currentEventUpdatedAt, "seconds") > 5) {
         this.props.setCurrentEvent({

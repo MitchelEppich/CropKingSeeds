@@ -16,9 +16,11 @@ const news = props => {
     boxShadow: "0 0px 10px rgba(0, 0, 0, 0.26)"
   };
 
+  if (props.misc.featuredNews.length == 0) return <div />;
+
   let newsIndex = props.misc.currentEventObj;
   let newsEntry = props.misc.featuredNews[newsIndex];
-  let image = newsEntry.imageUrl;
+  let image = newsEntry != null ? newsEntry.imageUrl : "";
 
   let showEvents = props.misc.featuredNews.map((item, index) => {
     let {

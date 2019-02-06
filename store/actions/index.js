@@ -74,7 +74,8 @@ const actions = {
   },
   setCurrentEvent: input => {
     let total = input.events.length;
-    let index = Math.max(0, Math.min(input.index, total)) % total;
+    let index = Math.max(0, Math.min(input.index, total)) % total || 0;
+
     return {
       type: actionTypes.SET_CURRENT_EVENT,
       index: index
