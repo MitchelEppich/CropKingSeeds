@@ -1,6 +1,7 @@
 import ProductThumbnail from "../productGrid/productThumbnail";
 import Router from "next/router";
 import FeaturedStrainThumbnail from "./featuredStrainThumbnail";
+import Link from "next/link";
 
 const index = props => {
     let hoverId = props.misc.hoverId;
@@ -22,6 +23,7 @@ const index = props => {
 
     products = products.map((product, index) => {
         return (
+            // <Link href="/product" as={"/product/" + product.name.toLowerCase().replace(/ /g, "-")}>
             <div
                 key={index}
                 onMouseEnter={() => {
@@ -47,15 +49,16 @@ const index = props => {
                     props.setHoverId(product._id, false);
                 }}
                 onClick={e => {
-                    if (isSmallMediumOrLargeDevice) {
-                        Router.push(
-                            "/product/" +
-                                product.name
-                                    .toLowerCase()
-                                    .split(" ")
-                                    .join("-")
-                        );
-                    }
+                    props.setCurrentProduct({ product: product });
+                    // if (!route.includes("product")) {
+                    Router.push(
+                        "/product/" +
+                            product.name
+                                .toLowerCase()
+                                .split(" ")
+                                .join("-")
+                    );
+                    // }
                 }}
                 className={
                     hoverId == product._id
@@ -70,6 +73,7 @@ const index = props => {
                     {...props}
                 />
             </div>
+            // </Link>
         );
     });
     return (

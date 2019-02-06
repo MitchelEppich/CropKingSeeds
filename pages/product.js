@@ -173,7 +173,6 @@ const mapDispatchToProps = dispatch => {
         setImageZoom: imz => dispatch(actions.setImageZoom(imz)),
         setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
         expandProduct: id => dispatch(actions.expandProduct(id)),
-        expandProduct: id => dispatch(actions.expandProduct(id)),
         setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
         showMoreFeatures: input => dispatch(actions.showMoreFeatures(input))
     };
