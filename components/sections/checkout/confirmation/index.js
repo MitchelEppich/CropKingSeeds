@@ -87,25 +87,25 @@ const Confirmation = props => {
       <div className="w-container mx-auto pt-12">
         <div
           style={sectionTitle}
-          className="inline-flex w-full text-white bg-red-light mb-1 p-1"
+          className="inline-flex w-full text-white bg-red-light mb-1 p-1 sm:flex-col md:flex-col"
         >
-          <div className="w-1/2 p-2 text-left">
+          <div className="w-1/2 p-2 text-left sm:w-full md:w-full sm:text-center md:text-center">
             <p className="text-lg font-bold">
               Order <span className="">#{fOrderId}</span>
             </p>
           </div>
-          <div className="w-1/2 p-2 text-right">
+          <div className="w-1/2 p-2 text-right sm:w-full md:w-full sm:text-center md:text-center">
             <p className="text-lg font-bold">
               Order made on: <span className="">{moment().format("LL")}</span>{" "}
             </p>
           </div>
         </div>
-        <div className="w-full inline-flex text-lg bg-white p-2 pb-6 shadow-md">
-          <div className="w-1/3 p-2 text-left">
+        <div className="w-full inline-flex text-lg bg-white p-2 pb-6 shadow-md sm:flex-col md:flex-col">
+          <div className="w-1/3 p-2 text-left sm:w-full md:w-full sm:text-center md:text-center sm:border-b-2 border-grey-lightest sm:py-6 md:py-6">
             <p>Payment Method:</p>
             <p className="font-bold">{_orderDetails.payment.method.value}</p>
           </div>
-          <div className="w-1/3 p-2 text-left">
+          <div className="w-1/3 p-2 text-left sm:w-full md:w-full sm:text-center md:text-center sm:py-6 md:py-6 sm:border-b-2 border-grey-lightest">
             <p>Shipping Destination:</p>
             <p className="font-bold">{_orderDetails.shipping.fullName.value}</p>
             <p className="font-bold">
@@ -122,7 +122,7 @@ const Confirmation = props => {
               {_orderDetails.shipping.country.value}
             </p>
           </div>
-          <div className="w-1/3 p-2 text-right">
+          <div className="w-1/3 p-2 text-left sm:w-full md:w-full sm:text-center md:text-center sm:py-6 md:py-6">
             <p>Shipping Type:</p>
             <p className="font-bold">
               {_orderDetails.shipping.shippingDetail.value}
@@ -130,63 +130,6 @@ const Confirmation = props => {
           </div>
         </div>
 
-        <div
-          style={sectionTitle}
-          className="w-full inline-flex mt-8 bg-red-light text-white font-bold p-1"
-        >
-          <div className="w-3/5 p-2 uppercase font-bold text-lg">Product</div>
-          <div className="w-1/5 p-2 uppercase font-bold text-lg">Qty</div>
-          <div className="w-1/5 p-2 uppercase font-bold text-lg">Price</div>
-        </div>
-        <div className="w-full">{showProduct()}</div>
-        <div className="inline-flex justify-end flex w-full mt-8 text-lg">
-          <div className="w-300 inline-flex">
-            <div className="w-1/2 text-right p-2">
-              <p className="p-1">Subtotal:</p>
-              <p className="p-1">Sales Tax:</p>
-              <p className="p-1">Shipping:</p>
-              <p className="p-1">Discount:</p>
-              <p className="font-bold p-1 text-xl">Total:</p>
-            </div>
-            <div className="w-1/2 text-right p-2">
-              <p className="p-1">
-                {currency != null
-                  ? `${currency.symbol}${(
-                      currency.convert * _orderDetails.payment.cartTotal.value
-                    ).toFixed(2)}`
-                  : ""}
-              </p>
-              <p className="p-1">
-                {currency != null
-                  ? `${currency.symbol}${(
-                      currency.convert * _orderDetails.payment.taxFee
-                    ).toFixed(2)}`
-                  : ""}
-              </p>
-              <p className="p-1">
-                {currency != null
-                  ? `${currency.symbol}${(
-                      currency.convert * _orderDetails.payment.shippingFee.value
-                    ).toFixed(2)}`
-                  : ""}
-              </p>
-              <p className="p-1">
-                {currency != null
-                  ? `${currency.symbol}${(
-                      currency.convert * _orderDetails.payment.discount
-                    ).toFixed(2)}`
-                  : ""}
-              </p>
-              <p className="font-bold p-1 text-xl">
-                {currency != null
-                  ? `${currency.symbol}${(
-                      currency.convert * _orderDetails.payment.orderTotal.value
-                    ).toFixed(2)}`
-                  : ""}
-              </p>
-            </div>
-          </div>
-        </div>
         <div className="mt-10">
           <div style={sectionTitle} className="bg-red-light p-2 mb-1">
             <p className="font-bold uppercase text-center text-white p-1 text-lg">
@@ -216,17 +159,81 @@ const Confirmation = props => {
             </p>
           </div>
         </div>
-        <div className="w-full border-t-2 border-grey-lightest inline-flex pt-12 mt-12 text-lg pb-10">
-          <div className="w-1/2 text-right justify-end flex p-2 mr-6">
-            <FontAwesomeIcon icon={faQuestionCircle} className="fa-7x" />
+
+        <div
+          style={sectionTitle}
+          className="w-full inline-flex mt-8 bg-red-light text-white font-bold p-1"
+        >
+          <div className="w-3/5 px-4 p-2 uppercase text-left font-bold text-lg">
+            Product
           </div>
-          <div className="w-1/2 text-left p-2 ml-6">
-            <p className="font-bold text-2xl">Need help?</p>
-            <p className="font-bold">We are available to assist you 24/7.</p>
-            <p>Canada: (604) 563-0291</p>
-            <p>USA: +1 (844) 276-7546</p>
-            <p>International: +1 (604) 563-0291</p>
-            <p>Email: info@cropkingseeds.com</p>
+          <div className="w-1/5 p-2 uppercase font-bold text-lg">Qty</div>
+          <div className="w-1/5 p-2 uppercase font-bold text-lg">Price</div>
+        </div>
+        <div className="w-full">{showProduct()}</div>
+        <div className="inline-flex justify-end flex w-full mt-8 text-lg mb-4">
+          <div className="w-full inline-flex text-lg sm:flex-col md:flex-col border-r-2 border-grey-lightest">
+            <div className="w-1/3 text-right justify-start flex p-2  sm:w-full md:w-full sm:justify-center md:justify-center sm:mr-0 md:mr-0">
+              <FontAwesomeIcon icon={faQuestionCircle} className="fa-7x" />
+            </div>
+            <div className="w-2/3 text-left p-2 sm:w-full md:w-full sm:text-center md:text-center sm:ml-0 md:ml-0">
+              <p className="font-bold text-2xl">Need help?</p>
+              <p className="font-bold">We are available to assist you 24/7.</p>
+              <p>Canada: (604) 563-0291</p>
+              <p>USA: +1 (844) 276-7546</p>
+              <p>International: +1 (604) 563-0291</p>
+              <p>Email: info@cropkingseeds.com</p>
+            </div>
+          </div>
+          <div className="w-1/2 text-right p-2">
+            <div className="w-300 inline-flex">
+              <div className="w-1/2 text-right p-2">
+                <p className="p-1">Subtotal:</p>
+                <p className="p-1">Sales Tax:</p>
+                <p className="p-1">Shipping:</p>
+                <p className="p-1">Discount:</p>
+                <p className="font-bold p-1 text-xl">Total:</p>
+              </div>
+              <div className="w-1/2 text-right p-2">
+                <p className="p-1">
+                  {currency != null
+                    ? `${currency.symbol}${(
+                        currency.convert * _orderDetails.payment.cartTotal.value
+                      ).toFixed(2)}`
+                    : ""}
+                </p>
+                <p className="p-1">
+                  {currency != null
+                    ? `${currency.symbol}${(
+                        currency.convert * _orderDetails.payment.taxFee
+                      ).toFixed(2)}`
+                    : ""}
+                </p>
+                <p className="p-1">
+                  {currency != null
+                    ? `${currency.symbol}${(
+                        currency.convert *
+                        _orderDetails.payment.shippingFee.value
+                      ).toFixed(2)}`
+                    : ""}
+                </p>
+                <p className="p-1">
+                  {currency != null
+                    ? `${currency.symbol}${(
+                        currency.convert * _orderDetails.payment.discount
+                      ).toFixed(2)}`
+                    : ""}
+                </p>
+                <p className="font-bold p-1 text-xl">
+                  {currency != null
+                    ? `${currency.symbol}${(
+                        currency.convert *
+                        _orderDetails.payment.orderTotal.value
+                      ).toFixed(2)}`
+                    : ""}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

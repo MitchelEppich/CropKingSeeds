@@ -30,7 +30,7 @@ const CreditCard = props => {
     <div className="w-full mb-6">
       <div
         onClick={() => {
-          props.setVisibleScreen({ input: "creditCard", clearAll: true });
+          props.setVisibleScreen({ input: "creditCard", group: "payment" });
           let _orderDetails = props.checkout.orderDetails;
           props.modifyOrderDetails({
             orderDetails: _orderDetails,
@@ -64,7 +64,7 @@ const CreditCard = props => {
           </div>
         </div>
       </div>
-      {props.misc.visibleScreen.includes("creditCard") ? (
+      {props.misc.visibleScreen.includes("payment::creditCard") ? (
         <div className="w-600 sm:w-full mx-auto p-2">
           <div className="w-full mt-2 text-center opacity-75">
             <p className="text-sm p-2">Cards Accepted:</p>
@@ -79,8 +79,6 @@ const CreditCard = props => {
                   let _target = e.target;
                   let _key = _target.id;
                   let _value = _target.checked;
-                  console.log("here", _value, props.checkout.orderDetails);
-
                   props.modifyOrderDetails({
                     orderDetails: _orderDetails,
                     group: pageGroup,

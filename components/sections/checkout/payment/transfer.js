@@ -10,7 +10,7 @@ const Transfer = props => {
     <div className="w-full mb-6 ">
       <div
         onClick={() => {
-          props.setVisibleScreen({ input: "etransfer", clearAll: true });
+          props.setVisibleScreen({ input: "etransfer", group: "payment" });
           let _orderDetails = props.checkout.orderDetails;
           props.modifyOrderDetails({
             orderDetails: _orderDetails,
@@ -45,7 +45,7 @@ const Transfer = props => {
         </div>
       </div>
       {props.misc.visibleScreen != null &&
-      props.misc.visibleScreen.includes("etransfer") ? (
+      props.misc.visibleScreen.includes("payment::etransfer") ? (
         <div className="w-full p-2">
           <div className="w-full mt-2 text-center">
             <p className="text-sm p-2">

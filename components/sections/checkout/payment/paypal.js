@@ -7,7 +7,7 @@ const Paypal = props => {
     <div className="w-full mb-6 pb-6">
       <div
         onClick={() => {
-          props.setVisibleScreen({ input: "paypal", clearAll: true });
+          props.setVisibleScreen({ input: "paypal", group: "payment" });
         }}
         style={{
           border: "2px solid #e4e4e4",
@@ -26,7 +26,7 @@ const Paypal = props => {
         </div>
       </div>
       {props.misc.visibleScreen != null &&
-      props.misc.visibleScreen.includes("paypal") ? (
+      props.misc.visibleScreen.includes("payment::paypal") ? (
         <div className="w-full p-2 ">
           <div className="w-full mt-2 text-center">
             <p className="text-sm p-2">

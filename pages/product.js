@@ -117,8 +117,7 @@ class Index extends Component {
                   Frequently Bought Together
                 </h3>
                 <div className="px-8 w-full mt-2">
-                  <FeaturedStrainThumbnails count={3} {...this.props} />
-                  {/* <OtherProducts {...this.props} /> */}
+                  <OtherProducts count={3} {...this.props} />
                 </div>
               </div>
               {/* <div>

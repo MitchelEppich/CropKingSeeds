@@ -17,7 +17,10 @@ const Bitcoin = props => {
     <div className="w-full mb-6">
       <div
         onClick={() => {
-          props.setVisibleScreen({ input: "bitcoin", group: "payment" });
+          props.setVisibleScreen({
+            input: "bitcoin",
+            group: "payment"
+          });
           props.getBitcoinData({ value: "1", currency: "USD" });
           let _orderDetails = props.checkout.orderDetails;
           props.modifyOrderDetails({

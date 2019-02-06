@@ -45,7 +45,7 @@ const news = props => {
         }}
         className={`${
           index < 3 ? "border-b-2 border-grey-lightest" : ""
-        } w-full mx-4 scale-item cursor-pointer`}
+        } w-full sm:mx-0 md:mx-0 mx-4 scale-item cursor-pointer`}
       >
         <div className="w-full py-2 inline-flex">
           <div className="w-3/4">
