@@ -17,7 +17,7 @@ const Confirmation = props => {
 
   let currency = props.checkout.viewCurrency;
 
-  console.log(_orderDetails, orderId);
+  // console.log(_orderDetails, orderId);
   let products = Object.keys(props.cart.items);
 
   let showProduct = () => {
@@ -127,38 +127,172 @@ const Confirmation = props => {
             <p className="font-bold">
               {_orderDetails.shipping.shippingDetail.value}
             </p>
+            <br />
+            <p>Shipping Details:</p>
+            <p className="font-bold">
+              {
+                props.checkout.shippingMethods.find(a => {
+                  return a.tag == _orderDetails.shipping.shippingDetail.value;
+                }).description
+              }
+            </p>
           </div>
         </div>
 
-        <div className="mt-10">
-          <div style={sectionTitle} className="bg-red-light p-2 mb-1">
-            <p className="font-bold uppercase text-center text-white p-1 text-lg">
-              Cash Payment Instructions
-            </p>
-          </div>
-          <div className="bg-white shadow-md">
-            <p className="w-main mx-auto pt-4">
-              To complete your order please print this order or write down your
-              order number opn a piece of paper and send with your cash payment
-              in either USA or Canada dollars to:
-            </p>
-            <p className="font-bold text-center p-2 mt-4 text-xl">
-              VanCoast Industries
-              <br />
-              112 East 6th Ave
-              <br />
-              Vancouver, BC
-              <br />
-              V5T 1J5
-              <br />
-              Canada
-            </p>
-            <p className="mt-4 p-2 text-center pb-4">
-              Wrap your cash with newspaper, charcoal paper or tin foil for
-              privacy.
-            </p>
-          </div>
-        </div>
+        {(() => {
+          switch (_orderDetails.payment.method.value) {
+            case "Cash":
+              return (
+                <div className="mt-10">
+                  <div style={sectionTitle} className="bg-red-light p-2 mb-1">
+                    <p className="font-bold uppercase text-center text-white p-1 text-lg">
+                      Cash Payment Instructions
+                    </p>
+                  </div>
+                  <div className="bg-white shadow-md">
+                    <p className="w-main mx-auto pt-4">
+                      To ensure that your cash order is successfully recieved
+                      please document your order number (
+                      <strong>{fOrderId}</strong>) on a piece of paper, along
+                      side the requested amount in applicable currency:
+                    </p>
+                    <p className="font-bold text-center p-2 mt-4 text-xl">
+                      VanCoast Industries
+                      <br />
+                      112 East 6th Ave
+                      <br />
+                      Vancouver, BC
+                      <br />
+                      V5T 1J5
+                      <br />
+                      Canada
+                    </p>
+                    <p className="mt-4 p-2 text-center pb-4">
+                      It is recommended that you wrap any cash within your mail
+                      (in newspaper, charcoal paper or tin foil) to ensure
+                      privacy
+                    </p>
+                  </div>
+                </div>
+              );
+            case "Interac E Transfer":
+              return (
+                <div className="mt-10">
+                  <div style={sectionTitle} className="bg-red-light p-2 mb-1">
+                    <p className="font-bold uppercase text-center text-white p-1 text-lg">
+                      Interac E-Transfer Instructions
+                    </p>
+                  </div>
+                  <div className="bg-white shadow-md">
+                    <p className="w-main mx-auto pt-4">
+                      To complete your order please initiate an interac
+                      e-transfer:
+                    </p>
+                    <div className="inline-flex">
+                      <div className="w-1/2 text-right p-2">
+                        <p>Recipient email:</p>
+                        <p>Recipient name:</p>
+                        <p>Message (Order Number):</p>
+                        <p>Security question:</p>
+                        <p>Security answer:</p>
+                      </div>
+                      <div className="w-1/2 text-left p-2">
+                        <p>
+                          <strong>organicmarketing11@gmail.com</strong>
+                        </p>
+                        <p>
+                          <strong>Vancouver</strong>
+                        </p>
+                        <p>
+                          <strong>{fOrderId}</strong>
+                        </p>
+                        <p>
+                          <strong>What is your favorite color</strong>
+                        </p>
+                        <p>
+                          <strong>green1</strong>
+                        </p>
+                      </div>
+                    </div>
+                    <p className="mt-4 p-2 text-center pb-4">
+                      <strong>Important</strong>: Interac E-Transfers may take a
+                      few hours to be approved. Once a payment is successfully
+                      recieved we will ship your order on the next applicable
+                      business day.
+                      <br />
+                      To ensure your order is shipped as soon as possible,
+                      please call us to confirm the transfer.
+                    </p>
+                  </div>
+                </div>
+              );
+            case "Bitcoin":
+              return (
+                <div className="mt-10">
+                  <div style={sectionTitle} className="bg-red-light p-2 mb-1">
+                    <p className="font-bold uppercase text-center text-white p-1 text-lg">
+                      BitCoin Instructions
+                    </p>
+                  </div>
+                  <div className="bg-white shadow-md">
+                    <p className="w-main mx-auto py-4">
+                      To complete your payment with BitCoin, a new tab has been
+                      opened in which you can proceed to finalize your payment.
+                      <br />
+                      <br />
+                      <strong>Having an issue with your payment?</strong>{" "}
+                      <button type="submit">Click here</button> to retry your
+                      payment.
+                      <br />
+                    </p>
+                  </div>
+                </div>
+              );
+            case "Credit Card":
+              let _ccr = props.checkout.ccResponse;
+              return (
+                <div className="mt-10">
+                  <div style={sectionTitle} className="bg-red-light p-2 mb-1">
+                    <p className="font-bold uppercase text-center text-white p-1 text-lg">
+                      Credit Card Instructions
+                    </p>
+                  </div>
+                  <div className="bg-white shadow-md">
+                    <p className="w-main mx-auto pt-4" />
+                    <p className="text-center p-2 mt-4 text-xl">
+                      {_ccr.status == "Declined" ? (
+                        <span>
+                          <strong>We are unable to process your order!</strong>
+                          <br />
+                          Please immediately call our customer support (at +1
+                          (844) 276 - 7546) to resolve any issues.
+                          <br />
+                          Once your payment has been recieved we will ship your
+                          order on the next applicable business day.
+                        </span>
+                      ) : (
+                        <span>
+                          Please allow some time for your payment to process,
+                          once your payment has been recieved we will ship your
+                          order on the next applicable business day.
+                        </span>
+                      )}
+                    </p>
+                    <p className="mt-4 p-2 text-center pb-4">
+                      <strong>Important</strong>: The displayed order total may
+                      vary depending on fluctuations in conversion rates and
+                      bank processing fees. All charges will show up as '
+                      {_ccr.descriptor}' on your credit card statement once
+                      successfully processed.
+                      <br />
+                      If you have any concerns or issues please contact our
+                      customer service representatives for help.
+                    </p>
+                  </div>
+                </div>
+              );
+          }
+        })()}
 
         <div
           style={sectionTitle}
@@ -185,27 +319,35 @@ const Confirmation = props => {
               <p>Email: info@cropkingseeds.com</p>
             </div>
           </div>
-          <div className="w-1/2 text-right p-2">
-            <div className="w-300 inline-flex">
-              <div className="w-1/2 text-right p-2">
+          <div className="w-2/5 text-right p-2 pl-6">
+            <div className="inline-flex w-500">
+              <div className="w-2/5 text-right">
                 <p className="p-1">Subtotal:</p>
-                <p className="p-1">Sales Tax:</p>
                 <p className="p-1">Shipping:</p>
-                <p className="p-1">Discount:</p>
+                {_orderDetails.payment.creditFee.value != 0 ? (
+                  <p className="p-1">
+                    Credit Card Tax (
+                    {(_orderDetails.payment.creditTax * 100).toFixed(2)}%):
+                  </p>
+                ) : null}
+                {_orderDetails.coupon != null &&
+                _orderDetails.coupon.code != null ? (
+                  <p className="p-1 text-red-dark">
+                    Discount ({_orderDetails.payment.discountAmt}):
+                  </p>
+                ) : null}
+                <p className="p-1">
+                  Tax ({(_orderDetails.payment.cumTax * 100).toFixed(2)}%):
+                </p>
                 <p className="font-bold p-1 text-xl">Total:</p>
               </div>
-              <div className="w-1/2 text-right p-2">
+              <div className="w-2/5 text-left">
                 <p className="p-1">
                   {currency != null
                     ? `${currency.symbol}${(
-                        currency.convert * _orderDetails.payment.cartTotal.value
-                      ).toFixed(2)}`
-                    : ""}
-                </p>
-                <p className="p-1">
-                  {currency != null
-                    ? `${currency.symbol}${(
-                        currency.convert * _orderDetails.payment.taxFee
+                        currency.convert *
+                        (_orderDetails.payment.cartTotal.value +
+                          _orderDetails.payment.discount)
                       ).toFixed(2)}`
                     : ""}
                 </p>
@@ -217,10 +359,30 @@ const Confirmation = props => {
                       ).toFixed(2)}`
                     : ""}
                 </p>
+                {_orderDetails.payment.creditFee.value != 0 ? (
+                  <p className="p-1">
+                    {currency != null
+                      ? `${currency.symbol}${(
+                          currency.convert *
+                          _orderDetails.payment.creditFee.value
+                        ).toFixed(2)}`
+                      : ""}
+                  </p>
+                ) : null}
+                {_orderDetails.coupon != null &&
+                _orderDetails.coupon.code != null ? (
+                  <p className="p-1 text-red-dark">
+                    {currency != null
+                      ? `${currency.symbol}${(
+                          currency.convert * _orderDetails.payment.discount
+                        ).toFixed(2)}`
+                      : ""}
+                  </p>
+                ) : null}
                 <p className="p-1">
                   {currency != null
                     ? `${currency.symbol}${(
-                        currency.convert * _orderDetails.payment.discount
+                        currency.convert * _orderDetails.payment.taxFee
                       ).toFixed(2)}`
                     : ""}
                 </p>

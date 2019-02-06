@@ -21,6 +21,23 @@ const resolvers = {
       let query = filter ? { $or: orderFilters(filter) } : {};
       return Order.find(query);
     },
+    getRandomWinnerBetweenDates: async (_, { input }) => {
+      console.log(input);
+      let order = await Order.aggregate([
+        {
+          $match: {
+            orderDate: {
+              $gte: moment()
+                .subtract(3, "days")
+                .format("YY-MM-DD HH:mm:ss"),
+              $lt: moment().format("YY-MM-DD HH:mm:ss")
+            }
+          }
+        },
+        { $sample: { size: 1 } }
+      ]);
+      return order;
+    },
     getCoupon: async (_, input) => {
       // Get coupon details
       let res = (await axios({

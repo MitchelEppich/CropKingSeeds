@@ -37,7 +37,7 @@ import ErrorHandler from "../components/sections/checkout/errorHandler";
 
 class Index extends Component {
   componentDidMount() {
-    this.props.toggleStepsCheckout(3);
+    this.props.toggleStepsCheckout(0);
     this.updateShippingMethod();
 
     this.props.getBlockedIps();
@@ -93,6 +93,49 @@ class Index extends Component {
     document.body.removeChild(form);
   };
 
+  payBitcoin = (orderDetails, orderId) => {
+    let _billing = { ...orderDetails.billing };
+    let _payment = { ...orderDetails.payment };
+    let name = _billing.fullName.value.split(" ");
+
+    let fOrderId = [orderId.slice(0, 4), "-", orderId.slice(4), "-CKS"].join(
+      ""
+    );
+
+    this.open(
+      "POST",
+      "https://www.coinpayments.net/index.php",
+      {
+        cmd: "_pay",
+        reset: "1",
+        invoice: fOrderId,
+        custom: "",
+        merchant: "8c1706a0ba5ad9024ba30eb29b92563e",
+        first_name: name[0],
+        last_name: name[1],
+        email: _billing.email.value,
+        address1: _billing.address.value,
+        address2: _billing.apartment != null ? _billing.apartment.value : "",
+        city: _billing.city.value,
+        state: _billing.state.value,
+        zip: _billing.postalZip.value,
+        country: _billing.country.value.toUpperCase(),
+        phone: _billing.phone.value,
+        currency: _payment.currency.value,
+        amountf: _payment.cartTotal.value,
+        item_name: fOrderId,
+        quantity: _payment.itemQuantity.value,
+        allow_quantity: "0",
+        shippingf: _payment.shippingFee.value,
+        taxf: _payment.taxFee,
+        ipn_url: "",
+        success_url: "",
+        cancel_url: ""
+      },
+      "_blank"
+    );
+  };
+
   render() {
     let _orderDetails = this.props.checkout.orderDetails;
     let _stepsCheckout = this.props.misc.stepsCheckout;
@@ -114,9 +157,17 @@ class Index extends Component {
         <form
           onSubmit={e => {
             e.preventDefault();
-
+            console.log("hello");
             // this.props.toggleStepsCheckout(1);
-            if (_stepsCheckout == 3) {
+            if (
+              _stepsCheckout == 4 &&
+              _orderDetails.payment.method.value == "Bitcoin"
+            ) {
+              this.payBitcoin(
+                _orderDetails,
+                _orderDetails.payment.orderId.value.toString()
+              );
+            } else if (_stepsCheckout == 3) {
               if (
                 !this.props.checkout.blockedIps.includes(
                   _orderDetails.details.ip.value
@@ -127,52 +178,7 @@ class Index extends Component {
                   .then(res => {
                     let orderId = res.toString();
                     if (_orderDetails.payment.method.value == "Bitcoin") {
-                      let _billing = { ..._orderDetails.billing };
-                      let _payment = { ..._orderDetails.payment };
-                      let name = _billing.fullName.value.split(" ");
-
-                      let fOrderId = [
-                        orderId.slice(0, 4),
-                        "-",
-                        orderId.slice(4),
-                        "-CKS"
-                      ].join("");
-
-                      this.open(
-                        "POST",
-                        "https://www.coinpayments.net/index.php",
-                        {
-                          cmd: "_pay",
-                          reset: "1",
-                          invoice: fOrderId,
-                          custom: "",
-                          merchant: "8c1706a0ba5ad9024ba30eb29b92563e",
-                          first_name: name[0],
-                          last_name: name[1],
-                          email: _billing.email.value,
-                          address1: _billing.address.value,
-                          address2:
-                            _billing.apartment != null
-                              ? _billing.apartment.value
-                              : "",
-                          city: _billing.city.value,
-                          state: _billing.state.value,
-                          zip: _billing.postalZip.value,
-                          country: _billing.country.value.toUpperCase(),
-                          phone: _billing.phone.value,
-                          currency: _payment.currency.value,
-                          amountf: _payment.cartTotal.value,
-                          item_name: fOrderId,
-                          quantity: _payment.itemQuantity.value,
-                          allow_quantity: "0",
-                          shippingf: _payment.shippingFee.value,
-                          taxf: _payment.taxFee,
-                          ipn_url: "",
-                          success_url: "",
-                          cancel_url: ""
-                        },
-                        "_blank"
-                      );
+                      this.payBitcoin(_orderDetails, orderId);
                     }
                     this.props
                       .processOrder({
@@ -190,7 +196,9 @@ class Index extends Component {
               } else {
                 // Purge the store.
                 this.props.purgeCart();
-                this.props.purgeOrderDetails({ orderDetails: _orderDetails });
+                this.props.purgeOrderDetails({
+                  orderDetails: _orderDetails
+                });
 
                 // Redirect to 404
                 const isClient = typeof document !== "undefined";

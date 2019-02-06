@@ -244,7 +244,7 @@ const PaymentReview = props => {
         <h3 style={titleBox}>Payment Information</h3>
         <div className="p-2 inline-flex w-full">
           <div className="w-3/5 text-right">
-            <p className="mt-1">Product Total:</p>
+            <p className="mt-1">Subtotal:</p>
             <p className="mt-2">Shipping: </p>
             {_orderDetails[pageGroup].creditFee.value != 0 ? (
               <p className="mt-2">

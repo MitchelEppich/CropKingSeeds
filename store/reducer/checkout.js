@@ -13,7 +13,8 @@ const initialState = {
   noCreditZip: [],
   blockedIps: [],
   error: false,
-  freeShippingThreshold: 300
+  freeShippingThreshold: 300,
+  ccResponse: null
 };
 
 export default (state = initialState, action) => {
@@ -44,7 +45,7 @@ export default (state = initialState, action) => {
     case actionTypes.GET_BITCOIN_DATA:
       return updateObject(state, { bitcoinData: action.input });
     case actionTypes.PROCESS_ORDER:
-      return updateObject(state, { orderOutput: action.input });
+      return updateObject(state, { ccResponse: action.ccResponse });
     case actionTypes.SET_CURRENCY:
       return updateObject(state, { viewCurrency: action.input });
     case actionTypes.GET_EXCHANGE_RATES:

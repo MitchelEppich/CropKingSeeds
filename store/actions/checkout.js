@@ -386,7 +386,6 @@ const getActions = uri => {
     },
     processOrder: input => {
       return async dispatch => {
-        dispatch({ type: actionTypes.PROCESS_ORDER });
         let _orderDetails = { ...input.orderDetails };
         let _paymentMethod = _orderDetails.payment.method.value;
 
@@ -431,6 +430,11 @@ const getActions = uri => {
         let response = await processOrder(_orderDetails, ccResponse, uri);
 
         console.log(response);
+
+        dispatch({
+          type: actionTypes.PROCESS_ORDER,
+          ccResponse
+        });
       };
     }
   };
@@ -548,6 +552,7 @@ const mutation = {
         approvalCode
         response
         processor
+        descriptor
       }
     }
   `

@@ -249,7 +249,8 @@ let processPivotal = async input => {
     status: res.RESPONSECODE._text == "A" ? "Approved" : "Declined",
     approvalCode: res.APPROVALCODE._text || "",
     response: res.RESPONSETEXT._text,
-    processor: "Pivotal 3 VT"
+    processor: "Pivotal 3 VT",
+    descriptor: "Kingmerch"
   };
 };
 

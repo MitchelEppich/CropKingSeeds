@@ -18,6 +18,13 @@ type Query {
   getBitcoinData(input: BitcoinDataInput): String
   getExchangeRates: String
   getCoupon(coupon: String, ip: String): Coupon
+
+  getRandomWinnerBetweenDates(input: DateRangeInput!): Order
+}
+
+input DateRangeInput {
+  startDate: String
+  endDate: String
 }
 
 type BlockedIp {
@@ -209,6 +216,7 @@ type PaymentResponse {
   approvalCode: String
   response: String
   processor: String
+  descriptor: String
 }
 
 input EmailInput {
