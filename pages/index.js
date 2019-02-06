@@ -15,10 +15,19 @@ import News from "../components/sections/news";
 class Index extends Component {
     componentWillMount() {
         this.props.getStrains();
-        // this.runCarousel(5000, this.props.nextBannerSlide);
+        // this.runLoop(5000, this.props.nextBannerSlide);
     }
-    componentDidMount() {}
-    runCarousel(delay, callback) {
+    componentDidMount() {
+        this.runLoop(3000, () =>
+            this.props.setCurrentEvent({
+                index: -1,
+                currentEventObj: this.props.misc.currentEventObj,
+                events: this.props.misc.featuredNews
+            })
+        );
+    }
+
+    runLoop(delay, callback) {
         var loop = function() {
             callback();
             setTimeout(loop, delay);
