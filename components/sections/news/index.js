@@ -37,7 +37,11 @@ const news = props => {
     return (
       <div
         onMouseEnter={() => {
-          props.setCurrentEvent(index);
+          props.setCurrentEvent({
+            index,
+            currentEventObj: newsIndex,
+            events: props.misc.featuredNews
+          });
         }}
         onClick={() => {
           window.open(url, "_blank");
