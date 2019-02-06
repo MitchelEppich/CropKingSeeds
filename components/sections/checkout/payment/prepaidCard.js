@@ -17,7 +17,7 @@ const PrepaidCard = props => {
     <div className="w-full mb-6">
       <div
         onClick={() => {
-          props.setVisibleScreen({ input: "prepaidCard", clearAll: true });
+          props.setVisibleScreen({ input: "prepaidCard", group: "payment" });
           let _orderDetails = props.checkout.orderDetails;
           props.modifyOrderDetails({
             orderDetails: _orderDetails,
@@ -51,7 +51,7 @@ const PrepaidCard = props => {
           </div>
         </div>
       </div>
-      {props.misc.visibleScreen.includes("prepaidCard") ? (
+      {props.misc.visibleScreen.includes("payment::prepaidCard") ? (
         <div className="w-600 sm:w-full mx-auto p-2">
           {/* <div className="w-full mt-2 text-center opacity-75">
             <p className="text-sm p-2">Cards Accepted:</p>

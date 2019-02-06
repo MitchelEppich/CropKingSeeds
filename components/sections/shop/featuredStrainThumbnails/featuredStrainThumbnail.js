@@ -60,7 +60,7 @@ const FeaturedStrainThumbnail = props => {
   let showMoreText = {
     transform: hover
       ? "translateX(0px) translateY(32px)"
-      : "translateX(-300px) translateY(32px)",
+      : "translateX(-450px) translateY(32px)",
     transition: "all 0.4s ease",
     width: "100%",
     height: "42px",

@@ -17,7 +17,10 @@ const Bitcoin = props => {
     <div className="w-full mb-6">
       <div
         onClick={() => {
-          props.setVisibleScreen({ input: "bitcoin", clearAll: true });
+          props.setVisibleScreen({
+            input: "bitcoin",
+            group: "payment"
+          });
           props.getBitcoinData({ value: "1", currency: "USD" });
           let _orderDetails = props.checkout.orderDetails;
           props.modifyOrderDetails({
@@ -53,7 +56,7 @@ const Bitcoin = props => {
         </div>
       </div>
       {props.misc.visibleScreen != null &&
-      props.misc.visibleScreen.includes("bitcoin") ? (
+      props.misc.visibleScreen.includes("payment::bitcoin") ? (
         <div className="w-full p-2">
           <div className="w-full mt-2 text-center">
             <p className="text-sm p-2">
