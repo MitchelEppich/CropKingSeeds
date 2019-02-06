@@ -25,12 +25,12 @@ import Loader from "../components/sections/loader";
 import ImageCarousel from "../components/sections/productPage/imageCarousel";
 import Ratings from "../components/sections/productPage/ratings";
 class Index extends Component {
-    componentWillMount() {
-        this.props.showMoreFeatures({
-            max: this.props.misc.featuredStrains,
-            count: 1
-        });
-    }
+    // componentDidMount() {
+    //     this.props.showMoreFeatures({
+    //         max: this.props.misc.featuredStrains,
+    //         count: 1
+    //     });
+    // }
     render() {
         return (
             <Layout>

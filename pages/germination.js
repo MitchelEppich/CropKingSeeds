@@ -11,12 +11,12 @@ import Carousel from "../components/sections/germination/carousel";
 import FeaturedStrainThumbnails from "../components/sections/shop/featuredStrainThumbnails";
 
 class Index extends Component {
-    componentWillMount() {
-        this.props.showMoreFeatures({
-            max: this.props.misc.featuredStrains.length,
-            count: 1
-        });
-    }
+    // componentDidMount() {
+    //     this.props.showMoreFeatures({
+    //         max: this.props.misc.featuredStrains.length,
+    //         count: 1
+    //     });
+    // }
     render() {
         return (
             <Layout>

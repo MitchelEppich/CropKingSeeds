@@ -8,12 +8,15 @@ const index = props => {
     let route = Router.asPath.slice(0);
     let isSmallMediumOrLargeDevice = ["sm", "md", "lg"].includes(props.misc.mediaSize);
     let count = props.initialCount;
-    if (props.misc.featureCount > count) {
-        count = props.misc.featureCount;
-    }
     let specificMax = props.specificMax,
         max = products.length;
-    if (props.misc.mediaSize == "xl") {
+    if (isSmallMediumOrLargeDevice) {
+        count = 2;
+    }
+    if (props.misc.featureCount > count && props.page == "shop") {
+        count = props.misc.featureCount;
+    }
+    if (props.misc.mediaSize == "xl" && props.page != "shop") {
         count = 3;
     }
 

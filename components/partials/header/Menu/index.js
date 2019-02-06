@@ -190,17 +190,17 @@ const menu = props => {
                                 <ul className="flex justify-around text-white mt-1 uppercase w-full">
                                     <li className="w-300 " />
                                     <Link href="/">
-                                        <li className="font-extrabold text-xl pt-3 p-2 cursor-pointer slowish hover:text-yellow-dark">
+                                        <li className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark">
                                             Home
                                         </li>
                                     </Link>
                                     <Link href="/shop">
-                                        <li className="font-extrabold text-xl pt-3 p-2 cursor-pointer slowish hover:text-yellow-dark">
+                                        <li className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark">
                                             Shop
                                         </li>
                                     </Link>
                                     <Link href="/contact">
-                                        <li className="font-extrabold text-xl pt-3 p-2 cursor-pointer slowish hover:text-yellow-dark">
+                                        <li className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark">
                                             Contact
                                         </li>
                                     </Link>

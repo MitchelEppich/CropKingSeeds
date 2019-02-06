@@ -12,12 +12,12 @@ import ProductGrid from "../components/sections/shop/productGrid";
 import FeaturedStrainThumbnails from "../components/sections/shop/featuredStrainThumbnails";
 
 class Index extends Component {
-    componentWillMount() {
-        this.props.showMoreFeatures({
-            max: this.props.misc.featuredStrains.length,
-            count: 1
-        });
-    }
+    // componentDidMount() {
+    //     this.props.showMoreFeatures({
+    //         max: this.props.misc.featuredStrains.length,
+    //         count: 1
+    //     });
+    // }
     printStrains() {
         for (let i = 0; i < this.props.misc.strains.length; i++) {
             console.log(
