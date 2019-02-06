@@ -1390,10 +1390,15 @@ img {
 @media screen and (max-width: 767px) {
     ////////////
     // UNIVERSAL
+    .cks-logo-header {
+        top: -0.5rem;
+        left: 3.3px;
+        position: absolute;
+    }
     .ray_box {
         /*HEADER ANIMATION */
-        left: calc(12rem + 50px);
-        top: 12px;
+        left: calc(6rem + 50px);
+        top: 15px;
         right: 0;
         position: absolute;
         bottom: 0;

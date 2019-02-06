@@ -176,7 +176,7 @@ class Layout extends Component {
                             <SearchBar {...this.props} />
                         ) : null}
 
-                        <div className="pt-32">
+                        <div className="pt-32 md:pt-48">
                             {" "}
                             <ShareButtons {...this.props} />
                             <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md">

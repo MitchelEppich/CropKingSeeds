@@ -14,13 +14,12 @@ const question = props => {
     } else {
         answer = props.answer.map((value, index) => {
             return (
-                <p key={index} className="my-1">
+                <span key={index} className="my-1">
                     {value}
-                </p>
+                </span>
             );
         });
     }
-    // console.log(typeof props.answer);
     return (
         <div
             onClick={() => props.toggleFAQQuestion(props.index)}
