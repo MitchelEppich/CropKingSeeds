@@ -18,7 +18,7 @@ const Post = props => {
                 </Link>
             </div>
             <div className="sm:w-full md:w-full px-1 sm:h-150 md:h-250 w-1/2 xl:mt-4 lg:mt-4 overflow-hidden relative">
-                <div className="pt-2 text-center absolute w-full overflow-hidden">
+                <div className="pt-2 text-right absolute w-full overflow-hidden">
                     <iframe
                         className="shadow-lg rounded overflow-hidden"
                         width="550"

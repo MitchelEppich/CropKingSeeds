@@ -21,6 +21,7 @@ const BannerCarousel = props => {
             {props.misc.activeBannerSlide == 2 ? (
                 <Link href="http://localhost:3000/product/gelato">
                     <button
+                        name="buyGelato"
                         onClick={e => e.stopPropagation()}
                         className="bannerBuyNow sm:block md:hidden lg:hidden xl:hidden xxl:hidden">
                         Buy Now

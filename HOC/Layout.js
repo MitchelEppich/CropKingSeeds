@@ -158,6 +158,7 @@ class Layout extends Component {
         return (
             <div id="top" className="w-full bg-off-white">
                 <Head>
+                    <title>Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds</title>
                     <script src="../static/scripts/functions.js" />
                 </Head>
                 {this.props.misc.ageVerification == null || !this.props.misc.ageVerification.verified ? (

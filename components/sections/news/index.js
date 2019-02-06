@@ -93,7 +93,7 @@ const news = props => {
 
     return (
         <div className="lg:mt-12 w-full h-full">
-            <div className="p-4 mt-6 w-full">
+            <div className="py-4 mt-6 w-full">
                 <h2 className="text-3/5xl font-bold text-center w-full p-2 bg-red-darker text-white">Featured News</h2>
             </div>
             <div className="inline-flex w-full px-12 py-4 sm:flex-col md:flex-col lg:flex-col">

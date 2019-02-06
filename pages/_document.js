@@ -5,55 +5,50 @@ import { library } from "@fortawesome/fontawesome-svg-core"; // FONTAWESOME
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 
-library.add();
-
 export default class MyDocument extends Document {
     static async getInitialProps(ctx) {
         const initialProps = await Document.getInitialProps(ctx);
         return { ...initialProps };
     }
-    componentDidUpdate() {}
 
     render() {
         return (
             <html lang="en">
                 <Head>
-                    {/* <meta name="theme-color" content="#79B83E" /> */}
-                    <title>Crop King Seeds</title>
+                    <meta name="theme-color" content="#a90000" />
+                    <title>Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds</title>
                     <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
                     <link
                         href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,500,600,700,800,900"
                         rel="stylesheet"
                     />
-                    {/* <meta httpEquiv="ScreenOrientation" content="autoRotate:disabled" />
-          <meta name="robots" content="index, follow" />
-          <meta
-            name="keywords"
-            content=""
-          />
-          <meta
-            name="description"
-            content=""
-          />
-          <meta
-            name="copyright"
-            content=""
-          /> */}
+                    <meta httpEquiv="ScreenOrientation" content="autoRotate:disabled" />
+                    <meta name="robots" content="index, follow" />
+                    <meta
+                        name="description"
+                        content="Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
+                    />
+                    <meta
+                        name="keywords"
+                        content="crop king seeds, feminized seeds, autoflowering seeds, medical marijuana, marijuana seeds, marijuana seeds canada, cannabis, cannabis seeds"
+                    />
+                    <meta name="copyright" content="" />
                     {/* <link rel="manifest" href="/_next/static/manifest.json" /> */}
                     <link rel="stylesheet" href="/_next/static/style.css" />
                     {/* <link rel="icon" href="static/favicon.ico" /> */}
 
-                    {/* <JSONLD>
-            <Generic
-              type="webApplication"
-              jsonldtype="WebApplication"
-              schema={{
-                applicationCategory: "Multimedia",
-                browserRequirements: "requires HTML5 support"
-              }}
-            />
-          </JSONLD> */}
+                    <JSONLD>
+                        <Generic
+                            name="Crop King Seeds"
+                            type="webApplication"
+                            jsonldtype="WebApplication"
+                            schema={{
+                                applicationCategory: "Multimedia",
+                                browserRequirements: "requires HTML5 support"
+                            }}
+                        />
+                    </JSONLD>
                 </Head>
                 <body>
                     <Main />

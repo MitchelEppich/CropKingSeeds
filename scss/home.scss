@@ -620,8 +620,9 @@ img {
     background-size: 500px 500px;
     background-repeat: no-repeat;
     overflow: hidden;
-    border: 5px solid #fff;
     cursor: pointer;
+    border-top: 5px solid white;
+    border-bottom: 5px solid white;
 }
 .headingClass {
     transform: translateX(90px);
@@ -902,9 +903,17 @@ img {
         background-size: 500px 500px;
         background-repeat: no-repeat;
         overflow: hidden;
-        border: 5px solid #fff;
         cursor: pointer;
+        &:nth-of-type(2) {
+            border-right: 5px solid white !important;
+            border-left: 5px solid white !important;
+        }
+        &:nth-of-type(3) {
+            border-left: 5px solid white !important;
+            border-right: 5px solid white !important;
+        }
     }
+
     .headingClass {
         transform: translateX(17px);
         position: absolute;
@@ -1119,9 +1128,17 @@ img {
         background-size: 500px 500px;
         background-repeat: no-repeat;
         overflow: hidden;
-        border: 5px solid #fff;
         cursor: pointer;
+        &:nth-of-type(2) {
+            border-right: 5px solid white !important;
+            border-left: 5px solid white !important;
+        }
+        &:nth-of-type(3) {
+            border-left: 5px solid white !important;
+            border-right: 5px solid white !important;
+        }
     }
+
     .headingClass {
         transform: translateX(17px);
         position: absolute;
@@ -1248,8 +1265,15 @@ img {
         background-size: 500px 500px;
         background-repeat: no-repeat;
         overflow: hidden;
-        border: 5px solid #fff;
         cursor: pointer;
+        &:nth-of-type(2) {
+            border-right: 5px solid white !important;
+            border-left: 5px solid white !important;
+        }
+        &:nth-of-type(3) {
+            border-left: 5px solid white !important;
+            border-right: 5px solid white !important;
+        }
     }
     .headingClass {
         transform: translateX(10px);
@@ -1542,7 +1566,6 @@ img {
         background-size: cover;
         background-repeat: no-repeat;
         overflow: hidden;
-        border: 5px solid #fff;
         cursor: pointer;
     }
     .headingClass {
@@ -1834,7 +1857,6 @@ img {
         background-size: cover;
         background-repeat: no-repeat;
         overflow: hidden;
-        border: 5px solid #fff;
         cursor: pointer;
     }
     .headingClass {
@@ -1862,7 +1884,6 @@ img {
         background-size: cover;
         background-repeat: no-repeat;
         overflow: hidden;
-        border: 5px solid #fff;
         cursor: pointer;
     }
     .headingClass {
@@ -1919,7 +1940,6 @@ img {
         background-size: cover;
         background-repeat: no-repeat;
         overflow: hidden;
-        border: 5px solid #fff;
         cursor: pointer;
     }
     .headingClass {
@@ -1947,7 +1967,6 @@ img {
         background-size: cover;
         background-repeat: no-repeat;
         overflow: hidden;
-        border: 5px solid #fff;
         cursor: pointer;
     }
     .headingClass {
