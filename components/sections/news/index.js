@@ -4,7 +4,7 @@ import moment from "moment";
 
 const news = props => {
     let styleImg = {
-        height: "460px",
+        // height: "460px",
         width: "100%",
         overflow: "hidden",
         objectFit: "cover",
@@ -96,12 +96,12 @@ const news = props => {
             <div className="py-4 mt-6 w-full">
                 <h2 className="text-3/5xl font-bold text-center w-full p-2 bg-red-darker text-white">Featured News</h2>
             </div>
-            <div className="inline-flex w-full px-12 py-4 sm:flex-col md:flex-col lg:flex-col">
+            <div className="inline-flex w-full px-12 sm:px-4 md:px-4 py-4 sm:flex-col md:flex-col lg:flex-col">
                 <div className="w-1/2 sm:w-full md:w-full lg:w-full p-2">
                     <img
                         style={styleImg}
                         src={`${image}`}
-                        className="w-full about-img md:w-4/5 sm:h-200 md:h-64 h-450 xl:h-250 lg:h-450 shadow-lg"
+                        className="w-full about-img md:w-4/5 sm:h-200 md:h-64 h-450 xl:h-full lg:h-300 shadow-lg"
                     />
                 </div>
                 <div className="w-1/2 sm:w-full md:w-full lg:w-full p-2">{showEvents}</div>

@@ -3,7 +3,7 @@ import { faFacebook, faInstagram, faTwitter, faRedditSquare, faGooglePlus } from
 
 const ShareButtons = props => {
     return (
-        <div className="fixed pin-l mt-32 z-999 md:hidden sm:hidden ">
+        <div className="fixed pin-l mt-20 z-999 md:hidden sm:hidden ">
             <div className="w-16 shadow p-2 text-white rounded-lg bg-red-darker text-right -ml-4">
                 <a
                     name="instagramCropKingSeeds"
