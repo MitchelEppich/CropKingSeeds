@@ -19,7 +19,6 @@ function preventDefault(e) {
 
 let showRating;
 let rating;
-let totalReviews;
 const FeaturedStrainThumbnail = props => {
   let currency = props.checkout.viewCurrency;
   let _coupon = props.checkout.orderDetails.coupon;
@@ -45,8 +44,6 @@ const FeaturedStrainThumbnail = props => {
 
   let showRating = () => {
     rating = props.product.rating || 0;
-    totalReviews =
-      props.product.review == null ? 0 : props.product.review.length;
     let arr = [];
     for (let i = 0; i < 5; i++) {
       arr.push(
@@ -69,20 +66,7 @@ const FeaturedStrainThumbnail = props => {
   };
 
   return (
-    <div
-      className="w-full h-full cursor-pointer"
-      onClick={e => {
-        props.setCurrentProduct({ product: props.product });
-        if (Router.route != "/product")
-          Router.push(
-            "/product/" +
-              props.product.name
-                .toLowerCase()
-                .split(" ")
-                .join("-")
-          );
-      }}
-    >
+    <div className="w-full h-full cursor-pointer">
       <div style={{ zIndex: "1000" }} className="w-full">
         <h3
           onClick={() => {
@@ -103,21 +87,6 @@ const FeaturedStrainThumbnail = props => {
           backgroundPosition: "center"
         }}
         className={`cursor-pointer mt-8 ${featuredStrainsPackage}`}
-        onClick={() => {
-          if (props.isSmallMediumOrLargeDevice) {
-            props.setHoverId(props.product._id, true);
-            let _index = 0;
-            while (props.product.price[_index] == -1) {
-              _index++;
-            }
-            props.quickAddToCartQty(_index);
-            props.modifyPotentialQuantity({
-              potentialQuantity: props.cart.potentialQuantity,
-              action: "SET",
-              quantity: 1
-            });
-          }
-        }}
       />
 
       <div

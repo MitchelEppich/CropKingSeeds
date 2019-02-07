@@ -25,58 +25,52 @@ const index = props => {
 
   products = products.map((product, index) => {
     return (
-      // <Link href="/product" as={"/product/" + product.name.toLowerCase().replace(/ /g, "-")}>
-      <div
+      <Link
         key={index}
-        onMouseEnter={() => {
-          if (isSmallMediumOrLargeDevice) {
-            return null;
-          }
-          props.setHoverId(product._id, true);
-          let _index = 0;
-          while (product.price[_index] == -1) {
-            _index++;
-          }
-          props.quickAddToCartQty(_index);
-          props.modifyPotentialQuantity({
-            potentialQuantity: props.cart.potentialQuantity,
-            action: "SET",
-            quantity: 1
-          });
-        }}
-        onMouseLeave={() => {
-          if (isSmallMediumOrLargeDevice) {
-            return null;
-          }
-          props.setHoverId(product._id, false);
-        }}
-        onClick={e => {
-          props.setCurrentProduct({ product: product });
-          // if (!route.includes("product")) {
-          Router.push(
-            "/product/" +
-              product.name
-                .toLowerCase()
-                .split(" ")
-                .join("-")
-          );
-          // }
-        }}
-        className={
-          hoverId == product._id
-            ? " relative bg-white mx-4 my-2 w-64 h-350 rounded-lg overflow-hidden shadow-md slowishish"
-            : " relative bg-white mx-4 my-2 w-64 h-350 rounded-lg overflow-hidden shadow-md slowishish"
-        }
+        href="/product"
+        as={"/product/" + product.name.toLowerCase().replace(/ /g, "-")}
       >
-        <FeaturedStrainThumbnail
-          isSmallMediumOrLargeDevice={isSmallMediumOrLargeDevice}
-          hoverId={hoverId}
-          index={index}
-          product={product}
-          {...props}
-        />
-      </div>
-      // </Link>
+        <div
+          onMouseEnter={() => {
+            if (isSmallMediumOrLargeDevice) {
+              return null;
+            }
+            props.setHoverId(product._id, true);
+            // let _index = 0;
+            // while (product.price[_index] == -1) {
+            //   _index++;
+            // }
+            // props.quickAddToCartQty(_index);
+            // props.modifyPotentialQuantity({
+            //   potentialQuantity: props.cart.potentialQuantity,
+            //   action: "SET",
+            //   quantity: 1
+            // });
+          }}
+          onMouseLeave={() => {
+            if (isSmallMediumOrLargeDevice) {
+              return null;
+            }
+            props.setHoverId(product._id, false);
+          }}
+          onClick={e => {
+            props.setCurrentProduct({ product: product });
+          }}
+          className={
+            hoverId == product._id
+              ? " relative bg-white mx-4 my-2 w-64 h-350 rounded-lg overflow-hidden shadow-md slowishish"
+              : " relative bg-white mx-4 my-2 w-64 h-350 rounded-lg overflow-hidden shadow-md slowishish"
+          }
+        >
+          <FeaturedStrainThumbnail
+            isSmallMediumOrLargeDevice={isSmallMediumOrLargeDevice}
+            hoverId={hoverId}
+            index={index}
+            product={product}
+            {...props}
+          />
+        </div>
+      </Link>
     );
   });
   return (

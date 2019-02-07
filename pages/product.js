@@ -30,41 +30,11 @@ let lowerImageCar;
 class Index extends Component {
   componentDidMount() {
     lowerImageCar = ["sm", "md", "lg"].includes(this.props.misc.mediaSize);
-
-    let product = this.props.viewProduct.currentProduct;
-    if (product == null || (product != null && product.reviews != null)) return;
-    let strains = this.props.misc.strains;
-    if (strains == null) return;
-    this.props
-      .getStrain({
-        sotiId: product.sotiId,
-        strains
-      })
-      .then(res => {
-        this.props.setCurrentProduct({ product: res });
-      });
   }
+
   componentDidUpdate(prevProps) {
     if (this.props.misc.mediaSize != prevProps.misc.mediaSize) {
       lowerImageCar = ["sm", "md", "lg"].includes(this.props.misc.mediaSize);
-    }
-
-    let product = this.props.viewProduct.currentProduct;
-    if (
-      JSON.stringify(product) !=
-      JSON.stringify(prevProps.viewProduct.currentProduct)
-    ) {
-      let strains = this.props.misc.strains;
-      if (product != null && product.reviews == null) {
-        this.props
-          .getStrain({
-            sotiId: product.sotiId,
-            strains
-          })
-          .then(res => {
-            this.props.setCurrentProduct({ product: res });
-          });
-      }
     }
   }
 
