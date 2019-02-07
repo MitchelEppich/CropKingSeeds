@@ -26,7 +26,7 @@ const StrainSchema = Schema({
   sotiId: String,
   rating: Number,
   relationData: String,
-  reviews: [String],
+  reviews: { type: [String], default: [] },
   ratingQuantity: { type: [Number], default: [0, 0, 0, 0, 0] },
   featured: Boolean
 });
