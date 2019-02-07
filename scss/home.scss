@@ -620,8 +620,9 @@ img {
     background-size: 500px 500px;
     background-repeat: no-repeat;
     overflow: hidden;
-    border: 5px solid #fff;
     cursor: pointer;
+    border-top: 5px solid white;
+    border-bottom: 5px solid white;
 }
 .headingClass {
     transform: translateX(90px);
@@ -902,9 +903,17 @@ img {
         background-size: 500px 500px;
         background-repeat: no-repeat;
         overflow: hidden;
-        border: 5px solid #fff;
         cursor: pointer;
+        &:nth-of-type(2) {
+            border-right: 5px solid white !important;
+            border-left: 5px solid white !important;
+        }
+        &:nth-of-type(3) {
+            border-left: 5px solid white !important;
+            border-right: 5px solid white !important;
+        }
     }
+
     .headingClass {
         transform: translateX(17px);
         position: absolute;
@@ -958,7 +967,7 @@ img {
     ///////////////////
     // VIEWPRODUCT PAGE
     .imgCarousel {
-        height: 420px !important;
+        height: 390px !important;
         width: auto !important;
     }
 
@@ -967,6 +976,13 @@ img {
     }
     // END VIEWPRODUCT PAGE
     ///////////////////////
+
+    .packagePinBig {
+        height: 6rem;
+        position: absolute;
+        right: -40px;
+        top: 210px;
+    }
 }
 
 // XL
@@ -1119,9 +1135,17 @@ img {
         background-size: 500px 500px;
         background-repeat: no-repeat;
         overflow: hidden;
-        border: 5px solid #fff;
         cursor: pointer;
+        &:nth-of-type(2) {
+            border-right: 5px solid white !important;
+            border-left: 5px solid white !important;
+        }
+        &:nth-of-type(3) {
+            border-left: 5px solid white !important;
+            border-right: 5px solid white !important;
+        }
     }
+
     .headingClass {
         transform: translateX(17px);
         position: absolute;
@@ -1166,6 +1190,12 @@ img {
             right: 1.5rem;
             position: absolute;
         }
+    }
+    .packagePinBig {
+        height: 6rem;
+        position: absolute;
+        right: -35px;
+        top: 210px;
     }
     // END VIEWPRODUCT PAGE
     ///////////////////////
@@ -1248,8 +1278,15 @@ img {
         background-size: 500px 500px;
         background-repeat: no-repeat;
         overflow: hidden;
-        border: 5px solid #fff;
         cursor: pointer;
+        &:nth-of-type(2) {
+            border-right: 5px solid white !important;
+            border-left: 5px solid white !important;
+        }
+        &:nth-of-type(3) {
+            border-left: 5px solid white !important;
+            border-right: 5px solid white !important;
+        }
     }
     .headingClass {
         transform: translateX(10px);
@@ -1382,6 +1419,12 @@ img {
 
     ///////////////////
     // VIEWPRODUCT PAGE
+    .packagePinBig {
+        height: 6rem;
+        position: absolute;
+        right: -40px;
+        top: 210px;
+    }
     // END VIEWPRODUCT PAGE
     ///////////////////////
 }
@@ -1390,10 +1433,15 @@ img {
 @media screen and (max-width: 767px) {
     ////////////
     // UNIVERSAL
+    .cks-logo-header {
+        top: -0.5rem;
+        left: 3.3px;
+        position: absolute;
+    }
     .ray_box {
         /*HEADER ANIMATION */
-        left: calc(12rem + 50px);
-        top: 12px;
+        left: calc(6rem + 50px);
+        top: 15px;
         right: 0;
         position: absolute;
         bottom: 0;
@@ -1537,7 +1585,6 @@ img {
         background-size: cover;
         background-repeat: no-repeat;
         overflow: hidden;
-        border: 5px solid #fff;
         cursor: pointer;
     }
     .headingClass {
@@ -1674,6 +1721,13 @@ img {
     .imgCarousel {
         height: 325px !important;
         width: auto !important;
+    }
+
+    .packagePinBig {
+        height: 5rem;
+        position: absolute;
+        right: -30px;
+        top: 180px;
     }
     // END VIEWPRODUCT PAGE
     ///////////////////////
@@ -1829,7 +1883,6 @@ img {
         background-size: cover;
         background-repeat: no-repeat;
         overflow: hidden;
-        border: 5px solid #fff;
         cursor: pointer;
     }
     .headingClass {
@@ -1857,7 +1910,6 @@ img {
         background-size: cover;
         background-repeat: no-repeat;
         overflow: hidden;
-        border: 5px solid #fff;
         cursor: pointer;
     }
     .headingClass {
@@ -1914,7 +1966,6 @@ img {
         background-size: cover;
         background-repeat: no-repeat;
         overflow: hidden;
-        border: 5px solid #fff;
         cursor: pointer;
     }
     .headingClass {
@@ -1942,7 +1993,6 @@ img {
         background-size: cover;
         background-repeat: no-repeat;
         overflow: hidden;
-        border: 5px solid #fff;
         cursor: pointer;
     }
     .headingClass {
@@ -2081,6 +2131,13 @@ img {
     .imgCarousel {
         height: 240px !important;
         width: auto !important;
+    }
+
+    .packagePinBig {
+        height: 4rem;
+        position: absolute;
+        right: -20px;
+        top: 127px;
     }
     // END VIEWPRODUCT PAGE
     ///////////////////////

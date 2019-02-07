@@ -73,26 +73,6 @@ class Index extends Component {
     }
   }
 
-  open = (verb, url, data, target) => {
-    let form = document.createElement("form");
-    form.action = url;
-    form.method = verb;
-    form.target = target || "_self";
-    if (data) {
-      for (let key in data) {
-        let input = document.createElement("textarea");
-        input.name = key;
-        input.value =
-          typeof data[key] === "object" ? JSON.stringify(data[key]) : data[key];
-        form.appendChild(input);
-      }
-    }
-    form.style.display = "none";
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
-  };
-
   payBitcoin = (orderDetails, orderId) => {
     let _billing = { ...orderDetails.billing };
     let _payment = { ...orderDetails.payment };
@@ -143,12 +123,6 @@ class Index extends Component {
 
     let itemsCart = Object.keys(this.props.cart.items);
 
-    let error =
-      ((_error[100] || _error[104]) && _stepsCheckout == 0) ||
-      (_error[103] && _stepsCheckout == 0) ||
-      (_error[102] && _stepsCheckout == 1) ||
-      (Object.keys(_error).length != 0 && _stepsCheckout == 3);
-
     return (
       <Layout>
         <div className="text-center w-full pt-12 bg-white relative">
@@ -157,7 +131,7 @@ class Index extends Component {
         <form
           onSubmit={e => {
             e.preventDefault();
-            console.log("hello");
+
             // this.props.toggleStepsCheckout(1);
             if (
               _stepsCheckout == 4 &&
@@ -306,6 +280,7 @@ class Index extends Component {
               >
                 {_stepsCheckout != 4 ? (
                   <button
+                    name="nextCheckout"
                     className="flex items-center font-extrabold text-red-light hover:text-red-light text-2xl uppercase"
                     type="submit"
                   >

@@ -58,9 +58,9 @@ const actionTypes = {
   SET_SEARCH: "SET_SEARCH",
   ADD_TALK_TO_LISTENER: "ADD_TALK_TO_LISTENER",
   SET_CURRENT_EVENT: "SET_CURRENT_EVENT",
-
   GET_ALL_NEWS: "GET_ALL_NEWS",
   GET_FEATURED_NEWS: "GET_FEATURED_NEWS",
+  SHOW_MORE_FEATURES: "SHOW_MORE_FEATURES",
   SET_STRAIN: "SET_STRAIN"
 };
 
@@ -328,6 +328,14 @@ const actions = {
           });
         })
         .catch(error => console.log(error));
+    };
+  },
+  showMoreFeatures: input => {
+    let max = input.max;
+    let count = Math.max(0, Math.min(input.count, max)) % max || 1;
+    return {
+      type: actionTypes.SHOW_MORE_FEATURES,
+      count: count
     };
   }
 };

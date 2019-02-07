@@ -148,7 +148,6 @@ class Layout extends Component {
                     this.props.toggleShowFilters(true);
                     this.props.setMediaSize({ mediaSize: mediaSize });
                 }
-
                 return mediaSize;
             }
         }
@@ -158,6 +157,7 @@ class Layout extends Component {
         return (
             <div id="top" className="w-full bg-off-white">
                 <Head>
+                    <title>Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds</title>
                     <script src="../static/scripts/functions.js" />
                 </Head>
                 {this.props.misc.ageVerification == null || !this.props.misc.ageVerification.verified ? (
@@ -176,9 +176,17 @@ class Layout extends Component {
                             <SearchBar {...this.props} />
                         ) : null}
 
-                        <div className="pt-32">
+                        <div className="pt-32 md:pt-48">
                             {" "}
-                            <ShareButtons {...this.props} />
+                            <div className="relative">
+                                <ShareButtons {...this.props} />
+                            </div>
+                            <div
+                                className="pulse sm:hidden md:hidden lg:hidden fixed z-999 w-20 h-16 bg-red-darker mb-16 pin-b pin-l text-white text-center text-lg pt-3 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item shadow-md"
+                                onClick={() => Tawk_API.toggle()}>
+                                <FontAwesomeIcon icon={faComments} className="ml-2 fa-2x cursor-pointer" />
+                                {/* <h3>CHAT</h3> */}
+                            </div>
                             <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md">
                                 {this.props.misc.strains != null ? (
                                     this.props.children
@@ -189,12 +197,7 @@ class Layout extends Component {
                                 )}
                             </div>
                         </div>
-                        <div
-                            className="pulse sm:hidden md:hidden lg:hidden fixed z-999 w-20 mb-48 h-16 bg-red-darker pin-b pin-l text-white text-center text-lg pt-3 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item shadow-md"
-                            onClick={() => Tawk_API.toggle()}>
-                            <FontAwesomeIcon icon={faComments} className="ml-2 fa-2x cursor-pointer" />
-                            {/* <h3>CHAT</h3> */}
-                        </div>
+
                         <AnchorLink className="items-center flex" href="#top">
                             <div
                                 id="jumpToTop"

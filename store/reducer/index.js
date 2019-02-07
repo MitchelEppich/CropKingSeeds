@@ -77,7 +77,8 @@ const initialState = {
   currentEventObj: 0,
   currentEventUpdatedAt: new Date(),
   featuredNews: [],
-  news: {}
+  news: {},
+  featureCount: 1
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -189,6 +190,8 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, { searchValue: action.value });
     case actionTypes.ADD_TALK_TO_LISTENER:
       return updateObject(state, { addTalkToListener: action.bool });
+    case actionTypes.SHOW_MORE_FEATURES:
+      return updateObject(state, { featureCount: action.count });
     default:
       return state;
   }

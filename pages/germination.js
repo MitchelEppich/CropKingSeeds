@@ -11,6 +11,12 @@ import Carousel from "../components/sections/germination/carousel";
 import FeaturedStrainThumbnails from "../components/sections/shop/featuredStrainThumbnails";
 
 class Index extends Component {
+    // componentDidMount() {
+    //     this.props.showMoreFeatures({
+    //         max: this.props.misc.featuredStrains.length,
+    //         count: 1
+    //     });
+    // }
     render() {
         return (
             <Layout>
@@ -20,14 +26,19 @@ class Index extends Component {
                             Germination
                         </h1>
                     </div>
-                    <div className="">
+                    <div className="w-full">
                         <Carousel {...this.props} />
                         <div className="w-full px-8 pt-8 h-500 my-12 bg-grey-lightest">
                             <h2 className="w-full text-center text-3xl font-black uppercase">Our Guarantee</h2>
                         </div>
+                        <h3 className="w-full font-black text-2xl h-12 my-2">Featured Products</h3>
                         <div className="w-full mt-8">
-                            <h3 className="w-full font-black text-2xl h-12 my-2">Featured Products</h3>
-                            <FeaturedStrainThumbnails count={4} {...this.props} />
+                            <FeaturedStrainThumbnails
+                                page={"germination"}
+                                specificMax={4}
+                                initialCount={4}
+                                {...this.props}
+                            />
                         </div>
                     </div>
                 </div>
@@ -49,7 +60,8 @@ const mapDispatchToProps = dispatch => {
         clearCart: () => dispatch(actions.clearCart()),
         setSort: input => dispatch(actions.setSort(input)),
         expandProduct: id => dispatch(actions.expandProduct(id)),
-        setCurrentProduct: input => dispatch(actions.setCurrentProduct(input))
+        setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
+        showMoreFeatures: input => dispatch(actions.showMoreFeatures(input))
     };
 };
 

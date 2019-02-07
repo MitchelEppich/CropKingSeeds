@@ -157,7 +157,7 @@ const productThumbnail = props => {
           enableScroll();
           props.setCurrentProduct({ product: props.product });
         }}
-        className={hover ? "overflow-hidden w-full bg-white" : "relative"}
+        className={hover ? "overflow-hidden w-full bg-white pt-4" : "relative"}
       >
         <Link
           href="/product"

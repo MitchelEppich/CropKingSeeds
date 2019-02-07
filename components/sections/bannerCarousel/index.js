@@ -16,7 +16,7 @@ const BannerCarousel = props => {
     });
 
     return (
-        <div className="xxl:h-600 xl:h-400 lg:h-400 md:h-250 sm:mt-6 sm:h-250  w-full flex relative overflow-hidden">
+        <div className="xxl:h-600 xl:h-400 lg:h-300 md:h-250 sm:mt-6 sm:h-250  w-full flex relative overflow-hidden">
             {slides}
             {props.misc.activeBannerSlide == 2 ? (
                 <Link href="http://localhost:3000/product/gelato">

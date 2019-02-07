@@ -1,23 +1,20 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCannabis, faSearchPlus } from "@fortawesome/free-solid-svg-icons";
-import ReactImageMagnify from "react-image-magnify";
+import Lightbox from "react-images";
 
 import gen from "random-seed";
 
 const imageCarousel = props => {
   let images = props.viewProduct.currentProduct.images;
-
   let rand = gen.create(props.viewProduct.currentProduct.name);
-
   let imageThumbs = images.map((image, index) => {
     return (
       <div
         key={index}
         onClick={() => props.setCurrentImage(index)}
-        className="w-16 shadow text-center cursor-pointer my-1"
+        className="w-16 shadow text-center cursor-pointer sm:mx-2 md:mx-2 my-1"
       >
-        {/* <img className="h-20 my-2 mx-auto" src={image} />*/}
         <div
           style={{
             backgroundImage: "url(" + image + ")",
@@ -43,77 +40,78 @@ const imageCarousel = props => {
     );
   });
 
-  let imageZooms = images.map((image, index) => {
-    return (
-      <div className="w-full h-full mx-auto flex justify-center">
-        <div
-          className="w-500 h-full mx-auto flex justify-center"
-          id="zoomedImg"
-        >
-          <ReactImageMagnify
-            {...{
-              smallImage: {
-                src: image,
-                width: 260,
-                height: 420
-              },
-              className: "imgCarousel",
-              imageClassName: "imgCarousel",
-              largeImage: {
-                src: image,
-                width: 800,
-                height: 1400
-              },
-              lensStyle: {
-                backgroundColor: "rgba(226, 226, 226, 0.09)"
-              },
-              enlargedImageContainerStyle: {
-                backgroundColor: "#ffffff",
-                marginLeft: "26px"
-              },
-              enlargedImageContainerDimensions: {
-                width: "140%",
-                height: "100%"
-              },
-
-              isHintEnabled: true
-            }}
-          />
-          {image.includes("package") && window.innerWidth > 390 ? (
-            <img
-              className="package-pins--productZoom"
-              src={`../static/img/strains/pins/${rand
-                .intBetween(1, 7)
-                .toString()
-                .padStart(2, "0")}.png`}
-            />
-          ) : null}
-        </div>
-      </div>
-    );
-  });
-
-  let currentImage = imageZooms[props.viewProduct.currentImage];
+  let indexImg = props.viewProduct.currentImage;
+  let currentImages = images[indexImg];
 
   return (
     <div className="w-full relative">
-      <div className="w-full inline-flex justify-center flex">
-        <div className="flex flex-wrap content-start w-16">{imageThumbs}</div>
+      <div className="w-full inline-flex justify-center flex md:flex-col-reverse sm:flex-col-reverse">
+        <div className="flex flex-wrap content-start w-16 sm:w-full md:w-full sm:inline-flex md:inline-flex sm:justify-center md:justify-center lg:ml-20 md:pt-6 sm:pt-6">
+          {imageThumbs}
+        </div>
         <div
           style={{
-            textAlign: "center",
-            marginLeft: "30px"
+            textAlign: "center"
           }}
-          className="w-3/4 mx-4 z-50 bg-white flex my-auto lg:my-0 md:my-0 sm:my-0"
+          className="w-3/4 mx-4 z-50 bg-white flex my-auto justify-center lg:justify-center lg:my-0 md:my-0 sm:my-0 sm:w-full md:w-full sm:mx-0 md:mx-0 md:justify-center sm:justify-center"
         >
           {/* <div className="text-xs bg-almost-white shadow flex pin-b pin-r rounded absolute text-black p-1 mr-4 mb-6 opacity-75 md:hidden sm:hidden">
             <FontAwesomeIcon icon={faSearchPlus} className="mr-1" />
             Zoom
           </div> */}
-          {currentImage}
+          <div className="relative">
+            <img
+              src={currentImages}
+              onClick={() => {
+                props.toggleStateLightbox();
+              }}
+              className="cursor-pointer imgCarousel relative"
+            />
+            {currentImages.includes("package") ? (
+              <img
+                className="packagePinBig absolute"
+                src={`../static/img/strains/pins/${rand
+                  .intBetween(1, 7)
+                  .toString()
+                  .padStart(2, "0")}.png`}
+              />
+            ) : null}
+          </div>
         </div>
         <div className="bg-white md:hidden sm:hidden">
-          <div id="portal" className="bg-white rounded-lg shadow-lg" />
+          <div className="bg-white rounded-lg shadow-lg">
+            <Lightbox
+              showImageCount={false}
+              backdropClosesModal={true}
+              images={[
+                {
+                  src: images[indexImg]
+                },
+                {
+                  src: images[indexImg]
+                }
+              ]}
+              srcSet={`${images[0]} ", " ${images[1]}`}
+              isOpen={props.viewProduct.isOpenLightbox}
+              onClickPrev={() => {
+                if (indexImg > 0) {
+                  props.setCurrentImage(indexImg - 1);
+                } else {
+                  props.setCurrentImage(0);
+                }
+              }}
+              onClickNext={() => {
+                if (indexImg < 1) {
+                  props.setCurrentImage(indexImg + 1);
+                } else {
+                  props.setCurrentImage(0);
+                }
+              }}
+              onClose={() => {
+                props.toggleStateLightbox();
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>

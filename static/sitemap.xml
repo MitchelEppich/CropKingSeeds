@@ -2,12 +2,12 @@
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
         <url>
             <loc>https://cropkingeeds/about</loc>
-            <lastmod>2019-01-21</lastmod>
+            <lastmod>2019-01-29</lastmod>
             <changefreq>yearly</changefreq>
             <priority>0.3</priority>
         </url>,<url>
             <loc>https://cropkingeeds/affiliates</loc>
-            <lastmod>2019-01-30</lastmod>
+            <lastmod>2019-01-31</lastmod>
             <changefreq>yearly</changefreq>
             <priority>0.3</priority>
         </url>,<url>
@@ -22,12 +22,12 @@
             <priority>0.3</priority>
         </url>,<url>
             <loc>https://cropkingeeds/faq</loc>
-            <lastmod>2019-02-01</lastmod>
+            <lastmod>2019-01-31</lastmod>
             <changefreq>yearly</changefreq>
             <priority>0.3</priority>
         </url>,<url>
             <loc>https://cropkingeeds/germination</loc>
-            <lastmod>2019-02-01</lastmod>
+            <lastmod>2019-02-06</lastmod>
             <changefreq>yearly</changefreq>
             <priority>0.3</priority>
         </url>,<url>
@@ -51,37 +51,37 @@
             <changefreq>yearly</changefreq>
             <priority>0.3</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/autoflower-mix</loc>
+            <loc>https://cropkingeeds/product/autoflower-mixed</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/afghani-regular</loc>
+            <loc>https://cropkingeeds/product/afghani</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/amnesia-haze-autoflower</loc>
+            <loc>https://cropkingeeds/product/amnesia-haze</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/blueberry-regular</loc>
+            <loc>https://cropkingeeds/product/blueberry</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/blue-cookies-feminized</loc>
+            <loc>https://cropkingeeds/product/blue-cookies</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/black-indica-feminized</loc>
+            <loc>https://cropkingeeds/product/black-indica</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/bubba-kush-feminized</loc>
+            <loc>https://cropkingeeds/product/bubba-kush</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
@@ -101,7 +101,7 @@
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/candy-cane-autoflower</loc>
+            <loc>https://cropkingeeds/product/candy-cane</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
@@ -111,127 +111,127 @@
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/crown-royale-feminized</loc>
+            <loc>https://cropkingeeds/product/crown-royale</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/dark-angel-feminized</loc>
+            <loc>https://cropkingeeds/product/dark-angel</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/durban-poison-feminized</loc>
+            <loc>https://cropkingeeds/product/durban-poison</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/dwarf-low-flyer-autoflower</loc>
+            <loc>https://cropkingeeds/product/low-flyer-autoflower</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/early-miss-autoflower</loc>
+            <loc>https://cropkingeeds/product/early-miss</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/feminized-mix</loc>
+            <loc>https://cropkingeeds/product/feminized-mixed</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/green-crack-feminized</loc>
+            <loc>https://cropkingeeds/product/green-crack</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/hash-plant-feminized</loc>
+            <loc>https://cropkingeeds/product/hash-plant</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/haze-xtreme-regular</loc>
+            <loc>https://cropkingeeds/product/haze-xtreme</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/jack-herer-autoflower</loc>
+            <loc>https://cropkingeeds/product/jack-herer</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/lambs-breath-autoflower</loc>
+            <loc>https://cropkingeeds/product/lambs-breath</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/northern-lights-autoflower</loc>
+            <loc>https://cropkingeeds/product/northern-lights</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/nyc-diesel-autoflower</loc>
+            <loc>https://cropkingeeds/product/nyc-diesel</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/purple-kush-feminized</loc>
+            <loc>https://cropkingeeds/product/purple-kush</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/revolver-autoflower</loc>
+            <loc>https://cropkingeeds/product/revolver</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/sour-diesel-feminized</loc>
+            <loc>https://cropkingeeds/product/sour-diesel</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/sour-girl-autoflower</loc>
+            <loc>https://cropkingeeds/product/sour-girl</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/super-silver-haze-feminized</loc>
+            <loc>https://cropkingeeds/product/super-silver-haze</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/sour-jack-feminized</loc>
+            <loc>https://cropkingeeds/product/sour-jack</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/sativa-star-feminized</loc>
+            <loc>https://cropkingeeds/product/sativa-star</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/train-wreck-autoflower</loc>
+            <loc>https://cropkingeeds/product/train-wreck</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/white-banner-feminized</loc>
+            <loc>https://cropkingeeds/product/white-banner</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/white-cookies-feminized</loc>
+            <loc>https://cropkingeeds/product/white-cookies</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/white-widow-feminized</loc>
+            <loc>https://cropkingeeds/product/white-widow</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
         </url>,<url>
-            <loc>https://cropkingeeds/product/gelato-feminized</loc>
+            <loc>https://cropkingeeds/product/gelato</loc>
             <lastmod>2019-02-06</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.6</priority>
@@ -242,7 +242,7 @@
             <priority>0.3</priority>
         </url>,<url>
             <loc>https://cropkingeeds/_error</loc>
-            <lastmod>2018-12-27</lastmod>
+            <lastmod>2018-12-21</lastmod>
             <changefreq>yearly</changefreq>
             <priority>0.3</priority>
         </url>

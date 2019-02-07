@@ -50,7 +50,7 @@
         "react-apollo": "^2.1.11",
         "react-autosuggest": "^9.4.3",
         "react-dom": "^16.4.2",
-        "react-image-magnify": "^2.7.4",
+        "react-images": "^0.5.19",
         "react-no-ssr": "^1.1.0",
         "react-recaptcha": "^2.3.10",
         "react-redux": "^5.0.7",

@@ -24,8 +24,13 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import Loader from "../components/sections/loader";
 import ImageCarousel from "../components/sections/productPage/imageCarousel";
 import Ratings from "../components/sections/productPage/ratings";
+
+let lowerImageCar;
+
 class Index extends Component {
   componentDidMount() {
+    lowerImageCar = ["sm", "md", "lg"].includes(this.props.misc.mediaSize);
+
     let product = this.props.viewProduct.currentProduct;
     if (product == null || (product != null && product.reviews != null)) return;
     let strains = this.props.misc.strains;
@@ -40,6 +45,10 @@ class Index extends Component {
       });
   }
   componentDidUpdate(prevProps) {
+    if (this.props.misc.mediaSize != prevProps.misc.mediaSize) {
+      lowerImageCar = ["sm", "md", "lg"].includes(this.props.misc.mediaSize);
+    }
+
     let product = this.props.viewProduct.currentProduct;
     if (
       JSON.stringify(product) !=
@@ -68,10 +77,12 @@ class Index extends Component {
           <div className="p-8 lg:px-4 lg:py-8 md:px-4 md:py-8 sm:px-2 sm:py-8">
             <Breadcrumb {...this.props} />
             <div className="flex flex-wrap justify-start pt-2 relative">
-              <div className="w-full xxl:inline-flex xl:inline-flex px-8 xxl:px-20 relative block">
-                <div className="w-1/2 flex flex-wrap justify-center xl:w-1/2 lg:w-full md:w-full sm:w-full">
-                  <ImageCarousel {...this.props} />
-                </div>
+              <div className="w-full xxl:inline-flex xl:inline-flex px-4 xxl:px-20 relative block">
+                {!lowerImageCar ? (
+                  <div className="w-1/2 flex flex-wrap justify-center xl:w-1/2 lg:w-full md:w-full sm:w-full">
+                    <ImageCarousel {...this.props} />
+                  </div>
+                ) : null}
                 <div className="flex flex-wrap content-start w-1/2 pl-4 md:pl-0 sm:pl-0 xl:w-1/2 lg:w-full md:w-full sm:w-full md:mt-6 sm:mt-6 lg:mt-6">
                   <div className="w-full">
                     <h1 className="pl-10 ml-1 font-black lg:pl-12 sm:pl-0 md:pl-0">
@@ -127,10 +138,15 @@ class Index extends Component {
                       </AnchorLink>
                     </div>
                   </div>
-                  <div className="w-full h-350 inline-flex mb-6 xl:block xl:h-300 lg:block lg:h-300 md:block md:h-300 sm:block sm:h-300 relative">
-                    <div className="w-full mt-2 relative xl:w-full lg:w-full md:w-full sm:w-full xl:h-300 lg:h-300 md:h-300 sm:h-300">
-                      <div className="absolute pin-b xl:pin lg:w-full md:w-full sm:w-full">
+                  <div className="w-full h-full inline-flex mb-6 xl:block lg:block  md:block  sm:block relative">
+                    <div className="w-full mt-2 relative xl:w-full lg:w-full md:w-full sm:w-full">
+                      <div className="lg:w-full md:w-full sm:w-full">
                         <Genetics {...this.props} />
+                        {lowerImageCar ? (
+                          <div className="w-1/2 flex flex-wrap justify-center xl:w-1/2 lg:w-full md:w-full sm:w-full pt-8">
+                            <ImageCarousel {...this.props} />
+                          </div>
+                        ) : null}
                         <AddToCart {...this.props} />
                         <Share
                           copyToClipboard={this.copyToClipboard}
@@ -141,7 +157,7 @@ class Index extends Component {
                   </div>
                 </div>
               </div>
-              <div className="xxl:w-full xxl:px-20 mt-4 block w-full px-8 xl:absolute-center">
+              <div className="xxl:w-full xxl:px-20 mt-4 block w-full px-8 sm:px-4 xl:absolute-center">
                 <Description {...this.props} />
                 <Data {...this.props} />
               </div>
@@ -150,8 +166,14 @@ class Index extends Component {
                 <h3 className="w-full p-2 pl-6 font-bold text-3xl my-3 text-grey bg-smoke-grey">
                   Frequently Bought Together
                 </h3>
-                <div className="px-8 w-full mt-2">
-                  <OtherProducts count={3} {...this.props} />
+                <div className="px-8 sm:px-4 w-full mt-2">
+                  {/* <OtherProducts count={3} {...this.props} /> */}
+                  <FeaturedStrainThumbnails
+                    page={"product"}
+                    initialCount={4}
+                    specificMax={4}
+                    {...this.props}
+                  />
                 </div>
               </div>
               {/* <div>
@@ -185,6 +207,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.modifyPotentialQuantity(input)),
     setCurrentImage: index => dispatch(actions.setCurrentImage(index)),
     toggleFullDescription: () => dispatch(actions.toggleFullDescription()),
+    toggleStateLightbox: () => dispatch(actions.toggleStateLightbox()),
     setNewrating: index => dispatch(actions.setNewrating(index)),
     toggleFilter: input => dispatch(actions.toggleFilter(input)),
     updateStrain: input => dispatch(actions.updateStrain(input)),
@@ -193,11 +216,10 @@ const mapDispatchToProps = dispatch => {
     modifyReview: input => dispatch(actions.modifyReview(input)),
     toggleCartAnimation: () => dispatch(actions.toggleCartAnimation()),
     setImageZoom: imz => dispatch(actions.setImageZoom(imz)),
-    setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
     getStrain: input => dispatch(actions.getStrain(input)),
+    setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
     expandProduct: id => dispatch(actions.expandProduct(id)),
-    expandProduct: id => dispatch(actions.expandProduct(id)),
-    setCurrentProduct: input => dispatch(actions.setCurrentProduct(input))
+    showMoreFeatures: input => dispatch(actions.showMoreFeatures(input))
   };
 };
 

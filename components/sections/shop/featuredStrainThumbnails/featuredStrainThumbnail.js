@@ -70,6 +70,7 @@ const FeaturedStrainThumbnail = props => {
 
   return (
     <div
+      className="w-full h-full cursor-pointer"
       onClick={e => {
         props.setCurrentProduct({ product: props.product });
         if (Router.route != "/product")
@@ -82,79 +83,77 @@ const FeaturedStrainThumbnail = props => {
           );
       }}
     >
-      <div className="w-full h-full cursor-pointer">
-        <div style={{ zIndex: "1000" }} className="w-full">
-          <h3
-            onClick={() => {
-              props.setHoverId(null, false);
-            }}
-            className={`"w-full p-2 shadow-md text-shadow text-lg text-white text-center cursor-pointer
-              ${titleColorBackground} " `}
-          >
-            {name}
-          </h3>
-        </div>
-
-        <div
-          style={{
-            backgroundImage: "url(" + props.product.packageImg + ")",
-            backgroundSize: "contain",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center"
-          }}
-          className={`cursor-pointer mt-8 ${featuredStrainsPackage}`}
+      <div style={{ zIndex: "1000" }} className="w-full">
+        <h3
           onClick={() => {
-            if (props.isSmallMediumOrLargeDevice) {
-              props.setHoverId(props.product._id, true);
-              let _index = 0;
-              while (props.product.price[_index] == -1) {
-                _index++;
-              }
-              props.quickAddToCartQty(_index);
-              props.modifyPotentialQuantity({
-                potentialQuantity: props.cart.potentialQuantity,
-                action: "SET",
-                quantity: 1
-              });
-            }
+            props.setHoverId(null, false);
           }}
-        />
-
-        <div
-          style={showMoreText}
-          className={`absolute text-base cursor-pointer items-center flex mx-auto mt-2 justify-center text-shadow text-white p-2 rounded shadow-md font-bold ${titleColorBackground} `}
+          className={`"w-full p-2 shadow-md text-shadow text-lg text-white text-center cursor-pointer
+              ${titleColorBackground} " `}
         >
-          See More Information{" "}
-          <span className="ml-3 text-xl items-center flex pt-1">></span>
-        </div>
-        <div className="text-center w-full pt-1">
-          <p className={"text-grey mt-2 slow font-extrabold text-sm"}>
-            <span className="px-2 font-bolder uppercase text-grey">
-              {props.product.genetic} {props.product.type}
-            </span>
-          </p>
-        </div>
+          {name}
+        </h3>
+      </div>
 
-        <div className={"text-grey px-6 p-2 sm:pt-0 text-sm mb-4"}>
-          <div className="w-150 relative text-left justify-center flex mx-auto">
-            <div
-              className="inline-flex bg-red-light"
-              style={{
-                width: `${150 * (rating / 5)}px`,
-                height: "17px",
-                marginTop: "7px"
-              }}
-            />
-            <div
-              className="inline-flex bg-grey-lightest"
-              style={{
-                width: `${150 * ((5 - rating) / 5)}px`,
-                height: "17px",
-                marginTop: "7px"
-              }}
-            />
-            <div className="absolute pin-l inline-flex ">{showRating()} </div>
-          </div>
+      <div
+        style={{
+          backgroundImage: "url(" + props.product.packageImg + ")",
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center"
+        }}
+        className={`cursor-pointer mt-8 ${featuredStrainsPackage}`}
+        onClick={() => {
+          if (props.isSmallMediumOrLargeDevice) {
+            props.setHoverId(props.product._id, true);
+            let _index = 0;
+            while (props.product.price[_index] == -1) {
+              _index++;
+            }
+            props.quickAddToCartQty(_index);
+            props.modifyPotentialQuantity({
+              potentialQuantity: props.cart.potentialQuantity,
+              action: "SET",
+              quantity: 1
+            });
+          }
+        }}
+      />
+
+      <div
+        style={showMoreText}
+        className={`absolute text-base cursor-pointer items-center flex mx-auto mt-2 justify-center text-shadow text-white p-2 rounded shadow-md font-bold ${titleColorBackground} `}
+      >
+        See More Information{" "}
+        <span className="ml-3 text-xl items-center flex pt-1">></span>
+      </div>
+      <div className="text-center w-full pt-1">
+        <p className={"text-grey mt-2 slow font-extrabold text-sm"}>
+          <span className="px-2 font-bolder uppercase text-grey">
+            {props.product.genetic} {props.product.type}
+          </span>
+        </p>
+      </div>
+
+      <div className={"text-grey px-6 p-2 sm:pt-0 text-sm mb-4"}>
+        <div className="w-150 relative text-left justify-center flex mx-auto">
+          <div
+            className="inline-flex bg-red-light"
+            style={{
+              width: `${150 * (rating / 5)}px`,
+              height: "17px",
+              marginTop: "7px"
+            }}
+          />
+          <div
+            className="inline-flex bg-grey-lightest"
+            style={{
+              width: `${150 * ((5 - rating) / 5)}px`,
+              height: "17px",
+              marginTop: "7px"
+            }}
+          />
+          <div className="absolute pin-l inline-flex ">{showRating()} </div>
         </div>
       </div>
     </div>
