@@ -25,6 +25,40 @@ import Loader from "../components/sections/loader";
 import ImageCarousel from "../components/sections/productPage/imageCarousel";
 import Ratings from "../components/sections/productPage/ratings";
 class Index extends Component {
+  componentDidMount() {
+    let product = this.props.viewProduct.currentProduct;
+    if (product == null || (product != null && product.reviews != null)) return;
+    let strains = this.props.misc.strains;
+    if (strains == null) return;
+    this.props
+      .getStrain({
+        sotiId: product.sotiId,
+        strains
+      })
+      .then(res => {
+        this.props.setCurrentProduct({ product: res });
+      });
+  }
+  componentDidUpdate(prevProps) {
+    let product = this.props.viewProduct.currentProduct;
+    if (
+      JSON.stringify(product) !=
+      JSON.stringify(prevProps.viewProduct.currentProduct)
+    ) {
+      let strains = this.props.misc.strains;
+      if (product != null && product.reviews == null) {
+        this.props
+          .getStrain({
+            sotiId: product.sotiId,
+            strains
+          })
+          .then(res => {
+            this.props.setCurrentProduct({ product: res });
+          });
+      }
+    }
+  }
+
   render() {
     return (
       <Layout>
@@ -160,6 +194,7 @@ const mapDispatchToProps = dispatch => {
     toggleCartAnimation: () => dispatch(actions.toggleCartAnimation()),
     setImageZoom: imz => dispatch(actions.setImageZoom(imz)),
     setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
+    getStrain: input => dispatch(actions.getStrain(input)),
     expandProduct: id => dispatch(actions.expandProduct(id)),
     expandProduct: id => dispatch(actions.expandProduct(id)),
     setCurrentProduct: input => dispatch(actions.setCurrentProduct(input))

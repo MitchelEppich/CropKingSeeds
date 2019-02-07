@@ -43,6 +43,7 @@
         "nodemailer": "^5.1.1",
         "postcss-easy-import": "^3.0.0",
         "postcss-loader": "^3.0.0",
+        "random-seed": "^0.3.0",
         "raw-loader": "^0.5.1",
         "react": "^16.4.2",
         "react-anchor-link-smooth-scroll": "^1.0.11",

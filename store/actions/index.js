@@ -60,7 +60,8 @@ const actionTypes = {
   SET_CURRENT_EVENT: "SET_CURRENT_EVENT",
 
   GET_ALL_NEWS: "GET_ALL_NEWS",
-  GET_FEATURED_NEWS: "GET_FEATURED_NEWS"
+  GET_FEATURED_NEWS: "GET_FEATURED_NEWS",
+  SET_STRAIN: "SET_STRAIN"
 };
 
 const actions = {
@@ -170,6 +171,30 @@ const actions = {
         .catch(error => console.log(error));
     };
   },
+  getStrain: input => {
+    return async dispatch => {
+      let _strains = [...input.strains];
+      delete input.strains;
+
+      const link = new HttpLink({ uri, fetch: fetch });
+      const operation = { query: query.getStrain, variables: { ...input } };
+
+      return await makePromise(execute(link, operation))
+        .then(data => {
+          let _strain = inferStrainData(data.data.strain);
+          dispatch(actions.setStrain({ ..._strain }));
+          let index = _strains.findIndex(strain => {
+            return strain.sotiId == _strain.sotiId;
+          });
+          _strain = {
+            ..._strains[index],
+            ..._strain
+          };
+          return Promise.resolve(_strain);
+        })
+        .catch(error => console.log(error));
+    };
+  },
   setEmail: input => {
     return {
       type: actionTypes.SET_EMAIL,
@@ -208,6 +233,12 @@ const actions = {
           });
         })
         .catch(error => console.log(error));
+    };
+  },
+  setStrain: strain => {
+    return {
+      type: actionTypes.SET_STRAIN,
+      strain
     };
   },
   setStrains: strains => {
@@ -334,35 +365,42 @@ const query = {
       }
     }
   `,
+  getStrain: gql`
+    query($sotiId: String) {
+      strain(input: { sotiId: $sotiId }) {
+        description
+        effect
+        difficulty
+        og
+        country
+        env
+        reviews
+        ratingQuantity
+        featured
+        pthc
+        pcbd
+        pcbn
+        yield
+        flowerTime
+        price
+        strainImg
+        sotiId
+      }
+    }
+  `,
   getFeaturedStrains: gql`
     {
       getFeaturedList {
         _id
         name
-        price
-        strainImg
         packageImg
-        description
-        effect
         genetic
-        yield
-        flowerTime
-        difficulty
         type
-        og
-        pthc
-        pcbd
-        pcbn
-        country
         sotiId
-        env
         sativa
         indica
         ruderalis
         rating
-        reviews
-        ratingQuantity
-        featured
       }
     }
   `,
@@ -374,27 +412,18 @@ const query = {
         price
         strainImg
         packageImg
-        description
-        effect
         genetic
         yield
         flowerTime
-        difficulty
         type
-        og
         pthc
         pcbd
         pcbn
-        country
         sotiId
-        env
         sativa
         indica
         ruderalis
         rating
-        reviews
-        ratingQuantity
-        featured
       }
     }
   `

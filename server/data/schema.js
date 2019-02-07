@@ -152,6 +152,7 @@ type Order {
   total: Float
   processor: String
   ccType: String
+  orderDate: String
   paymentMethod: String
   paymentStatus: String
   ip: String
@@ -191,6 +192,7 @@ input OrderInput {
   total: Float
   processor: String
   ccType: String
+  orderDate: String
   paymentMethod: String
   paymentStatus: String
   ip: String

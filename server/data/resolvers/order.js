@@ -22,21 +22,27 @@ const resolvers = {
       return Order.find(query);
     },
     getRandomWinnerBetweenDates: async (_, { input }) => {
-      console.log(input);
+      let _start =
+        input.startDate == "today"
+          ? moment().format("YYYY-MM-DD")
+          : input.startDate;
+      let _end =
+        input.endDate == "today"
+          ? moment().format("YYYY-MM-DD")
+          : input.endDate;
+
       let order = await Order.aggregate([
         {
           $match: {
             orderDate: {
-              $gte: moment()
-                .subtract(3, "days")
-                .format("YY-MM-DD HH:mm:ss"),
-              $lt: moment().format("YY-MM-DD HH:mm:ss")
+              $gte: moment(_start, "YYYY-MM-DD").format("YY-MM-DD HH:mm:ss"),
+              $lt: moment(_end, "YYYY-MM-DD").format("YY-MM-DD HH:mm:ss")
             }
           }
-        },
-        { $sample: { size: 1 } }
+        }
       ]);
-      return order;
+
+      return order[parseInt(Math.round(Math.random() * order.length))];
     },
     getCoupon: async (_, input) => {
       // Get coupon details

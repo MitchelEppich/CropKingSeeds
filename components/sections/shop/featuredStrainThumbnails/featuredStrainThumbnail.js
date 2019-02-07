@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   faExternalLinkAlt,
   faSeedling,
@@ -9,6 +8,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SeedSelectModule from "../../productPage/seedSelectModule";
+
+import Router from "next/router";
 
 function preventDefault(e) {
   e = e || window.event;
@@ -68,9 +69,18 @@ const FeaturedStrainThumbnail = props => {
   };
 
   return (
-    <Link
-      href="/product"
-      as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}
+    <div
+      onClick={e => {
+        props.setCurrentProduct({ product: props.product });
+        if (Router.route != "/product")
+          Router.push(
+            "/product/" +
+              props.product.name
+                .toLowerCase()
+                .split(" ")
+                .join("-")
+          );
+      }}
     >
       <div className="w-full h-full cursor-pointer">
         <div style={{ zIndex: "1000" }} className="w-full">
@@ -147,7 +157,7 @@ const FeaturedStrainThumbnail = props => {
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

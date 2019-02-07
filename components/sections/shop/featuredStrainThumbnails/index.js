@@ -13,7 +13,6 @@ const index = props => {
   count = isSmallMediumOrLargeDevice ? 2 : count;
 
   products = products.map((product, index) => {
-    // console.log(product);
     return (
       <div
         key={index}
@@ -22,16 +21,6 @@ const index = props => {
             return null;
           }
           props.setHoverId(product._id, true);
-          let _index = 0;
-          while (product.price[_index] == -1) {
-            _index++;
-          }
-          props.quickAddToCartQty(_index);
-          props.modifyPotentialQuantity({
-            potentialQuantity: props.cart.potentialQuantity,
-            action: "SET",
-            quantity: 1
-          });
         }}
         onMouseLeave={() => {
           if (isSmallMediumOrLargeDevice) {
@@ -40,6 +29,7 @@ const index = props => {
           props.setHoverId(product._id, false);
         }}
         onClick={e => {
+          props.setCurrentProduct({ product });
           if (isSmallMediumOrLargeDevice) {
             Router.push(
               "/product/" +

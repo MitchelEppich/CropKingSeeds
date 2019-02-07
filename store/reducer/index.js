@@ -173,6 +173,16 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, { activeBannerSlide: slideIndex });
     case actionTypes.SET_STRAINS:
       return updateObject(state, { strains: [...action.strains] });
+    case actionTypes.SET_STRAIN:
+      let _strains = state.strains;
+      let index = _strains.findIndex(strain => {
+        return strain.sotiId == action.strain.sotiId;
+      });
+      _strains[index] = {
+        ..._strains[index],
+        ...action.strain
+      };
+      return updateObject(state, { strains: [..._strains] });
     case actionTypes.GET_FEATURED_LIST:
       return updateObject(state, { featuredStrains: [...action.input] });
     case actionTypes.SET_SEARCH:
