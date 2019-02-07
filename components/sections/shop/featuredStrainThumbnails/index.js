@@ -84,9 +84,9 @@ const index = props => {
               count: props.misc.featureCount + 2
             })
           }
-          className="text-red-dark text-center w-full my-4 cursor-pointer"
+          className="text-grey-light rounded opacity-50 text-center w-64 mx-auto my-4 cursor-pointer p-3 font-bold bg-grey-lightest hover:text-grey"
         >
-          more
+          Load More
         </p>
       ) : null}
     </div>

@@ -91,7 +91,7 @@ const FeaturedStrainThumbnail = props => {
 
       <div
         style={showMoreText}
-        className={`absolute text-base cursor-pointer items-center flex mx-auto mt-2 justify-center text-shadow text-white p-2 rounded shadow-md font-bold ${titleColorBackground} `}
+        className={`absolute text-base cursor-pointer items-center flex mx-auto mt-1 justify-center text-shadow text-white p-2 rounded shadow-md font-bold ${titleColorBackground} `}
       >
         See More Information{" "}
         <span className="ml-3 text-xl items-center flex pt-1">></span>
