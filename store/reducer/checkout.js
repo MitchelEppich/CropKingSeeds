@@ -12,7 +12,7 @@ const initialState = {
   viewCurrency: null,
   noCreditZip: [],
   blockedIps: [],
-  error: false,
+  error: {},
   freeShippingThreshold: 300,
   ccResponse: null
 };

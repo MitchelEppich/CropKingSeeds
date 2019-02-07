@@ -1,6 +1,6 @@
-const { Order } = require("../../models");
+const { Order, Strain } = require("../../models");
 
-const { orderFilters } = require("./functions");
+const { orderFilters, decompress, compress } = require("./functions");
 
 const StrainResolver = require("./strain");
 
@@ -205,15 +205,19 @@ const resolvers = {
     processOrder: async (_, { input }) => {
       let _input = JSON.parse(input.content);
 
-      let res = (await axios({
-        method: "post",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        url: "https://www.cksoti.com/save-order-customer-details",
-        data: toUrlEncoded(_input)
-      })).data;
+      // axios({
+      //   method: "post",
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded"
+      //   },
+      //   url: "https://www.cksoti.com/save-order-customer-details",
+      //   data: toUrlEncoded(_input)
+      // });
 
+      //store relation
+      buildRelation(_input.productlist);
+
+      //save order
       resolvers.Mutation.createOrder(null, {
         input: {
           billAddress: _input.BillAddress,
@@ -258,6 +262,37 @@ const resolvers = {
       return "Order Processed.";
     }
   }
+};
+
+let buildRelation = list => {
+  let _products = list.split(",").map(a => a.substring(0, 3));
+
+  _products.map(async id => {
+    let strain = await Strain.findOne({ sotiId: id });
+    let relation = decompress(strain.relationData)
+      .trim()
+      .split(" ");
+    for (let _id of _products) {
+      if (_id == id) continue;
+      let index = relation.findIndex(a => {
+        return a.includes(_id);
+      });
+      if (index == -1) relation.push(`${_id}!1`);
+      else {
+        let _ = relation[index].split("!")[1];
+        _ = parseInt(_) + 1;
+        relation[index] = `${_id}!${_}`;
+      }
+    }
+    strain.relationData = compress(
+      relation
+        .sort((a, b) => {
+          return parseInt(b.slice(4)) - parseInt(a.slice(4));
+        })
+        .join(" ")
+    );
+    strain.save();
+  });
 };
 
 const toUrlEncoded = obj =>

@@ -119,7 +119,7 @@ class Index extends Component {
   render() {
     let _orderDetails = this.props.checkout.orderDetails;
     let _stepsCheckout = this.props.misc.stepsCheckout;
-    let _error = this.props.checkout.error;
+    let _error = Object.keys(this.props.checkout.error).length != 0;
 
     let itemsCart = Object.keys(this.props.cart.items);
 
@@ -273,7 +273,7 @@ class Index extends Component {
                 className={`w-200 p-2 text-right justify-end cursor-pointer flex items-center hover:text-red ${
                   _stepsCheckout >= 3
                     ? "opacity-0 unselectable pointer-events-none"
-                    : error
+                    : _error
                     ? "opacity-50 unselectable pointer-events-none"
                     : ""
                 }`}
