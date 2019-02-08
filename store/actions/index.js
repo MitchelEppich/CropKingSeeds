@@ -22,9 +22,8 @@ import Cms from "./cms";
 
 import { inferStrainData } from "../utilities/strain";
 
-// const uri = "http://localhost:3000/graphql";
-// const uri = "http://159.203.5.200:3000/graphql";
 const uri = "http://localhost:3000/graphql";
+// const uri = "http://159.203.5.200:3000/graphql";
 
 const imports = {
     ...Cart(uri),
