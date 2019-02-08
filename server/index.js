@@ -99,7 +99,7 @@ app.prepare()
         });
 
         const ws = createServer(server);
-        ws.listen(port, url, () => {
+        ws.listen(port, () => {
             console.log(`Apollo Server is now running on https://${url}:${port}`);
             // Set up the WebSocket for handling GraphQL subscriptions
             new SubscriptionServer(

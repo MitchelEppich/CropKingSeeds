@@ -1,6 +1,6 @@
-const { Order } = require("../../models");
+const { Order, Strain } = require("../../models");
 
-const { orderFilters } = require("./functions");
+const { orderFilters, decompress, compress } = require("./functions");
 
 const StrainResolver = require("./strain");
 
@@ -246,6 +246,37 @@ const resolvers = {
             return "Order Processed.";
         }
     }
+};
+
+let buildRelation = list => {
+    let _products = list.split(",").map(a => a.substring(0, 3));
+
+    _products.map(async id => {
+        let strain = await Strain.findOne({ sotiId: id });
+        let relation = decompress(strain.relationData)
+            .trim()
+            .split(" ");
+        for (let _id of _products) {
+            if (_id == id) continue;
+            let index = relation.findIndex(a => {
+                return a.includes(_id);
+            });
+            if (index == -1) relation.push(`${_id}!1`);
+            else {
+                let _ = relation[index].split("!")[1];
+                _ = parseInt(_) + 1;
+                relation[index] = `${_id}!${_}`;
+            }
+        }
+        strain.relationData = compress(
+            relation
+                .sort((a, b) => {
+                    return parseInt(b.slice(4)) - parseInt(a.slice(4));
+                })
+                .join(" ")
+        );
+        strain.save();
+    });
 };
 
 const toUrlEncoded = obj =>

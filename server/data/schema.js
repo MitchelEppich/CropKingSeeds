@@ -15,11 +15,17 @@ type Query {
   allBlockedIps: [String]!
 
   getFeaturedList: [Strain]!
+  getRelatedList(input: RelatedInput!): [Strain]!
   getBitcoinData(input: BitcoinDataInput): String
   getExchangeRates: String
   getCoupon(coupon: String, ip: String): Coupon
 
   getRandomWinnerBetweenDates(input: DateRangeInput!): Order
+}
+
+input RelatedInput {
+  limit: Int
+  sotiId: String
 }
 
 input DateRangeInput {
@@ -89,6 +95,7 @@ type Strain {
   reviews: [String]
   ratingQuantity: [Int]
   featured: Boolean
+  relationData: String
 }
 
 input StrainInput {
@@ -115,6 +122,7 @@ input StrainInput {
   env: String
   review: String
   featured: Boolean
+  relationData: String
 }
 
 type Order {

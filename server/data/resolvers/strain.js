@@ -1,6 +1,6 @@
 const { Strain } = require("../../models");
 
-const { strainFilters } = require("./functions");
+const { strainFilters, decompress } = require("./functions");
 
 // const { PubSub, withFilter } = require("graphql-subscriptions");
 
@@ -17,21 +17,46 @@ const resolvers = {
       let query = filter ? { $or: strainFilters(filter) } : {};
       return Strain.find(query);
     },
-    getFeaturedList: async (_, { input }) => {
-      let featuredNeeded = 10;
-      let featuredStrains = await Strain.find({
-        featured: true
-      }).limit(featuredNeeded);
+    getRelatedList: async (_, { input }) => {
+      let { sotiId, limit } = input;
 
-      let leftSpaces = featuredNeeded - featuredStrains.length;
-      if (leftSpaces != 0) {
-        let extraStrains = await Strain.aggregate([
-          { $sample: { size: leftSpaces } }
-        ]);
-        featuredStrains.push(...extraStrains);
+      let relation = decompress((await Strain.findOne({ sotiId })).relationData)
+        .split(" ")
+        .slice(0, limit)
+        .map(a => a.slice(0, 3));
+
+      let relatedStrains = await Strain.find({
+        sotiId: { $in: relation }
+      });
+
+      limit -= relatedStrains.length;
+
+      if (limit != 0) {
+        relatedStrains.push(
+          ...(await getRandomStrains(limit, {
+            sotiId: { $nin: relation }
+          }))
+        );
       }
 
-      return featuredStrains;
+      return randomize(relatedStrains);
+    },
+    getFeaturedList: async _ => {
+      let limit = 10;
+      let featuredStrains = await Strain.find({
+        featured: true
+      }).limit(limit);
+
+      limit -= featuredStrains.length;
+      if (limit != 0) {
+        featuredStrains.push(
+          ...(await getRandomStrains(limit, {
+            $or: [{ featured: false }, { featured: undefined }]
+          }))
+        );
+      }
+
+      return randomize(featuredStrains);
     }
   },
   Strain: {},
@@ -105,32 +130,29 @@ const resolvers = {
       strain.save();
 
       return strain;
-    },
-    typeToDom: async (_, { input }) => {
-      let _strains = await Strain.find({});
-      // for (let strain of _strains) {
-      //   console.log(strain.genetic);
-      //   strain.packageImg = `../static/img/strains/package/${(() => {
-      //     switch (strain.genetic) {
-      //       case 0:
-      //         return "GTF";
-      //       case 1:
-      //         return "AHA";
-      //       case 2:
-      //         return "OSR";
-      //       case 3:
-      //         return "CBD";
-      //       case 4:
-      //         return "DWA";
-      //       case 5:
-      //         return "AFM";
-      //     }
-      //   })()}.png`;
-      //   strain.save();
-      // }
-      return _strains;
     }
+    // typeToDom: async (_, { input }) => {
+    //   let _strains = await Strain.find({});
+    //   return _strains;
+    // }
   }
+};
+
+let randomize = arr => {
+  return arr.sort((a, b) => {
+    return Math.random() - 0.5;
+  });
+};
+
+let getRandomStrains = async (limit, match) => {
+  return await Strain.aggregate([
+    {
+      $sample: { size: limit }
+    },
+    {
+      $match: match
+    }
+  ]);
 };
 
 module.exports = resolvers;
