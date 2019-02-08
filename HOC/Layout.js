@@ -202,7 +202,7 @@ class Layout extends Component {
                 />
                 {/* <h3>CHAT</h3> */}
               </div>
-              <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md">
+              <div className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md sm:mt-8">
                 {this.props.misc.strains != null ? (
                   this.props.children
                 ) : (
@@ -258,7 +258,8 @@ const mapDispatchToProps = dispatch => {
     recallOrderDetails: input => dispatch(actions.recallOrderDetails(input)),
     quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
     modifyOrderDetails: input => dispatch(actions.modifyOrderDetails(input)),
-    setSearch: value => dispatch(actions.setSearch(value))
+    setSearch: value => dispatch(actions.setSearch(value)),
+    toggleMobileMenu: input => dispatch(actions.toggleMobileMenu(input))
   };
 };
 

@@ -3,7 +3,8 @@ import {
   faExternalLinkAlt,
   faSeedling,
   faClock,
-  faTimes
+  faTimes,
+  faCheck
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SeedSelectModule from "../../productPage/seedSelectModule";
@@ -292,7 +293,7 @@ const productThumbnail = props => {
               </div>
               <div className="w-full inline-flex sm:mt-0 mt-2">
                 <button
-                  className="bg-red-dark mr-1 w-full text-center text-white h-10 px-2 py-2 hover:bg-grey"
+                  className="bg-red-dark mr-1 w-full text-center text-white h-10 px-2 py-2 hover:bg-grey slowish"
                   onClick={() => {
                     props.modifyCart({
                       items: props.cart.items,
@@ -305,7 +306,14 @@ const productThumbnail = props => {
                     props.toggleCartAnimation();
                   }}
                 >
-                  Add to Cart
+                  {props.shop.cartAnimation ? (
+                    <div className="inline-flex slowish">
+                      Added
+                      <FontAwesomeIcon icon={faCheck} className="ml-1" />
+                    </div>
+                  ) : (
+                    "Add to Cart"
+                  )}
                 </button>
                 <Link href="/checkout">
                   <button

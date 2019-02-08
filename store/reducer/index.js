@@ -78,7 +78,8 @@ const initialState = {
   currentEventUpdatedAt: new Date(),
   featuredNews: [],
   news: {},
-  featureCount: 1
+  featureCount: 1,
+  showMobileMenu: null
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -192,6 +193,8 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, { addTalkToListener: action.bool });
     case actionTypes.SHOW_MORE_FEATURES:
       return updateObject(state, { featureCount: action.count });
+    case actionTypes.TOGGLE_MOBILE_MENU:
+      return updateObject(state, { showMobileMenu: !state.showMobileMenu });
     default:
       return state;
   }

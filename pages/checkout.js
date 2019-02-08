@@ -95,7 +95,7 @@ class Index extends Component {
         last_name: name[1],
         email: _billing.email.value,
         address1: _billing.address.value,
-        address2: _billing.apartment != null ? _billing.apartment.value : "",
+        address2: billing.apartment != null ? billing.apartment.value : "",
         city: _billing.city.value,
         state: _billing.state.value,
         zip: _billing.postalZip.value,
@@ -119,7 +119,7 @@ class Index extends Component {
   render() {
     let _orderDetails = this.props.checkout.orderDetails;
     let _stepsCheckout = this.props.misc.stepsCheckout;
-    let _error = this.props.checkout.error;
+    let _error = Object.keys(this.props.checkout.error).length != 0;
 
     let itemsCart = Object.keys(this.props.cart.items);
 
@@ -163,7 +163,7 @@ class Index extends Component {
                         }
                       })
                       .then(res => {
-                        console.log(res);
+                        // console.log(res);
                         this.props.toggleStepsCheckout(_stepsCheckout + 1);
                       });
                   });
@@ -256,7 +256,7 @@ class Index extends Component {
                 className="w-200 p-2 text-left cursor-pointer flex items-center hover:text-red"
               >
                 {_stepsCheckout != 0 ? (
-                  <span className="flex items-center font-extrabold text-red-light hover:text-red-light text-2xl uppercase">
+                  <span className="flex items-center font-extrabold text-red-light hover:text-grey-light text-2xl uppercase">
                     <FontAwesomeIcon
                       icon={faAngleLeft}
                       className="fa-2x mr-4"
@@ -273,7 +273,7 @@ class Index extends Component {
                 className={`w-200 p-2 text-right justify-end cursor-pointer flex items-center hover:text-red ${
                   _stepsCheckout >= 3
                     ? "opacity-0 unselectable pointer-events-none"
-                    : error
+                    : _error
                     ? "opacity-50 unselectable pointer-events-none"
                     : ""
                 }`}
@@ -281,7 +281,7 @@ class Index extends Component {
                 {_stepsCheckout != 4 ? (
                   <button
                     name="nextCheckout"
-                    className="flex items-center font-extrabold text-red-light hover:text-red-light text-2xl uppercase"
+                    className="flex items-center font-extrabold text-red-light hover:text-grey-light text-2xl uppercase"
                     type="submit"
                   >
                     Next

@@ -205,14 +205,14 @@ const resolvers = {
     processOrder: async (_, { input }) => {
       let _input = JSON.parse(input.content);
 
-      let res = (await axios({
-        method: "post",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        url: "https://www.cksoti.com/save-order-customer-details",
-        data: toUrlEncoded(_input)
-      })).data;
+      // let res = (await axios({
+      //   method: "post",
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded"
+      //   },
+      //   url: "https://www.cksoti.com/save-order-customer-details",
+      //   data: toUrlEncoded(_input)
+      // })).data;
 
       resolvers.Mutation.createOrder(null, {
         input: {

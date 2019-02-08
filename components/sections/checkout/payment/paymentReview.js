@@ -112,10 +112,10 @@ const PaymentReview = props => {
   };
 
   return (
-    <div className="w-full flex justify-end mb-6 lg:flex-col md:flex-col sm:flex-col">
+    <div className="w-full flex justify-end mb-6 xl:flex-wrap lg:flex-col md:flex-col sm:flex-col">
       <div
         style={box}
-        className="w-1/3 h-200 lg:w-full lg:mt-2 sm:w-full sm:mt-2 md:w-full md:mt-2 mx-0 bg-white"
+        className="w-1/3 h-200 xl:w-1/2 xl:mt-2 lg:w-full lg:mt-2 sm:w-full sm:mt-2 md:w-full md:mt-2 mx-0 bg-white"
       >
         <h3 style={titleBox}>Shipping Address</h3>
         <div className="p-2">
@@ -177,7 +177,7 @@ const PaymentReview = props => {
       </div>
       <div
         style={box}
-        className="w-1/3 h-200 lg:w-full lg:mt-2 sm:w-full sm:mt-2 md:w-full md:mt-2 xxl:mx-4 xl:mx-4 bg-white"
+        className="w-1/3 h-200  xl:w-1/2 xl:mt-2 lg:w-full lg:mt-2 sm:w-full sm:mt-2 md:w-full md:mt-2 xxl:mx-4 xl:mx-0 bg-white"
       >
         <h3 style={titleBox}>Billing Address</h3>
         <div className="p-2">
@@ -239,11 +239,11 @@ const PaymentReview = props => {
       </div>
       <div
         style={box}
-        className="w-1/3 h-200 lg:w-full lg:mt-2 sm:w-full sm:h-full sm:mt-2 md:w-full md:mt-2 mx-0 bg-white"
+        className="w-1/3 h-200  xl:w-full xl:mt-2 lg:w-full lg:mt-2 sm:w-full sm:h-full sm:mt-2 md:w-full md:mt-2 mx-0 bg-white"
       >
         <h3 style={titleBox}>Payment Information</h3>
         <div className="p-2 inline-flex w-full">
-          <div className="w-3/5 text-right">
+          <div className="w-3/5 xl:w-4/5 text-right">
             <p className="mt-1">Subtotal:</p>
             <p className="mt-2">Shipping: </p>
             {_orderDetails[pageGroup].creditFee.value != 0 ? (
@@ -263,7 +263,7 @@ const PaymentReview = props => {
               Tax ({(_orderDetails[pageGroup].cumTax * 100).toFixed(2)}%):
             </p>
           </div>
-          <div className="w-2/5 pl-4 text-left">
+          <div className="w-2/5 xl:w-1/5 pl-4 text-left">
             <p className="mt-1">
               {currency != null
                 ? `${currency.symbol}${(
@@ -321,13 +321,13 @@ const PaymentReview = props => {
               : "p-2 mt-12"
           } border-t-2 border-grey-lightest inline-flex w-full`}
         >
-          <div className="w-3/5 text-right">
+          <div className="w-3/5 xl:w-4/5 text-right">
             {" "}
             <p className="font-extrabold text-grey-light text-lg uppercase">
               Total:
             </p>{" "}
           </div>
-          <div className="w-2/5 text-left pl-4">
+          <div className="w-2/5 xl:w-1/5 text-left pl-4">
             {" "}
             <p className="font-extrabold text-lg">
               {currency != null

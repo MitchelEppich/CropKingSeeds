@@ -26,12 +26,15 @@ const Confirmation = props => {
     for (let item of Object.keys(_items)) {
       let _item = _items[item];
       arr.push(
-        <div className="w-full inline-flex my-1 shadow-md h-full bg-white items-center flex p-2">
+        <div
+          key={arr}
+          className="w-full inline-flex my-1 shadow-md h-full bg-white items-center flex p-2"
+        >
           {/* <div className="w-32 p-2 font-bold text-lg items-center flex">
             <img src={_item.product.packageImg} className="h-32" />
           </div> */}
           <div className="w-3/5">
-            <div className="p-2 font-bold text-lg items-center flex">
+            <div className="p-2 font-bold text-lg items-center md:text-left sm:text-left lg:text-left flex">
               <a
                 className="cursor-pointer hover:text-red-light"
                 href={
@@ -41,7 +44,7 @@ const Confirmation = props => {
                 }
                 target="_blank"
               >
-                {_item.product.name} {_item.product.genetic} - {_item.amount}{" "}
+                {_item.product.name} - {_item.amount}{" "}
                 Seeds
               </a>
             </div>
@@ -84,52 +87,50 @@ const Confirmation = props => {
           Please follow payment instructions below.
         </p>
       </div>
-      <div className="w-container mx-auto pt-12">
+      <div className="xxl:w-container mx-auto pt-12 w-main">
         <div
           style={sectionTitle}
-          className="inline-flex w-full text-white bg-red-light mb-1 p-1 sm:flex-col md:flex-col"
+          className="w-full inline-flex text-lg p-2 text-white shadow-md sm:flex-col md:flex-col lg:flex-col bg-red-light p-2 mb-1"
         >
-          <div className="w-1/2 p-2 text-left sm:w-full md:w-full sm:text-center md:text-center">
+          <div className="w-1/2 p-2 text-left sm:w-full md:w-full lg:w-full lg:text-center sm:text-center md:text-center">
             <p className="text-lg font-bold">
               Order <span className="">#{fOrderId}</span>
             </p>
           </div>
-          <div className="w-1/2 p-2 text-right sm:w-full md:w-full sm:text-center md:text-center">
+          <div className="w-1/2 p-2 text-right sm:w-full md:w-full lg:w-full lg:text-center sm:text-center md:text-center">
             <p className="text-lg font-bold">
               Order made on: <span className="">{moment().format("LL")}</span>{" "}
             </p>
           </div>
         </div>
-        <div className="w-full inline-flex text-lg bg-white p-2 pb-6 shadow-md sm:flex-col md:flex-col">
-          <div className="w-1/3 p-2 text-left sm:w-full md:w-full sm:text-center md:text-center sm:border-b-2 border-grey-lightest sm:py-6 md:py-6">
-            <p>Payment Method:</p>
-            <p className="font-bold">{_orderDetails.payment.method.value}</p>
+        <div className="w-full inline-flex text-lg bg-white p-2 pb-6 shadow-md lg:flex-col sm:flex-col md:flex-col">
+          <div className="w-1/3 p-2 text-left sm:w-full md:w-full lg:w-full lg:text-center sm:text-center md:text-center sm:border-b-2 lg:border-b-2 md:border-b-2 border-grey-lightest sm:py-6 md:py-6 lg:py-6">
+            <p className="font-bold">Payment Method:</p>
+            <p>{_orderDetails.payment.method.value}</p>
           </div>
-          <div className="w-1/3 p-2 text-left sm:w-full md:w-full sm:text-center md:text-center sm:py-6 md:py-6 sm:border-b-2 border-grey-lightest">
-            <p>Shipping Destination:</p>
-            <p className="font-bold">{_orderDetails.shipping.fullName.value}</p>
-            <p className="font-bold">
+          <div className="w-1/3 p-2 text-left sm:w-full md:w-full lg:w-full lg:text-center sm:text-center md:text-center sm:border-b-2 lg:border-b-2 md:border-b-2 border-grey-lightest sm:py-6 md:py-6 lg:py-6">
+            <p className="font-bold">Shipping Destination:</p>
+            <p>{_orderDetails.shipping.fullName.value}</p>
+            <p>
               {_orderDetails.shipping.address.value},{" "}
               {_orderDetails.shipping.apartment.value
                 ? _orderDetails.shipping.apartment.value
                 : null}{" "}
             </p>
-            <p className="font-bold">
-              {_orderDetails.shipping.postalZip.value}
-            </p>
-            <p className="font-bold">
+            <p>{_orderDetails.shipping.postalZip.value}</p>
+            <p>
               {_orderDetails.shipping.city.value},{" "}
               {_orderDetails.shipping.country.value}
             </p>
           </div>
-          <div className="w-1/3 p-2 text-left sm:w-full md:w-full sm:text-center md:text-center sm:py-6 md:py-6">
-            <p>Shipping Type:</p>
-            <p className="font-bold">
-              {_orderDetails.shipping.shippingDetail.value}
-            </p>
-            <br />
-            <p>Shipping Details:</p>
-            <p className="font-bold">
+          <div className="w-1/3 p-2 text-left sm:w-full md:w-full lg:w-full lg:text-center sm:text-center md:text-center sm:py-6 md:py-6 lg:py-6">
+            <p className="font-bold">Shipping Type:</p>
+            <p>{_orderDetails.shipping.shippingDetail.value}</p>
+            {/* <p className="font-bold sm:border-t-2 lg:border-t-2 md:border-t-2 border-grey-lightest sm:pt-4 md:pt-4 lg:pt-4">
+              Shipping Details:
+            </p> */}
+            <p className="text-base text-red-light">
+              *
               {
                 props.checkout.shippingMethods.find(a => {
                   return a.tag == _orderDetails.shipping.shippingDetail.value;
@@ -168,9 +169,9 @@ const Confirmation = props => {
                       Canada
                     </p>
                     <p className="mt-4 p-2 text-center pb-4">
-                      It is recommended that you wrap any cash within your mail
-                      (in newspaper, charcoal paper or tin foil) to ensure
-                      privacy
+                      It is recommended that you wrap any cash within your
+                      mail (in newspaper, charcoal paper or tin foil) to
+                      ensure privacy.
                     </p>
                   </div>
                 </div>
@@ -215,10 +216,10 @@ const Confirmation = props => {
                       </div>
                     </div>
                     <p className="mt-4 p-2 text-center pb-4">
-                      <strong>Important</strong>: Interac E-Transfers may take a
-                      few hours to be approved. Once a payment is successfully
-                      recieved we will ship your order on the next applicable
-                      business day.
+                      <strong>Important</strong>: Interac E-Transfers may take
+                      a few hours to be approved. Once a payment is
+                      successfully recieved we will ship your order on the
+                      next applicable business day.
                       <br />
                       To ensure your order is shipped as soon as possible,
                       please call us to confirm the transfer.
@@ -236,8 +237,9 @@ const Confirmation = props => {
                   </div>
                   <div className="bg-white shadow-md">
                     <p className="w-main mx-auto py-4">
-                      To complete your payment with BitCoin, a new tab has been
-                      opened in which you can proceed to finalize your payment.
+                      To complete your payment with BitCoin, a new tab has
+                      been opened in which you can proceed to finalize your
+                      payment.
                       <br />
                       <br />
                       <strong>Having an issue with your payment?</strong>{" "}
@@ -262,26 +264,28 @@ const Confirmation = props => {
                     <p className="text-center p-2 mt-4 text-xl">
                       {_ccr.status == "Declined" ? (
                         <span>
-                          <strong>We are unable to process your order!</strong>
+                          <strong>
+                            We are unable to process your order!
+                          </strong>
                           <br />
                           Please immediately call our customer support (at +1
                           (844) 276 - 7546) to resolve any issues.
                           <br />
-                          Once your payment has been recieved we will ship your
-                          order on the next applicable business day.
+                          Once your payment has been recieved we will ship
+                          your order on the next applicable business day.
                         </span>
                       ) : (
                         <span>
                           Please allow some time for your payment to process,
-                          once your payment has been recieved we will ship your
-                          order on the next applicable business day.
+                          once your payment has been recieved we will ship
+                          your order on the next applicable business day.
                         </span>
                       )}
                     </p>
                     <p className="mt-4 p-2 text-center pb-4">
-                      <strong>Important</strong>: The displayed order total may
-                      vary depending on fluctuations in conversion rates and
-                      bank processing fees. All charges will show up as '
+                      <strong>Important</strong>: The displayed order total
+                      may vary depending on fluctuations in conversion rates
+                      and bank processing fees. All charges will show up as '
                       {_ccr.descriptor}' on your credit card statement once
                       successfully processed.
                       <br />
@@ -305,23 +309,25 @@ const Confirmation = props => {
           <div className="w-1/5 p-2 uppercase font-bold text-lg">Price</div>
         </div>
         <div className="w-full">{showProduct()}</div>
-        <div className="inline-flex justify-end flex w-full mt-8 text-lg mb-4">
-          <div className="w-full inline-flex text-lg sm:flex-col md:flex-col border-r-2 border-grey-lightest">
+        <div className="inline-flex justify-end flex w-full mt-8 text-lg mb-4 xl:flex-col-reverse lg:flex-col-reverse md:flex-col-reverse sm:flex-col-reverse">
+          <div className="w-full inline-flex text-lg sm:flex-col md:flex-col xxl:border-r-2 border-grey-lightest lg:mt-4 lg:pt-4 md:pt-4 md:mt-4 xl:pt-4 xl:mt-4 sm:mt-4 sm:pt-4 sm:border-t-2 md:border-t-2 lg:border-t-2 xl:border-t-2">
             <div className="w-1/3 text-right justify-start flex p-2  sm:w-full md:w-full sm:justify-center md:justify-center sm:mr-0 md:mr-0">
               <FontAwesomeIcon icon={faQuestionCircle} className="fa-7x" />
             </div>
             <div className="w-2/3 text-left p-2 sm:w-full md:w-full sm:text-center md:text-center sm:ml-0 md:ml-0">
               <p className="font-bold text-2xl">Need help?</p>
-              <p className="font-bold">We are available to assist you 24/7.</p>
+              <p className="font-bold">
+                We are available to assist you 24/7.
+              </p>
               <p>Canada: (604) 563-0291</p>
               <p>USA: +1 (844) 276-7546</p>
               <p>International: +1 (604) 563-0291</p>
               <p>Email: info@cropkingseeds.com</p>
             </div>
           </div>
-          <div className="w-2/5 text-right p-2 pl-6">
-            <div className="inline-flex w-500">
-              <div className="w-2/5 text-right">
+          <div className="w-2/5 text-right p-2 pl-6 sm:w-full md:w-full lg:w-full xl:w-full">
+            <div className="inline-flex w-500 xl:w-full sm:w-full md:w-full lg:w-full">
+              <div className="w-2/5 sm:w-3/5 md:w-3/5 lg:w-3/5 xl:w-4/5 text-right">
                 <p className="p-1">Subtotal:</p>
                 <p className="p-1">Shipping:</p>
                 {_orderDetails.payment.creditFee.value != 0 ? (
@@ -341,7 +347,7 @@ const Confirmation = props => {
                 </p>
                 <p className="font-bold p-1 text-xl">Total:</p>
               </div>
-              <div className="w-2/5 text-left">
+              <div className="w-2/5 xl:w-1/5 xl:text-right text-left sm:text-right md:text-right lg:text-right lg:mr-2 xl:mr-8">
                 <p className="p-1">
                   {currency != null
                     ? `${currency.symbol}${(
