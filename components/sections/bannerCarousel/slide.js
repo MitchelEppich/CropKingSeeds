@@ -6,7 +6,7 @@ const slide = props => {
         positionIndex = props.position + props.index - props.misc.bannerSlidePositions.length;
     }
     let position = props.misc.bannerSlidePositions[positionIndex];
-    let num = (props.index + 1).toString().padStart(2, "0");
+    let num = props.index.toString().padStart(2, "0");
     let style = {
         backgroundImage: "url(" + props.misc.CFURL + "/land_banner/" + num + ")",
         backgroundPosition: "center",

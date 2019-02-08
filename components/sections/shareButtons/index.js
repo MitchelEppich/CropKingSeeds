@@ -6,7 +6,7 @@ const ShareButtons = props => {
         <div className="fixed pin-l mt-20 z-999 md:hidden sm:hidden ">
             <div className="w-16 shadow p-2 text-white rounded-lg bg-red-darker text-right -ml-4">
                 <a
-                    name="instagramCropKingSeeds"
+                    aria-label="instagram"
                     className="text-white"
                     target="_blank"
                     href="https://www.instagram.com/cropkingseeds/?hl=en">
@@ -16,7 +16,7 @@ const ShareButtons = props => {
                     />
                 </a>
                 <a
-                    name="facebookCropKingSeeds"
+                    aria-label="facebook"
                     className="text-white"
                     target="_blank"
                     href="https://www.facebook.com/cropkingseedsreview/">
@@ -26,7 +26,7 @@ const ShareButtons = props => {
                     />
                 </a>
                 <a
-                    name="twitterCropKingSeeds"
+                    aria-label="twitter"
                     className="text-white"
                     target="_blank"
                     href="https://twitter.com/CropKingSeed?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
@@ -36,7 +36,7 @@ const ShareButtons = props => {
                     />
                 </a>
                 <a
-                    name="googlePlusCropKingSeeds"
+                    aria-label="googlePlus"
                     className="text-white"
                     target="_blank"
                     href="https://plus.google.com/+CropKingSeeds">

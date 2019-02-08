@@ -87,6 +87,7 @@ const ShippingAddress = props => {
                 <div className="w-full p-2 inline-flex sm:flex-col">
                     <div className="w-1/2 sm:w-full sm:pl-0 sm:mt-4">
                         <input
+                            aria-label="name"
                             type="text"
                             name="name"
                             id="fullName"
@@ -119,6 +120,7 @@ const ShippingAddress = props => {
                     </div>
                     <div className="w-1/2 pl-2 sm:w-full sm:pl-0 sm:mt-4">
                         <input
+                            aria-label="email"
                             type="email"
                             name="email"
                             id="email"
@@ -151,6 +153,7 @@ const ShippingAddress = props => {
                 </div>
                 <div className="w-full p-2">
                     <input
+                        aria-label="address"
                         type="text"
                         name="street-address"
                         autoComplete="shipping street-address"
@@ -183,6 +186,7 @@ const ShippingAddress = props => {
                 </div>
                 <div className="w-full p-2">
                     <input
+                        aria-label="apartment"
                         type="text"
                         name="apartment"
                         autoComplete="shipping apartment"
@@ -215,6 +219,7 @@ const ShippingAddress = props => {
                 <div className="w-full p-2 sm:flex-col inline-flex">
                     <div className="w-1/3 sm:w-full">
                         <input
+                            aria-label="ship-zip"
                             type="text"
                             name="ship-zip"
                             autoComplete="shipping postal-code"
@@ -247,6 +252,7 @@ const ShippingAddress = props => {
                     </div>
                     <div className="w-1/3 px-2 sm:w-full sm:px-0 sm:mt-4">
                         <input
+                            aria-label="ship-city"
                             type="text"
                             name="ship-city"
                             autoComplete="shipping locality"
@@ -372,6 +378,7 @@ const ShippingAddress = props => {
                         </select>
 
                         <input
+                            aria-label="ship-region"
                             type="text"
                             name="ship-state"
                             autoComplete="shipping region"
@@ -417,6 +424,7 @@ const ShippingAddress = props => {
                         <input
                             type="tel"
                             name="phone"
+                            aria-label="tel"
                             autoComplete="tel"
                             required
                             id="phone"

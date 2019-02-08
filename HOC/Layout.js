@@ -204,7 +204,7 @@ class Layout extends Component {
                                 </div>
                             </div>
 
-                            <AnchorLink className="items-center flex" href="#top">
+                            <AnchorLink aria-label="toTop" className="items-center flex" href="#top">
                                 <div
                                     id="jumpToTop"
                                     className="fixed z-999 w-12 pb-2 mb-12 mr-4 h-12 bg-red-darker pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-red-dark scale-item items-center flex rounded shadow-md">

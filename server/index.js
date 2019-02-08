@@ -69,7 +69,12 @@ app.prepare()
                 maxAge: "365d"
             })
         );
-
+        server.use(
+            "/http://dcfgweqx7od72.cloudfront.net",
+            express.static("http://dcfgweqx7od72.cloudfront.net", {
+                maxAge: "365d"
+            })
+        );
         server.use(
             "/graphql",
             bodyParser.json(),

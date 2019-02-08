@@ -117,6 +117,7 @@ const productThumbnail = props => {
                             .toString()
                             .padStart(2, "0")}.png`
                     }
+                    alt={props.product.name + "pin"}
                 />
             </div>
 
@@ -139,6 +140,7 @@ const productThumbnail = props => {
                         });
                     }
                 }}
+                alt={props.product.name + "plant"}
             />
 
             <div

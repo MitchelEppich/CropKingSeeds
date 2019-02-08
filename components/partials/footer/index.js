@@ -22,63 +22,63 @@ const Footer = props => {
                     <h3 className="text-red p-1 text-center pl-2 uppercase text-2xl font-extrabold sm:pl-0 md:pl-0 sm:text-center md:text-center">
                         Menu
                     </h3>
-                    <ul className="text-white font-bold px-2 inline-flex sm:w-full sm:flex sm:mx-auto sm:justify-center md:w-full md:flex md:mx-auto md:justify-center w-full">
+                    <div className="text-white font-bold px-2 inline-flex sm:w-full sm:flex sm:mx-auto sm:justify-center md:w-full md:flex md:mx-auto md:justify-center w-full">
                         <div className="sm:ml-4 md:ml-4 w-1/2 text-right">
                             <Link href="/about">
-                                <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
+                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
                                     About
-                                </li>
+                                </span>
                             </Link>
                             <Link href="/contact">
-                                <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
+                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
                                     Contact Us
-                                </li>
+                                </span>
                             </Link>{" "}
                             <Link href="/germination">
-                                <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
+                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
                                     Germination
-                                </li>
+                                </span>
                             </Link>{" "}
                             <Link href="/partners">
-                                <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
+                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
                                     Partners
-                                </li>
+                                </span>
                             </Link>
                             <Link href="/articles">
-                                <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
+                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
                                     Articles
-                                </li>
+                                </span>
                             </Link>
                         </div>
                         <div className="ml-4 w-1/2 text-left">
                             <Link href="/faq#delivery">
-                                <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
+                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
                                     Delivery
-                                </li>
+                                </span>
                             </Link>
                             <Link href="/faq#payment">
-                                <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
+                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
                                     Payment
-                                </li>
+                                </span>
                             </Link>
                             <Link href="/privacy">
-                                <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
+                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
                                     Privacy Policy
-                                </li>
+                                </span>
                             </Link>
 
                             <Link href="/affiliates">
-                                <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
+                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
                                     Affiliates
-                                </li>
+                                </span>
                             </Link>
                             <Link href="/faq">
-                                <li className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
+                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
                                     FAQ
-                                </li>
+                                </span>
                             </Link>
                         </div>
-                    </ul>
+                    </div>
                 </div>
                 <div className="text-white text-center mx-6 sm:mx-0 md:mx-0 sm:pt-2 sm:pb-4 md:pt-1 sm:bg-grey-dark md:bg-grey-dark w-3/8 xl:w-2/4 md:mt-8 pt:mt-8 md:w-full lg:w-1/3 sm:w-full sm:block md:block">
                     <h4 className="p-2 mt-4 mb-1 text-2/5xl lg:text-xl lg:mt-6 md:text-xl md:mt-6 font-extrabold">
@@ -100,6 +100,7 @@ const Footer = props => {
                             <input
                                 type="email"
                                 name="email"
+                                aria-label="email"
                                 required="required"
                                 className="p-2 w-full h-10 rounded-tr rounded-br"
                                 value={props.misc.newsletterEmail || ""}
@@ -115,7 +116,7 @@ const Footer = props => {
                                 pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,3}$"
                             />
                             <button
-                                name="subscribeSubmit"
+                                aria-label="subscribe"
                                 type="submit"
                                 className="absolute pin-r pl-2 h-10  bg-red-darker text-white cursor-pointer hover:bg-grey-dark hover:text-red-darker w-16">
                                 <FontAwesomeIcon icon={faAngleRight} className="fa-2x h-10 " />
@@ -141,6 +142,7 @@ const Footer = props => {
                         </h3>
                         <div className="pl-2 inline-flex mt-2 sm:w-full sm:mx-auto sm:justify-center md:w-full md:mx-auto md:justify-center md:text-right sm:text-right">
                             <a
+                                aria-label="instagram"
                                 className="text-white"
                                 target="_blank"
                                 href="https://www.instagram.com/cropkingseeds/?hl=en">
@@ -150,6 +152,7 @@ const Footer = props => {
                                 />
                             </a>
                             <a
+                                aria-label="facebook"
                                 className="text-white"
                                 target="_blank"
                                 href="https://www.facebook.com/cropkingseedsreview/">
@@ -159,6 +162,7 @@ const Footer = props => {
                                 />
                             </a>
                             <a
+                                aria-label="twitter"
                                 className="text-white"
                                 target="_blank"
                                 href="https://twitter.com/CropKingSeed?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
@@ -167,7 +171,11 @@ const Footer = props => {
                                     className="fa-2x pt-1 text-white mx-1 cursor-pointer hover:text-grey-light"
                                 />
                             </a>
-                            <a className="text-white" target="_blank" href="https://plus.google.com/+CropKingSeeds">
+                            <a
+                                aria-label="googlePlus"
+                                className="text-white"
+                                target="_blank"
+                                href="https://plus.google.com/+CropKingSeeds">
                                 <FontAwesomeIcon
                                     icon={faGooglePlus}
                                     className="fa-2x pt-1 text-white cursor-pointer hover:text-grey-light"

@@ -40,7 +40,11 @@ const menu = props => {
                     }}>
                     <div className="w-12 p-2 sm:w-8 sm:p-1 items-center flex justify-center">
                         <p>
-                            <img src={`../../static/img/currency/currency_${country}.png`} className="w-10" />
+                            <img
+                                alt="currencyCountry"
+                                src={`../../static/img/currency/currency_${country}.png`}
+                                className="w-10"
+                            />
                         </p>
                     </div>
                     <p className="px-6 pt-2 p-1 uppercase text-center font-extrabold text-lg sm:px-4 sm:text-sm">
@@ -209,6 +213,7 @@ const menu = props => {
                                         : "opacity-0 slow flex shadow-md sm:mx-0 -mt-54px sm:-mt-6 md:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-125 rounded-full bg-crimson justify-center content-center items-center ml-10"
                                 }>
                                 <img
+                                    alt="cksLogo"
                                     src="../static/img/cks-logo-header.png"
                                     onClick={() => console.log(props)}
                                     className="z-999 cks-logo-header p-0 w-125 sm:w-85px scale-item cursor-pointer sm:-mt-2 sm:-ml-1 md:-mt-3"
