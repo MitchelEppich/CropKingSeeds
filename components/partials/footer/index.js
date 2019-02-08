@@ -23,59 +23,59 @@ const Footer = props => {
                         Menu
                     </h3>
                     <div className="text-white font-bold px-2 inline-flex sm:w-full sm:flex sm:mx-auto sm:justify-center md:w-full md:flex md:mx-auto md:justify-center w-full">
-                        <div className="sm:ml-4 md:ml-4 w-1/2 text-right">
+                        <div className="sm:ml-4 md:ml-4 w-1/2 text-right sm:flex sm:flex-wrap md:flex md:flex-wrap">
                             <Link href="/about">
-                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
+                                <p className="sm:w-full md:w-full text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
                                     About
-                                </span>
+                                </p>
                             </Link>
                             <Link href="/contact">
-                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
+                                <p className="sm:w-full md:w-full text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
                                     Contact Us
-                                </span>
+                                </p>
                             </Link>{" "}
                             <Link href="/germination">
-                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
+                                <p className="sm:w-full md:w-full text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
                                     Germination
-                                </span>
+                                </p>
                             </Link>{" "}
                             <Link href="/partners">
-                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
+                                <p className="sm:w-full md:w-full text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
                                     Partners
-                                </span>
+                                </p>
                             </Link>
                             <Link href="/articles">
-                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
+                                <p className="sm:w-full md:w-full text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
                                     Articles
-                                </span>
+                                </p>
                             </Link>
                         </div>
-                        <div className="ml-4 w-1/2 text-left">
+                        <div className="ml-4 w-1/2 text-left sm:flex sm:flex-wrap md:flex md:flex-wrap">
                             <Link href="/faq#delivery">
-                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
+                                <p className="sm:w-full md:w-full text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
                                     Delivery
-                                </span>
+                                </p>
                             </Link>
                             <Link href="/faq#payment">
-                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
+                                <p className="sm:w-full md:w-full text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
                                     Payment
-                                </span>
+                                </p>
                             </Link>
                             <Link href="/privacy">
-                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
+                                <p className="sm:w-full md:w-full text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
                                     Privacy Policy
-                                </span>
+                                </p>
                             </Link>
 
                             <Link href="/affiliates">
-                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
+                                <p className="sm:w-full md:w-full text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
                                     Affiliates
-                                </span>
+                                </p>
                             </Link>
                             <Link href="/faq">
-                                <span className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
+                                <p className="text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer">
                                     FAQ
-                                </span>
+                                </p>
                             </Link>
                         </div>
                     </div>

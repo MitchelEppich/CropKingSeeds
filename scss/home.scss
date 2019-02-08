@@ -379,7 +379,8 @@ img {
 .react-autosuggest__input {
     width: calc(400px - 3rem);
     height: 2rem;
-    padding: 1px 20px;
+    padding: 1px 10px;
+    text-transform: capitalize;
     font-family: Helvetica, sans-serif;
     font-weight: 300;
     font-size: 16px;
@@ -416,7 +417,7 @@ img {
     border-radius: 10px;
     border: 0.4px solid grey;
     max-height: 200px;
-    overflow-y: auto;
+    overflow-y: hidden;
     z-index: 55;
     box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
 }
@@ -432,6 +433,8 @@ img {
     cursor: pointer;
     padding: 10px 20px;
     z-index: 55;
+    font-weight: bold;
+    font-size: 13px;
 }
 
 .react-autosuggest__suggestion--highlighted {
@@ -608,13 +611,10 @@ img {
 /////////////
 // HOME PAGE
 .bannerBuyNow {
-    color: white;
-    padding: 0.5rem 2rem;
-    border: 1px solid white;
     position: absolute;
     width: 14rem;
     left: calc(50% - 7rem);
-    bottom: 3rem;
+    bottom: 1.5rem;
     background-color: rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease-in-out;
     &:hover {
@@ -623,49 +623,32 @@ img {
 }
 .genePreview {
     width: 25%;
-    height: 500px;
-    z-index: 10;
-    transition: all 0.4s ease-in-out;
-    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.5s ease-in-out;
     background-position: center;
     background-size: 500px 500px;
     background-repeat: no-repeat;
     overflow: hidden;
     cursor: pointer;
-    border-top: 5px solid white !important;
-    border-bottom: 5px solid white !important;
-
-    &:nth-of-type(2) {
-        border-right: 5px solid white !important;
-        border-left: 5px solid white !important;
-    }
-    &:nth-of-type(3) {
-        border-right: 5px solid white !important;
-    }
+    border-top: 5px solid white;
+    border-bottom: 5px solid white;
 }
-
 .headingClass {
-    transform: translateX(17px);
-    -webkit-transform: translateX(17px);
+    transform: translateX(90px);
     position: absolute;
     bottom: 0;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 .packClass {
     transform: rotate(90deg);
-    -webkit-transform: rotate(90deg);
-    margin: 80px 128px;
+    margin: 80px 165px;
     width: 240px;
 }
 .screenClass {
     transform: translateX(-445px) rotate(-90deg);
-    -webkit-transform: translateX(-445px) rotate(-90deg);
-    -webkit-transition: all 0.4s ease-in-out;
-    transition: all 0.4s ease-in-out;
-    width: 34rem;
+    transition: all 0.5s ease-in-out;
+    width: 160%;
     height: 100%;
 }
-
 // END HOME PAGE
 ////////////////
 
@@ -675,7 +658,6 @@ img {
     height: 100%;
     width: 100%;
     transition: 0.3s all ease-in-out;
-    -webkit-transition: 0.3s all ease-in-out;
     color: rgba(255, 255, 255, 0);
     position: relative;
     z-index: 99999999999999;
@@ -685,12 +667,10 @@ img {
     @include modifier("hover") {
         text-align: center;
         transform: translateX(-60px);
-        -webkit-transform: translateX(-60px);
         height: 635px;
         width: 145%;
         background-color: #fff;
         transition: 0.3s all ease-in-out;
-        -webkit-transition: 0.3s all ease-in-out;
         color: rgba(255, 255, 255, 1);
         position: absolute;
         box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
@@ -703,10 +683,8 @@ img {
     width: 240px;
     position: relative;
     transform: translateX(-15px);
-    -webkit-transform: translateX(-15px);
     z-index: 10;
     transition: 0.3s all ease-in-out;
-    -webkit-transition: 0.3s all ease-in-out;
     padding: 5.5rem 3rem 0.5rem 3rem;
     text-align: right;
     @include modifier("hover") {
@@ -714,7 +692,6 @@ img {
         width: 240px;
         position: relative;
         transform: translateX(-10px);
-        -webkit-transform: translateX(-10px);
         z-index: 10;
         transition: 0.3s all ease-in-out;
         padding: 5.5rem 3rem 0.5rem 3rem;
@@ -723,24 +700,20 @@ img {
 }
 .package-pins {
     transition: 0.3s all ease-in-out;
-    -webkit-transition: 0.3s all ease-in-out;
     right: 0;
     height: 3.5rem;
     @include modifier("hover") {
         transition: 0.3s all ease-in-out;
-        -webkit-transition: 0.3s all ease-in-out;
         right: 0;
         height: 3.5rem;
     }
 
     @include modifier("product") {
         transition: 0.2s all ease-in-out;
-        -webkit-transition: 0.2s all ease-in-out;
         height: 1rem;
     }
     @include modifier("productZoom") {
         transition: 0.2s all ease-in-out;
-        -webkit-transition: 0.2s all ease-in-out;
         height: 7rem;
         top: 170px;
         right: 5rem;
@@ -753,9 +726,7 @@ img {
     top: 8px;
     z-index: 0;
     transform: translateX(-150px);
-    -webkit-transform: translateX(-150px);
     transition: 0.4s all ease-in-out;
-    -webkit-transition: 0.4s all ease-in-out;
     @include modifier("hover") {
         height: 12rem;
         position: absolute;
@@ -776,13 +747,10 @@ img {
     text-shadow: rgb(0, 0, 0) 1px 1px 2px;
     box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
     transition: 0.3s all ease-in-out;
-    -webkit-transition: 0.3s all ease-in-out;
     @include modifier("hover") {
         transition: 0.3s all ease-in-out;
-        -webkit-transition: 0.3s all ease-in-out;
         &:hover {
             transform: scale(1.1);
-            -webkit-transform: scale(1.1);
         }
     }
 }
@@ -910,12 +878,12 @@ img {
 }
 
 // XXL
-@media only screen and (min-width: 1368px) {
+@media only screen and (max-width: 1921px) {
     ////////////
     // UNIVERSAL
     .ray_box {
         /*HEADER ANIMATION */
-        left: calc(15rem + 50px);
+        left: calc(6rem + 170px);
         top: 100px;
         right: 0;
         position: absolute;
@@ -969,7 +937,6 @@ img {
         height: 500px;
         z-index: 10;
         transition: all 0.4s ease-in-out;
-        -webkit-transition: all 0.4s ease-in-out;
         background-position: center;
         background-size: 500px 500px;
         background-repeat: no-repeat;
@@ -980,27 +947,24 @@ img {
             border-left: 5px solid white !important;
         }
         &:nth-of-type(3) {
+            border-left: 5px solid white !important;
             border-right: 5px solid white !important;
         }
     }
 
     .headingClass {
         transform: translateX(17px);
-        -webkit-transform: translateX(17px);
         position: absolute;
         bottom: 0;
         transition: all 0.4s ease-in-out;
     }
     .packClass {
         transform: rotate(90deg);
-        -webkit-transform: rotate(90deg);
         margin: 80px 128px;
         width: 240px;
     }
     .screenClass {
         transform: translateX(-445px) rotate(-90deg);
-        -webkit-transform: translateX(-445px) rotate(-90deg);
-        -webkit-transition: all 0.4s ease-in-out;
         transition: all 0.4s ease-in-out;
         width: 33rem;
         height: 100%;
@@ -1015,7 +979,6 @@ img {
         height: 100%;
         width: 100%;
         transition: 0.4s all ease-in-out;
-        -webkit-transition: 0.4s all ease-in-out;
         color: rgba(255, 255, 255, 0);
         position: relative;
         // z-index: 99999999999999;
@@ -1024,13 +987,11 @@ img {
         @include modifier("hover") {
             text-align: center;
             transform: translateX(-60px);
-            -webkit-transform: translateX(-60px);
             height: 635px;
             width: 145%;
             padding: 10px;
             background-color: #fff;
             transition: 0.4s all ease-in-out;
-            -webkit-transition: 0.4s all ease-in-out;
             color: rgba(255, 255, 255, 1);
             position: absolute;
             // z-index: 99999999999999;
@@ -1069,8 +1030,8 @@ img {
     // UNIVERSAL
     .ray_box {
         /*HEADER ANIMATION */
-        left: calc(12rem - 15px);
-        top: 92px;
+        left: calc(32% - 150px);
+        top: 70px;
         right: 0;
         position: absolute;
         bottom: 0;
@@ -1089,7 +1050,8 @@ img {
     .react-autosuggest__input {
         width: calc(225px - 3rem);
         height: 2rem;
-        padding: 1px 20px;
+        padding: 1px 10px;
+        text-transform: capitalize;
         font-family: Helvetica, sans-serif;
         font-weight: 300;
         font-size: 16px;
@@ -1126,7 +1088,7 @@ img {
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
         max-height: 200px;
-        overflow-y: auto;
+        overflow-y: hidden;
         z-index: 55;
         box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
     }
@@ -1142,6 +1104,8 @@ img {
         cursor: pointer;
         padding: 10px 20px;
         z-index: 55;
+        font-weight: bold;
+        font-size: 13px;
     }
 
     .react-autosuggest__suggestion--highlighted {
@@ -1224,6 +1188,7 @@ img {
             border-left: 5px solid white !important;
         }
         &:nth-of-type(3) {
+            border-left: 5px solid white !important;
             border-right: 5px solid white !important;
         }
     }
@@ -1290,8 +1255,8 @@ img {
     // UNIVERSAL
     .ray_box {
         /*HEADER ANIMATION */
-        left: calc(4rem + 49px);
-        top: 100px;
+        left: calc(5% + 50px);
+        top: 55px;
         right: 0;
         position: absolute;
         bottom: 0;
@@ -1372,6 +1337,7 @@ img {
             border-left: 5px solid white !important;
         }
         &:nth-of-type(3) {
+            border-left: 5px solid white !important;
             border-right: 5px solid white !important;
         }
     }
@@ -1529,7 +1495,7 @@ img {
     .ray_box {
         /*HEADER ANIMATION */
         left: calc(3rem + 50px);
-        top: 95px;
+        top: 75px;
         right: 0;
         position: absolute;
         bottom: 0;
@@ -1546,9 +1512,10 @@ img {
     }
 
     .react-autosuggest__input {
-        width: calc(215px - 4rem);
+        width: calc(250px - 4rem);
         height: 2rem;
-        padding: 1px 20px;
+        padding: 1px 10px;
+        text-transform: capitalize;
         font-family: Helvetica, sans-serif;
         font-weight: 300;
         font-size: 16px;
@@ -1585,7 +1552,7 @@ img {
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
         max-height: 200px;
-        overflow-y: auto;
+        overflow-y: hidden;
         z-index: 55;
         box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
     }
@@ -1601,6 +1568,8 @@ img {
         cursor: pointer;
         padding: 10px 20px;
         z-index: 55;
+        font-weight: bold;
+        font-size: 13px;
     }
 
     .react-autosuggest__suggestion--highlighted {
@@ -2012,6 +1981,14 @@ img {
         background-repeat: no-repeat;
         overflow: hidden;
         cursor: pointer;
+        &:nth-of-type(2) {
+            border-right: none !important;
+            border-left: none !important;
+        }
+        &:nth-of-type(3) {
+            border-left: none !important;
+            border-right: none !important;
+        }
     }
     .headingClass {
         transform: translateX(20px);

@@ -18,7 +18,6 @@ const SearchBar = props => {
                 <SearchSuggest {...props} />{" "}
                 <Link href="/shop" as={"/shop?" + props.misc.searchValue}>
                     <a
-                        aria-label="searchButton"
                         onClick={e => {
                             if (Router.asPath.includes("/shop")) e.preventDefault();
                         }}
