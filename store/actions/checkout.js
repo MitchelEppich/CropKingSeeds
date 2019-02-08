@@ -570,8 +570,6 @@ let processOrder = async (orderDetails, res, uri) => {
         //   }
         // }
 
-        console.log(_orderPost);
-
         const link = new HttpLink({ uri, fetch: fetch });
         const operation = {
             query: mutation.processOrder,
@@ -620,7 +618,6 @@ let processPayment = async (details, uri) => {
         resolve(
             await makePromise(execute(link, operation))
                 .then(data => {
-                    console.log(data);
                     return { ...data.data.processPayment, amount, currency };
                 })
                 .catch(error => console.log(error))

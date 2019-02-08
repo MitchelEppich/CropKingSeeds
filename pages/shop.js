@@ -20,15 +20,16 @@ class Index extends Component {
     // }
     printStrains() {
         for (let i = 0; i < this.props.misc.strains.length; i++) {
-            console.log(
-                this.props.misc.strains[i].name
-                    .toLowerCase()
-                    .split(" ")
-                    .join("-")
-            );
+            // console.log(
+            //     this.props.misc.strains[i].name
+            //         .toLowerCase()
+            //         .split(" ")
+            //         .join("-")
+            // );
         }
     }
     render() {
+        let mobile = ["sm", "md"].includes(this.props.misc.mediaSize);
         return (
             <Layout>
                 {this.props.misc.strains != null &&
@@ -60,17 +61,38 @@ class Index extends Component {
                                     className={
                                         this.props.misc.hoverId != null && this.props.misc.mediaSize == "sm"
                                             ? "hidden"
-                                            : "sm:w-full md:w-full lg:w-2/5 xl:w-1/3 xxl:w-1/4 slow relative mt-8 mb-12 sm:mb-0"
+                                            : "sm:w-full md:w-full lg:w-2/5 xl:w-1/3 xxl:w-1/4 slow relative mt-8 mb-12 sm:mb-6 md:mb-6"
                                     }>
                                     <div>
                                         <Filters {...this.props} />
                                     </div>
+                                    {!mobile ? (
+                                        <div className="border border-grey-lightest mt-8 sm:mt-10 md:mt-20 md:mb-0">
+                                            <div className="shadow-md">
+                                                <h3 className="text-left pl-4 font-bold mx-auto bg-white text-grey p-2 text-xl w-full ">
+                                                    Featured Strains
+                                                </h3>
+                                            </div>
+
+                                            <FeaturedStrainThumbnails
+                                                page={"shop"}
+                                                specificMax={8}
+                                                initialCount={1}
+                                                {...this.props}
+                                            />
+                                        </div>
+                                    ) : null}
+                                </div>
+
+                                <ProductGrid {...this.props} />
+                                {mobile ? (
                                     <div className="border border-grey-lightest mt-8 sm:mt-10 md:mt-20 md:mb-0">
                                         <div className="shadow-md">
                                             <h3 className="text-left pl-4 font-bold mx-auto bg-white text-grey p-2 text-xl w-full ">
                                                 Featured Strains
                                             </h3>
                                         </div>
+
                                         <FeaturedStrainThumbnails
                                             page={"shop"}
                                             specificMax={8}
@@ -78,9 +100,7 @@ class Index extends Component {
                                             {...this.props}
                                         />
                                     </div>
-                                </div>
-
-                                <ProductGrid {...this.props} />
+                                ) : null}
                             </div>
                         </div>
                     </React.Fragment>

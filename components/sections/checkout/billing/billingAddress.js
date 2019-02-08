@@ -339,7 +339,6 @@ const BillingAddress = props => {
                             name="ship-country"
                             autoComplete="shipping country"
                             required
-                            defaultValue=""
                             value={
                                 props.checkout.orderDetails[pageGroup] != null &&
                                 props.checkout.orderDetails[pageGroup].country != null
