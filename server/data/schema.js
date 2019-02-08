@@ -13,7 +13,8 @@ type Query {
   allFeaturedNews: [News]!
   allBlockedZips: [String]!
   allBlockedIps: [String]!
-
+  
+  getBanners: [String]
   getFeaturedList: [Strain]!
   getRelatedList(input: RelatedInput!): [Strain]!
   getBitcoinData(input: BitcoinDataInput): String
@@ -38,6 +39,9 @@ type BlockedIp {
 }
 type BlockedZip {
   value: String
+}
+type Bannrs {
+  value: Int
 }
 
 type Coupon {
