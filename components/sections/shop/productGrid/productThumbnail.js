@@ -86,7 +86,7 @@ const productThumbnail = props => {
 
             <div
                 style={{
-                    backgroundImage: "url(" + props.product.packageImg + ")",
+                    backgroundImage: "url(" + props.misc.CFURL + props.product.packageImg + ")",
                     backgroundSize: "contain",
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center"
@@ -110,15 +110,18 @@ const productThumbnail = props => {
                 }}>
                 <img
                     className={packagePins}
-                    src={`../static/img/strains/pins/${rand
-                        .intBetween(1, 7)
-                        .toString()
-                        .padStart(2, "0")}.png`}
+                    src={
+                        props.misc.CFURL +
+                        `/pins/${rand
+                            .intBetween(1, 7)
+                            .toString()
+                            .padStart(2, "0")}.png`
+                    }
                 />
             </div>
 
             <img
-                src={props.product.strainImg}
+                src={props.misc.CFURL + props.product.strainImg}
                 className={plantClass}
                 onClick={() => {
                     if (props.isSmallMediumOrLargeDevice) {

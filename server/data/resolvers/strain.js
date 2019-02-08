@@ -130,11 +130,20 @@ const resolvers = {
       strain.save();
 
       return strain;
+    },
+    typeToDom: async (_, { input }) => {
+      let _strains = await Strain.find({});
+
+      for (let strain of _strains) {
+        console.log(strain.strainImg);
+        strain.strainImg = "/plant/cannabis-plant.png";
+        // strain.strainImg = "/packages/" + strain.sotiId.toUpperCase() + ".png";
+
+        strain.save();
+      }
+
+      return _strains;
     }
-    // typeToDom: async (_, { input }) => {
-    //   let _strains = await Strain.find({});
-    //   return _strains;
-    // }
   }
 };
 
