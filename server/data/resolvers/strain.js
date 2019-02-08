@@ -130,11 +130,20 @@ const resolvers = {
       strain.save();
 
       return strain;
+    },
+    typeToDom: async (_, { input }) => {
+      let _strains = await Strain.find({});
+
+      // for (let strain of _strains) {
+      //   console.log(strain.reviews);
+      //   strain.reviews = [];
+      //   strain.rating = 0;
+      //   strain.ratingQuantity = [0, 0, 0, 0, 0];
+      //   strain.save();
+      // }
+
+      return _strains;
     }
-    // typeToDom: async (_, { input }) => {
-    //   let _strains = await Strain.find({});
-    //   return _strains;
-    // }
   }
 };
 

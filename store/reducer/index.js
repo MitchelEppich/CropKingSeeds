@@ -79,7 +79,8 @@ const initialState = {
   featuredNews: [],
   news: {},
   featureCount: 1,
-  showMobileMenu: null
+  showMobileMenu: null,
+  CFURL: "http://dcfgweqx7od72.cloudfront.net"
 };
 
 const indexReducer = (state = initialState, action) => {
