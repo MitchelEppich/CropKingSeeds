@@ -177,10 +177,10 @@ class Layout extends Component {
                     ) : (
                         <React.Fragment>
                             <Header {...this.props} />
-                            {this.props.misc.hoverId == null ||
+                            {/* {this.props.misc.hoverId == null ||
                             ["md", "lg", "xl", "xxl"].includes(this.props.misc.mediaSize) ? (
                                 <SearchBar {...this.props} />
-                            ) : null}
+                            ) : null}*/}
 
                             <div className="pt-32 md:pt-48">
                                 {" "}

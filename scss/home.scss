@@ -883,6 +883,32 @@ img {
 
 ///////////////
 //MEDIA QUERIES
+
+// XXXL
+@media only screen and (min-width: 1922px) {
+    ////////////
+    // UNIVERSAL
+    .searchBar {
+        margin-left: 26%;
+    }
+
+    .ray_box {
+        /*HEADER ANIMATION */
+        left: calc(32% - 150px);
+        top: 70px;
+        right: 0;
+        position: absolute;
+        bottom: 0;
+        width: 30px;
+        height: 30px;
+        -webkit-animation: ray_anim 300s linear infinite;
+        animation: ray_anim 300s linear infinite;
+        z-index: -5;
+    }
+
+    /////////////
+}
+
 // XXL
 @media only screen and (min-width: 1368px) {
     ////////////
@@ -1813,7 +1839,7 @@ img {
     .ray_box {
         /*HEADER ANIMATION */
         left: calc(10rem + 25px);
-        top: 100px;
+        top: 60px;
         right: 0;
         position: absolute;
         bottom: 0;
@@ -1832,7 +1858,8 @@ img {
     .react-autosuggest__input {
         width: calc(100vw - 5rem);
         height: 2rem;
-        padding: 1px 20px;
+        padding: 1px 10px;
+        text-transform: capitalize;
         font-family: Helvetica, sans-serif;
         font-weight: 300;
         font-size: 16px;
@@ -1869,7 +1896,7 @@ img {
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
         max-height: 200px;
-        overflow-y: auto;
+        overflow-y: hidden;
         z-index: 35;
         box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
     }
@@ -1885,6 +1912,8 @@ img {
         cursor: pointer;
         padding: 10px 20px;
         z-index: 35;
+        font-weight: bold;
+        font-size: 13px;
     }
 
     .react-autosuggest__suggestion--highlighted {
