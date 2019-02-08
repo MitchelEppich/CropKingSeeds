@@ -19,10 +19,7 @@ export default class MyDocument extends Document {
                     <title>Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds</title>
                     <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
-                    <link
-                        href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,500,600,700,800,900"
-                        rel="stylesheet"
-                    />
+
                     <meta httpEquiv="ScreenOrientation" content="autoRotate:disabled" />
                     <meta name="robots" content="index, follow" />
                     <meta

@@ -177,7 +177,7 @@ class Index extends Component {
                             <div>
                                 <ProductPreview {...this.props} />
                                 <div className="w-full flex justify-end">
-                                    <Link href="/shop">
+                                    <Link prefetch href="/shop">
                                         <p className="font-extrabold text-xl cursor-pointer scale-item text-red-light p-2 mr-6 items-center flex">
                                             {itemsCart.length > 0 ? "Continue Shopping" : "Go to Shop Page"}
                                             <FontAwesomeIcon icon={faCartArrowDown} className="ml-2 fa-lg" />

@@ -19,7 +19,7 @@ const BannerCarousel = props => {
         <div className="xxl:h-600 xl:h-400 lg:h-300 md:h-250 sm:mt-6 sm:h-250  w-full flex relative overflow-hidden">
             {slides}
             {props.misc.activeBannerSlide == 2 ? (
-                <Link href="/product" as={"/product/gelato-feminized"}>
+                <Link prefetch href="/product" as={"/product/gelato-feminized"}>
                     <button className="bannerBuyNow sm:block md:hidden lg:hidden xl:hidden xxl:hidden">Buy Now</button>
                 </Link>
             ) : null}

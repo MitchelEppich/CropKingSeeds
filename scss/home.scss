@@ -608,10 +608,13 @@ img {
 /////////////
 // HOME PAGE
 .bannerBuyNow {
+    color: white;
+    padding: 0.5rem 2rem;
+    border: 1px solid white;
     position: absolute;
     width: 14rem;
     left: calc(50% - 7rem);
-    bottom: 1.5rem;
+    bottom: 3rem;
     background-color: rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease-in-out;
     &:hover {
@@ -620,32 +623,49 @@ img {
 }
 .genePreview {
     width: 25%;
-    transition: all 0.5s ease-in-out;
+    height: 500px;
+    z-index: 10;
+    transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
     background-position: center;
     background-size: 500px 500px;
     background-repeat: no-repeat;
     overflow: hidden;
     cursor: pointer;
-    border-top: 5px solid white;
-    border-bottom: 5px solid white;
+    border-top: 5px solid white !important;
+    border-bottom: 5px solid white !important;
+
+    &:nth-of-type(2) {
+        border-right: 5px solid white !important;
+        border-left: 5px solid white !important;
+    }
+    &:nth-of-type(3) {
+        border-right: 5px solid white !important;
+    }
 }
+
 .headingClass {
-    transform: translateX(90px);
+    transform: translateX(17px);
+    -webkit-transform: translateX(17px);
     position: absolute;
     bottom: 0;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 .packClass {
     transform: rotate(90deg);
-    margin: 80px 165px;
+    -webkit-transform: rotate(90deg);
+    margin: 80px 128px;
     width: 240px;
 }
 .screenClass {
     transform: translateX(-445px) rotate(-90deg);
-    transition: all 0.5s ease-in-out;
-    width: 160%;
+    -webkit-transform: translateX(-445px) rotate(-90deg);
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    width: 34rem;
     height: 100%;
 }
+
 // END HOME PAGE
 ////////////////
 
@@ -655,6 +675,7 @@ img {
     height: 100%;
     width: 100%;
     transition: 0.3s all ease-in-out;
+    -webkit-transition: 0.3s all ease-in-out;
     color: rgba(255, 255, 255, 0);
     position: relative;
     z-index: 99999999999999;
@@ -664,10 +685,12 @@ img {
     @include modifier("hover") {
         text-align: center;
         transform: translateX(-60px);
+        -webkit-transform: translateX(-60px);
         height: 635px;
         width: 145%;
         background-color: #fff;
         transition: 0.3s all ease-in-out;
+        -webkit-transition: 0.3s all ease-in-out;
         color: rgba(255, 255, 255, 1);
         position: absolute;
         box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
@@ -680,8 +703,10 @@ img {
     width: 240px;
     position: relative;
     transform: translateX(-15px);
+    -webkit-transform: translateX(-15px);
     z-index: 10;
     transition: 0.3s all ease-in-out;
+    -webkit-transition: 0.3s all ease-in-out;
     padding: 5.5rem 3rem 0.5rem 3rem;
     text-align: right;
     @include modifier("hover") {
@@ -689,6 +714,7 @@ img {
         width: 240px;
         position: relative;
         transform: translateX(-10px);
+        -webkit-transform: translateX(-10px);
         z-index: 10;
         transition: 0.3s all ease-in-out;
         padding: 5.5rem 3rem 0.5rem 3rem;
@@ -697,20 +723,24 @@ img {
 }
 .package-pins {
     transition: 0.3s all ease-in-out;
+    -webkit-transition: 0.3s all ease-in-out;
     right: 0;
     height: 3.5rem;
     @include modifier("hover") {
         transition: 0.3s all ease-in-out;
+        -webkit-transition: 0.3s all ease-in-out;
         right: 0;
         height: 3.5rem;
     }
 
     @include modifier("product") {
         transition: 0.2s all ease-in-out;
+        -webkit-transition: 0.2s all ease-in-out;
         height: 1rem;
     }
     @include modifier("productZoom") {
         transition: 0.2s all ease-in-out;
+        -webkit-transition: 0.2s all ease-in-out;
         height: 7rem;
         top: 170px;
         right: 5rem;
@@ -723,7 +753,9 @@ img {
     top: 8px;
     z-index: 0;
     transform: translateX(-150px);
+    -webkit-transform: translateX(-150px);
     transition: 0.4s all ease-in-out;
+    -webkit-transition: 0.4s all ease-in-out;
     @include modifier("hover") {
         height: 12rem;
         position: absolute;
@@ -744,10 +776,13 @@ img {
     text-shadow: rgb(0, 0, 0) 1px 1px 2px;
     box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
     transition: 0.3s all ease-in-out;
+    -webkit-transition: 0.3s all ease-in-out;
     @include modifier("hover") {
         transition: 0.3s all ease-in-out;
+        -webkit-transition: 0.3s all ease-in-out;
         &:hover {
             transform: scale(1.1);
+            -webkit-transform: scale(1.1);
         }
     }
 }
@@ -849,7 +884,7 @@ img {
 ///////////////
 //MEDIA QUERIES
 // XXL
-@media only screen and (max-width: 1921px) {
+@media only screen and (min-width: 1368px) {
     ////////////
     // UNIVERSAL
     .ray_box {
@@ -908,6 +943,7 @@ img {
         height: 500px;
         z-index: 10;
         transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
         background-position: center;
         background-size: 500px 500px;
         background-repeat: no-repeat;
@@ -918,26 +954,29 @@ img {
             border-left: 5px solid white !important;
         }
         &:nth-of-type(3) {
-            border-left: 5px solid white !important;
             border-right: 5px solid white !important;
         }
     }
 
     .headingClass {
         transform: translateX(17px);
+        -webkit-transform: translateX(17px);
         position: absolute;
         bottom: 0;
         transition: all 0.4s ease-in-out;
     }
     .packClass {
         transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
         margin: 80px 128px;
         width: 240px;
     }
     .screenClass {
         transform: translateX(-445px) rotate(-90deg);
+        -webkit-transform: translateX(-445px) rotate(-90deg);
+        -webkit-transition: all 0.4s ease-in-out;
         transition: all 0.4s ease-in-out;
-        width: 160%;
+        width: 33rem;
         height: 100%;
     }
 
@@ -950,6 +989,7 @@ img {
         height: 100%;
         width: 100%;
         transition: 0.4s all ease-in-out;
+        -webkit-transition: 0.4s all ease-in-out;
         color: rgba(255, 255, 255, 0);
         position: relative;
         // z-index: 99999999999999;
@@ -958,11 +998,13 @@ img {
         @include modifier("hover") {
             text-align: center;
             transform: translateX(-60px);
+            -webkit-transform: translateX(-60px);
             height: 635px;
             width: 145%;
             padding: 10px;
             background-color: #fff;
             transition: 0.4s all ease-in-out;
+            -webkit-transition: 0.4s all ease-in-out;
             color: rgba(255, 255, 255, 1);
             position: absolute;
             // z-index: 99999999999999;
@@ -1156,7 +1198,6 @@ img {
             border-left: 5px solid white !important;
         }
         &:nth-of-type(3) {
-            border-left: 5px solid white !important;
             border-right: 5px solid white !important;
         }
     }
@@ -1305,7 +1346,6 @@ img {
             border-left: 5px solid white !important;
         }
         &:nth-of-type(3) {
-            border-left: 5px solid white !important;
             border-right: 5px solid white !important;
         }
     }

@@ -193,7 +193,7 @@ module.exports = {
         md: { min: "480px", max: "767px" },
         lg: { min: "768px", max: "991px" },
         xl: { min: "992px", max: "1367px" },
-        xxl: { min: "1368px" }
+        xxl: { min: "1368px", max: "9999px" }
     },
 
     /*

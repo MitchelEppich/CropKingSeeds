@@ -11,7 +11,7 @@ const Post = props => {
                     Proper germination is the first step to get your cannabis plants growing successfully. Follow our 5
                     easy steps, or watch our short video to assure your plants flourish right from the seed.
                 </p>
-                <Link href="/germination">
+                <Link prefetch href="/germination">
                     <div className="bg-red-dark text-white p-2 px-6 mt-4 flex items-center justify-center h-12 w-48 mx-auto cursor-pointer rounded font-bold hover:bg-red-light">
                         Read More
                     </div>

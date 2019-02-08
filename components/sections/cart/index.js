@@ -77,7 +77,7 @@ const cart = props => {
                 )}
             </div>
             <div className="pr-4 h-16 items-center flex bg-white text-red-dark flex absolute pin-b border-t-2 border-red-dark w-500 sm:w-full md:w-full">
-                <Link href="/checkout">
+                <Link prefetch href="/checkout">
                     <button
                         name="viewCart"
                         onClick={() =>

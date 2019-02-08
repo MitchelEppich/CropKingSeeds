@@ -45,7 +45,7 @@ class Index extends Component {
                     <SearchBar {...this.props} />
                     <p className="mt-12">
                         Can't find the answer to your question? Feel free to{" "}
-                        <Link href="/contact">
+                        <Link prefetch href="/contact">
                             <span className="text-red-dark cursor-pointer hover:text-grey">Contact Us</span>
                         </Link>
                         , we are ready 24/7 Worldwide to assist you with any question you may have.

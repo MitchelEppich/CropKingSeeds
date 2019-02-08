@@ -147,7 +147,7 @@ const productThumbnail = props => {
                     props.setCurrentProduct({ product: props.product });
                 }}
                 className={hover ? "overflow-hidden w-full bg-white pt-4" : "relative"}>
-                <Link href="/product" as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}>
+                <Link prefetch href="/product" as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}>
                     <div style={{ zIndex: "1000", width: "92%" }} className="absolute w-full">
                         <h3
                             onClick={() => {
@@ -180,7 +180,10 @@ const productThumbnail = props => {
                     </p>
                 </div>
                 <div className={hover ? "text-grey px-6 p-2 sm:pt-0 text-sm" : "hidden slow"}>
-                    <Link href="/product" as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}>
+                    <Link
+                        prefetch
+                        href="/product"
+                        as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}>
                         <div className="w-150 relative text-left justify-center flex mx-auto">
                             <div
                                 className="inline-flex bg-red-light"
@@ -264,7 +267,7 @@ const productThumbnail = props => {
                                         "Add to Cart"
                                     )}
                                 </button>
-                                <Link href="/checkout">
+                                <Link prefetch href="/checkout">
                                     <button
                                         className="bg-grey-dark ml-1 w-full text-center text-white h-10 px-2 py-2 hover:bg-grey"
                                         onClick={() => {

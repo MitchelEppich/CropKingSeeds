@@ -220,17 +220,17 @@ const menu = props => {
                             <div className="sm:hidden md:hidden lg:hidden w-full">
                                 <ul className="flex justify-around text-white mt-1 uppercase w-full">
                                     <li className="w-300 " />
-                                    <Link href="/">
+                                    <Link prefetch href="/">
                                         <li className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark">
                                             Home
                                         </li>
                                     </Link>
-                                    <Link href="/shop">
+                                    <Link prefetch href="/shop">
                                         <li className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark">
                                             Shop
                                         </li>
                                     </Link>
-                                    <Link href="/contact">
+                                    <Link prefetch href="/contact">
                                         <li className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark">
                                             Contact
                                         </li>
@@ -270,7 +270,7 @@ const menu = props => {
                                                 ? "text-white w-full mt-1 ml-0 pl-0 uppercase opacity-1 h-full slow"
                                                 : "text-white w-full mt-1 ml-0 pl-0 uppercase opacity-0 h-0 "
                                         }>
-                                        <Link href="/">
+                                        <Link prefetch href="/">
                                             <li
                                                 className={
                                                     isMobileNavVisible
@@ -280,7 +280,7 @@ const menu = props => {
                                                 Home
                                             </li>
                                         </Link>
-                                        <Link href="/shop">
+                                        <Link prefetch href="/shop">
                                             <li
                                                 className={
                                                     isMobileNavVisible
@@ -290,7 +290,7 @@ const menu = props => {
                                                 Shop
                                             </li>
                                         </Link>
-                                        <Link href="/contact">
+                                        <Link prefetch href="/contact">
                                             <li
                                                 className={`${
                                                     route.includes("checkout")
