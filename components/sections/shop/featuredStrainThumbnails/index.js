@@ -23,7 +23,7 @@ const index = props => {
 
     products = products.map((product, index) => {
         return (
-            <Link prefetch key={index} href="/product" as={"/product/" + product.name.toLowerCase().replace(/ /g, "-")}>
+            <Link key={index} href="/product" as={"/product/" + product.name.toLowerCase().replace(/ /g, "-")}>
                 <div
                     onMouseEnter={() => {
                         if (isSmallMediumOrLargeDevice) {
@@ -48,7 +48,17 @@ const index = props => {
                         props.setHoverId(product._id, false);
                     }}
                     onClick={e => {
-                        props.setCurrentProduct({ product: product });
+                        let strains = props.misc.strains;
+                        props.getStrain({ sotiId: product.sotiId, strains }).then(res => {
+                            props.setCurrentProduct({ product: res }).then(() => {
+                                let product = props.viewProduct.currentProduct;
+                                let _index = 0;
+                                while (product.price[_index] == -1) {
+                                    _index++;
+                                }
+                                props.quickAddToCartQty(_index);
+                            });
+                        });
                     }}
                     className={
                         hoverId == product._id

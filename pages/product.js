@@ -24,6 +24,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import Loader from "../components/sections/loader";
 import ImageCarousel from "../components/sections/productPage/imageCarousel";
 import Ratings from "../components/sections/productPage/ratings";
+import Router from "next/router";
 
 let lowerImageCar;
 
@@ -123,7 +124,7 @@ class Index extends Component {
                                 <h3 className="w-full p-2 pl-6 font-bold text-3xl my-3 text-grey bg-smoke-grey">
                                     Frequently Bought Together
                                 </h3>
-                                <div className="px-8 sm:px-4 w-full mt-2">
+                                <div className="px-0 sm:px-4 w-full mt-2">
                                     {/* <OtherProducts count={3} {...this.props} /> */}
                                     <FeaturedStrainThumbnails
                                         page={"product"}

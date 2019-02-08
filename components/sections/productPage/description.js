@@ -2,13 +2,13 @@ import React from "react";
 
 const Description = props => {
     let _product = props.viewProduct.currentProduct;
-    let _genes = _product.og.map((val, index) => {
-        return (
-            <span key={index} className="font-bold">
-                {val}
-            </span>
-        );
-    });
+    // let _genes = _product.og.map((val, index) => {
+    //     return (
+    //         <span key={index} className="font-bold">
+    //             {val}
+    //         </span>
+    //     );
+    // });
 
     return (
         <div>

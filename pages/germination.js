@@ -60,6 +60,7 @@ const mapDispatchToProps = dispatch => {
         clearCart: () => dispatch(actions.clearCart()),
         setSort: input => dispatch(actions.setSort(input)),
         expandProduct: id => dispatch(actions.expandProduct(id)),
+        getStrain: input => dispatch(actions.getStrain(input)),
         setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
         showMoreFeatures: input => dispatch(actions.showMoreFeatures(input))
     };
