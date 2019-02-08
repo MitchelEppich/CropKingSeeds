@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
-library.add(faPlus, faMinus);
+import { faPlus, faMinus, faCheck } from "@fortawesome/free-solid-svg-icons";
 import SeedSelectModule from "./seedSelectModule";
 
 const addToCart = props => {
@@ -72,7 +71,14 @@ const addToCart = props => {
                 props.toggleCartAnimation();
               }}
             >
-              Add to Cart
+              {props.shop.cartAnimation ? (
+                <div className="inline-flex slowish">
+                  Added
+                  <FontAwesomeIcon icon={faCheck} className="ml-1" />
+                </div>
+              ) : (
+                "Add to Cart"
+              )}
             </button>
           </div>
           <div className="w-1/2 pt-2">

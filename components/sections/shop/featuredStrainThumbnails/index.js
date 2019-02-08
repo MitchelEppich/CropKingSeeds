@@ -58,8 +58,8 @@ const index = props => {
           }}
           className={
             hoverId == product._id
-              ? " relative bg-white mx-4 my-2 w-64 h-350 rounded-lg overflow-hidden shadow-md slowishish"
-              : " relative bg-white mx-4 my-2 w-64 h-350 rounded-lg overflow-hidden shadow-md slowishish"
+              ? "relative bg-white mx-4 my-2 w-64 h-350 rounded-lg overflow-hidden shadow-md slowishish"
+              : "relative bg-white mx-4 my-2 w-64 h-350 rounded-lg overflow-hidden shadow-md slowishish"
           }
         >
           <FeaturedStrainThumbnail

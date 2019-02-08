@@ -47,7 +47,7 @@ class Index extends Component {
         className="text-center cursor-pointer mt-1 text-white"
       >
         <div>
-          <FontAwesomeIcon icon={faShoppingCart} className="fa-lg" />
+          <FontAwesomeIcon icon={faShoppingCart} className="fa-lg pl-1" />
           <span
             style={{
               height: "28px",

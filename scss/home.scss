@@ -442,6 +442,11 @@ img {
   background-color: #ddd;
   z-index: 55;
 }
+
+.searchBar {
+  margin-left: 20%;
+}
+
 //////////////////
 
 .slow {
@@ -854,8 +859,8 @@ img {
   // UNIVERSAL
   .ray_box {
     /*HEADER ANIMATION */
-    left: calc(16rem + 50px);
-    top: 10px;
+    left: calc(15rem + 50px);
+    top: 100px;
     right: 0;
     position: absolute;
     bottom: 0;
@@ -864,6 +869,10 @@ img {
     -webkit-animation: ray_anim 300s linear infinite;
     animation: ray_anim 300s linear infinite;
     z-index: -5;
+  }
+
+  .searchBar {
+    margin-left: 18%;
   }
   // END UNIVERSAL
   ////////////////
@@ -954,7 +963,7 @@ img {
     @include modifier("hover") {
       text-align: center;
       transform: translateX(-60px);
-      height: 655px;
+      height: 635px;
       width: 145%;
       padding: 10px;
       background-color: #fff;
@@ -998,8 +1007,8 @@ img {
   // UNIVERSAL
   .ray_box {
     /*HEADER ANIMATION */
-    left: calc(16rem - 15px);
-    top: 12px;
+    left: calc(12rem - 15px);
+    top: 92px;
     right: 0;
     position: absolute;
     bottom: 0;
@@ -1078,6 +1087,11 @@ img {
     background-color: #ddd;
     z-index: 55;
   }
+
+  .searchBar {
+    margin-left: 20%;
+  }
+
   // END UNIVERSAL
   ////////////////
 
@@ -1216,8 +1230,8 @@ img {
   // UNIVERSAL
   .ray_box {
     /*HEADER ANIMATION */
-    left: calc(10rem + 49px);
-    top: 12px;
+    left: calc(4rem + 49px);
+    top: 100px;
     right: 0;
     position: absolute;
     bottom: 0;
@@ -1227,6 +1241,11 @@ img {
     animation: ray_anim 300s linear infinite;
     z-index: -5;
   }
+
+  .searchBar {
+    margin-left: 20%;
+  }
+
   // END UNIVERSAL
   ////////////////
 
@@ -1451,8 +1470,8 @@ img {
   }
   .ray_box {
     /*HEADER ANIMATION */
-    left: calc(6rem + 50px);
-    top: 15px;
+    left: calc(3rem + 50px);
+    top: 95px;
     right: 0;
     position: absolute;
     bottom: 0;
@@ -1469,7 +1488,7 @@ img {
   }
 
   .react-autosuggest__input {
-    width: calc(250px - 3rem);
+    width: calc(215px - 4rem);
     height: 2rem;
     padding: 1px 20px;
     font-family: Helvetica, sans-serif;
@@ -1531,6 +1550,11 @@ img {
     background-color: #ddd;
     z-index: 55;
   }
+
+  .searchBar {
+    margin-left: 8%;
+  }
+
   // END UNIVERSAL
   ////////////////
 
@@ -1758,8 +1782,8 @@ img {
   }
   .ray_box {
     /*HEADER ANIMATION */
-    left: calc(6rem + 25px);
-    top: 15px;
+    left: calc(10rem + 25px);
+    top: 100px;
     right: 0;
     position: absolute;
     bottom: 0;
@@ -1837,6 +1861,10 @@ img {
   .react-autosuggest__suggestion--highlighted {
     background-color: #ddd;
     z-index: 35;
+  }
+
+  .searchBar {
+    margin-left: 5%;
   }
   // END UNIVERSAL
   ////////////////
