@@ -134,13 +134,13 @@ const resolvers = {
     typeToDom: async (_, { input }) => {
       let _strains = await Strain.find({});
 
-      // for (let strain of _strains) {
-      //   console.log(strain.reviews);
-      //   strain.reviews = [];
-      //   strain.rating = 0;
-      //   strain.ratingQuantity = [0, 0, 0, 0, 0];
-      //   strain.save();
-      // }
+      for (let strain of _strains) {
+        console.log(strain.strainImg);
+        strain.strainImg = "/plant/cannabis-plant.png";
+        // strain.strainImg = "/packages/" + strain.sotiId.toUpperCase() + ".png";
+
+        strain.save();
+      }
 
       return _strains;
     }
