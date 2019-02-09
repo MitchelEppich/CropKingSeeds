@@ -23,7 +23,7 @@ const cartItem = props => {
                         background: Object.keys(_items).indexOf(item) % 2 == 0 ? "#e6e6e6" : "#f6f6f6"
                     }}
                     className={`flex justify-between px-4 py-2`}>
-                    <img className="h-32 mx-6" src={_product.packageImg} />
+                    <img className="h-32 mx-6" src={props.misc.CFURL + _product.packageImg} />
                     <div className="flex relative flex-wrap justify-between lg:w-250 lg:mr-auto md:w-250 md:mr-auto sm:w-200 sm:mr-auto">
                         <h3 className="text-black text-xl w-300 sm:w-150 h-16 pr-3 mt-2 sm:text-lg">
                             {_product.name}

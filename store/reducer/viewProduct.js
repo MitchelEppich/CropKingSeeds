@@ -138,7 +138,8 @@ const initialState = {
     review: {},
     reviewCursor: 0,
     ratingFilter: null,
-    imageZoom: false
+    imageZoom: false,
+    showStrainsMenu: false
 };
 
 export default (state = initialState, action) => {
@@ -172,6 +173,8 @@ export default (state = initialState, action) => {
             return updateObject(state, { ImageZoom: action.imz });
         case actionTypes.TOGGLE_IMAGE_ZOOM:
             return updateObject(state, { imageZoom: action.bool });
+        case actionTypes.TOGGLE_STRAINS_MENU:
+            return updateObject(state, { showStrainsMenu: action.bool });
         default:
             return state;
     }

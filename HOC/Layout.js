@@ -23,6 +23,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import Loader from "../components/sections/loader";
 import SearchBar from "../components/partials/header/searchBar";
 import ImageZoom from "../components/sections/productPage/imageZoom";
+import StrainsMenu from "../components/sections/productPage/strainsMenu";
 
 import { detect } from "detect-browser";
 const _browser = detect();
@@ -181,14 +182,13 @@ class Layout extends Component {
                             ["md", "lg", "xl", "xxl"].includes(this.props.misc.mediaSize) ? (
                                 <SearchBar {...this.props} />
                             ) : null}*/}
-
                             <div className="pt-32 md:pt-48">
                                 {" "}
                                 <div className="relative">
                                     <ShareButtons {...this.props} />
                                 </div>
                                 <div
-                                    className="pulse sm:hidden md:hidden lg:hidden fixed z-999 w-20 h-16 bg-red-darker mb-16 pin-b pin-l text-white text-center text-lg pt-3 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item shadow-md"
+                                    className="pulse sm:hidden md:hidden lg:hidden fixed z-40 w-20 h-16 bg-red-darker mb-16 pin-b pin-l text-white text-center text-lg pt-3 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item shadow-md"
                                     onClick={() => Tawk_API.toggle()}>
                                     <FontAwesomeIcon icon={faComments} className="ml-2 fa-2x cursor-pointer" />
                                     {/* <h3>CHAT</h3> */}
@@ -203,7 +203,7 @@ class Layout extends Component {
                                     )}
                                 </div>
                             </div>
-
+                            <StrainsMenu {...this.props} />
                             <AnchorLink aria-label="toTop" className="items-center flex" href="#top">
                                 <div
                                     id="jumpToTop"
@@ -214,7 +214,6 @@ class Layout extends Component {
                                     />
                                 </div>
                             </AnchorLink>
-
                             <Cart {...this.props} />
                             <Footer {...this.props} />
                         </React.Fragment>
@@ -249,7 +248,8 @@ const mapDispatchToProps = dispatch => {
         modifyOrderDetails: input => dispatch(actions.modifyOrderDetails(input)),
         setSearch: value => dispatch(actions.setSearch(value)),
         toggleImageZoom: bool => dispatch(actions.toggleImageZoom(bool)),
-        setCurrentImage: index => dispatch(actions.setCurrentImage(index))
+        setCurrentImage: index => dispatch(actions.setCurrentImage(index)),
+        toggleStrainsMenu: bool => dispatch(actions.toggleStrainsMenu(bool))
     };
 };
 

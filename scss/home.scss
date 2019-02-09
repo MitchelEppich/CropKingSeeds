@@ -23,6 +23,26 @@
         @content;
     }
 }
+
+/****SCROLLBAR*****/
+::-webkit-scrollbar {
+  width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #3b0d0c;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #9a1815;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #bb1724;
+}
+
+
 //EXAMPLE FONT FACE IMPORT WITH TWO WEIGHTS
 @font-face {
     font-family: "proxima nova";
@@ -217,6 +237,14 @@ img {
 
 .li--viewProduct {
     list-style: inside;
+}
+.list_container {
+    direction: rtl;
+    overflow-y: scroll;
+}
+
+.item_direction {
+    direction: ltr;
 }
 .preserv-3d {
     transform-style: preserve-3d;

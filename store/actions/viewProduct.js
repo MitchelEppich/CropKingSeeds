@@ -14,7 +14,8 @@ const actionTypes = {
     MODIFY_REVIEW: "MODIFY_REVIEW",
     SET_REVIEW_CURSOR: "SET_REVIEW_CURSOR",
     SET_REVIEW_RATE_FILTER: "SET_REVIEW_RATE_FILTER",
-    TOGGLE_IMAGE_ZOOM: "TOGGLE_IMAGE_ZOOM"
+    TOGGLE_IMAGE_ZOOM: "TOGGLE_IMAGE_ZOOM",
+    TOGGLE_STRAINS_MENU: "TOGGLE_STRAINS_MENU"
 };
 
 const getActions = uri => {
@@ -125,6 +126,12 @@ const getActions = uri => {
         toggleImageZoom: bool => {
             return {
                 type: actionTypes.TOGGLE_IMAGE_ZOOM,
+                bool: bool
+            };
+        },
+        toggleStrainsMenu: bool => {
+            return {
+                type: actionTypes.TOGGLE_STRAINS_MENU,
                 bool: bool
             };
         }

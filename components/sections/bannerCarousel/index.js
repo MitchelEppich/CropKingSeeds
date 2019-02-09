@@ -11,7 +11,11 @@ const BannerCarousel = props => {
             {slides}
             {props.misc.activeBannerSlide == 2 ? (
                 <Link prefetch href="/product" as={props.misc.banners[1]}>
-                    <button className="bannerBuyNow sm:block md:hidden lg:hidden xl:hidden xxl:hidden">Buy Now</button>
+                    <button
+                        onClick={e => e.stopPropagation()}
+                        className="bannerBuyNow sm:block md:hidden lg:hidden xl:hidden xxl:hidden">
+                        Buy Now
+                    </button>
                 </Link>
             ) : null}
         </div>

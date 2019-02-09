@@ -27,7 +27,7 @@ const initialState = {
     strains: null,
     hoverId: null,
     geneHoverIndex: null,
-    stepsCheckout: 0,
+    stepsCheckout: 1,
     showDifferentAddress: false,
     ageVerification: null,
     // checkoutScreen: "productsScreen",
