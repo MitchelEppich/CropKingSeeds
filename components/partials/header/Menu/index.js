@@ -280,7 +280,7 @@ const menu = props => {
 
               {/* MOBILE SM - SEARCH BAR */}
               <div
-                className="absolute pin-l w-12 h-12 bg-semi-transparent items-center justify-center flex text-white xxl:hidden xl:hidden"
+                className="absolute pin-l w-12 h-12 bg-semi-transparent items-center justify-center flex text-white xxl:hidden xl:hidden cursor-pointer"
                 onClick={() => {
                   props.setVisibleScreen({
                     input: "showSearchBar"

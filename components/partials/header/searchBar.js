@@ -13,7 +13,7 @@ const SearchBar = props => {
           Router.push("/shop", "/shop?" + props.misc.searchValue);
         }
       }}
-      className="w-full h-16 z-50"
+      className="w-full z-50"
     >
       <div className="flex w-400 sm:w-full xl:w-225 lg:w-225 md:w-225 z-40 h-8 mt-1 bg-white border-0 text-grey rounded shadow-md sm:relative">
         <SearchSuggest {...props} />{" "}
