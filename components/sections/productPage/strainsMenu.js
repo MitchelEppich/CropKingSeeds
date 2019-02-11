@@ -111,41 +111,77 @@ const strainsMenu = props => {
       ) : null}
 
       <div className="bg-white text-white relative -ml-1">
-        <p className="bg-red-dark text-white text-center uppercase  text-xl p-2 absolute w-full font-bold">
+        <p className="bg-red-dark text-white text-center uppercase text-xl p-2 absolute w-full font-bold">
           All Strains
         </p>
         <div className="overflow-y-auto h-screen w-full">
-          <p className="bg-grey-lightest p-3 font-bold text-center text-grey uppercase w-full mt-8">
+          <p
+            className={`bg-${
+              props.detail.geneColor[
+                _strains[headersPlacement[0]].genetic.toLowerCase()
+              ]
+            } p-3 font-bold text-center text-white text-shadow uppercase w-full mt-10`}
+          >
             {category[_strains[headersPlacement[0]].genetic]}
           </p>
           <ul className="text-white leading-loose mt-1 w-full list-reset">
             {strains.slice(headersPlacement[0], headersPlacement[1])}
           </ul>
-          <p className="bg-grey-lightest p-3 font-bold text-center text-grey uppercase w-full">
+          <p
+            className={`bg-${
+              props.detail.geneColor[
+                _strains[headersPlacement[1]].genetic.toLowerCase()
+              ]
+            } p-3 font-bold text-center text-white text-shadow uppercase w-full`}
+          >
             {category[_strains[headersPlacement[1]].genetic]}
           </p>
           <ul className="text-white leading-loose mt-1 w-full list-reset">
             {strains.slice(headersPlacement[1], headersPlacement[2])}
           </ul>
-          <p className="bg-grey-lightest p-3 font-bold text-center text-grey uppercase w-full">
+          <p
+            className={`bg-${
+              props.detail.geneColor[
+                _strains[headersPlacement[2]].genetic.toLowerCase()
+              ]
+            } p-3 font-bold text-center text-white text-shadow uppercase w-full`}
+          >
             {category[_strains[headersPlacement[2]].genetic]}
           </p>
           <ul className="text-white leading-loose mt-1 w-full list-reset">
             {strains.slice(headersPlacement[2], headersPlacement[3])}
           </ul>
-          <p className="bg-grey-lightest p-3 font-bold text-center text-grey uppercase w-full">
+          <p
+            className={`bg-${
+              props.detail.geneColor[
+                _strains[headersPlacement[3]].genetic.toLowerCase()
+              ]
+            } p-3 font-bold text-center text-white text-shadow uppercase w-full`}
+          >
             {category[_strains[headersPlacement[3]].genetic]}
           </p>
           <ul className="text-white leading-loose mt-1 w-full list-reset">
             {strains.slice(headersPlacement[3], headersPlacement[4])}
           </ul>
-          <p className="bg-grey-lightest p-3 font-bold text-center text-grey uppercase w-full">
+          <p
+            className={`bg-${
+              props.detail.geneColor[
+                _strains[headersPlacement[4]].genetic.toLowerCase()
+              ]
+            } p-3 font-bold text-center text-white text-shadow uppercase w-full`}
+          >
             {category[_strains[headersPlacement[4]].genetic]}
           </p>
           <ul className="text-white leading-loose mt-1 w-full list-reset">
             {strains.slice(headersPlacement[4], headersPlacement[5])}
           </ul>
-          <p className="bg-grey-lightest p-3 font-bold text-center text-grey uppercase w-full">
+          <p
+            className={`bg-${
+              props.detail.geneColor[
+                _strains[headersPlacement[5]].genetic.toLowerCase()
+              ]
+            } p-3 font-bold text-center text-white text-shadow uppercase w-full`}
+          >
             {category[_strains[headersPlacement[5]].genetic]}
           </p>
           <ul className="text-white leading-loose mt-1 pb-20 mb-24 w-full list-reset">
