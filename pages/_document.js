@@ -33,7 +33,7 @@ export default class MyDocument extends Document {
                     <meta name="copyright" content="" />
                     {/* <link rel="manifest" href="/_next/static/manifest.json" /> */}
                     <link rel="stylesheet" href="/_next/static/style.css" />
-                    {/* <link rel="icon" href="static/favicon.ico" /> */}
+                    <link rel="icon" href="static/favicon.ico" />
 
                     <JSONLD>
                         <Generic
