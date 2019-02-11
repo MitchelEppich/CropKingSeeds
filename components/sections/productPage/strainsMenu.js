@@ -5,6 +5,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCannabis } from "@fortawesome/free-solid-svg-icons";
 
 const strainsMenu = props => {
+  let category = {
+    Regular: "Regular",
+    Feminized: "Feminized",
+    Autoflower: "Autoflower Feminized",
+    Dwarf: "Dwarf Auto-Fem",
+    CBD: "CBD Medical",
+    Mix: "Mix and Match"
+  };
+  let headersPlacement = [];
   let showMenu =
     Router.asPath.slice(1).includes("product/") &&
     props.viewProduct.showStrainsMenu;
@@ -16,41 +25,54 @@ const strainsMenu = props => {
     : {
         transform: "translateX(-255px)"
       };
-  let strains = props.misc.strains
-    ? props.misc.strains.map((strain, index) => {
-        return (
-          <Link
-            key={index}
-            href="/product"
-            as={strain.name
-              .toLowerCase()
-              .split(" ")
-              .join("-")}
-          >
-            <li
-              className="text-base font-bold text-left border-b-2 text-grey hover:text-white hover:bg-red-light border-grey-lightest pl-4 cursor-pointer"
-              onClick={e => {
-                let strains = props.misc.strains;
-                props
-                  .getStrain({ sotiId: strain.sotiId, strains })
-                  .then(res => {
-                    props.setCurrentProduct({ product: res }).then(() => {
-                      let product = props.viewProduct.currentProduct;
-                      let _index = 0;
-                      while (strain.price[_index] == -1) {
-                        _index++;
-                      }
-                      props.quickAddToCartQty(_index);
-                    });
-                  });
-              }}
-            >
-              {strain.name}
-            </li>
-          </Link>
-        );
-      })
-    : null;
+  let _strains = props.misc.strains;
+
+  if (_strains == null) return <div />;
+
+  _strains = [..._strains];
+
+  let strains = _strains.sort((a, b) => {
+    let _category = Object.keys(category);
+    let _a = _category.indexOf(a.genetic);
+    let _b = _category.indexOf(b.genetic);
+    if (_a > _b) return 1;
+    if (_a < _b) return -1;
+    return 0;
+  });
+
+  strains = strains.map((strain, index) => {
+    if (index == 0 || strains[index].genetic != strains[index - 1].genetic)
+      headersPlacement.push(index);
+    return (
+      <Link
+        key={index}
+        href="/product"
+        as={strain.name
+          .toLowerCase()
+          .split(" ")
+          .join("-")}
+      >
+        <li
+          className="text-base font-bold text-left border-b-2 text-grey hover:text-white hover:bg-red-light border-grey-lightest pl-4 cursor-pointer"
+          onClick={e => {
+            let strains = props.misc.strains;
+            props.getStrain({ sotiId: strain.sotiId, strains }).then(res => {
+              props.setCurrentProduct({ product: res }).then(() => {
+                let product = props.viewProduct.currentProduct;
+                let _index = 0;
+                while (strain.price[_index] == -1) {
+                  _index++;
+                }
+                props.quickAddToCartQty(_index);
+              });
+            });
+          }}
+        >
+          {strain.name}
+        </li>
+      </Link>
+    );
+  });
 
   let StrainText = {
     writingMode: "vertical-rl",
@@ -94,40 +116,40 @@ const strainsMenu = props => {
         </p>
         <div className="overflow-y-auto h-screen w-full">
           <p className="bg-grey-lightest p-3 font-bold text-center text-grey uppercase w-full mt-8">
-            Regular
+            {category[_strains[headersPlacement[0]].genetic]}
           </p>
           <ul className="text-white leading-loose mt-1 w-full list-reset">
-            {strains.slice(0, 4)}
+            {strains.slice(headersPlacement[0], headersPlacement[1])}
           </ul>
           <p className="bg-grey-lightest p-3 font-bold text-center text-grey uppercase w-full">
-            Feminized
+            {category[_strains[headersPlacement[1]].genetic]}
           </p>
           <ul className="text-white leading-loose mt-1 w-full list-reset">
-            {strains.slice(4, 22)}
+            {strains.slice(headersPlacement[1], headersPlacement[2])}
           </ul>
           <p className="bg-grey-lightest p-3 font-bold text-center text-grey uppercase w-full">
-            Auto Flower Feminized
+            {category[_strains[headersPlacement[2]].genetic]}
           </p>
           <ul className="text-white leading-loose mt-1 w-full list-reset">
-            {strains.slice(22, 33)}
+            {strains.slice(headersPlacement[2], headersPlacement[3])}
           </ul>
           <p className="bg-grey-lightest p-3 font-bold text-center text-grey uppercase w-full">
-            Dwarf Auto Feminized
+            {category[_strains[headersPlacement[3]].genetic]}
           </p>
           <ul className="text-white leading-loose mt-1 w-full list-reset">
-            {strains.slice(32, 33)}
+            {strains.slice(headersPlacement[3], headersPlacement[4])}
           </ul>
           <p className="bg-grey-lightest p-3 font-bold text-center text-grey uppercase w-full">
-            CBD Medical
+            {category[_strains[headersPlacement[4]].genetic]}
           </p>
           <ul className="text-white leading-loose mt-1 w-full list-reset">
-            {strains.slice(33, 35)}
+            {strains.slice(headersPlacement[4], headersPlacement[5])}
           </ul>
           <p className="bg-grey-lightest p-3 font-bold text-center text-grey uppercase w-full">
-            Mix and Match
+            {category[_strains[headersPlacement[5]].genetic]}
           </p>
           <ul className="text-white leading-loose mt-1 pb-20 mb-24 w-full list-reset">
-            {strains.slice(35)}
+            {strains.slice(headersPlacement[5])}
           </ul>
         </div>
       </div>
