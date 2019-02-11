@@ -178,6 +178,7 @@ const mapDispatchToProps = dispatch => {
         setReviewRateFilter: input => dispatch(actions.setReviewRateFilter(input)),
         modifyReview: input => dispatch(actions.modifyReview(input)),
         toggleCartAnimation: () => dispatch(actions.toggleCartAnimation()),
+        resetCartAnimation: () => dispatch(actions.resetCartAnimation()),
         setImageZoom: imz => dispatch(actions.setImageZoom(imz)),
         getStrain: input => dispatch(actions.getStrain(input)),
         setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),

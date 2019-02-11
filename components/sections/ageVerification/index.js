@@ -102,7 +102,6 @@ const AgeVerification = props => {
                             <p className="my-2 mr-4 text-grey-light text-sm">Country:</p>
                             <select
                                 id="country"
-                                defaultValue=""
                                 value={
                                     props.misc.ageVerification != null
                                         ? props.misc.ageVerification.country || ""

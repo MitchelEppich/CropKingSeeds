@@ -179,7 +179,8 @@ const mapDispatchToProps = dispatch => {
         setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
         modifyPotentialQuantity: input => dispatch(actions.modifyPotentialQuantity(input)),
         toggleFilter: input => dispatch(actions.toggleFilter(input)),
-        toggleCartAnimation: () => dispatch(actions.toggleCartAnimation())
+        toggleCartAnimation: () => dispatch(actions.toggleCartAnimation()),
+        resetCartAnimation: () => dispatch(actions.resetCartAnimation())
     };
 };
 
