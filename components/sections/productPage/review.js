@@ -19,7 +19,7 @@ const review = props => {
   return (
     <div className="lg:block md:block sm:block sm:w-full w-full sm:ml-0 sm:pl-2 pl-2 mb-2 pb-4 shadow rounded p-2 inline-flex">
       <div className="pr-4 w-1/4 md:w-full sm:w-full lg:w-full md:inline-flex sm:inline-flex lg:inline-flex md:pr-0 sm:pr-0 lg:pr-0">
-        <div className="sm:w-full md:w-full lg:w-full xl:w-full w-1/2 pl-2">
+        <div className="w-full pl-2">
           <p className="font-bold text-lg mb-1">{props.name}</p>
           <p className="text-xs w-full">{moment(props.date).fromNow()}</p>
         </div>
