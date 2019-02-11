@@ -136,8 +136,8 @@ const resolvers = {
 
       for (let strain of _strains) {
         console.log(strain.strainImg);
-        strain.strainImg = "/plant/cannabis-plant.png";
-        // strain.strainImg = "/packages/" + strain.sotiId.toUpperCase() + ".png";
+        // strain.strainImg = "/plant/cannabis-plant.png";
+        strain.strainImg = "/plant/" + strain.sotiId.toUpperCase() + ".png";
 
         strain.save();
       }
