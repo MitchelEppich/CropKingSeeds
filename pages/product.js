@@ -91,7 +91,7 @@ class Index extends Component {
                     />
                     <div
                       style={{ opacity: "50%" }}
-                      className="absolute pl-10 sm:pl-0 md:pl-0 lg:pl-12 pin-l inline-flex md:flex-col sm:flex-col"
+                      className="absolute w-full pl-10 sm:pl-0 md:pl-0 lg:pl-12 pin-l inline-flex sm:flex-col"
                     >
                       <div className="">
                         <Ratings {...this.props} />{" "}

@@ -139,7 +139,7 @@ const ContactForm = props => {
           )}
           <div
             style={{ right: "-145px" }}
-            className="absolute sm:w-full sm:relative md:w-full md:relative overflow-hidden sm:pin md:pin my-auto pin-r pin-y w-350 h-500 sm:border-t-2 sm:border-grey-lightest md:border-t-2 md:border-grey-lightest md:mt-8 md:pt-8 sm:pt-8 sm:mt-8 xxl:shadow-lg xl:shadow-lg lg:shadow-lg bg-white"
+            className="absolute sm:w-full sm:relative md:w-full md:relative overflow-hidden sm:pin md:pin my-auto pin-r pin-y w-350 h-500 sm:h-full sm:border-t-2 sm:border-grey-lightest md:border-t-2 md:border-grey-lightest md:mt-8 md:pt-8 sm:pt-8 sm:mt-8 sm:pb-4 xxl:shadow-lg xl:shadow-lg lg:shadow-lg bg-white"
           >
             <div className="bg-red-dark text-center text-white py-2 p-1 sm:rounded md:rounded">
               <h2 className="p-3 py-0 text-3xl font-extrabold">Contact us</h2>

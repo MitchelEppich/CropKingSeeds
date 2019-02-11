@@ -16,41 +16,42 @@ const strainsMenu = props => {
     : {
         transform: "translateX(-255px)"
       };
-  let strains = props.misc.strains
-    ? props.misc.strains.map((strain, index) => {
-        return (
-          <Link
-            key={index}
-            href="/product"
-            as={strain.name
-              .toLowerCase()
-              .split(" ")
-              .join("-")}
-          >
-            <li
-              className="text-base font-bold text-left border-b-2 text-grey hover:text-white hover:bg-red-light border-grey-lightest pl-4 cursor-pointer"
-              onClick={e => {
-                let strains = props.misc.strains;
-                props
-                  .getStrain({ sotiId: strain.sotiId, strains })
-                  .then(res => {
-                    props.setCurrentProduct({ product: res }).then(() => {
-                      let product = props.viewProduct.currentProduct;
-                      let _index = 0;
-                      while (strain.price[_index] == -1) {
-                        _index++;
-                      }
-                      props.quickAddToCartQty(_index);
-                    });
-                  });
-              }}
+  let strains =
+    props.misc.strains != null || props.misc.strains
+      ? props.misc.strains.map((strain, index) => {
+          return (
+            <Link
+              key={index}
+              href="/product"
+              as={strain.name
+                .toLowerCase()
+                .split(" ")
+                .join("-")}
             >
-              {strain.name}
-            </li>
-          </Link>
-        );
-      })
-    : null;
+              <li
+                className="text-base font-bold text-left border-b-2 text-grey hover:text-white hover:bg-red-light border-grey-lightest pl-4 cursor-pointer"
+                onClick={e => {
+                  let strains = props.misc.strains;
+                  props
+                    .getStrain({ sotiId: strain.sotiId, strains })
+                    .then(res => {
+                      props.setCurrentProduct({ product: res }).then(() => {
+                        let product = props.viewProduct.currentProduct;
+                        let _index = 0;
+                        while (strain.price[_index] == -1) {
+                          _index++;
+                        }
+                        props.quickAddToCartQty(_index);
+                      });
+                    });
+                }}
+              >
+                {strain.name}
+              </li>
+            </Link>
+          );
+        })
+      : null;
 
   let StrainText = {
     writingMode: "vertical-rl",
