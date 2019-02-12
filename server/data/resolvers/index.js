@@ -136,18 +136,23 @@ const resolvers = {
       });
     },
     processPayment: async (_, { input }) => {
-      console.log(await processBambora(input));
-      // return await processPivotal(input);
+      let { pivotal, bambora } = await getProcessorUsage();
+      let _amount = parseFloat(input.amount);
+      let response;
+      // if (bambora.limit == -1 || bambora.available - amount > 0) response = await processBambora(input)
+      if (pivotal.limit == -1 || pivotal.available - amount > 0)
+        response = await processPivotal(input);
+
+      return response;
     }
   }
 };
 
 let processBambora = async input => {
-  // Does not work
   let content = {
-    // merchant_id: "225812615",
-    // order_number: "100000000",
-    amount: parseInt(input.amount),
+    merchant_id: "225812615",
+    order_number: "100000000",
+    amount: parseFloat(input.amount),
     payment_method: "card",
     card: {
       name: input.cardHolderName,
@@ -158,65 +163,16 @@ let processBambora = async input => {
     }
   };
 
-  // console.log(content);
+  let beanstream = require("beanstream-node")(
+    "225812615",
+    "32f630b674F24A73941Ee23b9237874A"
+  );
 
-  // console.log(
-  //     JSON.stringify({
-  //         amount: 100.11,
-  //         payment_method: "card",
-  //         card: {
-  //             name: "John Doe",
-  //             number: "4030000010001234",
-  //             expiry_month: "02",
-  //             expiry_year: "14",
-  //             cvd: "123"
-  //         }
-  //     })
-  // );
+  let res = await beanstream.payments.makePayment(content).catch(error => {
+    return error;
+  });
 
-  let reqData = {
-    amount: 100.11,
-    payment_method: "card",
-    card: {
-      name: "John Doe",
-      number: "4030000010001234",
-      expiry_month: "02",
-      expiry_year: "14",
-      cvd: "123"
-    }
-  };
-
-  // console.log(
-  //     (await axios({
-  //         method: "post",
-  //         headers: {
-  //             Authorization: "Passcode MjI1ODEyNjE1OjMyZjYzMGI2NzRGMjRBNzM5NDFFZTIzYjkyMzc4NzRB",
-  //             "content-type": "application/json"
-  //         },
-  //         url: "https://api.na.bambora.com/v1/payments",
-  //         data: formUrlEncoded(reqData)
-  //     })).data
-  // );
-
-  const options = {
-    method: "POST",
-    uri: "https://api.na.bambora.com/v1/payments",
-    body: reqData,
-    json: true,
-    headers: {
-      "Content-Type": "application/json",
-      Authorization:
-        "Passcode MjI1ODEyNjE1OjMyZjYzMGI2NzRGMjRBNzM5NDFFZTIzYjkyMzc4NzRB"
-    }
-  };
-
-  request(options)
-    .then(function(response) {
-      res.status(200).json(response);
-    })
-    .catch(function(err) {
-      console.log(err);
-    });
+  console.log("FROM HERE", res);
 };
 
 let processPivotal = async input => {
@@ -253,6 +209,8 @@ let processPivotal = async input => {
     }
   };
 
+  console.log(content);
+
   let res = JSON.parse(
     convert.xml2json(
       (await axios({
@@ -267,14 +225,68 @@ let processPivotal = async input => {
     )
   )["PAYMENTRESPONSE"];
 
+  console.log(res);
+
   return {
     transactionId: res.UNIQUEREF._text,
-    status: res.RESPONSECODE._text == "A" ? "Approved" : "Declined",
+    status: res.RESPONSECODE._text == "A" ? "APPROVED" : "DECLINED",
     approvalCode: res.APPROVALCODE._text || "",
     response: res.RESPONSETEXT._text,
     processor: "Pivotal 3 VT",
     descriptor: "Kingmerch"
   };
+};
+
+let getProcessorUsage = async () => {
+  // Bambora
+  let bambora = JSON.parse(
+    convert.xml2json(
+      (await request({
+        method: "GET",
+        uri: "https://www.cksoti.com/getprocessorusage/bambora"
+      }))
+        .toLowerCase()
+        .replace("<br/><?xml?>", "</Data>")
+        .replace(
+          '<?xml version="1.0" encoding="utf-8"?>',
+          '<?xml version="1.0" encoding="utf-8"?><Data>'
+        ),
+      { compact: true, spaces: 4 }
+    )
+  )["Data"];
+  bambora = {
+    current: parseFloat(bambora.currentamount._text.replace(/[,$]/g, "")) || -1,
+    available:
+      parseFloat(bambora.availableamount._text.replace(/[,$]/g, "")) || -1,
+    limit:
+      parseFloat(bambora.amountlimitperday._text.replace(/[,$]/g, "")) || -1
+  };
+
+  // Pivotal
+  let pivotal = JSON.parse(
+    convert.xml2json(
+      (await request({
+        method: "GET",
+        uri: "https://www.cksoti.com/getprocessorusage/pivotalkingmerch"
+      }))
+        .toLowerCase()
+        .replace("<br/><?xml?>", "</Data>")
+        .replace(
+          '<?xml version="1.0" encoding="utf-8"?>',
+          '<?xml version="1.0" encoding="utf-8"?><Data>'
+        ),
+      { compact: true, spaces: 4 }
+    )
+  )["Data"];
+  pivotal = {
+    current: parseFloat(pivotal.currentamount._text.replace(/[,$]/g, "")) || -1,
+    available:
+      parseFloat(pivotal.availableamount._text.replace(/[,$]/g, "")) || -1,
+    limit:
+      parseFloat(pivotal.amountlimitperday._text.replace(/[,$]/g, "")) || -1
+  };
+
+  return { pivotal, bambora };
 };
 
 let encodeMD5 = function(d) {
