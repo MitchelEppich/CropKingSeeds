@@ -126,8 +126,8 @@ const Media = props => {
             index == keys.length - 1 ? "mb-12" : ""
           }`}
         >
-          <h3 className="mt-5 py-1 text-grey font-extrabold rounded text-center text-2lg bg-grey-lightest mx-auto w-main text-center">
-            {category}s
+          <h3 className="mt-5 p-3 text-white font-extrabold rounded text-center text-xl uppercase bg-red-dark mx-auto w-main text-center">
+            Upcoming {category}s
           </h3>
           {showNewsEntry(news[category])}
         </div>
@@ -136,13 +136,21 @@ const Media = props => {
     return arr;
   };
 
+  let imageHeader = {
+    background: "url(../../static/img/hemp-seeds.jpg)",
+    backgroundSize: "cover",
+    backgroundPosition: "bottom"
+  };
+
   return (
-    <div className="w-full mt-5">
-      <h3 className="mt-5 text-grey font-extrabold text-center text-3/5xl mx-auto w-full text-center">
-        News
-      </h3>
-      <div className="w-main mx-auto p-2 mt-12">
-        <p className="text-center opacity-50">
+    <div className="w-full mt-2">
+      <div style={imageHeader} className="w-full h-150 items-center flex">
+        <h3 className="mt-5 text-white text-shadow font-extrabold text-center text-3/5xl mx-auto w-full text-center p-3 items-center flex justify-center uppercase">
+          News {" & "} Events
+        </h3>
+      </div>
+      <div className="w-main mx-auto p-2 mt-6">
+        <p className="text-center opacity-75 font-bold">
           These are the next events lorem lorem are the next events lorem lorem
           lorem lorem are the next events lorem lorem lorem{" "}
         </p>

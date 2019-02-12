@@ -49,7 +49,7 @@ class Index extends Component {
             ? [...this.props.shop.activeFilters[filter]]
             : [this.props.shop.activeFilters[filter]];
         let label =
-          filter == "type" || filter == "genetic" ? null : filter + "%";
+          filter == "type" || filter == "genetic" ? null : filter + " %";
         return filtersArr.map((value, index) => {
           return (
             <span
@@ -145,13 +145,15 @@ class Index extends Component {
         );
       });
 
+    let showQuantity = products.length;
+
     return (
-      <div className="sm:w-full md:w-full lg:w-3/5 xl:w-2/3 xxl:w-3/4 min-h-700 text-white">
+      <div className="sm:w-full md:w-full lg:w-3/5 xl:w-2/3 xxl:w-3/4 min-h-700 text-white mb-20 sm:mb-0">
         <div
           className={
             hoverId != null && this.props.misc.mediaSize == "sm"
               ? "hidden"
-              : "w-full justify-between flex pt-3 p-2 mt-5 mb-2 text-grey-light items-center flex"
+              : "w-full justify-between flex pt-3 px-2 mt-5 text-grey-light items-center flex"
           }
         >
           <div className="flex flex-wrap">
@@ -178,7 +180,10 @@ class Index extends Component {
             </select>
           </div>
         </div>
-        <div className="flex flex-wrap pt-6 sm:justify-around md:justify-center lg:justify-start xl:justify-start xxl:justify-around sm:overflow-hidden pb-32 sm:pb-4">
+        <div className="flex w-full justify-end font-bold text-black ml-2 mb-6 p-2 text-sm mt-4">
+          Showing {showQuantity} {products.length <= 1 ? "Product" : "Products"}
+        </div>
+        <div className="flex flex-wrap pt-6 sm:justify-around md:justify-center lg:justify-start xl:justify-start xxl:justify-around sm:overflow-hidden sm:pb-4">
           {products}
         </div>
       </div>

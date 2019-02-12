@@ -84,7 +84,7 @@ const strainsMenu = props => {
       style={position}
       className={
         showMenu
-          ? "w-250 h-screen overflow-y-hidden bg-smoke-grey shadow-md slowish fixed pin-l pin-t mt-32 z-40 pb-2 list_container"
+          ? "w-250 h-screen bg-smoke-grey shadow-md slowish fixed pin-l pin-t mt-32 z-40 pb-2 list_container"
           : "w-250 h-screen bg-smoke-grey shadow-md slowish fixed pin-l pin-t mt-32 z-40 pb-2 "
       }
     >
