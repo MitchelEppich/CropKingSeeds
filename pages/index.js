@@ -15,70 +15,73 @@ import News from "../components/sections/news";
 import moment from "moment";
 
 class Index extends Component {
-  componentWillMount() {
-    this.props.getBanners();
-    this.props.getStrains();
-    // this.runLoop(5000, this.props.nextBannerSlide);
-  }
-  componentDidMount() {
-    this.props.setCurrentEvent({
-      index: 0,
-      currentEventObj: this.props.misc.currentEventObj,
-      events: this.props.misc.featuredNews
-    });
-    this.runLoop(1000, () => {
-      if (moment().diff(this.props.misc.currentEventUpdatedAt, "seconds") > 5) {
+    componentWillMount() {
+        this.props.getBanners();
+        this.props.getStrains();
+        // this.runLoop(5000, this.props.nextBannerSlide);
+    }
+    componentDidMount() {
         this.props.setCurrentEvent({
-          index: this.props.misc.currentEventObj + 1,
-          currentEventObj: this.props.misc.currentEventObj,
-          events: this.props.misc.featuredNews
+            index: 0,
+            currentEventObj: this.props.misc.currentEventObj,
+            events: this.props.misc.featuredNews
         });
-      }
-    });
-  }
+        this.runLoop(1000, () => {
+            if (moment().diff(this.props.misc.currentEventUpdatedAt, "seconds") > 5) {
+                this.props.setCurrentEvent({
+                    index: this.props.misc.currentEventObj + 1,
+                    currentEventObj: this.props.misc.currentEventObj,
+                    events: this.props.misc.featuredNews
+                });
+            }
+        });
+    }
 
-  runLoop(delay, callback) {
-    var loop = function() {
-      callback();
-      setTimeout(loop, delay);
-    };
-    loop();
-  }
+    runLoop(delay, callback) {
+        var loop = function() {
+            callback();
+            setTimeout(loop, delay);
+        };
+        loop();
+    }
 
-  render() {
-    return (
-      <Layout {...this.props}>
-        {this.props.misc.strains != null ? (
-          <React.Fragment>
-            <BannerCarousel {...this.props} />
-            <GenePreview {...this.props} />
-            <Post {...this.props} />
-            <News {...this.props} />
-          </React.Fragment>
-        ) : (
-          <p className="text-transparent text-4xl h-500 w-full py-32">
-            <span className="text-black">Loading...</span>
-          </p>
-        )}
-      </Layout>
-    );
-  }
+    render() {
+        return (
+            <Layout {...this.props}>
+                {this.props.misc.strains != null ? (
+                    <React.Fragment>
+                        <BannerCarousel {...this.props} />
+                        <GenePreview {...this.props} />
+                        <Post {...this.props} />
+                        <News {...this.props} />
+                    </React.Fragment>
+                ) : (
+                    <p className="text-transparent text-4xl h-500 w-full py-32">
+                        <span className="text-black">Loading...</span>
+                    </p>
+                )}
+            </Layout>
+        );
+    }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
-    setGeneHoverIndex: index => dispatch(actions.setGeneHoverIndex(index)),
-    nextBannerSlide: () => dispatch(actions.nextBannerSlide()),
-    toggleTransitionStatus: () => dispatch(actions.toggleTransitionStatus()),
-    getStrains: () => dispatch(actions.getStrains()),
-    getBanners: () => dispatch(actions.getBanners()),
-    toggleFilter: input => dispatch(actions.toggleFilter(input)),
-    setCurrentEvent: input => dispatch(actions.setCurrentEvent(input))
-  };
+    return {
+        setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+        setGeneHoverIndex: index => dispatch(actions.setGeneHoverIndex(index)),
+        changeBannerSlide: input => dispatch(actions.changeBannerSlide(input)),
+        toggleTransitionStatus: () => dispatch(actions.toggleTransitionStatus()),
+        getStrains: () => dispatch(actions.getStrains()),
+        getStrain: input => dispatch(actions.getStrain(input)),
+        setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
+        quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
+        getBanners: () => dispatch(actions.getBanners()),
+        toggleFilter: input => dispatch(actions.toggleFilter(input)),
+        setCurrentEvent: input => dispatch(actions.setCurrentEvent(input))
+    };
 };
 
 export default connect(
-  state => state,
-  mapDispatchToProps
+    state => state,
+    mapDispatchToProps
 )(withData(Index));

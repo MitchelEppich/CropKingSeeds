@@ -33,11 +33,7 @@ const initialState = {
     // checkoutScreen: "productsScreen",
     activeBannerSlide: 2,
     notification: null, //"Crop King Seeds will be at High Times Cannabis Cup Sept. 13-16 2019",
-    bannerSlidePositions: [
-        { transform: " translateX(-100%)" },
-        { transform: " translateX(0)", transition: "1s all ease-in-out" },
-        { transform: " translateX(100%)", transition: "1s all ease-in-out" }
-    ],
+    bannerSlidePositions: [],
     mediaSize: "xl",
     newsletterEmail: null,
     subscribedToNewsletter: false,
@@ -51,8 +47,7 @@ const initialState = {
     news: {},
     featureCount: 1,
     showMobileMenu: null,
-    CFURL: "http://dcfgweqx7od72.cloudfront.net",
-    banners: 1
+    CFURL: "http://dcfgweqx7od72.cloudfront.net"
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -99,7 +94,8 @@ const indexReducer = (state = initialState, action) => {
             });
         case actionTypes.GET_BANNERS:
             return updateObject(state, {
-                banners: action.input
+                banners: action.input,
+                bannerSlidePositions: action.positions
             });
         case actionTypes.GET_FEATURED_NEWS:
             return updateObject(state, {
@@ -140,14 +136,8 @@ const indexReducer = (state = initialState, action) => {
             return updateObject(state, {
                 geneHoverIndex: state.geneHoverIndex == action.index ? null : action.index
             });
-        case actionTypes.NEXT_BANNER_SLIDE:
-            let slideIndex = state.activeBannerSlide;
-            let slidesLength = state.bannerSlidePositions.length - 1;
-            if (slideIndex === slidesLength) {
-                slideIndex = -1;
-            }
-            ++slideIndex;
-            return updateObject(state, { activeBannerSlide: slideIndex });
+        case actionTypes.CHANGE_BANNER_SLIDE:
+            return updateObject(state, { activeBannerSlide: action.index });
         case actionTypes.SET_STRAINS:
             return updateObject(state, { strains: [...action.strains] });
         case actionTypes.SET_STRAIN:
