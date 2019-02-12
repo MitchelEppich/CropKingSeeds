@@ -108,10 +108,7 @@ class Index extends Component {
                         href="https://ca.trustpilot.com/review/cropkingseeds.com"
                         target="_blank"
                       >
-                        <img
-                          src="../static/img/leaveareview.gif"
-                          className=""
-                        />
+                        <img src="../static/img/reviewus_v1.gif" className="" />
                       </a>
                     </div>
                   ) : null}
@@ -120,10 +117,10 @@ class Index extends Component {
                 <ProductGrid {...this.props} />
                 {mobile ? (
                   <div>
-                    <div className="my-8 w-full justify-center flex relative sm:pt-8 border-t-4 border-smoke-grey">
+                    <div className="my-2 w-full justify-center flex relative sm:pt-4 sm:border-t md:pt-4 md:border-t border-smoke-grey">
                       <img
                         src="../static/img/FreeShippingAnimated.gif"
-                        className="h-300"
+                        className="h-full"
                       />
                       <div className="absolute bg-white w-200 mx-auto flex justify-center p-2 rounded font-bold text-2xl shadow-md pin-b mb-10 text-red-dark scale-item cursor-pointer">
                         Buy Now
@@ -143,6 +140,14 @@ class Index extends Component {
                         initialCount={1}
                         {...this.props}
                       />
+                    </div>
+                    <div className="w-full justify-center flex relative mt-2">
+                      <a
+                        href="https://ca.trustpilot.com/review/cropkingseeds.com"
+                        target="_blank"
+                      >
+                        <img src="../static/img/reviewus_v1.gif" className="" />
+                      </a>
                     </div>
                   </div>
                 ) : null}
