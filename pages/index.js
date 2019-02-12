@@ -13,6 +13,7 @@ import Post from "../components/sections/post";
 import News from "../components/sections/news";
 
 import moment from "moment";
+import Carousel from "../components/sections/germination/carousel";
 
 class Index extends Component {
   componentWillMount() {
@@ -53,7 +54,13 @@ class Index extends Component {
           <React.Fragment>
             <BannerCarousel {...this.props} />
             <GenePreview {...this.props} />
-            <Post {...this.props} />
+            {/* <Post {...this.props} /> */}
+            <div className="pt-8">
+              <h2 className="text-3xl font-bold text-center uppercase w-full p-2 bg-grey-light text-white mb-4">
+                Germination
+              </h2>
+              <Carousel {...this.props} />
+            </div>
             <News {...this.props} />
           </React.Fragment>
         ) : (
@@ -76,7 +83,8 @@ const mapDispatchToProps = dispatch => {
     getBanners: () => dispatch(actions.getBanners()),
     toggleFilter: input => dispatch(actions.toggleFilter(input)),
     setNewsStepper: input => dispatch(actions.setNewsStepper(input)),
-    setCurrentEvent: input => dispatch(actions.setCurrentEvent(input))
+    setCurrentEvent: input => dispatch(actions.setCurrentEvent(input)),
+    changeStep: changeObj => dispatch(actions.changeStep(changeObj))
   };
 };
 
