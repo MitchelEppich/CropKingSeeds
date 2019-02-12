@@ -85,6 +85,7 @@ class Index extends Component {
                       </div>
                     </div>
                   ) : null}
+
                   {!mobile ? (
                     <div className="border border-grey-lightest mt-8 sm:mt-10 md:mt-20 md:mb-0">
                       <div className="shadow-md">
@@ -99,6 +100,19 @@ class Index extends Component {
                         initialCount={1}
                         {...this.props}
                       />
+                    </div>
+                  ) : null}
+                  {!mobile ? (
+                    <div className="my-8 w-full justify-center flex relative sm:pt-8">
+                      <a
+                        href="https://ca.trustpilot.com/review/cropkingseeds.com"
+                        target="_blank"
+                      >
+                        <img
+                          src="../static/img/leaveareview.gif"
+                          className=""
+                        />
+                      </a>
                     </div>
                   ) : null}
                 </div>

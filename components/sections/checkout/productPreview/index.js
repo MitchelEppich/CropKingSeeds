@@ -121,11 +121,11 @@ const ProductPreview = props => {
                           coupon: _coupon
                         })
                       }
-                      className="px-2 py-1 scale-item bg-almost-black rounded text-xl sm:text-sm text-white"
+                      className="px-2 py-1 scale-item bg-almost-black rounded text-xl hover:bg-red-light sm:text-sm text-white"
                     >
                       <FontAwesomeIcon
                         icon={faMinus}
-                        className="fa-sm text-white cursor-pointer"
+                        className="fa-sm text-white cursor-pointer "
                       />
                     </button>
                     <input
@@ -176,11 +176,11 @@ const ProductPreview = props => {
                           coupon: _coupon
                         })
                       }
-                      className="px-2 py-1 scale-item bg-almost-black rounded text-xl sm:text-sm text-white"
+                      className="px-2 py-1 scale-item bg-almost-black rounded text-xl hover:bg-red-light sm:text-sm text-white"
                     >
                       <FontAwesomeIcon
                         icon={faPlus}
-                        className="fa-sm text-white cursor-pointer"
+                        className="fa-sm text-white cursor-pointer "
                       />
                     </button>
                   </div>
