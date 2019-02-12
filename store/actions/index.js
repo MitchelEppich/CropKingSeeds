@@ -65,10 +65,17 @@ const actionTypes = {
   SET_STRAIN: "SET_STRAIN",
   TOGGLE_MOBILE_MENU: "TOGGLE_MOBILE_MENU",
   GET_BANNERS: "GET_BANNERS",
-  GET_RELATED_LIST: "GET_RELATED_LIST"
+  GET_RELATED_LIST: "GET_RELATED_LIST",
+  SET_NEWS_STEPPER: "SET_NEWS_STEPPER"
 };
 
 const actions = {
+  setNewsStepper: input => {
+    return {
+      type: actionTypes.SET_NEWS_STEPPER,
+      input: input.timeout
+    };
+  },
   setVisibleScreen: input => {
     return {
       type: actionTypes.SET_VISIBLE_SCREEN,

@@ -53,7 +53,8 @@ const initialState = {
   featureCount: 1,
   showMobileMenu: null,
   CFURL: "http://dcfgweqx7od72.cloudfront.net",
-  banners: 1
+  banners: 1,
+  newsTimeout: null
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -98,6 +99,10 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.SET_HOVER_ID:
       return updateObject(state, {
         hoverId: action.turnOn ? action.id : null
+      });
+    case actionTypes.SET_NEWS_STEPPER:
+      return updateObject(state, {
+        newsTimeout: action.input
       });
     case actionTypes.GET_BANNERS:
       return updateObject(state, {
