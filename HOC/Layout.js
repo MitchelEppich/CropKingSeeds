@@ -88,7 +88,7 @@ class Layout extends Component {
         }
       }
     });
-    this.props.getFeaturedList({ limit: 5 }).then(res => {});
+    this.props.getFeaturedList({ limit: 5 });
 
     if (this.props.checkout.viewCurrency == null)
       this.props.setCurrency({
