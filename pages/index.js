@@ -26,15 +26,15 @@ class Index extends Component {
       currentEventObj: this.props.misc.currentEventObj,
       events: this.props.misc.featuredNews
     });
-    this.runLoop(1000, () => {
-      if (moment().diff(this.props.misc.currentEventUpdatedAt, "seconds") > 5) {
-        this.props.setCurrentEvent({
-          index: this.props.misc.currentEventObj + 1,
-          currentEventObj: this.props.misc.currentEventObj,
-          events: this.props.misc.featuredNews
-        });
-      }
-    });
+    // this.runLoop(1000, () => {
+    //   if (moment().diff(this.props.misc.currentEventUpdatedAt, "seconds") > 5) {
+    //     this.props.setCurrentEvent({
+    //       index: this.props.misc.currentEventObj + 1,
+    //       currentEventObj: this.props.misc.currentEventObj,
+    //       events: this.props.misc.featuredNews
+    //     });
+    //   }
+    // });
   }
 
   runLoop(delay, callback) {

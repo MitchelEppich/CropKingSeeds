@@ -15,7 +15,7 @@ type Query {
   allBlockedIps: [String]!
   
   getBanners: [String]
-  getFeaturedList: [Strain]!
+  getFeaturedList(input: FeaturedInput): [Strain]!
   getRelatedList(input: RelatedInput!): [Strain]!
   getBitcoinData(input: BitcoinDataInput): String
   getExchangeRates: String
@@ -27,6 +27,9 @@ type Query {
 input RelatedInput {
   limit: Int
   sotiId: String
+}
+input FeaturedInput {
+  limit: Int
 }
 
 input DateRangeInput {

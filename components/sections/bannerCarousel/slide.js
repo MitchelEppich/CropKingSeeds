@@ -1,34 +1,57 @@
 import Link from "next/link";
 
 const slide = props => {
-    let positionIndex = props.position + props.index;
-    if (props.position + props.index >= props.misc.bannerSlidePositions.length) {
-        positionIndex = props.position + props.index - props.misc.bannerSlidePositions.length;
-    }
-    let position = props.misc.bannerSlidePositions[positionIndex];
-    let num = (props.index - 1).toString().padStart(2, "0");
-    let style = {
-        backgroundImage: "url(" + props.misc.CFURL + "/land_banner/" + num + ")",
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat"
-    };
-    return (
-        <div
-            onClick={() => {
-                props.nextBannerSlide();
-            }}
-            style={{ ...position, ...style }}
-            className={"xxl:h-600 xl:h-400 lg:h-300 md:h-250 sm:h-44 w-full z-0 absolute"}>
-            {props.index == 2 ? (
-                <Link prefetch href="/product" as={props.misc.banners[props.index - 1]}>
-                    <button onClick={e => e.stopPropagation()} className="bannerBuyNow sm:hidden">
-                        Buy Now
-                    </button>
-                </Link>
-            ) : null}
-        </div>
-    );
+  let positionIndex = props.position + props.index;
+  if (props.position + props.index >= props.misc.bannerSlidePositions.length) {
+    positionIndex =
+      props.position + props.index - props.misc.bannerSlidePositions.length;
+  }
+  let position = props.misc.bannerSlidePositions[positionIndex];
+  let num = (props.index + 1).toString().padStart(2, "0");
+
+  let style = {
+    backgroundImage: "url(" + props.misc.CFURL + "/land_banner/" + num + ")",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat"
+  };
+  let str = props.misc.banners[props.index];
+
+  let { 0: text, 1: link } = str != "" ? str.split("&=>") : ["", ""];
+
+  let internalButton = (
+    <React.Fragment key={props.index}>
+      <Link prefetch href="/product" as={link}>
+        <button className="bannerBuyNow sm:hidden">{text}</button>
+      </Link>
+    </React.Fragment>
+  );
+
+  let externalButton = (
+    <React.Fragment key={props.index}>
+      <a href={link} target="_blank">
+        <button className="bannerBuyNow sm:hidden">{text}</button>
+      </a>
+    </React.Fragment>
+  );
+
+  return (
+    <div
+      onClick={() => {
+        props.nextBannerSlide();
+      }}
+      style={{ ...position, ...style }}
+      className={
+        "xxl:h-600 xl:h-400 lg:h-300 md:h-250 sm:h-44 w-full z-0 absolute"
+      }
+    >
+      {link != ""
+        ? link.includes("http")
+          ? externalButton
+          : internalButton
+        : null}
+    </div>
+  );
 };
 
 export default slide;

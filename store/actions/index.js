@@ -64,7 +64,8 @@ const actionTypes = {
   SHOW_MORE_FEATURES: "SHOW_MORE_FEATURES",
   SET_STRAIN: "SET_STRAIN",
   TOGGLE_MOBILE_MENU: "TOGGLE_MOBILE_MENU",
-  GET_BANNERS: "GET_BANNERS"
+  GET_BANNERS: "GET_BANNERS",
+  GET_RELATED_LIST: "GET_RELATED_LIST"
 };
 
 const actions = {
@@ -253,10 +254,13 @@ const actions = {
   refreshEmailForm: () => {
     return { type: actionTypes.REFRESH_EMAIL_FORM };
   },
-  getFeaturedList: () => {
+  getFeaturedList: input => {
     return async dispatch => {
       const link = new HttpLink({ uri, fetch: fetch });
-      const operation = { query: query.getFeaturedStrains };
+      const operation = {
+        query: query.getFeaturedStrains,
+        variables: { ...input }
+      };
 
       return await makePromise(execute(link, operation))
         .then(data => {
@@ -269,6 +273,32 @@ const actions = {
           }
           dispatch({
             type: actionTypes.GET_FEATURED_LIST,
+            input: _new
+          });
+          return Promise.resolve(_new);
+        })
+        .catch(error => console.log(error));
+    };
+  },
+  getRelatedList: input => {
+    return async dispatch => {
+      const link = new HttpLink({ uri, fetch: fetch });
+      const operation = {
+        query: query.getRelatedStrains,
+        variables: { ...input }
+      };
+
+      return await makePromise(execute(link, operation))
+        .then(data => {
+          let _strains = data.data.getRelatedList;
+          let _new = [];
+          for (let strain of _strains) {
+            let $strain = inferStrainData(strain);
+            $strain = { ...$strain, _id: $strain._id + "b" };
+            _new.push($strain);
+          }
+          dispatch({
+            type: actionTypes.GET_RELATED_LIST,
             input: _new
           });
           return Promise.resolve(_new);
@@ -352,7 +382,7 @@ const actions = {
   },
   showMoreFeatures: input => {
     let max = input.max;
-    let count = Math.max(0, Math.min(input.count, max)) % max || 1;
+    let count = Math.min(input.count, max);
     return {
       type: actionTypes.SHOW_MORE_FEATURES,
       count: count
@@ -370,6 +400,22 @@ const query = {
   getBanners: gql`
     {
       getBanners
+    }
+  `,
+  getRelatedStrains: gql`
+    query($sotiId: String, $limit: Int) {
+      getRelatedList(input: { sotiId: $sotiId, limit: $limit }) {
+        _id
+        name
+        packageImg
+        genetic
+        type
+        sotiId
+        sativa
+        indica
+        ruderalis
+        rating
+      }
     }
   `,
   getAllNews: gql`
@@ -428,8 +474,8 @@ const query = {
     }
   `,
   getFeaturedStrains: gql`
-    {
-      getFeaturedList {
+    query($limit: Int) {
+      getFeaturedList(input: { limit: $limit }) {
         _id
         name
         packageImg

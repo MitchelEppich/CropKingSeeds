@@ -5,14 +5,22 @@ import Link from "next/link";
 
 const index = props => {
   let hoverId = props.misc.hoverId;
-  let products = props.misc.featuredStrains;
+  let products =
+    props.page == "product"
+      ? props.misc.relatedStrains
+      : props.misc.featuredStrains;
+
+  if (products == null) return <div />;
+
   let route = Router.asPath.slice(0);
   let isSmallMediumOrLargeDevice = ["sm", "md", "lg"].includes(
     props.misc.mediaSize
   );
   let count = props.initialCount;
-  let specificMax = props.specificMax,
-    max = products.length;
+  let max =
+    props.specificMax == null
+      ? products.length
+      : Math.min(products.length, props.specificMax);
 
   if (props.misc.featureCount > count && props.page == "shop") {
     count = props.misc.featureCount;
@@ -24,7 +32,7 @@ const index = props => {
     count = 2;
   }
 
-  products = products.map((product, index) => {
+  products = products.slice(0, count).map((product, index) => {
     return (
       <Link
         key={index}
@@ -86,18 +94,30 @@ const index = props => {
   });
   return (
     <div className="flex flex-wrap w-full py-6 pb-12 sm:justify-center md:justify-center lg:justify-center xl:justify-start xxl:justify-around sm:overflow-hidden">
-      {products.slice(0, count)}
-      {count < specificMax && props.page == "shop" ? (
+      {products}
+      {count < max && props.page == "shop" ? (
         <p
-          onClick={() =>
+          onClick={() => {
             props.showMoreFeatures({
-              max: max,
-              count: props.misc.featureCount + 2
-            })
-          }
+              max,
+              count: count + 2
+            });
+          }}
           className="text-grey-light rounded opacity-75 text-center w-64 mx-auto my-4 cursor-pointer p-3 font-bold bg-grey-lightest hover:bg-red-light hover:text-white"
         >
           Load More
+        </p>
+      ) : props.initialCount != props.specificMax ? (
+        <p
+          onClick={() => {
+            props.showMoreFeatures({
+              max,
+              count: 1
+            });
+          }}
+          className="text-grey-light rounded opacity-75 text-center w-64 mx-auto my-4 cursor-pointer p-3 font-bold bg-grey-lightest hover:bg-red-light hover:text-white"
+        >
+          Collapse
         </p>
       ) : null}
     </div>

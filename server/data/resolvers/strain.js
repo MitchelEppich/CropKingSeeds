@@ -41,8 +41,8 @@ const resolvers = {
 
       return randomize(relatedStrains);
     },
-    getFeaturedList: async _ => {
-      let limit = 10;
+    getFeaturedList: async (_, { input }) => {
+      let limit = input.limit;
       let featuredStrains = await Strain.find({
         featured: true
       }).limit(limit);
@@ -90,17 +90,15 @@ const resolvers = {
         for (let value of ratingQuantity) {
           total += value;
         }
-        let pReviews =
-          strain.ratingQuantity[0] +
-          strain.ratingQuantity[1] +
-          strain.ratingQuantity[2] +
-          1;
+        let pReviews = strain.ratingQuantity[0] + strain.ratingQuantity[1] + 1;
 
         // Filter reviews
-        if (rating < 4 && total >= 10 && pReviews / total > 0.1) {
+        let margin = 2;
+        let cap = 20;
+        if (rating <= margin && total >= cap && pReviews / total > 0.2) {
           let index = [...strain.reviews].reverse().findIndex(a => {
             let rating = a.split("/&=>")[3];
-            if (rating < 4) {
+            if (rating <= margin) {
               ratingQuantity[rating - 1] -= 1;
               return true;
             }
