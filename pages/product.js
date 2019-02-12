@@ -63,12 +63,12 @@ class Index extends Component {
                 ) : null}
                 <div className="flex flex-wrap content-start w-1/2 pl-4 md:pl-0 sm:pl-0 xl:w-1/2 lg:w-full md:w-full sm:w-full md:mt-6 sm:mt-6 lg:mt-6">
                   <div className="w-full">
-                    <h1 className="pl-10 ml-1 font-black lg:pl-12 sm:pl-0 md:pl-0">
+                    <h1 className="pl-10 ml-1 font-black lg:pl-16 xl:pl-10 xxl:pl-12 sm:pl-0 md:pl-0">
                       {this.props.viewProduct.currentProduct.name}
                     </h1>
                   </div>
 
-                  <div className="mt-1 relative cursor-pointer ml-1 pl-10 sm:pl-0 lg:pl-12 md:pl-0 w-full sm:mb-8 md:mb-8">
+                  <div className="mt-1 relative cursor-pointer ml-1 pl-10 sm:pl-0 lg:pl-16 xl:pl-10 xxl:pl-12 md:pl-0 w-full sm:mb-8 md:mb-8">
                     <div
                       className="inline-flex bg-red-light"
                       style={{
@@ -91,7 +91,7 @@ class Index extends Component {
                     />
                     <div
                       style={{ opacity: "50%" }}
-                      className="absolute w-full pl-10 sm:pl-0 md:pl-0 lg:pl-12 pin-l inline-flex sm:flex-col"
+                      className="absolute w-full pl-10 sm:pl-0 md:pl-0 lg:pl-16 xl:pl-10 xxl:pl-12 pin-l inline-flex sm:flex-col"
                     >
                       <div className="">
                         <Ratings {...this.props} />{" "}

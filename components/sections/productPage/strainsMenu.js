@@ -184,7 +184,7 @@ const strainsMenu = props => {
           >
             {category[_strains[headersPlacement[5]].genetic]}
           </p>
-          <ul className="text-white leading-loose mt-1 pb-20 mb-24 w-full list-reset">
+          <ul className="text-white leading-loose mt-1 pb-10 mb-24 w-full list-reset">
             {strains.slice(headersPlacement[5])}
           </ul>
         </div>

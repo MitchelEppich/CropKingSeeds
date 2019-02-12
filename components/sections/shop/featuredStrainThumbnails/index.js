@@ -69,8 +69,8 @@ const index = props => {
           }}
           className={
             hoverId == product._id
-              ? "relative bg-white mx-4 my-2 w-64 h-350 md:w-200 md:mx-1 rounded-lg overflow-hidden shadow-md slowishish"
-              : "relative bg-white mx-4 my-2 w-64 h-350 md:w-200 md:mx-1 rounded-lg overflow-hidden shadow-md slowishish"
+              ? "relative bg-white mx-4 my-2 w-64 h-350 md:w-200 md:mx-1 rounded overflow-hidden shadow-md slowishish scale-item"
+              : "relative bg-white mx-4 my-2 w-64 h-350 md:w-200 md:mx-1 rounded overflow-hidden shadow-md slowishish scale-item"
           }
         >
           <FeaturedStrainThumbnail
@@ -95,7 +95,7 @@ const index = props => {
               count: props.misc.featureCount + 2
             })
           }
-          className="text-grey-light rounded opacity-50 text-center w-64 mx-auto my-4 cursor-pointer p-3 font-bold bg-grey-lightest hover:text-grey"
+          className="text-grey-light rounded opacity-75 text-center w-64 mx-auto my-4 cursor-pointer p-3 font-bold bg-grey-lightest hover:bg-red-light hover:text-white"
         >
           Load More
         </p>
