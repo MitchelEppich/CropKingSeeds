@@ -234,7 +234,6 @@ const actions = {
                 query: mutation.sendEmail,
                 variables: { ...input }
             };
-
             makePromise(execute(link, operation))
                 .then(data => {
                     dispatch({
@@ -300,7 +299,6 @@ const actions = {
             const operation = {
                 query: query.getAllNews
             };
-
             makePromise(execute(link, operation))
                 .then(data => {
                     let categoryNews = {};
@@ -344,7 +342,6 @@ const actions = {
             const operation = {
                 query: query.getBanners
             };
-
             makePromise(execute(link, operation))
                 .then(data => {
                     let banners = data.data.getBanners.map((banner, index) => {

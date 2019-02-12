@@ -158,7 +158,9 @@ class Index extends Component {
         >
           <div className="flex flex-wrap">
             <p className="w-full mb-1 pl-2 font-bold opacity-50">
-              Active Filters:
+              {Object.keys(this.props.shop.activeFilters).length != 0
+                ? "Active Filters "
+                : null}
             </p>
             {activeFilters}
           </div>

@@ -96,7 +96,6 @@ class Index extends Component {
 
                       <FeaturedStrainThumbnails
                         page={"shop"}
-                        specificMax={8}
                         initialCount={1}
                         {...this.props}
                       />

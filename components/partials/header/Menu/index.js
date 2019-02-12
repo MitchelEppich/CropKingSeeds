@@ -170,7 +170,12 @@ const menu = props => {
                 </div> */}
           <div className="w-1/2">
             <a
-              href="tel:+1-844-276-7546"
+              href={
+                props.misc.ageVerification != null &&
+                "United States" == props.misc.ageVerification.country
+                  ? "tel:+1-844-276-7546"
+                  : "tel:+1-604-563-0291"
+              }
               style={phoneNumberPosition}
               className="no-underline text-grey absolute inline-flex pin-r shadow-md my-auto rounded -mr-2"
             >
@@ -180,7 +185,10 @@ const menu = props => {
                 </p>
               </div>
               <p className="pl-3 pr-4 p-2 uppercase font-extrabold text-lg">
-                +1-844-CROP-KING (276-7546)
+                {props.misc.ageVerification != null &&
+                "United States" == props.misc.ageVerification.country
+                  ? "+1-844-CROP-KING (276-7546)"
+                  : "CALL NOW: +1 (604) 563-0291"}
               </p>
             </a>
           </div>
@@ -191,36 +199,6 @@ const menu = props => {
         className="w-full h-12"
       >
         <div className="w-full xxl:w-1300 px-4 sm:pr-0 md:pr-0 lg:pr-0 xl:w-900 lg:w-700 sm:w-full md:w-full lg:w-full mx-auto text-center relative">
-          {/* <div
-                    style={{ marginTop: "3px" }}
-                    className="w-full xxl:px-64 xl:px-48 lg:px-40 md:pr-16 md:pl-32 sm:pl-24 sm:w-full md:w-full lg:w-full mx-auto text-center relative"> */}
-          {/* <div className="ray_box">
-            {(() => {
-              let arr = [];
-
-              let _width = 30;
-              let _height = 2000;
-              let _amount = 34;
-              for (let i = 0; i < _amount; i++) {
-                let _deg = i * (360 / _amount);
-
-                arr.push(
-                  <div
-                    key={i}
-                    className="ray"
-                    style={{
-                      height: `${_height}px`,
-                      width: `${_width}px`,
-                      transform: `rotate(${_deg}deg)`,
-                      WebkitTransform: `rotate(${_deg}deg)`,
-                      boxShadow: "0 5px 25px rgb(255, 72, 0)"
-                    }}
-                  />
-                );
-              }
-              return arr;
-            })()}
-          </div> */}
           <div className="inline-flex w-full sm:block md:block lg:block">
             <div className="w-1/4 sm:w-full md:w-full lg:w-full flex justify-start sm:justify-center">
               <div

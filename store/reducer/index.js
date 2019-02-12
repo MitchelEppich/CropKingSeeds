@@ -87,7 +87,6 @@ const indexReducer = (state = initialState, action) => {
             return updateObject(state, {
                 visibleScreen: [...state.visibleScreen, $input]
             });
-
         case actionTypes.SET_HOVER_ID:
             return updateObject(state, {
                 hoverId: action.turnOn ? action.id : null

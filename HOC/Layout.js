@@ -88,7 +88,7 @@ class Layout extends Component {
         }
       }
     });
-    this.props.getFeaturedList().then(res => {});
+    this.props.getFeaturedList({ limit: 5 }).then(res => {});
 
     if (this.props.checkout.viewCurrency == null)
       this.props.setCurrency({
@@ -271,7 +271,7 @@ const mapDispatchToProps = dispatch => {
     subscribeToNewsletter: input =>
       dispatch(actions.subscribeToNewsletter(input)),
     toggleShowFilters: bool => dispatch(actions.toggleShowFilters(bool)),
-    getFeaturedList: () => dispatch(actions.getFeaturedList()),
+    getFeaturedList: input => dispatch(actions.getFeaturedList(input)),
     getExchangeRates: () => dispatch(actions.getExchangeRates()),
     recallCart: () => dispatch(actions.recallCart()),
     getFeaturedNews: () => dispatch(actions.getFeaturedNews()),

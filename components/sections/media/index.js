@@ -137,14 +137,14 @@ const Media = props => {
   };
 
   let imageHeader = {
-    background: "url(../../static/img/hemp-seeds.jpg)",
+    background: "url(../../static/img/eventsHeader.jpg)",
     backgroundSize: "cover",
-    backgroundPosition: "bottom"
+    backgroundPosition: "left"
   };
 
   return (
     <div className="w-full mt-2">
-      <div style={imageHeader} className="w-full h-150 items-center flex">
+      <div style={imageHeader} className="w-full h-200 items-center flex">
         <h3 className="mt-5 text-white text-shadow font-extrabold text-center text-3/5xl mx-auto w-full text-center p-3 items-center flex justify-center uppercase">
           News {" & "} Events
         </h3>

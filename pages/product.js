@@ -34,6 +34,11 @@ class Index extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    let product = this.props.viewProduct.currentProduct;
+    if (product != null && this.props.misc.relatedStrains == null) {
+      this.props.getRelatedList({ sotiId: product.sotiId, limit: 4 });
+    }
+
     if (this.props.misc.mediaSize != prevProps.misc.mediaSize) {
       lowerImageCar = ["sm", "md", "lg"].includes(this.props.misc.mediaSize);
     }
@@ -197,6 +202,7 @@ const mapDispatchToProps = dispatch => {
     setImageZoom: imz => dispatch(actions.setImageZoom(imz)),
     getStrain: input => dispatch(actions.getStrain(input)),
     setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
+    getRelatedList: input => dispatch(actions.getRelatedList(input)),
     expandProduct: id => dispatch(actions.expandProduct(id)),
     showMoreFeatures: input => dispatch(actions.showMoreFeatures(input)),
     toggleImageZoom: bool => dispatch(actions.toggleImageZoom(bool)),
