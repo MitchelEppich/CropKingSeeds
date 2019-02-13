@@ -43,7 +43,7 @@ const actionTypes = {
   SET_CHECKOUT_SCREEN: "SET_CHECKOUT_SCREEN",
   SET_HOVER_ID: "SET_HOVER_ID",
   SET_GENE_HOVER_INDEX: "SET_GENE_HOVER_INDEX",
-  CHANGE_BANNER_SLIDE: "CHANGE_BANNER_SLIDE",
+  NEXT_BANNER_SLIDE: "NEXT_BANNER_SLIDE",
   SET_STRAINS: "SET_STRAINS",
   SET_CONTEXT: "SET_CONTEXT",
   TOGGLE_STEPS_CHECKOUT: "TOGGLE_STEPS_CHECKOUT",
@@ -64,10 +64,18 @@ const actionTypes = {
   SHOW_MORE_FEATURES: "SHOW_MORE_FEATURES",
   SET_STRAIN: "SET_STRAIN",
   TOGGLE_MOBILE_MENU: "TOGGLE_MOBILE_MENU",
-  GET_BANNERS: "GET_BANNERS"
+  GET_BANNERS: "GET_BANNERS",
+  GET_RELATED_LIST: "GET_RELATED_LIST",
+  SET_NEWS_STEPPER: "SET_NEWS_STEPPER"
 };
 
 const actions = {
+  setNewsStepper: input => {
+    return {
+      type: actionTypes.SET_NEWS_STEPPER,
+      input: input.timeout
+    };
+  },
   setVisibleScreen: input => {
     return {
       type: actionTypes.SET_VISIBLE_SCREEN,
@@ -151,15 +159,9 @@ const actions = {
       index: index
     };
   },
-  changeBannerSlide: input => {
-    let bannersLength = input.bannersLength;
-    let index =
-      input.direction > 0
-        ? Math.max(0, Math.min(input.index, bannersLength)) % bannersLength || 0
-        : input.index || bannersLength;
+  nextBannerSlide: () => {
     return {
-      type: actionTypes.CHANGE_BANNER_SLIDE,
-      index: index
+      type: actionTypes.NEXT_BANNER_SLIDE
     };
   },
   getStrains: () => {
@@ -234,6 +236,7 @@ const actions = {
         query: mutation.sendEmail,
         variables: { ...input }
       };
+
       makePromise(execute(link, operation))
         .then(data => {
           dispatch({
@@ -258,10 +261,13 @@ const actions = {
   refreshEmailForm: () => {
     return { type: actionTypes.REFRESH_EMAIL_FORM };
   },
-  getFeaturedList: () => {
+  getFeaturedList: input => {
     return async dispatch => {
       const link = new HttpLink({ uri, fetch: fetch });
-      const operation = { query: query.getFeaturedStrains };
+      const operation = {
+        query: query.getFeaturedStrains,
+        variables: { ...input }
+      };
 
       return await makePromise(execute(link, operation))
         .then(data => {
@@ -274,6 +280,32 @@ const actions = {
           }
           dispatch({
             type: actionTypes.GET_FEATURED_LIST,
+            input: _new
+          });
+          return Promise.resolve(_new);
+        })
+        .catch(error => console.log(error));
+    };
+  },
+  getRelatedList: input => {
+    return async dispatch => {
+      const link = new HttpLink({ uri, fetch: fetch });
+      const operation = {
+        query: query.getRelatedStrains,
+        variables: { ...input }
+      };
+
+      return await makePromise(execute(link, operation))
+        .then(data => {
+          let _strains = data.data.getRelatedList;
+          let _new = [];
+          for (let strain of _strains) {
+            let $strain = inferStrainData(strain);
+            $strain = { ...$strain, _id: $strain._id + "b" };
+            _new.push($strain);
+          }
+          dispatch({
+            type: actionTypes.GET_RELATED_LIST,
             input: _new
           });
           return Promise.resolve(_new);
@@ -299,6 +331,7 @@ const actions = {
       const operation = {
         query: query.getAllNews
       };
+
       makePromise(execute(link, operation))
         .then(data => {
           let categoryNews = {};
@@ -343,70 +376,12 @@ const actions = {
       const operation = {
         query: query.getBanners
       };
+
       makePromise(execute(link, operation))
         .then(data => {
-          let banners = data.data.getBanners.map((banner, index) => {
-            let protocol = banner.includes("http")
-              ? ""
-              : "http://dcfgweqx7od72.cloudfront.net";
-            return {
-              style: {
-                // backgroundImage: "url(" + protocol + banner.slice(banner.indexOf(">") + 1) ")",
-                backgroundImage:
-                  "url(http://dcfgweqx7od72.cloudfront.net/filter/autoflowerpack.png)",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat"
-              },
-              url: banner.slice(banner.indexOf(">") + 1),
-              buttonLabel: banner.slice(0, banner.indexOf("="))
-            };
-          });
-          banners = [
-            ...banners,
-            {
-              style: {
-                // backgroundImage: "url(" + protocol + banner.slice(banner.indexOf(">") + 1) ")",
-                backgroundImage:
-                  "url(http://dcfgweqx7od72.cloudfront.net/filter/cbdpack.png)",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat"
-              },
-              url: "/product/sour-girl-autoflower",
-              buttonLabel: "Fucked&"
-            },
-            {
-              style: {
-                // backgroundImage: "url(" + protocol + banner.slice(banner.indexOf(">") + 1) ")",
-                backgroundImage:
-                  "url(http://dcfgweqx7od72.cloudfront.net/filter/feminizedpack.png)",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat"
-              },
-              url: "/product/sour-girl-autoflower",
-              buttonLabel: "Up&"
-            }
-          ];
-          //refactor
-          let positions = [
-            { transform: " translateX(-200%)", display: "none" },
-            {
-              transform: " translateX(-100%)",
-              transition: "1s all ease-in-out"
-            }
-          ];
-          for (let i = 0; i < banners.length - 2; i++) {
-            positions.push({
-              transform: " translateX(" + 100 * i + "%)",
-              transition: "1s all ease-in-out"
-            });
-          }
           dispatch({
             type: actionTypes.GET_BANNERS,
-            input: banners,
-            positions: positions
+            input: data.data.getBanners
           });
         })
         .catch(error => console.log(error));
@@ -414,7 +389,7 @@ const actions = {
   },
   showMoreFeatures: input => {
     let max = input.max;
-    let count = Math.max(0, Math.min(input.count, max)) % max || 1;
+    let count = Math.min(input.count, max);
     return {
       type: actionTypes.SHOW_MORE_FEATURES,
       count: count
@@ -432,6 +407,22 @@ const query = {
   getBanners: gql`
     {
       getBanners
+    }
+  `,
+  getRelatedStrains: gql`
+    query($sotiId: String, $limit: Int) {
+      getRelatedList(input: { sotiId: $sotiId, limit: $limit }) {
+        _id
+        name
+        packageImg
+        genetic
+        type
+        sotiId
+        sativa
+        indica
+        ruderalis
+        rating
+      }
     }
   `,
   getAllNews: gql`
@@ -490,8 +481,8 @@ const query = {
     }
   `,
   getFeaturedStrains: gql`
-    {
-      getFeaturedList {
+    query($limit: Int) {
+      getFeaturedList(input: { limit: $limit }) {
         _id
         name
         packageImg

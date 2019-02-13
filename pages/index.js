@@ -13,7 +13,6 @@ import Post from "../components/sections/post";
 import News from "../components/sections/news";
 
 import moment from "moment";
-import Carousel from "../components/sections/germination/carousel";
 
 class Index extends Component {
   componentWillMount() {
@@ -27,23 +26,24 @@ class Index extends Component {
       currentEventObj: this.props.misc.currentEventObj,
       events: this.props.misc.featuredNews
     });
-    this.runLoop(1000, () => {
-      if (moment().diff(this.props.misc.currentEventUpdatedAt, "seconds") > 5) {
-        this.props.setCurrentEvent({
-          index: this.props.misc.currentEventObj + 1,
-          currentEventObj: this.props.misc.currentEventObj,
-          events: this.props.misc.featuredNews
-        });
-      }
-    });
+    if (this.props.misc.newsTimeout == null) {
+      let timeout = setInterval(this.newsStepper, 1000);
+      this.props.setNewsStepper({ timeout });
+    }
   }
 
-  runLoop(delay, callback) {
-    var loop = function() {
-      callback();
-      setTimeout(loop, delay);
-    };
-    loop();
+  newsStepper = () => {
+    if (moment().diff(this.props.misc.currentEventUpdatedAt, "seconds") > 5) {
+      this.props.setCurrentEvent({
+        index: this.props.misc.currentEventObj + 1,
+        currentEventObj: this.props.misc.currentEventObj,
+        events: this.props.misc.featuredNews
+      });
+    }
+  };
+
+  componentWillUnmount() {
+    clearInterval(this.props.misc.newsTimeout);
   }
 
   render() {
@@ -76,16 +76,14 @@ const mapDispatchToProps = dispatch => {
   return {
     setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
     setGeneHoverIndex: index => dispatch(actions.setGeneHoverIndex(index)),
-    changeBannerSlide: input => dispatch(actions.changeBannerSlide(input)),
+    nextBannerSlide: () => dispatch(actions.nextBannerSlide()),
     toggleTransitionStatus: () => dispatch(actions.toggleTransitionStatus()),
     getStrains: () => dispatch(actions.getStrains()),
-    getStrain: input => dispatch(actions.getStrain(input)),
-    setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
-    quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
     getBanners: () => dispatch(actions.getBanners()),
     toggleFilter: input => dispatch(actions.toggleFilter(input)),
-    setCurrentEvent: input => dispatch(actions.setCurrentEvent(input)),
-    changeStep: changeObj => dispatch(actions.changeStep(changeObj))
+    setNewsStepper: input => dispatch(actions.setNewsStepper(input)),
+    changeStep: changeObj => dispatch(actions.changeStep(changeObj)),
+    setCurrentEvent: input => dispatch(actions.setCurrentEvent(input))
   };
 };
 
