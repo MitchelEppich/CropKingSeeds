@@ -81,7 +81,7 @@ class Index extends Component {
                           (this.props.viewProduct.currentProduct.rating /
                             5)}px`,
                         height: "17px",
-                        marginTop: "7px"
+                        marginTop: "2px"
                       }}
                     />
                     <div
@@ -91,7 +91,7 @@ class Index extends Component {
                           ((5 - this.props.viewProduct.currentProduct.rating) /
                             5)}px`,
                         height: "17px",
-                        marginTop: "7px"
+                        marginTop: "2px"
                       }}
                     />
                     <div
