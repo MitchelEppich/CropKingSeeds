@@ -5,7 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 
 const BannerCarousel = props => {
-  let banners = props.misc.banners.map((banner, index) => {
+  let banners = props.misc.banners;
+  console.log(banners);
+  if (banners == null) return <div />;
+  banners = banners.map((banner, index) => {
     return (
       <Slide
         key={index}
@@ -16,8 +19,6 @@ const BannerCarousel = props => {
       />
     );
   });
-
-  if (banners == null) return <div />;
 
   let bulletStyle = {
     height: "16px",

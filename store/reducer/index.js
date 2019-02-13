@@ -53,7 +53,6 @@ const initialState = {
   featureCount: 1,
   showMobileMenu: null,
   CFURL: "http://dcfgweqx7od72.cloudfront.net",
-  banners: 1,
   newsTimeout: null
 };
 

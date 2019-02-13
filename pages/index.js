@@ -11,7 +11,7 @@ import BannerCarousel from "../components/sections/bannerCarousel";
 import GenePreview from "../components/sections/genePreview";
 import Post from "../components/sections/post";
 import News from "../components/sections/news";
-import Carousel from "../components/sections/germination";
+import Carousel from "../components/sections/germination/carousel";
 
 import moment from "moment";
 
@@ -77,14 +77,17 @@ const mapDispatchToProps = dispatch => {
   return {
     setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
     setGeneHoverIndex: index => dispatch(actions.setGeneHoverIndex(index)),
-    nextBannerSlide: () => dispatch(actions.nextBannerSlide()),
+    changeBannerSlide: input => dispatch(actions.changeBannerSlide(input)),
     toggleTransitionStatus: () => dispatch(actions.toggleTransitionStatus()),
     getStrains: () => dispatch(actions.getStrains()),
     getBanners: () => dispatch(actions.getBanners()),
     toggleFilter: input => dispatch(actions.toggleFilter(input)),
     setNewsStepper: input => dispatch(actions.setNewsStepper(input)),
     changeStep: changeObj => dispatch(actions.changeStep(changeObj)),
-    setCurrentEvent: input => dispatch(actions.setCurrentEvent(input))
+    setCurrentEvent: input => dispatch(actions.setCurrentEvent(input)),
+    getStrain: input => dispatch(actions.getStrain(input)),
+    setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
+    quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input))
   };
 };
 

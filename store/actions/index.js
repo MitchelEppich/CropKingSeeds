@@ -388,15 +388,18 @@ const actions = {
             // let protocol = banner.includes("http") ? "" : "http://dcfgweqx7od72.cloudfront.net";
 
             let str = banner;
-            let bannerData = ({ 0: text, 1: link, 2: sotiId } =
-              str != "" ? str.split("&=>") : ["", "", ""]);
+            let { 0: text, 1: url, 2: sotiId } =
+              str != "" ? str.split("&=>") : ["", "", ""];
+            console.log({ text, url, sotiId });
             return {
               style: {
                 backgroundPosition: "center",
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat"
               },
-              ...bannerData
+              text,
+              url,
+              sotiId
             };
           });
           //refactor
@@ -421,6 +424,7 @@ const actions = {
               });
             }
           }
+          console.log("BANNERS", banners);
           dispatch({
             type: actionTypes.GET_BANNERS,
             input: banners,
