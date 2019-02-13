@@ -281,6 +281,7 @@ const actions = {
                 .catch(error => console.log(error));
         };
     },
+
     setSearch: value => {
         return {
             type: actionTypes.SET_SEARCH,
@@ -345,54 +346,38 @@ const actions = {
             makePromise(execute(link, operation))
                 .then(data => {
                     let banners = data.data.getBanners.map((banner, index) => {
-                        let protocol = banner.includes("http") ? "" : "http://dcfgweqx7od72.cloudfront.net";
+                        // let protocol = banner.includes("http") ? "" : "http://dcfgweqx7od72.cloudfront.net";
+
+                        let str = banner;
+                        let bannerData = ({ 0: text, 1: link, 2: sotiId } =
+                            str != "" ? str.split("&=>") : ["", "", ""]);
                         return {
                             style: {
-                                // backgroundImage: "url(" + protocol + banner.slice(banner.indexOf(">") + 1) ")",
-                                backgroundImage: "url(http://dcfgweqx7od72.cloudfront.net/filter/autoflowerpack.png)",
                                 backgroundPosition: "center",
                                 backgroundSize: "cover",
                                 backgroundRepeat: "no-repeat"
                             },
-                            url: banner.slice(banner.indexOf(">") + 1),
-                            buttonLabel: banner.slice(0, banner.indexOf("="))
+                            ...bannerData
                         };
                     });
-                    banners = [
-                        ...banners,
-                        {
-                            style: {
-                                // backgroundImage: "url(" + protocol + banner.slice(banner.indexOf(">") + 1) ")",
-                                backgroundImage: "url(http://dcfgweqx7od72.cloudfront.net/filter/cbdpack.png)",
-                                backgroundPosition: "center",
-                                backgroundSize: "cover",
-                                backgroundRepeat: "no-repeat"
-                            },
-                            url: "/product/sour-girl-autoflower",
-                            buttonLabel: "Fucked&"
-                        },
-                        {
-                            style: {
-                                // backgroundImage: "url(" + protocol + banner.slice(banner.indexOf(">") + 1) ")",
-                                backgroundImage: "url(http://dcfgweqx7od72.cloudfront.net/filter/feminizedpack.png)",
-                                backgroundPosition: "center",
-                                backgroundSize: "cover",
-                                backgroundRepeat: "no-repeat"
-                            },
-                            url: "/product/sour-girl-autoflower",
-                            buttonLabel: "Up&"
-                        }
-                    ];
                     //refactor
                     let positions = [
                         { transform: " translateX(-200%)", display: "none" },
                         { transform: " translateX(-100%)", transition: "1s all ease-in-out" }
                     ];
                     for (let i = 0; i < banners.length - 2; i++) {
-                        positions.push({
-                            transform: " translateX(" + 100 * i + "%)",
-                            transition: "1s all ease-in-out"
-                        });
+                        if (i > 1) {
+                            positions.push({
+                                transform: " translateX(" + 100 * i + "%)",
+                                transition: "1s all ease-in-out",
+                                display: "none"
+                            });
+                        } else {
+                            positions.push({
+                                transform: " translateX(" + 100 * i + "%)",
+                                transition: "1s all ease-in-out"
+                            });
+                        }
                     }
                     dispatch({
                         type: actionTypes.GET_BANNERS,
