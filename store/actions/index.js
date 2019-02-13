@@ -161,7 +161,6 @@ const actions = {
     },
     changeBannerSlide: input => {
         let bannersLength = input.bannersLength;
-        console.log(input.index);
         let index =
             input.direction > 0
                 ? Math.max(0, Math.min(input.index, bannersLength)) % bannersLength || 0

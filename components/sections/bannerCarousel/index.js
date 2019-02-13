@@ -20,24 +20,46 @@ const BannerCarousel = props => {
         boxShadow: "0 2px 12px rgba(0, 0, 0, 0.4)"
     };
 
+    // let bullets = [],
+    //     j = 0;
+    // for (let i = 7; i > 0; i--) {
+    //     bullets.push(
+    //         <div
+    //             key={j}
+    //             onClick={() => {
+    //                 props.changeBannerSlide({
+    //                     bannersLength: props.misc.banners.length,
+    //                     index: j,
+    //                     direction: 0
+    //                 });
+    //             }}
+    //             className={`cursor-pointer scale-item ${
+    //                 props.misc.activeBannerSlide == j ? "bg-red-dark" : "bg-white"
+    //             } `}
+    //             style={bulletStyle}
+    //         />
+    //     );
+    //     j++;
+    // }
     let bullets = banners.map((val, index) => {
         return (
             <div
-                key={index}
+                key={index + 1}
                 onClick={() => {
                     props.changeBannerSlide({
                         bannersLength: props.misc.banners.length,
-                        index: index,
+                        index: index + 1,
                         direction: 0
                     });
                 }}
                 className={`cursor-pointer scale-item ${
-                    props.misc.activeBannerSlide == index ? "bg-red-dark" : "bg-white"
+                    props.misc.activeBannerSlide == index + 1 ? "bg-red-dark" : "bg-white"
                 } `}
                 style={bulletStyle}
             />
         );
     });
+    bullets = [...bullets.slice(bullets.length / 2), ...bullets.slice(0, bullets.length / 2)].reverse();
 
     return (
         <div className="w-full">
