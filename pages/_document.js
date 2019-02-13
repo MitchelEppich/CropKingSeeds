@@ -19,7 +19,6 @@ export default class MyDocument extends Document {
                     <title>Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds</title>
                     <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
-
                     <meta httpEquiv="ScreenOrientation" content="autoRotate:disabled" />
                     <meta name="robots" content="index, follow" />
                     <meta
@@ -35,7 +34,7 @@ export default class MyDocument extends Document {
                     <link rel="stylesheet" href="/_next/static/style.css" />
                     <link rel="icon" href="static/favicon.ico" />
 
-                    <JSONLD>
+                    {/* <JSONLD>
                         <Generic
                             name="Crop King Seeds"
                             type="webApplication"
@@ -45,7 +44,23 @@ export default class MyDocument extends Document {
                                 browserRequirements: "requires HTML5 support"
                             }}
                         />
-                    </JSONLD>
+                    </JSONLD> */}
+                    {/* <link rel="canonical" href="https://www.sonomaseeds.com/" />
+                    <meta property="og:title" content="Sonoma Cannabis Seeds - Grow Organically" />
+                    <meta property="og:type" content="website" />
+                    <meta property="og:url" content="https://www.sonomaseeds.com/" />
+                    <meta property="og:image" content="https://www.sonomaseeds.com/wp-content/uploads/2019/01/sonoma-seeds-graph.jpg" />
+                    <meta property="og:site_name" content="Sonoma Cannabis Seeds" />
+                    <meta property="fb:admins" content="148158655885411" />
+                    <meta property="fb:app_id" content="257955865103099" />
+                    <meta property="og:description" content="Sonoma Seeds is a West Coast based cannabis seeds brand providing the best seeds from around the world. We carry medical grade CBD seeds and recreational seeds." />
+                    <meta name="twitter:card" content="summary_large_image" />
+                    <meta name="twitter:site" content="@sonomaseeds" />
+                    <meta name="twitter:domain" content="sonomaseeds.com" />
+                    <meta name="twitter:title" content="Sonoma Cannabis Seeds - Grow Organically" />
+                    <meta name="twitter:description" content="Sonoma Seeds is a West Coast based cannabis seeds brand providing the best seeds from around the world. We carry medical grade CBD seeds and recreational seeds." />
+                    <meta name="twitter:image" content="https://www.sonomaseeds.com/wp-content/uploads/2019/01/sonoma-seeds-graph.jpg" />
+                    <meta itemprop="image" content="https://www.sonomaseeds.com/wp-content/uploads/2019/01/sonoma-seeds-graph.jpg" /> */}
                 </Head>
                 <body>
                     <Main />
