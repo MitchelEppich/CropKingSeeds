@@ -74,7 +74,7 @@ const productThumbnail = props => {
     for (let i = 0; i < 5; i++) {
       arr.push(
         <div key={i}>
-          <img src="../../static/img/CrownIcon_Inv.svg" className="w-8 h-8" />
+          <img src="../../static/img/CrownIcon_Inv.png" className="w-8" />
         </div>
       );
     }
@@ -239,7 +239,7 @@ const productThumbnail = props => {
                 style={{
                   width: `${150 * (rating / 5)}px`,
                   height: "17px",
-                  marginTop: "7px"
+                  marginTop: "2px"
                 }}
               />
               <div
@@ -247,7 +247,7 @@ const productThumbnail = props => {
                 style={{
                   width: `${150 * ((5 - rating) / 5)}px`,
                   height: "17px",
-                  marginTop: "7px"
+                  marginTop: "2px"
                 }}
               />
               <div className="absolute pin-l inline-flex ">{showRating()}</div>
