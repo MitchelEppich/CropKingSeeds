@@ -11,6 +11,7 @@ import BannerCarousel from "../components/sections/bannerCarousel";
 import GenePreview from "../components/sections/genePreview";
 import Post from "../components/sections/post";
 import News from "../components/sections/news";
+import Carousel from "../components/sections/germination";
 
 import moment from "moment";
 
