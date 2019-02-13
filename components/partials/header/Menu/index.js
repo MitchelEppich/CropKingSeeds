@@ -98,7 +98,7 @@ const menu = props => {
         zIndex: "60"
       };
   let phoneNumberPosition = ["sm"].includes(props.misc.mediaSize)
-    ? { right: "-245px", backgroundColor: "#F9F9F9" }
+    ? { backgroundColor: "#F9F9F9" }
     : { transform: "translateX(0px)", backgroundColor: "#F9F9F9" };
 
   return (
@@ -146,7 +146,7 @@ const menu = props => {
 
         <div className="w-full h-12 inline-flex mt-6 sm:mt-2 sm:h-10 sm:mb-0 overflow-hidden">
           {/* <div className="w-1/2 relative">
-                    <div
+            <div
                         style={viewCurrency}
                         className="fixed h-12 z-50 overflow-hidden sm:h-10 pin-l bg-white shadow-md rounded cursor-pointer mt-10 -ml-1">
                         {" "}
@@ -166,8 +166,8 @@ const menu = props => {
                         <div className="w-12 sm:w-8 rounded bg-yellow-dark p-2 items-center flex justify-center font-extrabold">
                             {currency != null ? currency.symbol : ""}
                         </div>
-                    </div>
-                </div> */}
+                    </div> 
+          </div>*/}
           <div className="w-1/2">
             <a
               href={
@@ -184,7 +184,7 @@ const menu = props => {
                   <FontAwesomeIcon icon={faPhone} className="" />
                 </p>
               </div>
-              <p className="pl-3 pr-4 p-2 uppercase font-extrabold text-lg">
+              <p className="pl-3 pr-4 p-2 uppercase font-extrabold text-lg sm:hidden">
                 {props.misc.ageVerification != null &&
                 "United States" == props.misc.ageVerification.country
                   ? "+1-844-CROP-KING (276-7546)"
@@ -268,7 +268,7 @@ const menu = props => {
                 <FontAwesomeIcon icon={faSearch} className="fa-2x p-1 " />{" "}
               </div>
 
-              <div className="justify-center flex mx-auto text-center xl:hidden xxl:hidden w-100 mt-1 sm:mt-16 sm:w-main">
+              <div className="justify-center flex mx-auto text-center xl:hidden xxl:hidden w-100 mt-1 sm:mt-16 sm:pl-10 sm:w-main">
                 {props.misc.visibleScreen.includes("showSearchBar") ? (
                   <SearchBar {...props} />
                 ) : null}

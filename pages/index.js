@@ -50,7 +50,7 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
-        {this.props.misc.strains != null ? (
+        {this.props.misc.strains != null && this.props.misc.banners != null ? (
           <React.Fragment>
             <BannerCarousel {...this.props} />
             <GenePreview {...this.props} />

@@ -10,7 +10,7 @@ const review = props => {
   for (let i = 0; i < 5; i++) {
     ratings.push(
       <div key={i}>
-        <img src="../../static/img/CrownIcon_Inv.svg" className="w-8 h-8" />
+        <img src="../../static/img/CrownIcon_Inv.png" className="w-8" />
       </div>
     );
   }
@@ -31,7 +31,7 @@ const review = props => {
               style={{
                 width: `${150 * (rating / 5)}px`,
                 height: "17px",
-                marginTop: "7px"
+                marginTop: "2px"
               }}
             />
             <div
@@ -39,14 +39,14 @@ const review = props => {
               style={{
                 width: `${150 * ((5 - rating) / 5)}px`,
                 height: "17px",
-                marginTop: "7px"
+                marginTop: "2px"
               }}
             />
             <div className="absolute pin-l inline-flex ">{ratings} </div>
           </div>
         </div>
       </div>
-      <div className="w-3/4 xl:ml-6 lg:ml-6 xxl:ml-6 px-3 p-2 text-justify md:w-full sm:w-full lg:w-full sm:px-2 sm:mt-4 md:mt-4 lg:mt-4 text-sm">
+      <div className="w-3/4 xl:ml-6 xxl:ml-6 px-3 p-2 text-justify md:w-full sm:w-full lg:w-full sm:px-2 sm:mt-4 md:mt-4 lg:mt-4 text-sm">
         <div className="w-full">
           <p>{props.body}</p>
         </div>
