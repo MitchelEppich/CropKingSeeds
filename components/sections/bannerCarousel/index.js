@@ -39,7 +39,7 @@ const BannerCarousel = props => {
             direction: 0
           });
         }}
-        className={`"cursor-pointer scale-item" ${
+        className={`cursor-pointer scale-item ${
           props.misc.activeBannerSlide == index ? "bg-red-dark" : "bg-white"
         } `}
         style={bulletStyle}

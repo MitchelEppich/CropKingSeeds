@@ -7,6 +7,8 @@ const slide = props => {
     }
     let position = props.misc.bannerSlidePositions[positionIndex];
     let protocol = props.url.includes("http");
+
+    let num = (props.index + 1).toString().padStart(2, "0");
     return (
         <div
             onClick={() => {
@@ -16,24 +18,28 @@ const slide = props => {
                     direction: 1
                 });
             }}
-            style={{ ...position, ...props.style }}
+            style={{
+                ...position,
+                ...props.style,
+                backgroundImage: "url(" + props.misc.CFURL + "/land_banner/" + num + ")"
+            }}
             className={"xxl:h-600 xl:h-400 lg:h-300 md:h-250 sm:h-44 w-full z-0 absolute"}>
             {protocol ? (
-                <a href={props.url} target="_blank">
+                <a href={props.link} target="_blank">
                     <button
                         onClick={e => {
                             e.stopPropagation();
                         }}
                         className="bannerBuyNow sm:hidden">
-                        {props.buttonLabel.slice(0, props.buttonLabel.length - 1)}
+                        {props.text.slice(0, props.text.length - 1)}
                     </button>
                 </a>
             ) : (
-                <Link href="/product">
+                <Link href="/product" as={props.link}>
                     <button
                         onMouseEnter={() => {
                             let strains = props.misc.strains;
-                            props.getStrain({ sotiId: "CCA", strains }).then(res => {
+                            props.getStrain({ sotiId: props.sotiId, strains }).then(res => {
                                 props.setCurrentProduct({ product: res }).then(() => {});
                             });
                         }}
@@ -47,7 +53,7 @@ const slide = props => {
                             props.quickAddToCartQty(_index);
                         }}
                         className="bannerBuyNow sm:hidden">
-                        {props.buttonLabel.slice(0, props.buttonLabel.length - 1)}
+                        {props.text.slice(0, props.text.length - 1)}
                     </button>
                 </Link>
             )}

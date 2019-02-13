@@ -43,7 +43,7 @@ const actionTypes = {
   SET_CHECKOUT_SCREEN: "SET_CHECKOUT_SCREEN",
   SET_HOVER_ID: "SET_HOVER_ID",
   SET_GENE_HOVER_INDEX: "SET_GENE_HOVER_INDEX",
-  NEXT_BANNER_SLIDE: "NEXT_BANNER_SLIDE",
+  CHANGE_BANNER_SLIDE: "CHANGE_BANNER_SLIDE",
   SET_STRAINS: "SET_STRAINS",
   SET_CONTEXT: "SET_CONTEXT",
   TOGGLE_STEPS_CHECKOUT: "TOGGLE_STEPS_CHECKOUT",
@@ -159,9 +159,15 @@ const actions = {
       index: index
     };
   },
-  nextBannerSlide: () => {
+  changeBannerSlide: input => {
+    let bannersLength = input.bannersLength;
+    let index =
+      input.direction > 0
+        ? Math.max(0, Math.min(input.index, bannersLength)) % bannersLength || 0
+        : input.index || bannersLength;
     return {
-      type: actionTypes.NEXT_BANNER_SLIDE
+      type: actionTypes.CHANGE_BANNER_SLIDE,
+      index: index
     };
   },
   getStrains: () => {
@@ -376,12 +382,49 @@ const actions = {
       const operation = {
         query: query.getBanners
       };
-
       makePromise(execute(link, operation))
         .then(data => {
+          let banners = data.data.getBanners.map((banner, index) => {
+            // let protocol = banner.includes("http") ? "" : "http://dcfgweqx7od72.cloudfront.net";
+
+            let str = banner;
+            let bannerData = ({ 0: text, 1: link, 2: sotiId } =
+              str != "" ? str.split("&=>") : ["", "", ""]);
+            return {
+              style: {
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat"
+              },
+              ...bannerData
+            };
+          });
+          //refactor
+          let positions = [
+            { transform: " translateX(-200%)", display: "none" },
+            {
+              transform: " translateX(-100%)",
+              transition: "1s all ease-in-out"
+            }
+          ];
+          for (let i = 0; i < banners.length - 2; i++) {
+            if (i > 1) {
+              positions.push({
+                transform: " translateX(" + 100 * i + "%)",
+                transition: "1s all ease-in-out",
+                display: "none"
+              });
+            } else {
+              positions.push({
+                transform: " translateX(" + 100 * i + "%)",
+                transition: "1s all ease-in-out"
+              });
+            }
+          }
           dispatch({
             type: actionTypes.GET_BANNERS,
-            input: data.data.getBanners
+            input: banners,
+            positions: positions
           });
         })
         .catch(error => console.log(error));

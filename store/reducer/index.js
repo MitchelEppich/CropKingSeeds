@@ -106,7 +106,8 @@ const indexReducer = (state = initialState, action) => {
       });
     case actionTypes.GET_BANNERS:
       return updateObject(state, {
-        banners: action.input
+        banners: action.input,
+        bannerSlidePositions: action.positions
       });
     case actionTypes.GET_FEATURED_NEWS:
       return updateObject(state, {
@@ -148,14 +149,8 @@ const indexReducer = (state = initialState, action) => {
         geneHoverIndex:
           state.geneHoverIndex == action.index ? null : action.index
       });
-    case actionTypes.NEXT_BANNER_SLIDE:
-      let slideIndex = state.activeBannerSlide;
-      let slidesLength = state.bannerSlidePositions.length - 1;
-      if (slideIndex === slidesLength) {
-        slideIndex = -1;
-      }
-      ++slideIndex;
-      return updateObject(state, { activeBannerSlide: slideIndex });
+    case actionTypes.CHANGE_BANNER_SLIDE:
+      return updateObject(state, { activeBannerSlide: action.index });
     case actionTypes.SET_STRAINS:
       return updateObject(state, { strains: [...action.strains] });
     case actionTypes.SET_STRAIN:
