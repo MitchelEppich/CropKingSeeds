@@ -2,7 +2,9 @@ const FilterArticles = props => {
   return (
     <div className="w-full p-4 justify-end flex inline-flex">
       <div className="inline-flex items-center flex">
-        <p className="font-bold mx-2 text-grey-light opacity-50">Sort By:</p>
+        <p className="font-bold flex items-center px-6 p-2 bg-red-light rounded text-white">
+          Sort By:
+        </p>
         <select className="p-2 w-300">
           <option className="" value="Title">
             Title

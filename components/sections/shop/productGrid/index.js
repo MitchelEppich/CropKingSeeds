@@ -5,7 +5,7 @@ import actions from "../../../../store/actions";
 import { TimelineLite, TweenMax } from "gsap";
 import ProductThumbnail from "./productThumbnail";
 
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faTimes, faSortAmountDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 let sortingFunctions = {
@@ -220,6 +220,14 @@ class Index extends Component {
 
     let showQuantity = products.length;
 
+    let showSortByStyle = {
+      transform: this.props.misc.visibleScreen.includes("showSortBy")
+        ? "translateY(-30px)"
+        : "translateY(0px)",
+      transition: "all 0.3s ease-in-out",
+      zIndex: 1
+    };
+
     return (
       <div className="sm:w-full md:w-full lg:w-3/5 xl:w-2/3 xxl:w-3/4 min-h-700 text-white mb-20 sm:mb-0">
         <div
@@ -237,10 +245,20 @@ class Index extends Component {
             </p>
             {activeFilters}
           </div>
-          <div className="inline-flex">
-            <p className="font-bold opacity-50 flex items-center">Sort by:</p>
+          <div className="z-50">
+            <p
+              onClick={() => {
+                this.props.setVisibleScreen({ input: "showSortBy" });
+              }}
+              className="font-bold flex relative items-center px-6 p-2 bg-grey-light z-50 rounded text-white"
+            >
+              Sort by:{" "}
+              <FontAwesomeIcon icon={faSortAmountDown} className="fa-lg ml-2" />
+            </p>
+
             <select
-              className="ml-3"
+              style={showSortByStyle}
+              className="ml-1 p-1 z-40"
               value={this.props.shop.sort || ""}
               onChange={e => {
                 let value = e.target.value;

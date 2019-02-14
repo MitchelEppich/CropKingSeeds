@@ -165,6 +165,10 @@ class Layout extends Component {
     });
   };
 
+  componentWillUnmount() {
+    sessionStorage.setItem("showNewCustomerPopUp", 3);
+  }
+
   setMediaSize = () => {
     let mediaSizes = {
       sm: { min: 100, max: 479 },
@@ -222,7 +226,6 @@ class Layout extends Component {
 
       if (sessionStorage.getItem("showNewCustomerPopUp") == "2") {
         showNewCustomerPopUp = true;
-        sessionStorage.setItem("showNewCustomerPopUp", 3);
       } else showNewCustomerPopUp = false;
     }
 
@@ -254,10 +257,12 @@ class Layout extends Component {
               <Header {...this.props} />
 
               {showNewCustomerPopUp ? <PopUpBanner {...this.props} /> : null}
+
               {/* {this.props.misc.hoverId == null ||
                             ["md", "lg", "xl", "xxl"].includes(this.props.misc.mediaSize) ? (
                                 <SearchBar {...this.props} />
                             ) : null}*/}
+
               <div className="pt-32 md:pt-48">
                 {" "}
                 <div className="relative">
