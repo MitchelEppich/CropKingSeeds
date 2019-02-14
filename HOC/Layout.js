@@ -53,6 +53,8 @@ function getPlatformType() {
 
 let iframe;
 
+const isClient = typeof document !== "undefined";
+
 class Layout extends Component {
   componentDidMount() {
     // iframe = document.createElement("iframe");
@@ -69,7 +71,6 @@ class Layout extends Component {
     this.recallSession();
     this.props.getFeaturedNews();
     this.props.getStrains().then(strains => {
-      const isClient = typeof document !== "undefined";
       if (!isClient) return;
       let url = Router.asPath.slice(1);
       if (url && url.length != 0) {
