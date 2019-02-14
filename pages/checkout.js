@@ -27,7 +27,9 @@ import {
   faAngleRight,
   faPlus,
   faCartPlus,
-  faCartArrowDown
+  faCartArrowDown,
+  faTimes,
+  faTrash
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -203,9 +205,27 @@ class Index extends Component {
             {_stepsCheckout == 0 ? (
               <div>
                 <ProductPreview {...this.props} />
-                <div className="w-full flex justify-end">
+                <div className="w-full flex justify-between sm:flex-col md:flex-col">
+                  {itemsCart.length > 0 ? (
+                    <div className="justify-start flex">
+                      <div
+                        onClick={() => {
+                          this.props.purgeCart();
+                        }}
+                        className="inline-flex font-bold text-grey-light text-lg p-2 items-center rounded cursor-pointer hover:text-grey scale-item text-xl "
+                      >
+                        <p className="ml-8 justify-start flex underline">
+                          Clear Cart
+                        </p>
+                        <FontAwesomeIcon
+                          icon={faTrash}
+                          className="ml-2 items-center flex"
+                        />
+                      </div>
+                    </div>
+                  ) : null}
                   <Link prefetch href="/shop">
-                    <p className="font-extrabold text-xl cursor-pointer scale-item text-red-light p-2 mr-6 items-center flex">
+                    <p className="font-extrabold text-xl cursor-pointer scale-item text-red-light p-2 mr-6 items-center flex ml-8 sm:justify-end sm:mr-0 md:justify-end md:mr-0 hover:text-red-dark">
                       {itemsCart.length > 0
                         ? "Continue Shopping"
                         : "Go to Shop Page"}

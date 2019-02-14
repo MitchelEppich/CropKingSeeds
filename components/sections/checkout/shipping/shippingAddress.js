@@ -1,4 +1,5 @@
 import data from "../../../../static/data";
+import MinimumSeedsWarning from "../other/minimumSeedsWarning";
 
 const ShippingAddress = props => {
   let pageGroup = "shipping";
@@ -86,6 +87,8 @@ const ShippingAddress = props => {
       <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-black">
         Shipping Address
       </h2>
+      <MinimumSeedsWarning {...props} />
+
       <div className={`w-full mt-4`}>
         <div className="w-full p-2 inline-flex sm:flex-col">
           <div className="w-1/2 sm:w-full sm:pl-0 sm:mt-4">

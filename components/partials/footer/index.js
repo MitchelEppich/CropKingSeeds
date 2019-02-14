@@ -49,11 +49,6 @@ const Footer = props => {
                   Contact Us
                 </p>
               </Link>{" "}
-              <Link href="/germination">
-                <p className="sm:w-full md:w-full text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
-                  Germination
-                </p>
-              </Link>{" "}
               <Link href="/partners">
                 <p className="sm:w-full md:w-full text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
                   Partners
@@ -64,6 +59,11 @@ const Footer = props => {
                   Articles
                 </p>
               </Link>
+              <Link href="/news">
+                <p className="sm:w-full md:w-full text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
+                  News
+                </p>
+              </Link>{" "}
             </div>
             <div className="ml-4 w-1/2 text-left sm:flex sm:flex-wrap md:flex md:flex-wrap">
               <Link href="/faq#delivery">

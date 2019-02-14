@@ -218,7 +218,7 @@ class Layout extends Component {
                 </div>
                 <div
                   style={marginProductPage}
-                  className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md"
+                  className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md min-h-600"
                 >
                   {this.props.misc.strains != null ? (
                     this.props.children
@@ -229,7 +229,9 @@ class Layout extends Component {
                   )}
                 </div>
               </div>
-              <StrainsMenu {...this.props} />
+              {Router.asPath.slice(1).includes("product/") ? (
+                <StrainsMenu {...this.props} />
+              ) : null}
               <AnchorLink
                 aria-label="toTop"
                 className="items-center flex"
@@ -282,7 +284,8 @@ const mapDispatchToProps = dispatch => {
     setSearch: value => dispatch(actions.setSearch(value)),
     toggleImageZoom: bool => dispatch(actions.toggleImageZoom(bool)),
     setCurrentImage: index => dispatch(actions.setCurrentImage(index)),
-    toggleStrainsMenu: bool => dispatch(actions.toggleStrainsMenu(bool))
+    toggleStrainsMenu: bool => dispatch(actions.toggleStrainsMenu(bool)),
+    purgeCart: () => dispatch(actions.purgeCart())
   };
 };
 

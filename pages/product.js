@@ -56,7 +56,7 @@ class Index extends Component {
                 this.props.toggleStrainsMenu(false);
               }
             }}
-            className="p-8 lg:px-4 lg:py-8 md:px-4 md:py-8 sm:px-2 sm:py-8"
+            className="p-8 lg:px-4 lg:py-8 md:px-4 md:py-8 sm:px-2 sm:py-2"
           >
             <Breadcrumb {...this.props} />
             <div className="flex flex-wrap justify-start pt-2 relative">
@@ -66,7 +66,7 @@ class Index extends Component {
                     <ImageCarousel {...this.props} />
                   </div>
                 ) : null}
-                <div className="flex flex-wrap content-start w-1/2 pl-4 md:pl-0 sm:pl-0 xl:w-1/2 lg:w-full md:w-full sm:w-full md:mt-6 sm:mt-6 lg:mt-6">
+                <div className="flex flex-wrap content-start w-1/2 pl-4 md:pl-0 sm:pl-0 xl:w-1/2 lg:w-full md:w-full sm:w-full md:mt-6 sm:mt-0 lg:mt-6">
                   <div className="w-full">
                     <h1 className="pl-10 ml-1 font-black lg:pl-16 xl:pl-10 xxl:pl-12 sm:pl-0 md:pl-0">
                       {this.props.viewProduct.currentProduct.name}
