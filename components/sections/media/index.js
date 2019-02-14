@@ -122,8 +122,8 @@ const Media = props => {
             </div>
             <div className="w-main mx-auto p-2 mt-6">
                 <p className="text-center opacity-75 font-bold">
-                    These are the next events lorem lorem are the next events lorem lorem lorem lorem are the next
-                    events lorem lorem lorem{" "}
+                    These are the next events Crop King Seeds will be attending and or sponsoring. We hope to see you
+                    there!
                 </p>
             </div>
             {showCategories()}

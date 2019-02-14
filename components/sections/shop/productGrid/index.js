@@ -87,6 +87,27 @@ class Index extends Component {
     render() {
         let hoverId = this.props.misc.hoverId;
         let products = this.props.misc.strains;
+        let sortOptions = [
+            ["", "Select"],
+            ["alpha", "↑ A - Z "],
+            ["alphaR", "↓ Z - A"],
+            ["thc", "↑ THC"],
+            ["thcR", "↓ THC"],
+            ["cbd", "↑ CBD"],
+            ["cbdR", "↓ CBD"],
+            ["yield", "↑ Avg. Yield"],
+            ["yieldR", "↓ Avg. Yield"],
+            ["time", "↑ Grow Time"],
+            ["timeR", "↓ Grow Time"]
+        ].map((val, index) => {
+            return val[0] == "" ? (
+                <option value={val[0]} disabled>
+                    {val[1]}
+                </option>
+            ) : (
+                <option value={val[0]}>{val[1]}</option>
+            );
+        });
         let isSmallMediumOrLargeDevice = ["sm", "md", "lg"].includes(this.props.misc.mediaSize);
         let activeFilters = Object.keys(this.props.shop.activeFilters).map((filter, index) => {
             let filtersArr =
@@ -228,19 +249,7 @@ class Index extends Component {
                                 let value = e.target.value;
                                 this.props.setSort({ value });
                             }}>
-                            <option value="" disabled>
-                                Select
-                            </option>
-                            <option value="alpha">↑ A - Z </option>
-                            <option value="alphaR">↓ Z - A </option>
-                            <option value="thc">↑ THC </option>
-                            <option value="thcR">↓ THC </option>
-                            <option value="cbd">↑ CBD </option>
-                            <option value="cbdR">↓ CBD </option>
-                            <option value="yield">↑ Avg. Yield </option>
-                            <option value="yieldR">↓ Avg. Yield </option>
-                            <option value="time">↑ Grow Time </option>
-                            <option value="timeR">↓ Grow Time </option>
+                            {sortOptions}
                         </select>
                     </div>
                 </div>
