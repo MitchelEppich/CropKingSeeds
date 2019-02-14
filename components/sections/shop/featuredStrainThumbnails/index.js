@@ -3,7 +3,7 @@ import Router from "next/router";
 import FeaturedStrainThumbnail from "./featuredStrainThumbnail";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import { faAngleUp, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 const index = props => {
   let hoverId = props.misc.hoverId;
@@ -95,7 +95,7 @@ const index = props => {
     );
   });
   return (
-    <div className="flex flex-wrap w-full py-6 pb-12 sm:justify-center md:justify-center lg:justify-center xl:justify-start xxl:justify-around sm:overflow-hidden">
+    <div className="flex flex-wrap w-full py-6 pb-4 sm:justify-center md:justify-center lg:justify-center xl:justify-start xxl:justify-around sm:overflow-hidden">
       {products}
       {count < max && props.page == "shop" ? (
         <p
@@ -105,9 +105,10 @@ const index = props => {
               count: count + 2
             });
           }}
-          className="text-grey-light rounded opacity-75 text-center w-64 mx-auto my-4 cursor-pointer p-3 font-bold bg-grey-lightest hover:bg-red-light hover:text-white"
+          className="text-grey-light rounded opacity-75 text-center w-64 mx-auto my-4 cursor-pointer p-3 font-bold bg-grey-lightest hover:bg-red-light hover:text-white inline-flex items-center justify-center"
         >
-          Load More
+          Load More{" "}
+          <FontAwesomeIcon icon={faAngleDown} className="fa-lg ml-2" />
         </p>
       ) : props.initialCount != props.specificMax ? (
         <p
