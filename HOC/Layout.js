@@ -335,6 +335,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.subscribeToNewsletter(input)),
     toggleShowFilters: bool => dispatch(actions.toggleShowFilters(bool)),
     getFeaturedList: input => dispatch(actions.getFeaturedList(input)),
+    isRepeatCustomer: input => dispatch(actions.isRepeatCustomer(input)),
     getExchangeRates: () => dispatch(actions.getExchangeRates()),
     recallCart: () => dispatch(actions.recallCart()),
     getFeaturedNews: () => dispatch(actions.getFeaturedNews()),
