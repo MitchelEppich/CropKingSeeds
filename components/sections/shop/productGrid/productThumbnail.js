@@ -98,67 +98,74 @@ const productThumbnail = props => {
           } `}
         />
       </div>
-
-      <div
-        style={{
-          backgroundImage:
-            "url(" + props.misc.CFURL + props.product.packageImg + ")",
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center"
-        }}
-        className={packageClass}
-        onClick={() => {
-          if (props.isSmallMediumOrLargeDevice) {
-            disableScroll();
-            props.setHoverId(props.product._id, true);
-            let _index = 0;
-            while (props.product.price[_index] == -1) {
-              _index++;
-            }
-            props.quickAddToCartQty(_index);
-            props.modifyPotentialQuantity({
-              potentialQuantity: props.cart.potentialQuantity,
-              action: "SET",
-              quantity: 1
-            });
-          }
-        }}
+      <Link
+        prefetch
+        href="/product"
+        as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}
       >
-        <img
-          className={packagePins}
-          src={
-            props.misc.CFURL +
-            `/pins/${rand
-              .intBetween(1, 7)
-              .toString()
-              .padStart(2, "0")}.png`
-          }
-          alt={props.product.name + "pin"}
-        />
-      </div>
+        <div className="cursor-pointer">
+          <div
+            style={{
+              backgroundImage:
+                "url(" + props.misc.CFURL + props.product.packageImg + ")",
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center"
+            }}
+            className={packageClass}
+            onClick={() => {
+              if (props.isSmallMediumOrLargeDevice) {
+                disableScroll();
+                props.setHoverId(props.product._id, true);
+                let _index = 0;
+                while (props.product.price[_index] == -1) {
+                  _index++;
+                }
+                props.quickAddToCartQty(_index);
+                props.modifyPotentialQuantity({
+                  potentialQuantity: props.cart.potentialQuantity,
+                  action: "SET",
+                  quantity: 1
+                });
+              }
+            }}
+          >
+            <img
+              className={packagePins}
+              src={
+                props.misc.CFURL +
+                `/pins/${rand
+                  .intBetween(1, 7)
+                  .toString()
+                  .padStart(2, "0")}.png`
+              }
+              alt={props.product.name + "pin"}
+            />
+          </div>
 
-      <img
-        src={props.misc.CFURL + props.product.strainImg}
-        className={plantClass}
-        onClick={() => {
-          if (props.isSmallMediumOrLargeDevice) {
-            disableScroll();
-            props.setHoverId(props.product._id, true);
-            let _index = 0;
-            while (props.product.price[_index] == -1) {
-              _index++;
-            }
-            props.quickAddToCartQty(_index);
-            props.modifyPotentialQuantity({
-              potentialQuantity: props.cart.potentialQuantity,
-              action: "SET",
-              quantity: 1
-            });
-          }
-        }}
-        alt={props.product.name + "plant"}
-      />
+          <img
+            src={props.misc.CFURL + props.product.strainImg}
+            className={plantClass}
+            onClick={() => {
+              if (props.isSmallMediumOrLargeDevice) {
+                disableScroll();
+                props.setHoverId(props.product._id, true);
+                let _index = 0;
+                while (props.product.price[_index] == -1) {
+                  _index++;
+                }
+                props.quickAddToCartQty(_index);
+                props.modifyPotentialQuantity({
+                  potentialQuantity: props.cart.potentialQuantity,
+                  action: "SET",
+                  quantity: 1
+                });
+              }
+            }}
+            alt={props.product.name + "plant"}
+          />
+        </div>
+      </Link>
 
       <div
         onClick={() => {
@@ -303,7 +310,7 @@ const productThumbnail = props => {
               </div>
               <div className="w-full inline-flex sm:mt-0 mt-2">
                 <button
-                  className="bg-red-dark mr-1 w-full text-center text-white h-10 px-2 py-2 hover:bg-grey slowish"
+                  className="bg-red-dark mr-1 w-full text-center text-white h-10 px-2 py-2 hover:bg-red-light slowish rounded"
                   onClick={() => {
                     props.modifyCart({
                       items: props.cart.items,
@@ -327,7 +334,7 @@ const productThumbnail = props => {
                 </button>
                 <Link prefetch href="/checkout">
                   <button
-                    className="bg-grey-dark ml-1 w-full text-center text-white h-10 px-2 py-2 hover:bg-grey"
+                    className="bg-grey-dark ml-1 w-full text-center text-white h-10 px-2 py-2 hover:bg-grey-light rounded"
                     onClick={() => {
                       props.modifyCart({
                         items: props.cart.items,

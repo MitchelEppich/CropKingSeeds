@@ -24,13 +24,13 @@ const Details = props => {
     <div className="bg-smoke-grey">
       <div
         style={{ background: "#128671" }}
-        className="w-full border-b-8 border-white"
+        className="w-full border-b-4 border-white"
       >
         <h3 className="text-white font-bold p-2 text-center uppercase">
           Extra Info
         </h3>
       </div>
-      <div className="flex xl:block lg:block md:block sm:block mt-0 pt-1 md:mt-0 md:pt-0 sm:mt-0 sm:pt-0">
+      <div className="flex xl:block lg:block md:block sm:block mt-0 md:mt-0 md:pt-0 sm:mt-0 sm:pt-0">
         <div className="w-full">
           <div className="w-full inline-flex items-center flex pl-6 bg-white mb-1">
             <div className="w-16 inline-flex">
@@ -96,7 +96,7 @@ const Details = props => {
             </div>
           </div>
 
-          <div className="w-full inline-flex items-center flex pl-6 bg-white mb-1">
+          <div className="w-full inline-flex items-center flex pl-6 bg-white">
             <div className="w-16 inline-flex items-center flex">
               <div
                 style={{ background: "#23dc6e" }}

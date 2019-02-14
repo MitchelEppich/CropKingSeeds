@@ -55,12 +55,12 @@ class Index extends Component {
             <BannerCarousel {...this.props} />
             <GenePreview {...this.props} />
             {/* <Post {...this.props} /> */}
-            <div className="pt-8">
-              <h2 className="text-3xl font-bold text-center uppercase w-full p-2 bg-grey-light text-white mb-4">
+            {/* <div className="pt-8">
+              <h2 className="w-full p-2 pl-6 font-bold text-center text-3xl my-3 text-grey bg-smoke-grey">
                 Germination
               </h2>
               <Carousel {...this.props} />
-            </div>
+            </div> */}
             <News {...this.props} />
           </React.Fragment>
         ) : (
