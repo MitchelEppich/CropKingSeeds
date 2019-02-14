@@ -14,6 +14,7 @@ type Query {
   allBlockedZips: [String]!
   allBlockedIps: [String]!
   
+  isRepeatCustomer(input: OrderInput!): Boolean
   getBanners: [String]
   getFeaturedList(input: FeaturedInput): [Strain]!
   getRelatedList(input: RelatedInput!): [Strain]!

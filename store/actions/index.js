@@ -66,7 +66,8 @@ const actionTypes = {
   TOGGLE_MOBILE_MENU: "TOGGLE_MOBILE_MENU",
   GET_BANNERS: "GET_BANNERS",
   GET_RELATED_LIST: "GET_RELATED_LIST",
-  SET_NEWS_STEPPER: "SET_NEWS_STEPPER"
+  SET_NEWS_STEPPER: "SET_NEWS_STEPPER",
+  IS_REPEAT_CUSTOMER: "IS_REPEAT_CUSTOMER"
 };
 
 const actions = {
@@ -434,10 +435,35 @@ const actions = {
       type: actionTypes.TOGGLE_MOBILE_MENU,
       input: input
     };
+  },
+  isRepeatCustomer: input => {
+    return dispatch => {
+      const link = new HttpLink({ uri, fetch: fetch });
+      const operation = {
+        query: query.isRepeatCustomer,
+        variables: { ...input }
+      };
+
+      makePromise(execute(link, operation))
+        .then(data => {
+          let res = data.data.isRepeatCustomer;
+
+          dispatch({
+            type: actionTypes.IS_REPEAT_CUSTOMER,
+            input: !res
+          });
+        })
+        .catch(error => console.log(error));
+    };
   }
 };
 
 const query = {
+  isRepeatCustomer: gql`
+    query($ip: String) {
+      isRepeatCustomer(input: { ip: $ip })
+    }
+  `,
   getBanners: gql`
     {
       getBanners

@@ -37,6 +37,9 @@ import ImageZoom from "../components/sections/productPage/imageZoom";
 import StrainsMenu from "../components/sections/productPage/strainsMenu";
 import { detect } from "detect-browser";
 import PopUpBanner from "../components/sections/popup";
+
+import axios from "axios";
+
 const _browser = detect();
 
 function getPlatformType() {
@@ -49,20 +52,25 @@ function getPlatformType() {
   }
 }
 
-let iframe;
+// let iframe;
+const isClient = typeof document !== "undefined";
 
 class Layout extends Component {
   componentDidMount() {
-    iframe = document.createElement("iframe");
-    iframe.id = "iframe";
-    iframe.style.cssText = "display: none";
-    iframe.sandbox = "allow-same-origin";
-    document.body.appendChild(iframe);
+    // iframe = document.createElement("iframe");
+    // iframe.id = "iframe";
+    // iframe.style.cssText = "display: none";
+    // iframe.sandbox = "allow-same-origin";
+    // document.body.appendChild(iframe);
+
+    // Check if new customer
+    if (sessionStorage.getItem("showNewCustomerPopUp") == null) {
+      sessionStorage.setItem("showNewCustomerPopUp", 0);
+    }
 
     this.recallSession();
     this.props.getFeaturedNews();
     this.props.getStrains().then(strains => {
-      const isClient = typeof document !== "undefined";
       if (!isClient) return;
       let url = Router.asPath.slice(1);
       if (url && url.length != 0) {
@@ -120,11 +128,21 @@ class Layout extends Component {
     let cart = (await this.props.recallCart()) || {};
 
     this.props.recallOrderDetails({ items: cart.items }).then(res => {
-      if (Object.keys(res).length != 0) return;
+      if (Object.keys(res).length != 0) {
+        this.props.isRepeatCustomer({ ip: res.details.ip.value });
+        return;
+      }
       let browser = _browser != null ? _browser.name : "unknown";
       let device = getPlatformType();
       let _orderDetails = this.props.checkout.orderDetails;
-      getCustomerIP(ip => {
+
+      axios.get("https://api.ipify.org?format=json").then(res => {
+        let ip;
+        if (res == null) ip = "-1.-1.-1.-1";
+        else ip = res.data.ip;
+
+        this.props.isRepeatCustomer({ ip });
+
         _orderDetails = {
           ..._orderDetails,
           details: {
@@ -179,6 +197,30 @@ class Layout extends Component {
           : "auto",
       transition: "all .4s ease"
     };
+
+    let showNewCustomerPopUp;
+
+    if (isClient) {
+      if (
+        this.props.misc.newCustomer &&
+        sessionStorage.getItem("showNewCustomerPopUp") == "0" &&
+        this.props.misc.ageVerification != null &&
+        this.props.misc.ageVerification.verified == true
+      )
+        sessionStorage.setItem("showNewCustomerPopUp", 1);
+
+      if (sessionStorage.getItem("showNewCustomerPopUp") == "1") {
+        setTimeout(() => {
+          sessionStorage.setItem("showNewCustomerPopUp", 2);
+        }, 3000);
+      }
+
+      if (sessionStorage.getItem("showNewCustomerPopUp") == "2") {
+        showNewCustomerPopUp = true;
+        sessionStorage.setItem("showNewCustomerPopUp", 3);
+      } else showNewCustomerPopUp = false;
+    }
+
     return this.props.misc.strains != null ? (
       <React.Fragment>
         {this.props.viewProduct.currentProduct &&
@@ -206,7 +248,7 @@ class Layout extends Component {
             <React.Fragment>
               <Header {...this.props} />
 
-              <PopUpBanner {...this.props} />
+              {showNewCustomerPopUp ? <PopUpBanner {...this.props} /> : null}
               {/* {this.props.misc.hoverId == null ||
                             ["md", "lg", "xl", "xxl"].includes(this.props.misc.mediaSize) ? (
                                 <SearchBar {...this.props} />
@@ -298,6 +340,7 @@ const mapDispatchToProps = dispatch => {
     setSearch: value => dispatch(actions.setSearch(value)),
     toggleImageZoom: bool => dispatch(actions.toggleImageZoom(bool)),
     setCurrentImage: index => dispatch(actions.setCurrentImage(index)),
+    isRepeatCustomer: input => dispatch(actions.isRepeatCustomer(input)),
     toggleStrainsMenu: bool => dispatch(actions.toggleStrainsMenu(bool)),
     purgeCart: () => dispatch(actions.purgeCart())
   };
@@ -308,88 +351,88 @@ export default connect(
   mapDispatchToProps
 )(Layout);
 
-let getCustomerIP = callback => {
-  var ip_dups = {};
+// let getCustomerIP = callback => {
+//   var ip_dups = {};
 
-  //compatibility for firefox and chrome
-  var RTCPeerConnection =
-    window.RTCPeerConnection ||
-    window.mozRTCPeerConnection ||
-    window.webkitRTCPeerConnection;
-  var useWebKit = !!window.webkitRTCPeerConnection;
+//   //compatibility for firefox and chrome
+//   var RTCPeerConnection =
+//     window.RTCPeerConnection ||
+//     window.mozRTCPeerConnection ||
+//     window.webkitRTCPeerConnection;
+//   var useWebKit = !!window.webkitRTCPeerConnection;
 
-  //bypass naive webrtc blocking using an iframe
-  if (!RTCPeerConnection) {
-    //NOTE: you need to have an iframe in the page right above the script tag
-    //
-    // <iframe id="iframe" sandbox="allow-same-origin" style="display: none" />;
-    //<script>...getIPs called in here...
-    //
-    // console.log("BLOCKED");
-    var win = iframe.contentWindow;
-    RTCPeerConnection =
-      win.RTCPeerConnection ||
-      win.mozRTCPeerConnection ||
-      win.webkitRTCPeerConnection;
-    useWebKit = !!win.webkitRTCPeerConnection;
-  }
-  //minimal requirements for data connection
-  var mediaConstraints = {
-    optional: [{ RtpDataChannels: true }]
-  };
+//   //bypass naive webrtc blocking using an iframe
+//   if (!RTCPeerConnection) {
+//     //NOTE: you need to have an iframe in the page right above the script tag
+//     //
+//     // <iframe id="iframe" sandbox="allow-same-origin" style="display: none" />;
+//     //<script>...getIPs called in here...
+//     //
+//     // console.log("BLOCKED");
+//     var win = iframe.contentWindow;
+//     RTCPeerConnection =
+//       win.RTCPeerConnection ||
+//       win.mozRTCPeerConnection ||
+//       win.webkitRTCPeerConnection;
+//     useWebKit = !!win.webkitRTCPeerConnection;
+//   }
+//   //minimal requirements for data connection
+//   var mediaConstraints = {
+//     optional: [{ RtpDataChannels: true }]
+//   };
 
-  var servers = { iceServers: [{ urls: "stun:stun.services.mozilla.com" }] };
+//   var servers = { iceServers: [{ urls: "stun:stun.services.mozilla.com" }] };
 
-  //construct a new RTCPeerConnection
-  var pc = new RTCPeerConnection(servers, mediaConstraints);
+//   //construct a new RTCPeerConnection
+//   var pc = new RTCPeerConnection(servers, mediaConstraints);
 
-  function handleCandidate(candidate) {
-    //match just the IP address
-    var ip_regex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/;
-    var ip_addr = ip_regex.exec(candidate)[1];
+//   function handleCandidate(candidate) {
+//     //match just the IP address
+//     var ip_regex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/;
+//     var ip_addr = ip_regex.exec(candidate)[1];
 
-    //remove duplicates
-    if (ip_dups[ip_addr] === undefined) callback(ip_addr);
+//     //remove duplicates
+//     if (ip_dups[ip_addr] === undefined) callback(ip_addr);
 
-    ip_dups[ip_addr] = true;
-  }
+//     ip_dups[ip_addr] = true;
+//   }
 
-  //listen for candidate events
-  pc.onicecandidate = function(ice) {
-    //skip non-candidate events
-    if (ice.candidate) handleCandidate(ice.candidate.candidate);
-  };
+//   //listen for candidate events
+//   pc.onicecandidate = function(ice) {
+//     //skip non-candidate events
+//     if (ice.candidate) handleCandidate(ice.candidate.candidate);
+//   };
 
-  //create a bogus data channel
-  pc.createDataChannel("");
+//   //create a bogus data channel
+//   pc.createDataChannel("");
 
-  //create an offer sdp
-  pc.createOffer(
-    function(result) {
-      //trigger the stun server request
-      pc.setLocalDescription(result, function() {}, function() {});
-    },
-    function() {}
-  );
+//   //create an offer sdp
+//   pc.createOffer(
+//     function(result) {
+//       //trigger the stun server request
+//       pc.setLocalDescription(result, function() {}, function() {});
+//     },
+//     function() {}
+//   );
 
-  //wait for a while to let everything done
-  setTimeout(function() {
-    //read candidate info from local description
-    let sdp = pc.localDescription.sdp;
-    var lines = sdp.split("\n");
+//   //wait for a while to let everything done
+//   setTimeout(function() {
+//     //read candidate info from local description
+//     let sdp = pc.localDescription.sdp;
+//     var lines = sdp.split("\n");
 
-    // Check if candidate exists
-    if (!sdp.includes("a=candidate:")) {
-      callback("-1.-1.-1.-1");
-      return;
-    }
+//     // Check if candidate exists
+//     if (!sdp.includes("a=candidate:")) {
+//       callback("-1.-1.-1.-1");
+//       return;
+//     }
 
-    // Split lines into array
-    var lines = sdp.split("\n");
+//     // Split lines into array
+//     var lines = sdp.split("\n");
 
-    // Find the candidate line
-    lines.forEach(function(line) {
-      if (line.indexOf("a=candidate:") === 0) handleCandidate(line);
-    });
-  }, 1000);
-};
+//     // Find the candidate line
+//     lines.forEach(function(line) {
+//       if (line.indexOf("a=candidate:") === 0) handleCandidate(line);
+//     });
+//   }, 1000);
+// };

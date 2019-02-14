@@ -9,7 +9,7 @@ const slide = props => {
   let position = props.misc.bannerSlidePositions[positionIndex];
   let protocol = props.url.includes("http");
   let num = (props.index + 1).toString().padStart(2, "0");
-  console.log(props.text, props.index);
+
   return (
     <div
       onClick={() => {

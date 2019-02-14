@@ -17,6 +17,11 @@ const resolvers = {
     order: (_, { input }) => {
       return Order.findOne(input);
     },
+    isRepeatCustomer: async (_, { input }) => {
+      let order = await Order.findOne(input);
+      if (order == null) return false;
+      return true;
+    },
     allOrders: (_, { filter }) => {
       let query = filter ? { $or: orderFilters(filter) } : {};
       return Order.find(query);
@@ -252,6 +257,7 @@ const resolvers = {
           processor: _input.Payment_Method,
           ccType: _input.Typeofcard,
           orderDate: _input.Order_Date,
+          ip: _input.CardHolderIp,
           paymentMethod: _input.Payment_Method,
           paymentStatus: _input.credit_card_remark
         }
