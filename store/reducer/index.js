@@ -45,6 +45,8 @@ const initialState = {
     featuredStrains: null,
     relatedStrains: null,
     searchValue: null,
+    suggestions: [],
+    highlightedSuggestion: null,
     addTalkToListener: false,
     currentEventObj: 0,
     currentEventUpdatedAt: new Date(),
@@ -166,6 +168,10 @@ const indexReducer = (state = initialState, action) => {
             return updateObject(state, { relatedStrains: [...action.input] });
         case actionTypes.SET_SEARCH:
             return updateObject(state, { searchValue: action.value });
+        case actionTypes.SET_SUGGESTIONS:
+            return updateObject(state, { suggestions: action.suggestions });
+        case actionTypes.SET_HIGHLIGHTED_SUGGESTION:
+            return updateObject(state, { highlightedSuggestion: action.index });
         case actionTypes.ADD_TALK_TO_LISTENER:
             return updateObject(state, { addTalkToListener: action.bool });
         case actionTypes.SHOW_MORE_FEATURES:
