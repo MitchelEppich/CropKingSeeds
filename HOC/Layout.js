@@ -4,22 +4,7 @@ component wraps each page. Naturally this
 component has the navigation menu and footer.*/
 /**************************************/
 
-import "../scss/universal.scss";
 import "../scss/home.scss";
-import "../scss/shop.scss";
-import "../scss/product.scss";
-import "../scss/germination.scss";
-import "../scss/contact.scss";
-import "../scss/checkout.scss";
-import "../scss/about.scss";
-import "../scss/affiliates.scss";
-import "../scss/articles.scss";
-import "../scss/cms.scss";
-import "../scss/xxl.scss";
-import "../scss/xl.scss";
-import "../scss/lg.scss";
-import "../scss/md.scss";
-import "../scss/sm.scss";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../store/actions";
@@ -168,6 +153,10 @@ class Layout extends Component {
         });
     };
 
+    componentWillUnmount() {
+        sessionStorage.setItem("showNewCustomerPopUp", 3);
+    }
+
     setMediaSize = () => {
         let mediaSizes = {
             sm: { min: 100, max: 479 },
@@ -223,7 +212,6 @@ class Layout extends Component {
 
             if (sessionStorage.getItem("showNewCustomerPopUp") == "2") {
                 showNewCustomerPopUp = true;
-                sessionStorage.setItem("showNewCustomerPopUp", 3);
             } else showNewCustomerPopUp = false;
         }
 
@@ -251,10 +239,12 @@ class Layout extends Component {
                             <Header {...this.props} />
 
                             {showNewCustomerPopUp ? <PopUpBanner {...this.props} /> : null}
+
                             {/* {this.props.misc.hoverId == null ||
                             ["md", "lg", "xl", "xxl"].includes(this.props.misc.mediaSize) ? (
                                 <SearchBar {...this.props} />
                             ) : null}*/}
+
                             <div className="pt-32 md:pt-48">
                                 {" "}
                                 <div className="relative">
