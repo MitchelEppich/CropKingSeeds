@@ -1,0 +1,42 @@
+//////////////
+//MIXINS
+// Block Element
+// @access public
+// @param {String} $element - Element's name
+@mixin element($element) {
+    &__#{$element} {
+        @content;
+    }
+}
+// Block Modifier
+// @access public
+// @param {String} $modifier - Modifier's name
+@mixin modifier($modifier) {
+    &--#{$modifier} {
+        @content;
+    }
+}
+
+//EXAMPLE FONT FACE IMPORT WITH TWO WEIGHTS
+@font-face {
+    font-family: "proxima nova";
+    src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff") format("truetype");
+    font-weight: thin;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "proxima nova";
+    src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+////////////////
+// ABOUT PAGE
+.about-img {
+    height: 100%;
+    overflow: hidden;
+    object-fit: cover;
+}

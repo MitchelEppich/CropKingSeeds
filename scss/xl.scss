@@ -1,0 +1,210 @@
+//////////////
+//MIXINS
+// Block Element
+// @access public
+// @param {String} $element - Element's name
+@mixin element($element) {
+    &__#{$element} {
+        @content;
+    }
+}
+// Block Modifier
+// @access public
+// @param {String} $modifier - Modifier's name
+@mixin modifier($modifier) {
+    &--#{$modifier} {
+        @content;
+    }
+}
+
+//EXAMPLE FONT FACE IMPORT WITH TWO WEIGHTS
+@font-face {
+    font-family: "proxima nova";
+    src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff") format("truetype");
+    font-weight: thin;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "proxima nova";
+    src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@media only screen and (max-width: 1367px) {
+    ////////////
+    // UNIVERSAL
+    .ray_box {
+        /*HEADER ANIMATION */
+        left: calc(32% - 150px);
+        top: 70px;
+        right: 0;
+        position: absolute;
+        bottom: 0;
+        width: 30px;
+        height: 30px;
+        -webkit-animation: ray_anim 300s linear infinite;
+        animation: ray_anim 300s linear infinite;
+        z-index: -5;
+    }
+
+    .react-autosuggest__input {
+        width: calc(225px - 3rem);
+        height: 2rem;
+        padding: 1px 10px;
+        text-transform: capitalize;
+        font-weight: 300;
+        font-size: 16px;
+        border-radius: 10px 0 0 10px;
+        border: none;
+        z-index: 55;
+    }
+
+    .searchBar {
+        margin-left: 20%;
+    }
+
+    // END UNIVERSAL
+    ////////////////
+
+    ////////////////
+    // AFFILIATES PAGE
+    .affiliatesBanner {
+        background-image: url("../static/img/affiliatesBanner.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 60vh;
+        padding: 100px 50px 0 50px;
+    }
+    // END AFFILIATES PAGE
+    ////////////////////
+
+    ///////////////
+    // ARTICLE PAGE
+    .articleSlider {
+        object-fit: cover;
+        height: 400px;
+        width: 100%;
+        filter: brightness(0.5);
+    }
+
+    .imgFeatureNews {
+        width: 100%;
+        height: 600px;
+        overflow: hidden;
+        object-fit: contain;
+        object-position: center center;
+        box-shadow: rgba(0, 0, 0, 0.26) 0px 0px 10px;
+    }
+    // END ARTICLE PAGE
+    ///////////////////
+
+    ////////////////
+    // CHECKOUT PAGE
+    // END CHECKOUT PAGE
+    ////////////////////
+
+    ///////////////////
+    // GERMINATION PAGE
+    .germinationCarouselImg {
+        width: 371px;
+        height: 208.69px;
+        margin: 30px 300px 0px 300px;
+    }
+    // END GERMINATION PAGE
+    ///////////////////////
+    ////////////
+    // HOME PAGE
+    .bannerBuyNow {
+        position: absolute;
+        padding: 0.5rem 2rem;
+        width: 14rem;
+        left: calc(50% - 7rem);
+        border-radius: 2px;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 2px 10px #0000004f;
+        font-weight: bold;
+        background-color: rgba(14, 14, 14, 0.2);
+        bottom: 25px;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    }
+    .genePreview {
+        width: 25%;
+        height: 350px;
+        z-index: 10;
+        transition: all 0.5s ease-in-out;
+        background-position: center;
+        background-size: 500px 500px;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        cursor: pointer;
+        &:nth-of-type(2) {
+            border-left: 5px solid white;
+        }
+        &:nth-of-type(3) {
+            border-left: 5px solid white;
+            border-right: 5px solid white;
+        }
+    }
+
+    .headingClass {
+        transform: translateX(17px);
+        position: absolute;
+        bottom: 0;
+        transition: all 0.5s ease-in-out;
+    }
+    .packClass {
+        transform: rotate(90deg);
+        margin: 97px 100px;
+        width: 155px;
+    }
+    .screenClass {
+        transform: translateX(-300px) rotate(-90deg);
+        transition: all 0.5s ease-in-out;
+        width: 24rem;
+        height: 100%;
+    }
+
+    // END HOME PAGE
+    ////////////////
+
+    ////////////
+    // SHOP PAGE
+    // END SHOP PAGE
+    ////////////////
+
+    ///////////////////
+    // VIEWPRODUCT PAGE
+    .imgCarousel {
+        height: 385px !important;
+        width: auto !important;
+    }
+    .package-pins {
+        @include modifier("product") {
+            transition: 0.2s all ease-in-out;
+            height: 1rem;
+        }
+        @include modifier("productZoom") {
+            transition: 0.2s all ease-in-out;
+            height: 6.5rem;
+            top: 130px;
+            right: 1.5rem;
+            position: absolute;
+        }
+    }
+    .packagePinBig {
+        height: 6rem;
+        position: absolute;
+        right: -35px;
+        top: 210px;
+        pointer-events: none;
+    }
+    // END VIEWPRODUCT PAGE
+    ///////////////////////
+}
