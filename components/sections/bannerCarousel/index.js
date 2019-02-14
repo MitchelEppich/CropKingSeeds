@@ -76,17 +76,6 @@ const BannerCarousel = props => {
     <div className="w-full">
       <div className="xxl:h-600 xl:h-400 lg:h-300 md:h-250 sm:mt-6 sm:h-150 w-full flex relative overflow-hidden">
         {banners}
-
-        {props.misc.activeBannerSlide == 2 ? (
-          <Link prefetch href="/product" as={banners[1]}>
-            <button
-              onClick={e => e.stopPropagation()}
-              className="bannerBuyNow sm:block"
-            >
-              Buy Now
-            </button>
-          </Link>
-        ) : null}
       </div>
       <div className="w-full block justify-center flex p-3">{bullets}</div>
     </div>
