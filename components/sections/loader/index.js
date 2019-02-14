@@ -36,6 +36,7 @@ class Index extends Component {
                     <div />
                 </div>
                 <img
+                    alt="cks-logo"
                     src="../static/img/cks-logo-header.png"
                     onClick={() => console.log(props)}
                     className="cks-logo-loader z-999 p-0 w-130 scale-item cursor-pointer"
