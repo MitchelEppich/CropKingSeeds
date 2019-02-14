@@ -14,12 +14,19 @@ class SearchSuggest extends Component {
                 });
                 this.props.setSearch(this.props.misc.suggestions[index].name.toLowerCase());
             }}
+            onClick={() => {
+                if (!Router.asPath.includes("/shop")) {
+                    Router.push("/shop");
+                }
+            }}
             className={
                 this.props.misc.highlightedSuggestion == index
-                    ? "bg-red-lighter font-bold text-black h-10 z-999 py-1 shadow-lg"
-                    : "bg-white text-black h-10 z-999 py-1 shadow-lg"
+                    ? "bg-red-lighter font-bold text-black h-10 z-999 py-1 shadow-lg leading-loose text-sm"
+                    : "bg-white text-black h-10 z-999 py-1 shadow-lg leading-loose text-sm"
             }>
-            {suggestion.name}
+            {suggestion.name.length > 17 && ["sm", "md", "lg", "xl"].includes(this.props.misc.mediaSize)
+                ? suggestion.name.slice(0, 17) + "..."
+                : suggestion.name}
         </div>
     );
     getSuggestions = value => {
@@ -71,6 +78,14 @@ class SearchSuggest extends Component {
                     onChange={e => {
                         this.props.setSearch(e.target.value.toLowerCase());
                         this.props.setSuggestions(this.getSuggestions(e.target.value));
+                        this.props.setHighlightedSuggestion({
+                            index: null,
+                            suggestions: this.props.misc.suggestions
+                        });
+                    }}
+                    onBlur={() => {
+                        this.props.setSearch(null);
+                        this.props.setSuggestions([]);
                         this.props.setHighlightedSuggestion({
                             index: null,
                             suggestions: this.props.misc.suggestions
