@@ -18,6 +18,15 @@ const Payment = props => {
     _orderDetails.billing.postalZip.value.toLowerCase().replace(/ /g, "")
   );
 
+  let titleBox = {
+    borderBottom: "2px solid #505050",
+    color: "#fff",
+    background: "rgb(239, 87, 83)",
+    padding: "7px",
+    borderTopRightRadius: "4px",
+    borderTopLeftRadius: "4px"
+  };
+
   return (
     <div className="w-full px-8 mb-6 sm:px-4">
       <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-black">
@@ -29,6 +38,14 @@ const Payment = props => {
       </div>
 
       <PaymentReview {...props} />
+      <div
+        style={titleBox}
+        className="font-bold py-2 p-2 mb-4 mt-10 text-center"
+      >
+        <p className="text-lg">
+          Please, select your Payment Method to finalize your Order:
+        </p>
+      </div>
       {["Canada", "United States"].includes(
         _orderDetails.billing.country.value
       ) && allowCC ? (

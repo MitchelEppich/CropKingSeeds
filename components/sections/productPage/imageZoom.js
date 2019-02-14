@@ -41,7 +41,7 @@ const imageZoom = props => {
               index: props.viewProduct.currentImage + 1
             })
           }
-          className="xxl:h-screen xl:h-screen h-400 sm:h-300 md:h-300 lg:h-500 lg:mt-auto sm:mt-auto md:mt-auto w-24 items-center flex unselectable"
+          className="xxl:h-screen xl:h-screen h-400 sm:h-300 md:h-300 lg:h-500 lg:mt-auto sm:mt-auto md:mt-auto w-24 items-center flex unselectable justify-end"
         >
           <FontAwesomeIcon
             icon={faAngleRight}

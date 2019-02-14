@@ -106,7 +106,6 @@ const PaymentReview = props => {
   let titleBox = {
     borderBottom: "2px solid #505050",
     color: "#fff",
-    // background: "#ef5753",
     background: "rgb(239, 87, 83)",
     padding: "6px"
   };
