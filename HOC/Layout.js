@@ -37,10 +37,9 @@ import ImageZoom from "../components/sections/productPage/imageZoom";
 import StrainsMenu from "../components/sections/productPage/strainsMenu";
 import { detect } from "detect-browser";
 import PopUpBanner from "../components/sections/popup";
+const _browser = detect();
 
 import axios from "axios";
-
-const _browser = detect();
 
 function getPlatformType() {
   if (navigator.userAgent.match(/mobile/i)) {
@@ -52,8 +51,7 @@ function getPlatformType() {
   }
 }
 
-// let iframe;
-const isClient = typeof document !== "undefined";
+let iframe;
 
 class Layout extends Component {
   componentDidMount() {
@@ -71,6 +69,7 @@ class Layout extends Component {
     this.recallSession();
     this.props.getFeaturedNews();
     this.props.getStrains().then(strains => {
+      const isClient = typeof document !== "undefined";
       if (!isClient) return;
       let url = Router.asPath.slice(1);
       if (url && url.length != 0) {
@@ -88,7 +87,10 @@ class Layout extends Component {
               );
             });
             this.props
-              .getStrain({ sotiId: strains[index].sotiId, strains })
+              .getStrain({
+                sotiId: strains[index].sotiId,
+                strains
+              })
               .then(res => {
                 this.props.setCurrentProduct({ product: res }).then(() => {
                   let product = this.props.viewProduct.currentProduct;
@@ -103,7 +105,9 @@ class Layout extends Component {
         }
       }
     });
-    this.props.getFeaturedList({ limit: 5 });
+    this.props.getFeaturedList({
+      limit: 5
+    });
 
     if (this.props.checkout.viewCurrency == null)
       this.props.setCurrency({
@@ -338,9 +342,12 @@ const mapDispatchToProps = dispatch => {
     quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
     modifyOrderDetails: input => dispatch(actions.modifyOrderDetails(input)),
     setSearch: value => dispatch(actions.setSearch(value)),
+    setSuggestions: suggestions =>
+      dispatch(actions.setSuggestions(suggestions)),
+    setHighlightedSuggestion: input =>
+      dispatch(actions.setHighlightedSuggestion(input)),
     toggleImageZoom: bool => dispatch(actions.toggleImageZoom(bool)),
     setCurrentImage: index => dispatch(actions.setCurrentImage(index)),
-    isRepeatCustomer: input => dispatch(actions.isRepeatCustomer(input)),
     toggleStrainsMenu: bool => dispatch(actions.toggleStrainsMenu(bool)),
     purgeCart: () => dispatch(actions.purgeCart())
   };
@@ -355,27 +362,21 @@ export default connect(
 //   var ip_dups = {};
 
 //   //compatibility for firefox and chrome
-//   var RTCPeerConnection =
-//     window.RTCPeerConnection ||
-//     window.mozRTCPeerConnection ||
-//     window.webkitRTCPeerConnection;
+//   var RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
 //   var useWebKit = !!window.webkitRTCPeerConnection;
 
 //   //bypass naive webrtc blocking using an iframe
 //   if (!RTCPeerConnection) {
 //     //NOTE: you need to have an iframe in the page right above the script tag
 //     //
-//     // <iframe id="iframe" sandbox="allow-same-origin" style="display: none" />;
+//     //<iframe id="iframe" sandbox="allow-same-origin" style="display: none"></iframe>
 //     //<script>...getIPs called in here...
 //     //
-//     // console.log("BLOCKED");
 //     var win = iframe.contentWindow;
-//     RTCPeerConnection =
-//       win.RTCPeerConnection ||
-//       win.mozRTCPeerConnection ||
-//       win.webkitRTCPeerConnection;
+//     RTCPeerConnection = win.RTCPeerConnection || win.mozRTCPeerConnection || win.webkitRTCPeerConnection;
 //     useWebKit = !!win.webkitRTCPeerConnection;
 //   }
+
 //   //minimal requirements for data connection
 //   var mediaConstraints = {
 //     optional: [{ RtpDataChannels: true }]
@@ -390,7 +391,6 @@ export default connect(
 //     //match just the IP address
 //     var ip_regex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/;
 //     var ip_addr = ip_regex.exec(candidate)[1];
-
 //     //remove duplicates
 //     if (ip_dups[ip_addr] === undefined) callback(ip_addr);
 
@@ -398,7 +398,7 @@ export default connect(
 //   }
 
 //   //listen for candidate events
-//   pc.onicecandidate = function(ice) {
+//   pc.onicecandidate = function (ice) {
 //     //skip non-candidate events
 //     if (ice.candidate) handleCandidate(ice.candidate.candidate);
 //   };
@@ -408,30 +408,19 @@ export default connect(
 
 //   //create an offer sdp
 //   pc.createOffer(
-//     function(result) {
+//     function (result) {
 //       //trigger the stun server request
-//       pc.setLocalDescription(result, function() {}, function() {});
+//       pc.setLocalDescription(result, function () { }, function () { });
 //     },
-//     function() {}
+//     function () { }
 //   );
 
 //   //wait for a while to let everything done
-//   setTimeout(function() {
+//   setTimeout(function () {
 //     //read candidate info from local description
-//     let sdp = pc.localDescription.sdp;
-//     var lines = sdp.split("\n");
+//     var lines = pc.localDescription.sdp.split("\n");
 
-//     // Check if candidate exists
-//     if (!sdp.includes("a=candidate:")) {
-//       callback("-1.-1.-1.-1");
-//       return;
-//     }
-
-//     // Split lines into array
-//     var lines = sdp.split("\n");
-
-//     // Find the candidate line
-//     lines.forEach(function(line) {
+//     lines.forEach(function (line) {
 //       if (line.indexOf("a=candidate:") === 0) handleCandidate(line);
 //     });
 //   }, 1000);

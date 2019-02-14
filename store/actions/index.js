@@ -57,6 +57,8 @@ const actionTypes = {
   GET_FEATURED_LIST: "GET_FEATURED_LIST",
   RECALL_AGE_VERIFICATION: "RECALL_AGE_VERIFICATION",
   SET_SEARCH: "SET_SEARCH",
+  SET_SUGGESTIONS: "SET_SUGGESTIONS",
+  SET_HIGHLIGHTED_SUGGESTION: "SET_HIGHLIGHTED_SUGGESTION",
   ADD_TALK_TO_LISTENER: "ADD_TALK_TO_LISTENER",
   SET_CURRENT_EVENT: "SET_CURRENT_EVENT",
   GET_ALL_NEWS: "GET_ALL_NEWS",
@@ -326,6 +328,23 @@ const actions = {
     return {
       type: actionTypes.SET_SEARCH,
       value: value
+    };
+  },
+  setSuggestions: suggestions => {
+    return {
+      type: actionTypes.SET_SUGGESTIONS,
+      suggestions: suggestions
+    };
+  },
+  setHighlightedSuggestion: input => {
+    let total = input.suggestions.length;
+    let index = Math.max(0, Math.min(input.index, total)) % total || 0;
+    if (input.index == null || input.index == -1) {
+      index = null;
+    }
+    return {
+      type: actionTypes.SET_HIGHLIGHTED_SUGGESTION,
+      index: index
     };
   },
   addTalkToListener: bool => {

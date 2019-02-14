@@ -1,74 +1,103 @@
-import Autosuggest from "react-autosuggest";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../../store/actions";
+import Router from "next/router";
 class SearchSuggest extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: this.props.misc.searchValue || "",
-      suggestions: []
-    };
-  }
-
-  getSuggestionValue = suggestion => suggestion.name;
-  renderSuggestion = suggestion => <div>{suggestion.name}</div>;
-  getSuggestions = value => {
-    const inputValue = value.trim().toLowerCase();
-    const inputLength = inputValue.length;
-    return inputLength === 0
-      ? []
-      : this.props.misc.strains.filter(
-          strain =>
-            strain.name.toLowerCase().slice(0, inputLength) === inputValue
-        );
-  };
-
-  onChange = (event, { newValue }) => {
-    this.setState({
-      value: newValue
-    });
-    this.props.setSearch(newValue.toLowerCase());
-  };
-  onSuggestionsFetchRequested = ({ value }) => {
-    this.setState({
-      suggestions: this.getSuggestions(value)
-    });
-  };
-
-  onSuggestionsClearRequested = () => {
-    this.setState({
-      suggestions: []
-    });
-  };
-
-  render() {
-    const { value, suggestions } = this.state;
-
-    const inputProps = {
-      placeholder:
-        window.innerWidth > 1367 ? "What are you looking for?" : "Search...",
-      value,
-      onChange: this.onChange
-    };
-
-    return (
-      <Autosuggest
-        suggestions={suggestions}
-        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-        getSuggestionValue={this.getSuggestionValue}
-        renderSuggestion={this.renderSuggestion}
-        inputProps={inputProps}
-      />
+    componentDidMount() {}
+    renderSuggestion = (suggestion, index) => (
+        <div
+            key={index}
+            onMouseEnter={() => {
+                this.props.setHighlightedSuggestion({
+                    index: index,
+                    suggestions: this.props.misc.suggestions
+                });
+                this.props.setSearch(this.props.misc.suggestions[index].name.toLowerCase());
+            }}
+            className={
+                this.props.misc.highlightedSuggestion == index
+                    ? "bg-red-lighter font-bold text-black h-10 z-999 py-1 shadow-lg"
+                    : "bg-white text-black h-10 z-999 py-1 shadow-lg"
+            }>
+            {suggestion.name}
+        </div>
     );
-  }
+    getSuggestions = value => {
+        const inputValue = value.trim().toLowerCase();
+        const inputLength = inputValue.length;
+        return inputLength === 0
+            ? []
+            : this.props.misc.strains.filter(strain => strain.name.toLowerCase().slice(0, inputLength) === inputValue);
+    };
+    changeHighlightedSuggestion = e => {
+        if (e.keyCode == 13) {
+            if (!Router.asPath.includes("/shop")) {
+                Router.push("/shop");
+            }
+        }
+        if (this.props.misc.suggestions.length > 0) {
+            let lastValue = this.props.misc.highlightedSuggestion != null ? this.props.misc.highlightedSuggestion : -1;
+            if (e.keyCode == 40) {
+                this.props.setHighlightedSuggestion({
+                    index: lastValue + 1,
+                    suggestions: this.props.misc.suggestions
+                });
+                this.props.setSearch(this.props.misc.suggestions[lastValue + 1].name.toLowerCase());
+            }
+            if (e.keyCode == 38) {
+                this.props.setHighlightedSuggestion({
+                    index: lastValue - 1,
+                    suggestions: this.props.misc.suggestions
+                });
+                this.props.setSearch(
+                    lastValue - 1 > -1 ? this.props.misc.suggestions[lastValue - 1].name.toLowerCase() : null
+                );
+            }
+        }
+    };
+    render() {
+        return (
+            <div className="bg-white rounded-lg">
+                <input
+                    onKeyDown={e => {
+                        this.changeHighlightedSuggestion(e);
+                    }}
+                    type="search"
+                    name="searchInput"
+                    autoComplete="off"
+                    id="searchInput"
+                    className="react-autosuggest__input mb-2"
+                    placeholder={window.innerWidth > 1367 ? "What are you looking for?" : "Search..."}
+                    onChange={e => {
+                        this.props.setSearch(e.target.value.toLowerCase());
+                        this.props.setSuggestions(this.getSuggestions(e.target.value));
+                        this.props.setHighlightedSuggestion({
+                            index: null,
+                            suggestions: this.props.misc.suggestions
+                        });
+                    }}
+                    value={
+                        (this.props.misc.suggestions[this.props.misc.highlightedSuggestion]
+                            ? this.props.misc.suggestions[this.props.misc.highlightedSuggestion].name
+                            : null) ||
+                        this.props.misc.searchValue ||
+                        ""
+                    }
+                />
+                {this.props.misc.suggestions.length > 0
+                    ? this.props.misc.suggestions.map((suggestion, index) => {
+                          return this.renderSuggestion(suggestion, index);
+                      })
+                    : null}
+            </div>
+        );
+    }
 }
 const mapDispatchToProps = dispatch => {
-  return {};
+    return {};
 };
 
 export default connect(
-  state => state,
-  mapDispatchToProps
+    state => state,
+    mapDispatchToProps
 )(SearchSuggest);
