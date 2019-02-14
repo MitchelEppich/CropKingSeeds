@@ -9,14 +9,6 @@ import moment from "moment";
 import Link from "next/link";
 
 const news = props => {
-  let styleImg = {
-    width: "100%",
-    overflow: "hidden",
-    objectFit: "cover",
-    objectPosition: "top",
-    boxShadow: "0 0px 10px rgba(0, 0, 0, 0.26)"
-  };
-
   if (props.misc.featuredNews.length == 0) return <div />;
 
   let newsIndex = props.misc.currentEventObj;
@@ -122,9 +114,8 @@ const news = props => {
       <div className="inline-flex w-full px-12 sm:px-4 md:px-4 py-4 sm:flex-col md:flex-col lg:flex-col">
         <div className="w-1/2 sm:w-full md:w-full lg:w-full p-2">
           <img
-            style={styleImg}
             src={`${image}`}
-            className="w-full about-img md:w-4/5 sm:h-200 md:h-64 h-450 xl:h-full lg:h-300 shadow-lg"
+            className="w-full imgFeatureNews sm:h-200 md:h-200 w-full h-450 xl:h-full lg:h-300 shadow-lg"
           />
         </div>
         <div className="w-1/2 sm:w-full md:w-full lg:w-full p-2">
@@ -134,7 +125,7 @@ const news = props => {
       <div className="w-full">
         <div className="flex justify-end w-full">
           <Link href="/news">
-            <p className="p-2 bg-red-dark text-white font-bold px-6 mr-8 w-200 text-right inline-flex items-center rounded shadow-md uppercase cursor-pointer hover:bg-red-light justify-center">
+            <p className="p-2 bg-red-dark text-white font-bold px-6 mr-8 w-200 text-right inline-flex items-center rounded shadow-md uppercase cursor-pointer hover:bg-red-light justify-center md:w-full sm:w-full md:mr-0 sm:mr-0">
               See more news{" "}
               <FontAwesomeIcon icon={faAngleRight} className="ml-2 fa-lg" />
             </p>
