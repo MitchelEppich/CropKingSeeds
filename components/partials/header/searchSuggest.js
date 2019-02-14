@@ -1,4 +1,3 @@
-import Autosuggest from "react-autosuggest";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../../store/actions";
@@ -50,7 +49,9 @@ class SearchSuggest extends Component {
                     index: lastValue - 1,
                     suggestions: this.props.misc.suggestions
                 });
-                this.props.setSearch(this.props.misc.suggestions[lastValue - 1].name.toLowerCase());
+                this.props.setSearch(
+                    lastValue - 1 > -1 ? this.props.misc.suggestions[lastValue - 1].name.toLowerCase() : null
+                );
             }
         }
     };

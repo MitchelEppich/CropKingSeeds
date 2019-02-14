@@ -338,7 +338,7 @@ const actions = {
     setHighlightedSuggestion: input => {
         let total = input.suggestions.length;
         let index = Math.max(0, Math.min(input.index, total)) % total || 0;
-        if (input.index == null) {
+        if (input.index == null || input.index == -1) {
             index = null;
         }
         return {
