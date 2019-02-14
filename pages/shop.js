@@ -28,6 +28,24 @@ class Index extends Component {
       // );
     }
   }
+
+  componentDidMount() {
+    let searchValue = this.props.misc.searchValue;
+    if (searchValue != null) {
+      this.props.setSearch(null);
+      let text = searchValue.split(",");
+      this.props.toggleFilter({
+        filter: this.props.shop.activeFilters,
+        text,
+        multiple: false
+      });
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.clearFilters();
+  }
+
   render() {
     let mobile = ["sm", "md"].includes(this.props.misc.mediaSize);
     return (
@@ -174,6 +192,7 @@ const mapDispatchToProps = dispatch => {
     modifyPotentialQuantity: input =>
       dispatch(actions.modifyPotentialQuantity(input)),
     clearCart: () => dispatch(actions.clearCart()),
+    setSearch: value => dispatch(actions.setSearch(value)),
     setSort: input => dispatch(actions.setSort(input)),
     expandProduct: id => dispatch(actions.expandProduct(id)),
     getStrain: input => dispatch(actions.getStrain(input)),

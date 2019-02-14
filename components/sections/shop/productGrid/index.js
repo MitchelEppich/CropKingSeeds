@@ -18,6 +18,54 @@ let sortingFunctions = {
     if (a.name < b.name) return 1;
     if (a.name > b.name) return -1;
     return 0;
+  },
+  thc: (a, b) => {
+    let _a = [...a.pthc].pop();
+    let _b = [...b.pthc].pop();
+    if (_a < _b) return 1;
+    if (_a > _b) return -1;
+    return 0;
+  },
+  thcR: (a, b) => {
+    let _a = [...a.pthc].pop();
+    let _b = [...b.pthc].pop();
+    if (_a < _b) return -1;
+    if (_a > _b) return 1;
+    return 0;
+  },
+  cbd: (a, b) => {
+    let _a = [...a.pcbd].pop();
+    let _b = [...b.pcbd].pop();
+    if (_a < _b) return 1;
+    if (_a > _b) return -1;
+    return 0;
+  },
+  cbdR: (a, b) => {
+    let _a = [...a.pcbd].pop();
+    let _b = [...b.pcbd].pop();
+    if (_a < _b) return -1;
+    if (_a > _b) return 1;
+    return 0;
+  },
+  yield: (a, b) => {
+    if (a.avgYield < b.avgYield) return 1;
+    if (a.avgYield > b.avgYield) return -1;
+    return 0;
+  },
+  yieldR: (a, b) => {
+    if (a.avgYield < b.avgYield) return -1;
+    if (a.avgYield > b.avgYield) return 1;
+    return 0;
+  },
+  time: (a, b) => {
+    if (a.nFlowerTime < b.nFlowerTime) return 1;
+    if (a.nFlowerTime > b.nFlowerTime) return -1;
+    return 0;
+  },
+  timeR: (a, b) => {
+    if (a.nFlowerTime < b.nFlowerTime) return -1;
+    if (a.nFlowerTime > b.nFlowerTime) return 1;
+    return 0;
   }
 };
 
@@ -45,11 +93,13 @@ class Index extends Component {
     let activeFilters = Object.keys(this.props.shop.activeFilters).map(
       (filter, index) => {
         let filtersArr =
-          filter == "genetic"
+          filter == "genetic" || filter == "text"
             ? [...this.props.shop.activeFilters[filter]]
             : [this.props.shop.activeFilters[filter]];
         let label =
-          filter == "type" || filter == "genetic" ? null : filter + " %";
+          filter == "type" || filter == "genetic" || filter == "text"
+            ? null
+            : filter + " %";
         return filtersArr.map((value, index) => {
           return (
             <span
@@ -58,11 +108,13 @@ class Index extends Component {
                 this.props.toggleFilter({
                   filter: this.props.shop.activeFilters,
                   [filter]: value,
-                  multiple: filter == "genetic" ? true : false
+                  multiple:
+                    filter == "genetic" || filter == "text" ? true : false
                 })
               }
               className="capitalize text-grey border bg-grey-lightest flex justify-center cursor-pointer hover:bg-red-dark hover:text-white items-center rounded-tl-lg rounded-br-lg border-grey-lightest p-2 m-1 font-bold slowish"
             >
+              {filter == "text" ? "search: " : ""}
               {label || value}
               <FontAwesomeIcon className="fa-sm ml-2" icon={faTimes} />
             </span>
@@ -90,6 +142,27 @@ class Index extends Component {
           _filter.genetic != null &&
           _filter.genetic.length != 0 &&
           !_filter.genetic.includes(a.genetic.toLowerCase())
+        )
+          _pass = false;
+
+        if (
+          _filter.text != null &&
+          _filter.text.length != 0 &&
+          !_filter.text.some(val => {
+            let _val = val.toLowerCase();
+            if (
+              [
+                a.genetic.toLowerCase(),
+                a.name.toLowerCase(),
+                a.type.toLowerCase(),
+                a.flowerTime.toLowerCase(),
+                a.yield[2].toLowerCase()
+              ].some($val => {
+                if ($val.includes(_val)) return true;
+              })
+            )
+              return true;
+          })
         )
           _pass = false;
         if (_filter.cbd != null && _filter.cbd != a.cbd) _pass = false;
@@ -168,7 +241,7 @@ class Index extends Component {
             <p className="font-bold opacity-50 flex items-center">Sort by:</p>
             <select
               className="ml-3"
-              defaultValue=""
+              value={this.props.shop.sort || ""}
               onChange={e => {
                 let value = e.target.value;
                 this.props.setSort({ value });
@@ -179,6 +252,14 @@ class Index extends Component {
               </option>
               <option value="alpha">↑ A - Z </option>
               <option value="alphaR">↓ Z - A </option>
+              <option value="thc">↑ THC </option>
+              <option value="thcR">↓ THC </option>
+              <option value="cbd">↑ CBD </option>
+              <option value="cbdR">↓ CBD </option>
+              <option value="yield">↑ Avg. Yield </option>
+              <option value="yieldR">↓ Avg. Yield </option>
+              <option value="time">↑ Grow Time </option>
+              <option value="timeR">↓ Grow Time </option>
             </select>
           </div>
         </div>
