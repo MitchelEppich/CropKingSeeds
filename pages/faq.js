@@ -44,7 +44,7 @@ class Index extends Component {
 
     return (
       <Layout>
-        <div className="mt-5 w-1/2 sm:w-4/5 mx-auto text-center font-black">
+        <div className="mt-5 xxl:w-1/2 w-4/5 mx-auto text-center font-black">
           <h1 className="mt-4 text-grey font-extrabold text-center text-3/5xl mx-auto w-full text-center mb-8">
             Frequently Asked Questions
           </h1>
@@ -64,21 +64,21 @@ class Index extends Component {
           <React.Fragment>
             <h2
               id="delivery"
-              className="w-1/2 lg:w-full md:w-full sm:w-full mx-auto mt-8"
+              className="w-1/2 xl:w-4/5 lg:w-full md:w-full sm:w-full mx-auto mt-8"
             >
               Delivery
             </h2>
             <div className="">{deliveryQuestions}</div>
             <h2
               id="payment"
-              className="w-1/2 lg:w-full md:w-full sm:w-full mx-auto mt-8"
+              className="w-1/2 xl:w-4/5 lg:w-full md:w-full sm:w-full mx-auto mt-8"
             >
               Payment
             </h2>
             <div className="">{paymentQuestions}</div>
             <h2
               id="payment"
-              className="w-1/2 lg:w-full md:w-full sm:w-full mx-auto mt-8"
+              className="w-1/2 xl:w-4/5 lg:w-full md:w-full sm:w-full mx-auto mt-8"
             >
               Other FAQ's
             </h2>

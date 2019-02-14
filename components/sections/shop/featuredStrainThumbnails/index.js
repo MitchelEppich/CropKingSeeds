@@ -2,6 +2,8 @@ import ProductThumbnail from "../productGrid/productThumbnail";
 import Router from "next/router";
 import FeaturedStrainThumbnail from "./featuredStrainThumbnail";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 
 const index = props => {
   let hoverId = props.misc.hoverId;
@@ -115,9 +117,9 @@ const index = props => {
               count: 1
             });
           }}
-          className="text-grey-light rounded opacity-75 text-center w-64 mx-auto my-4 cursor-pointer p-3 font-bold bg-grey-lightest hover:bg-red-light hover:text-white"
+          className="text-grey-light rounded opacity-75 text-center w-64 mx-auto my-4 cursor-pointer p-3 font-bold bg-grey-lightest hover:bg-red-light flex justify-center hover:text-white inline-flex items-center"
         >
-          Collapse
+          Collapse <FontAwesomeIcon icon={faAngleUp} className="fa-lg ml-2" />
         </p>
       ) : null}
     </div>

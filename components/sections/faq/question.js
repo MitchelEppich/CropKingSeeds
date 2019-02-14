@@ -33,7 +33,7 @@ const question = props => {
     <div
       onClick={() => props.toggleFAQQuestion(props.index)}
       style={size}
-      className="w-1/2 lg:w-full md:w-full sm:w-full mx-auto shadow my-3 cursor-pointer"
+      className="w-1/2 xl:w-4/5 lg:w-full md:w-full sm:w-full mx-auto shadow my-3 cursor-pointer"
     >
       <p className="font-black p-2 flex justify-between">
         <span

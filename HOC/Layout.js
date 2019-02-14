@@ -30,6 +30,7 @@ import ImageZoom from "../components/sections/productPage/imageZoom";
 import StrainsMenu from "../components/sections/productPage/strainsMenu";
 
 import { detect } from "detect-browser";
+import PopUpBanner from "../components/sections/popup";
 const _browser = detect();
 
 function getPlatformType() {
@@ -197,6 +198,7 @@ class Layout extends Component {
           ) : (
             <React.Fragment>
               <Header {...this.props} />
+              <PopUpBanner {...this.props} />
               {/* {this.props.misc.hoverId == null ||
                             ["md", "lg", "xl", "xxl"].includes(this.props.misc.mediaSize) ? (
                                 <SearchBar {...this.props} />
@@ -247,6 +249,7 @@ class Layout extends Component {
                   />
                 </div>
               </AnchorLink>
+
               <Cart {...this.props} />
               <Footer {...this.props} />
             </React.Fragment>
