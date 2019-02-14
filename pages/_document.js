@@ -1,5 +1,17 @@
 import Document, { Head, Main, NextScript } from "next/document";
-import { JSONLD, Generic } from "react-structured-data";
+
+import strainsData from "../static/strainsSchemaData";
+import {
+    JSONLD,
+    Generic,
+    Product,
+    AggregateRating,
+    GenericCollection,
+    Review,
+    Author,
+    Rating,
+    Location
+} from "react-structured-data";
 
 import { library } from "@fortawesome/fontawesome-svg-core"; // FONTAWESOME
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,7 +22,41 @@ export default class MyDocument extends Document {
         const initialProps = await Document.getInitialProps(ctx);
         return { ...initialProps };
     }
-
+    generateSchemaMarkup = strains => {
+        return strains.map((strain, index) => {
+            let reviews;
+            if (strain.reviews != null && strain.reviews.length > 0) {
+                reviews = strain.reviews.map((review, index) => {
+                    let str = review;
+                    let { 0: name, 1: email, 2: body, 3: rating, 4: time } =
+                        str != "" ? str.split("&=>") : ["", "", "", ""];
+                    return (
+                        <Review key={index * 2} reviewBody={body} datePublished={time}>
+                            <Author name={name} />
+                            <Location name="" />
+                            <Rating ratingValue={rating} />
+                        </Review>
+                    );
+                });
+            }
+            return (
+                <JSONLD key={index * 3}>
+                    <Generic
+                        type="product"
+                        jsonldtype="Product"
+                        schema={{
+                            name: strain.name,
+                            description: strain.description,
+                            image: "http://dcfgweqx7od72.cloudfront.net" + strain.packageImg,
+                            price: strain.price > 0 ? strain.price[0] : strain.price[1]
+                        }}>
+                        <AggregateRating ratingValue={strain.rating} reviewCount={strain.reviews.length} />
+                        <GenericCollection type="review">{reviews != null ? reviews : null}</GenericCollection>
+                    </Generic>
+                </JSONLD>
+            );
+        });
+    };
     render() {
         return (
             <html lang="en">
@@ -34,17 +80,8 @@ export default class MyDocument extends Document {
                     <link rel="stylesheet" href="/_next/static/style.css" />
                     <link rel="icon" href="static/favicon.ico" />
 
-                    {/* <JSONLD>
-                        <Generic
-                            name="Crop King Seeds"
-                            type="webApplication"
-                            jsonldtype="WebApplication"
-                            schema={{
-                                applicationCategory: "Multimedia",
-                                browserRequirements: "requires HTML5 support"
-                            }}
-                        />
-                    </JSONLD> */}
+                    {this.generateSchemaMarkup(strainsData)}
+
                     {/* <link rel="canonical" href="https://www.sonomaseeds.com/" />
                     <meta property="og:title" content="Sonoma Cannabis Seeds - Grow Organically" />
                     <meta property="og:type" content="website" />

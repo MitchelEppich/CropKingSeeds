@@ -23,7 +23,6 @@ import Loader from "../components/sections/loader";
 import SearchBar from "../components/partials/header/searchBar";
 import ImageZoom from "../components/sections/productPage/imageZoom";
 import StrainsMenu from "../components/sections/productPage/strainsMenu";
-
 import { detect } from "detect-browser";
 const _browser = detect();
 
@@ -154,21 +153,6 @@ class Layout extends Component {
             }
         }
     };
-    generateSchemaMarkup = strains => {
-        return strains.map((strain, index) => {
-            return (
-                <Product key={index * 3} name={strain.name}>
-                    <AggregateRating ratingValue={4.3} reviewCount={197} />
-                    <GenericCollection type="review">
-                        <Review reviewBody="This is Great! My family loves it" datePublished="11/22/1963">
-                            <Author name="Jerry" />
-                            <Rating ratingValue={5} />
-                        </Review>
-                    </GenericCollection>
-                </Product>
-            );
-        });
-    };
 
     render() {
         let marginProductPage = {
@@ -187,18 +171,6 @@ class Layout extends Component {
                     <Head>
                         <title>Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds</title>
                         <script src="../static/scripts/functions.js" />
-                        <JSONLD>
-                            {this.generateSchemaMarkup(this.props.misc.strains)}{" "}
-                            <Product name="WWWWWWWWWWWWWWWWWWW">
-                                <AggregateRating ratingValue={4.3} reviewCount={197} />
-                                <GenericCollection type="review">
-                                    <Review reviewBody="This is Great! My family loves it" datePublished="11/22/1963">
-                                        <Author name="Jerry" />
-                                        <Rating ratingValue={5} />
-                                    </Review>
-                                </GenericCollection>
-                            </Product>
-                        </JSONLD>
                     </Head>
 
                     {this.props.misc.ageVerification == null || !this.props.misc.ageVerification.verified ? (
@@ -239,7 +211,7 @@ class Layout extends Component {
                                     )}
                                 </div>
                             </div>
-                            <StrainsMenu {...this.props} />
+                            {Router.asPath.slice(1).includes("product/") ? <StrainsMenu {...this.props} /> : null}
                             <AnchorLink aria-label="toTop" className="items-center flex" href="#top">
                                 <div
                                     id="jumpToTop"

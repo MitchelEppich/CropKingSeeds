@@ -164,9 +164,9 @@ const actions = {
         let index =
             input.direction > 0
                 ? Math.max(0, Math.min(input.index, bannersLength)) % bannersLength || 0
-                : input.index >= 0
+                : input.index > 0
                 ? input.index
-                : bannersLength - 1;
+                : bannersLength;
         return {
             type: actionTypes.CHANGE_BANNER_SLIDE,
             index: index
