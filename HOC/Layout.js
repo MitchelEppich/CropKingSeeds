@@ -202,7 +202,7 @@ class Layout extends Component {
                                 <div
                                     style={marginProductPage}
                                     className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md">
-                                    {this.props.misc.strains != null && this.props.misc.banners != null ? (
+                                    {this.props.misc.strains != null ? (
                                         this.props.children
                                     ) : (
                                         <div className="h-screen w-full">

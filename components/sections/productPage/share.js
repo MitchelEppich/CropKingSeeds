@@ -14,7 +14,7 @@ const Share = props => {
                         className="no-underline text-grey-lighter"
                         target="_blank"
                         href={
-                            "https://www.facebook.com/sharer/sharer.php?u=http%3A//localhost%3A3000/product/" +
+                            "https://www.facebook.com/sharer/sharer.php?u=https%3A//www.cropkingseeds.com/product/" +
                             props.viewProduct.currentProduct.name.toLowerCase().replace(/ /g, "-")
                         }>
                         <FontAwesomeIcon
@@ -26,7 +26,7 @@ const Share = props => {
                         className="no-underline text-grey-lighter"
                         target="_blank"
                         href={
-                            "https://twitter.com/home?status=http%3A//localhost%3A3000/product/" +
+                            "https://twitter.com/home?status=https%3A//www.cropkingseeds.com/product/" +
                             props.viewProduct.currentProduct.name.toLowerCase().replace(/ /g, "-")
                         }>
                         <FontAwesomeIcon
@@ -38,7 +38,7 @@ const Share = props => {
                         className="no-underline text-grey-lighter"
                         target="_blank"
                         href={
-                            "https://plus.google.com/share?url=http%3A//localhost%3A3000/product/" +
+                            "https://plus.google.com/share?url=https%3A//www.cropkingseeds.com/product/" +
                             props.viewProduct.currentProduct.name.toLowerCase().replace(/ /g, "-")
                         }>
                         <FontAwesomeIcon
