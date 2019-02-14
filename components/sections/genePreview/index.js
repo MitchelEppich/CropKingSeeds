@@ -99,7 +99,7 @@ const GenePreview = props => {
     });
 
     return (
-        <div className="genePreviewContainer flex flex-wrap w-full xl:mb-4 xl:h-500 mx-auto relative overflow-hidden">
+        <div className="genePreviewContainer flex flex-wrap w-full xl:mb-4 xl:h-350 mx-auto relative overflow-hidden">
             {windows}
         </div>
     );
