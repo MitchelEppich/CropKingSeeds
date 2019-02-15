@@ -75,18 +75,18 @@ const filters = props => {
     <div
       className={
         props.shop.showFilters
-          ? "h-550 lg:h-550 xl:h-550 w-full absolute bg-white z-999 xxl:z-0 xl:z-0 lg:z-0 lg:sticky xl:sticky xxl:sticky text-red-dark border border-grey-lighter cursor-pointer"
-          : " h-10 w-full absolute bg-white z-999 overflow-hidden lg:sticky xl:sticky xxl:sticky text-red-dark border border-grey-lighter cursor-pointer" // style={{ top: "140px" }}
+          ? "h-550 lg:h-550 xl:h-550 w-full absolute bg-white rounded z-999 xxl:z-0 xl:z-0 lg:z-0 lg:sticky xl:sticky xxl:sticky text-red-dark border border-grey-lighter cursor-pointer overflow-hidden"
+          : "h-10 pb-2 w-full absolute bg-white z-999 overflow-hidden rounded lg:sticky xl:sticky xxl:sticky text-red-dark border border-grey-lighter cursor-pointer" 
       }
     >
       <p
         onClick={() => props.toggleShowFilters(!props.shop.showFilters)}
-        className="h-10 px-4 pt-2 leading-tight text-xl font-bold text-black shadow flex justify-between"
+        className="px-4 p-2 h-10 rounded leading-tight text-xl bg-grey-light font-bold text-white font-bold flex justify-between hover:bg-red-light"
       >
         <span className="">Filters:</span>
         <FontAwesomeIcon className="fa-lg " icon={faSlidersH} />
       </p>
-      <ul className="leading-loose flex flex-wrap pl-4 pt-6">
+      <ul className="leading-loose flex flex-wrap pl-4 pt-2">
         <li className="text-red-dark font-bold w-full text-xl">Type</li>
         {showFilter(["sativa", "indica", "hybrid"], "type")}
       </ul>

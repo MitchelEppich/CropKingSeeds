@@ -94,9 +94,9 @@ class Index extends Component {
                                     ) : null}
 
                                     {!mobile ? (
-                                        <div className="border border-grey-lightest mt-8 sm:mt-10 md:mt-20 md:mb-0">
-                                            <div className="shadow-md">
-                                                <h3 className="text-left pl-4 font-bold mx-auto bg-white text-grey p-2 text-xl w-full ">
+                                        <div className="border border-grey-lightest mt-8 sm:mt-10 md:mt-20 md:mb-0 rounded overflow-hidden">
+                                            <div className="">
+                                                <h3 className="text-left pl-4 font-bold mx-auto p-2 text-xl w-full bg-grey-light font-bold text-white">
                                                     Featured Strains
                                                 </h3>
                                             </div>

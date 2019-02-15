@@ -268,23 +268,24 @@ class Index extends Component {
           className={
             hoverId != null && this.props.misc.mediaSize == "sm"
               ? "hidden"
-              : "w-full justify-between flex pt-3 px-2 mt-5 text-grey-light items-center flex"
+              : "w-full justify-between flex pt-3 px-2 mt-5 text-grey-light" 
           }
-        >
-          <div className="flex flex-wrap">
-            <p className="w-full mb-1 pl-2 font-bold opacity-50">
-              {Object.keys(this.props.shop.activeFilters).length != 0
-                ? "Active Filters"
-                : null}
-            </p>
+        >{Object.keys(this.props.shop.activeFilters).length != 0
+                ?
+          <div className="flex flex-wrap xxl:w-4/5 xl:w-3/5 w-3/5 bg-white rounded border border-grey-lightest">
+            
+            <p className="w-full mb-1 pl-2 font-bold p-2 rounded bg-grey-light text-white">
+               Active Filters:
+               
+            </p> 
             {activeFilters}
-          </div>
-          <div className="z-50">
+          </div>: null}
+          <div className="z-50 flex absolute w-150 flex pin-r justify-end">
             <div
               onClick={() => {
                 this.props.setVisibleScreen({ input: "showSortBy" });
               }}
-              className="font-bold flex relative items-center w-150 p-2 bg-grey-light z-50 rounded text-white cursor-pointer hover:bg-red-light"
+              className="font-bold flex relative items-center w-150 p-2 bg-grey-light justify-center z-50 rounded text-white cursor-pointer hover:bg-red-light"
             >
               {this.props.shop.sort == null ? (
                 <div>
@@ -320,7 +321,7 @@ class Index extends Component {
             </select> */}
           </div>
         </div>
-        <div className="flex w-full justify-end font-bold text-black ml-2 mb-6 p-2 text-sm mt-4">
+        <div className="flex w-full justify-end font-bold text-black pl-2 pr-3 p-2 text-sm mt-10 xxl:mb-0 mb-6">
           Showing {showQuantity} {products.length <= 1 ? "Product" : "Products"}
         </div>
         <div className="ml-10 xl:ml-12 xxl:ml-12 sm:ml-2 flex flex-wrap pt-6 sm:justify-center md:justify-center lg:justify-start xl:justify-start xxl:justify-start sm:overflow-hidden sm:pb-4">
