@@ -55,28 +55,6 @@ const BannerCarousel = props => {
         margin: "0 5px",
         boxShadow: "0 6px 18px rgba(0, 0, 0, 0.25)"
     };
-
-    // let bullets = [],
-    //     j = 0;
-    // for (let i = 7; i > 0; i--) {
-    //     bullets.push(
-    //         <div
-    //             key={j}
-    //             onClick={() => {
-    //                 props.changeBannerSlide({
-    //                     bannersLength: props.misc.banners.length,
-    //                     index: j,
-    //                     direction: 0
-    //                 });
-    //             }}
-    //             className={`cursor-pointer scale-item ${
-    //                 props.misc.activeBannerSlide == j ? "bg-red-dark" : "bg-white"
-    //             } `}
-    //             style={bulletStyle}
-    //         />
-    //     );
-    //     j++;
-    // }
     let bullets = banners.map((val, index) => {
         return (
             <div
