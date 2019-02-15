@@ -179,7 +179,6 @@ class Index extends Component {
                 a.flowerTime.toLowerCase(),
                 a.yield[2].toLowerCase()
               ].some($val => {
-                console.log(_val, $val, $val.includes(_val));
                 if ($val.includes(_val)) return true;
               })
             )
