@@ -38,10 +38,9 @@
     // UNIVERSAL
     .ray_box {
         /*HEADER ANIMATION */
-        left: calc(32% - 150px);
-        top: 70px;
-        right: 0;
+        left: calc(22%);
         position: absolute;
+        top: 90px;
         bottom: 0;
         width: 30px;
         height: 30px;
@@ -207,4 +206,70 @@
     }
     // END VIEWPRODUCT PAGE
     ///////////////////////
+}
+
+@media only screen and (max-width: 1251px) {
+    ////////////
+    // UNIVERSAL
+    .ray_box {
+        /*HEADER ANIMATION */
+        left: calc(20%);
+        position: absolute;
+        top: 90px;
+        bottom: 0;
+        width: 30px;
+        height: 30px;
+        -webkit-animation: ray_anim 300s linear infinite;
+        animation: ray_anim 300s linear infinite;
+        z-index: -5;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    ////////////
+    // UNIVERSAL
+    .ray_box {
+        /*HEADER ANIMATION */
+        left: calc(18%);
+        position: absolute;
+        top: 90px;
+        bottom: 0;
+        width: 30px;
+        height: 30px;
+        -webkit-animation: ray_anim 300s linear infinite;
+        animation: ray_anim 300s linear infinite;
+        z-index: -5;
+    }
+}
+@media only screen and (max-width: 1100px) {
+    ////////////
+    // UNIVERSAL
+    .ray_box {
+        /*HEADER ANIMATION */
+        left: calc(17%);
+        position: absolute;
+        top: 90px;
+        bottom: 0;
+        width: 30px;
+        height: 30px;
+        -webkit-animation: ray_anim 300s linear infinite;
+        animation: ray_anim 300s linear infinite;
+        z-index: -5;
+    }
+}
+@media only screen and (max-width: 1025px) {
+    ////////////
+    // UNIVERSAL
+    .ray_box {
+        /*HEADER ANIMATION */
+        left: calc(15%);
+        position: absolute;
+        top: 90px;
+        bottom: 0;
+        width: 30px;
+        height: 30px;
+        -webkit-animation: ray_anim 300s linear infinite;
+        animation: ray_anim 300s linear infinite;
+        z-index: -5;
+    }
 }

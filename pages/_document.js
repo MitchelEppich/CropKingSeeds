@@ -106,14 +106,15 @@ export default class MyDocument extends Document {
                         <div className="w-full flex-1 h-screen content-center text-center">
                             {/* <FontAwesomeIcon icon={faExclamationTriangle} className="img-error " /> */}
                             {/* <img
-                src="../static/images/Thumbnail.png"
-                alt="No JavaScript"
-                className="img-error"
-              /> */}
+                                src="../static/images/Thumbnail.png"
+                                alt="No JavaScript"
+                                className="img-error"
+                            /> */}
                             <h1 className="mt-10 title-message">JavaScript is Required.</h1>
                             <h3 className="mt-2 subtitle-message">Enable JavaScript in your browser and try again.</h3>
                         </div>
                     </noscript>
+                    <script src="../static/scripts/functions.js" />
                 </body>
             </html>
         );

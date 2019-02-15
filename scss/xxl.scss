@@ -42,7 +42,7 @@
 
     .ray_box {
         /*HEADER ANIMATION */
-        left: calc(32% - 150px);
+        left: calc(15% - 150px);
         top: 70px;
         right: 0;
         position: absolute;
@@ -63,8 +63,8 @@
     // UNIVERSAL
     .ray_box {
         /*HEADER ANIMATION */
-        left: calc(30% - 200px);
-        top: 80px;
+        left: calc(25% - 80px);
+        top: 100px;
         right: 0;
         position: absolute;
         bottom: 0;
@@ -211,5 +211,93 @@
         right: -40px;
         top: 210px;
         pointer-events: none;
+    }
+}
+
+@media only screen and (max-width: 1850px) {
+    ////////////
+    // UNIVERSAL
+    .ray_box {
+        /*HEADER ANIMATION */
+        left: calc(25% - 110px);
+        top: 90px;
+        right: 0;
+        position: absolute;
+        bottom: 0;
+        width: 30px;
+        height: 30px;
+        -webkit-animation: ray_anim 300s linear infinite;
+        animation: ray_anim 300s linear infinite;
+        z-index: -5;
+    }
+}
+@media only screen and (max-width: 1710px) {
+    ////////////
+    // UNIVERSAL
+    .ray_box {
+        /*HEADER ANIMATION */
+        left: calc(23% - 110px);
+        top: 90px;
+        right: 0;
+        position: absolute;
+        bottom: 0;
+        width: 30px;
+        height: 30px;
+        -webkit-animation: ray_anim 300s linear infinite;
+        animation: ray_anim 300s linear infinite;
+        z-index: -5;
+    }
+}
+@media only screen and (max-width: 1570px) {
+    ////////////
+    // UNIVERSAL
+    .ray_box {
+        /*HEADER ANIMATION */
+        left: calc(22% - 110px);
+        top: 90px;
+        right: 0;
+        position: absolute;
+        bottom: 0;
+        width: 30px;
+        height: 30px;
+        -webkit-animation: ray_anim 300s linear infinite;
+        animation: ray_anim 300s linear infinite;
+        z-index: -5;
+    }
+}
+
+@media only screen and (max-width: 1500px) {
+    ////////////
+    // UNIVERSAL
+    .ray_box {
+        /*HEADER ANIMATION */
+        left: calc(20% - 110px);
+        top: 90px;
+        right: 0;
+        position: absolute;
+        bottom: 0;
+        width: 30px;
+        height: 30px;
+        -webkit-animation: ray_anim 300s linear infinite;
+        animation: ray_anim 300s linear infinite;
+        z-index: -5;
+    }
+}
+
+@media only screen and (max-width: 1460px) {
+    ////////////
+    // UNIVERSAL
+    .ray_box {
+        /*HEADER ANIMATION */
+        left: calc(18% - 110px);
+        top: 90px;
+        right: 0;
+        position: absolute;
+        bottom: 0;
+        width: 30px;
+        height: 30px;
+        -webkit-animation: ray_anim 300s linear infinite;
+        animation: ray_anim 300s linear infinite;
+        z-index: -5;
     }
 }
