@@ -53,13 +53,13 @@
         animation: ray_anim 300s linear infinite;
         z-index: -5;
     }
-.packagePinBig {
-    height: 8rem;
-    position: absolute;
-    right: -42px;
-    top: 225px;
-    pointer-events: none;
-}
+    .packagePinBig {
+        height: 8rem;
+        position: absolute;
+        right: -42px;
+        top: 225px;
+        pointer-events: none;
+    }
     /////////////
 }
 
@@ -120,7 +120,7 @@
         width: 14rem;
         left: calc(50% - 7rem);
         border-radius: 2px;
-        transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease;
         box-shadow: 0 2px 10px #0000004f;
         font-weight: bold;
         background-color: rgba(14, 14, 14, 0.2);
@@ -133,7 +133,7 @@
         width: 25%;
         height: 500px;
         z-index: 10;
-        transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease;
         background-position: center;
         background-size: 500px 500px;
         background-repeat: no-repeat;
@@ -152,7 +152,7 @@
         transform: translateX(17px);
         position: absolute;
         bottom: 0;
-        transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease;
     }
     .packClass {
         transform: rotate(90deg);
@@ -161,7 +161,7 @@
     }
     .screenClass {
         transform: translateX(-445px) rotate(-90deg);
-        transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease;
         width: 33rem;
         height: 100%;
     }
@@ -174,23 +174,25 @@
     .overlayClass {
         height: 100%;
         width: 100%;
-        transition: 0.4s all ease-in-out;
+        transition: 0.4s all ease;
         color: rgba(255, 255, 255, 0);
         position: relative;
-        // z-index: 99999999999999;
         overflow: visible;
         text-align: center;
         @include modifier("hover") {
             text-align: center;
-            transform: translateX(-60px);
+            transform: translateX(-60px) translateZ(0);
+            -webkit-transform: translateX(-60px) translateZ(0);
+            -moz-transform: translateX(-60px) translateZ(0);
+            -ms-transform: translateX(-60px) translateZ(0);
+            -o-transform: translateX(-60px) translateZ(0);
             height: 635px;
             width: 145%;
             padding: 10px;
             background-color: #fff;
-            transition: 0.4s all ease-in-out;
+            transition: 0.4s all ease;
             color: rgba(255, 255, 255, 1);
             position: absolute;
-            // z-index: 99999999999999;
             box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
             border: 0.5px solid #cecece;
         }

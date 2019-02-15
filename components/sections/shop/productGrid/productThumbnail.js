@@ -172,7 +172,7 @@ const productThumbnail = props => {
                             {hover ? (
                                 <FontAwesomeIcon
                                     icon={faExternalLinkAlt}
-                                    className="cursor-pointer fa-xs text-grey-light absolute z-50 mt-1 ml-5 mr-3"
+                                    className="cursor-pointer fa-xs text-grey-light absolute z-50 mt-1 ml-2 mr-3"
                                 />
                             ) : null}
                         </h3>

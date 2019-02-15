@@ -153,7 +153,7 @@
     .overlayClass {
         height: 100%;
         width: 100%;
-        transition: 0.4s all ease-in-out;
+        transition: 0.3s all ease-in-out;
         color: rgba(255, 255, 255, 0);
         position: relative;
         z-index: 0;
@@ -162,12 +162,10 @@
         @include modifier("hover") {
             height: 630px;
             width: 300px;
-            left: -40%;
             padding: 10px 10px;
             text-align: center;
-            transform: translateX(15px);
             background-color: #fff;
-            transition: 0.4s all ease-in-out;
+            transition: 0.3s all ease-in-out;
             color: rgba(255, 255, 255, 1);
             position: relative;
             box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
@@ -178,27 +176,34 @@
         height: 12rem;
         position: relative;
         z-index: 10;
-        transition: 0.4s all ease-in-out;
-        transform: translateX(-32px);
+        transition: 0.3s all ease-in-out;
+        transform: translateX(-42px);
+        -webkit-transform: translateX(-42px);
+        -moz-transform: translateX(-42px);
+        -ms-transform: translateX(-42px);
+        -o-transform: translateX(-42px);
         padding: 4.5rem 3.5rem 0.5rem 3rem;
         cursor: pointer;
         @include modifier("hover") {
             height: 12rem;
             position: relative;
-            transform: translateX(-50px);
+            transform: translateX(-50px) translateY(10px);
+            -webkit-transform: translateX(-50px) translateY(10px);
+            -moz-transform: translateX(-50px) translateY(10px);
+            -ms-transform: translateX(-50px) translateY(10px);
+            -o-transform: translateX(-50px) translateY(10px);
             z-index: 10;
-            transition: 0.4s all ease-in-out;
-            margin-top: 10px;
+            transition: 0.3s all ease-in-out;
             padding: 4.5rem 3.5rem 0.5rem 3rem;
             cursor: pointer;
         }
     }
     .package-pins {
-        transition: 0.4s all ease-in-out;
+        transition: 0.3s all ease-in-out;
         right: 0;
         height: 3rem;
         @include modifier("hover") {
-            transition: 0.4s all ease-in-out;
+            transition: 0.3s all ease-in-out;
             right: 0;
             height: 3rem;
         }
@@ -218,19 +223,24 @@
     .plantClass {
         height: 10rem;
         position: absolute;
-        top: 25px;
         z-index: 0;
-        transform: translateX(-110px);
-        transition: 0.4s all ease-in-out;
+        transform: translateX(-115px) translateY(20px);
+        -webkit-transform: translateX(-115px) translateY(20px);
+        -moz-transform: translateX(-115px) translateY(20px);
+        -ms-transform: translateX(-115px) translateY(20px);
+        -o-transform: translateX(-115px) translateY(20px);
+        transition: 0.3s all ease-in-out;
         cursor: pointer;
         @include modifier("hover") {
             height: 10rem;
             position: absolute;
-            top: 8px;
             z-index: 0;
-            margin-top: 25px;
-            transition: 0.4s all ease-in-out;
-            transform: translateX(-60px);
+            transition: 0.3s all ease-in-out;
+            transform: translateX(-40px) translateY(35px);
+            -webkit-transform: translateX(-40px) translateY(35px);
+            -moz-transform: translateX(-40px) translateY(35px);
+            -ms-transform: translateX(-40px) translateY(35px);
+            -o-transform: translateX(-40px) translateY(35px);
             cursor: pointer;
         }
     }
@@ -242,11 +252,11 @@
         border-top-left-radius: 10px;
         border-bottom-right-radius: 10px;
         color: white;
-        transition: 0.4s all ease-in-out;
+        transition: 0.3s all ease-in-out;
         text-shadow: rgb(0, 0, 0) 1px 1px 2px;
         box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
         @include modifier("hover") {
-            transition: 0.4s all ease-in-out;
+            transition: 0.3s all ease-in-out;
             &:hover {
                 transform: scale(1.1);
             }
