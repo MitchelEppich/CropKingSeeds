@@ -4,7 +4,22 @@ component wraps each page. Naturally this
 component has the navigation menu and footer.*/
 /**************************************/
 
+import "../scss/universal.scss";
 import "../scss/home.scss";
+import "../scss/shop.scss";
+import "../scss/product.scss";
+import "../scss/germination.scss";
+import "../scss/contact.scss";
+import "../scss/checkout.scss";
+import "../scss/about.scss";
+import "../scss/affiliates.scss";
+import "../scss/articles.scss";
+import "../scss/cms.scss";
+import "../scss/xxl.scss";
+import "../scss/xl.scss";
+import "../scss/lg.scss";
+import "../scss/md.scss";
+import "../scss/sm.scss";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../store/actions";
@@ -13,7 +28,6 @@ import Cart from "../components/sections/cart";
 import Header from "../components/partials/header";
 import Footer from "../components/partials/footer";
 import Head from "next/head";
-import { JSONLD, Product, AggregateRating, GenericCollection, Review, Author, Rating } from "react-structured-data";
 import ShareButtons from "../components/sections/shareButtons";
 import AgeVerification from "../components/sections/ageVerification";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
