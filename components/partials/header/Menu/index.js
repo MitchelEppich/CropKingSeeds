@@ -70,16 +70,16 @@ const menu = props => {
     showMobileNav = isMobileNavVisible
         ? {
               height: "210px",
-              transition: "all 0.4s ease-in-out",
-              WebkitTransition: "all 0.3s ease-in-out",
+              transition: "all 0.2s ease-in-out",
+              WebkitTransition: "all 0.2s ease-in-out",
               zIndex: "60",
               color: "transparent",
               padding: "26px 0 0 0"
           }
         : {
               height: "0px",
-              transition: "all 0.4s ease-in-out",
-              WebkitTransition: "all 0.3s ease-in-out",
+              transition: "all 0.2s ease-in-out",
+              WebkitTransition: "all 0.2s ease-in-out",
               zIndex: "60"
           };
     let phoneNumberPosition = ["sm"].includes(props.misc.mediaSize)
