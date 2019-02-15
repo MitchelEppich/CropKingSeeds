@@ -88,7 +88,7 @@ class Index extends Component {
     let hoverId = this.props.misc.hoverId;
     let products = this.props.misc.strains;
     let sortOptions = [
-      ["", "Select"],
+      // ["", "Select"],
       ["alpha", "↑ A - Z "],
       ["alphaR", "↓ Z - A"],
       ["thc", "↑ THC"],
@@ -99,13 +99,22 @@ class Index extends Component {
       ["yieldR", "↓ Avg. Yield"],
       ["time", "↑ Grow Time"],
       ["timeR", "↓ Grow Time"]
-    ].map((val, index) => {
-      return val[0] == "" ? (
-        <option value={val[0]} disabled>
+    ];
+
+    let showSortOptions = sortOptions.map((val, index) => {
+      let sort = this.props.shop.sort;
+      return (
+        <div
+          key={index}
+          className={`px-2 w-150 p-1 border-b border-grey-lightest text-left font-bold cursor-pointer hover:text-grey ${
+            this.props.shop.sort == val[0] ? "bg-smoke-grey" : "bg-white"
+          }`}
+          onClick={() => {
+            this.props.setSort({ value: sort == val[0] ? undefined : val[0] });
+          }}
+        >
           {val[1]}
-        </option>
-      ) : (
-        <option value={val[0]}>{val[1]}</option>
+        </div>
       );
     });
     let isSmallMediumOrLargeDevice = ["sm", "md", "lg"].includes(
@@ -170,7 +179,7 @@ class Index extends Component {
           _filter.text != null &&
           _filter.text.length != 0 &&
           !_filter.text.some(val => {
-            let _val = val.toLowerCase().trim();
+            let _val = val.toLowerCase();
             if (
               [
                 a.genetic.toLowerCase(),
@@ -242,11 +251,14 @@ class Index extends Component {
     let showQuantity = products.length;
 
     let showSortByStyle = {
-      transform: this.props.misc.visibleScreen.includes("showSortBy")
-        ? "translateY(-30px)"
-        : "translateY(0px)",
+      height: this.props.misc.visibleScreen.includes("showSortBy")
+        ? "270px"
+        : "0px",
       transition: "all 0.3s ease-in-out",
-      zIndex: 1
+      background: "white",
+      width: "150px",
+      position: "absolute",
+      boxShadow: "0 2px 10px rgba(0,0,0,0.3)"
     };
 
     return (
@@ -261,23 +273,40 @@ class Index extends Component {
           <div className="flex flex-wrap">
             <p className="w-full mb-1 pl-2 font-bold opacity-50">
               {Object.keys(this.props.shop.activeFilters).length != 0
-                ? "Active Filters "
+                ? "Active Filters"
                 : null}
             </p>
             {activeFilters}
           </div>
           <div className="z-50">
-            <p
+            <div
               onClick={() => {
                 this.props.setVisibleScreen({ input: "showSortBy" });
               }}
-              className="font-bold flex relative items-center px-6 p-2 bg-grey-light z-50 rounded text-white"
+              className="font-bold flex relative items-center w-150 p-2 bg-grey-light z-50 rounded text-white cursor-pointer hover:bg-red-light"
             >
-              Sort by:{" "}
-              <FontAwesomeIcon icon={faSortAmountDown} className="fa-lg ml-2" />
-            </p>
-
-            <select
+              {this.props.shop.sort == null ? (
+                <div>
+                  Sort by:
+                  <FontAwesomeIcon
+                    icon={faSortAmountDown}
+                    className="fa-lg ml-2"
+                  />
+                </div>
+              ) : (
+                sortOptions.find(a => {
+                  if (a[0] == this.props.shop.sort) return a;
+                })[1]
+              )}
+            </div>
+            <div style={showSortByStyle} className="overflow-hidden relative">
+              <div className="absolute">
+                <div className="p-2 rounded border border-grey-lightest w-150">
+                  {showSortOptions}
+                </div>
+              </div>
+            </div>
+            {/* <select
               style={showSortByStyle}
               className="ml-1 p-1 z-40"
               value={this.props.shop.sort || ""}
@@ -287,7 +316,7 @@ class Index extends Component {
               }}
             >
               {sortOptions}
-            </select>
+            </select> */}
           </div>
         </div>
         <div className="flex w-full justify-end font-bold text-black ml-2 mb-6 p-2 text-sm mt-4">
