@@ -133,15 +133,14 @@ const ContactForm = props => {
                 onClick={() => props.refreshEmailForm()}
                 className="text-base absolute pin-b mb-4 ml-8 border p-3 px-3 rounded-tl-lg hover:bg-grey hover:text-white slow cursor-pointer rounded-br-lg border-grey-light"
               >
-                send new message
+                Send New Message
               </span>
             </p>
           )}
-          <div
-            style={{ right: "-145px" }}
-            className="absolute sm:w-full sm:relative md:w-full md:relative overflow-hidden sm:pin md:pin my-auto pin-r pin-y w-350 h-500 sm:h-full sm:border-t-2 sm:border-grey-lightest md:border-t-2 md:border-grey-lightest md:mt-8 md:pt-8 sm:pt-8 sm:mt-8 sm:pb-4 xxl:shadow-lg xl:shadow-lg lg:shadow-lg bg-white"
+          <div        
+            className="absolute sm:w-full sm:relative md:w-full md:relative overflow-hidden sm:pin md:pin my-auto pin-r pin-y w-350 h-500 sm:h-full sm:border sm:border-grey-lightest md:border md:border-grey-lightest md:mt-8 md:pt-0 sm:pt-0 sm:mt-8 sm:pb-4 xxl:shadow-lg xl:shadow-lg lg:shadow-lg bg-white -mr-20 md:rounded-lg sm:rounded-lg"
           >
-            <div className="bg-red-dark text-center text-white py-2 p-1 sm:rounded md:rounded">
+            <div className="bg-red-dark text-center text-white py-2 p-1">
               <h2 className="p-3 py-0 text-3xl font-extrabold">Contact us</h2>
               <p className="text-white font-bold">24 hour customer service</p>
             </div>
@@ -177,7 +176,7 @@ const ContactForm = props => {
               </div>
               <div
                 id="tawkto"
-                className="w-full text-center mt-10 relative scale-item cursor-pointer"
+                className="w-full text-center mt-10 relative scale-item cursor-pointer sm:my-4 md:my-4"
               >
                 <div className="w-full relative">
                   <img src="../../static/img/cks_red.png" className="w-32" />

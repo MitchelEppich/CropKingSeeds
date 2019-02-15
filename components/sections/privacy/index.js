@@ -1,15 +1,16 @@
 const Privacy = props => {
+   
     return (
         <div className="w-full">
             <div className="w-full relative inline-flex md:flex-col lg:flex-col sm:flex-col">
                 <div className="w-full">
                     <img
+                    style={{objectFit: "cover"}}
                         src="../static/img/privacy.jpg"
-                        className=""
-                        // style={{ filter: "opacity(0.6)" }}
+                        className="h-150 w-full xl:h-full xxl:h-full"                        
                     />
                 </div>
-                <div className="w-800 h-500 lg:w-full md:w-full sm:w-full md:h-400 bg-white lg:pin-t xl:pin xxl:pin absolute md:relative sm:relative lg:relative m-auto xl:shadow xx:shadow">
+                <div className="w-800 h-500 lg:w-full md:w-full sm:w-full md:h-400 rounded-lg xl:w-600 xl:h-450 bg-white lg:pin-t xl:pin xxl:pin absolute md:relative sm:relative lg:relative m-auto xl:shadow xxl:shadow">
                     <div className="justify-center w-full mt-6 inline-flex items-center flex">
                         <div className="">
                             <img src="../static/img/cropkingseed2s.png" className="w-24" />
@@ -18,7 +19,7 @@ const Privacy = props => {
                             <h3 className="pl-2 font-black text-3xl uppercase">Privacy Policy</h3>
                         </div>
                     </div>
-                    <div style={{ width: "90%" }} className="h-300 mx-auto mt-3 md:h-250 p-2 px-12 overflow-y-auto">
+                    <div style={{ width: "90%" }} className="h-300 mx-auto mt-3 md:h-250 p-2 px-12 md:px-4 sm:px-4 overflow-y-auto">
                         <p className="py-2">
                             The following Privacy Policy governs how Crop King Seeds collects, uses, maintains and
                             discloses (which we don’t) information collected from users (each, a “User”) of the
@@ -54,16 +55,16 @@ const Privacy = props => {
                         <h3 className="py-2">How we use collected information</h3>
                         <div className="py-2">
                             Crop King Seeds may collect/use Users information for the following:
-                            <ul className="">
+                            <ul className="pl-4">
                                 <li className="my-2 flex">
-                                    <img src="../../static/img/CrownIcon_Inv.png" className="h-4 bg-red-lighter mr-1" />
+                                    <img src="../../static/img/CrownIcon_Inv.png" className="h-4 bg-red-light mr-1" />
                                     <span>
                                         <i>Improving Customer Service</i>
                                         <br /> Personal information helps us respond to customer service and support.
                                     </span>
                                 </li>
                                 <li className="my-2 flex">
-                                    <img src="../../static/img/CrownIcon_Inv.png" className="h-4 bg-red-lighter mr-1" />
+                                    <img src="../../static/img/CrownIcon_Inv.png" className="h-4 bg-red-light mr-1" />
                                     <span>
                                         <i>Personalizing the user experience</i>
                                         <br />
@@ -72,14 +73,14 @@ const Privacy = props => {
                                     </span>
                                 </li>
                                 <li className="my-2 flex">
-                                    <img src="../../static/img/CrownIcon_Inv.png" className="h-4 bg-red-lighter mr-1" />
+                                    <img src="../../static/img/CrownIcon_Inv.png" className="h-4 bg-red-light mr-1" />
                                     <span>
                                         <i>Improving this Site</i> <br /> To continuously improve our website and
                                         products from the information received by Users.
                                     </span>
                                 </li>
                                 <li className="my-2 flex">
-                                    <img src="../../static/img/CrownIcon_Inv.png" className="h-4 bg-red-lighter mr-1" />
+                                    <img src="../../static/img/CrownIcon_Inv.png" className="h-4 bg-red-light mr-1" />
                                     <span>
                                         <i>Processing Transactions</i>
                                         <br /> Information provided by the Users for the purpose of placing an order
@@ -88,7 +89,7 @@ const Privacy = props => {
                                     </span>
                                 </li>
                                 <li className="my-2 flex">
-                                    <img src="../../static/img/CrownIcon_Inv.png" className="h-4 bg-red-lighter mr-1" />
+                                    <img src="../../static/img/CrownIcon_Inv.png" className="h-4 bg-red-light mr-1" />
                                     <span>
                                         <i>Administer Promotion, Content, Surveys or other Site features</i>
                                         <br /> Only to send Users information that may be of interest to them and which
@@ -96,7 +97,7 @@ const Privacy = props => {
                                     </span>
                                 </li>
                                 <li className="my-2 flex">
-                                    <img src="../../static/img/CrownIcon_Inv.png" className="h-4 bg-red-lighter mr-1" />
+                                    <img src="../../static/img/CrownIcon_Inv.png" className="h-4 bg-red-light mr-1" />
                                     <span>
                                         <i>Send Periodic E-Mails/Newsletters</i>
                                         <br /> E-Mail addresses provided during processing will only be used to send

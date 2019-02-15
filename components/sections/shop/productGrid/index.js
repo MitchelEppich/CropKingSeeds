@@ -252,10 +252,11 @@ class Index extends Component {
 
     let showSortByStyle = {
       height: this.props.misc.visibleScreen.includes("showSortBy")
-        ? "270px"
+        ? "262px"
         : "0px",
       transition: "all 0.3s ease-in-out",
       background: "white",
+      borderRadius: "6px",
       width: "150px",
       position: "absolute",
       boxShadow: "0 2px 10px rgba(0,0,0,0.3)"
@@ -322,7 +323,7 @@ class Index extends Component {
         <div className="flex w-full justify-end font-bold text-black ml-2 mb-6 p-2 text-sm mt-4">
           Showing {showQuantity} {products.length <= 1 ? "Product" : "Products"}
         </div>
-        <div className="ml-10 xl:ml-12 xxl:ml-12 sm:ml-2 flex flex-wrap pt-6 sm:justify-start md:justify-start lg:justify-start xl:justify-start xxl:justify-start sm:overflow-hidden sm:pb-4">
+        <div className="ml-10 xl:ml-12 xxl:ml-12 sm:ml-2 flex flex-wrap pt-6 sm:justify-center md:justify-center lg:justify-start xl:justify-start xxl:justify-start sm:overflow-hidden sm:pb-4">
           {products}
         </div>
       </div>

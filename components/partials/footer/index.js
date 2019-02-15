@@ -32,7 +32,7 @@ const Footer = props => {
             className="mt-8"
           />
         </div>
-        <div className="mt-6 sm:pb-4 xl:pl-0 sm:pt-4 md:pt-10 pl-6 w-1/4 lg:w-1/3 lg:pl-6 md:w-full sm:w-full sm:pl-0 md:pl-0 sm:block md:block">
+        <div className="mt-6 sm:pb-4 xl:pl-0 sm:pt-4 md:pt-10 pl-6 w-1/4 lg:w-1/2 lg:pl-6 md:w-full sm:w-full sm:pl-0 md:pl-0 sm:block md:block">
           {" "}
           <h3 className="text-red p-1 text-center pl-2 uppercase text-2xl font-extrabold sm:pl-0 md:pl-0 sm:text-center md:text-center">
             Menu
@@ -54,11 +54,16 @@ const Footer = props => {
                   Partners
                 </p>
               </Link>
-              <Link href="/articles">
+              <a
+                style={{ color: "white" }}
+                href="https://www.marijuanaseeds.com/"
+                target="_blank"
+                className="font-bold w-full text-right"
+              >
                 <p className="sm:w-full md:w-full text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
                   Articles
                 </p>
-              </Link>
+              </a>
               <Link href="/news">
                 <p className="sm:w-full md:w-full text-xl lg:text-lg md:text-lg p-1 pt-3 hover:text-grey-light cursor-pointer md:text-right sm:text-right">
                   News
@@ -94,7 +99,7 @@ const Footer = props => {
             </div>
           </div>
         </div>
-        <div className="text-white text-center mx-6 sm:mx-0 md:mx-0 sm:pt-2 sm:pb-4 md:pt-1 sm:bg-grey-dark md:bg-grey-dark w-3/8 xl:w-2/4 md:mt-8 pt:mt-8 md:w-full lg:w-1/3 sm:w-full sm:block md:block">
+        <div className="text-white text-center mx-6 sm:mx-0 md:mx-0 sm:pt-2 sm:pb-4 md:pt-1 sm:bg-grey-dark md:bg-grey-dark w-3/8 xl:w-2/4 md:mt-8 pt:mt-8 md:w-full  sm:w-full sm:block md:block lg:w-1/2">
           <h4 className="p-2 mt-4 mb-1 text-2/5xl lg:text-xl lg:mt-6 md:text-xl md:mt-6 font-extrabold">
             Subscribe to the CKS Newsletter
           </h4>
@@ -153,7 +158,7 @@ const Footer = props => {
             Copyright © 2019 Crop King Seeds
           </p>
         </div>
-        <div className="p-2 mr-4 w-1/5 xl:w-1/4 sm:w-full md:w-full lg:w-1/3 sm:mx-0 md:mx-0 sm:p-0 md:p-0 sm:block md:block md:mt-8 pt:mt-8">
+        <div className="p-2 mr-4 w-1/5 xl:w-1/4 sm:w-full md:w-full lg:w-1/3 sm:mx-0 md:mx-0 sm:p-0 md:p-0 sm:block md:block lg:hidden lg:w-1/8 md:mt-8 pt:mt-8">
           {" "}
           <div className="mt-4 text-white sm:text-center md:text-center lg:text-center text-center">
             <h3 className="text-red  p-1 text-center font-extrabold text-2xl uppercase sm:text-center md:text-center lg:text-center">

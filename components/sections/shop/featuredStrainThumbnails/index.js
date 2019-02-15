@@ -29,8 +29,8 @@ const index = props => {
   }
   if (props.misc.mediaSize == "xl" && props.page != "shop") {
     count = 3;
-  }
-  if (isSmallMediumOrLargeDevice) {
+  }  
+  if (isSmallMediumOrLargeDevice  && props.page != "shop") {
     count = 2;
   }
 
@@ -79,8 +79,8 @@ const index = props => {
           }}
           className={
             hoverId == product._id
-              ? "relative bg-white mx-4 my-2 w-64 h-350 md:w-200 md:mx-1 rounded overflow-hidden shadow-md slowishish scale-item"
-              : "relative bg-white mx-4 my-2 w-64 h-350 md:w-200 md:mx-1 rounded overflow-hidden shadow-md slowishish scale-item"
+              ? "relative bg-white mx-4 my-2 w-64 h-350 md:w-2col md:mx-1 sm:w-2col sm:mx-1 rounded overflow-hidden shadow-md slowishish scale-item sm:h-250"
+              : "relative bg-white mx-4 my-2 w-64 h-350 md:w-2col md:mx-1 sm:w-2col sm:mx-1 rounded overflow-hidden shadow-md slowishish scale-item sm:h-250"
           }
         >
           <FeaturedStrainThumbnail
@@ -95,8 +95,10 @@ const index = props => {
     );
   });
   return (
-    <div className="flex flex-wrap w-full py-6 pb-4 sm:justify-center md:justify-center lg:justify-center xl:justify-start xxl:justify-around sm:overflow-hidden">
+    <div className="flex flex-wrap w-full py-6 pb-4 sm:justify-between md:justify-between lg:justify-center xl:justify-start xxl:justify-around sm:overflow-hidden">
       {products}
+      
+      <div className="w-container mt-2 mx-auto">
       {count < max && props.page == "shop" ? (
         <p
           onClick={() => {
@@ -105,7 +107,7 @@ const index = props => {
               count: count + 2
             });
           }}
-          className="text-grey-light rounded opacity-75 text-center w-64 mx-auto my-4 cursor-pointer p-3 font-bold bg-grey-lightest hover:bg-red-light hover:text-white inline-flex items-center justify-center"
+          className="text-grey-light rounded opacity-75 text-center w-full cursor-pointer p-3 font-bold bg-grey-lightest hover:bg-red-light hover:text-white inline-flex items-center justify-center"
         >
           Load More{" "}
           <FontAwesomeIcon icon={faAngleDown} className="fa-lg ml-2" />
@@ -115,14 +117,15 @@ const index = props => {
           onClick={() => {
             props.showMoreFeatures({
               max,
-              count: 1
+              count: 2
             });
           }}
-          className="text-grey-light rounded opacity-75 text-center w-64 mx-auto my-4 cursor-pointer p-3 font-bold bg-grey-lightest hover:bg-red-light flex justify-center hover:text-white inline-flex items-center"
+          className="text-grey-light rounded opacity-75 text-center w-full mx-auto my-4 cursor-pointer p-3 font-bold bg-grey-lightest hover:bg-red-light flex justify-center hover:text-white inline-flex items-center"
         >
           Collapse <FontAwesomeIcon icon={faAngleUp} className="fa-lg ml-2" />
         </p>
       ) : null}
+        </div>
     </div>
   );
 };

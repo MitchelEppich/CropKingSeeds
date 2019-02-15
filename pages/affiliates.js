@@ -16,7 +16,7 @@ class Index extends Component {
         return (
             <Layout>
                 <div className="flex flex-wrap justify-around pb-12 ">
-                    <div className="affiliatesBanner sm:mb-0 xxl:mb-24 xl:mb-16 lg:mb-24 ">
+                    <div className="affiliatesBanner sm:mb-0 xxl:mb-24 xl:mb-16 lg:mb-6 ">
                         <div className="w-1/3 sm:w-full md:w-full lg:w-2/3 xl:w-1/2 sm:pr-0 pr-12 flex flex-wrap md:justify-start lg:justify-start justify-between text-white">
                             <h1 className="w-full sm:text-2xl font-black text-shadow">
                                 Grow your business with Crop King Seeds
@@ -42,7 +42,7 @@ class Index extends Component {
                     {["sm", "md"].includes(this.props.misc.mediaSize) ? <Ads {...this.props} /> : null}
 
                     {/* <Login {...this.props} /> */}
-                    <div className="mt-64 lg:mt-32 md:mt-12 sm:mt-6 sm:w-300 sm:px-4 xxl:px-100 xl:px-50 w-full">
+                    <div className="mt-24 xl:mt-4 lg:mt-2 md:mt-12 sm:mt-6 sm:w-300 sm:px-4 xxl:px-100 xl:px-50 w-full">
                         <div className="w-full sm:h-450 md:h-500 h-400 xl:h-250 lg:h-250 flex sm:flex-wrap sm:justify-center md:flex-wrap md:justify-center mx-auto justify-between bg-white rounded-lg shadow-lg overflow-hidden">
                             <div className="h-full sm:h-16 sm:pt-6 md:h-16 w-1/3 text-center md:pt-8 pt-20 lg:pt-16">
                                 <img

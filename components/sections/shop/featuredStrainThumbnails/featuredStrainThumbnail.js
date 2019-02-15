@@ -50,7 +50,7 @@ const FeaturedStrainThumbnail = props => {
         <div key={i}>
           <img
             src="../../static/img/CrownIcon_Inv.png"
-            className="w-8"
+            className="w-7"
             alt={props.product.name + "rating"}
           />
         </div>
@@ -76,8 +76,7 @@ const FeaturedStrainThumbnail = props => {
           onClick={() => {
             props.setHoverId(null, false);
           }}
-          className={`"w-full p-2 md:text-base shadow-md text-shadow text-lg text-white text-center cursor-pointer
-              ${titleColorBackground} " `}
+          className={`w-full p-2 md:text-base sm:text-sm shadow-md text-shadow text-lg text-white text-center cursor-pointer ${titleColorBackground}`}
         >
           {name}
         </h3>
@@ -91,7 +90,7 @@ const FeaturedStrainThumbnail = props => {
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center"
         }}
-        className={`cursor-pointer mt-8 ${featuredStrainsPackage}`}
+        className={`cursor-pointer mt-8 sm:mt-2 ${featuredStrainsPackage}`}
       />
 
       <div
@@ -109,13 +108,13 @@ const FeaturedStrainThumbnail = props => {
         </p>
       </div>
 
-      <div className={"text-grey px-6 p-2 sm:pt-0 text-sm mb-4"}>
+      <div className={"text-grey px-6 p-2 sm:p-0 text-sm mt-1 mb-3 sm:hidden"}>
         <div className="w-150 relative text-left justify-center flex mx-auto">
           <div
             className="inline-flex bg-red-light"
             style={{
               width: `${150 * (rating / 5)}px`,
-              height: "17px",
+              height: "15px",
               marginTop: "2px"
             }}
           />
@@ -123,7 +122,7 @@ const FeaturedStrainThumbnail = props => {
             className="inline-flex bg-grey-lightest"
             style={{
               width: `${150 * ((5 - rating) / 5)}px`,
-              height: "17px",
+              height: "15px",
               marginTop: "2px"
             }}
           />

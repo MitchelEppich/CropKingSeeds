@@ -45,7 +45,7 @@ const news = props => {
         }}
         className={`${
           index < 3 ? "border-b-2 border-grey-lightest" : ""
-        } w-full sm:mx-0 md:mx-0 mx-4 scale-item cursor-pointer`}
+        } w-full sm:mx-0 md:mx-0 xxl:mx-4 scale-item cursor-pointer`}
       >
         <div className="w-full py-2 inline-flex">
           <div className="w-3/4">
@@ -111,14 +111,15 @@ const news = props => {
           Featured News
         </h2>
       </div>
-      <div className="inline-flex w-full px-12 sm:px-4 md:px-4 py-4 sm:flex-col md:flex-col lg:flex-col">
-        <div className="w-1/2 sm:w-full md:w-full lg:w-full p-2">
+      <div className="inline-flex w-full px-12 sm:px-2 md:px-2 py-4 sm:flex-col md:flex-col lg:flex-col xl:flex-col">
+        <div className="w-1/2 sm:w-full md:w-full lg:w-full xl:w-full">
           <img
+          style={{objectFit: "contain"}}
             src={`${image}`}
-            className="w-full imgFeatureNews sm:h-200 md:h-200 w-full h-450 xl:h-full lg:h-300 shadow-lg"
+            className="w-full sm:h-200 md:h-200 w-full h-450 lg:h-300 xl:h-300 xl:w-full shadow-lg"
           />
         </div>
-        <div className="w-1/2 sm:w-full md:w-full lg:w-full p-2">
+        <div className="w-1/2 sm:w-full md:w-full lg:w-full xl:w-full p-2">
           {showEvents}
         </div>
       </div>

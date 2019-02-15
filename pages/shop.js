@@ -133,7 +133,7 @@ class Index extends Component {
 
                 <ProductGrid {...this.props} />
                 {mobile ? (
-                  <div>
+                  <div className="w-full">
                     <div className="my-2 w-full justify-center flex relative sm:pt-4 sm:border-t md:pt-4 md:border-t border-smoke-grey">
                       <img
                         src="../static/img/FreeShippingAnimated.gif"
