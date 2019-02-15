@@ -71,22 +71,22 @@
         margin-left: 5%;
     }
 
-  .featuredStrainsPackage {
-    height: 10rem;
-    position: relative;
-    z-index: 10;
-    transition: 0.2s all ease-in-out;
-    padding: 5.5rem 3rem 0.5rem 3rem;
-    text-align: right;
-    @include modifier("hover") {
-        transform: scale(1.05);
-        transition: 0.2s all ease-in-out;
+    .featuredStrainsPackage {
         height: 10rem;
         position: relative;
         z-index: 10;
+        transition: 0.2s all ease-in-out;
         padding: 5.5rem 3rem 0.5rem 3rem;
+        text-align: right;
+        @include modifier("hover") {
+            transform: scale(1.05);
+            transition: 0.2s all ease-in-out;
+            height: 10rem;
+            position: relative;
+            z-index: 10;
+            padding: 5.5rem 3rem 0.5rem 3rem;
+        }
     }
-}
     // END UNIVERSAL
     ////////////////
 
@@ -185,7 +185,7 @@
             text-align: center;
             height: 100vh;
             width: 100%;
-            left: -1rem;
+            left: -3px;
             top: -1.5rem;
             background-color: #fff;
             transition: 0.4s all ease-in-out;
