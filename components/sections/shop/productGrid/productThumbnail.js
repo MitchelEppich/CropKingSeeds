@@ -85,7 +85,7 @@ const productThumbnail = props => {
                 />
             </div>
             <Link prefetch href="/product" as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}>
-                <div className="cursor-pointer">
+                <div className="cursor-pointer xxl:pt-4">
                     <div
                         style={{
                             backgroundImage: "url(" + props.misc.CFURL + props.product.packageImg + ")",

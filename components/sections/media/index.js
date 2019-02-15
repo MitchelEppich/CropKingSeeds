@@ -43,9 +43,9 @@ const Media = props => {
       arr.push(
         <div
           key={item}
-          style={{ background: "rgb(250, 250, 250)" }}
-          className={`w-main mx-auto mt-4 rounded shadow-md relative ${
-            active ? "pb-2" : ""
+        //   style={{ background: "rgb(250, 250, 250)" }}
+          className={`w-main lg:w-full bg-smoke-grey mx-auto mt-4 rounded shadow-md relative ${
+            active ? "mb-2" : ""
           }`}
         >
           <div
@@ -55,18 +55,18 @@ const Media = props => {
             className="w-full inline-flex p-2 font-bold cursor-pointer unselectable"
           >
             <div className="w-3/4 py-2">
-              <p className="pl-6">{title}</p>
+              <p className="pl-6 sm:pl-2">{title}</p>
             </div>
-            <div className="w-12 p-1 absolute pin-r">
+            <div className="w-12 sm:w-10 p-1 absolute pin-r justify-center flex">
               <FontAwesomeIcon icon={faCaretDown} className="fa-lg" />
             </div>
           </div>
           {active ? (
             <div
-              style={{ background: "rgb(250, 250, 250)" }}
-              className="p-2 inline-flex pt-2 relative"
+              
+              className="p-4 inline-flex bg-white relative"
             >
-              <div className="px-2 ml-4">
+              <div className="px-2 ml-4 sm:ml-0 md:ml-0 lg:ml-0">
                 <img
                   src={imageUrl}
                   className="w-100 h-100 overflower-hidden"
@@ -74,13 +74,13 @@ const Media = props => {
                 />
               </div>
               <div className="w-3/4 ml-4">
-                <div className="inline-flex w-full">
-                  <div className="w-1/2 text-left font-bold p-1">
+                <div className="inline-flex w-full lg:flex-col md:flex-col sm:flex-col ">
+                  <div className="w-1/2 text-left font-bold p-1 lg:w-full md:w-full sm:w-full">
                     <p>{moment(date, "LL").format("LL")}</p>
                   </div>
                   {location != null ? (
                     <div
-                      className="w-1/2 justify-end items-center flex font-bold"
+                      className="w-1/2 lg:w-full md:w-full sm:w-full lg:justify-start md:justify-start sm:justify-start justify-end items-center flex font-bold"
                       onClick={e => {
                         e.stopPropagation();
                         window.open(locationUrl, "_blank");
@@ -93,7 +93,7 @@ const Media = props => {
                     </div>
                   ) : null}
                 </div>
-                <p className="mt-4 ml-1">
+                <p className="mt-4 ml-1 sm:mt-2 lg:mt-2 md:mt-2 sm:text-sm md:text-sm">
                   {body}
                   <span
                     className="mx-1 font-bold text-red-dark cursor-pointer hover:text-red-light p-1 text-sm"
@@ -118,16 +118,17 @@ const Media = props => {
   };
 
   let showCategories = () => {
-    let arr = [];
+    let arr = []; 
     let keys = Object.keys(news);
     keys.map((category, index) => {
       arr.push(
         <div
-          className={`w-full w-main mx-auto ${index == 0 ? "" : "mt-12"} ${
+        key={news}
+          className={`w-main mx-auto sm:w-full ${index == 0 ? "" : "mt-12"} ${
             index == keys.length - 1 ? "mb-12" : ""
           }`}
         >
-          <h3 className="mt-5 p-3 text-white font-extrabold rounded text-center text-xl uppercase bg-red-dark mx-auto w-main text-center">
+          <h3 className="mt-5 p-3 text-white font-extrabold rounded text-center text-xl uppercase bg-red-dark mx-auto w-main lg:w-full text-center">
             Upcoming {category}s
           </h3>
           {showNewsEntry(news[category])}
@@ -151,7 +152,7 @@ const Media = props => {
         </h3>
       </div>
       <div className="w-main mx-auto p-2 mt-6">
-        <p className="text-center opacity-75 font-bold">
+        <p className="text-center font-bold">
           These are the next events Crop King Seeds will be attending and or
           sponsoring. We hope to see you there!
         </p>
