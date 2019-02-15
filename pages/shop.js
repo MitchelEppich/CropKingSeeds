@@ -116,6 +116,7 @@ class Index extends Component {
                                     ) : null}
                                 </div>
 
+<<<<<<< HEAD
                                 <ProductGrid {...this.props} />
                                 {mobile ? (
                                     <div>
@@ -125,6 +126,20 @@ class Index extends Component {
                                                 Buy Now
                                             </div>
                                         </div>
+=======
+                <ProductGrid {...this.props} />
+                {mobile ? (
+                  <div className="w-full">
+                    <div className="my-2 w-full justify-center flex relative sm:pt-4 sm:border-t md:pt-4 md:border-t border-smoke-grey">
+                      <img
+                        src="../static/img/FreeShippingAnimated.gif"
+                        className="h-full"
+                      />
+                      <div className="absolute bg-white w-200 mx-auto flex justify-center p-2 rounded font-bold text-2xl shadow-md pin-b mb-10 text-red-dark scale-item cursor-pointer">
+                        Buy Now
+                      </div>
+                    </div>
+>>>>>>> 2573932a611fba8f3aa8e67e5a421335b7a3f8b5
 
                                         <div className="border border-grey-lightest mt-8 sm:mt-10 md:mt-20 md:mb-0">
                                             <div className="shadow-md">

@@ -53,7 +53,13 @@
         animation: ray_anim 300s linear infinite;
         z-index: -5;
     }
-
+.packagePinBig {
+    height: 8rem;
+    position: absolute;
+    right: -42px;
+    top: 225px;
+    pointer-events: none;
+}
     /////////////
 }
 

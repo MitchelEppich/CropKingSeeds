@@ -64,21 +64,21 @@ class Index extends Component {
           <React.Fragment>
             <h2
               id="delivery"
-              className="w-1/2 xl:w-4/5 lg:w-full md:w-full sm:w-full mx-auto mt-8"
+              className="w-1/2 xl:w-4/5 lg:w-main md:w-full sm:w-full mx-auto mt-8"
             >
               Delivery
             </h2>
             <div className="">{deliveryQuestions}</div>
             <h2
               id="payment"
-              className="w-1/2 xl:w-4/5 lg:w-full md:w-full sm:w-full mx-auto mt-8"
+              className="w-1/2 xl:w-4/5 lg:w-main md:w-full sm:w-full mx-auto mt-8"
             >
               Payment
             </h2>
             <div className="">{paymentQuestions}</div>
             <h2
               id="payment"
-              className="w-1/2 xl:w-4/5 lg:w-full md:w-full sm:w-full mx-auto mt-8"
+              className="w-1/2 xl:w-4/5 lg:w-main md:w-full sm:w-full mx-auto mt-8"
             >
               Other FAQ's
             </h2>

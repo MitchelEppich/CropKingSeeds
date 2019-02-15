@@ -146,10 +146,10 @@ class Index extends Component {
               </div>
 
               <div className="w-full mt-12">
-                <h3 className="w-full p-2 pl-6 font-bold text-3xl my-3 text-grey bg-smoke-grey">
+                <h3 className="w-full p-2 pl-6 font-bold text-3xl my-3 sm:text-xl text-grey bg-smoke-grey">
                   Frequently Bought Together
                 </h3>
-                <div className="px-0 sm:px-4 w-full mt-2">
+                <div className="px-0 w-full mt-2">
                   {/* <OtherProducts count={3} {...this.props} /> */}
                   <FeaturedStrainThumbnails
                     page={"product"}

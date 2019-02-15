@@ -101,7 +101,7 @@ const reviews = props => {
 
   return (
     <div className="w-full mx-auto pb-8 pt-6">
-      <h3 className="w-full p-2 pl-6 font-bold text-3xl my-3 text-grey bg-smoke-grey">
+      <h3 className="w-full p-2 pl-6 font-bold text-3xl my-3 sm:text-xl text-grey bg-smoke-grey">
         Customer Reviews
       </h3>
 
@@ -110,7 +110,7 @@ const reviews = props => {
       </div>
       {/* map total reviews here */}
       <div className="mt-4">
-        <h3 className="w-full p-2 pl-6 font-bold text-3xl my-3 text-grey bg-smoke-grey">
+        <h3 className="w-full p-2 pl-6 font-bold text-3xl my-3 sm:text-xl text-grey bg-smoke-grey">
           Last Reviews
         </h3>
         <div
@@ -122,9 +122,10 @@ const reviews = props => {
             <ReviewStats {...props} />
           </div>
           <div className="w-3/4 sm:w-full md:w-full lg:w-full mt-5 mb-3 ml-2 sm:ml-0 rounded ">
-            <p className="p-2 pt-0 font-bold">
-              Showing {props.viewProduct.ratingFilter} crowns reviews:
-            </p>
+          {props.viewProduct.ratingFilter ? 
+            <p className="p-1 font-bold bg-grey-lighter opacity-25 text-grey text-center">
+              Showing {props.viewProduct.ratingFilter} {props.viewProduct.ratingFilter == "1" ? "crown" : "crowns"} reviews:
+            </p> : null }
             <div className="bg-white w-full">
               {_reviews.length != 0 ? (
                 reviews

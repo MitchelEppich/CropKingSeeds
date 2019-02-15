@@ -64,7 +64,11 @@ export default class MyDocument extends Document {
                     <meta name="theme-color" content="#a90000" />
                     <title>Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds</title>
                     <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-                    <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
+                    <meta
+                        name="viewport"
+                        content="initial-scale=1.0, width=device-width, maximum-scale=1"
+                        key="viewport"
+                    />
                     <meta httpEquiv="ScreenOrientation" content="autoRotate:disabled" />
                     <meta name="robots" content="index, follow" />
                     <meta
