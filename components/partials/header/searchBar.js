@@ -5,30 +5,50 @@ import Link from "next/link";
 import SearchSuggest from "./searchSuggest";
 
 const SearchBar = props => {
-    return (
-        <form
-            autoComplete="off"
-            onSubmit={e => {
-                e.preventDefault();
-                if (!Router.asPath.includes("/shop")) {
-                    Router.push("/shop", "/shop?" + props.misc.searchValue);
-                }
+  let setFilters = () => {
+    let searchValue = props.misc.searchValue;
+    if (searchValue != null) {
+      let _activeFilters = props.shop.activeFilters;
+      props.setSearch(null);
+      let text = [...searchValue.split(",")];
+      if (_activeFilters.text != null) text.push(..._activeFilters.text);
+      props.toggleFilter({
+        filter: _activeFilters,
+        text,
+        multiple: false
+      });
+    }
+  };
+
+  return (
+    <form
+      autoComplete="off"
+      onSubmit={e => {
+        e.preventDefault();
+        if (!Router.asPath.includes("/shop")) {
+          Router.push("/shop", "/shop?" + props.misc.searchValue);
+        }
+        setFilters();
+      }}
+      className="w-full z-50"
+    >
+      <div className="flex w-400 sm:w-full xl:w-225 lg:w-225 md:w-225 z-40 h-8 mt-1 bg-white border-0 text-grey rounded shadow-md sm:relative">
+        <SearchSuggest {...props} />{" "}
+        <Link href="/shop" as={"/shop?" + props.misc.searchValue}>
+          <a
+            onClick={e => {
+              if (Router.asPath.includes("/shop")) e.preventDefault();
+
+              setFilters();
             }}
-            className="w-full z-50">
-            <div className="flex w-400 sm:w-full xl:w-225 lg:w-225 md:w-225 z-40 h-8 mt-1 bg-white border-0 text-grey rounded shadow-md sm:relative">
-                <SearchSuggest {...props} />{" "}
-                <Link href="/shop" as={"/shop?" + props.misc.searchValue}>
-                    <a
-                        onClick={e => {
-                            if (Router.asPath.includes("/shop")) e.preventDefault();
-                        }}
-                        className="bg-yellow-dark hover:bg-yellow slowish w-12 sm:w-20 border-0 pl-1 leading-loose z-999 rounded sm:absolute sm:pin-r">
-                        <FontAwesomeIcon icon={faSearch} className="fa-lg mt-1 ml-1" />
-                    </a>
-                </Link>
-            </div>
-        </form>
-    );
+            className="bg-yellow-dark hover:bg-yellow slowish w-12 sm:w-20 border-0 pl-1 leading-loose z-999 rounded sm:absolute sm:pin-r"
+          >
+            <FontAwesomeIcon icon={faSearch} className="fa-lg mt-1 ml-1" />
+          </a>
+        </Link>
+      </div>
+    </form>
+  );
 };
 
 export default SearchBar;
