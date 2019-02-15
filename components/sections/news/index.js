@@ -44,20 +44,20 @@ const news = props => {
           window.focus();
         }}
         className={`${
-          index < 3 ? "border-b-2 border-grey-lightest" : ""
-        } w-full sm:mx-0 md:mx-0 xxl:mx-4 scale-item cursor-pointer`}
+          index < 3 ? "lg:border-b-2 xl:border-b-2 xxl:border-b-2 border-grey-lightest" : ""
+        } w-full sm:mx-0 md:mx-0 xxl:mx-4 md:p-2 sm:p-2 scale-item cursor-pointer sm:shadow md:shadow`}
       >
-        <div className="w-full py-2 inline-flex">
-          <div className="w-3/4">
+        <div className="w-full py-2 inline-flex sm:flex-col md:flex-col">
+          <div className="w-3/4 sm:w-full md:w-full">
             <h3
-              className={`px-2 pt-2 font-bold text-lg ${
+              className={`sm:px-0 md:px-0 px-2 font-bold text-lg ${
                 newsIndex == index ? "text-red-dark" : "text-grey"
               } `}
             >
               {title}
             </h3>
           </div>
-          <div className="w-1/4 items-center flex justify-end">
+          <div className="w-1/4 sm:w-full md:w-full items-center flex sm:pt-2 md:pt-2 justify-end sm:justify-start md:justify-start">
             {sponsored ? (
               <div className="opacity-75 mr-2 px-1 py-px bg-grey-lightest round rounded text-black">
                 <p className="flex font-bold text-red-dark opacity-50 text-sm uppercase">
@@ -70,8 +70,8 @@ const news = props => {
             </p>
           </div>
         </div>
-        <div className="inline-flex w-full items-center flex">
-          <p className="px-2 text-sm font-bold">{formatDate} </p>
+        <div className="inline-flex w-full items-center flex sm:flex-col md:flex-col">
+          <p className="px-2 sm:px-0 md:px-0 sm:w-full md:w-full text-sm sm:py-2 md:py-2 font-bold">{formatDate} </p>
           {location != null ? (
             <a
               onClick={e => {
@@ -79,7 +79,7 @@ const news = props => {
                 window.open(locationUrl, "_blank");
                 window.focus();
               }}
-              className="px-2 text-sm hover:text-grey-light"
+              className="px-2 sm:px-0 md:px-0 sm:w-full md:w-full text-sm hover:text-grey-light"
             >
               <FontAwesomeIcon icon={faMapMarkerAlt} className="opacity-50" />{" "}
               {location}
@@ -87,7 +87,7 @@ const news = props => {
           ) : null}
         </div>
 
-        <p className="p-2">
+        <p className="p-2 sm:text-sm md:text-sm sm:px-0 md:px-0">
           {body}
           <span
             className="font-bold text-red-dark cursor-pointer hover:text-red-light p-1 text-sm"
@@ -97,7 +97,7 @@ const news = props => {
               window.focus();
             }}
           >
-            Read More
+            More Details
           </span>
         </p>
       </div>
@@ -126,7 +126,7 @@ const news = props => {
       <div className="w-full">
         <div className="flex justify-end w-full">
           <Link href="/news">
-            <p className="p-2 bg-red-dark text-white font-bold px-6 mr-8 w-200 text-right inline-flex items-center rounded shadow-md uppercase cursor-pointer hover:bg-red-light justify-center md:w-full sm:w-full md:mr-0 sm:mr-0">
+            <p className="p-2 bg-grey-lighter text-grey font-bold px-6 mr-8 w-200 text-right inline-flex items-center rounded uppercase cursor-pointer hover:bg-red-light justify-center md:w-full sm:w-full md:mr-0 sm:mr-0">
               See more news{" "}
               <FontAwesomeIcon icon={faAngleRight} className="ml-2 fa-lg" />
             </p>
