@@ -10,7 +10,7 @@ const Header = props => {
     };
 
     return (
-        <div style={HeaderStyle} className="preserve-3d">
+        <div onClick={() => props.toggleStrainsMenu(false)} style={HeaderStyle} className="preserve-3d">
             <Menu {...props} />
             {/* <SearchBar {...props} /> */}
         </div>

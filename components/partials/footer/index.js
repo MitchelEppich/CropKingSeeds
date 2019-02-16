@@ -12,7 +12,9 @@ const Footer = props => {
     };
 
     return (
-        <div className="w-full border-b-8 border-grey-darker mt-10 bg-grey inline-flex justify-between xxl:px-12 xl:px-12 sm:block md:block lg:block relative pb-1 sm:pb-0 md:pb-0 lg:pb-0">
+        <div
+            onClick={() => props.toggleStrainsMenu(false)}
+            className="w-full border-b-8 border-grey-darker mt-10 bg-grey inline-flex justify-between xxl:px-12 xl:px-12 sm:block md:block lg:block relative pb-1 sm:pb-0 md:pb-0 lg:pb-0">
             {" "}
             <div className="mx-auto inline-flex sm:block md:block w-1300 sm:w-full md:w-full lg:w-full">
                 <div className="w-1/8 sm:w-full md:w-full lg:w-full sm:hidden md:hidden lg:hidden xl:hidden">
