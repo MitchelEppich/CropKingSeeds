@@ -20,7 +20,7 @@ class Index extends Component {
       if (
         !JSON.stringify(q)
           .toLowerCase()
-          .includes(this.props.faq.searchValue)
+          .includes(this.props.faq.searchValue.toLowerCase())
       )
         return false;
       return true;

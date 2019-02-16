@@ -67,11 +67,10 @@ const data = props => {
 
   // console.log(pthcWidth, _product.pthc);
   return (
-    <div
-      style={{ boxShadow: "0 0px 9px rgba(95, 95, 95, 0.35)" }}
-      className="mt-6 w-full mx-auto bg-grey-lightest flex flex-wrap content-start border border-grey-lightest"
+    <div     
+      className="mt-6 w-full mx-auto bg-grey-lightest flex flex-wrap content-start"
     >
-      <div className="w-full bg-white xxl:inline-flex block">
+      <div className="w-full bg-white xxl:inline-flex block border border-grey-lightest rounded overflow-hidden">
         <div className="xxl:w-1/3 w-full border-r-2 border-grey-lightest sm:border-0 md:border-0">
           <div className="bg-grey-light w-full">
             <h3 className="text-white font-bold p-2 text-center uppercase">

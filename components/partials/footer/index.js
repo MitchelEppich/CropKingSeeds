@@ -128,7 +128,7 @@ const Footer = props => {
                             </button>
                         </form>
                     ) : (
-                        <p className="text-2xl mt-4">Thank you for subscribing!</p>
+                        <p className="text-2xl font-bold text-red-light mt-8">Thank you for subscribing!</p>
                     )}
                     {/* <div
             style={{ textShadow: "0 1px 4px #000" }}

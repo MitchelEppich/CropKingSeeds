@@ -134,7 +134,7 @@ class Index extends Component {
                                 multiple: filter == "genetic" || filter == "text" ? true : false
                             })
                         }
-                        className="capitalize text-grey border bg-grey-lightest flex justify-center cursor-pointer hover:bg-red-dark hover:text-white items-center rounded-tl-lg rounded-br-lg border-grey-lightest p-2 m-1 font-bold slowish">
+                        className="capitalize text-grey border bg-grey-lightest flex justify-center cursor-pointer hover:bg-red-light hover:text-white items-center rounded-tl-lg rounded-br-lg border-grey-lightest p-2 m-1 font-bold">
                         {filter == "text" ? "search: " : ""}
                         {label || value}
                         <FontAwesomeIcon className="fa-sm ml-2" icon={faTimes} />
@@ -254,7 +254,7 @@ class Index extends Component {
                     }>
                     {Object.keys(this.props.shop.activeFilters).length != 0 ? (
                         <div className="flex flex-wrap xxl:w-4/5 xl:w-3/5 w-3/5 bg-white rounded border border-grey-lightest">
-                            <p className="w-full mb-1 pl-2 font-bold p-2 rounded bg-grey-light text-white">
+                            <p className="w-full mb-1 pl-2 font-bold p-2 bg-grey-lighter text-white uppercase">
                                 Active Filters:
                             </p>
                             {activeFilters}
@@ -265,9 +265,9 @@ class Index extends Component {
                             onClick={() => {
                                 this.props.setVisibleScreen({ input: "showSortBy" });
                             }}
-                            className="font-bold flex relative items-center w-150 p-2 bg-grey-light justify-center z-50 rounded text-white cursor-pointer hover:bg-red-light">
+                            className="font-bold flex relative items-center w-150 p-2 bg-grey-lighter justify-center z-50 rounded text-white cursor-pointer hover:bg-red-light">
                             {this.props.shop.sort == null ? (
-                                <div>
+                                <div className="text-base uppercase font-bold">
                                     Sort by:
                                     <FontAwesomeIcon icon={faSortAmountDown} className="fa-lg ml-2" />
                                 </div>
