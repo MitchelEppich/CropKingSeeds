@@ -202,18 +202,19 @@ const menu = props => {
           <div className="inline-flex w-full sm:block md:block lg:block">
             <div className="w-1/4 sm:w-full md:w-full lg:w-full flex justify-start sm:justify-center">
               <div
+                onClick={() => console.log(props)}
                 className={
                   props.misc.strains != null
                     ? "opacity-1 slow flex shadow-md -mt-54px sm:-mt-10 sm:mx-0 fixed z-999 sm:w-100 sm:h-100 w-130 h-125 rounded-full bg-crimson justify-center content-center items-center xxl:ml-10 ml-10"
                     : "opacity-0 slow flex shadow-md sm:mx-0 -mt-54px sm:-mt-6 md:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-125 rounded-full bg-crimson justify-center content-center items-center ml-10"
                 }
               >
-                <Link href="/">
-                  <img
-                    src="../static/img/cks-logo-header.png"
-                    className="z-999 cks-logo-header p-0 w-125 sm:w-85px scale-item cursor-pointer sm:-mt-2 sm:-ml-1 md:-mt-3"
-                  />
-                </Link>
+                {/* <Link href="/"> */}
+                <img
+                  src="../static/img/cks-logo-header.png"
+                  className="z-999 cks-logo-header p-0 w-125 sm:w-85px scale-item cursor-pointer sm:-mt-2 sm:-ml-1 md:-mt-3"
+                />
+                {/* </Link> */}
               </div>
             </div>
             <div className="w-3/4 sm:w-full md:w-full lg:w-full flex justify-start">

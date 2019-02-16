@@ -285,7 +285,7 @@ class Index extends Component {
               }}
               className="font-bold flex relative items-center w-150 p-2 bg-grey-light z-50 rounded text-white cursor-pointer hover:bg-red-light"
             >
-              {this.props.shop.sort == null ? (
+              {this.props.shop.sort == null || this.props.shop.sort == "" ? (
                 <div>
                   Sort by:
                   <FontAwesomeIcon
@@ -294,9 +294,14 @@ class Index extends Component {
                   />
                 </div>
               ) : (
-                sortOptions.find(a => {
-                  if (a[0] == this.props.shop.sort) return a;
-                })[1]
+                (() => {
+                  let option = sortOptions.find(a => {
+                    if (a[0] == this.props.shop.sort) return a;
+                  });
+
+                  if (option == null) return null;
+                  return option[1];
+                })()
               )}
             </div>
             <div style={showSortByStyle} className="overflow-hidden relative">

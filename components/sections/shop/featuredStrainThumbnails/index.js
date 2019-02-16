@@ -31,7 +31,7 @@ const index = props => {
     count = 3;
   }
   if (isSmallMediumOrLargeDevice) {
-    count = 2;
+    max = 2;
   }
 
   products = products.slice(0, count).map((product, index) => {
