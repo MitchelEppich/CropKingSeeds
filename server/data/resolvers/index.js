@@ -139,8 +139,12 @@ const resolvers = {
       let { pivotal, bambora } = await getProcessorUsage();
       let _amount = parseFloat(input.amount);
       let response;
-      // if (bambora.limit == -1 || bambora.available - amount > 0) response = await processBambora(input)
-      if (pivotal.limit == -1 || pivotal.available - amount > 0)
+      if (
+        input.country.toLowerCase() == "canada" &&
+        (bambora.limit == -1 || bambora.available - _amount > 0)
+      )
+        response = await processBambora(input);
+      else if (pivotal.limit == -1 || pivotal.available - _amount > 0)
         response = await processPivotal(input);
 
       return response;
@@ -173,6 +177,15 @@ let processBambora = async input => {
   });
 
   console.log("FROM HERE", res);
+
+  return {
+    transactionId: res.reference,
+    status: res.message,
+    approvalCode: res.code,
+    response: res.status,
+    processor: "Bambora FD",
+    descriptor: "Vancoast Seeds"
+  };
 };
 
 let processPivotal = async input => {
@@ -233,7 +246,7 @@ let processPivotal = async input => {
     approvalCode: res.APPROVALCODE._text || "",
     response: res.RESPONSETEXT._text,
     processor: "Pivotal 3 VT",
-    descriptor: "Kingmerch"
+    descriptor: "King Merch"
   };
 };
 

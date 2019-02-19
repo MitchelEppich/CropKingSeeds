@@ -396,7 +396,8 @@ const getActions = uri => {
               return await processPayment(
                 {
                   payment: _orderDetails.payment,
-                  currency: _orderDetails.currency
+                  currency: _orderDetails.currency,
+                  country: _orderDetails.billing.country.value
                 },
                 uri
               );
@@ -404,6 +405,8 @@ const getActions = uri => {
           }
           return null;
         })();
+
+        console.log("hello");
 
         if (ccResponse != null) {
           if (ccResponse.currency != null)
@@ -528,6 +531,7 @@ const mutation = {
       $cardExpiry: String
       $cardHolderName: String
       $cvv: String
+      $country: String
     ) {
       processPayment(
         input: {
@@ -538,6 +542,7 @@ const mutation = {
           cardExpiry: $cardExpiry
           cardHolderName: $cardHolderName
           cvv: $cvv
+          country: $country
         }
       ) {
         transactionId
@@ -605,6 +610,7 @@ let processPayment = async (details, uri) => {
   return await new Promise(async (resolve, reject) => {
     let _payment = details.payment;
     let _currency = details.currency["cad"];
+    let _country = details.country;
 
     let amount = (
       _payment.orderTotal.value *
@@ -625,7 +631,8 @@ let processPayment = async (details, uri) => {
       cardType: _payment.type.value,
       cardExpiry,
       cardHolderName: _payment.cardHolder,
-      cvv: _payment.cvv.value
+      cvv: _payment.cvv.value,
+      country: _country
     };
 
     const link = new HttpLink({ uri, fetch: fetch });

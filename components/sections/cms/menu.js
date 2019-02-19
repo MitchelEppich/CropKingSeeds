@@ -84,10 +84,7 @@ const menu = props => {
           <img src="../../static/img/cropkingseeds.png" className="" />
         </div>
         <div className="p-2 text-center">
-          <h3
-            onClick={() => console.log(props)}
-            className="text-center text-3/5xl mb-2 cursor-pointer font-bold"
-          >
+          <h3 className="text-center text-3/5xl mb-2 cursor-pointer font-bold">
             Crop King Seeds
           </h3>
           <p className="text-center mb-12 text-base font-bold text-grey-light opacity-75 uppercase">

@@ -226,6 +226,7 @@ input PaymentInput {
   cardExpiry: String
   cardHolderName: String
   cvv: String
+  country: String
 }
 
 type PaymentResponse {

@@ -17,7 +17,6 @@ const question = props => {
       };
   let answer;
   if (typeof props.answer == "string") {
-    // console.log(props.answer);
     answer = props.answer;
   } else {
     answer = props.answer.map((value, index) => {
