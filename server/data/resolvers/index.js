@@ -117,16 +117,17 @@ const resolvers = {
             var options = {
                 method: "POST",
                 uri: "https://www.google.com/recaptcha/api/siteverify",
-                body: {
+                formData: {
                     secret: "6LdVgJIUAAAAAAinDAgg0p2N2v3KuIIK7wDlpMhh",
                     response: input.response
                 },
-                json: true // Automatically stringifies the body to JSON
+                headers: {
+                    "content-type": "application/x-www-form-urlencoded"
+                }
             };
 
             request(options)
                 .then(function(parsedBody) {
-                    console.log(parsedBody);
                     // POST succeeded...
                     transporter.sendMail(mailOptions, (error, info) => {
                         if (error) {

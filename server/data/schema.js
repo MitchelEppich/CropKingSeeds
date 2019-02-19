@@ -130,7 +130,8 @@ input StrainInput {
   env: String
   review: String
   featured: Boolean
-  relationData: String
+  relationData: String,
+  response: String
 }
 
 type Order {
@@ -242,6 +243,7 @@ input EmailInput {
   email: String
   subject: String
   body: String
+  response: String
 }
 
 type News {
@@ -292,8 +294,8 @@ type Mutation {
 `;
 
 const schema = makeExecutableSchema({
-  typeDefs,
-  resolvers
+    typeDefs,
+    resolvers
 });
 
 module.exports = schema;

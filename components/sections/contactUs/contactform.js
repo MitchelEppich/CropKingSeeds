@@ -21,14 +21,13 @@ const ContactForm = props => {
                                 e.preventDefault();
                                 const form = e.target;
                                 const formData = new window.FormData(form);
-                                if (props.misc.recaptcha != null) {
+                                if (formData.get("recaptcha") != null) {
                                     props.sendEmail({
                                         name: formData.get("name"),
                                         body: formData.get("body"),
                                         email: formData.get("email"),
                                         subject: formData.get("subject"),
-                                        response:
-                                            props.misc.recaptcha != null ? props.misc.recaptcha : "NO RECAPTCHA VALUE"
+                                        response: formData.get("recaptcha")
                                     });
                                     form.reset();
                                 } else {
@@ -99,9 +98,11 @@ const ContactForm = props => {
                                 <div className=" flex justify-left my-2 mb-4">
                                     <ReCAPTCHA
                                         sitekey="6LdVgJIUAAAAADf3mm-422DqVktwJJuPs5TB2578"
-                                        onChange={response => {
-                                            if (response != null) props.setRecaptcha(response);
-                                        }}
+                                        name="recaptcha"
+                                        // onChange={response => {
+
+                                        // props.setRecaptcha(response);
+                                        // }}
                                     />
                                 </div>
                                 <div className="w-main sm:w-full md:w-full flex justify-center">

@@ -69,8 +69,7 @@ const actionTypes = {
     GET_BANNERS: "GET_BANNERS",
     GET_RELATED_LIST: "GET_RELATED_LIST",
     SET_NEWS_STEPPER: "SET_NEWS_STEPPER",
-    IS_REPEAT_CUSTOMER: "IS_REPEAT_CUSTOMER",
-    SET_RECAPTCHA: "SET_RECAPTCHA"
+    IS_REPEAT_CUSTOMER: "IS_REPEAT_CUSTOMER"
 };
 
 const actions = {
@@ -466,12 +465,6 @@ const actions = {
                 })
                 .catch(error => console.log(error));
         };
-    },
-    setRecaptcha: response => {
-        return {
-            type: actionTypes.SET_RECAPTCHA,
-            response: response
-        };
     }
 };
 
@@ -605,8 +598,8 @@ const mutation = {
         }
     `,
     sendEmail: gql`
-        mutation($email: String, $body: String, $name: String, $subject: String) {
-            sendEmail(input: { email: $email, body: $body, name: $name, subject: $subject })
+        mutation($email: String, $body: String, $name: String, $subject: String, $response: String) {
+            sendEmail(input: { email: $email, body: $body, name: $name, subject: $subject, response: $response })
         }
     `
 };
