@@ -129,29 +129,6 @@ const menu = props => {
                 </div>
 
                 <div className="w-full h-12 inline-flex mt-6 sm:mt-2 sm:h-10 sm:mb-0 overflow-hidden">
-                    {/* <div className="w-1/2 relative">
-            <div
-                        style={viewCurrency}
-                        className="fixed h-12 z-50 overflow-hidden sm:h-10 pin-l bg-white shadow-md rounded cursor-pointer mt-10 -ml-1">
-                        {" "}
-                        <div className="w-full wrap flex-wrap">{showCurrency()}</div>
-                    </div>
-                    <div
-                        onClick={() =>
-                            props.setVisibleScreen({
-                                input: "viewCurrency"
-                            })
-                        }
-                        style={{ background: "#f9f9f9" }}
-                        className="absolute pin-l shadow-md my-auto rounded -ml-2 inline-flex cursor-pointer scale-item">
-                        <p className="px-6 pt-2 p-1 uppercase text-center font-extrabold sm:px-4 text-lg sm:text-sm">
-                            {currency != null ? currency.label.toUpperCase() : ""}
-                        </p>
-                        <div className="w-12 sm:w-8 rounded bg-yellow-dark p-2 items-center flex justify-center font-extrabold">
-                            {currency != null ? currency.symbol : ""}
-                        </div>
-                    </div> 
-          </div>*/}
                     <div className="w-1/2">
                         <a
                             href="tel:+1-844-276-7546"
@@ -163,8 +140,16 @@ const menu = props => {
                                 </p>
                             </div>
                             <p className="pl-3 pr-4 p-2 uppercase font-extrabold text-lg sm:hidden">
-                                +1-844-CROP-KING
-                                <span className="-ml-2 mr-2">/</span>(276-7546)
+                                {props.misc.ageVerification != null &&
+                                "United States" == props.misc.ageVerification.country ? (
+                                    <React.Fragment>
+                                        <span>+1-844-CROP-KING</span>
+                                        <span className="-ml-2 mr-2">/</span>
+                                        <span>(276-7546)</span>
+                                    </React.Fragment>
+                                ) : (
+                                    "CALL NOW: +1 (604) 563-0291"
+                                )}
                             </p>
                         </a>
                     </div>

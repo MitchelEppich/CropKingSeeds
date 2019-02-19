@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+        <style>
+            body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                font-family: sans-serif;
+            }
+            .container {
+                background-color: #f5f5f5;
+                width: 100%;
+                height: 100%;
+                padding: 100px 50px;
+            }
+            .innerContainer {
+                width: 66%;
+                height: 100%;
+                margin: 0 auto;
+            }
+            .orderDetails {
+                width: 100%;
+                height: 200px;
+                background-color: green;
+            }
+            .orderDetails {
+                width: 100%;
+                height: 200px;
+                background-color: white;
+                margin: 10px 0;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+            }
+            .orderDetailsContent {
+                width: 100%;
+                height: 100%;
+                display: inline-flex;
+            }
+            .payment {
+                width: 100%;
+                height: 300px;
+                background-color: white;
+                margin: 10px 0;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+            }
+            .products {
+                width: 100%;
+                height: 200px;
+                background-color: white;
+                margin: 15px 0;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+            }
+            .help {
+                width: 100%;
+                height: 200px;
+                display: inline-flex;
+                justify-content: space-between;
+            }
+            .thanks {
+                width: 500px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            .heading-red {
+                height: 50px;
+                width: 100%;
+                background-color: #ef5753;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="innerContainer">
+                <div class="thanks">
+                    <img src="http://dcfgweqx7od72.cloudfront.net/" class="" width="200px" />
+                    <h1>Thank you</h1>
+                    <p>Your order has been placed.</p>
+                    <p style="color:#ef5753">Please follow payment instructions below.</p>
+                </div>
+                <div class="orderDetails">
+                    <div class="heading-red">
+                        <p
+                            style="color:white; padding: 15px;display: flex;
+                justify-content: space-between; font-weight:bold;font-size: 1.2rem;"
+                        >
+                            <span>Order#</span><span>Order made on:</span>
+                        </p>
+                    </div>
+                    <div class="orderDetailsContent">
+                        <div style="width: 33%; padding: 10px">
+                            <p><b>Payment Method:</b></p>
+                        </div>
+                        <div style="width: 33%; padding: 10px">
+                            <p><b>Shipping Destination:</b></p>
+                        </div>
+                        <div style="width: 33%; padding: 10px">
+                            <p><b>Shipping Type:</b></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="payment">
+                    <div class="heading-red">
+                        <p style="color:white; padding: 15px; font-weight:bold;font-size: 1.2rem;">
+                            Payment Instructions
+                        </p>
+                    </div>
+                    <p style="text-align:center">
+                        To ensure that your cash order is successfully recieved please document your order number
+                        (1114-99-CKS) on a piece of paper, along side the requested amount in applicable currency:<br /><br />
+                        <span style="font-weight: bold; font-size: 1.3rem"
+                            >VanCoast Industries<br />
+                            112 East 6th Ave<br />
+                            Vancouver, BC<br />
+                            V5T 1J5<br />
+                            Canada</span
+                        ><br /><br />
+                        It is recommended that you wrap any cash within your mail (in newspaper, charcoal paper or tin
+                        foil) to ensure privacy.
+                    </p>
+                </div>
+                <div class="products">
+                    <div class="heading-red">
+                        <p style="color:white; padding: 15px; font-weight:bold;font-size: 1.2rem;">Product</p>
+                    </div>
+                </div>
+                <div class="help">
+                    <div>
+                        <p>
+                            Need Help
+                        </p>
+                        <p>We are available to assist you 24/7.</p>
+                        <p>Canada: (604) 563-0291</p>
+                        <p>USA: +1 (844) 276-7546</p>
+                        <p>International: +1 (604) 563-0291.</p>
+                        <p>Email: info@cropkingseeds.com.</p>
+                    </div>
+                    <div>
+                        <p>Subtotal:</p>
+                        <p>Shipping:</p>
+                        <p>Tax:</p>
+                        <p>Total:</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
