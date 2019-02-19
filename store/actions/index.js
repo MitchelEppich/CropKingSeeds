@@ -9,6 +9,7 @@ import gql from "graphql-tag";
 import { makePromise, execute } from "apollo-link";
 import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
+import axios from "axios";
 
 import Cart from "./cart";
 import Checkout from "./checkout";
@@ -22,7 +23,7 @@ import Cms from "./cms";
 
 import { inferStrainData } from "../utilities/strain";
 
-const uri = "http://localhost:3000/graphql";
+const uri = "http://127.0.0.1:3000/graphql";
 // const uri = "http://159.203.5.200:3000/graphql";
 // const uri = "http://192.168.0.51:3000/graphql";
 
@@ -68,7 +69,8 @@ const actionTypes = {
     GET_BANNERS: "GET_BANNERS",
     GET_RELATED_LIST: "GET_RELATED_LIST",
     SET_NEWS_STEPPER: "SET_NEWS_STEPPER",
-    IS_REPEAT_CUSTOMER: "IS_REPEAT_CUSTOMER"
+    IS_REPEAT_CUSTOMER: "IS_REPEAT_CUSTOMER",
+    VERIFY_RECAPTCHA: "VERIFY_RECAPTCHA"
 };
 
 const actions = {
@@ -466,6 +468,12 @@ const actions = {
                 .catch(error => console.log(error));
         };
     }
+    // verifyRecaptcha: value => {
+
+    //     return {
+    //         type: actionTypes.VERIFY_RECAPTCHA
+    //     };
+    // }
 };
 
 const query = {

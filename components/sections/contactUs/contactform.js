@@ -1,12 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const ContactForm = props => {
     return (
         <div className="w-full p-2 mt-10">
             <div
                 style={{ boxShadow: "0 0 20px rgba(0, 0, 0, 0.18)" }}
-                className="w-700 sm:w-full sm:px-2 lg:w-600 md:w-full lg:px-2 md:px-2 md:pt-0 h-600 sm:h-full md:h-full md:px-2 xxl:mx-auto xl:mx-auto px-8 relative rounded-lg p-2">
+                className="w-700 sm:w-full sm:px-2 lg:w-600 md:w-full lg:px-2 md:px-2 md:pt-0 min-h-600 sm:h-full md:h-full md:px-2 xxl:mx-auto xl:mx-auto px-8 relative rounded-lg p-2">
                 <div className="w-full p-2">
                     <h2 className="font-extrabold text-3xl md:text-2xl sm:text-2xl p-2 mt-4">Send us a message</h2>
                     <p className="text-sm p-1 px-2">
@@ -78,10 +79,6 @@ const ContactForm = props => {
                                         </option>
                                     </select>
                                 </div>
-                                {/* <div className="w-2/3 mt-3 p-1">
-                <label className="p-2">Order Number:</label>{" "}
-                <input type="text" className="p-2 my-1 w-full" />
-              </div> */}
                                 <div className="w-main sm:w-full md:w-full mt-3 p-1">
                                     <label className="font-bold">
                                         Message:<span className="text-red">*</span>
@@ -94,23 +91,24 @@ const ContactForm = props => {
                                         maxLength="150"
                                         className="p-2 my-1 w-full h-40"
                                     />
+                                </div>{" "}
+                                <div className=" flex justify-left my-2 mb-4">
+                                    <ReCAPTCHA
+                                        sitekey="6LdVgJIUAAAAADf3mm-422DqVktwJJuPs5TB2578"
+                                        onChange={response => {
+                                            console.log(response);
+                                        }}
+                                    />
                                 </div>
-                                <div className="w-main sm:w-full md:w-full flex justify-end">
-                                    <div className="w-200 sm:w-full md:w-full md:justify-center flex justify-end">
+                                <div className="w-main sm:w-full md:w-full flex justify-center">
+                                    <div className="w-200 sm:w-full md:w-full md:justify-center flex justify-center">
                                         <button
                                             type="submit"
                                             className="p-2 sm:p-3 md:p-3 px-4 w-150 sm:w-full md:w-full text-lg text-white rounded bg-red-dark hover:bg-red-light font-bold">
                                             Submit
                                         </button>
-                                        {/* <div className=" font-bolder mr-12">
-                    <Recaptcha
-                                sitekey="6LfaeIgUAAAAADYLe6wYQagF0aclHtGG0gjY4OCr"
-                                render="explicit"
-                                onloadCallback={callback}
-                            /> 
-                  </div> */}
                                     </div>
-                                </div>
+                                </div>{" "}
                             </div>
                         </form>
                     ) : (
