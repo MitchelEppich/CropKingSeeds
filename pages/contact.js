@@ -25,7 +25,8 @@ const mapDispatchToProps = dispatch => {
     return {
         setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
         sendEmail: input => dispatch(actions.sendEmail(input)),
-        refreshEmailForm: () => dispatch(actions.refreshEmailForm())
+        refreshEmailForm: () => dispatch(actions.refreshEmailForm()),
+        setRecaptcha: response => dispatch(actions.setRecaptcha(response))
     };
 };
 

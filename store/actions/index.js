@@ -70,7 +70,7 @@ const actionTypes = {
     GET_RELATED_LIST: "GET_RELATED_LIST",
     SET_NEWS_STEPPER: "SET_NEWS_STEPPER",
     IS_REPEAT_CUSTOMER: "IS_REPEAT_CUSTOMER",
-    VERIFY_RECAPTCHA: "VERIFY_RECAPTCHA"
+    SET_RECAPTCHA: "SET_RECAPTCHA"
 };
 
 const actions = {
@@ -459,7 +459,6 @@ const actions = {
             makePromise(execute(link, operation))
                 .then(data => {
                     let res = data.data.isRepeatCustomer;
-
                     dispatch({
                         type: actionTypes.IS_REPEAT_CUSTOMER,
                         input: !res
@@ -467,13 +466,13 @@ const actions = {
                 })
                 .catch(error => console.log(error));
         };
+    },
+    setRecaptcha: response => {
+        return {
+            type: actionTypes.SET_RECAPTCHA,
+            response: response
+        };
     }
-    // verifyRecaptcha: value => {
-
-    //     return {
-    //         type: actionTypes.VERIFY_RECAPTCHA
-    //     };
-    // }
 };
 
 const query = {

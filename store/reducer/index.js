@@ -55,7 +55,8 @@ const initialState = {
     showMobileMenu: null,
     CFURL: "http://dcfgweqx7od72.cloudfront.net",
     newsTimeout: null,
-    newCustomer: null
+    newCustomer: null,
+    recaptcha: null
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -182,6 +183,10 @@ const indexReducer = (state = initialState, action) => {
         case actionTypes.TOGGLE_MOBILE_MENU:
             return updateObject(state, {
                 showMobileMenu: !state.showMobileMenu
+            });
+        case actionTypes.SET_RECAPTCHA:
+            return updateObject(state, {
+                response: action.response
             });
         default:
             return state;

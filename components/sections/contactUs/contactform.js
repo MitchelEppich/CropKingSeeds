@@ -21,15 +21,19 @@ const ContactForm = props => {
                                 e.preventDefault();
                                 const form = e.target;
                                 const formData = new window.FormData(form);
-
-                                props.sendEmail({
-                                    name: formData.get("name"),
-                                    body: formData.get("body"),
-                                    email: formData.get("email"),
-                                    subject: formData.get("subject")
-                                });
-
-                                form.reset();
+                                if (props.misc.recaptcha != null) {
+                                    props.sendEmail({
+                                        name: formData.get("name"),
+                                        body: formData.get("body"),
+                                        email: formData.get("email"),
+                                        subject: formData.get("subject"),
+                                        response:
+                                            props.misc.recaptcha != null ? props.misc.recaptcha : "NO RECAPTCHA VALUE"
+                                    });
+                                    form.reset();
+                                } else {
+                                    console.log("captcha null");
+                                }
                             }}>
                             <div className="w-500 lg:w-400 md:w-full sm:w-full">
                                 <div className="w-main sm:w-full md:w-full mt-3 p-1">
@@ -96,7 +100,7 @@ const ContactForm = props => {
                                     <ReCAPTCHA
                                         sitekey="6LdVgJIUAAAAADf3mm-422DqVktwJJuPs5TB2578"
                                         onChange={response => {
-                                            console.log(response);
+                                            if (response != null) props.setRecaptcha(response);
                                         }}
                                     />
                                 </div>
