@@ -54,10 +54,13 @@ const getActions = uri => {
       };
     },
     quickAddToCartQty: (index, quickAddToCartQty = null, tag = null) => {
-      if (tag != null)
+      if (tag != null) {
         if (quickAddToCartQty == null || typeof quickAddToCartQty === "number")
           quickAddToCartQty = { [tag]: index };
-        else quickAddToCartQty[tag] = index;
+        else if (index == undefined) {
+          delete quickAddToCartQty[tag];
+        } else quickAddToCartQty[tag] = index;
+      }
 
       return {
         type: actionTypes.QUICK_ADD_TO_CART_QTY,

@@ -54,13 +54,13 @@ const getActions = uri => {
 
       let _quantity = input.quantity;
 
-      console.log(
-        _tag,
-        _tag == null,
-        typeof _potentialQuantity,
-        _tag != null && typeof _potentialQuantity === "number",
-        _tag == null && typeof _potentialQuantity === "object"
-      );
+      // console.log(
+      //   _tag,
+      //   _tag == null,
+      //   typeof _potentialQuantity,
+      //   _tag != null && typeof _potentialQuantity === "number",
+      //   _tag == null && typeof _potentialQuantity === "object"
+      // );
 
       if (_tag != null && typeof _potentialQuantity === "number")
         _potentialQuantity = { [_tag]: _quantity };
@@ -83,7 +83,7 @@ const getActions = uri => {
           break;
         case "CLEAR":
           if (_tag == null) _potentialQuantity = 1;
-          else _potentialQuantity[_tag] = 1;
+          else delete _potentialQuantity[_tag];
           break;
       }
 

@@ -7,8 +7,10 @@ import {
   faMinus
 } from "@fortawesome/free-solid-svg-icons";
 import CompareMenu from "./compareMenu";
+import Link from "next/link";
 
 const Compare = props => {
+  console.log(props);
   let allProducts =
     props.misc.compareStrains != null ? props.misc.compareStrains : null;
 
@@ -58,8 +60,8 @@ const Compare = props => {
         product.sotiId + [5, 10, 25][props.shop.quickAddToCartQty[product._id]];
       let _coupon = props.checkout.orderDetails.coupon;
       arr.push(
-        <td key={product._id} className="cursor-pointer w-200">
-          <div className="w-full cursor-pointer">
+        <div key={product._id} className="w-1/6 border border-white">
+          <div className="w-full">
             <div
               style={{ height: "165px" }}
               className="w-full justify-center flex p-4 relative"
@@ -72,20 +74,34 @@ const Compare = props => {
                 src={props.misc.CFURL + product.strainImg}
                 className="h-32 items-baseline pin-b flex w-auto absolute -ml-6"
               />
-              <span className="h-8 w-8 z-999 px-2 justify-center px-1 text-white bg-grey-light absolute pin-r hover:bg-red-light flex -mt-2 -mr-1 shadow-md">
+              <span
+                onClick={() => {
+                  props.quickAddToCartQty(
+                    undefined,
+                    props.shop.quickAddToCartQty,
+                    product._id
+                  );
+
+                  props.modifyPotentialQuantity({
+                    potentialQuantity: props.cart.potentialQuantity,
+                    action: "CLEAR",
+                    tag: product._id
+                  });
+
+                  props.compareStrain({
+                    strain: product,
+                    compareStrains:
+                      props.misc.compareStrains != null
+                        ? props.misc.compareStrains
+                        : [],
+                    action: "remove"
+                  });
+                }}
+                className="h-8 w-8 z-999 px-2 justify-center px-1 text-white bg-grey-light absolute pin-r hover:bg-red-light flex -mt-2 -mr-1 shadow-md"
+              >
                 <FontAwesomeIcon
-                  onClick={() => {
-                    props.compareStrain({
-                      strain: product,
-                      compareStrains:
-                        props.misc.compareStrains != null
-                          ? props.misc.compareStrains
-                          : [],
-                      action: "remove"
-                    });
-                  }}
                   icon={faTimes}
-                  className="absolute pin-t fa-lg scale-item mt-1"
+                  className="absolute cursor-pointer pin-t fa-lg scale-item mt-1"
                 />
               </span>
             </div>
@@ -193,6 +209,40 @@ const Compare = props => {
                   </p>
                 </div>
               </div>
+              <div className="inline-flex w-full bg-grey-lightest">
+                <div className="w-full text-center hover:bg-grey-lighter cursor-pointer">
+                  <p className="p-2 font-bold uppercase hover:text-red-light">
+                    <Link
+                      prefetch
+                      href="/product"
+                      target="_blank"
+                      as={
+                        "/product/" +
+                        product.name.toLowerCase().replace(/ /g, "-")
+                      }
+                    >
+                      See Product
+                    </Link>
+                  </p>
+                </div>
+              </div>
+              <div className="inline-flex w-full bg-grey-lightest">
+                <div className="w-full text-center hover:bg-grey-lighter cursor-pointer">
+                  <p className="p-2 font-bold uppercase hover:text-red-light">
+                    <Link
+                      prefetch
+                      href="/product"
+                      target="_blank"
+                      as={
+                        "/product/" +
+                        product.name.toLowerCase().replace(/ /g, "-")
+                      }
+                    >
+                      See Product
+                    </Link>
+                  </p>
+                </div>
+              </div>
               <div className="inline-flex w-main mx-auto pt-4">
                 {showSeedAmounts(product)}
               </div>
@@ -239,15 +289,7 @@ const Compare = props => {
                       quantity: parseInt(_value)
                     });
                   }}
-                  value={
-                    typeof props.cart.potentialQuantity === "number"
-                      ? 1
-                      : props.cart.potentialQuantity[product._id] == null
-                      ? 1
-                      : props.cart.potentialQuantity[product._id] == ""
-                      ? props.cart.potentialQuantity[product._id]
-                      : ""
-                  }
+                  value={props.cart.potentialQuantity[product._id] || ""}
                   className="text-lg text-center w-10 border-0 font-bold pt-1 leading-none"
                   type="number"
                 />
@@ -290,7 +332,7 @@ const Compare = props => {
               </div>
             </div>
           </div>
-        </td>
+        </div>
       );
     }
     if (arr.length > 6) return arr.slice(0, 6);
@@ -329,107 +371,101 @@ const Compare = props => {
           <p className="text-center bg-grey-lightest p-3 my-4 mt-0 font-bold rounded text-base uppercase text-grey">
             Please, select at least{" "}
             <span className="font-bold underline">2</span> and max{" "}
-            <span className="font-bold underline">6</span> strains to compare.
+            <span className="font-bold underline">5</span> strains to compare.
           </p>
-          <div className="flex flex-wrap w-full justify-start">
-            {props.misc.compareStrains != null ? (
-              <table className="w-full">
-                <tbody>
-                  <tr>
-                    <td className="text-sm w-200">
-                      <div
-                        style={{ height: "154px" }}
-                        className="w-full justify-center flex p-4 relative"
-                      />
-                      <div className="w-full justify-center flex mt-10">
-                        <h4 className="p-2 w-full bg-red-light text-white mt-1 text-center text-sm">
-                          Strain:
-                        </h4>
-                      </div>
-                      <div className="inline-flex w-full mt-4">
-                        <div className="w-full bg-grey-lightest">
-                          <p className="p-2 font-bold uppercase">Genetic:</p>
-                        </div>
-                      </div>
-                      <div className="inline-flex w-full">
-                        <div className="w-full">
-                          <p className="p-2 font-bold uppercase">Type:</p>
-                        </div>
-                      </div>
-                      <div className="inline-flex w-full bg-grey-lightest">
-                        <div className="w-full">
-                          <p className="p-2 font-bold uppercase">
-                            Flower Time:{" "}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="inline-flex w-full">
-                        <div className="w-full">
-                          <p className="p-2 font-bold uppercase">
-                            Average Yield:{" "}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="inline-flex w-full bg-grey-lightest">
-                        <div className="w-full">
-                          <p className="p-2 font-bold uppercase">Indica: </p>
-                        </div>
-                      </div>
-                      <div className="inline-flex w-full">
-                        <div className="w-full">
-                          <p className="p-2 font-bold uppercase">Sativa: </p>
-                        </div>
-                      </div>
-                      <div className="inline-flex w-full bg-grey-lightest">
-                        <div className="w-full">
-                          <p className="p-2 font-bold uppercase">Ruderalis: </p>
-                        </div>
-                      </div>
-                      <div className="inline-flex w-full">
-                        <div className="w-full">
-                          <p className="p-2 font-bold uppercase">CBD Level:</p>
-                        </div>
-                      </div>
-                      <div className="inline-flex w-full bg-grey-lightest">
-                        <div className="w-full">
-                          <p className="p-2 font-bold uppercase">THC Level: </p>
-                        </div>
-                      </div>
-                      <div className="inline-flex w-full">
-                        <div className="w-full">
-                          <p className="p-2 font-bold uppercase">THC %: </p>
-                        </div>
-                      </div>
-                      <div className="inline-flex w-full bg-grey-lightest">
-                        <div className="w-full">
-                          <p className="p-2 font-bold uppercase">CBD %:</p>
-                        </div>
-                      </div>
-                      <div className="inline-flex w-full">
-                        <div className="w-full">
-                          <p className="p-2 font-bold uppercase">CBN %:</p>
-                        </div>
-                      </div>
-                      <div className="inline-flex w-full bg-grey-lightest">
-                        <div className="w-full">
-                          <p className="p-2 font-bold uppercase">Reviews:</p>
-                        </div>
-                      </div>
-                      <div className="inline-flex w-full">
-                        <div className="w-full">
-                          <p className="p-2 font-bold uppercase">Prices:</p>
-                        </div>
-                      </div>
-                      <div className="inline-flex w-full mt-32 mb-5 bg-red-dark text-white" />
-                    </td>
-                    {Products()}
-                  </tr>
-                </tbody>
-              </table>
+          <div className="w-full">
+            {props.misc.compareStrains != null &&
+            props.misc.compareStrains.length != 0 ? (
+              <div className="flex-wrap flex w-full justify-start">
+                <div className="text-sm w-1/6 border border-white">
+                  <div
+                    style={{ height: "154px" }}
+                    className="w-full justify-center flex p-4 relative"
+                  />
+                  <div className="w-full justify-center flex mt-10">
+                    <h4 className="p-2 w-full bg-red-light text-white mt-1 text-center text-sm">
+                      Strain:
+                    </h4>
+                  </div>
+                  <div className="inline-flex w-full mt-4">
+                    <div className="w-full bg-grey-lightest">
+                      <p className="p-2 font-bold uppercase">Genetic:</p>
+                    </div>
+                  </div>
+                  <div className="inline-flex w-full">
+                    <div className="w-full">
+                      <p className="p-2 font-bold uppercase">Type:</p>
+                    </div>
+                  </div>
+                  <div className="inline-flex w-full bg-grey-lightest">
+                    <div className="w-full">
+                      <p className="p-2 font-bold uppercase">Flower Time: </p>
+                    </div>
+                  </div>
+                  <div className="inline-flex w-full">
+                    <div className="w-full">
+                      <p className="p-2 font-bold uppercase">Average Yield: </p>
+                    </div>
+                  </div>
+                  <div className="inline-flex w-full bg-grey-lightest">
+                    <div className="w-full">
+                      <p className="p-2 font-bold uppercase">Indica: </p>
+                    </div>
+                  </div>
+                  <div className="inline-flex w-full">
+                    <div className="w-full">
+                      <p className="p-2 font-bold uppercase">Sativa: </p>
+                    </div>
+                  </div>
+                  <div className="inline-flex w-full bg-grey-lightest">
+                    <div className="w-full">
+                      <p className="p-2 font-bold uppercase">Ruderalis: </p>
+                    </div>
+                  </div>
+                  <div className="inline-flex w-full">
+                    <div className="w-full">
+                      <p className="p-2 font-bold uppercase">CBD Level:</p>
+                    </div>
+                  </div>
+                  <div className="inline-flex w-full bg-grey-lightest">
+                    <div className="w-full">
+                      <p className="p-2 font-bold uppercase">THC Level: </p>
+                    </div>
+                  </div>
+                  <div className="inline-flex w-full">
+                    <div className="w-full">
+                      <p className="p-2 font-bold uppercase">THC %: </p>
+                    </div>
+                  </div>
+                  <div className="inline-flex w-full bg-grey-lightest">
+                    <div className="w-full">
+                      <p className="p-2 font-bold uppercase">CBD %:</p>
+                    </div>
+                  </div>
+                  <div className="inline-flex w-full">
+                    <div className="w-full">
+                      <p className="p-2 font-bold uppercase">CBN %:</p>
+                    </div>
+                  </div>
+                  <div className="inline-flex w-full bg-grey-lightest">
+                    <div className="w-full">
+                      <p className="p-2 font-bold uppercase">Reviews:</p>
+                    </div>
+                  </div>
+                  <div className="inline-flex w-full">
+                    <div className="w-full">
+                      <p className="p-2 font-bold uppercase">Prices:</p>
+                    </div>
+                  </div>
+                  <div className="inline-flex w-full mt-32 mb-5 bg-red-dark text-white" />
+                </div>
+                {Products()}
+              </div>
             ) : null}
           </div>
-          {props.misc.compareStrains != null ? (
-            <div className="w-full flex justify-end mt-8">
+          {props.misc.compareStrains != null &&
+          props.misc.compareStrains.length != 0 ? (
+            <div className="w-full flex justify-end mt-12">
               <div
                 onClick={() => {
                   props.compareStrain({
@@ -441,7 +477,8 @@ const Compare = props => {
                     action: "remove"
                   });
                 }}
-                className="bg-red-dark text-white rounded text-center text-xl cursor-pointer hover:bg-red-light p-2 w-200 font-bold scale-item"
+                style={{ width: "140px" }}
+                className="bg-grey-lighter text-grey rounded text-center cursor-pointer hover:bg-red-light p-2 font-bold scale-item mr-8"
               >
                 <h4>Clear Comparison</h4>
               </div>

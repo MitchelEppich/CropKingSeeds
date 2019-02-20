@@ -132,7 +132,9 @@ class Index extends Component {
     return (
       <Layout>
         <div className="text-center w-full pt-12 bg-white relative">
-          <h1 className="text-4xl font-black text-black">Checkout Preview</h1>
+          <h1 className="text-4xl font-black text-black">
+            {_stepsCheckout == 5 ? "Confirmation" : "Checkout Preview"}
+          </h1>
         </div>
         <form
           onSubmit={e => {
@@ -270,63 +272,64 @@ class Index extends Component {
               }}
               className=""
             />
+            {_stepsCheckout != 5 ? (
+              <div className="w-full inline-flex justify-between">
+                <div
+                  onClick={() => {
+                    _stepsCheckout > 0
+                      ? this.props.toggleStepsCheckout(_stepsCheckout - 1)
+                      : null;
+                  }}
+                  className={`w-200 p-2 text-left cursor-pointer flex items-center hover:text-red ${
+                    _stepsCheckout == 0 || _stepsCheckout >= 4
+                      ? "opacity-0 unselectable pointer-events-none"
+                      : ""
+                  }`}
+                >
+                  {_stepsCheckout != 0 ? (
+                    <span
+                      className={`flex items-center font-extrabold text-red-light hover:text-red-light text-2xl uppercase`}
+                    >
+                      <FontAwesomeIcon
+                        icon={faAngleLeft}
+                        className="fa-2x mr-4"
+                      />
+                      Back
+                    </span>
+                  ) : null}
+                </div>
 
-            <div className="w-full inline-flex justify-between">
-              <div
-                onClick={() => {
-                  _stepsCheckout > 0
-                    ? this.props.toggleStepsCheckout(_stepsCheckout - 1)
-                    : null;
-                }}
-                className="w-200 p-2 text-left cursor-pointer flex items-center hover:text-red"
-              >
-                {_stepsCheckout != 0 ? (
-                  <span
-                    className={`flex items-center font-extrabold text-red-light hover:text-red-light text-2xl uppercase ${
-                      _stepsCheckout >= 4
-                        ? "opacity-0 unselectable pointer-events-none"
-                        : ""
-                    }`}
-                  >
-                    <FontAwesomeIcon
-                      icon={faAngleLeft}
-                      className="fa-2x mr-4"
-                    />
-                    Back
-                  </span>
-                ) : null}
+                <span
+                  style={{
+                    height: "40px",
+                    borderLeft: "2px solid #ececec"
+                  }}
+                />
+                <div
+                  className={`w-200 p-2 text-right justify-end cursor-pointer flex items-center hover:text-red ${
+                    _stepsCheckout >= 3
+                      ? "opacity-0 unselectable pointer-events-none"
+                      : _error
+                      ? "opacity-50 unselectable pointer-events-none"
+                      : ""
+                  }`}
+                >
+                  {_stepsCheckout != 4 ? (
+                    <button
+                      name="nextCheckout"
+                      className="flex items-center font-extrabold text-red-light hover:text-red-light text-2xl uppercase"
+                      type="submit"
+                    >
+                      Next
+                      <FontAwesomeIcon
+                        icon={faAngleRight}
+                        className="fa-2x ml-4"
+                      />
+                    </button>
+                  ) : null}
+                </div>
               </div>
-
-              <span
-                style={{
-                  height: "40px",
-                  borderLeft: "2px solid #ececec"
-                }}
-              />
-              <div
-                className={`w-200 p-2 text-right justify-end cursor-pointer flex items-center hover:text-red ${
-                  _stepsCheckout >= 3
-                    ? "opacity-0 unselectable pointer-events-none"
-                    : _error
-                    ? "opacity-50 unselectable pointer-events-none"
-                    : ""
-                }`}
-              >
-                {_stepsCheckout != 4 ? (
-                  <button
-                    name="nextCheckout"
-                    className="flex items-center font-extrabold text-red-light hover:text-red-light text-2xl uppercase"
-                    type="submit"
-                  >
-                    Next
-                    <FontAwesomeIcon
-                      icon={faAngleRight}
-                      className="fa-2x ml-4"
-                    />
-                  </button>
-                ) : null}
-              </div>
-            </div>
+            ) : null}
           </div>
         </form>
       </Layout>

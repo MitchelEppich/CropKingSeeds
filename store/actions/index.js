@@ -113,7 +113,7 @@ const actions = {
     } else {
       compareStrains = [...compareStrains, input.strain];
     }
-    if (compareStrains.length > 6) compareStrains = compareStrains.slice(0, 6);
+    if (compareStrains.length > 5) compareStrains = compareStrains.slice(0, 5);
     return {
       type: actionTypes.COMPARE_STRAIN,
       compareStrains: compareStrains

@@ -64,6 +64,13 @@ const CompareMenu = props => {
             strain._id
           );
 
+          props.modifyPotentialQuantity({
+            potentialQuantity: props.cart.potentialQuantity,
+            action: "SET",
+            tag: strain._id,
+            quantity: 1
+          });
+
           props.compareStrain({
             strain: strain,
             compareStrains:
