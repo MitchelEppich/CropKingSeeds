@@ -50,6 +50,7 @@ const ProductPreview = props => {
                   props.modifyCart({
                     items: props.cart.items,
                     action: "REMOVE",
+                    max: props.cart.maxPerPackage,
                     productIdentifier: item
                   });
                 }}
@@ -115,6 +116,7 @@ const ProductPreview = props => {
                         props.modifyCart({
                           items: props.cart.items,
                           action: "MODIFY",
+                          max: props.cart.maxPerPackage,
                           productIdentifier: item,
                           product: _product,
                           quantity: -1,
@@ -135,6 +137,7 @@ const ProductPreview = props => {
                           props.modifyCart({
                             items: props.cart.items,
                             action: "SET",
+                            max: props.cart.maxPerPackage,
                             productIdentifier: item,
                             product: _product,
                             quantity: 1,
@@ -152,6 +155,7 @@ const ProductPreview = props => {
                         props.modifyCart({
                           items: props.cart.items,
                           action: "SET",
+                          max: props.cart.maxPerPackage,
                           productIdentifier: item,
                           product: _product,
                           quantity: parseInt(_value),
@@ -170,6 +174,7 @@ const ProductPreview = props => {
                         props.modifyCart({
                           items: props.cart.items,
                           action: "MODIFY",
+                          max: props.cart.maxPerPackage,
                           productIdentifier: item,
                           product: _product,
                           quantity: 1,

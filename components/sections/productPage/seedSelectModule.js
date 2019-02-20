@@ -47,7 +47,8 @@ const seedSelectModule = props => {
             props.modifyPotentialQuantity({
               potentialQuantity: props.cart.potentialQuantity,
               action: "MODIFY",
-              quantity: -1
+              quantity: -1,
+              max: props.cart.maxPerPackage
             })
           }
           className="w-8 bg-grey-light text-sm text-white rounded hover:bg-red-light"
@@ -64,6 +65,7 @@ const seedSelectModule = props => {
               props.modifyPotentialQuantity({
                 potentialQuantity: props.cart.potentialQuantity,
                 action: "SET",
+                max: props.cart.maxPerPackage,
                 quantity: 1
               });
             }
@@ -73,6 +75,7 @@ const seedSelectModule = props => {
             props.modifyPotentialQuantity({
               potentialQuantity: props.cart.potentialQuantity,
               action: "SET",
+              max: props.cart.maxPerPackage,
               quantity: parseInt(_value)
             });
           }}
@@ -86,6 +89,7 @@ const seedSelectModule = props => {
             props.modifyPotentialQuantity({
               potentialQuantity: props.cart.potentialQuantity,
               action: "MODIFY",
+              max: props.cart.maxPerPackage,
               quantity: 1
             })
           }

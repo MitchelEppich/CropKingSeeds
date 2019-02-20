@@ -68,6 +68,7 @@ const cartItem = props => {
                   props.modifyCart({
                     items: props.cart.items,
                     action: "REMOVE",
+                    max: props.cart.maxPerPackage,
                     productIdentifier: item
                   });
                 }}
@@ -81,6 +82,7 @@ const cartItem = props => {
                     props.modifyCart({
                       items: props.cart.items,
                       action: "MODIFY",
+                      max: props.cart.maxPerPackage,
                       productIdentifier: item,
                       product: _product,
                       quantity: -1,
@@ -101,6 +103,7 @@ const cartItem = props => {
                       props.modifyCart({
                         items: props.cart.items,
                         action: "SET",
+                        max: props.cart.maxPerPackage,
                         productIdentifier: item,
                         product: _product,
                         quantity: 1,
@@ -118,6 +121,7 @@ const cartItem = props => {
                     props.modifyCart({
                       items: props.cart.items,
                       action: "SET",
+                      max: props.cart.maxPerPackage,
                       productIdentifier: item,
                       product: _product,
                       quantity: parseInt(_value),
@@ -134,6 +138,7 @@ const cartItem = props => {
                     props.modifyCart({
                       items: props.cart.items,
                       action: "MODIFY",
+                      max: props.cart.maxPerPackage,
                       productIdentifier: item,
                       product: _product,
                       quantity: 1,

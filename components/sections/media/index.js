@@ -43,7 +43,7 @@ const Media = props => {
       arr.push(
         <div
           key={item}
-        //   style={{ background: "rgb(250, 250, 250)" }}
+          //   style={{ background: "rgb(250, 250, 250)" }}
           className={`w-main lg:w-full bg-smoke-grey mx-auto mt-4 rounded shadow-md relative ${
             active ? "mb-2" : ""
           }`}
@@ -62,10 +62,7 @@ const Media = props => {
             </div>
           </div>
           {active ? (
-            <div
-              
-              className="p-4 inline-flex bg-white relative"
-            >
+            <div className="p-4 inline-flex bg-white relative">
               <div className="px-2 ml-4 sm:ml-0 md:ml-0 lg:ml-0">
                 <img
                   src={imageUrl}
@@ -118,12 +115,12 @@ const Media = props => {
   };
 
   let showCategories = () => {
-    let arr = []; 
+    let arr = [];
     let keys = Object.keys(news);
     keys.map((category, index) => {
       arr.push(
         <div
-        key={news}
+          key={news}
           className={`w-main mx-auto sm:w-full ${index == 0 ? "" : "mt-12"} ${
             index == keys.length - 1 ? "mb-12" : ""
           }`}
@@ -139,7 +136,7 @@ const Media = props => {
   };
 
   let imageHeader = {
-    background: "url(../../static/img/eventsHeader.jpg)",
+    background: `url(${props.misc.CFURL}/banners/newsHeader.jpg)`,
     backgroundSize: "cover",
     backgroundPosition: "left"
   };

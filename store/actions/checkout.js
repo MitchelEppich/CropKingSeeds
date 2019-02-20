@@ -112,6 +112,7 @@ const getActions = uri => {
       if (_cartTotal >= _freeShippingThreshold) {
         if (_methods.length == 2) _methods = [{ ..._methods[1] }];
         _methods[0].price = 0;
+        _methods[0].tag = "Free Shipping";
       }
 
       // Clear shipping choice
@@ -198,9 +199,11 @@ const getActions = uri => {
 
           if (_obj.payment != null && _obj.payment.coupon != null) {
             let _coupon = _obj.payment.coupon;
+            let _max = input.max;
             dispatch(
               objects.applyCoupon({
                 action: "APPEND",
+                max: _max,
                 coupon: _coupon.value,
                 orderDetails: _obj,
                 ip: _obj.cardHolderIp,
@@ -221,6 +224,7 @@ const getActions = uri => {
     },
     applyCoupon: input => {
       return async dispatch => {
+        let _max = input.max;
         let _items = { ...input.items };
         let _orderDetails = { ...input.orderDetails };
         delete input.items;
@@ -253,6 +257,7 @@ const getActions = uri => {
         dispatch(
           CartActions.refreshCart({
             items: _items,
+            max: _max,
             itemId: _coupon.itemId,
             coupon: _action == "REMOVE" ? null : _coupon
           })

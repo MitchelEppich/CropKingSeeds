@@ -24,7 +24,8 @@ const PaymentReview = props => {
     (_orderDetails[pageGroup].productList != null &&
       _orderDetails[pageGroup].productList.value != productList)
   ) {
-    // Product Information
+    let _payment = _orderDetails[pageGroup];
+    console.log(_payment);
 
     // Payment Information
     let cartTotal = _cart.price;
@@ -67,6 +68,9 @@ const PaymentReview = props => {
 
     let orderTotal = creditFee + shippingFee + cartTotal + taxFee;
 
+    let _method =
+      _payment == null ? undefined : _orderDetails[pageGroup].method;
+
     _orderDetails[pageGroup] = {
       ..._orderDetails.payment,
       updateRequested: false,
@@ -84,8 +88,21 @@ const PaymentReview = props => {
       orderTotal: { value: orderTotal, tag: "Total" },
       productList: { value: productList, tag: "productlist" },
       itemQuantity: { value: itemQuantity, tag: "Order_Qty" },
-      currency: { value: currency, tag: "Currency" }
+      currency: { value: currency, tag: "Currency" },
+      method: _method,
+      isPrepaid:
+        _payment == null
+          ? {
+              value: "No",
+              tag: "Prepaidcard"
+            }
+          : _orderDetails[pageGroup].isPrepaid
     };
+
+    if (_method == null)
+      props.setVisibleScreen({
+        clearAll: true
+      });
 
     _orderDetails[pageGroup].updatedAt = _orderDetails.payment.updatedAt;
 

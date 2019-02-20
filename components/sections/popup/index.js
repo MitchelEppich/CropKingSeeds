@@ -16,7 +16,7 @@ const PopUpBanner = props => {
       className="fixed showPopUpScreen bg-black-transparent z-999 w-full h-screen flex justify-center items-center"
     >
       <div className="z-999 fixed justify-center flex items-center p-8">
-        <img src="../../static/img/FirstTime_PopUp.jpg" className="" />
+        <img src={`${props.misc.CFURL}/popup/FirstTime.jpg`} className="" />
         <FontAwesomeIcon
           onClick={() => {
             props.setVisibleScreen({ input: "showPopUpBanner" });

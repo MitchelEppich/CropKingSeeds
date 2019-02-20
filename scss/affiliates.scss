@@ -4,45 +4,47 @@
 // @access public
 // @param {String} $element - Element's name
 @mixin element($element) {
-    &__#{$element} {
-        @content;
-    }
+  &__#{$element} {
+    @content;
+  }
 }
 // Block Modifier
 // @access public
 // @param {String} $modifier - Modifier's name
 @mixin modifier($modifier) {
-    &--#{$modifier} {
-        @content;
-    }
+  &--#{$modifier} {
+    @content;
+  }
 }
 
 //EXAMPLE FONT FACE IMPORT WITH TWO WEIGHTS
 @font-face {
-    font-family: "proxima nova";
-    src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff") format("truetype");
-    font-weight: thin;
-    font-style: normal;
-    font-display: swap;
+  font-family: "proxima nova";
+  src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff")
+    format("truetype");
+  font-weight: thin;
+  font-style: normal;
+  font-display: swap;
 }
 @font-face {
-    font-family: "proxima nova";
-    src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "proxima nova";
+  src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 ////////////////
 // AFFILIATES PAGE
 .affiliatesBanner {
-    background-image: url("../static/img/affiliatesBanner.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 60vh;
-    padding: 50px 100px 0 100px;
+  background-image: url("http://dcfgweqx7od72.cloudfront.net/banners/affiliatesHeader.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 60vh;
+  padding: 50px 100px 0 100px;
 }
 // END AFFILIATES PAGE
 ////////////////////

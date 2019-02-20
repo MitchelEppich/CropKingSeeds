@@ -138,7 +138,6 @@ class Index extends Component {
           onSubmit={e => {
             e.preventDefault();
 
-            // this.props.toggleStepsCheckout(1);
             if (
               _stepsCheckout == 4 &&
               _orderDetails.payment.method.value == "Bitcoin"

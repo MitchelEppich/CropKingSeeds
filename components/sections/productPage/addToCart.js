@@ -63,6 +63,7 @@ const addToCart = props => {
                 props.modifyCart({
                   items: props.cart.items,
                   action: "APPEND",
+                  max: props.cart.maxPerPackage,
                   productIdentifier: _identifier,
                   product: currentProduct,
                   quantity: props.cart.potentialQuantity,
@@ -92,6 +93,7 @@ const addToCart = props => {
                   props.modifyCart({
                     items: props.cart.items,
                     action: "APPEND",
+                    max: props.cart.maxPerPackage,
                     productIdentifier: _identifier,
                     product: currentProduct,
                     quantity: props.cart.potentialQuantity,

@@ -8,7 +8,7 @@ const About = props => {
   let content = currentHistoryObj.content;
 
   let currentItem = props.about.currentHistoryObj;
-  let currentImgSrc = currentHistoryObj.imgSrc;
+  let currentImgSrc = props.misc.CFURL + currentHistoryObj.imgSrc;
   let date = currentHistoryObj.date;
   // let date = moment(currentHistoryObj.date).format("MMM, Do - YYYY");
 
@@ -35,7 +35,7 @@ const About = props => {
       >
         <img
           style={activeThumb}
-          src={val.imgSrc}
+          src={props.misc.CFURL + val.imgSrc}
           className="w-full h-full about-img shadow-md"
         />
       </div>
@@ -91,7 +91,7 @@ const About = props => {
       >
         <img
           className="h-200 w-200 rounded-full border-8 border-grey-lighter scale-item"
-          src={val.src}
+          src={props.misc.CFURL + val.src}
         />
         <p className="w-250 mx-auto text-center mt-6">{val.content}</p>
       </div>

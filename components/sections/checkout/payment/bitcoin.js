@@ -6,22 +6,22 @@ const Bitcoin = props => {
   let pageGroup = "payment";
   let paymentType = "Bitcoin";
 
-  let showBitcoinData = () => {
-    let _data = props.checkout.bitcoinData;
+  // let showBitcoinData = () => {
+  //   let _data = props.checkout.bitcoinData;
 
-    if (_data == null || Object.keys(_data).length == 0) return null;
-    return <p>{`${_data.value} ${_data.currency} = ${_data.rate} ₿`}</p>;
-  };
+  //   if (_data == null || Object.keys(_data).length == 0) return null;
+  //   return <p>{`${_data.value} ${_data.currency} = ${_data.rate} ₿`}</p>;
+  // };
 
   return (
     <div className="w-full mb-6">
       <div
         onClick={() => {
           props.setVisibleScreen({
-            input: "bitcoin",
+            input: paymentType,
             group: "payment"
           });
-          props.getBitcoinData({ value: "1", currency: "USD" });
+          // props.getBitcoinData({ value: "1", currency: "USD" });
           let _orderDetails = props.checkout.orderDetails;
           props.modifyOrderDetails({
             orderDetails: _orderDetails,
@@ -56,7 +56,7 @@ const Bitcoin = props => {
         </div>
       </div>
       {props.misc.visibleScreen != null &&
-      props.misc.visibleScreen.includes("payment::bitcoin") ? (
+      props.misc.visibleScreen.includes("payment::" + paymentType) ? (
         <div className="w-full p-2">
           <div className="w-full mt-2 text-center">
             <p className="text-sm p-2">
@@ -67,9 +67,6 @@ const Bitcoin = props => {
               width="200px"
               className="mt-4 cursor-pointer"
             />
-          </div>
-          <div className="w-full mt-2 text-center text-md">
-            {showBitcoinData()}
           </div>
           <div className="w-200 p-2 mx-auto mt-6 text-center">
             <button

@@ -222,6 +222,7 @@ class Index extends Component {
               this.props.modifyPotentialQuantity({
                 potentialQuantity: this.props.cart.potentialQuantity,
                 action: "SET",
+                max: props.cart.maxPerPackage,
                 quantity: 1
               });
             }}

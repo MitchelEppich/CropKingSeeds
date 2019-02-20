@@ -26,11 +26,13 @@ const CreditCard = props => {
 
   let ccNumberFormat = new StringMask("0000-0000-0000-0000");
 
+  console.log(props.checkout.orderDetails, "");
+
   return (
     <div className="w-full mb-6">
       <div
         onClick={() => {
-          props.setVisibleScreen({ input: "creditCard", group: "payment" });
+          props.setVisibleScreen({ input: paymentType, group: "payment" });
           let _orderDetails = props.checkout.orderDetails;
           props.modifyOrderDetails({
             orderDetails: _orderDetails,
@@ -64,7 +66,7 @@ const CreditCard = props => {
           </div>
         </div>
       </div>
-      {props.misc.visibleScreen.includes("payment::creditCard") ? (
+      {props.misc.visibleScreen.includes("payment::" + paymentType) ? (
         <div className="w-600 sm:w-full mx-auto p-2">
           <div className="w-full mt-2 text-center opacity-75">
             <p className="text-sm p-2">Cards Accepted:</p>
@@ -78,20 +80,30 @@ const CreditCard = props => {
                   let _orderDetails = props.checkout.orderDetails;
                   let _target = e.target;
                   let _key = _target.id;
-                  let _value = _target.checked;
+                  let _value = _target.checked ? "Yes" : "No";
+                  let _tag = "Prepaidcard";
                   props.modifyOrderDetails({
                     orderDetails: _orderDetails,
                     group: pageGroup,
                     key: _key,
-                    value: _value
+                    value: _value,
+                    tag: _tag
                   });
                 }}
+                checked={
+                  props.checkout.orderDetails.payment.isPrepaid != null &&
+                  props.checkout.orderDetails.payment.isPrepaid.value == "Yes"
+                    ? true
+                    : false
+                }
                 type="checkbox"
                 className="mr-2"
               />
               Are you using a Prepaid Card?
             </label>
-            {props.checkout.orderDetails.payment.isPrepaid != true ? (
+
+            {props.checkout.orderDetails.payment.isPrepaid != null &&
+            props.checkout.orderDetails.payment.isPrepaid.value != "Yes" ? (
               <input
                 type="text"
                 id="cardHolder"

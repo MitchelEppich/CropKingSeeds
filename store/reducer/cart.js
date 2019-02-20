@@ -6,7 +6,8 @@ const initialState = {
   price: 0,
   potentialQuantity: 1,
   cartPosition: null,
-  discount: null
+  discount: null,
+  maxPerPackage: 500
 };
 
 export default (state = initialState, action) => {

@@ -12,7 +12,9 @@ const Confirmation = props => {
   let href = window.location.href.replace(Router.router.asPath, "");
 
   let _orderDetails = props.checkout.orderDetails;
+  if (_orderDetails.payment == null) return <div />;
   let orderId = _orderDetails.payment.orderId.value.toString();
+  if (orderId == null) return <div />;
   let fOrderId = [orderId.slice(0, 4), "-", orderId.slice(4), "-CKS"].join("");
 
   let currency = props.checkout.viewCurrency;
