@@ -2,9 +2,13 @@ import Router from "next/router";
 import Link from "next/link";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCannabis } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCannabis,
+  faTimes,
+  faCheck
+} from "@fortawesome/free-solid-svg-icons";
 
-const strainsMenu = props => {
+const CompareMenu = props => {
   let category = {
     Regular: "Regular",
     Feminized: "Feminized",
@@ -15,16 +19,12 @@ const strainsMenu = props => {
   };
   let headersPlacement = [];
   let showMenu =
-    Router.asPath.slice(1).includes("product/") &&
+    Router.asPath.slice(1).includes("compare") &&
     props.viewProduct.showStrainsMenu;
-  let position = showMenu
-    ? {
-        transform: "translateX(0)",
-        overflow: "hidden"
-      }
-    : {
-        transform: "translateX(-255px)"
-      };
+  let position = {
+    transform: "translateX(0)",
+    overflow: "hidden"
+  };
   let _strains = props.misc.strains;
 
   if (_strains == null) return <div />;
@@ -43,84 +43,57 @@ const strainsMenu = props => {
   strains = strains.map((strain, index) => {
     if (index == 0 || strains[index].genetic != strains[index - 1].genetic)
       headersPlacement.push(index);
+    let active =
+      props.misc.compareStrains != null
+        ? props.misc.compareStrains.indexOf(strain) > -1
+        : false;
     return (
-      <Link
+      <li
         key={index}
-        href="/product"
-        as={strain.name
-          .toLowerCase()
-          .split(" ")
-          .join("-")}
+        className={`text-base font-bold text-left border-b-2 text-grey  hover:bg-grey-lightest hover:text-grey border-grey-lightest pl-4 cursor-pointer ${
+          active ? "bg-grey-lightest" : "bg-white"
+        }`}
+        onClick={() => {
+          let _index = 0;
+          while (strain.price[_index] == -1) {
+            _index++;
+          }
+          props.quickAddToCartQty(
+            _index,
+            props.shop.quickAddToCartQty,
+            strain._id
+          );
+
+          props.compareStrain({
+            strain: strain,
+            compareStrains:
+              props.misc.compareStrains != null
+                ? props.misc.compareStrains
+                : [],
+            action: active ? "remove" : "add"
+          });
+        }}
       >
-        <li
-          className="text-base font-bold text-left border-b-2 text-grey hover:text-white hover:bg-red-light border-grey-lightest pl-4 cursor-pointer"
-          onClick={e => {
-            let strains = props.misc.strains;
-            props.getStrain({ sotiId: strain.sotiId, strains }).then(res => {
-              props.setCurrentProduct({ product: res }).then(() => {
-                let product = props.viewProduct.currentProduct;
-                let _index = 0;
-                while (strain.price[_index] == -1) {
-                  _index++;
-                }
-                props.quickAddToCartQty(_index);
-              });
-            });
-          }}
-        >
-          {strain.name}
-        </li>
-      </Link>
+        {strain.name}{" "}
+        {active ? (
+          <span className="h-8 px-2 justify-center px-1 text-white bg-grey-light absolute pin-r hover:bg-red-light">
+            <FontAwesomeIcon icon={faCheck} className="text-right" />
+          </span>
+        ) : null}
+      </li>
     );
   });
 
-  let StrainText = {
-    writingMode: "vertical-rl",
-    textOrientation: "mixed"
-  };
   return (
-    <div
-      // onClick={() => props.toggleStrainsMenu(false)}
-      style={position}
-      className={
-        showMenu
-          ? "w-250 h-screen bg-smoke-grey shadow-md slowish fixed pin-l pin-t mt-32 z-40 pb-2 list_container"
-          : "w-250 h-screen bg-smoke-grey shadow-md slowish fixed pin-l pin-t mt-32 z-40 pb-2 "
-      }
-    >
-      {Router.asPath.slice(1).includes("product/") ? (
-        <div
-          onClick={e => {
-            e.stopPropagation();
-            props.toggleStrainsMenu(true);
-          }}
-          className="w-12 h-32 bg-red-darker hover:bg-red-light rounded-tr-lg rounded-br-lg mt-400 pin-r absolute pin-r -mr-12 cursor-pointer"
-        >
-          <p
-            style={StrainText}
-            className="font-bold text-white w-8 h-10 pt-4 uppercase pb-4"
-          >
-            Strains
-          </p>
-          <FontAwesomeIcon
-            icon={faCannabis}
-            style={{ transform: "rotate(90deg)" }}
-            className="fa-2x cursor-pointer flex justify-center mt-12 ml-2 py-1 text-white"
-          />
-        </div>
-      ) : null}
-
-      <div className="bg-white text-white relative -ml-1">
-        <p className="bg-red-dark text-white text-center uppercase text-xl p-2 absolute w-full font-bold">
-          All Strains
-        </p>
-        <div className="overflow-y-auto h-screen w-full">
+    <div className={"w-full px-1 h-full slowish z-40 pb-2"}>
+      <div className="bg-white text-white relative -ml-1 ">
+        <div className=" w-full">
           <p
             className={`bg-${
               props.detail.geneColor[
                 _strains[headersPlacement[0]].genetic.toLowerCase()
               ]
-            } p-3 font-bold text-center text-white text-shadow uppercase w-full mt-10`}
+            } p-3 font-bold text-center text-white text-shadow uppercase w-full mt-1`}
           >
             {category[_strains[headersPlacement[0]].genetic]}
           </p>
@@ -184,7 +157,7 @@ const strainsMenu = props => {
           >
             {category[_strains[headersPlacement[5]].genetic]}
           </p>
-          <ul className="text-white leading-loose mt-1 pb-10 mb-24 w-full list-reset">
+          <ul className="text-white leading-loose mt-1 pb-10 mb-2 w-full list-reset">
             {strains.slice(headersPlacement[5])}
           </ul>
         </div>
@@ -192,4 +165,4 @@ const strainsMenu = props => {
     </div>
   );
 };
-export default strainsMenu;
+export default CompareMenu;

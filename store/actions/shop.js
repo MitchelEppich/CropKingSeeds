@@ -53,10 +53,15 @@ const getActions = uri => {
         type: actionTypes.CLEAR_FILTERS
       };
     },
-    quickAddToCartQty: input => {
+    quickAddToCartQty: (index, quickAddToCartQty = null, tag = null) => {
+      if (tag != null)
+        if (quickAddToCartQty == null || typeof quickAddToCartQty === "number")
+          quickAddToCartQty = { [tag]: index };
+        else quickAddToCartQty[tag] = index;
+
       return {
         type: actionTypes.QUICK_ADD_TO_CART_QTY,
-        input: input
+        input: quickAddToCartQty || index
       };
     },
     toggleShowFilters: bool => {
