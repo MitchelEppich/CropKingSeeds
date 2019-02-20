@@ -105,7 +105,7 @@ const menu = props => {
     <div
       style={{
         background: "white",
-        background: `url(${props.misc.CFURL}/banners/header.jpg)`,
+        background: "url(../static/img/bg-header.png)",
         backgroundSize: "cover",
         backgroundPosition: "left",
 
@@ -180,8 +180,16 @@ const menu = props => {
                 </p>
               </div>
               <p className="pl-3 pr-4 p-2 uppercase font-extrabold text-lg sm:hidden">
-                +1-844-CROP-KING
-                <span className="-ml-2 mr-2">/</span>(276-7546)
+                {props.misc.ageVerification != null &&
+                "United States" == props.misc.ageVerification.country ? (
+                  <React.Fragment>
+                    <span>+1-844-CROP-KING</span>
+                    <span className="-ml-2 mr-2">/</span>
+                    <span>(276-7546)</span>
+                  </React.Fragment>
+                ) : (
+                  "CALL NOW: +1 (604) 563-0291"
+                )}
               </p>
             </a>
           </div>

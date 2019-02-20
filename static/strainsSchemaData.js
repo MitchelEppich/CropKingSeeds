@@ -8,7 +8,7 @@ module.exports = [
     pcbd: [0.1, 0.9],
     pcbn: [0.3, 4.2],
     country: [2, 3],
-    relationData: "ᦍᥦᔙ᧲᭚Ꮽᩐᥦ1",
+    relationData: "ᩐᥦ1",
     reviews: [
       "HB/&=>customer@cks.com/&=>Thanks for everything Crop King, I received my treats today, the service was great and the order was right on time, keep up the great work and all the best./&=>5/&=>Fri Feb 08 2019 09:54:39 GMT-0800",
       "William Ellwood/&=>customer@cks.com/&=> Arrived very fast. So far 3 for 4 out of the ten pack. The only thing I doesn't make a whole lot of sense why you wouldn't have them all labeled so if someone likes a strain they will know what it is and be able to rebuy the ones liked./&=>3/&=>Fri Feb 08 2019 09:53:46 GMT-0800",
@@ -97,7 +97,7 @@ module.exports = [
     pcbd: [1.21],
     pcbn: [0.4],
     country: [2],
-    relationData: "᧫ ጵಢᮋ೾ಢᮆ೸ಣᲫ೸ತ᧪೶ತ᱇೶ಥᦋ೶಩⊓೶",
+    relationData: "᧫ ጵಢᮋ೾ತ᧪೶",
     reviews: [
       "DBush/&=>customer@cks.com/&=>I picked a 5 pack quick to ship. Only 1 didn't germinate the rest grew like champs. It says ready in 9 weeks but I held off until week 12 to harvest and they exploded between 9-12. Out of the 5 I have grown todate the average I have been seeing is about 4oz per plant dry. They take very well to LST, and smell wonderful best way I can describe it is like a lemon pinecone. All of mine are fox farm soil planted, indoor, 800w led, nutrient added from week 4 to 10. Last two weeks flush. Great energetic high, if you have never had a strong sativa I definitely recommend amnesia haze./&=>5/&=>Fri Feb 08 2019 10:22:59 GMT-0800",
       "Eric noury/&=>customer@cks.com/&=>Definitely a hash plant at harvest if done correctly in a 100% proper indoor grow. I did get one for hermaphrodite, but in a shatter extract the oil was unbelievable. I literally got 6 to 7 g oil extract From 18g. Use proper nutrients and proper and a good cyclone airflow and even without CO2 you will have an amazing harvest/&=>5/&=>Fri Feb 08 2019 10:22:22 GMT-0800",
@@ -209,7 +209,7 @@ module.exports = [
     pcbd: [2.5],
     pcbn: [1],
     country: [2],
-    relationData: "ᦍᥦᔙᦋḖᏭᩏ᪒3",
+    relationData: "",
     reviews: [
       "NSGROWER/&=>customer@cks.com/&=>Grown 5/5 outdoors on the Southern tip of Nova Scotia. All 5 identical. 6' tall 6' round in 20L buckets. Deep grapefruit smell, powerful kush on the exhale. Can't go wrong with these Black Indica seeds. Sprouted on May 20th and Harvested Oct 7th 2017. Avg dried weight per plant was 140gr of top shelf purple and frosty bud with bright orange hairs./&=>5/&=>Fri Feb 08 2019 10:35:51 GMT-0800",
       "Ford/&=>customer@cks.com/&=>Im new here but have to say that my seeds came in 3 days from ordering and 3 of 5 have popped so far. If they dont come up I may contact the King but as for now, I can wait. I must admit Im excited to see how they grow and with all of your suggestions and experience I shouldn't have too many problems! Happy Growing Everyone!/&=>4/&=>Fri Feb 08 2019 10:35:10 GMT-0800",
@@ -318,9 +318,8 @@ module.exports = [
     pcbd: [6],
     pcbn: [0.8],
     country: [2],
-    relationData: "᧲᭚3",
+    relationData: "",
     reviews: [
-      "Customer/&=>as@gmail.com/&=>test/&=>5/&=>Wed Feb 20 2019 18:46:58 GMT+0000",
       "Billy/&=>customer@cks.com/&=>I have 4 outdoor and 3 indoor CBDream. 100% germination! Croptober is coming for the outdoor plants , indoors are on 9 weeks of flower. The inside definitely grew at different speeds. But very happy with the flowers the plant is preparing for harvest..... SOON!!! Lots of tricomes!/&=>5/&=>Fri Feb 08 2019 10:54:44 GMT-0800",
       "Daniel /&=>customer@cks.com/&=>Looks like a dream come true. Bought a 5pack for breeding CBD into my other strains, Durban, lambo, time warp etc...should get interesting soon have one in the mix outdoor plant one get one cool! Let you know in sept how she turned out./&=>5/&=>Fri Feb 08 2019 10:54:22 GMT-0800",
       "Australopichecus robustus/&=>customer@cks.com/&=> Just made some hash oil out of the leaves. Better than any butter I've ever made./&=>5/&=>Fri Feb 08 2019 10:53:13 GMT-0800",
@@ -328,7 +327,7 @@ module.exports = [
       "Neil/&=>customer@cks.com/&=>First time grower ( cbd dream ), 100% germination, started inside up to 1gal pot, then outside in the garden with the fruits and vegies, can't believe my eyes, have 2-6 footers, also have photos for any unbelievers, gave the rest of the plants away to friends,everybody happy, been thinning excess leaves, buds all over the place, both plants loaded and filling in good, a little concerned about the colder weather and when to harvest but very happy, feed back welcome, later./&=>5/&=>Fri Feb 08 2019 10:52:25 GMT-0800",
       "Aaron/Compound /&=>customer@cks.com/&=>First time ordering with CK. I run a legal grow, and I must say that out of 4 strains I ordered (102 total seed count), I had a 99% germination rate. 1/2 to 1 inch taps in 36 hours from soak to soil. This is why they are the Kings. Follow the instructions to the T, and you will get this same rate. My hat is off to you all!/&=>5/&=>Fri Feb 08 2019 10:52:02 GMT-0800"
     ],
-    ratingQuantity: [0, 0, 0, 1, 6],
+    ratingQuantity: [0, 0, 0, 1, 5],
     _id: "5c268abf0f39624668953248",
     name: "CB Dream Feminized Cannabis Seeds",
     strainImg: "/plant/CBD.png",
@@ -343,9 +342,9 @@ module.exports = [
     indica: 0.8,
     sativa: 0.2,
     ruderalis: 0,
-    __v: 8,
+    __v: 7,
     env: "0",
-    rating: 4.857142857142857
+    rating: 4.833333333333333
   },
   {
     price: [70, 140, 300],
@@ -431,7 +430,7 @@ module.exports = [
     pcbd: [0.45],
     pcbn: [0.25],
     country: [1],
-    relationData: "ಢ᱂೶ಥᦋ೶಩⊓೶",
+    relationData: "",
     reviews: [
       "Glenda/&=>customer@cks.com/&=>This is my first time growing Cali OG...only 1 of seeds germinated ..4 didn't even crack open..it's been over 2 weeks..I was told to keep them in water for another week..but I don't think they will at this point ./&=>3/&=>Fri Feb 08 2019 11:04:24 GMT-0800",
       'Richard /&=>customer@cks.com/&=>I grew ten plants and they varied in height from 5ft to 7+ft. The high is different with each plant but they are all "real" good. I\'ve reordered ten more for next season. GOOD STUFF!/&=>5/&=>Fri Feb 08 2019 11:03:48 GMT-0800',
@@ -503,7 +502,7 @@ module.exports = [
     pcbd: [0.4],
     pcbn: [2],
     country: [3],
-    relationData: "ಢ᱂೶ತ᱇೶಩⊓೶",
+    relationData: "",
     reviews: [
       "Doodles/&=>customer@cks.com/&=>Started 5 for indoor grow, 100 percent survival. Into my 3rd week of flowering and looking good. Will post when all done. Love Crop King, 3 orders with you all and great results./&=>5/&=>Fri Feb 08 2019 11:16:52 GMT-0800",
       "SP/&=>customer@cks.com/&=>This is a great strain to grow id recommend it../&=>4/&=>Fri Feb 08 2019 11:16:31 GMT-0800",
@@ -762,7 +761,7 @@ module.exports = [
     pcbd: [0.2],
     pcbn: [1],
     country: [0],
-    relationData: "ಢ᱂೶ತ᱇೶ಥᦋ೶",
+    relationData: "",
     reviews: [
       "boaz lagniappe/&=>customer@cks.com/&=>Took 5 of the 10 of my Haze extreme out of the fridge storage from 3 months ago, and germinated them 3 days ago with 100% success. All 5 sprouted and transplanted the peat pellets Haze Extreme babies to small coco coir cups. Thanks CKS!! A++++++++++/&=>5/&=>Fri Feb 08 2019 11:44:12 GMT-0800",
       "Steveo/&=>customer@cks.com/&=>Holy s***! Super fast shipping. Shipped Thursday arrived Monday!! Very discreet too which my wife and I though was awesome. Got them germinating right now!! Woot woot./&=>5/&=>Fri Feb 08 2019 11:43:41 GMT-0800",

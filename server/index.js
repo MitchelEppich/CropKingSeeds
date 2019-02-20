@@ -54,132 +54,123 @@ db.on("error", console.error.bind(console, "Connection error:"));
 db.once("open", () => console.log("We are connected!"));
 
 app.prepare().then(async () => {
-  const server = express();
+    const server = express();
 
-  //sitemap
-  let strains = await resolvers.Query.allStrains(null, {});
-  // let sitemapStrains = strains.map((strain, index) => {
-  //     return inferStrainData(strain)
-  //         .name.toLowerCase()
-  //         .split(" ")
-  //         .join("-");
-  // });
-  // siteMapBuilder(sitemapStrains);
+    //sitemap
+    let strains = await resolvers.Query.allStrains(null, {});
+    // let sitemapStrains = strains.map((strain, index) => {
+    //     return inferStrainData(strain)
+    //         .name.toLowerCase()
+    //         .split(" ")
+    //         .join("-");
+    // });
+    // siteMapBuilder(sitemapStrains);
 
-  //schema markup
-  let _strains = strains.map((strain, index) => {
-    delete strain._id;
-    delete strain.__v;
-    return strain;
-  });
-  schemaBuilder(JSON.stringify(_strains));
-
-  // 301 redirects
-  redirects.forEach(({ from, to, type = 301, method = "get" }) => {
-    server[method](from, (req, res) => {
-      res.redirect(type, to);
+    //schema markup
+    let _strains = strains.map((strain, index) => {
+        delete strain._id;
+        delete strain.__v;
+        return strain;
     });
-  });
+    schemaBuilder(JSON.stringify(_strains));
 
-  server.use(
-    cors({
-      origin: "*"
-    })
-  );
+    // 301 redirects
+    redirects.forEach(({ from, to, type = 301, method = "get" }) => {
+        server[method](from, (req, res) => {
+            res.redirect(type, to);
+        });
+    });
 
-  server.use(compression());
-  server.use(
-    "/static",
-    express.static(__dirname + "/static", {
-      maxAge: "365d"
-    })
-  );
-  server.use(
-    "/http://dcfgweqx7od72.cloudfront.net",
-    express.static("http://dcfgweqx7od72.cloudfront.net", {
-      maxAge: "365d"
-    })
-  );
-  server.use(
-    "/graphql",
-    bodyParser.json(),
-    graphqlExpress((req, res) => {
-      return {
-        schema,
-        context: {
-          token: req.headers.authorization
-            ? req.headers.authorization.substring("Bearer ".length)
-            : ""
-        }
-      };
-    })
-  );
-
-  if (process.env.NODE_ENV === "development") {
     server.use(
-      "/graphiql",
-      graphiqlExpress({
-        endpointURL: "/graphql",
-        subscriptionsEndpoint: subscriptionsEndpoint
-      })
+        cors({
+            origin: "*"
+        })
     );
-  }
 
-  server.get("/product/:_id", (req, res) => {
-    app.render(req, res, "/product", {});
-  });
-
-  server.get("*", (req, res) => {
-    return handle(req, res);
-  });
-
-  // HTTP Server
-  // Redirect from http port 80 to https
-  // ------------------
-  // let ws = http.createServer(function(req, res) {
-  //   res.writeHead(301, {
-  //     Location: "https://" + req.headers["host"] + req.url
-  //   });
-  //   res.end();
-  // });
-  // ws.listen(80);
-  // --------------------
-
-  // HTTPS Server
-  // ----------------------------
-  // const wss = https.createServer(credentials, server);
-  // wss.listen(port, () => {
-  //   // remove url before heroku!!
-  //   console.log(`Apollo Server is now running on https://${url}:${port}`);
-  //   // Set up the WebSocket for handling GraphQL subscriptions
-  //   new SubscriptionServer(
-  //     {
-  //       execute,
-  //       subscribe,
-  //       schema
-  //     },
-  //     {
-  //       server: wss,
-  //       path: "/subscriptions"
-  //     }
-  //   );
-  // });
-  // -----------------------------
-
-  const ws = http.createServer(server);
-  ws.listen(port, () => {
-    console.log(`Apollo Server is now running on https://${url}:${port}`);
-    // Set up the WebSocket for handling GraphQL subscriptions
-    new SubscriptionServer(
-      {
-        execute,
-        subscribe,
-        schema
-      },
-      {
-        server: ws,
-        path: "/subscriptions"
-      }
+    server.use(compression());
+    server.use(
+        express.static(__dirname + "/static", {
+            maxAge: "365d"
+        })
     );
-  });
+    server.use(
+        "/graphql",
+        bodyParser.json(),
+        graphqlExpress((req, res) => {
+            return {
+                schema,
+                context: {
+                    token: req.headers.authorization ? req.headers.authorization.substring("Bearer ".length) : ""
+                }
+            };
+        })
+    );
+
+    if (process.env.NODE_ENV === "development") {
+        server.use(
+            "/graphiql",
+            graphiqlExpress({
+                endpointURL: "/graphql",
+                subscriptionsEndpoint: subscriptionsEndpoint
+            })
+        );
+    }
+
+    server.get("/product/:_id", (req, res) => {
+        app.render(req, res, "/product", {});
+    });
+
+    server.get("*", (req, res) => {
+        return handle(req, res);
+    });
+
+    // HTTP Server
+    // Redirect from http port 80 to https
+    // ------------------
+    // let ws = http.createServer(function(req, res) {
+    //   res.writeHead(301, {
+    //     Location: "https://" + req.headers["host"] + req.url
+    //   });
+    //   res.end();
+    // });
+    // ws.listen(80);
+    // --------------------
+
+    // HTTPS Server
+    // ----------------------------
+    // const wss = https.createServer(credentials, server);
+    // wss.listen(port, () => {
+    //   // remove url before heroku!!
+    //   console.log(`Apollo Server is now running on https://${url}:${port}`);
+    //   // Set up the WebSocket for handling GraphQL subscriptions
+    //   new SubscriptionServer(
+    //     {
+    //       execute,
+    //       subscribe,
+    //       schema
+    //     },
+    //     {
+    //       server: wss,
+    //       path: "/subscriptions"
+    //     }
+    //   );
+    // });
+    // -----------------------------
+
+    const ws = http.createServer(server);
+    ws.listen(port, () => {
+        console.log(`Apollo Server is now running on https://${url}:${port}`);
+        // Set up the WebSocket for handling GraphQL subscriptions
+        new SubscriptionServer(
+            {
+                execute,
+                subscribe,
+                schema
+            },
+            {
+                server: ws,
+                path: "/subscriptions"
+            }
+        );
+    });
 });

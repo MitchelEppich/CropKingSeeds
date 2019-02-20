@@ -302,12 +302,7 @@ const BillingAddress = props => {
                                     value: _value,
                                     tag: _tag
                                 });
-                                e.target.setCustomValidity("");
                             }}
-                            onInvalid={e => {
-                                e.target.setCustomValidity("Must be a valid postal code");
-                            }}
-                            pattern="^\d{5,6}(?:[-\s]\d{4})?$"
                             placeholder="ZIP Code"
                             className="p-2 w-full"
                             required

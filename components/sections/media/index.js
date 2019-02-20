@@ -24,6 +24,7 @@ const Media = props => {
 
   let showNewsEntry = items => {
     let arr = [];
+    let i = 100;
     for (let item of items) {
       let {
         body,
@@ -42,7 +43,7 @@ const Media = props => {
 
       arr.push(
         <div
-          key={item}
+          key={i}
           //   style={{ background: "rgb(250, 250, 250)" }}
           className={`w-main lg:w-full bg-smoke-grey mx-auto mt-4 rounded shadow-md relative ${
             active ? "mb-2" : ""
@@ -110,6 +111,7 @@ const Media = props => {
           )}
         </div>
       );
+      i++;
     }
     return arr;
   };
@@ -120,7 +122,7 @@ const Media = props => {
     keys.map((category, index) => {
       arr.push(
         <div
-          key={news}
+          key={index}
           className={`w-main mx-auto sm:w-full ${index == 0 ? "" : "mt-12"} ${
             index == keys.length - 1 ? "mb-12" : ""
           }`}

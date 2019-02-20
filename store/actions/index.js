@@ -9,6 +9,7 @@ import gql from "graphql-tag";
 import { makePromise, execute } from "apollo-link";
 import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
+import axios from "axios";
 
 import Cart from "./cart";
 import Checkout from "./checkout";
@@ -22,7 +23,7 @@ import Cms from "./cms";
 
 import { inferStrainData } from "../utilities/strain";
 
-const uri = "http://localhost:3000/graphql";
+const uri = "http://127.0.0.1:3000/graphql";
 // const uri = "http://159.203.5.200:3000/graphql";
 // const uri = "http://192.168.0.51:3000/graphql";
 
@@ -477,7 +478,6 @@ const actions = {
       makePromise(execute(link, operation))
         .then(data => {
           let res = data.data.isRepeatCustomer;
-
           dispatch({
             type: actionTypes.IS_REPEAT_CUSTOMER,
             input: !res
@@ -618,9 +618,21 @@ const mutation = {
     }
   `,
   sendEmail: gql`
-    mutation($email: String, $body: String, $name: String, $subject: String) {
+    mutation(
+      $email: String
+      $body: String
+      $name: String
+      $subject: String
+      $response: String
+    ) {
       sendEmail(
-        input: { email: $email, body: $body, name: $name, subject: $subject }
+        input: {
+          email: $email
+          body: $body
+          name: $name
+          subject: $subject
+          response: $response
+        }
       )
     }
   `

@@ -24,7 +24,8 @@ export default class MyDocument extends Document {
     }
     generateSchemaMarkup = strains => {
         return strains.map((strain, index) => {
-            let reviews;
+            let reviews,
+                priceLength = strain.price[0] > 0;
             if (strain.reviews != null && strain.reviews.length > 0) {
                 reviews = strain.reviews.map((review, index) => {
                     let str = review;
@@ -48,10 +49,18 @@ export default class MyDocument extends Document {
                             name: strain.name,
                             description: strain.description,
                             image: "http://dcfgweqx7od72.cloudfront.net" + strain.packageImg,
-                            price: strain.price > 0 ? strain.price[0] : strain.price[1]
+                            price: strain.price[0] > 0 ? strain.price[0] : strain.price[1]
                         }}>
                         <AggregateRating ratingValue={strain.rating} reviewCount={strain.reviews.length} />
                         <GenericCollection type="review">{reviews != null ? reviews : null}</GenericCollection>
+                        <Generic
+                            type="AggregateOffer"
+                            jsonldtype="AggregateOffer"
+                            schema={{
+                                highPrice: strain.price[2],
+                                lowPrice: priceLength ? strain.price[0] : strain.price[1]
+                            }}
+                        />
                     </Generic>
                 </JSONLD>
             );
@@ -79,29 +88,11 @@ export default class MyDocument extends Document {
                         name="keywords"
                         content="crop king seeds, feminized seeds, autoflowering seeds, medical marijuana, marijuana seeds, marijuana seeds canada, cannabis, cannabis seeds"
                     />
-                    <meta name="copyright" content="" />
+                    <meta name="copyright" content="© 2005 - 2019 Crop King Seeds. All Rights Reserved." />
                     {/* <link rel="manifest" href="/_next/static/manifest.json" /> */}
                     <link rel="stylesheet" href="/_next/static/style.css" />
                     <link rel="icon" href="../static/favicon.ico" />
-
                     {this.generateSchemaMarkup(strainsData)}
-
-                    {/* <link rel="canonical" href="https://www.sonomaseeds.com/" />
-                    <meta property="og:title" content="Sonoma Cannabis Seeds - Grow Organically" />
-                    <meta property="og:type" content="website" />
-                    <meta property="og:url" content="https://www.sonomaseeds.com/" />
-                    <meta property="og:image" content="https://www.sonomaseeds.com/wp-content/uploads/2019/01/sonoma-seeds-graph.jpg" />
-                    <meta property="og:site_name" content="Sonoma Cannabis Seeds" />
-                    <meta property="fb:admins" content="148158655885411" />
-                    <meta property="fb:app_id" content="257955865103099" />
-                    <meta property="og:description" content="Sonoma Seeds is a West Coast based cannabis seeds brand providing the best seeds from around the world. We carry medical grade CBD seeds and recreational seeds." />
-                    <meta name="twitter:card" content="summary_large_image" />
-                    <meta name="twitter:site" content="@sonomaseeds" />
-                    <meta name="twitter:domain" content="sonomaseeds.com" />
-                    <meta name="twitter:title" content="Sonoma Cannabis Seeds - Grow Organically" />
-                    <meta name="twitter:description" content="Sonoma Seeds is a West Coast based cannabis seeds brand providing the best seeds from around the world. We carry medical grade CBD seeds and recreational seeds." />
-                    <meta name="twitter:image" content="https://www.sonomaseeds.com/wp-content/uploads/2019/01/sonoma-seeds-graph.jpg" />
-                    <meta itemprop="image" content="https://www.sonomaseeds.com/wp-content/uploads/2019/01/sonoma-seeds-graph.jpg" /> */}
                 </Head>
                 <body>
                     <Main />

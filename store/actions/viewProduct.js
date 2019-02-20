@@ -85,7 +85,6 @@ const getActions = uri => {
                 await makePromise(execute(link, operation))
                     .then(data => {
                         let strain = data.data.updateStrain;
-                        console.log(strain);
                         dispatch(
                             objects.setCurrentProduct({
                                 product: inferStrainData(strain)
@@ -143,8 +142,8 @@ const query = {};
 
 const mutation = {
     updateStrain: gql`
-        mutation($sotiId: String, $review: String) {
-            updateStrain(input: { sotiId: $sotiId, review: $review }) {
+        mutation($sotiId: String, $review: String, $response: String) {
+            updateStrain(input: { sotiId: $sotiId, review: $review, response: $response }) {
                 _id
                 name
                 price
