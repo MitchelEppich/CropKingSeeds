@@ -27,7 +27,7 @@ const cartItem = props => {
           className={`flex justify-between px-4 py-2`}
         >
           <img
-            className="h-32 mx-6"
+            className="h-32 sm:h-24 mx-6"
             src={props.misc.CFURL + _product.packageImg}
           />
           <div className="flex relative flex-wrap justify-between lg:w-250 lg:mr-auto md:w-250 md:mr-auto sm:w-200 sm:mr-auto">
@@ -52,7 +52,7 @@ const cartItem = props => {
                       });
                     });
                 }}
-                className="cursor-pointer text-black text-xl w-300 sm:w-150 h-16 pr-3 mt-2 sm:text-lg scale-item"
+                className="cursor-pointer text-black text-xl w-300 sm:w-150 sm:text-base h-16 pr-3 mt-2 scale-item"
               >
                 {_product.name}
                 <span className="text-base flex text-grey-light">
@@ -60,19 +60,18 @@ const cartItem = props => {
                 </span>
               </h3>
             </Link>
-            <div className="h-10 w-10 cursor-pointer absolute pin-t pin-r pt-1 hover:bg-red-dark hover:text-white text-center text-grey">
-              <FontAwesomeIcon
-                icon={faTimes}
-                className="fa-sm"
-                onClick={() => {
-                  props.modifyCart({
-                    items: props.cart.items,
-                    action: "REMOVE",
-                    max: props.cart.maxPerPackage,
-                    productIdentifier: item
-                  });
-                }}
-              />
+            <div
+              onClick={() => {
+                props.modifyCart({
+                  items: props.cart.items,
+                  action: "REMOVE",
+                  max: props.cart.maxPerPackage,
+                  productIdentifier: item
+                });
+              }}
+              className="h-10 w-10 cursor-pointer absolute pin-t pin-r pt-1 hover:bg-red-dark hover:text-white text-center text-grey"
+            >
+              <FontAwesomeIcon icon={faTimes} className="fa-sm" />
             </div>
             <div className="w-100 flex justify-between h-6 items-center">
               <div className="w-100 flex justify-between h-6 items-center">
@@ -155,7 +154,7 @@ const cartItem = props => {
               </div>
             </div>
             <div className="flex items-center">
-              <p className="text-xl text-grey-light font-bold">
+              <p className="text-xl text-grey-light sm:text-lg font-bold">
                 {currency != null
                   ? `${currency.symbol}${(
                       currency.convert * _item.price

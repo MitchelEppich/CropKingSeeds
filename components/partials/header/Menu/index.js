@@ -84,7 +84,7 @@ const menu = props => {
 
   showMobileNav = isMobileNavVisible
     ? {
-        height: "210px",
+        height: "170px",
         transition: "all 0.2s ease-in-out",
         WebkitTransition: "all 0.2s ease-in-out",
         zIndex: "60",
@@ -269,6 +269,17 @@ const menu = props => {
               </div>
               {/* END MOBILE SM - SEARCH BAR */}
 
+              <div
+                onClick={() => {
+                  props.setVisibleScreen({ input: "viewCart" });
+                }}
+                className={
+                  "font-extrabold text-2xl h-12 mr-6 lg:mr-12 md:mr-8 pt-2 hover:bg-red-navMobile cursor-pointer slowish xl:hidden xxl:hidden"
+                }
+              >
+                <CartIcon {...props} />
+              </div>
+
               {/* MOBILE MENU */}
               <div
                 onClick={() => {
@@ -330,18 +341,6 @@ const menu = props => {
                         Contact
                       </li>
                     </Link>
-                    <li
-                      onClick={() => {
-                        props.setVisibleScreen({ input: "viewCart" });
-                      }}
-                      className={
-                        isMobileNavVisible
-                          ? "font-extrabold text-2xl p-2 slowish hover:bg-red-navMobile cursor-pointer scale-item"
-                          : "font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish hidden"
-                      }
-                    >
-                      <CartIcon {...props} />
-                    </li>
                   </ul>
                 </div>
               </div>

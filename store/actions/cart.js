@@ -49,29 +49,49 @@ const getActions = uri => {
       };
     },
     modifyPotentialQuantity: input => {
+      let _tag = input.tag;
+
       let _potentialQuantity = input.potentialQuantity;
       let _action = input.action;
       let _max = input.max;
 
       let _quantity = Math.min(input.quantity, _max);
 
+      if (_tag != null && typeof _potentialQuantity === "number")
+        _potentialQuantity = { [_tag]: _quantity };
+      else if (_tag == null && typeof _potentialQuantity === "object")
+        _potentialQuantity = 1;
+
       switch (_action) {
         case "SET":
+          if (_tag == null) _potentialQuantity = _quantity;
+          else _potentialQuantity[_tag] = _quantity;
           break;
         case "MODIFY":
-          _quantity = Math.min(
+          _potentialQuantity = Math.min(
             Math.max(1, _quantity + _potentialQuantity),
             _max
           );
+          if (_tag == null)
+            _potentialQuantity = Math.min(
+              Math.max(1, _quantity + _potentialQuantity),
+              _max
+            );
+          else
+            _potentialQuantity[_tag] = Math.min(
+              Math.max(1, _quantity + (_potentialQuantity[_tag] || 1)),
+              _max
+            );
           break;
         case "CLEAR":
-          _quantity = 1;
+          if (_tag == null) _potentialQuantity = 1;
+          else delete _potentialQuantity[_tag];
           break;
       }
 
       return {
         type: actionTypes.MODIFY_POTENTIAL_QUANTITY,
-        input: _quantity
+        input: _potentialQuantity
       };
     },
     modifyCart: input => {

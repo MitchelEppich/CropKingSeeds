@@ -68,7 +68,8 @@ const actionTypes = {
   GET_BANNERS: "GET_BANNERS",
   GET_RELATED_LIST: "GET_RELATED_LIST",
   SET_NEWS_STEPPER: "SET_NEWS_STEPPER",
-  IS_REPEAT_CUSTOMER: "IS_REPEAT_CUSTOMER"
+  IS_REPEAT_CUSTOMER: "IS_REPEAT_CUSTOMER",
+  COMPARE_STRAIN: "COMPARE_STRAIN"
 };
 
 const actions = {
@@ -99,6 +100,23 @@ const actions = {
     return {
       type: actionTypes.SET_MEDIA_SIZE,
       input: input.mediaSize
+    };
+  },
+  compareStrain: input => {
+    let compareStrains = input.compareStrains;
+    let action = input.action;
+    if (action == "remove") {
+      let index = input.compareStrains.indexOf(input.strain);
+      if (index >= 0) {
+        compareStrains.splice(index, 1);
+      }
+    } else {
+      compareStrains = [...compareStrains, input.strain];
+    }
+    if (compareStrains.length > 5) compareStrains = compareStrains.slice(0, 5);
+    return {
+      type: actionTypes.COMPARE_STRAIN,
+      compareStrains: compareStrains
     };
   },
   toggleStepsCheckout: input => {
