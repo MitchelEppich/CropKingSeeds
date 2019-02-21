@@ -68,7 +68,8 @@ const CompareMenu = props => {
             potentialQuantity: props.cart.potentialQuantity,
             action: "SET",
             tag: strain._id,
-            quantity: 1
+            quantity: 1,
+            max: props.cart.maxPerPackage
           });
 
           props.compareStrain({

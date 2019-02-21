@@ -222,7 +222,7 @@ class Index extends Component {
               this.props.modifyPotentialQuantity({
                 potentialQuantity: this.props.cart.potentialQuantity,
                 action: "SET",
-                max: props.cart.maxPerPackage,
+                max: this.props.cart.maxPerPackage,
                 quantity: 1
               });
             }}
@@ -269,25 +269,25 @@ class Index extends Component {
           className={
             hoverId != null && this.props.misc.mediaSize == "sm"
               ? "hidden"
-              : "w-full justify-between flex pt-3 px-2 mt-5 text-grey-light"
+              : "w-full justify-between flex sm:flex-col pt-3 px-2 mt-5 text-grey-light"
           }
         >
           {Object.keys(this.props.shop.activeFilters).length != 0 ? (
-            <div className="flex flex-wrap xxl:w-4/5 xl:w-3/5 w-3/5 bg-white rounded border border-grey-lightest">
+            <div className="flex flex-wrap xxl:w-4/5 xl:w-3/5 w-3/5 sm:w-full bg-white rounded border border-grey-lightest">
               <p className="w-full mb-1 pl-2 font-bold p-2 bg-grey-lighter text-white uppercase">
                 Active Filters:
               </p>
               {activeFilters}
             </div>
           ) : null}
-          <div className="z-50 flex absolute w-150 flex pin-r justify-end">
+          <div className="z-50 flex absolute w-150 sm:relative sm:mt-4 sm:w-full flex pin-r justify-end">
             <div
               onClick={() => {
                 this.props.setVisibleScreen({
                   input: "showSortBy"
                 });
               }}
-              className="font-bold flex relative items-center w-150 p-2 bg-grey-lighter justify-center z-50 rounded text-white cursor-pointer hover:bg-red-light"
+              className="font-bold flex relative items-center w-150 sm:w-150 p-2 bg-grey-lighter justify-center z-50 rounded text-white cursor-pointer hover:bg-red-light"
             >
               {this.props.shop.sort == null || this.props.shop.sort == "" ? (
                 <div className="text-base uppercase font-bold">
@@ -303,7 +303,10 @@ class Index extends Component {
                 })[1]
               )}
             </div>
-            <div style={showSortByStyle} className="overflow-hidden relative">
+            <div
+              style={showSortByStyle}
+              className="overflow-hidden relative sm:mt-10"
+            >
               <div className="absolute">
                 <div className="p-2 rounded border border-grey-lightest w-150">
                   {showSortOptions}

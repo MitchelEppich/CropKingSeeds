@@ -3,7 +3,8 @@ import {
   faAngleDown,
   faCaretDown,
   faCaretUp,
-  faMapMarkerAlt
+  faMapMarkerAlt,
+  faExternalLinkAlt
 } from "@fortawesome/free-solid-svg-icons";
 
 import moment from "moment";
@@ -41,11 +42,16 @@ const Media = props => {
 
       let active = props.misc.visibleScreen.includes(category + "::" + _id);
 
+      let styleItem = {
+        height: active ? "170px" : "0px",
+        transition: "all 0.3s ease-in-out"
+      };
+
       arr.push(
         <div
           key={i}
           //   style={{ background: "rgb(250, 250, 250)" }}
-          className={`w-main lg:w-full bg-smoke-grey mx-auto mt-4 rounded shadow-md relative ${
+          className={`w-main lg:w-full sm:w-full h-full bg-smoke-grey mx-auto mt-4 rounded shadow-md relative ${
             active ? "mb-2" : ""
           }`}
         >
@@ -62,23 +68,23 @@ const Media = props => {
               <FontAwesomeIcon icon={faCaretDown} className="fa-lg" />
             </div>
           </div>
-          {active ? (
-            <div className="p-4 inline-flex bg-white relative">
+          <div style={styleItem} className="overflow-hidden">
+            <div className="p-4 inline-flex bg-white relative sm:p-2 md:p-2 h-150 md:h-200 sm:h-200">
               <div className="px-2 ml-4 sm:ml-0 md:ml-0 lg:ml-0">
                 <img
                   src={imageUrl}
-                  className="w-100 h-100 overflower-hidden"
+                  className="w-100 overflower-hidden"
                   style={styleImg}
                 />
               </div>
               <div className="w-3/4 ml-4">
                 <div className="inline-flex w-full lg:flex-col md:flex-col sm:flex-col ">
-                  <div className="w-1/2 text-left font-bold p-1 lg:w-full md:w-full sm:w-full">
+                  <div className="w-1/2 text-left font-bold p-1 lg:w-full md:w-full sm:w-full sm:text-sm md:text-sm">
                     <p>{moment(date, "LL").format("LL")}</p>
                   </div>
                   {location != null ? (
                     <div
-                      className="w-1/2 lg:w-full md:w-full sm:w-full lg:justify-start md:justify-start sm:justify-start justify-end items-center flex font-bold"
+                      className="w-1/2 lg:w-full md:w-full sm:w-full lg:justify-start md:justify-start sm:justify-start justify-end items-center flex font-bold sm:text-xs md:text-xs"
                       onClick={e => {
                         e.stopPropagation();
                         window.open(locationUrl, "_blank");
@@ -94,7 +100,7 @@ const Media = props => {
                 <p className="mt-4 ml-1 sm:mt-2 lg:mt-2 md:mt-2 sm:text-sm md:text-sm">
                   {body}
                   <span
-                    className="mx-1 font-bold text-red-dark cursor-pointer hover:text-red-light p-1 text-sm"
+                    className="mx-1 font-bold text-red-dark cursor-pointer hover:text-red-light p-1 text-sm lg:hidden xl:hidden xxl:hidden"
                     onClick={e => {
                       e.stopPropagation();
                       window.open(url, "_blank");
@@ -104,11 +110,20 @@ const Media = props => {
                     Read More
                   </span>
                 </p>
+                <div
+                  className="font-bold ml-auto w-125 p-1 cursor-pointer bg-grey-light text-white scale-item text-sm sm:mt-18 sm:mr-2 md:mt-4 md:mr-2 flex justify-center absolute sm:pin-t md:pin-t lg:pin-b xl:pin-b xxl:mb-2 xxl:mr-2 xl:mb-2 xl:mr-2 lg:mb-2 lg:mr-2 xxl:pin-b pin-r mt-4 md:hidden sm:hidden"
+                  onClick={e => {
+                    e.stopPropagation();
+                    window.open(url, "_blank");
+                    window.focus();
+                  }}
+                >
+                  More Details
+                  <FontAwesomeIcon icon={faExternalLinkAlt} className="ml-2" />
+                </div>
               </div>
             </div>
-          ) : (
-            <div />
-          )}
+          </div>
         </div>
       );
       i++;
@@ -123,11 +138,11 @@ const Media = props => {
       arr.push(
         <div
           key={index}
-          className={`w-main mx-auto sm:w-full ${index == 0 ? "" : "mt-12"} ${
-            index == keys.length - 1 ? "mb-12" : ""
-          }`}
+          className={`w-main mx-auto sm:w-full md:w-full ${
+            index == 0 ? "" : "mt-12"
+          } ${index == keys.length - 1 ? "mb-12" : ""}`}
         >
-          <h3 className="mt-5 p-3 text-white font-extrabold rounded text-center text-xl uppercase bg-red-dark mx-auto w-main lg:w-full text-center">
+          <h3 className="mt-5 p-3 text-white font-extrabold rounded text-center text-xl uppercase bg-red-dark mx-auto sm:w-full w-main lg:w-full text-center">
             Upcoming {category}s
           </h3>
           {showNewsEntry(news[category])}

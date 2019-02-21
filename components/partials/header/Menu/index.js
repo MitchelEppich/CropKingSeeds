@@ -224,21 +224,36 @@ const menu = props => {
                   <li className="font-extrabold cursor-pointer slowish ">
                     <SearchBar {...props} />{" "}
                   </li>
-                  <Link href="/">
+                  <a
+                    aria-label="home"
+                    className="text-white"
+                    rel="noreferrer"
+                    href="/"
+                  >
                     <li className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark">
                       Home
                     </li>
-                  </Link>
-                  <Link href="/shop">
+                  </a>
+                  <a
+                    aria-label="shop"
+                    className="text-white"
+                    rel="noreferrer"
+                    href="/shop"
+                  >
                     <li className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark">
                       Shop
                     </li>
-                  </Link>
-                  <Link href="/contact">
+                  </a>
+                  <a
+                    aria-label="contact"
+                    className="text-white"
+                    rel="noreferrer"
+                    href="/contact"
+                  >
                     <li className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark">
                       Contact
                     </li>
-                  </Link>
+                  </a>
                   <li
                     className={`font-extrabold text-2xl px-2 cursor-pointer scale-item ${
                       route.includes("checkout")
@@ -270,7 +285,7 @@ const menu = props => {
                 <FontAwesomeIcon icon={faSearch} className="fa-2x p-1 " />{" "}
               </div>
 
-              <div className="justify-center flex mx-auto text-center xl:hidden xxl:hidden w-100 mt-1 sm:mt-16 sm:pl-10 sm:w-main">
+              <div className="justify-center flex mx-auto text-center xl:hidden xxl:hidden w-100 mt-1 sm:mt-16 sm:pl-10 sm:w-main sm:absolute">
                 {props.misc.visibleScreen.includes("showSearchBar") ? (
                   <SearchBar {...props} />
                 ) : null}
@@ -282,7 +297,7 @@ const menu = props => {
                   props.setVisibleScreen({ input: "viewCart" });
                 }}
                 className={
-                  "font-extrabold text-2xl h-12 mr-6 lg:mr-12 md:mr-8 pt-2 hover:bg-red-navMobile cursor-pointer slowish xl:hidden xxl:hidden"
+                  "font-extrabold text-2xl h-12 mr-6 lg:mr-12 md:mr-8 pt-2 hover:bg-red-navMobile cursor-pointer slowish xl:hidden xxl:hidden sm:ml-auto"
                 }
               >
                 <CartIcon {...props} />
@@ -311,7 +326,12 @@ const menu = props => {
                         : "text-white w-full mt-1 ml-0 pl-0 uppercase opacity-0 h-0 "
                     }
                   >
-                    <Link href="/">
+                    <a
+                      aria-label="home"
+                      className="text-white"
+                      rel="noreferrer"
+                      href="/"
+                    >
                       <li
                         className={
                           isMobileNavVisible
@@ -321,8 +341,13 @@ const menu = props => {
                       >
                         Home
                       </li>
-                    </Link>
-                    <Link href="/shop">
+                    </a>
+                    <a
+                      aria-label="shop"
+                      className="text-white"
+                      rel="noreferrer"
+                      href="/shop"
+                    >
                       <li
                         className={
                           isMobileNavVisible
@@ -332,8 +357,13 @@ const menu = props => {
                       >
                         Shop
                       </li>
-                    </Link>
-                    <Link href="/contact">
+                    </a>
+                    <a
+                      aria-label="contact"
+                      className="text-white"
+                      rel="noreferrer"
+                      href="/contact"
+                    >
                       <li
                         className={`${
                           route.includes("checkout")
@@ -348,7 +378,7 @@ const menu = props => {
                       >
                         Contact
                       </li>
-                    </Link>
+                    </a>
                   </ul>
                 </div>
               </div>

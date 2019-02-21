@@ -4,13 +4,13 @@ import {
   faPlus,
   faTimes,
   faCheck,
-  faMinus
+  faMinus,
+  faCopy,
+  faExternalLinkAlt
 } from "@fortawesome/free-solid-svg-icons";
 import CompareMenu from "./compareMenu";
-import Link from "next/link";
 
 const Compare = props => {
-  console.log(props);
   let allProducts =
     props.misc.compareStrains != null ? props.misc.compareStrains : null;
 
@@ -56,15 +56,28 @@ const Compare = props => {
     let arr = [];
     if (allProducts == null) return null;
     for (let product of allProducts) {
+      //copy url of product
+      let copyEmbedLink = () => {
+        const el = document.createElement("textarea");
+        el.value =
+          window.location.origin +
+          "/product/" +
+          product.name.toLowerCase().replace(/ /g, "-");
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand("copy");
+        document.body.removeChild(el);
+      };
+
       let productIdentifier =
         product.sotiId + [5, 10, 25][props.shop.quickAddToCartQty[product._id]];
       let _coupon = props.checkout.orderDetails.coupon;
       arr.push(
-        <div key={product._id} className="w-1/6 border border-white">
+        <div key={product._id} className="w-full border border-white">
           <div className="w-full">
             <div
               style={{ height: "165px" }}
-              className="w-full justify-center flex p-4 relative"
+              className="w-full justify-center scale-item flex p-4 relative"
             >
               <img
                 src={props.misc.CFURL + product.packageImg}
@@ -97,7 +110,7 @@ const Compare = props => {
                     action: "remove"
                   });
                 }}
-                className="h-8 w-8 z-999 px-2 justify-center px-1 text-white bg-grey-light absolute pin-r hover:bg-red-light flex -mt-2 -mr-1 shadow-md"
+                className="h-8 w-8 z-999 px-2 justify-center px-1 text-white bg-grey-light absolute pin-r hover:bg-red-light flex -mt-2 mr-1 shadow-md cursor-pointer"
               >
                 <FontAwesomeIcon
                   icon={faTimes}
@@ -209,37 +222,35 @@ const Compare = props => {
                   </p>
                 </div>
               </div>
-              <div className="inline-flex w-full bg-grey-lightest">
+              <div className="inline-flex w-full bg-grey-lightest mt-4">
                 <div className="w-full text-center hover:bg-grey-lighter cursor-pointer">
-                  <p className="p-2 font-bold uppercase hover:text-red-light">
-                    <Link
-                      prefetch
-                      href="/product"
-                      target="_blank"
-                      as={
+                  <p className="p-2 uppercase hover:text-red-light">
+                    <a
+                      href={
                         "/product/" +
                         product.name.toLowerCase().replace(/ /g, "-")
                       }
+                      target="_blank"
                     >
-                      See Product
-                    </Link>
+                      See Product{" "}
+                      <FontAwesomeIcon
+                        icon={faExternalLinkAlt}
+                        className="fa-lg ml-1"
+                      />{" "}
+                    </a>
                   </p>
                 </div>
               </div>
-              <div className="inline-flex w-full bg-grey-lightest">
-                <div className="w-full text-center hover:bg-grey-lighter cursor-pointer">
-                  <p className="p-2 font-bold uppercase hover:text-red-light">
-                    <Link
-                      prefetch
-                      href="/product"
-                      target="_blank"
-                      as={
-                        "/product/" +
-                        product.name.toLowerCase().replace(/ /g, "-")
-                      }
-                    >
-                      See Product
-                    </Link>
+              <div className="inline-flex w-full">
+                <div className="w-full text-center cursor-pointer">
+                  <p
+                    onClick={() => {
+                      copyEmbedLink();
+                    }}
+                    className="p-2 font-bold uppercase hover:text-red-light"
+                  >
+                    Copy Link{" "}
+                    <FontAwesomeIcon icon={faCopy} className="fa-lg ml-1" />{" "}
                   </p>
                 </div>
               </div>
@@ -254,7 +265,8 @@ const Compare = props => {
                       potentialQuantity: props.cart.potentialQuantity,
                       action: "MODIFY",
                       tag: product._id,
-                      quantity: -1
+                      quantity: -1,
+                      max: props.cart.maxPerPackage
                     })
                   }
                   className="w-8 bg-grey-light text-sm text-white rounded hover:bg-red-light"
@@ -269,14 +281,15 @@ const Compare = props => {
                     let _value = e.target.value;
                     if (
                       _value == null ||
-                      _value == "" ||
+                      _value == "1" ||
                       parseInt(_value) < 1
                     ) {
                       props.modifyPotentialQuantity({
                         potentialQuantity: props.cart.potentialQuantity,
                         action: "SET",
                         tag: product._id,
-                        quantity: 1
+                        quantity: 1,
+                        max: props.cart.maxPerPackage
                       });
                     }
                   }}
@@ -286,13 +299,15 @@ const Compare = props => {
                       potentialQuantity: props.cart.potentialQuantity,
                       action: "SET",
                       tag: product._id,
-                      quantity: parseInt(_value)
+                      quantity: parseInt(_value),
+                      max: props.cart.maxPerPackage
                     });
                   }}
                   value={props.cart.potentialQuantity[product._id] || ""}
                   className="text-lg text-center w-10 border-0 font-bold pt-1 leading-none"
                   type="number"
                 />
+                {console.log(props.cart.potentialQuantity)}
                 <button
                   name="increaseItem"
                   onClick={() =>
@@ -300,7 +315,8 @@ const Compare = props => {
                       potentialQuantity: props.cart.potentialQuantity,
                       action: "MODIFY",
                       tag: product._id,
-                      quantity: 1
+                      quantity: 1,
+                      max: props.cart.maxPerPackage
                     })
                   }
                   className="w-8 bg-grey-light text-sm text-white rounded hover:bg-red-light"
@@ -322,7 +338,8 @@ const Compare = props => {
                       productIdentifier: productIdentifier,
                       product: product,
                       quantity: props.cart.potentialQuantity[product._id],
-                      coupon: _coupon
+                      coupon: _coupon,
+                      max: props.cart.maxPerPackage
                     });
                     props.toggleCartAnimation();
                   }}
@@ -344,7 +361,7 @@ const Compare = props => {
       <div className="text-center w-full pb-8">
         <h1
           className="mt-5 text-grey font-extrabold text-center text-3/5xl mx-auto w-full text-center"
-          onClick={() => console.log(props)}
+          // onClick={() => console.log(props)}
         >
           Comparing our Strains
         </h1>
@@ -352,19 +369,14 @@ const Compare = props => {
       <div className="w-full inline-flex">
         <div className="w-1/5">
           <div className="p-2 bg-grey-lightest rounded">
-            <h4 className="font-bold text-2xl text-grey rounded text-center">
-              Categories
+            <h4 className="font-bold text-xl uppercase text-grey rounded text-center">
+              Strains
             </h4>
           </div>
           <div className="w-full">
             <CompareMenu {...props} />
           </div>
 
-          <div className="w-full mt-2">
-            <div className="bg-red-dark text-white rounded text-center text-xl cursor-pointer hover:bg-red-light p-2 w-full font-bold">
-              <h4>Compare</h4>
-            </div>
-          </div>
           <div />
         </div>
         <div className="w-4/5 ml-4">
@@ -373,11 +385,31 @@ const Compare = props => {
             <span className="font-bold underline">2</span> and max{" "}
             <span className="font-bold underline">5</span> strains to compare.
           </p>
+          {props.misc.compareStrains != null &&
+          props.misc.compareStrains.length != 0 ? (
+            <div className="w-full flex justify-end my-4">
+              <div
+                onClick={() => {
+                  props.compareStrain({
+                    strain: props.misc.compareStrains,
+                    compareStrains:
+                      props.misc.compareStrains != null
+                        ? []
+                        : props.misc.compareStrains,
+                    action: "remove"
+                  });
+                }}
+                className="bg-grey-lighter text-grey rounded text-center cursor-pointer hover:bg-red-light hover:text-white p-2 w-200 font-bold scale-item"
+              >
+                <h4 className="uppercase">Clear Comparison</h4>
+              </div>
+            </div>
+          ) : null}
           <div className="w-full">
             {props.misc.compareStrains != null &&
             props.misc.compareStrains.length != 0 ? (
-              <div className="flex-wrap flex w-full justify-start">
-                <div className="text-sm w-1/6 border border-white">
+              <div className="inline-flex flex w-full justify-start">
+                <div className="text-sm border border-white">
                   <div
                     style={{ height: "154px" }}
                     className="w-full justify-center flex p-4 relative"
@@ -457,33 +489,22 @@ const Compare = props => {
                       <p className="p-2 font-bold uppercase">Prices:</p>
                     </div>
                   </div>
+                  <div
+                    style={{ height: "206px" }}
+                    className="inline-flex opacity-25 rounded w-full mt-4 bg-grey-lightest py-2 items-center flex"
+                  >
+                    <div className="w-full">
+                      <p className="p-2 font-bold justify-center text-center uppercase">
+                        Actions:
+                      </p>
+                    </div>
+                  </div>
                   <div className="inline-flex w-full mt-32 mb-5 bg-red-dark text-white" />
                 </div>
                 {Products()}
               </div>
             ) : null}
           </div>
-          {props.misc.compareStrains != null &&
-          props.misc.compareStrains.length != 0 ? (
-            <div className="w-full flex justify-end mt-12">
-              <div
-                onClick={() => {
-                  props.compareStrain({
-                    strain: props.misc.compareStrains,
-                    compareStrains:
-                      props.misc.compareStrains != null
-                        ? props.misc.compareStrains
-                        : [],
-                    action: "remove"
-                  });
-                }}
-                style={{ width: "140px" }}
-                className="bg-grey-lighter text-grey rounded text-center cursor-pointer hover:bg-red-light p-2 font-bold scale-item mr-8"
-              >
-                <h4>Clear Comparison</h4>
-              </div>
-            </div>
-          ) : null}
         </div>
       </div>
     </div>
