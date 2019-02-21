@@ -105,7 +105,7 @@ const menu = props => {
     <div
       style={{
         background: "white",
-        background: "url(../static/img/bg-header.png)",
+        background: `url(${props.misc.CFURL}/banners/header.jpg)`,
         backgroundSize: "cover",
         backgroundPosition: "left",
 

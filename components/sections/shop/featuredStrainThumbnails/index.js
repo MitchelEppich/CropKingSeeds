@@ -31,6 +31,7 @@ const index = props => {
     count = 3;
   }
   if (isSmallMediumOrLargeDevice) {
+    count = 2;
     max = 2;
   }
 
@@ -112,7 +113,8 @@ const index = props => {
             Load More{" "}
             <FontAwesomeIcon icon={faAngleDown} className="fa-lg ml-2" />
           </p>
-        ) : props.initialCount != props.specificMax ? (
+        ) : props.initialCount != props.specificMax &&
+          !isSmallMediumOrLargeDevice ? (
           <p
             onClick={() => {
               props.showMoreFeatures({
