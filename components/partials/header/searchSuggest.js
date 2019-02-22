@@ -10,19 +10,11 @@ class SearchSuggest extends Component {
   renderSuggestion = (suggestion, index) => (
     <div
       key={index}
-      //   onMouseEnter={() => {
-      //     this.props.setHighlightedSuggestion({
-      //       index: index,
-      //       suggestions: this.props.misc.suggestions
-      //     });
-      //     this.props.setSearch(
-      //       this.props.misc.suggestions[index].name.toLowerCase()
-      //     );
-      //   }}
-      onClick={() => {
-        if (!Router.asPath.includes("/shop")) {
-          Router.push("/shop");
-        }
+      onMouseEnter={() => {
+        this.props.setHighlightedSuggestion({
+          index: index,
+          suggestions: this.props.misc.suggestions
+        });
       }}
       className={
         this.props.misc.highlightedSuggestion == index
@@ -30,10 +22,24 @@ class SearchSuggest extends Component {
           : "bg-white text-grey font-bold h-10 z-999 py-1 shadow-lg leading-loose text-sm"
       }
     >
-      {suggestion.name.length > 17 &&
-      ["sm", "md", "lg", "xl"].includes(this.props.misc.mediaSize)
-        ? suggestion.name.slice(0, 18) + "..."
-        : suggestion.name}
+      <div className="inline-flex w-full">
+        <div
+          onClick={() => {
+            if (!Router.asPath.includes("/shop")) {
+              Router.push("/shop");
+            }
+          }}
+          className="w-3/5 text-left pl-2"
+        >
+          {suggestion.strain.name.length > 17 &&
+          ["sm", "md", "lg", "xl"].includes(this.props.misc.mediaSize)
+            ? suggestion.strain.name.slice(0, 18) + "..."
+            : suggestion.strain.name}
+        </div>
+        <div className="w-2/5 text-right text-grey-lighter pr-2">
+          {suggestion.match}
+        </div>
+      </div>
     </div>
   );
   getSuggestions = value => {
@@ -45,14 +51,10 @@ class SearchSuggest extends Component {
       : filter(
           this.props.misc.strains,
           {
-            text: inputValue.split(",").map(a => a.trim())
+            text: inputValue.split(",").map(a => a.trim().toLowerCase())
           },
           true
-        );
-    //   : this.props.misc.strains.filter(
-    //       strain =>
-    //         strain.name.toLowerCase().slice(0, inputLength) === inputValue
-    //     );
+        ).slice(0, 5);
   };
   changeHighlightedSuggestion = e => {
     if (e.keyCode == 13) {

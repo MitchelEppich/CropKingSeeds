@@ -154,7 +154,13 @@ class Index extends Component {
         });
       }
     );
-    let $filter = this.props.shop.activeFilters;
+    let $search = this.props.misc.searchValue;
+    let $filter = { ...this.props.shop.activeFilters };
+    if ($search != null) {
+      $search = $search.split(",").map(a => a.trim().toLowerCase());
+      if ($filter.text == null) $filter.text = $search;
+      else $filter.text = [...$filter.text, ...$search];
+    }
 
     products = filter(products, $filter)
       .sort(
