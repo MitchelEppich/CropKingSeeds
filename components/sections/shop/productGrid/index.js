@@ -89,10 +89,6 @@ class Index extends Component {
             ["time", "↑ Grow Time"],
             ["timeR", "↓ Grow Time"]
         ];
-
-        this.isSmallMediumOrLargeDevice = ["sm", "md", "lg"].includes(this.props.misc.mediaSize);
-        //needs to connect to store!!!
-        this.showQuantity = this.props.misc.strains.length;
     }
     componentDidMount() {
         this.myTween.staggerTo(this.myElements, 0.5, { autoAlpha: 1, y: -30 }, 0.1);
@@ -204,10 +200,12 @@ class Index extends Component {
                     </div>
                 );
             });
+        this.showQuantity = products.length;
         return products;
     };
 
     render() {
+        this.isSmallMediumOrLargeDevice = ["sm", "md", "lg"].includes(this.props.misc.mediaSize);
         return (
             <div className="sm:w-full md:w-full lg:w-3/5 xl:w-2/3 xxl:w-3/4 min-h-700 text-white mb-20 sm:mb-0">
                 <div
