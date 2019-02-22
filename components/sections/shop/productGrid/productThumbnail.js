@@ -112,7 +112,7 @@ const productThumbnail = props => {
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center"
             }}
-            className={packageClass}
+            className={` relative ${packageClass}`}
             onClick={e => {
               if (props.isSmallMediumOrLargeDevice) {
                 e.preventDefault();
@@ -132,6 +132,11 @@ const productThumbnail = props => {
               }
             }}
           >
+            <div className="absolute pin-t pin-r mr-10 -mt-2">
+              <p className="text-white new-product-icon text-sm h-10 flex items-center font-bold">
+                NEW
+              </p>
+            </div>
             <img
               className={packagePins}
               src={

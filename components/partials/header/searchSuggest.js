@@ -26,13 +26,13 @@ class SearchSuggest extends Component {
       }}
       className={
         this.props.misc.highlightedSuggestion == index
-          ? "bg-red-lighter font-bold text-black h-10 z-999 py-1 shadow-lg leading-loose text-sm"
-          : "bg-white text-black h-10 z-999 py-1 shadow-lg leading-loose text-sm"
+          ? "bg-red-light text-white font-bold h-10 z-999 py-1 shadow-lg leading-loose text-sm"
+          : "bg-white text-grey font-bold h-10 z-999 py-1 shadow-lg leading-loose text-sm"
       }
     >
       {suggestion.name.length > 17 &&
       ["sm", "md", "lg", "xl"].includes(this.props.misc.mediaSize)
-        ? suggestion.name.slice(0, 17) + "..."
+        ? suggestion.name.slice(0, 18) + "..."
         : suggestion.name}
     </div>
   );
