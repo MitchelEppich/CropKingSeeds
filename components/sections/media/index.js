@@ -43,7 +43,7 @@ const Media = props => {
       let active = props.misc.visibleScreen.includes(category + "::" + _id);
 
       let styleItem = {
-        height: active ? "170px" : "0px",
+        height: active ? "175px" : "0px",
         transition: "all 0.3s ease-in-out"
       };
 
@@ -69,7 +69,7 @@ const Media = props => {
             </div>
           </div>
           <div style={styleItem} className="overflow-hidden">
-            <div className="p-4 inline-flex bg-white relative sm:p-2 md:p-2 h-150 md:h-200 sm:h-200">
+            <div className="p-4 inline-flex bg-white relative sm:p-2 md:p-2 h-175 md:h-200 sm:h-200 w-full">
               <div className="px-2 ml-4 sm:ml-0 md:ml-0 lg:ml-0">
                 <img
                   src={imageUrl}
