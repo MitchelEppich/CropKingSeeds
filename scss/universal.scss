@@ -454,18 +454,21 @@ img {
 .slow {
     transition: all 0.5s ease-in-out;
 }
+.slower {
+    transition: all 0.4s ease-in-out;
+}
 .slowish {
     transition: all 0.3s ease-in-out;
 }
-.test2 {
-    background: #ff0707;
-    height: 90px;
-    width: 100%;
-    overflow-x: hidden;
-    margin-left: -8px;
-    margin-top: -53px;
-    transform: translateZ(-1em) rotate(-3deg);
-}
+// .test2 {
+//     background: #ff0707;
+//     height: 90px;
+//     width: 100%;
+//     overflow-x: hidden;
+//     margin-left: -8px;
+//     margin-top: -53px;
+//     transform: translateZ(-1em) rotate(-3deg);
+// }
 .text-content::first-letter {
     font-weight: bold;
     color: black;

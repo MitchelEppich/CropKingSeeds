@@ -89,7 +89,30 @@ class Index extends Component {
             ["time", "↑ Grow Time"],
             ["timeR", "↓ Grow Time"]
         ];
-        this.showSortOptions = this.sortOptions.map((val, index) => {
+
+        this.isSmallMediumOrLargeDevice = ["sm", "md", "lg"].includes(this.props.misc.mediaSize);
+        //needs to connect to store!!!
+        this.showQuantity = this.props.misc.strains.length;
+    }
+    componentDidMount() {
+        this.myTween.staggerTo(this.myElements, 0.5, { autoAlpha: 1, y: -30 }, 0.1);
+        this.myTween.restart();
+    }
+
+    componentDidUpdate(prevProps) {
+        // this.myTween.set(this.myElements, { autoAlpha: 1, y: -30 });
+    }
+    showSortOptions = () => {
+        this.showSortByStyle = {
+            height: this.props.misc.visibleScreen.includes("showSortBy") ? "262px" : "0px",
+            transition: "all 0.2s ease-in-out",
+            background: "white",
+            borderRadius: "6px",
+            width: "150px",
+            position: "absolute",
+            boxShadow: "0 2px 10px rgba(0,0,0,0.3)"
+        };
+        return this.sortOptions.map((val, index) => {
             let sort = this.props.shop.sort;
             return (
                 <div
@@ -104,28 +127,7 @@ class Index extends Component {
                 </div>
             );
         });
-        this.isSmallMediumOrLargeDevice = ["sm", "md", "lg"].includes(this.props.misc.mediaSize);
-        //needs to connect to store!!!
-        this.showQuantity = this.props.misc.strains.length;
-        this.showSortByStyle = {
-            height: this.props.misc.visibleScreen.includes("showSortBy") ? "262px" : "0px",
-            transition: "all 0.2s ease-in-out",
-            background: "white",
-            borderRadius: "6px",
-            width: "150px",
-            position: "absolute",
-            boxShadow: "0 2px 10px rgba(0,0,0,0.3)"
-        };
-    }
-    componentDidMount() {
-        this.myTween.staggerTo(this.myElements, 0.5, { autoAlpha: 1, y: -30 }, 0.1);
-        this.myTween.restart();
-    }
-
-    componentDidUpdate(prevProps) {
-        // this.myTween.set(this.myElements, { autoAlpha: 1, y: -30 });
-    }
-
+    };
     activeFilters = () => {
         let activeFilters = Object.keys(this.props.shop.activeFilters).map((filter, index) => {
             let filtersArr =
@@ -244,7 +246,7 @@ class Index extends Component {
                         <div style={this.showSortByStyle} className="overflow-hidden mt-10 relative sm:mt-10">
                             <div className="absolute">
                                 <div className="p-2 rounded border border-grey-lightest w-150">
-                                    {this.showSortOptions}
+                                    {this.showSortOptions()}
                                 </div>
                             </div>
                         </div>
