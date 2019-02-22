@@ -11,6 +11,8 @@ import SeedSelectModule from "../../productPage/seedSelectModule";
 
 import gen from "random-seed";
 
+import moment from "moment";
+
 function preventDefault(e) {
   e = e || window.event;
   if (e.preventDefault) e.preventDefault();
@@ -132,11 +134,15 @@ const productThumbnail = props => {
               }
             }}
           >
-            <div className="absolute pin-t pin-r mr-10 -mt-2">
-              <p className="text-white new-product-icon text-sm h-10 flex items-center font-bold">
-                NEW
-              </p>
-            </div>
+            {props.product.releaseDate != null &&
+            Math.max(0, moment().diff(props.product.releaseDate, "months")) <
+              3 ? (
+              <div className="absolute pin-t pin-r mr-10 -mt-2">
+                <p className="text-white new-product-icon text-sm h-10 flex items-center font-bold">
+                  NEW
+                </p>
+              </div>
+            ) : null}
             <img
               className={packagePins}
               src={

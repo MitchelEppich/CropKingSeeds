@@ -104,6 +104,7 @@ type Strain {
   ratingQuantity: [Int]
   featured: Boolean
   relationData: String
+  releaseDate: String
 }
 
 input StrainInput {
@@ -132,6 +133,7 @@ input StrainInput {
   featured: Boolean
   relationData: String,
   response: String
+  releaseDate: String
 }
 
 type Order {
@@ -295,8 +297,8 @@ type Mutation {
 `;
 
 const schema = makeExecutableSchema({
-    typeDefs,
-    resolvers
+  typeDefs,
+  resolvers
 });
 
 module.exports = schema;

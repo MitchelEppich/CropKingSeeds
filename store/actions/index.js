@@ -512,6 +512,7 @@ const query = {
         indica
         ruderalis
         rating
+        releaseDate
       }
     }
   `,
@@ -583,6 +584,7 @@ const query = {
         indica
         ruderalis
         rating
+        releaseDate
       }
     }
   `,
@@ -606,6 +608,7 @@ const query = {
         indica
         ruderalis
         rating
+        releaseDate
       }
     }
   `
