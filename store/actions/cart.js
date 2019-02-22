@@ -50,7 +50,7 @@ const getActions = uri => {
     },
     modifyPotentialQuantity: input => {
       let _tag = input.tag;
-      console.log(input);
+      // console.log(input);
       let _potentialQuantity = input.potentialQuantity;
       let _action = input.action;
       let _max = input.max;
@@ -62,7 +62,7 @@ const getActions = uri => {
       else if (_tag == null && typeof _potentialQuantity === "object")
         _potentialQuantity = _quantity;
 
-      console.log(_potentialQuantity, _quantity);
+      // console.log(_potentialQuantity, _quantity);
 
       switch (_action) {
         case "SET":

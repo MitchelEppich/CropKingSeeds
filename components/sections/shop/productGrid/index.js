@@ -305,7 +305,7 @@ class Index extends Component {
             </div>
             <div
               style={showSortByStyle}
-              className="overflow-hidden relative sm:mt-10"
+              className="overflow-hidden mt-10 relative sm:mt-10"
             >
               <div className="absolute">
                 <div className="p-2 rounded border border-grey-lightest w-150">
