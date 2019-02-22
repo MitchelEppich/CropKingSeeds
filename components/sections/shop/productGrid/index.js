@@ -5,6 +5,8 @@ import actions from "../../../../store/actions";
 import { TimelineLite, TweenMax } from "gsap";
 import ProductThumbnail from "./productThumbnail";
 
+import { filter } from "../../../../store/utilities/filter";
+
 import { faTimes, faSortAmountDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -152,53 +154,9 @@ class Index extends Component {
         });
       }
     );
-    products = products
-      .filter(a => {
-        let _filter = this.props.shop.activeFilters;
-        if (this.props.misc.searchValue != null) {
-          // console.log(JSON.stringify(a));
-          if (
-            !JSON.stringify(a)
-              .toLowerCase()
-              .includes(this.props.misc.searchValue)
-          )
-            return false;
-        }
-        if (Object.keys(_filter).length == 0) return true;
-        let _pass = true;
-        if (_filter.type != null && _filter.type != a.type.toLowerCase())
-          _pass = false;
-        if (
-          _filter.genetic != null &&
-          _filter.genetic.length != 0 &&
-          !_filter.genetic.includes(a.genetic.toLowerCase())
-        )
-          _pass = false;
+    let $filter = this.props.shop.activeFilters;
 
-        if (
-          _filter.text != null &&
-          _filter.text.length != 0 &&
-          !_filter.text.some(val => {
-            let _val = val.toLowerCase();
-            if (
-              [
-                a.genetic.toLowerCase(),
-                a.name.toLowerCase(),
-                a.type.toLowerCase(),
-                a.flowerTime.toLowerCase(),
-                a.yield[2].toLowerCase()
-              ].some($val => {
-                if ($val.includes(_val)) return true;
-              })
-            )
-              return true;
-          })
-        )
-          _pass = false;
-        if (_filter.cbd != null && _filter.cbd != a.cbd) _pass = false;
-        if (_filter.thc != null && _filter.thc != a.thc) _pass = false;
-        return _pass;
-      })
+    products = filter(products, $filter)
       .sort(
         this.props.shop.sort != null
           ? sortingFunctions[this.props.shop.sort]
@@ -222,7 +180,7 @@ class Index extends Component {
               this.props.modifyPotentialQuantity({
                 potentialQuantity: this.props.cart.potentialQuantity,
                 action: "SET",
-                max: props.cart.maxPerPackage,
+                max: this.props.cart.maxPerPackage,
                 quantity: 1
               });
             }}

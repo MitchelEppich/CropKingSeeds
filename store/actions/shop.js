@@ -33,10 +33,12 @@ const getActions = uri => {
       })();
       if (shouldRemove) {
         if (input.multiple == true) {
-          _filter[_key] = _filter[_key].filter(a => {
-            if (a == input[_key]) return false;
-            return true;
-          });
+          if (_filter[_key].length == 1) delete _filter[_key];
+          else
+            _filter[_key] = _filter[_key].filter(a => {
+              if (a == input[_key]) return false;
+              return true;
+            });
         } else delete _filter[_key];
       } else {
         if (input.multiple == true) {
