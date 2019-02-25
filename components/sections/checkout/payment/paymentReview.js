@@ -194,7 +194,7 @@ const PaymentReview = props => {
       </div>
       <div
         style={box}
-        className="w-1/3 h-200 lg:w-full lg:mt-2 sm:w-full sm:mt-2 md:w-full md:mt-2 xxl:mx-4 xl:mx-4 bg-white"
+        className="w-1/3 h-200 lg:w-full lg:mt-2 sm:w-full sm:mt-2 md:w-full md:mt-2 xxl:mx-4 xl:mx-2 bg-white"
       >
         <h3 style={titleBox}>Billing Address</h3>
         <div className="p-2">

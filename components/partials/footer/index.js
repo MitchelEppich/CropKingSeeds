@@ -207,7 +207,7 @@ const Footer = props => {
               <button
                 aria-label="subscribe"
                 type="submit"
-                className="absolute pin-r pl-2 h-10  bg-red-darker text-white cursor-pointer hover:bg-grey-dark hover:text-red-darker w-16"
+                className="absolute pin-r pl-2 h-10  bg-red-darker text-white cursor-pointer hover:bg-grey-light hover:text-red-darker w-16"
               >
                 <FontAwesomeIcon icon={faAngleRight} className="fa-2x h-10 " />
               </button>

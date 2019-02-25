@@ -143,14 +143,14 @@ const resolvers = {
               ...strain.reviews
             ];
           }
+          strain.save();
+          console.log(strain);
+          return strain;
         })
         .catch(function(err) {
           // POST failed...
           console.log(err);
         });
-
-      strain.save();
-
       return strain;
     },
     typeToDom: async (_, { input }) => {
