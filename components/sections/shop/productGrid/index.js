@@ -170,10 +170,12 @@ class Index extends Component {
                         key={index}
                         ref={div => (this.myElements[index] = div)}
                         onMouseEnter={() => {
-                            if (this.isSmallMediumOrLargeDevice || this.props.supportedBrowser.browser == "firefox") {
+                            if (this.isSmallMediumOrLargeDevice) {
                                 return null;
                             }
-                            this.props.setHoverId(product._id, true);
+                            this.props.setHoverId(product._id, true).then(() => {
+                                return null;
+                            });
                             let _index = 0;
                             while (product.price[_index] == -1) {
                                 _index++;

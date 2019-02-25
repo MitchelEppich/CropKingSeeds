@@ -168,10 +168,12 @@ const actions = {
         return { type: actionTypes.SET_CONTEXT, input: input };
     },
     setHoverId: (id, turnOn) => {
-        return {
-            type: actionTypes.SET_HOVER_ID,
-            id: id,
-            turnOn: turnOn
+        return async dispatch => {
+            return dispatch({
+                type: actionTypes.SET_HOVER_ID,
+                id: id,
+                turnOn: turnOn
+            });
         };
     },
     setGeneHoverIndex: index => {

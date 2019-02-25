@@ -63,7 +63,6 @@ const menu = props => {
               transform: "translateX(-130px)",
               transition: "all 0.2s ease-in-out",
               WebkitTransition: "all 0.2s ease-in-out",
-
               height: `${8 + (availableCurrencyLength - 1) * 39}px`
           };
 
