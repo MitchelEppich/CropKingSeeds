@@ -209,8 +209,12 @@ const Compare = props => {
               </div>
               <div className="inline-flex w-full bg-grey-lightest">
                 <div className="w-full text-center">
-                  <p className="p-2 font-normal">
-                    {product.rating.toFixed(2)} of 5
+                  <p className="p-2 font-normal items-center flex justify-center">
+                    {product.rating.toFixed(2)}
+                    <img
+                      src="../../static/img/CrownIcon.svg"
+                      class="ml-1 h-4 w-6 crown-icon text-red-dark opacity-50"
+                    />
                   </p>
                 </div>
               </div>
@@ -307,7 +311,7 @@ const Compare = props => {
                   className="text-lg text-center w-10 border-0 font-bold pt-1 leading-none"
                   type="number"
                 />
-                {console.log(props.cart.potentialQuantity)}
+                {/* {console.log(props.cart.potentialQuantity)} */}
                 <button
                   name="increaseItem"
                   onClick={() =>
