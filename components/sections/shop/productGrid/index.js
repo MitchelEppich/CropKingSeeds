@@ -96,8 +96,9 @@ class Index extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        // this.myTween.set(this.myElements, { autoAlpha: 1, y: -30 });
+        this.myTween.set(this.myElements, { autoAlpha: 1, y: -30 });
     }
+
     showSortOptions = () => {
         this.showSortByStyle = {
             height: this.props.misc.visibleScreen.includes("showSortBy") ? "262px" : "0px",
@@ -169,7 +170,7 @@ class Index extends Component {
                         key={index}
                         ref={div => (this.myElements[index] = div)}
                         onMouseEnter={() => {
-                            if (this.isSmallMediumOrLargeDevice) {
+                            if (this.isSmallMediumOrLargeDevice || this.props.supportedBrowser.browser == "firefox") {
                                 return null;
                             }
                             this.props.setHoverId(product._id, true);
