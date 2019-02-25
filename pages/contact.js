@@ -55,7 +55,7 @@ class Index extends Component {
                         e.preventDefault();
                         const form = e.target;
                         const formData = new window.FormData(form);
-                        // console.log(this.refs.recaptchaRef.getValue());
+                        console.log(this.refs.recaptchaRef.getValue());
                         if (this.refs.recaptchaRef.getValue() != null) {
                           this.props.sendEmail({
                             name: formData.get("name"),
@@ -148,8 +148,11 @@ class Index extends Component {
                           <div className="w-200 sm:w-full md:w-full md:justify-center flex justify-center">
                             <button
                               type="submit"
-                              className="p-2 sm:p-3 md:p-3 px-4 w-150 sm:w-full md:w-full text-lg text-white rounded bg-red-dark hover:bg-red-light font-bold"
+                              className="p-2 sm:p-3 md:p-3 px-4
+                              w-150 sm:w-full md:w-full text-lg text-white
+                              rounded bg-red-dark hover:bg-red-light font-bold"
                             >
+                              {" "}
                               Submit
                             </button>
                           </div>

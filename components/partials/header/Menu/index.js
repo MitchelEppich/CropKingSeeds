@@ -209,12 +209,13 @@ const menu = props => {
                     : "opacity-0 slow flex shadow-md sm:mx-0 -mt-54px sm:-mt-6 md:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-125 rounded-full bg-crimson justify-center content-center items-center ml-10"
                 }
               >
-                <Link href="/">
-                  <img
-                    src="../static/img/cks-logo-header.png"
-                    className="z-999 cks-logo-header p-0 w-125 sm:w-85px scale-item cursor-pointer sm:-mt-2 sm:-ml-1 md:-mt-3"
-                  />
-                </Link>
+                {/* <Link href="/"> */}
+                <img
+                  onClick={() => console.log(props)}
+                  src="../static/img/cks-logo-header.png"
+                  className="z-999 cks-logo-header p-0 w-125 sm:w-85px scale-item cursor-pointer sm:-mt-2 sm:-ml-1 md:-mt-3"
+                />
+                {/* </Link> */}
               </div>
             </div>
             <div className="w-3/4 sm:w-full md:w-full lg:w-full flex justify-start">

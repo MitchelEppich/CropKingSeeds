@@ -85,14 +85,15 @@ const getActions = uri => {
         await makePromise(execute(link, operation))
           .then(data => {
             let strain = data.data.updateStrain;
+            console.log(strain);
             dispatch(
               objects.setCurrentProduct({
                 product: inferStrainData(strain)
               })
             );
-            dispatch({
-              type: actionTypes.UPDATE_STRAIN
-            });
+            // dispatch({
+            //   type: actionTypes.UPDATE_STRAIN
+            // });
           })
           .catch(error => console.log(error));
       };
