@@ -26,47 +26,47 @@ const menu = props => {
   const isClient = typeof document !== "undefined";
   let route = isClient ? Router.route : "";
 
-  let availableCurrency = props.checkout.availableCurrency;
-  let currency = props.checkout.viewCurrency;
+  // let availableCurrency = props.checkout.availableCurrency;
+  // let currency = props.checkout.viewCurrency;
   let isMobileNavVisible = props.misc.visibleScreen.includes("showMobileNav");
   let viewCurrency, showMobileNav;
-  let availableCurrencyLength = Object.keys(availableCurrency).length;
+  // let availableCurrencyLength = Object.keys(availableCurrency).length;
 
-  let showCurrency = () => {
-    let arr = [];
-    for (let country of Object.keys(availableCurrency)) {
-      if (currency != null && country == currency.label) continue;
-      arr.push(
-        <div
-          key={country}
-          className="bg-white inline-flex cursor-pointer hover:bg-grey-lightest"
-          style={{ marginTop: "5px", height: "34px" }}
-          onClick={() => {
-            props.setCurrency({
-              currency: {
-                label: country,
-                ...props.checkout.availableCurrency[country]
-              }
-            });
-            props.setVisibleScreen({ input: "viewCurrency" });
-          }}
-        >
-          <div className="w-12 p-2 sm:w-8 sm:p-1 items-center flex justify-center">
-            <p>
-              <img
-                src={`../../static/img/currency/currency_${country}.png`}
-                className="w-10"
-              />
-            </p>
-          </div>
-          <p className="px-6 pt-2 p-1 uppercase text-center font-extrabold text-lg sm:px-4 sm:text-sm">
-            {country.toUpperCase()}
-          </p>
-        </div>
-      );
-    }
-    return arr;
-  };
+  // let showCurrency = () => {
+  //   let arr = [];
+  //   for (let country of Object.keys(availableCurrency)) {
+  //     if (currency != null && country == currency.label) continue;
+  //     arr.push(
+  //       <div
+  //         key={country}
+  //         className="bg-white inline-flex cursor-pointer hover:bg-grey-lightest"
+  //         style={{ marginTop: "5px", height: "34px" }}
+  //         onClick={() => {
+  //           props.setCurrency({
+  //             currency: {
+  //               label: country,
+  //               ...props.checkout.availableCurrency[country]
+  //             }
+  //           });
+  //           props.setVisibleScreen({ input: "viewCurrency" });
+  //         }}
+  //       >
+  //         <div className="w-12 p-2 sm:w-8 sm:p-1 items-center flex justify-center">
+  //           <p>
+  //             <img
+  //               src={`../../static/img/currency/currency_${country}.png`}
+  //               className="w-10"
+  //             />
+  //           </p>
+  //         </div>
+  //         <p className="px-6 pt-2 p-1 uppercase text-center font-extrabold text-lg sm:px-4 sm:text-sm">
+  //           {country.toUpperCase()}
+  //         </p>
+  //       </div>
+  //     );
+  //   }
+  //   return arr;
+  // };
 
   viewCurrency = props.misc.visibleScreen.includes("viewCurrency")
     ? {
@@ -77,9 +77,9 @@ const menu = props => {
     : {
         transform: "translateX(-130px)",
         transition: "all 0.2s ease-in-out",
-        WebkitTransition: "all 0.2s ease-in-out",
+        WebkitTransition: "all 0.2s ease-in-out"
 
-        height: `${8 + (availableCurrencyLength - 1) * 39}px`
+        // height: `${8 + (availableCurrencyLength - 1) * 39}px`
       };
 
   showMobileNav = isMobileNavVisible

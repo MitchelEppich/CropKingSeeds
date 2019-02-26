@@ -56,7 +56,8 @@ const initialState = {
   showMobileMenu: null,
   CFURL: "http://dcfgweqx7od72.cloudfront.net",
   newsTimeout: null,
-  newCustomer: null
+  newCustomer: null,
+  eyesShouldMove: false
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -101,6 +102,10 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.IS_REPEAT_CUSTOMER:
       return updateObject(state, {
         newCustomer: action.input
+      });
+    case actionTypes.SET_EYES_SHOULD_MOVE:
+      return updateObject(state, {
+        eyesShouldMove: action.input
       });
     case actionTypes.COMPARE_STRAIN:
       return updateObject(state, {

@@ -70,10 +70,17 @@ const actionTypes = {
   GET_RELATED_LIST: "GET_RELATED_LIST",
   SET_NEWS_STEPPER: "SET_NEWS_STEPPER",
   IS_REPEAT_CUSTOMER: "IS_REPEAT_CUSTOMER",
-  COMPARE_STRAIN: "COMPARE_STRAIN"
+  COMPARE_STRAIN: "COMPARE_STRAIN",
+  SET_EYES_SHOULD_MOVE: "SET_EYES_SHOULD_MOVE"
 };
 
 const actions = {
+  setEyesShouldMove: input => {
+    return {
+      type: actionTypes.SET_EYES_SHOULD_MOVE,
+      input: input.value
+    };
+  },
   setNewsStepper: input => {
     return {
       type: actionTypes.SET_NEWS_STEPPER,

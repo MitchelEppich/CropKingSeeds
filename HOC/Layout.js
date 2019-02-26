@@ -126,7 +126,7 @@ class Layout extends Component {
     window.addEventListener("resize", () => {
       this.setMediaSize();
     });
-    this.props.getExchangeRates();
+    // this.props.getExchangeRates();
   }
 
   recallSession = async () => {
