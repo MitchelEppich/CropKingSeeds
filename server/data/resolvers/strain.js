@@ -86,7 +86,7 @@ const resolvers = {
           "content-type": "application/x-www-form-urlencoded"
         }
       };
-      request(options)
+      return request(options)
         .then(function(parsedBody) {
           // POST succeeded...
           if (input.review != null) {
@@ -144,14 +144,12 @@ const resolvers = {
             ];
           }
           strain.save();
-          console.log(strain);
           return strain;
         })
         .catch(function(err) {
           // POST failed...
           console.log(err);
         });
-      return strain;
     },
     typeToDom: async (_, { input }) => {
       let _strains = await Strain.find({});
