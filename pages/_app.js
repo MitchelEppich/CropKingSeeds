@@ -17,8 +17,7 @@ export default withRedux(makeStore)(
 
         render() {
             const { Component, pageProps, store, router } = this.props;
-            let supportedBrowser = true,
-                firefox = false;
+            let supportedBrowser = true;
 
             let agent = browser.name != "node" ? navigator.userAgent.toLowerCase() : "node";
             if (
@@ -28,10 +27,9 @@ export default withRedux(makeStore)(
             ) {
                 supportedBrowser = false;
             }
-            // if (agent.includes(["firefox"])){
-            //   firefox = true;
-            // }
-
+            if (!supportedBrowser) {
+                alert("Your browser is not supported. Use Google Chrome for the ebst experience.");
+            }
             return (
                 <Provider store={store}>
                     <Container>

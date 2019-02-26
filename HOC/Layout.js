@@ -31,7 +31,7 @@ import Head from "next/head";
 import ShareButtons from "../components/sections/shareButtons";
 import AgeVerification from "../components/sections/ageVerification";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComments, faCaretUp, faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import { faComments, faCaretUp, faAngleUp, faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Loader from "../components/sections/loader";
 import SearchBar from "../components/partials/header/searchBar";
@@ -234,7 +234,7 @@ class Layout extends Component {
                 {this.props.viewProduct.currentProduct && this.props.viewProduct.imageZoom ? (
                     <ImageZoom {...this.props} />
                 ) : null}
-                <div id="top" className="w-full bg-off-white">
+                <div id="top" className="w-full bg-off-white noscriptpage">
                     {this.props.misc.ageVerification == null || !this.props.misc.ageVerification.verified ? (
                         this.props.misc.ageVerification != null ? (
                             <AgeVerification {...this.props} />
@@ -298,7 +298,7 @@ class Layout extends Component {
                 </div>
             </React.Fragment>
         ) : (
-            <div className="h-screen w-full">
+            <div className="h-screen w-full noscriptpage">
                 <Loader {...this.props} />
             </div>
         );
