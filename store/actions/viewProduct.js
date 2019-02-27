@@ -123,16 +123,16 @@ const getActions = uri => {
         setImageZoom: imz => {
             return { type: actionTypes.SET_IMAGE_ZOOM, imz: imz };
         },
-        toggleImageZoom: bool => {
+        toggleImageZoom: isImageZoomed => {
             return {
                 type: actionTypes.TOGGLE_IMAGE_ZOOM,
-                bool: bool
+                isImageZoomed: isImageZoomed
             };
         },
-        toggleStrainsMenu: bool => {
+        toggleStrainsMenu: isStrainsMenuVisible => {
             return {
                 type: actionTypes.TOGGLE_STRAINS_MENU,
-                bool: bool
+                isStrainsMenuVisible: isStrainsMenuVisible
             };
         }
     };

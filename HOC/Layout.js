@@ -318,7 +318,7 @@ const mapDispatchToProps = dispatch => {
         setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
         setEmail: input => dispatch(actions.setEmail(input)),
         subscribeToNewsletter: input => dispatch(actions.subscribeToNewsletter(input)),
-        toggleShowFilters: bool => dispatch(actions.toggleShowFilters(bool)),
+        toggleShowFilters: isFilterVisible => dispatch(actions.toggleShowFilters(isFilterVisible)),
         toggleFilter: input => dispatch(actions.toggleFilter(input)),
         getFeaturedList: input => dispatch(actions.getFeaturedList(input)),
         isRepeatCustomer: input => dispatch(actions.isRepeatCustomer(input)),
@@ -332,9 +332,9 @@ const mapDispatchToProps = dispatch => {
         setSearch: value => dispatch(actions.setSearch(value)),
         setSuggestions: suggestions => dispatch(actions.setSuggestions(suggestions)),
         setHighlightedSuggestion: input => dispatch(actions.setHighlightedSuggestion(input)),
-        toggleImageZoom: bool => dispatch(actions.toggleImageZoom(bool)),
+        toggleImageZoom: isImageZoomed => dispatch(actions.toggleImageZoom(isImageZoomed)),
         setCurrentImage: index => dispatch(actions.setCurrentImage(index)),
-        toggleStrainsMenu: bool => dispatch(actions.toggleStrainsMenu(bool)),
+        toggleStrainsMenu: isStrainsMenuVisible => dispatch(actions.toggleStrainsMenu(isStrainsMenuVisible)),
         purgeCart: () => dispatch(actions.purgeCart())
     };
 };

@@ -208,7 +208,7 @@ class Index extends Component {
     };
 
     render() {
-        this.isSmallMediumOrLargeDevice = ["sm", "md", "lg"].includes(this.props.misc.mediaSize);
+        this.isSmallMediumOrLargeDevice = this.props.checkout.orderDetails.details.device.value != "Desktop";
         return (
             <div className="sm:w-full md:w-full lg:w-3/5 xl:w-2/3 xxl:w-3/4 min-h-700 text-white mb-20 sm:mb-0">
                 <div

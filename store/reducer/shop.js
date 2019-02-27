@@ -25,7 +25,7 @@ export default (state = initialState, action) => {
             });
         case actionTypes.TOGGLE_SHOW_FILTERS:
             return updateObject(state, {
-                showFilters: action.bool
+                showFilters: action.isFilterVisible
             });
         case actionTypes.RESET_CART_ANIMATION:
             return updateObject(state, { cartAnimation: false });
