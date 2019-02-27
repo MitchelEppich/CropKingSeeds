@@ -4,7 +4,7 @@ import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 
 const About = props => {
   let bgHistory = {
-    background: "url('../static/img/bgAbout.jpg')",
+    background: `url(${props.misc.CFURL}/banners/bgAbout.jpg)`,
     backgroundSize: "cover",
     backgroundPositionY: "bottom"
   };

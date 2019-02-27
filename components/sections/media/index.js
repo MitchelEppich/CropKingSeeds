@@ -134,6 +134,7 @@ const Media = props => {
   let showCategories = () => {
     let arr = [];
     let keys = Object.keys(news);
+    console.log(keys);
     keys.map((category, index) => {
       arr.push(
         <div
@@ -143,7 +144,7 @@ const Media = props => {
           } ${index == keys.length - 1 ? "mb-12" : ""}`}
         >
           <h3 className="mt-5 p-3 text-white font-extrabold rounded text-center text-xl uppercase bg-red-dark mx-auto sm:w-full w-main lg:w-full text-center">
-            Upcoming {category}s
+            {category == "Event" ? "Upcoming" : "Recent"} {category}s
           </h3>
           {showNewsEntry(news[category])}
         </div>
