@@ -4,202 +4,246 @@
 // @access public
 // @param {String} $element - Element's name
 @mixin element($element) {
-  &__#{$element} {
-    @content;
-  }
+    &__#{$element} {
+        @content;
+    }
 }
 // Block Modifier
 // @access public
 // @param {String} $modifier - Modifier's name
 @mixin modifier($modifier) {
-  &--#{$modifier} {
-    @content;
-  }
+    &--#{$modifier} {
+        @content;
+    }
 }
 
 //EXAMPLE FONT FACE IMPORT WITH TWO WEIGHTS
 @font-face {
-  font-family: "proxima nova";
-  src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff")
-    format("truetype");
-  font-weight: thin;
-  font-style: normal;
-  font-display: swap;
+    font-family: "proxima nova";
+    src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff") format("truetype");
+    font-weight: thin;
+    font-style: normal;
+    font-display: swap;
 }
 @font-face {
-  font-family: "proxima nova";
-  src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff")
-    format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+    font-family: "proxima nova";
+    src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
 ////////////
 //SHOP PAGE
 .overlayClass {
-  height: 100%;
-  width: 100%;
-  transition: 0.3s all ease;
-  color: rgba(255, 255, 255, 0);
-  position: relative;
-  z-index: 99999999999999;
-  overflow: visible;
-  text-align: center;
-
-  @include modifier("hover") {
-    text-align: center;
-    transform: translateX(-60px) translateZ(0);
-    -webkit-transform: translateX(-60px) translateZ(0);
-    -moz-transform: translateX(-60px) translateZ(0);
-    -ms-transform: translateX(-60px) translateZ(0);
-    -o-transform: translateX(-60px) translateZ(0);
-    height: 635px;
-    width: 145%;
-    background-color: #fff;
+    height: 100%;
+    width: 100%;
     transition: 0.3s all ease;
-    color: rgba(255, 255, 255, 1);
-    position: absolute;
-    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
-      0 5px 15px 0 rgba(0, 0, 0, 0.08);
-    border: 0.5px solid #cecece;
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+    color: rgba(255, 255, 255, 0);
+    position: relative;
     z-index: 99999999999999;
-  }
+    overflow: visible;
+    text-align: center;
+
+    @include modifier("hover") {
+        text-align: center;
+        transform: translateX(-60px) translateZ(0);
+        -webkit-transform: translateX(-60px) translateZ(0);
+        -moz-transform: translateX(-60px) translateZ(0);
+        -ms-transform: translateX(-60px) translateZ(0);
+        -o-transform: translateX(-60px) translateZ(0);
+        height: 635px;
+        width: 145%;
+        background-color: #fff;
+        transition: 0.3s all ease;
+        -webkit-transition: 0.3s all ease;
+        -moz-transition: 0.3s all ease;
+        -ms-transition: 0.3s all ease;
+        -o-transition: 0.3s all ease;
+        color: rgba(255, 255, 255, 1);
+        position: absolute;
+        box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+        border: 0.5px solid #cecece;
+        z-index: 99999999999999;
+    }
 }
 .packageClass {
-  height: 14rem;
-  width: 240px;
-  position: relative;
-  transform: translateX(-15px) translateZ(0);
-  -webkit-transform: translateX(-15px) translateZ(0);
-  -moz-transform: translateX(-15px) translateZ(0);
-  -ms-transform: translateX(-15px) translateZ(0);
-  -o-transform: translateX(-15px) translateZ(0);
-  z-index: 10;
-  transition: 0.3s all ease;
-  padding: 5.5rem 3rem 0.5rem 3rem;
-  text-align: right;
-  @include modifier("hover") {
     height: 14rem;
     width: 240px;
     position: relative;
-    transform: translateX(-10px) translateZ(0);
-    -webkit-transform: translateX(-10px) translateZ(0);
-    -moz-transform: translateX(-10px) translateZ(0);
-    -ms-transform: translateX(-10px) translateZ(0);
-    -o-transform: translateX(-10px) translateZ(0);
+    transform: translateX(-15px) translateZ(0);
+    -webkit-transform: translateX(-15px) translateZ(0);
+    -moz-transform: translateX(-15px) translateZ(0);
+    -ms-transform: translateX(-15px) translateZ(0);
+    -o-transform: translateX(-15px) translateZ(0);
     z-index: 10;
     transition: 0.3s all ease;
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
     padding: 5.5rem 3rem 0.5rem 3rem;
     text-align: right;
-  }
+    @include modifier("hover") {
+        height: 14rem;
+        width: 240px;
+        position: relative;
+        transform: translateX(-10px) translateZ(0);
+        -webkit-transform: translateX(-10px) translateZ(0);
+        -moz-transform: translateX(-10px) translateZ(0);
+        -ms-transform: translateX(-10px) translateZ(0);
+        -o-transform: translateX(-10px) translateZ(0);
+        z-index: 10;
+        transition: 0.3s all ease;
+        -webkit-transition: 0.3s all ease;
+        -moz-transition: 0.3s all ease;
+        -ms-transition: 0.3s all ease;
+        -o-transition: 0.3s all ease;
+        padding: 5.5rem 3rem 0.5rem 3rem;
+        text-align: right;
+    }
 }
 .package-pins {
-  transition: 0.3s all ease;
-  right: 0;
-  height: 3.5rem;
-  @include modifier("hover") {
     transition: 0.3s all ease;
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
     right: 0;
     height: 3.5rem;
-  }
+    @include modifier("hover") {
+        transition: 0.3s all ease;
+        -webkit-transition: 0.3s all ease;
+        -moz-transition: 0.3s all ease;
+        -ms-transition: 0.3s all ease;
+        -o-transition: 0.3s all ease;
+        right: 0;
+        height: 3.5rem;
+    }
 
-  @include modifier("product") {
-    transition: 0.2s all ease;
-    height: 1rem;
-  }
-  @include modifier("productZoom") {
-    transition: 0.2s all ease;
-    height: 7rem;
-    top: 170px;
-    right: 5rem;
-    position: absolute;
-  }
+    @include modifier("product") {
+        transition: 0.2s all ease;
+        -webkit-transition: 0.2s all ease;
+        -moz-transition: 0.2s all ease;
+        -ms-transition: 0.2s all ease;
+        -o-transition: 0.2s all ease;
+        height: 1rem;
+    }
+    @include modifier("productZoom") {
+        transition: 0.2s all ease;
+        -webkit-transition: 0.2s all ease;
+        -moz-transition: 0.2s all ease;
+        -ms-transition: 0.2s all ease;
+        -o-transition: 0.2s all ease;
+        height: 7rem;
+        top: 170px;
+        right: 5rem;
+        position: absolute;
+    }
 }
 .plantClass {
-  height: 12rem;
-  position: absolute;
-  top: 0;
-  z-index: 0;
-  transform: translateX(-150px) translateY(30px) translateZ(0);
-  -webkit-transform: translateX(-150px) translateY(30px) translateZ(0);
-  -moz-transform: translateX(-150px) translateY(30px) translateZ(0);
-  -ms-transform: translateX(-150px) translateY(30px) translateZ(0);
-  -o-transform: translateX(-150px) translateY(30px) translateZ(0);
-  transition: 0.5s all ease;
-  @include modifier("hover") {
     height: 12rem;
     position: absolute;
     top: 0;
     z-index: 0;
+    transform: translateX(-150px) translateY(30px) translateZ(0);
+    -webkit-transform: translateX(-150px) translateY(30px) translateZ(0);
+    -moz-transform: translateX(-150px) translateY(30px) translateZ(0);
+    -ms-transform: translateX(-150px) translateY(30px) translateZ(0);
+    -o-transform: translateX(-150px) translateY(30px) translateZ(0);
     transition: 0.5s all ease;
-    transform: translateX(-70px) translateY(55px) translateZ(0);
-    -webkit-transform: translateX(-70px) translateY(55px) translateZ(0);
-    -moz-transform: translateX(-70px) translateY(55px) translateZ(0);
-    -ms-transform: translateX(-70px) translateY(55px) translateZ(0);
-    -o-transform: translateX(-70px) translateY(55px) translateZ(0);
-  }
+    -webkit-transition: 0.5s all ease;
+    -moz-transition: 0.5s all ease;
+    -ms-transition: 0.5s all ease;
+    -o-transition: 0.5s all ease;
+    @include modifier("hover") {
+        height: 12rem;
+        position: absolute;
+        top: 0;
+        z-index: 0;
+        transition: 0.5s all ease;
+        -webkit-transition: 0.5s all ease;
+        -moz-transition: 0.5s all ease;
+        -ms-transition: 0.5s all ease;
+        -o-transition: 0.5s all ease;
+        transform: translateX(-70px) translateY(55px) translateZ(0);
+        -webkit-transform: translateX(-70px) translateY(55px) translateZ(0);
+        -moz-transform: translateX(-70px) translateY(55px) translateZ(0);
+        -ms-transform: translateX(-70px) translateY(55px) translateZ(0);
+        -o-transform: translateX(-70px) translateY(55px) translateZ(0);
+    }
 }
 .strainTitle {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: -43px;
-  width: 93%;
-  border-top-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  color: white;
-  text-shadow: rgb(0, 0, 0) 1px 1px 2px;
-  box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
-  transition: 0.3s all ease;
-  @include modifier("hover") {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -43px;
+    width: 93%;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+    text-shadow: rgb(0, 0, 0) 1px 1px 2px;
+    box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
     transition: 0.3s all ease;
-    &:hover {
-      transform: scale(1.1) translateZ(0);
-      -webkit-transform: scale(1.1) translateZ(0);
-      -moz-transform: scale(1.1) translateZ(0);
-      -ms-transform: scale(1.1) translateZ(0);
-      -o-transform: scale(1.1) translateZ(0);
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+    @include modifier("hover") {
+        transition: 0.3s all ease;
+        -webkit-transition: 0.3s all ease;
+        -moz-transition: 0.3s all ease;
+        -ms-transition: 0.3s all ease;
+        -o-transition: 0.3s all ease;
+        &:hover {
+            transform: scale(1.1) translateZ(0);
+            -webkit-transform: scale(1.1) translateZ(0);
+            -moz-transform: scale(1.1) translateZ(0);
+            -ms-transform: scale(1.1) translateZ(0);
+            -o-transform: scale(1.1) translateZ(0);
+        }
     }
-  }
 }
 
 .new-product-icon {
-  position: relative;
-  display: inline-block;
-  background: #4ad889;
-  color: white;
-  filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.3));
-  height: 2rem;
-  width: 2rem;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 2rem;
-  transform: rotate(10deg);
-  //   animation: beat 3s ease infinite alternate;
-  &:before,
-  &:after {
-    content: "";
-    position: absolute;
-    background: inherit;
-    height: inherit;
-    width: inherit;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transform: rotate(30deg);
-  }
-  &:after {
-    transform: rotate(60deg);
-  }
+    position: relative;
+    display: inline-block;
+    background: #4ad889;
+    color: white;
+    filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.3));
+    height: 2rem;
+    width: 2rem;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 2rem;
+    animation: beat 1s ease infinite alternate;
+    &:before,
+    &:after {
+        content: "";
+        position: absolute;
+        background: inherit;
+        height: inherit;
+        width: inherit;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transform: rotate(30deg);
+    }
+    &:after {
+        transform: rotate(60deg);
+    }
 }
 
 @keyframes beat {
-  from {
-    transform: rotate(-20deg) scale(1);
-  }
-  to {
-    transform: rotate(-20deg) scale(1.1);
-  }
+    from {
+        transform: rotate(10deg) scale(1);
+    }
+    to {
+        transform: rotate(10deg) scale(1.2);
+    }
 }
 // END SHOP PAGE
 ////////////////

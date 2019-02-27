@@ -1,9 +1,9 @@
-import React from "react";
-import Link from "next/link";
-import data from "../../../static/data";
+import React from "react"
+import Link from "next/link"
+import data from "../../../static/data"
 
 const AgeVerification = props => {
-  let pageGroup = "shipping";
+  let pageGroup = "shipping"
   let showCountries = () => {
     let arr = [
       <option key="default" disabled value="">
@@ -18,64 +18,95 @@ const AgeVerification = props => {
       <option key="hr" disabled>
         -------
       </option>
-    ];
+    ]
     for (let country of data.countries) {
       arr.push(
         <option key={country} value={country}>
           {country}
         </option>
-      );
+      )
     }
-    return arr;
-  };
+    return arr
+  }
 
   let showOptions = () => {
-    if (props.misc.ageVerification == null) return null;
-    let _data = Object.keys(data.provincesCA);
+    if (props.misc.ageVerification == null) return null
+    let _data = Object.keys(data.provincesCA)
 
     let arr = [
       <option key="default" disabled value="">
         Select...
       </option>
-    ];
+    ]
     for (let state of _data) {
       arr.push(
         <option key={state} value={state}>
           {state}
         </option>
-      );
+      )
     }
-    return arr;
-  };
-
+    return arr
+  }
   let styleFullScreen = {
     top: "0",
     zIndex: "9999",
     background: "white",
     position: "fixed"
-  };
+  }
+  let chromeWarning =
+    props.supportedBrowser != null && props.supportedBrowser.browser == "chrome"
+      ? {
+          transform: "translateY(-100px)",
+          width: "50%",
+          height: "50px",
+          margin: "0px auto",
+          padding: "13px",
+          fontSize: "1.2rem",
+          textAlign: "center",
+          backgroundColor: "#ef5753",
+          color: "white"
+        }
+      : {
+          transform: "translateY(0)",
+          width: "50%",
+          height: "50px",
+          margin: "0px auto",
+          padding: "13px",
+          fontSize: "1.2rem",
+          textAlign: "center",
+          backgroundColor: "#ef5753",
+          color: "white"
+        }
   return (
     <div style={styleFullScreen} className="w-full h-full overflow-y-hidden">
+      <div style={chromeWarning}>
+        <p>
+          This website is best experienced with Google Chrome.{" "}
+          <a href="https://www.google.com/chrome/" target="_blank">
+            Click here to download.
+          </a>
+        </p>
+      </div>
       <form
         onSubmit={e => {
-          e.preventDefault();
+          e.preventDefault()
 
           let currency =
-            props.misc.ageVerification.country == "Canada" ? "cad" : "usd";
+            props.misc.ageVerification.country == "Canada" ? "cad" : "usd"
 
           props.setCurrency({
             currency: {
               label: currency,
               ...props.checkout.availableCurrency[currency]
             }
-          });
+          })
 
-          let _ageVerification = props.misc.ageVerification;
+          let _ageVerification = props.misc.ageVerification
           props.setAgeVerification({
             ageVerification: _ageVerification,
             group: "verified",
             value: true
-          });
+          })
         }}
       >
         <div className="absolute-center pin md:w-400 md:h-500 sm:w-300 sm:h-500 w-600 h-600 bg-white shadow-lg text-grey relative">
@@ -109,16 +140,16 @@ const AgeVerification = props => {
                     : undefined
                 }
                 onChange={e => {
-                  let _ageVerification = props.misc.ageVerification;
-                  let _target = e.target;
-                  let _key = _target.id;
-                  let _value = _target.value;
+                  let _ageVerification = props.misc.ageVerification
+                  let _target = e.target
+                  let _key = _target.id
+                  let _value = _target.value
 
                   props.setAgeVerification({
                     ageVerification: _ageVerification,
                     group: _key,
                     value: _value
-                  });
+                  })
                 }}
                 placeholder="Country"
                 className="w-full"
@@ -142,16 +173,16 @@ const AgeVerification = props => {
                       : undefined
                   }
                   onChange={e => {
-                    let _ageVerification = props.misc.ageVerification;
-                    let _target = e.target;
-                    let _key = _target.id;
-                    let _value = _target.value;
+                    let _ageVerification = props.misc.ageVerification
+                    let _target = e.target
+                    let _key = _target.id
+                    let _value = _target.value
 
                     props.setAgeVerification({
                       ageVerification: _ageVerification,
                       group: _key,
                       value: _value
-                    });
+                    })
                   }}
                   placeholder="Province"
                   className="w-full"
@@ -185,7 +216,7 @@ const AgeVerification = props => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default AgeVerification;
+export default AgeVerification

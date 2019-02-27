@@ -75,6 +75,9 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
 li {
   list-style: none;
 }
@@ -169,6 +172,7 @@ img {
     background-color: rgba(239, 87, 83, 0.2);
   }
 }
+
 .menu {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.58);
   background-position: 0% 10%;
@@ -458,18 +462,21 @@ img {
 .slow {
   transition: all 0.5s ease-in-out;
 }
+.slower {
+  transition: all 0.4s ease-in-out;
+}
 .slowish {
   transition: all 0.3s ease-in-out;
 }
-.test2 {
-  background: #ff0707;
-  height: 90px;
-  width: 100%;
-  overflow-x: hidden;
-  margin-left: -8px;
-  margin-top: -53px;
-  transform: translateZ(-1em) rotate(-3deg);
-}
+// .test2 {
+//     background: #ff0707;
+//     height: 90px;
+//     width: 100%;
+//     overflow-x: hidden;
+//     margin-left: -8px;
+//     margin-top: -53px;
+//     transform: translateZ(-1em) rotate(-3deg);
+// }
 .text-content::first-letter {
   font-weight: bold;
   color: black;

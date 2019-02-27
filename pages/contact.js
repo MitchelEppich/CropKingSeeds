@@ -2,15 +2,16 @@
 /*Main page, Renders all home videos*/
 /******************************************/
 
-import React, { Component } from "react";
-import withData from "../lib/withData";
-import { connect } from "react-redux";
-import actions from "../store/actions";
-import Layout from "../HOC/Layout";
-import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import ReCAPTCHA from "react-google-recaptcha";
+import React, { Component } from "react"
+import withData from "../lib/withData"
+import { connect } from "react-redux"
+import actions from "../store/actions"
+import Layout from "../HOC/Layout"
+import Link from "next/link"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons"
+
+import ReCAPTCHA from "react-google-recaptcha"
 
 class Index extends Component {
   render() {
@@ -41,7 +42,10 @@ class Index extends Component {
                 className="w-700 sm:w-full sm:px-2 lg:w-600 md:w-full lg:px-2 md:px-2 md:pt-0 min-h-600 sm:h-full md:h-full md:px-2 xxl:mx-auto xl:mx-auto px-8 relative rounded-lg p-2"
               >
                 <div className="w-full p-2">
-                  <h2 className="font-extrabold text-3xl md:text-2xl sm:text-2xl p-2 mt-4">
+                  <h2
+                    onClick={this.getResponse}
+                    className="cursor-pointer font-extrabold text-3xl md:text-2xl sm:text-2xl p-2 mt-4"
+                  >
                     Send us a message
                   </h2>
                   <p className="text-sm p-1 px-2">
@@ -52,10 +56,9 @@ class Index extends Component {
                   {!this.props.misc.emailSent ? (
                     <form
                       onSubmit={e => {
-                        e.preventDefault();
-                        const form = e.target;
-                        const formData = new window.FormData(form);
-                        console.log(this.refs.recaptchaRef.getValue());
+                        e.preventDefault()
+                        const form = e.target
+                        const formData = new window.FormData(form)
                         if (this.refs.recaptchaRef.getValue() != null) {
                           this.props.sendEmail({
                             name: formData.get("name"),
@@ -63,10 +66,10 @@ class Index extends Component {
                             email: formData.get("email"),
                             subject: formData.get("subject"),
                             response: this.refs.recaptchaRef.getValue()
-                          });
-                          form.reset();
+                          })
+                          form.reset()
                         } else {
-                          console.log("captcha null");
+                          console.log("captcha null")
                         }
                       }}
                     >
@@ -92,12 +95,12 @@ class Index extends Component {
                             required="required"
                             className="p-2 my-1 w-full"
                             onChange={e => {
-                              e.target.setCustomValidity("");
+                              e.target.setCustomValidity("")
                             }}
                             onInvalid={e => {
                               e.target.setCustomValidity(
                                 'Must be valid email and should contain "@"'
-                              );
+                              )
                             }}
                             pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,3}$"
                           />
@@ -142,6 +145,8 @@ class Index extends Component {
                           <ReCAPTCHA
                             sitekey="6LdVgJIUAAAAADf3mm-422DqVktwJJuPs5TB2578"
                             ref="recaptchaRef"
+                            // onResolved={this.getResponse}
+                            // size="invisible"
                           />
                         </div>
                         <div className="w-main sm:w-full md:w-full flex justify-center">
@@ -149,8 +154,8 @@ class Index extends Component {
                             <button
                               type="submit"
                               className="p-2 sm:p-3 md:p-3 px-4
-                              w-150 sm:w-full md:w-full text-lg text-white
-                              rounded bg-red-dark hover:bg-red-light font-bold"
+                                                              w-150 sm:w-full md:w-full text-lg text-white
+                                                              rounded bg-red-dark hover:bg-red-light font-bold"
                             >
                               {" "}
                               Submit
@@ -213,7 +218,10 @@ class Index extends Component {
                         <p className="p-1 pb-2">info@cropkingseeds.com</p>
                       </div>
                       <div
-                        onClick={() => this.props.refreshEmailForm()}
+                        onClick={() => {
+                          document.getElementById("tawkto").click()
+                          this.props.refreshEmailForm()
+                        }}
                         className="w-full text-center mt-10 relative scale-item cursor-pointer sm:my-4 md:my-4"
                       >
                         <div className="w-full relative">
@@ -236,7 +244,7 @@ class Index extends Component {
           </div>
         </div>
       </Layout>
-    );
+    )
   }
 }
 
@@ -246,10 +254,10 @@ const mapDispatchToprops = dispatch => {
     sendEmail: input => dispatch(actions.sendEmail(input)),
     refreshEmailForm: () => dispatch(actions.refreshEmailForm()),
     setRecaptcha: response => dispatch(actions.setRecaptcha(response))
-  };
-};
+  }
+}
 
 export default connect(
   state => state,
   mapDispatchToprops
-)(withData(Index));
+)(withData(Index))

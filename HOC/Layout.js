@@ -34,7 +34,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faComments,
   faCaretUp,
-  faAngleUp
+  faAngleUp,
+  faExclamationTriangle
 } from "@fortawesome/free-solid-svg-icons";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Loader from "../components/sections/loader";
@@ -88,6 +89,9 @@ class Layout extends Component {
                   .join("-") == qr
               );
             });
+            if (index < 0) {
+              Router.push("/_error", "/404/product/" + qr);
+            }
             this.props
               .getStrain({
                 sotiId: strains[index].sotiId,
@@ -126,7 +130,7 @@ class Layout extends Component {
     window.addEventListener("resize", () => {
       this.setMediaSize();
     });
-    // this.props.getExchangeRates();
+    this.props.getExchangeRates();
   }
 
   recallSession = async () => {
@@ -238,7 +242,7 @@ class Layout extends Component {
         this.props.viewProduct.imageZoom ? (
           <ImageZoom {...this.props} />
         ) : null}
-        <div id="top" className="w-full bg-off-white">
+        <div id="top" className="w-full bg-off-white noscriptpage">
           {this.props.misc.ageVerification == null ||
           !this.props.misc.ageVerification.verified ? (
             this.props.misc.ageVerification != null ? (
@@ -315,7 +319,7 @@ class Layout extends Component {
         </div>
       </React.Fragment>
     ) : (
-      <div className="h-screen w-full">
+      <div className="h-screen w-full noscriptpage">
         <Loader {...this.props} />
       </div>
     );
@@ -337,7 +341,8 @@ const mapDispatchToProps = dispatch => {
     setEmail: input => dispatch(actions.setEmail(input)),
     subscribeToNewsletter: input =>
       dispatch(actions.subscribeToNewsletter(input)),
-    toggleShowFilters: bool => dispatch(actions.toggleShowFilters(bool)),
+    toggleShowFilters: isFilterVisible =>
+      dispatch(actions.toggleShowFilters(isFilterVisible)),
     toggleFilter: input => dispatch(actions.toggleFilter(input)),
     getFeaturedList: input => dispatch(actions.getFeaturedList(input)),
     isRepeatCustomer: input => dispatch(actions.isRepeatCustomer(input)),
@@ -353,9 +358,11 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.setSuggestions(suggestions)),
     setHighlightedSuggestion: input =>
       dispatch(actions.setHighlightedSuggestion(input)),
-    toggleImageZoom: bool => dispatch(actions.toggleImageZoom(bool)),
+    toggleImageZoom: isImageZoomed =>
+      dispatch(actions.toggleImageZoom(isImageZoomed)),
     setCurrentImage: index => dispatch(actions.setCurrentImage(index)),
-    toggleStrainsMenu: bool => dispatch(actions.toggleStrainsMenu(bool)),
+    toggleStrainsMenu: isStrainsMenuVisible =>
+      dispatch(actions.toggleStrainsMenu(isStrainsMenuVisible)),
     purgeCart: () => dispatch(actions.purgeCart())
   };
 };

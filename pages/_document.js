@@ -109,13 +109,18 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
           <noscript>
+            <style
+              dangerouslySetInnerHTML={{
+                __html: `.noscriptpage{display: none }`
+              }}
+            />
             <div className="w-full flex-1 h-screen content-center text-center">
-              {/* <FontAwesomeIcon icon={faExclamationTriangle} className="img-error " /> */}
-              {/* <img
-                                src="../static/images/Thumbnail.png"
-                                alt="No JavaScript"
-                                className="img-error"
-                            /> */}
+              <div className="w-200 mt-64 mx-auto">
+                <FontAwesomeIcon
+                  icon={faExclamationTriangle}
+                  className="fa-2x "
+                />
+              </div>
               <h1 className="mt-10 title-message">JavaScript is Required.</h1>
               <h3 className="mt-2 subtitle-message">
                 Enable JavaScript in your browser and try again.
