@@ -75,7 +75,7 @@ const productThumbnail = props => {
 
     return (
         <div className={overlayClass}>
-            <div className="xl:hidden xxl:hidden">
+            <div className="xl:hidden xxl:hidden" value={afag}>
                 <FontAwesomeIcon
                     onClick={() => {
                         enableScroll();
