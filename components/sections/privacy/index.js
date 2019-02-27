@@ -5,7 +5,7 @@ const Privacy = props => {
         <div className="w-full">
           <img
             style={{ objectFit: "cover" }}
-            src={this.props.misc.CFURL + "/banners/privacy.jpg"}
+            src={props.misc.CFURL + "/banners/privacy.jpg"}
             className="h-150 w-full xl:h-full xxl:h-full"
           />
         </div>
@@ -13,7 +13,7 @@ const Privacy = props => {
           <div className="justify-center w-full mt-6 inline-flex items-center flex">
             <div className="">
               <img
-                src={this.props.misc.CFURL + "/logos/cropkingseed2s.png"}
+                src={props.misc.CFURL + "/logos/cropkingseed2s.png"}
                 className="w-24"
               />
             </div>
