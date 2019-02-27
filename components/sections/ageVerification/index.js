@@ -54,7 +54,7 @@ const AgeVerification = props => {
         position: "fixed"
     };
     let chromeWarning =
-        props.supportedBrowser.browser == "chrome"
+        props.supportedBrowser != null && props.supportedBrowser.browser == "chrome"
             ? {
                   transform: "translateY(-100px)",
                   width: "50%",

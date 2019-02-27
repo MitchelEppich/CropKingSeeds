@@ -5531,6 +5531,13 @@ react-dom@^16.4.2:
     prop-types "^15.6.2"
     scheduler "^0.13.2"
 
+react-google-invisible-recaptcha@^0.2.11:
+  version "0.2.11"
+  resolved "https://registry.yarnpkg.com/react-google-invisible-recaptcha/-/react-google-invisible-recaptcha-0.2.11.tgz#cb9eed3348d251eb0faa3a2d56ca4f9095fffa6e"
+  dependencies:
+    prop-types "^15.6.0"
+    uuid "^3.1.0"
+
 react-google-recaptcha@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/react-google-recaptcha/-/react-google-recaptcha-1.0.5.tgz#fc5a1c5c9fd678ccea11c9a47b22f38a8b9d3c88"
