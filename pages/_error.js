@@ -78,8 +78,11 @@ class Error extends Component {
 
     return (
       <Layout>
-        <div style={styleBackground} className="w-full inline-flex">
-          <div className="w-2/5 text-center justify-center">
+        <div
+          style={styleBackground}
+          className="w-full inline-flex md:flex-col-reverse sm:flex-col-reverse"
+        >
+          <div className="w-2/5 text-center justify-center md:w-full sm:w-full">
             {/* <FontAwesomeIcon
             icon={faExclamationCircle}
             className="img-error text-grey-light fa-10x sm:fa-5x mt-12 opacity-50"
@@ -88,12 +91,14 @@ class Error extends Component {
             <h3 className="mt-2 mb-4 subtitle-message text-2xl">
               Page Not Found!
             </h3>
-            <div className="mt-24 xl:mt-12 lg:mt-2">
-              <h2 className="text-6xl font-bold lg:text-4xl">Huzzah!</h2>
-              <p className="text-3xl lg:text-lg">
+            <div className="mt-24 xl:mt-12 lg:mt-2 md:mt-6 sm:mt-6 md:w-full sm:w-full">
+              <h2 className="text-6xl font-bold lg:text-4xl md:text-3/5xl sm:text-3/5xl">
+                Huzzah!
+              </h2>
+              <p className="text-3xl lg:text-lg md:text-xl sm:text-xl">
                 T'is the King, but what is this?
               </p>
-              <p className="ml-24 text-3xl font-bold lg:text-lg">
+              <p className="ml-24 text-3xl font-bold lg:text-lg md:ml-6 sm:ml-6">
                 You bear no gifts...
               </p>
               <p className="opacity-25 font-bold ml-12 p-2">
@@ -101,7 +106,7 @@ class Error extends Component {
               </p>
             </div>
 
-            <div className="mt-24 xl:mt-10 lg:mt-8 w-full">
+            <div className="mt-24 xl:mt-10 lg:mt-8 md:mt-6 md:mb-8 sm:mt-6 sm:mb-8 w-full">
               <a
                 href="../shop"
                 className="p-2 px-8 bg-black text-white hover:bg-grey hover:text-white"
@@ -110,7 +115,7 @@ class Error extends Component {
               </a>
             </div>
           </div>
-          <div className="w-3/5 text-right">
+          <div className="w-3/5 text-right md:hidden sm:hidden">
             <div>
               <img
                 src={this.props.misc.CFURL + "/banners/King_No_eyes.png"}

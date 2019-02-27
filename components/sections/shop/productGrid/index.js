@@ -228,7 +228,7 @@ class Index extends Component {
     };
 
     return (
-      <div className="sm:w-full md:w-full lg:w-3/5 xl:w-2/3 xxl:w-3/4 min-h-700 text-white mb-20 sm:mb-0">
+      <div className="sm:w-full md:w-full lg:w-3/5 xl:w-2/3 xxl:w-3/4 min-h-700 text-white mb-20 md:mb-2 sm:mb-0">
         <div
           className={
             hoverId != null && this.props.misc.mediaSize == "sm"

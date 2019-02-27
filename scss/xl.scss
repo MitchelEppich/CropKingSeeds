@@ -361,22 +361,22 @@
   }
 
   #eye1 {
-    left: 84px;
-    transform: rotate(-10deg);
-    top: 44px;
+    left: 72px;
+    transform: rotate(-10deg) scale(0.8);
+    top: 45px;
   }
 
   #eye2 {
-    left: 143px;
-    transform: rotate(-6deg);
-    top: 22px;
+    left: 155px;
+    transform: rotate(-6deg) scale(0.9);
+    top: 27px;
   }
 
   .iris {
     position: absolute;
     width: 35px;
-    height: 35px;
-    border: 8px solid green;
+    height: 37px;
+    border: 7px solid green;
     background-color: #000;
     border-radius: 50%;
     top: 40px;
@@ -388,7 +388,8 @@
     -o-transform: translate(-50px, -35px);
   }
 
-  /////////////////////////
+  // END 404 PAGE
+  //////////////////////////
 }
 
 @media only screen and (max-width: 1251px) {

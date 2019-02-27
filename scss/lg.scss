@@ -279,4 +279,60 @@
   }
   // END VIEWPRODUCT PAGE
   ///////////////////////
+
+  // 404 PAGE
+  .eyes {
+    position: absolute;
+    top: 205px;
+    left: 68%;
+    width: 223px;
+    height: 80px;
+    transform: translate(-200px, -38px);
+    -moz-transform: translate(-200px, -40px);
+    -ms-transform: translate(-200px, -40px);
+    -o-transform: translate(-200px, -40px);
+    transform: translate(-200px, -40px);
+  }
+
+  .eye {
+    position: absolute;
+    width: 120px;
+    height: 80px;
+    top: 0;
+    border-radius: 50% 50% 50% 50%/60% 60% 40% 40%;
+    background-color: #fdfdf3;
+    overflow: hidden;
+    border: solid #000 10px;
+    box-shadow: 0px 10px 0px 10px rgba(0, 0, 0, 0.2) inset;
+  }
+
+  #eye1 {
+    left: 85px;
+    transform: rotate(-10deg) scale(0.6);
+    top: 33px;
+  }
+
+  #eye2 {
+    left: 145px;
+    transform: rotate(-6deg) scale(0.6);
+    top: 14px;
+  }
+
+  .iris {
+    position: absolute;
+    width: 35px;
+    height: 37px;
+    border: 7px solid green;
+    background-color: #000;
+    border-radius: 50%;
+    top: 40px;
+    left: 48px;
+    transform: translate(-50px, -35px);
+    -webkit-transform: translate(-50px, -35px);
+    -moz-transform: translate(-50px, -35px);
+    -ms-transform: translate(-50px, -35px);
+    -o-transform: translate(-50px, -35px);
+  }
+  // END 404 PAGE
+  //////////////////////////
 }
