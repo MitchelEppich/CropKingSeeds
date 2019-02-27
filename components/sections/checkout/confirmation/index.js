@@ -73,7 +73,7 @@ const Confirmation = props => {
     <div className="w-full mt-6 text-center">
       <div>
         <img
-          src="../static/img/cks-confirmation.png"
+          src={props.misc.CFURL + "/logos/cks-confirmation.png"}
           className="text-center"
           width="200px"
         />

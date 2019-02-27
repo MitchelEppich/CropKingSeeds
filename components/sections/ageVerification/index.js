@@ -81,7 +81,7 @@ const AgeVerification = props => {
         <div className="absolute-center pin md:w-400 md:h-500 sm:w-300 sm:h-500 w-600 h-600 bg-white shadow-lg text-grey relative">
           <div className="w-full text-center mt-4">
             <img
-              src="../../static/img/cks_logo.png"
+              src={props.misc.CFURL + "/logos/cks_logo.png"}
               className="w-48 md:w-32 sm:w-32"
             />
             <h3 className="mt-4 font-bold text-3xl">Age Verification</h3>

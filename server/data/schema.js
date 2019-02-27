@@ -23,6 +23,8 @@ type Query {
   getCoupon(coupon: String, ip: String): Coupon
 
   getRandomWinnerBetweenDates(input: DateRangeInput!): Order
+
+  getTrustPilotRating: Float
 }
 
 input RelatedInput {

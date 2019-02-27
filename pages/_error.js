@@ -113,7 +113,7 @@ class Error extends Component {
           <div className="w-3/5 text-right">
             <div>
               <img
-                src="../static/img/King_No_eyes.png"
+                src={this.props.misc.CFURL + "/banners/King_No_eyes.png"}
                 style={styleKing}
                 className="relative z-999"
               />

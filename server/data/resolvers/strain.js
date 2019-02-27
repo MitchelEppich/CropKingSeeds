@@ -15,9 +15,9 @@ const resolvers = {
     strain: (_, { input }) => {
       return Strain.findOne(input);
     },
-    allStrains: (_, { filter }) => {
+    allStrains: async (_, { filter }) => {
       let query = filter ? { $or: strainFilters(filter) } : {};
-      return Strain.find(query);
+      return randomize(await Strain.find(query));
     },
     getRelatedList: async (_, { input }) => {
       let { sotiId, limit } = input;

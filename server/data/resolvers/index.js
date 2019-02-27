@@ -84,6 +84,17 @@ const resolvers = {
 
           return JSON.stringify(exchange);
         });
+    },
+    getTrustPilotRating: async _ => {
+      var options = {
+        method: "GET",
+        uri: "https://ca.trustpilot.com/review/cropkingseeds.com"
+      };
+      let searchTerm = '"ratingValue":"';
+      let page = (await request(options)).replace(/ /g, "").replace(/\n/g, "");
+      let indexOf = page.indexOf(searchTerm);
+      let value = indexOf + searchTerm.length;
+      return parseFloat(page.slice(value).split('"')[0]);
     }
   },
   Strain,

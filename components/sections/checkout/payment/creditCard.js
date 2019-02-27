@@ -70,7 +70,7 @@ const CreditCard = props => {
         <div className="w-600 sm:w-full mx-auto p-2">
           <div className="w-full mt-2 text-center opacity-75">
             <p className="text-sm p-2">Cards Accepted:</p>
-            <img src="../static/img/cards.png" width="100px" />
+            <img src={props.misc.CFURL + "/logos/cards.png"} width="100px" />
           </div>
           <div className="w-full mt-6">
             <label className="p-2 mb-2 flex items-center">
@@ -178,7 +178,7 @@ const CreditCard = props => {
             </div>
             <div className="absolute pin-r text-grey-light opacity-75">
               <img
-                src={`../static/img/cc${(() => {
+                src={`${props.misc.CFURL}/logos/cc${(() => {
                   let _type =
                     props.checkout.orderDetails[pageGroup].type != null &&
                     props.checkout.orderDetails[pageGroup].type.value;
@@ -328,7 +328,7 @@ const CreditCard = props => {
               </div>
               <div className="mt-0 ml-2 absolute pin-r">
                 <img
-                  src="../static/img/securitycode.png"
+                  src={props.misc.CFURL + "/logos/securitycode.png"}
                   width="40px"
                   className="opacity-50 pt-2 mr-1"
                 />

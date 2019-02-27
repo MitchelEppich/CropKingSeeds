@@ -218,7 +218,7 @@ class Index extends Component {
                       >
                         <div className="w-full relative">
                           <img
-                            src="../../static/img/cks_red.png"
+                            src={this.props.misc.CFURL + "/logos/cks_red.png"}
                             className="w-32"
                           />
                         </div>

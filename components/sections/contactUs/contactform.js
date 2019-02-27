@@ -180,7 +180,10 @@ const ContactForm = props => {
                 className="w-full text-center mt-10 relative scale-item cursor-pointer sm:my-4 md:my-4"
               >
                 <div className="w-full relative">
-                  <img src="../../static/img/cks_red.png" className="w-32" />
+                  <img
+                    src={props.misc.CFURL + "/logos/cks_red.png"}
+                    className="w-32"
+                  />
                 </div>
                 <div className="absolute -mb-2 pin-b w-full mx-auto">
                   <h3 className="bg-red-dark w-main rounded px-4 text-sm mx-auto shadow-md text-white uppercase p-2 hover:bg-red-light">

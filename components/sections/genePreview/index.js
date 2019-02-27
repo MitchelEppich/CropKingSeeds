@@ -11,28 +11,28 @@ const GenePreview = props => {
       name: "feminized",
       strainImg: props.misc.CFURL + "/filter/feminized.png",
       packImg: props.misc.CFURL + "/filter/feminizedpack.png",
-      background: "url(../static/img/Red.png)",
+      background: `url(${props.misc.CFURL}/logos/Red.png)`,
       color: "#ff1111"
     },
     {
       name: "autoflower",
       strainImg: props.misc.CFURL + "/filter/autoflower.png",
       packImg: props.misc.CFURL + "/filter/autoflowerpack.png",
-      background: "url(../static/img/Purple.png)",
+      background: `url(${props.misc.CFURL}/logos/Purple.png)`,
       color: "#8c00ff"
     },
     {
       name: "cbd",
       strainImg: props.misc.CFURL + "/filter/cbd.png",
       packImg: props.misc.CFURL + "/filter/cbdpack.png",
-      background: "url(../static/img/White.png)",
+      background: `url(${props.misc.CFURL}/logos/White.png)`,
       color: "#D2C9C9"
     },
     {
       name: "regular",
       strainImg: props.misc.CFURL + "/filter/regular.png",
       packImg: props.misc.CFURL + "/filter/regularpack.png",
-      background: "url(../static/img/green.png)",
+      background: `url(${props.misc.CFURL}/logos/green.png)`,
       color: "#1C8B04"
     }
   ];

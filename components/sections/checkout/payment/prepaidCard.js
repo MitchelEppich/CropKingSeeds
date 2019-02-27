@@ -230,7 +230,7 @@ const PrepaidCard = props => {
               </div>
               <div className="mt-0 ml-2 absolute pin-r">
                 <img
-                  src="../static/img/securitycode.png"
+                  src={props.misc.CFURL + "/logos/securitycode.png"}
                   width="40px"
                   className="opacity-50 pt-2 mr-1"
                 />

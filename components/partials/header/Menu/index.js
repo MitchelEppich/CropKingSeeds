@@ -212,7 +212,7 @@ const menu = props => {
                 {/* <Link href="/"> */}
                 <img
                   onClick={() => console.log(props)}
-                  src="../static/img/cks-logo-header.png"
+                  src={props.misc.CFURL + "/logos/cks-logo-header.png"}
                   className="z-999 cks-logo-header p-0 w-125 sm:w-85px scale-item cursor-pointer sm:-mt-2 sm:-ml-1 md:-mt-3"
                 />
                 {/* </Link> */}

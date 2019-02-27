@@ -31,7 +31,7 @@ const Footer = props => {
           {" "}
           <img
             style={imgKingFooter}
-            src="../static/img/cks-logo-footer.png"
+            src={props.misc.CFURL + "/logos/cks-logo-footer.png"}
             className="mt-8"
           />
         </div>
