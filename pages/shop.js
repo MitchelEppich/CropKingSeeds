@@ -101,9 +101,7 @@ class Index extends Component {
                         }
                         className=""
                       />
-                      <div className="absolute bg-white w-200 mx-auto flex justify-center p-2 rounded font-bold text-2xl shadow-md pin-b mb-10 text-red-dark scale-item cursor-pointer">
-                        Buy Now
-                      </div>
+                      
                     </div>
                   ) : null}
 
