@@ -85,7 +85,11 @@ const FeaturedStrainThumbnail = props => {
       <div
         style={{
           backgroundImage:
-            "url(" + props.misc.CFURL + props.product.packageImg + ")",
+            "url(" +
+            props.misc.CFURL +
+            "/packages/P_" +
+            props.product.sotiId +
+            ".png)",
           backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center"

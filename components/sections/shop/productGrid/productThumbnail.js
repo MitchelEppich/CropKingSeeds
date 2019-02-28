@@ -109,7 +109,11 @@ const productThumbnail = props => {
           <div
             style={{
               backgroundImage:
-                "url(" + props.misc.CFURL + props.product.packageImg + ")",
+                "url(" +
+                props.misc.CFURL +
+                "/packages/P_" +
+                props.product.sotiId +
+                ".png)",
               backgroundSize: "contain",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center"
@@ -160,7 +164,8 @@ const productThumbnail = props => {
           </div>
 
           <img
-            src={props.misc.CFURL + props.product.strainImg}
+            src={props.misc.CFURL + "/plant/P_" + props.product.sotiId + ".jpg"}
+            // src={props.misc.CFURL + props.product.strainImg}
             className={plantClass}
             onClick={() => {
               if (props.isSmallMediumOrLargeDevice) {
