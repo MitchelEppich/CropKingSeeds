@@ -5,7 +5,10 @@ import {
   faDollarSign,
   faAngleRight,
   faSignOutAlt,
-  faExternalLinkAlt
+  faExternalLinkAlt,
+  faCalendarAlt,
+  faCircle,
+  faAngleDoubleRight
 } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
 import Link from "next/link";
@@ -29,7 +32,8 @@ const news = props => {
       url
     } = item;
 
-    let formatDate = moment(date, "LL").format("LL");
+    let formatDateDay = moment(date, "LL").format("DD");
+    let formatDateMonth = moment(date, "LL").format("MMM");
 
     return (
       <div
@@ -46,18 +50,25 @@ const news = props => {
           window.focus();
         }}
         className={`${
-          index < 3 ? " mb-2 relative" : ""
-        } w-full sm:mx-0 md:mx-0 xxl:mx-4 md:p-2 sm:p-2 cursor-pointer sm:shadow md:shadow relative`}
+          index < 3 ? "mb-2 relative" : ""
+        }  w-full sm:mx-0 md:mx-0 md:p-2 sm:p-2 cursor-pointer sm:shadow md:shadow relative shadow-md rounded relative`}
       >
+        <div className="absolute w-12 h-12 bg-red-dark text-white shadow-md">
+          {" "}
+          <p className="font-bold text-xl text-center pt-1">{formatDateDay}</p>
+          <p className="font-bold text-sm text-center uppercase">
+            {formatDateMonth}
+          </p>
+        </div>
         <div
-          className={`w-full p-1 inline-flex sm:flex-col md:flex-col rounded ${
+          className={`w-full p-1 inline-flex sm:flex-col md:flex-col ${
             newsIndex == index
-              ? "bg-grey-light text-white slowish"
-              : "bg-grey-lighter text-grey"
+              ? "bg-grey-lighter text-grey"
+              : "bg-grey-lightest text-grey"
           }`}
         >
           <div className="w-3/4 sm:w-full md:w-full">
-            <h3 className={`sm:px-0 md:px-0 px-2 font-bold text-lg`}>
+            <h3 className={`sm:px-0 md:px-0 px-2 font-bold text-lg pl-12 ml-2`}>
               {title}
             </h3>
           </div>
@@ -75,9 +86,10 @@ const news = props => {
           </div>
         </div>
         <div className="inline-flex w-full items-center flex sm:flex-col md:flex-col py-2">
-          <p className="px-2 sm:px-0 md:px-0 sm:w-full md:w-full text-sm sm:py-2 md:py-2 font-bold">
-            {formatDate}{" "}
-          </p>
+          {/* <p className="px-2 sm:px-0 md:px-0 sm:w-full md:w-full text-sm sm:py-2 md:py-2 ">
+            <FontAwesomeIcon icon={faCalendarAlt} className="mr-2 opacity-25" />
+             {formatDate}{" "} 
+          </p> */}
           {location != null ? (
             <a
               onClick={e => {
@@ -85,54 +97,56 @@ const news = props => {
                 window.open(locationUrl, "_blank");
                 window.focus();
               }}
-              className="px-2 sm:px-0 md:px-0 sm:w-full md:w-full text-sm hover:text-grey-light"
+              className="px-2 sm:px-0 md:px-0 sm:w-full md:w-full text-sm hover:text-grey-light pl-12 ml-2"
             >
               <FontAwesomeIcon icon={faMapMarkerAlt} className="opacity-50" />{" "}
               {location}
             </a>
           ) : null}
         </div>
-
         <p className="p-2 sm:text-sm md:text-sm sm:px-0 md:px-0">{body}</p>
         <div
-          className="font-bold ml-auto w-125 p-1 cursor-pointer bg-red-dark text-white scale-item text-sm sm:mt-18 sm:mr-2 md:mt-18 md:mr-2 flex justify-center absolute pin-t pin-r mt-8"
+          className="font-bold ml-auto p-1 cursor-pointer text-grey-lighter hover:text-grey text-sm sm:mt-18 sm:mr-2 md:mt-18 md:mr-2 flex justify-end font-bold"
           onClick={e => {
             e.stopPropagation();
             window.open(url, "_blank");
             window.focus();
           }}
         >
-          More Details
-          <FontAwesomeIcon icon={faExternalLinkAlt} className="ml-2" />
+          {" "}
+          <p className="font-bold flex items-center">More Info</p>
+          <FontAwesomeIcon icon={faExternalLinkAlt} className="ml-1" />
         </div>
       </div>
     );
   });
 
   return (
-    <div className="lg:mt-12 w-full h-full">
-      <div className="py-4 mt-6 w-full">
-        <h2 className="text-3xl font-bold text-center w-full p-2 bg-red-darker text-white">
-          Featured News
+    <div className="lg:mt-12 w-full h-full bg-smoke-grey">
+      <div className="pb-4 mt-6 w-full">
+        <h2 className="text-3/5xl font-bold h-32 pt-6 text-center w-full p-2 bg-red-darker text-white">
+          Featured Events {"&"} News
         </h2>
       </div>
-      <div className="inline-flex w-full px-12 sm:px-2 md:px-2 py-4 sm:flex-col md:flex-col lg:flex-col xl:flex-col">
-        <div className="w-1/2 sm:w-full md:w-full lg:w-full xl:w-full">
-          <img
-            style={{ objectFit: "contain" }}
-            src={`${image}`}
-            className="w-full sm:h-200 md:h-200 w-full h-450 lg:h-300 xl:mt-4 xxl:mt-4 xl:h-300 xl:w-full shadow-md"
-          />
-        </div>
-        <div className="w-1/2 sm:w-full md:w-full lg:w-full xl:w-full p-2">
-          {showEvents}
+      <div className="w-95p mx-auto -mt-16 bg-white shadow-md rounded-lg">
+        <div className="inline-flex w-full sm:px-2 md:px-2 py-4 sm:flex-col md:flex-col lg:flex-col xl:flex-col">
+          <div className="w-2/5 bg-white sm:w-full md:w-full lg:w-full xl:w-full p-3">
+            <img
+              style={{ objectFit: "contain" }}
+              src={`${image}`}
+              className="w-full sm:h-200 md:h-200 w-full h-450 lg:h-300 xl:mt-4 xxl:mt-4 xl:h-300 xl:w-full p-2"
+            />
+          </div>
+          <div className="w-3/5 bg-white sm:w-full md:w-full lg:w-full xl:w-full p-2 pr-6">
+            {showEvents}
+          </div>
         </div>
       </div>
       <div className="w-full">
         <div className="flex justify-end w-full">
           <Link href="/news">
-            <p className="p-2 bg-grey text-grey-lightest font-bold px-6 mr-8 w-200 text-right inline-flex items-center rounded uppercase cursor-pointer hover:bg-red-light hover:text-white justify-center shadow md:w-full sm:w-full md:mr-0 sm:mr-0">
-              See more news{" "}
+            <p className="p-2 bg-red-darker text-grey-lightest font-bold px-6 mr-8 my-4 text-right inline-flex items-center uppercase cursor-pointer hover:bg-red-light hover:text-white justify-center md:w-full sm:w-full md:mr-0 sm:mr-0">
+              See all events {"&"} news{" "}
               <FontAwesomeIcon icon={faAngleRight} className="ml-2 fa-lg" />
             </p>
           </Link>

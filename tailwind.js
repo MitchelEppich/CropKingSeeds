@@ -495,6 +495,7 @@ module.exports = {
     screen: "100vw",
     container: "80%",
     main: "85%",
+    "95p": "95%",
     "3col": "31.5%",
     "2col": "46.5%"
   },

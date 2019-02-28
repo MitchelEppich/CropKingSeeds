@@ -4,11 +4,7 @@ import {
   faCaretDown,
   faCaretUp,
   faMapMarkerAlt,
-  faExternalLinkAlt,
-  faClock,
-  faCalendar,
-  faCalendarAlt,
-  faAngleRight
+  faExternalLinkAlt
 } from "@fortawesome/free-solid-svg-icons";
 
 import moment from "moment";
@@ -47,7 +43,7 @@ const Media = props => {
       let active = props.misc.visibleScreen.includes(category + "::" + _id);
 
       let styleItem = {
-        height: active ? "150px" : "0px",
+        height: active ? "170px" : "0px",
         transition: "all 0.3s ease-in-out"
       };
       console.log("Ran");
@@ -66,33 +62,14 @@ const Media = props => {
             className="w-full inline-flex p-2 font-bold cursor-pointer unselectable"
           >
             <div className="w-3/4 py-2">
-              <p className="pl-2 sm:pl-2">
-                {" "}
-                <FontAwesomeIcon
-                  icon={faAngleRight}
-                  className="opacity-25 mr-2"
-                />
-                {title}
-              </p>
-            </div>
-            <div className="p-2">
-              <p>
-                <FontAwesomeIcon
-                  icon={faCalendarAlt}
-                  className="opacity-25 mr-2"
-                />{" "}
-                {moment(date, "LL").format("MMM DD, YYYY")}
-              </p>
+              <p className="pl-6 sm:pl-2">{title}</p>
             </div>
             <div className="w-12 sm:w-10 p-1 absolute pin-r justify-center flex">
-              <FontAwesomeIcon
-                icon={active ? faCaretUp : faCaretDown}
-                className="fa-lg"
-              />
+              <FontAwesomeIcon icon={faCaretDown} className="fa-lg" />
             </div>
           </div>
           <div style={styleItem} className="overflow-hidden">
-            <div className="p-4 inline-flex bg-white relative sm:p-2 md:p-2 h-150 md:h-200 sm:h-200 w-full">
+            <div className="p-4 inline-flex bg-white relative sm:p-2 md:p-2 h-150 md:h-200 sm:h-200">
               <div className="px-2 ml-4 sm:ml-0 md:ml-0 lg:ml-0">
                 <img
                   src={imageUrl}
@@ -102,12 +79,12 @@ const Media = props => {
               </div>
               <div className="w-3/4 ml-4">
                 <div className="inline-flex w-full lg:flex-col md:flex-col sm:flex-col ">
-                  {/* <div className="w-1/2 text-left font-bold p-1 lg:w-full md:w-full sm:w-full sm:text-sm md:text-sm">
+                  <div className="w-1/2 text-left font-bold p-1 lg:w-full md:w-full sm:w-full sm:text-sm md:text-sm">
                     <p>{moment(date, "LL").format("LL")}</p>
-                  </div> */}
+                  </div>
                   {location != null ? (
                     <div
-                      className="w-full justify-start items-center flex font-bold sm:text-xs md:text-xs"
+                      className="w-1/2 lg:w-full md:w-full sm:w-full lg:justify-start md:justify-start sm:justify-start justify-end items-center flex font-bold sm:text-xs md:text-xs"
                       onClick={e => {
                         e.stopPropagation();
                         window.open(locationUrl, "_blank");
@@ -134,7 +111,7 @@ const Media = props => {
                   </span>
                 </p>
                 <div
-                  className="font-bold ml-auto w-125 p-2 cursor-pointer bg-grey-lighter text-grey scale-item text-sm sm:mt-18 sm:mr-2 md:mt-4 md:mr-2 flex justify-center absolute sm:pin-t md:pin-t lg:pin-b xl:pin-b xxl:mb-2 xxl:mr-2 xl:mb-2 xl:mr-2 lg:mb-2 lg:mr-2 xxl:pin-b pin-r mt-4 md:hidden sm:hidden"
+                  className="font-bold ml-auto w-125 p-1 cursor-pointer bg-grey-light text-white scale-item text-sm sm:mt-18 sm:mr-2 md:mt-4 md:mr-2 flex justify-center absolute sm:pin-t md:pin-t lg:pin-b xl:pin-b xxl:mb-2 xxl:mr-2 xl:mb-2 xl:mr-2 lg:mb-2 lg:mr-2 xxl:pin-b pin-r mt-4 md:hidden sm:hidden"
                   onClick={e => {
                     e.stopPropagation();
                     window.open(url, "_blank");
