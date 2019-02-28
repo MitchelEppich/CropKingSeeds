@@ -107,6 +107,7 @@ const About = props => {
         className="xxl:w-300 w-250 lg:w-200 md:w-main md:block md:text-center sm:w-main sm:block sm:text-center bg-white rounded-lg md:my-5 sm:my-5 flex flex-wrap justify-center content-start p-4 shadow-lg sm:shadow-md sm:rounded md:rounded md:shadow-md scale-item"
       >
         <img
+          style={{ objectFit: "cover" }}
           className="h-200 w-200 lg:w-150 lg:h-150 rounded-full border-8 border-grey-lighter scale-item"
           src={props.misc.CFURL + val.src}
         />

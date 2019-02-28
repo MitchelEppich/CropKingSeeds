@@ -50,12 +50,11 @@ const Media = props => {
         height: active ? "150px" : "0px",
         transition: "all 0.3s ease-in-out"
       };
-      console.log("Ran");
       arr.push(
         <div
           key={i}
           //   style={{ background: "rgb(250, 250, 250)" }}
-          className={`w-main lg:w-full sm:w-full h-full bg-smoke-grey mx-auto mt-4 rounded shadow-md relative ${
+          className={`w-main lg:w-full sm:w-full h-full bg-smoke-grey hover:bg-white mx-auto mt-4 rounded shadow-md relative ${
             active ? "mb-2" : ""
           }`}
         >
@@ -161,11 +160,19 @@ const Media = props => {
       arr.push(
         <div
           key={index}
-          className={`w-main mx-auto sm:w-full md:w-full ${
-            index == 0 ? "" : "mt-12"
+          className={`w-main mx-auto sm:w-full md:w-full bg-white rounded-lg shadow-md py-8 ${
+            index == 0 ? "-mt-48" : "mt-12"
           } ${index == keys.length - 1 ? "mb-12" : ""}`}
         >
-          <h3 className="mt-5 p-3 text-white font-extrabold rounded text-center text-xl uppercase bg-red-dark mx-auto sm:w-full w-main lg:w-full text-center">
+          {index == 0 ? (
+            <div className="w-main mx-auto text-red-light">
+              <p className="text-center font-bold text-lg">
+                These are the next events Crop King Seeds will be attending and
+                or sponsoring. We hope to see you there!
+              </p>
+            </div>
+          ) : null}
+          <h3 className="mt-5 p-3 text-white font-extrabold rounded text-center text-xl uppercase bg-red-dark w-95p sm:w-full mx-auto lg:w-full text-center shadow-md">
             {category == "Event" ? "Upcoming" : "Recent"} {category}s
           </h3>
           {showNewsEntry(news[category])}
@@ -176,23 +183,20 @@ const Media = props => {
   };
 
   let imageHeader = {
-    background: `url(${props.misc.CFURL}/banners/newsHeader.jpg)`,
+    // background: `url(${props.misc.CFURL}/banners/newsHeader.jpg)`,
+    background: `url("../../static/img/bgEvents.jpg")`,
     backgroundSize: "cover",
     backgroundPosition: "left"
   };
 
   return (
     <div className="w-full mt-2">
-      <div style={imageHeader} className="w-full h-200 items-center flex">
-        <h3 className="mt-5 text-white text-shadow font-extrabold text-center text-3/5xl mx-auto w-full text-center p-3 items-center flex justify-center uppercase">
-          News {" & "} Events
-        </h3>
-      </div>
-      <div className="w-main mx-auto p-2 mt-6">
-        <p className="text-center font-bold">
-          These are the next events Crop King Seeds will be attending and or
-          sponsoring. We hope to see you there!
-        </p>
+      <div style={imageHeader} className="w-full h-350 text-center">
+        <div className="w-full pt-12">
+          <h3 className="text-white text-shadow font-bold text-center text-3/5xl text-center p-3 items-center flex justify-center">
+            News {" & "} Events
+          </h3>
+        </div>
       </div>
       {showCategories()}
     </div>
