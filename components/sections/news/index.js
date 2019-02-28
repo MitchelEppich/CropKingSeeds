@@ -68,11 +68,9 @@ const news = props => {
           }`}
         >
           <div className="w-3/4 sm:w-full md:w-full">
-            <h3 className={`sm:px-0 md:px-0 px-2 font-bold text-lg pl-12 ml-2`}>
-              {title}
-            </h3>
+            <h3 className={`px-2 font-bold text-lg pl-12 ml-2`}>{title}</h3>
           </div>
-          <div className="w-1/4 sm:w-full md:w-full items-center flex sm:pt-2 md:pt-2 justify-end sm:justify-start md:justify-start mr-2">
+          <div className="w-1/4 sm:w-full md:w-full items-center flex justify-end mr-2 md:hidden sm:hidden">
             {sponsored ? (
               <div className="opacity-75 mr-2 px-1 py-px bg-grey-lightest round rounded text-black">
                 <p className="flex font-bold text-grey-light text-sm uppercase">
@@ -85,7 +83,7 @@ const news = props => {
             </p>
           </div>
         </div>
-        <div className="inline-flex w-full items-center flex sm:flex-col md:flex-col py-2">
+        <div className="inline-flex w-full items-center flex py-2">
           {/* <p className="px-2 sm:px-0 md:px-0 sm:w-full md:w-full text-sm sm:py-2 md:py-2 ">
             <FontAwesomeIcon icon={faCalendarAlt} className="mr-2 opacity-25" />
              {formatDate}{" "} 
@@ -97,7 +95,7 @@ const news = props => {
                 window.open(locationUrl, "_blank");
                 window.focus();
               }}
-              className="px-2 sm:px-0 md:px-0 sm:w-full md:w-full text-sm hover:text-grey-light pl-12 ml-2"
+              className="sm:w-full md:w-full text-sm hover:text-grey-light pl-12 ml-2"
             >
               <FontAwesomeIcon icon={faMapMarkerAlt} className="opacity-50" />{" "}
               {location}
@@ -106,7 +104,7 @@ const news = props => {
         </div>
         <p className="p-2 sm:text-sm md:text-sm sm:px-0 md:px-0">{body}</p>
         <div
-          className="font-bold ml-auto p-1 cursor-pointer text-grey-lighter hover:text-grey text-sm sm:mt-18 sm:mr-2 md:mt-18 md:mr-2 flex justify-end font-bold"
+          className="font-bold ml-auto p-1 cursor-pointer text-grey-lighter hover:text-grey text-sm sm:mr-2 md:mr-2 flex justify-end font-bold"
           onClick={e => {
             e.stopPropagation();
             window.open(url, "_blank");
@@ -124,7 +122,7 @@ const news = props => {
   return (
     <div className="lg:mt-12 w-full h-full bg-smoke-grey">
       <div className="pb-4 mt-6 w-full">
-        <h2 className="text-3/5xl font-bold h-32 pt-6 text-center w-full p-2 bg-red-darker text-white">
+        <h2 className="text-3/5xl font-bold h-32 pt-6 text-center w-full p-2 bg-red-darker text-white sm:text-3xl md:text-3xl">
           Featured Events {"&"} News
         </h2>
       </div>

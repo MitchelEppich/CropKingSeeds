@@ -67,13 +67,14 @@ const data = props => {
 
   // console.log(pthcWidth, _product.pthc);
   return (
-    <div     
-      className="mt-6 w-full mx-auto bg-grey-lightest flex flex-wrap content-start"
-    >
+    <div className="mt-6 w-full mx-auto bg-grey-lightest flex flex-wrap content-start">
       <div className="w-full bg-white xxl:inline-flex block border border-grey-lightest rounded overflow-hidden">
         <div className="xxl:w-1/3 w-full border-r-2 border-grey-lightest sm:border-0 md:border-0">
           <div className="bg-grey-light w-full">
-            <h3 className="text-white font-bold p-2 text-center uppercase">
+            <h3
+              style={{ letterSpacing: "1px" }}
+              className="text-white font-bold p-2 text-center uppercase"
+            >
               Percentage Type
             </h3>
           </div>
@@ -123,7 +124,10 @@ const data = props => {
         </div>
         <div className="xxl:w-1/3 w-full bg-white sm:pt-2 sm:mt-3 sm:border-t-4 sm:border-grey-lightest md:pt-2 md:mt-3 md:border-t-4 md:border-grey-lightest relative pb-6">
           <div className="bg-red-light w-full">
-            <h3 className="text-white font-bold p-2 text-center uppercase">
+            <h3
+              style={{ letterSpacing: "1px" }}
+              className="text-white font-bold p-2 text-center uppercase"
+            >
               Strain Info
             </h3>
           </div>

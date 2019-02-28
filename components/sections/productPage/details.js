@@ -26,8 +26,11 @@ const Details = props => {
         style={{ background: "#128671" }}
         className="w-full border-b-4 border-white"
       >
-        <h3 className="text-white font-bold p-2 text-center uppercase">
-          Extra Info
+        <h3
+          style={{ letterSpacing: "1px" }}
+          className="text-white font-bold p-2 text-center uppercase"
+        >
+          Grow Info
         </h3>
       </div>
       <div className="flex xl:block lg:block md:block sm:block mt-0 md:mt-0 md:pt-0 sm:mt-0 sm:pt-0">
@@ -42,8 +45,11 @@ const Details = props => {
               </div>
             </div>
             <div className="w-full p-2 xl:text-sm lg:text-sm md:text-sm sm:text-sm">
-              <p className="font-bold text-sm pl-6 uppercase">
-                {_product.flowerTime}
+              <p className="pl-6 text-xs opacity-75 text-grey font-bold">
+                Flower Time:
+              </p>
+              <p className="font-bold text-sm pl-6 uppercase text-grey">
+                {_product.flowerTime}{" "}
               </p>
             </div>
           </div>
@@ -57,7 +63,10 @@ const Details = props => {
               </div>
             </div>
             <div className="w-full p-2 xl:text-sm lg:text-sm md:text-sm sm:text-sm">
-              <p className="font-bold text-sm pl-6 uppercase">
+              <p className="pl-6 text-xs opacity-75 text-grey font-bold">
+                Yield:
+              </p>
+              <p className="font-bold text-sm pl-6 uppercase text-grey">
                 {" "}
                 {_product.yield[2]}
               </p>
@@ -74,7 +83,10 @@ const Details = props => {
               </div>
             </div>
             <div className="w-full p-2 xl:text-sm lg:text-sm md:text-sm sm:text-sm">
-              <p className="font-bold text-sm pl-6 uppercase">
+              <p className="pl-6 text-xs opacity-75 text-grey font-bold">
+                Difficulty:
+              </p>
+              <p className="font-bold text-sm pl-6 uppercase text-grey">
                 {_product.difficulty}
               </p>
             </div>
@@ -90,7 +102,10 @@ const Details = props => {
               </div>
             </div>
             <div className="w-full p-2 xl:text-sm lg:text-sm md:text-sm sm:text-sm">
-              <p className="font-bold text-sm pl-6 uppercase">
+              <p className="pl-6 text-xs opacity-75 text-grey font-bold">
+                Origin:
+              </p>
+              <p className="font-bold text-sm pl-6 uppercase text-grey">
                 {_product.country}
               </p>
             </div>
@@ -106,7 +121,12 @@ const Details = props => {
               </div>
             </div>
             <div className="w-full p-2 xl:text-sm lg:text-sm md:text-sm sm:text-sm">
-              <p className="font-bold text-sm pl-6 uppercase">{_product.env}</p>
+              <p className="pl-6 text-xs opacity-75 text-grey font-bold">
+                Environment:
+              </p>
+              <p className="font-bold text-sm pl-6 uppercase text-grey">
+                {_product.env}
+              </p>
             </div>
           </div>
           {/* <div className="w-full text-center leading-tight xl:block lg:block xl:w-full lg:w-full md:block md:w-full sm:block sm:w-full">
