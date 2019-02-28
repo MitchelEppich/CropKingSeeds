@@ -99,7 +99,7 @@ let inferStrainData = strain => {
         let _avg;
         let _i = _yield[0];
         let _o = _yield[1];
-        if (_i != -1 && _o != -1) {
+        if (_i != -1 && _o != -1 && _i != _o) {
           _avg = (_i + _o) / 2;
           if (_i > _o) _str = `${_o}g to ${_i}g *`;
           else _str = `${_i}g to ${_o}g *`;
