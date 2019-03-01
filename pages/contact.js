@@ -2,19 +2,25 @@
 /*Main page, Renders all home videos*/
 /******************************************/
 
-import React, { Component } from "react"
-import withData from "../lib/withData"
-import { connect } from "react-redux"
-import actions from "../store/actions"
-import Layout from "../HOC/Layout"
-import Link from "next/link"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import React, { Component } from "react";
+import withData from "../lib/withData";
+import { connect } from "react-redux";
+import actions from "../store/actions";
+import Layout from "../HOC/Layout";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
-import ReCAPTCHA from "react-google-recaptcha"
+import ReCAPTCHA from "react-google-recaptcha";
 
 class Index extends Component {
   render() {
+    let styleLogoKing = {
+      WebkitFilter:
+        "drop-shadow(6px 0px 0 #ef5753) drop-shadow(-6px 0px 0px #ef5753) drop-shadow(0px 3px 0px #ef5753) drop-shadow(0px -3px 0px #ef5753)",
+      filter:
+        "drop-shadow(6px 0px 0 #ef5753) drop-shadow(-6px 0px 0px #ef5753) drop-shadow(0px 3px 0px #ef5753) drop-shadow(0px -3px 0px #ef5753)"
+    };
     return (
       <Layout>
         <div className="pt-1">
@@ -56,9 +62,9 @@ class Index extends Component {
                   {!this.props.misc.emailSent ? (
                     <form
                       onSubmit={e => {
-                        e.preventDefault()
-                        const form = e.target
-                        const formData = new window.FormData(form)
+                        e.preventDefault();
+                        const form = e.target;
+                        const formData = new window.FormData(form);
                         if (this.refs.recaptchaRef.getValue() != null) {
                           this.props.sendEmail({
                             name: formData.get("name"),
@@ -66,10 +72,10 @@ class Index extends Component {
                             email: formData.get("email"),
                             subject: formData.get("subject"),
                             response: this.refs.recaptchaRef.getValue()
-                          })
-                          form.reset()
+                          });
+                          form.reset();
                         } else {
-                          console.log("captcha null")
+                          console.log("captcha null");
                         }
                       }}
                     >
@@ -95,12 +101,12 @@ class Index extends Component {
                             required="required"
                             className="p-2 my-1 w-full"
                             onChange={e => {
-                              e.target.setCustomValidity("")
+                              e.target.setCustomValidity("");
                             }}
                             onInvalid={e => {
                               e.target.setCustomValidity(
                                 'Must be valid email and should contain "@"'
-                              )
+                              );
                             }}
                             pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,3}$"
                           />
@@ -219,14 +225,18 @@ class Index extends Component {
                       </div>
                       <div
                         onClick={() => {
-                          document.getElementById("tawkto").click()
-                          this.props.refreshEmailForm()
+                          document.getElementById("tawkto").click();
+                          this.props.refreshEmailForm();
                         }}
                         className="w-full text-center mt-10 relative scale-item cursor-pointer sm:my-4 md:my-4"
                       >
                         <div className="w-full relative">
                           <img
-                            src={this.props.misc.CFURL + "/logos/cks_red.png"}
+                            style={styleLogoKing}
+                            src={
+                              this.props.misc.CFURL +
+                              "/logos/cks-logo-header.png"
+                            }
                             className="w-32"
                           />
                         </div>
@@ -244,7 +254,7 @@ class Index extends Component {
           </div>
         </div>
       </Layout>
-    )
+    );
   }
 }
 
@@ -254,10 +264,10 @@ const mapDispatchToprops = dispatch => {
     sendEmail: input => dispatch(actions.sendEmail(input)),
     refreshEmailForm: () => dispatch(actions.refreshEmailForm()),
     setRecaptcha: response => dispatch(actions.setRecaptcha(response))
-  }
-}
+  };
+};
 
 export default connect(
   state => state,
   mapDispatchToprops
-)(withData(Index))
+)(withData(Index));

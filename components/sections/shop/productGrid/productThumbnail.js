@@ -423,7 +423,7 @@ const productThumbnail = props => {
         <div
           className={hover ? "w-full mx-auto text-center p-1" : "hidden slow"}
         >
-          <p className="text-sm italic font-extrabold pt-2 text-red-dark text-right mr-24">
+          <p className="text-sm italic uppercase font-bold py-1 text-red-dark text-right mr-6">
             {props.product.inStock ? "In Stock" : "Sold Out"}
           </p>
         </div>

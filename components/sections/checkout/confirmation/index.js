@@ -353,12 +353,14 @@ const Confirmation = props => {
                     : ""}
                 </p>
                 <p className="p-1">
-                  {currency != null
-                    ? `${currency.symbol}${(
-                        currency.convert *
-                        _orderDetails.payment.shippingFee.value
-                      ).toFixed(2)}`
-                    : ""}
+                  {_orderDetails.payment.shippingFee.value != 0
+                    ? currency != null
+                      ? `${currency.symbol}${(
+                          currency.convert *
+                          _orderDetails.payment.shippingFee.value
+                        ).toFixed(2)}`
+                      : ""
+                    : "FREE"}
                 </p>
                 {_orderDetails.payment.creditFee.value != 0 ? (
                   <p className="p-1">

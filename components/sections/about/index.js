@@ -136,7 +136,7 @@ const About = props => {
           className="mt-24 lg:mt-12 w-main mx-auto bg-white rounded overflow-hidden text-grey mt-20 h-350 md:h-full sm:h-auto xl:h-400 lg:h-500 my-auto"
         >
           <div className="">
-            <h3 className="font-extrabold text-center items-center flex justify-center bg-grey-lightest text-3/5xl p-2 text-grey-light mb-6">
+            <h3 className="font-bold text-center items-center flex justify-center bg-grey-lightest text-3/5xl p-2 text-grey-light mb-6">
               Our History
             </h3>
           </div>
@@ -173,7 +173,7 @@ const About = props => {
           style={{ borderTop: "15px solid #e9e8e8" }}
           className="h-24 w-full items-center flex justify-center shadow bg-red-darker "
         >
-          <h3 className="w-full h-full font-extrabold pt-6 text-center mb-8 p-2 text-3/5xl text-white">
+          <h3 className="w-full h-full font-bold pt-6 text-center mb-8 p-2 text-3/5xl text-white">
             Who We Are
           </h3>
         </div>

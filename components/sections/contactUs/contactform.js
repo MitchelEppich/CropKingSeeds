@@ -181,7 +181,7 @@ const ContactForm = props => {
               >
                 <div className="w-full relative">
                   <img
-                    src={props.misc.CFURL + "/logos/cks_red.png"}
+                    src={props.misc.CFURL + "/logos/cks-logo-header.png"}
                     className="w-32"
                   />
                 </div>
