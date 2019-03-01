@@ -10,7 +10,8 @@ import {
   faFacebook,
   faInstagram,
   faTwitter,
-  faGooglePlus
+  faGooglePlus,
+  faPinterest
 } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = props => {
@@ -250,7 +251,7 @@ const Footer = props => {
                 className="text-white"
                 target="_blank"
                 rel="noreferrer"
-                href="https://www.facebook.com/cropkingseedsreview/"
+                href="https://www.facebook.com/CropKingSeeds/"
               >
                 <FontAwesomeIcon
                   icon={faFacebook}
@@ -270,14 +271,14 @@ const Footer = props => {
                 />
               </a>
               <a
-                aria-label="googlePlus"
+                aria-label="pinterest"
                 className="text-white"
                 target="_blank"
                 rel="noreferrer"
-                href="https://plus.google.com/+CropKingSeeds"
+                href="https://www.pinterest.ca/officialCKS/"
               >
                 <FontAwesomeIcon
-                  icon={faGooglePlus}
+                  icon={faPinterest}
                   className="fa-2x pt-1 text-white cursor-pointer hover:text-grey-light"
                 />
               </a>

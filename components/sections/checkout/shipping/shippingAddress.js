@@ -90,6 +90,21 @@ const ShippingAddress = props => {
       <MinimumSeedsWarning {...props} />
 
       <div className={`w-full mt-4`}>
+        <div className="w-full flex justify-end">
+          <div className="w-full flex justify-end">
+            <label className="p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light">
+              <input
+                aria-label="save-data"
+                type="checkbox"
+                id="readOnly"
+                checked={true}
+                name=""
+                className="checkbox"
+              />
+              Save for later
+            </label>
+          </div>
+        </div>
         <div className="w-full p-2 inline-flex sm:flex-col">
           <div className="w-1/2 sm:w-full sm:pl-0 sm:mt-4">
             <input

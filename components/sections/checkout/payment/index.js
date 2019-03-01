@@ -30,7 +30,7 @@ const Payment = props => {
   return (
     <div className="w-full px-8 mb-6 sm:px-4">
       <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-black">
-        Payment
+        Payment Review
       </h2>
       <div className="mb-4">
         <MinimumSeedsWarning {...props} />
@@ -38,9 +38,41 @@ const Payment = props => {
       </div>
 
       <PaymentReview {...props} />
+
+      <div className="font-bold py-2 p-2 mb-4 mt-4">
+        <h2 className="text-3/5xl font-extrabold opacity-50 mt-2 mb-4 text-black">
+          Important *
+        </h2>
+        <div style={titleBox}>
+          <h2 className="text-xl">Confirmation</h2>
+        </div>
+        <div className="p-4 bg-white border border-grey-lightest inline-flex w-full">
+          <div className="w-main">
+            <label className="text-lg cursor-pointer items-center flex">
+              <input
+                type="checkbox"
+                name="confirmation-data"
+                // checked={false}
+                className="checkbox"
+              />
+              I confirm that all my information is correct. *
+            </label>
+          </div>
+          <div className="w-150 justify-end flex">
+            <p className="text-red-light font-bold text-sm p-2 flex justify-end items-center">
+              * Required field
+            </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-black">
+          Payment Method
+        </h2>
+      </div>
       <div
         style={titleBox}
-        className="font-bold py-2 p-2 mb-4 mt-10 text-center"
+        className="font-bold py-2 p-2 mb-4 mt-2 bg-red-dark text-white"
       >
         <p className="text-lg">
           Please, select your Payment Method to finalize your Order:

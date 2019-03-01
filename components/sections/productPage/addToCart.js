@@ -10,41 +10,48 @@ const addToCart = props => {
   let _coupon = props.checkout.orderDetails.coupon;
 
   return (
-    <div className="w-full">
-      <div className="w-container sm:w-full md:w-full mx-auto mt-4">
-        <div className="inline-flex items-center flex w-full my-2 opacity-50">
-          <div className="">
-            <p className="w-100 text-left text-sm text-grey font-bold mx-auto">
-              Price per Pack:{" "}
-            </p>
-          </div>
-          <p className="font-bold text-xl text-grey-darkest ml-4">
-            {currency != null
-              ? `${currency.symbol}${(
-                  currency.convert *
-                  currentProduct.price[props.shop.quickAddToCartQty]
-                ).toFixed(2)}`
-              : ""}
-          </p>
-        </div>
+    <div className="w-full relative">
+      <div className="absolute pin-r mr-16">
+        <p className="w-125 p-2 text-center p-2 text-red-light font-bold">
+          Out of Stock
+        </p>
       </div>
-      <div className="w-1/4 h-8 sm:w-full md:w-full w-container mx-auto">
-        <div className="inline-flex flex my-2 items-center ">
-          <div>
-            <p className="w-100 text-left text-sm text-grey font-bold mx-auto">
-              Total Price:{" "}
+      <div>
+        <div className="w-container sm:w-full md:w-full mx-auto mt-4">
+          <div className="inline-flex items-center flex w-full my-2 opacity-50">
+            <div className="">
+              <p className="w-100 text-left text-sm text-grey font-bold mx-auto">
+                Price per Pack:{" "}
+              </p>
+            </div>
+            <p className="font-bold text-xl text-grey-darkest ml-4">
+              {currency != null
+                ? `${currency.symbol}${(
+                    currency.convert *
+                    currentProduct.price[props.shop.quickAddToCartQty]
+                  ).toFixed(2)}`
+                : ""}
             </p>
           </div>
+        </div>
+        <div className="w-1/4 h-8 sm:w-full md:w-full w-container mx-auto">
+          <div className="inline-flex flex my-2 items-center">
+            <div>
+              <p className="w-100 text-left text-sm text-grey font-bold mx-auto">
+                Total Price:{" "}
+              </p>
+            </div>
 
-          <p className="font-bold text-xl text-grey-darkest ml-4">
-            {currency != null
-              ? `${currency.symbol}${(
-                  currency.convert *
-                  (currentProduct.price[props.shop.quickAddToCartQty] *
-                    props.cart.potentialQuantity)
-                ).toFixed(2)}`
-              : ""}
-          </p>
+            <p className="font-bold text-xl text-grey-darkest ml-4">
+              {currency != null
+                ? `${currency.symbol}${(
+                    currency.convert *
+                    (currentProduct.price[props.shop.quickAddToCartQty] *
+                      props.cart.potentialQuantity)
+                  ).toFixed(2)}`
+                : ""}
+            </p>
+          </div>
         </div>
       </div>
 
