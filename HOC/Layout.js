@@ -363,7 +363,9 @@ const mapDispatchToProps = dispatch => {
     setCurrentImage: index => dispatch(actions.setCurrentImage(index)),
     toggleStrainsMenu: isStrainsMenuVisible =>
       dispatch(actions.toggleStrainsMenu(isStrainsMenuVisible)),
-    purgeCart: () => dispatch(actions.purgeCart())
+    purgeCart: () => dispatch(actions.purgeCart()),
+    setCompareSearchValue: input =>
+      dispatch(actions.setCompareSearchValue(input))
   };
 };
 

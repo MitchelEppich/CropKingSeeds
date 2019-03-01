@@ -7,7 +7,7 @@ import { filter } from "../../../store/utilities/filter";
 
 class SearchSuggest extends Component {
   componentDidMount() {
-    console.log(this.props);
+    // console.log(this.props);
   }
 
   renderSuggestion = (suggestion, index) => (

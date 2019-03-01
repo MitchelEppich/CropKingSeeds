@@ -93,6 +93,8 @@ let filter = ([...strains], filter, withMatch = false) => {
     }
   }
 
+  // console.log(_arr);
+
   return _arr;
 };
 

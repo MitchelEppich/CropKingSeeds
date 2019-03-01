@@ -89,7 +89,7 @@ const ShippingAddress = props => {
 
   return (
     <div className="w-full mt-6 px-8 sm:px-4">
-      <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-black">
+      <h2 className="text-3/5xl font-bold opacity-50 mt-8 mb-4 text-black">
         Shipping Address
       </h2>
       <MinimumSeedsWarning {...props} />
@@ -145,7 +145,7 @@ const ShippingAddress = props => {
             </label>
           </div>
         </div>
-        <div className="w-full p-2 inline-flex sm:flex-col">
+        <div className="w-full p-2 inline-flex sm:flex-col border-t-2 border-grey-lightest mt-2 pt-4">
           <div className="w-1/2 sm:w-full sm:pl-0 sm:mt-4">
             <input
               aria-label="name"
@@ -178,36 +178,49 @@ const ShippingAddress = props => {
               required
             />
           </div>
-          <div className="w-1/2 pl-2 sm:w-full sm:pl-0 sm:mt-4">
-            <input
-              aria-label="email"
-              type="email"
-              name="email"
-              id="email"
-              value={
-                _orderDetails[pageGroup] != null &&
-                _orderDetails[pageGroup].email != null
-                  ? _orderDetails[pageGroup].email.value || ""
-                  : ""
-              }
-              onChange={e => {
-                let _target = e.target;
-                let _key = _target.id;
-                let _value = _target.value;
-                let _tag = "Email";
+          <div className="w-1/2 pl-2 sm:w-full sm:pl-0 sm:mt-4 inline-flex">
+            <div className="w-2/3">
+              <input
+                aria-label="email"
+                type="email"
+                name="email"
+                id="email"
+                value={
+                  _orderDetails[pageGroup] != null &&
+                  _orderDetails[pageGroup].email != null
+                    ? _orderDetails[pageGroup].email.value || ""
+                    : ""
+                }
+                onChange={e => {
+                  let _target = e.target;
+                  let _key = _target.id;
+                  let _value = _target.value;
+                  let _tag = "Email";
 
-                props.modifyOrderDetails({
-                  orderDetails: _orderDetails,
-                  group: pageGroup,
-                  key: _key,
-                  value: _value,
-                  tag: _tag
-                });
-              }}
-              placeholder="Email Address"
-              className="p-2 w-full"
-              required
-            />
+                  props.modifyOrderDetails({
+                    orderDetails: _orderDetails,
+                    group: pageGroup,
+                    key: _key,
+                    value: _value,
+                    tag: _tag
+                  });
+                }}
+                placeholder="Email Address"
+                className="p-2 w-full"
+                required
+              />
+            </div>
+            <div className="w-1/3 pt-1">
+              <label className="cursor-pointer font-bold uppercase items-center flex">
+                <input
+                  type="checkbox"
+                  value=""
+                  name=""
+                  className="ml-2 checkbox"
+                />
+                No Email
+              </label>
+            </div>
           </div>
         </div>
         <div className="w-full p-2">
@@ -516,6 +529,24 @@ const ShippingAddress = props => {
               className="p-2 w-full"
             />
           </div>
+        </div>
+      </div>
+      <div className="justify-between flex w-full mt-4 px-2">
+        <div
+          onClick={() => {
+            console.log("hello");
+          }}
+          className="p-2 cursor-pointer capitalize bg-red-dark hover:bg-red-light text-white font-bold rounded"
+        >
+          Purge all Profiles
+        </div>
+        <div
+          onClick={() => {
+            console.log("hello2");
+          }}
+          className="p-2 cursor-pointer capitalize bg-red-dark hover:bg-red-light text-white font-bold rounded"
+        >
+          Purge my Profile
         </div>
       </div>
     </div>

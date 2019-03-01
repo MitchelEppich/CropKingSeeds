@@ -13,9 +13,9 @@ import {
   faPrint
 } from "@fortawesome/free-solid-svg-icons";
 
-let print = () => {
-  window.print();
-};
+// let print = () => {
+//   window.print();
+// };
 
 let copyEmbedLink = () => {
   const el = document.createElement("textarea");
@@ -63,7 +63,7 @@ const Share = props => {
               className="fa-2x p-1 mx-2 lg:mx-1 md:mx-1 hover:text-grey scale-item cursor-pointer"
             />
           </a>
-          <span
+          {/* <span
             onClick={() => {
               window.print();
             }}
@@ -73,7 +73,7 @@ const Share = props => {
               icon={faPrint}
               className="fa-2x p-1 mx-2 lg:mx-1 md:mx-1 hover:text-grey scale-item cursor-pointer"
             />
-          </span>
+          </span> */}
           {/* {document.queryCommandSupported("copy") ? ( */}
 
           <span

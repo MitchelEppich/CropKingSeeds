@@ -6,9 +6,12 @@ import {
   faCheck,
   faMinus,
   faCopy,
-  faExternalLinkAlt
+  faExternalLinkAlt,
+  faSearch
 } from "@fortawesome/free-solid-svg-icons";
 import CompareMenu from "./compareMenu";
+import CompareFilters from "./compareFilters";
+import SearchCompare from "./searchCompare";
 
 const Compare = props => {
   let allProducts =
@@ -265,107 +268,114 @@ const Compare = props => {
                   </p>
                 </div>
               </div>
-              <div
-                className={
-                  product.inStock
-                    ? ""
-                    : "unselectable opacity-50 pointer-events-none"
-                }
-              >
-                <div className="inline-flex w-main mx-auto pt-4">
-                  {showSeedAmounts(product)}
-                </div>
-                <div className="w-main mx-auto h-8 mt-1 flex justify-between border border-grey-lightest">
-                  <button
-                    name="decreaseItem"
-                    onClick={() =>
-                      props.modifyPotentialQuantity({
-                        potentialQuantity: props.cart.potentialQuantity,
-                        action: "MODIFY",
-                        tag: product._id,
-                        quantity: -1,
-                        max: props.cart.maxPerPackage
-                      })
-                    }
-                    className="w-8 bg-grey-light text-sm text-white rounded hover:bg-red-light"
-                  >
-                    <FontAwesomeIcon
-                      icon={faMinus}
-                      className="fa-lg text-white cursor-pointer"
-                    />
-                  </button>
-                  <input
-                    onBlur={e => {
-                      let _value = e.target.value;
-                      if (
-                        _value == null ||
-                        _value == "1" ||
-                        parseInt(_value) < 1
-                      ) {
+              {product.inStock ? (
+                <div
+                  className={
+                    product.inStock
+                      ? "w-full"
+                      : "unselectable opacity-25 pointer-events-none"
+                  }
+                >
+                  <div className="w-main mx-auto pt-4">
+                    <div className="w-full inline-flex">
+                      {showSeedAmounts(product)}
+                    </div>
+                  </div>
+                  <div className="w-main mx-auto h-8 mt-1 flex justify-between border border-grey-lightest">
+                    <button
+                      name="decreaseItem"
+                      onClick={() =>
+                        props.modifyPotentialQuantity({
+                          potentialQuantity: props.cart.potentialQuantity,
+                          action: "MODIFY",
+                          tag: product._id,
+                          quantity: -1,
+                          max: props.cart.maxPerPackage
+                        })
+                      }
+                      className="w-8 bg-grey-light text-sm text-white rounded hover:bg-red-light"
+                    >
+                      <FontAwesomeIcon
+                        icon={faMinus}
+                        className="fa-lg text-white cursor-pointer"
+                      />
+                    </button>
+                    <input
+                      onBlur={e => {
+                        let _value = e.target.value;
+                        if (
+                          _value == null ||
+                          _value == "1" ||
+                          parseInt(_value) < 1
+                        ) {
+                          props.modifyPotentialQuantity({
+                            potentialQuantity: props.cart.potentialQuantity,
+                            action: "SET",
+                            tag: product._id,
+                            quantity: 1,
+                            max: props.cart.maxPerPackage
+                          });
+                        }
+                      }}
+                      onChange={e => {
+                        let _value = e.target.value;
                         props.modifyPotentialQuantity({
                           potentialQuantity: props.cart.potentialQuantity,
                           action: "SET",
                           tag: product._id,
-                          quantity: 1,
+                          quantity: parseInt(_value),
                           max: props.cart.maxPerPackage
                         });
-                      }
-                    }}
-                    onChange={e => {
-                      let _value = e.target.value;
-                      props.modifyPotentialQuantity({
-                        potentialQuantity: props.cart.potentialQuantity,
-                        action: "SET",
-                        tag: product._id,
-                        quantity: parseInt(_value),
-                        max: props.cart.maxPerPackage
-                      });
-                    }}
-                    value={props.cart.potentialQuantity[product._id] || ""}
-                    className="text-lg text-center w-10 border-0 font-bold pt-1 leading-none"
-                    type="number"
-                  />
-                  {/* {console.log(props.cart.potentialQuantity)} */}
-                  <button
-                    name="increaseItem"
-                    onClick={() =>
-                      props.modifyPotentialQuantity({
-                        potentialQuantity: props.cart.potentialQuantity,
-                        action: "MODIFY",
-                        tag: product._id,
-                        quantity: 1,
-                        max: props.cart.maxPerPackage
-                      })
-                    }
-                    className="w-8 bg-grey-light text-sm text-white rounded hover:bg-red-light"
-                  >
-                    <FontAwesomeIcon
-                      icon={faPlus}
-                      className="fa-lg text-white cursor-pointer"
+                      }}
+                      value={props.cart.potentialQuantity[product._id] || ""}
+                      className="text-lg text-center w-10 border-0 font-bold pt-1 leading-none"
+                      type="number"
                     />
-                  </button>
-                </div>
+                    <button
+                      name="increaseItem"
+                      onClick={() =>
+                        props.modifyPotentialQuantity({
+                          potentialQuantity: props.cart.potentialQuantity,
+                          action: "MODIFY",
+                          tag: product._id,
+                          quantity: 1,
+                          max: props.cart.maxPerPackage
+                        })
+                      }
+                      className="w-8 bg-grey-light text-sm text-white rounded hover:bg-red-light"
+                    >
+                      <FontAwesomeIcon
+                        icon={faPlus}
+                        className="fa-lg text-white cursor-pointer"
+                      />
+                    </button>
+                  </div>
 
-                <div>
-                  <button
-                    className="bg-red-dark w-main mx-auto text-center text-white p-2 hover:bg-red-light slowish rounded flex justify-center mt-4 scale-item"
-                    onClick={() => {
-                      props.modifyCart({
-                        items: props.cart.items,
-                        action: "APPEND",
-                        productIdentifier: productIdentifier,
-                        product: product,
-                        quantity: props.cart.potentialQuantity[product._id],
-                        coupon: _coupon,
-                        max: props.cart.maxPerPackage
-                      });
-                      props.toggleCartAnimation();
-                    }}
-                  >
-                    Add to Cart
-                  </button>
+                  <div>
+                    <button
+                      className="bg-red-dark w-main mx-auto text-center text-white p-2 hover:bg-red-light font-bold slowish rounded flex justify-center mt-4 scale-item"
+                      onClick={() => {
+                        props.modifyCart({
+                          items: props.cart.items,
+                          action: "APPEND",
+                          productIdentifier: productIdentifier,
+                          product: product,
+                          quantity: props.cart.potentialQuantity[product._id],
+                          coupon: _coupon,
+                          max: props.cart.maxPerPackage
+                        });
+                        props.toggleCartAnimation();
+                      }}
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="w-full mt-4 h-125 p-3 bg-red-dark rounded opacity-50 flex items-center justify-center">
+                  <p className="text-white text-center text-xl">Sold Out</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -380,26 +390,50 @@ const Compare = props => {
       <div className="text-center w-full pb-8">
         <h1
           className="mt-5 text-grey font-extrabold text-center text-3/5xl mx-auto w-full text-center"
-          // onClick={() => console.log(props)}
+          onClick={() => console.log(props)}
         >
           Comparing our Strains
         </h1>
       </div>
       <div className="w-full inline-flex">
+        {/* Sidebar */}
         <div className="w-1/5">
           <div className="p-2 bg-grey-lightest rounded">
             <h4 className="font-bold text-xl uppercase text-grey rounded text-center">
-              Strains
+              Search Strain
             </h4>
           </div>
-          <div className="w-full">
+          <div className="w-full px-1">
+            <SearchCompare {...props} />
+          </div>
+          <div className="w-full mt-5">
+            <div className="p-2 bg-grey-lightest rounded">
+              <h4 className="font-bold text-xl uppercase text-grey rounded text-center">
+                All Strains
+              </h4>
+            </div>
+
             <CompareMenu {...props} />
           </div>
 
           <div />
         </div>
+        {/* Container */}
         <div className="w-4/5 ml-4">
-          <p className="text-center bg-grey-lightest p-3 my-4 mt-0 font-bold rounded text-base uppercase text-grey">
+          <div>
+            <div className="w-full relative">
+              <p className="text-center bg-grey-lightest font-bold text-xl uppercase p-2 my-4 mt-0 font-bold rounded text-base uppercase text-grey">
+                Main Filters:
+              </p>{" "}
+              <p className="absolute cursor-pointer p-2  pt-3 pin-r mr-2 pin-t text-red-dark  font-bold uppercase underline">
+                Clear Filters
+              </p>
+            </div>
+            <div>
+              <CompareFilters {...props} />
+            </div>
+          </div>
+          <p className="text-center mt-6 bg-grey-lightest p-3 my-4 mt-0 font-bold rounded text-base uppercase text-grey">
             Please, select at least{" "}
             <span className="font-bold underline">2</span> and max{" "}
             <span className="font-bold underline">5</span> strains to compare.
