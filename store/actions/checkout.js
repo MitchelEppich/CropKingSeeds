@@ -27,7 +27,10 @@ const actionTypes = {
   ACQUIRE_ORDER_ID: "ACQUIRE_ORDER_ID",
   GET_BLOCKED_ZIPS: "GET_BLOCKED_ZIPS",
   GET_BLOCKED_IPS: "GET_BLOCKED_IPS",
-  PURGE_ORDER_DETAILS: "PURGE_ORDER_DETAILS"
+  PURGE_ORDER_DETAILS: "PURGE_ORDER_DETAILS",
+  STORE_ORDER_DETAILS: "STORE_ORDER_DETAILS",
+  CHECK_FOR_LOCAL_PROFILE: "CHECK_FOR_LOCAL_PROFILE",
+  LOAD_LOCAL_PROFILE: "LOAD_LOCAL_PROFILE"
 };
 
 let shippingMethods = [
@@ -73,6 +76,14 @@ let shippingMethods = [
       "The Country you have selected is flagged for Unreliable Mail services and due to these obstacles your package will be shipped using our stealth shipment method.",
     price: 30
   }
+];
+
+let fieldsForProfileSearch = [
+  "address",
+  "apartment",
+  "email",
+  "fullName",
+  "phone"
 ];
 
 const getActions = uri => {
@@ -128,55 +139,168 @@ const getActions = uri => {
       };
     },
     modifyOrderDetails: input => {
-      let _orderDetails = input.orderDetails;
-      let _group = input.group;
-      let _key = input.key;
-      let _value = input.value;
-      let _tag = input.tag;
-      let _requestUpdateOfGroup = input.requestUpdateOfGroup;
+      return dispatch => {
+        let _orderDetails = input.orderDetails;
+        let _group = input.group;
+        let _key = input.key;
+        let _value = input.value;
+        let _tag = input.tag;
+        let _requestUpdateOfGroup = input.requestUpdateOfGroup;
 
-      if (
-        _requestUpdateOfGroup != null &&
-        _orderDetails[_requestUpdateOfGroup.group] != null &&
-        _requestUpdateOfGroup.value
-      ) {
-        if (_requestUpdateOfGroup.group == "payment" && _group == "shipping") {
+        if (
+          _requestUpdateOfGroup != null &&
+          _orderDetails[_requestUpdateOfGroup.group] != null &&
+          _requestUpdateOfGroup.value
+        ) {
           if (
-            _orderDetails["billing"] != null &&
-            !_orderDetails["billing"].readOnly
+            _requestUpdateOfGroup.group == "payment" &&
+            _group == "shipping"
+          ) {
+            if (
+              _orderDetails["billing"] != null &&
+              !_orderDetails["billing"].readOnly
+            )
+              _orderDetails["billing"] = {
+                ..._orderDetails["shipping"],
+                readOnly: true
+              };
+            _orderDetails[_requestUpdateOfGroup.group][
+              "updateRequested"
+            ] = true;
+          } else
+            _orderDetails[_requestUpdateOfGroup.group][
+              "updateRequested"
+            ] = true;
+        }
+
+        if (_group != null) {
+          if (_orderDetails[_group] == null) _orderDetails[_group] = {};
+          _orderDetails[_group][_key] =
+            _tag == null ? _value : { value: _value, tag: _tag };
+
+          if (_key == "country" && _orderDetails[_group].state != null) {
+            _orderDetails[_group].state = undefined;
+          }
+          _orderDetails[_group].updatedAt = new Date();
+        } else if (_tag != null)
+          _orderDetails[_key] = { value: _value, tag: _tag };
+        else _orderDetails[_key] = _value;
+
+        if (_group == "shipping" && fieldsForProfileSearch.includes(_key)) {
+          dispatch(
+            objects.checkForLocalProfile({
+              orderDetails: _orderDetails
+            })
+          );
+        }
+
+        sessionStorage.setItem(
+          "orderDetails",
+          JSON.stringify(
+            (() => {
+              let o = { ..._orderDetails };
+              delete o.payment;
+              return o;
+            })()
           )
-            _orderDetails["billing"] = {
-              ..._orderDetails["shipping"],
-              readOnly: true
-            };
-          _orderDetails[_requestUpdateOfGroup.group]["updateRequested"] = true;
-        } else
-          _orderDetails[_requestUpdateOfGroup.group]["updateRequested"] = true;
+        );
+        dispatch({
+          type: actionTypes.MODIFY_ORDER_DETAILS,
+          input: _orderDetails
+        });
+      };
+    },
+    loadLocalProfile: input => {
+      return dispatch => {
+        let _freeShippingThreshold = input.freeShippingThreshold;
+        let _cart = input.cart;
+        let _profile = input.profile;
+        let _orderDetails = input.orderDetails;
+
+        _orderDetails = {
+          ..._orderDetails,
+          shipping: { ..._profile.shipping },
+          billing: { ..._profile.billing },
+          details: {
+            ..._orderDetails.details,
+            saveForLater: _profile.details.saveForLater
+          }
+        };
+
+        dispatch(
+          objects.setShippingMethods({
+            country: _orderDetails.shipping.country.value,
+            state: _orderDetails.shipping.state.value,
+            cartTotal: _cart.price,
+            freeShippingThreshold: _freeShippingThreshold,
+            orderDetails: _orderDetails
+          })
+        );
+
+        dispatch({
+          type: actionTypes.LOAD_LOCAL_PROFILE,
+          input: _orderDetails
+        });
+      };
+    },
+    checkForLocalProfile: input => {
+      let _shipping = input.orderDetails.shipping;
+      let _local = localStorage.getItem("profiles");
+      if (_local != null) {
+        _local = JSON.parse(_local);
       }
 
-      if (_group != null) {
-        if (_orderDetails[_group] == null) _orderDetails[_group] = {};
-        _orderDetails[_group][_key] =
-          _tag == null ? _value : { value: _value, tag: _tag };
+      let fields = [...fieldsForProfileSearch];
+      let possibleProfiles = [];
 
-        if (_key == "country" && _orderDetails[_group].state != null) {
-          _orderDetails[_group].state = undefined;
+      for (let profile of Object.values(_local)) {
+        let matched = false;
+        let _profile = JSON.parse(profile);
+        let $shipping = _profile.shipping;
+
+        if (JSON.stringify($shipping) == JSON.stringify(_shipping)) break;
+
+        for (let field of fields) {
+          if (matched) break;
+          if (
+            $shipping[field] != null &&
+            _shipping[field] != null &&
+            _shipping[field].value.toLowerCase() ==
+              $shipping[field].value.toLowerCase()
+          )
+            matched = true;
         }
-        _orderDetails[_group].updatedAt = new Date();
-      } else if (_tag != null)
-        _orderDetails[_key] = { value: _value, tag: _tag };
-      else _orderDetails[_key] = _value;
-      sessionStorage.setItem(
-        "orderDetails",
-        JSON.stringify(
-          (() => {
-            let o = { ..._orderDetails };
-            delete o.payment;
-            return o;
-          })()
-        )
-      );
-      return { type: actionTypes.MODIFY_ORDER_DETAILS, input: _orderDetails };
+
+        if (matched) possibleProfiles.push(_profile);
+      }
+
+      return {
+        type: actionTypes.CHECK_FOR_LOCAL_PROFILE,
+        input: possibleProfiles
+      };
+    },
+    storeOrderDetails: input => {
+      let _orderDetails = { ...input.orderDetails };
+      if (_orderDetails.payment != null) delete _orderDetails.payment;
+      if (_orderDetails.details.infoConfirmed != null)
+        delete _orderDetails.details.infoConfirmed;
+
+      let _local = localStorage.getItem("profiles");
+      if (_local != null) {
+        _local = JSON.parse(_local);
+      } else {
+        _local = [];
+      }
+
+      let text = JSON.stringify(_orderDetails);
+      if (!_local.includes(text)) {
+        _local.push(text);
+        localStorage.setItem("profiles", JSON.stringify(_local));
+      }
+
+      return {
+        type: actionTypes.STORE_ORDER_DETAILS
+      };
     },
     purgeOrderDetails: input => {
       let _orderDetails = { details: input.orderDetails.details };

@@ -25,7 +25,6 @@ const PaymentReview = props => {
       _orderDetails[pageGroup].productList.value != productList)
   ) {
     let _payment = _orderDetails[pageGroup];
-    console.log(_payment);
 
     // Payment Information
     let cartTotal = _cart.price;
