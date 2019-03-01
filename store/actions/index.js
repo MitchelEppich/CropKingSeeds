@@ -352,9 +352,14 @@ const actions = {
     };
   },
   setSearch: value => {
-    return {
-      type: actionTypes.SET_SEARCH,
-      value: value
+    return dispatch => {
+      return new Promise((resolve, reject) => {
+        dispatch({
+          type: actionTypes.SET_SEARCH,
+          value: value
+        });
+        return resolve(value);
+      });
     };
   },
   setSuggestions: suggestions => {

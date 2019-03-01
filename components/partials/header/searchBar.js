@@ -12,12 +12,22 @@ const SearchBar = props => {
       props.setSearch(null);
       let text = [...searchValue.split(",")];
       if (_activeFilters.text != null) text.push(..._activeFilters.text);
+
+      text = [...new Set(text)];
       props.toggleFilter({
         filter: _activeFilters,
         text,
         multiple: false
       });
     }
+  };
+
+  let clearSuggestions = () => {
+    props.setSuggestions([]);
+    props.setHighlightedSuggestion({
+      index: null,
+      suggestions: props.misc.suggestions
+    });
   };
 
   return (
@@ -33,12 +43,16 @@ const SearchBar = props => {
       className="w-full z-50"
     >
       <div className="flex w-400 sm:w-full xl:w-225 lg:w-225 md:w-225 z-40 h-8 mt-1 bg-white border-0 text-grey rounded shadow-md sm:relative">
-        <SearchSuggest {...props} />{" "}
+        <SearchSuggest
+          {...props}
+          clearSuggestions={clearSuggestions}
+          setFilters={setFilters}
+        />{" "}
         <Link href="/shop" as={"/shop?" + props.misc.searchValue}>
           <a
             onClick={e => {
               if (Router.asPath.includes("/shop")) e.preventDefault();
-
+              clearSuggestions();
               setFilters();
             }}
             className="bg-yellow-dark hover:bg-yellow slowish w-12 sm:w-20 border-0 pl-1 leading-loose z-999 rounded sm:absolute sm:pin-r"

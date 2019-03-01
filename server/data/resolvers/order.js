@@ -210,14 +210,14 @@ const resolvers = {
     processOrder: async (_, { input }) => {
       let _input = JSON.parse(input.content);
 
-      let res = (await axios({
-        method: "post",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        url: "https://www.cksoti.com/save-order-customer-details",
-        data: toUrlEncoded(_input)
-      })).data;
+      // let res = (await axios({
+      //   method: "post",
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded"
+      //   },
+      //   url: "https://www.cksoti.com/save-order-customer-details",
+      //   data: toUrlEncoded(_input)
+      // })).data;
 
       buildRelation(_input.productlist);
 
@@ -269,15 +269,23 @@ const resolvers = {
 };
 
 let buildRelation = list => {
-  let _products = list.split(",").map(a => a.substring(0, 3));
+  let _products = list.split(",").map(a => {
+    return {
+      id: a.substring(0, 3),
+      quantity: a.substring(3, 5).trim()
+    };
+  });
 
-  _products.map(async id => {
-    let strain = await Strain.findOne({ sotiId: id });
+  _products.map(async _strain => {
+    let strain = await Strain.findOne({ sotiId: _strain.id });
+    let _soldQuantity = [...strain.soldQuantity];
+    _soldQuantity[["5", "10", "25"].indexOf(_strain.quantity)] += 1;
+    strain.soldQuantity = [..._soldQuantity];
     let relation = decompress(strain.relationData)
       .trim()
       .split(" ");
-    for (let _id of _products) {
-      if (_id == id) continue;
+    for (let _id of _products.map(a => a.id)) {
+      if (_id == _strain.id) continue;
       let index = relation.findIndex(a => {
         return a.includes(_id);
       });

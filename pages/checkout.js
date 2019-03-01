@@ -44,6 +44,10 @@ class Index extends Component {
 
     this.props.getBlockedIps();
     this.props.getBlockedZips();
+
+    window.onbeforeunload = () => {
+      if (this.props.misc.stepsCheckout >= 4) this.props.purgeCart();
+    };
   }
 
   componentDidUpdate(prevProps) {

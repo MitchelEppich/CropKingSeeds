@@ -183,8 +183,7 @@ const Media = props => {
   };
 
   let imageHeader = {
-    // background: `url(${props.misc.CFURL}/banners/newsHeader.jpg)`,
-    background: `url("../../static/img/bgEvents.jpg")`,
+    background: `url(${props.misc.CFURL}/banners/newsHeader.jpg)`,
     backgroundSize: "cover",
     backgroundPosition: "left"
   };

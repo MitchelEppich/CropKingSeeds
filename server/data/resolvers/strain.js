@@ -43,6 +43,24 @@ const resolvers = {
 
       return randomize(relatedStrains);
     },
+    getPopularList: async (_, { input }) => {
+      let limit = input.limit;
+      let popularStrains = (await Strain.find({}))
+        .sort((a, b) => {
+          let _a = a.soldQuantity.reduce((sum, _) => {
+            return sum + _;
+          });
+          let _b = b.soldQuantity.reduce((sum, _) => {
+            return sum + _;
+          });
+          if (_a > _b) return -1;
+          if (_a < _b) return 1;
+          return 0;
+        })
+        .slice(0, limit);
+
+      return popularStrains;
+    },
     getFeaturedList: async (_, { input }) => {
       let limit = input.limit;
       let featuredStrains = await Strain.find({
@@ -155,12 +173,6 @@ const resolvers = {
       let _strains = await Strain.find({});
 
       for (let strain of _strains) {
-        // strain.releaseDate =
-        //   "Fri Jun 01 2018 00:00:00 GMT-0700 (Pacific Daylight Time)";
-        // console.log(strain.strainImg);
-        // // strain.strainImg = "/plant/cannabis-plant.png";
-        // strain.strainImg = "/plant/" + strain.sotiId.toUpperCase() + ".png";
-
         strain.save();
       }
 

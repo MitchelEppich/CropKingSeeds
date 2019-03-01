@@ -6,7 +6,10 @@ import Router from "next/router";
 import { filter } from "../../../store/utilities/filter";
 
 class SearchSuggest extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    console.log(this.props);
+  }
+
   renderSuggestion = (suggestion, index) => (
     <div
       key={index}
@@ -16,6 +19,20 @@ class SearchSuggest extends Component {
           suggestions: this.props.misc.suggestions
         });
       }}
+      onClick={() => {
+        this.props
+          .setSearch(
+            this.props.misc.suggestions[index].strain.name.toLowerCase()
+          )
+          .then(res => {
+            this.props.clearSuggestions();
+            if (!Router.asPath.includes("/shop")) {
+              Router.push("/shop");
+            } else {
+              this.props.setFilters();
+            }
+          });
+      }}
       className={
         this.props.misc.highlightedSuggestion == index
           ? "bg-red-light text-white font-bold h-10 z-999 py-1 shadow-lg leading-loose text-sm"
@@ -23,14 +40,7 @@ class SearchSuggest extends Component {
       }
     >
       <div className="inline-flex w-full">
-        <div
-          onClick={() => {
-            if (!Router.asPath.includes("/shop")) {
-              Router.push("/shop");
-            }
-          }}
-          className="w-3/5 text-left pl-2"
-        >
+        <div className="w-3/5 text-left pl-2">
           {suggestion.strain.name.length > 17 &&
           ["sm", "md", "lg", "xl"].includes(this.props.misc.mediaSize)
             ? suggestion.strain.name.slice(0, 18) + "..."
@@ -113,14 +123,14 @@ class SearchSuggest extends Component {
               suggestions: this.props.misc.suggestions
             });
           }}
-          onBlur={() => {
-            // this.props.setSearch(null);
-            this.props.setSuggestions([]);
-            this.props.setHighlightedSuggestion({
-              index: null,
-              suggestions: this.props.misc.suggestions
-            });
-          }}
+          // onBlur={() => {
+          //   // this.props.setSearch(null);
+          //   this.props.setSuggestions([]);
+          //   this.props.setHighlightedSuggestion({
+          //     index: null,
+          //     suggestions: this.props.misc.suggestions
+          //   });
+          // }}
           value={
             (this.props.misc.suggestions[this.props.misc.highlightedSuggestion]
               ? this.props.misc.suggestions[

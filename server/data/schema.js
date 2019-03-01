@@ -18,6 +18,7 @@ type Query {
   getBanners: [String]
   getFeaturedList(input: FeaturedInput): [Strain]!
   getRelatedList(input: RelatedInput!): [Strain]!
+  getPopularList(input: PopularInput!): [Strain]!
   getBitcoinData(input: BitcoinDataInput): String
   getExchangeRates: String
   getCoupon(coupon: String, ip: String): Coupon
@@ -32,6 +33,9 @@ input RelatedInput {
   sotiId: String
 }
 input FeaturedInput {
+  limit: Int
+}
+input PopularInput {
   limit: Int
 }
 
@@ -107,6 +111,7 @@ type Strain {
   featured: Boolean
   relationData: String
   releaseDate: String
+  soldQuantity: [Int]
 }
 
 input StrainInput {
