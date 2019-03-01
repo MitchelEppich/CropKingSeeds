@@ -265,8 +265,10 @@ const getActions = uri => {
           if (
             $shipping[field] != null &&
             _shipping[field] != null &&
-            _shipping[field].value.toLowerCase() ==
-              $shipping[field].value.toLowerCase()
+            $shipping[field].value
+              .toLowerCase()
+              .trim()
+              .includes(_shipping[field].value.toLowerCase().trim())
           )
             matched = true;
         }
@@ -284,6 +286,11 @@ const getActions = uri => {
       if (_orderDetails.payment != null) delete _orderDetails.payment;
       if (_orderDetails.details.infoConfirmed != null)
         delete _orderDetails.details.infoConfirmed;
+      for (let key of Object.keys(_orderDetails)) {
+        for (let _key of Object.keys(_orderDetails[key])) {
+          if (_key == "updatedAt") delete _orderDetails[key][_key];
+        }
+      }
 
       let _local = localStorage.getItem("profiles");
       if (_local != null) {
