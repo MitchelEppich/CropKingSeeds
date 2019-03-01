@@ -326,7 +326,13 @@ const productThumbnail = props => {
           }
         >
           {hover ? (
-            <div className="w-full">
+            <div
+              className={`w-full ${
+                props.product.inStock
+                  ? ""
+                  : "unselectable opacity-50 pointer-events-none"
+              }`}
+            >
               <div className="w-full">
                 <SeedSelectModule {...props} product={props.product} />
               </div>
@@ -418,7 +424,7 @@ const productThumbnail = props => {
           className={hover ? "w-full mx-auto text-center p-1" : "hidden slow"}
         >
           <p className="text-sm italic font-extrabold pt-2 text-red-dark text-right mr-24">
-            In stock
+            {props.product.inStock ? "In Stock" : "Sold Out"}
           </p>
         </div>
       </div>

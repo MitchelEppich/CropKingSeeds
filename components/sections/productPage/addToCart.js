@@ -48,7 +48,13 @@ const addToCart = props => {
         </div>
       </div>
 
-      <div className="w-container sm:w-full md:w-full mx-auto">
+      <div
+        className={`w-container sm:w-full md:w-full mx-auto ${
+          currentProduct.inStock
+            ? ""
+            : "unselectable opacity-50 pointer-events-none"
+        }`}
+      >
         <div className="w-full ml-0 flex justify-start">
           <SeedSelectModule {...props} product={currentProduct} />
         </div>

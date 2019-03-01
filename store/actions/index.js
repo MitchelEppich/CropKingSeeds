@@ -581,6 +581,7 @@ const query = {
         flowerTime
         price
         strainImg
+        inStock
         sotiId
       }
     }
@@ -610,6 +611,7 @@ const query = {
         price
         strainImg
         packageImg
+        inStock
         genetic
         yield
         flowerTime

@@ -126,6 +126,13 @@ const Compare = props => {
             <div className="mt-4 text-sm font-bold w-full flex flex-col">
               <div className="inline-flex w-full">
                 <div className="w-full text-center">
+                  <p className="p-2 font-normal">
+                    {product.inStock ? "In Stock" : "Sold Out"}
+                  </p>
+                </div>
+              </div>
+              <div className="inline-flex w-full">
+                <div className="w-full text-center">
                   <p className="p-2 bg-grey-lightest font-normal">
                     {product.genetic}
                   </p>
@@ -258,98 +265,106 @@ const Compare = props => {
                   </p>
                 </div>
               </div>
-              <div className="inline-flex w-main mx-auto pt-4">
-                {showSeedAmounts(product)}
-              </div>
-              <div className="w-main mx-auto h-8 mt-1 flex justify-between border border-grey-lightest">
-                <button
-                  name="decreaseItem"
-                  onClick={() =>
-                    props.modifyPotentialQuantity({
-                      potentialQuantity: props.cart.potentialQuantity,
-                      action: "MODIFY",
-                      tag: product._id,
-                      quantity: -1,
-                      max: props.cart.maxPerPackage
-                    })
-                  }
-                  className="w-8 bg-grey-light text-sm text-white rounded hover:bg-red-light"
-                >
-                  <FontAwesomeIcon
-                    icon={faMinus}
-                    className="fa-lg text-white cursor-pointer"
-                  />
-                </button>
-                <input
-                  onBlur={e => {
-                    let _value = e.target.value;
-                    if (
-                      _value == null ||
-                      _value == "1" ||
-                      parseInt(_value) < 1
-                    ) {
+              <div
+                className={
+                  product.inStock
+                    ? ""
+                    : "unselectable opacity-50 pointer-events-none"
+                }
+              >
+                <div className="inline-flex w-main mx-auto pt-4">
+                  {showSeedAmounts(product)}
+                </div>
+                <div className="w-main mx-auto h-8 mt-1 flex justify-between border border-grey-lightest">
+                  <button
+                    name="decreaseItem"
+                    onClick={() =>
+                      props.modifyPotentialQuantity({
+                        potentialQuantity: props.cart.potentialQuantity,
+                        action: "MODIFY",
+                        tag: product._id,
+                        quantity: -1,
+                        max: props.cart.maxPerPackage
+                      })
+                    }
+                    className="w-8 bg-grey-light text-sm text-white rounded hover:bg-red-light"
+                  >
+                    <FontAwesomeIcon
+                      icon={faMinus}
+                      className="fa-lg text-white cursor-pointer"
+                    />
+                  </button>
+                  <input
+                    onBlur={e => {
+                      let _value = e.target.value;
+                      if (
+                        _value == null ||
+                        _value == "1" ||
+                        parseInt(_value) < 1
+                      ) {
+                        props.modifyPotentialQuantity({
+                          potentialQuantity: props.cart.potentialQuantity,
+                          action: "SET",
+                          tag: product._id,
+                          quantity: 1,
+                          max: props.cart.maxPerPackage
+                        });
+                      }
+                    }}
+                    onChange={e => {
+                      let _value = e.target.value;
                       props.modifyPotentialQuantity({
                         potentialQuantity: props.cart.potentialQuantity,
                         action: "SET",
                         tag: product._id,
-                        quantity: 1,
+                        quantity: parseInt(_value),
                         max: props.cart.maxPerPackage
                       });
-                    }
-                  }}
-                  onChange={e => {
-                    let _value = e.target.value;
-                    props.modifyPotentialQuantity({
-                      potentialQuantity: props.cart.potentialQuantity,
-                      action: "SET",
-                      tag: product._id,
-                      quantity: parseInt(_value),
-                      max: props.cart.maxPerPackage
-                    });
-                  }}
-                  value={props.cart.potentialQuantity[product._id] || ""}
-                  className="text-lg text-center w-10 border-0 font-bold pt-1 leading-none"
-                  type="number"
-                />
-                {/* {console.log(props.cart.potentialQuantity)} */}
-                <button
-                  name="increaseItem"
-                  onClick={() =>
-                    props.modifyPotentialQuantity({
-                      potentialQuantity: props.cart.potentialQuantity,
-                      action: "MODIFY",
-                      tag: product._id,
-                      quantity: 1,
-                      max: props.cart.maxPerPackage
-                    })
-                  }
-                  className="w-8 bg-grey-light text-sm text-white rounded hover:bg-red-light"
-                >
-                  <FontAwesomeIcon
-                    icon={faPlus}
-                    className="fa-lg text-white cursor-pointer"
+                    }}
+                    value={props.cart.potentialQuantity[product._id] || ""}
+                    className="text-lg text-center w-10 border-0 font-bold pt-1 leading-none"
+                    type="number"
                   />
-                </button>
-              </div>
+                  {/* {console.log(props.cart.potentialQuantity)} */}
+                  <button
+                    name="increaseItem"
+                    onClick={() =>
+                      props.modifyPotentialQuantity({
+                        potentialQuantity: props.cart.potentialQuantity,
+                        action: "MODIFY",
+                        tag: product._id,
+                        quantity: 1,
+                        max: props.cart.maxPerPackage
+                      })
+                    }
+                    className="w-8 bg-grey-light text-sm text-white rounded hover:bg-red-light"
+                  >
+                    <FontAwesomeIcon
+                      icon={faPlus}
+                      className="fa-lg text-white cursor-pointer"
+                    />
+                  </button>
+                </div>
 
-              <div>
-                <button
-                  className="bg-red-dark w-main mx-auto text-center text-white p-2 hover:bg-red-light slowish rounded flex justify-center mt-4 scale-item"
-                  onClick={() => {
-                    props.modifyCart({
-                      items: props.cart.items,
-                      action: "APPEND",
-                      productIdentifier: productIdentifier,
-                      product: product,
-                      quantity: props.cart.potentialQuantity[product._id],
-                      coupon: _coupon,
-                      max: props.cart.maxPerPackage
-                    });
-                    props.toggleCartAnimation();
-                  }}
-                >
-                  Add to Cart
-                </button>
+                <div>
+                  <button
+                    className="bg-red-dark w-main mx-auto text-center text-white p-2 hover:bg-red-light slowish rounded flex justify-center mt-4 scale-item"
+                    onClick={() => {
+                      props.modifyCart({
+                        items: props.cart.items,
+                        action: "APPEND",
+                        productIdentifier: productIdentifier,
+                        product: product,
+                        quantity: props.cart.potentialQuantity[product._id],
+                        coupon: _coupon,
+                        max: props.cart.maxPerPackage
+                      });
+                      props.toggleCartAnimation();
+                    }}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -424,6 +439,11 @@ const Compare = props => {
                     </h4>
                   </div>
                   <div className="inline-flex w-full mt-4">
+                    <div className="w-full">
+                      <p className="p-2 font-bold uppercase">Status:</p>
+                    </div>
+                  </div>
+                  <div className="inline-flex w-full">
                     <div className="w-full bg-grey-lightest">
                       <p className="p-2 font-bold uppercase">Genetic:</p>
                     </div>

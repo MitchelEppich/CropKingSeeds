@@ -112,6 +112,7 @@ type Strain {
   relationData: String
   releaseDate: String
   soldQuantity: [Int]
+  inStock: Boolean
 }
 
 input StrainInput {
