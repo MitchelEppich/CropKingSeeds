@@ -144,6 +144,12 @@ img {
   left: 3.5px;
   position: absolute;
 }
+.compareTableRows {
+  background-color: #e9e8e8;
+}
+.compareTableRows div:nth-of-type(2n) {
+  background-color: #fff;
+}
 .example {
   background-color: red;
 }

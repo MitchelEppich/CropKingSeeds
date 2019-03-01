@@ -30,7 +30,7 @@ const Compare = props => {
           }
           className={`${
             props.shop.quickAddToCartQty[item._id] === index
-              ? "bg-grey-lightest text-xs text-grey w-1/3 p-2 mr-1 flex flex-wrap text-center justify-center leading-normal uppercase font-bold border border-grey-lightest hover:bg-grey-light hover:text-white "
+              ? " text-xs text-grey w-1/3 p-2 mr-1 flex flex-wrap text-center justify-center leading-normal uppercase font-bold border border-grey-lightest hover:bg-grey-light hover:text-white "
               : "bg-white text-grey text-xs w-1/3 p-2 flex mr-1 flex-wrap text-center justify-center leading-normal uppercase font-bold border border-grey-lightest hover:bg-grey-light hover:text-white"
           } ${
             price == -1 ? "opacity-50 pointer-events-none unselectable" : ""
@@ -68,10 +68,32 @@ const Compare = props => {
         document.execCommand("copy");
         document.body.removeChild(el);
       };
-
       let productIdentifier =
         product.sotiId + [5, 10, 25][props.shop.quickAddToCartQty[product._id]];
       let _coupon = props.checkout.orderDetails.coupon;
+      let pthc =
+        product.pthc[1] != null
+          ? product.pthc[0] + "% - " + product.pthc[1] + "%"
+          : product.pthc + "%";
+      let pcbd =
+        product.pcbd[1] != null
+          ? product.pcbd[0] + "% - " + product.pcbd[1] + "%"
+          : product.pcbd + "%";
+      let pcbn =
+        product.pcbn[1] != null
+          ? product.pcbn[0] + "% - " + product.pcbn[1] + "%"
+          : product.pcbn + "%";
+      let cbdRatioWeighting, thcRatioWeighting;
+      if (product.pcbd[0] < product.pthc[0]) {
+        cbdRatioWeighting = product.pcbd[0] / product.pcbd[0];
+        thcRatioWeighting = product.pthc[0] / product.pcbd[0];
+      } else {
+        cbdRatioWeighting = product.pcbd[0] / product.pthc[0];
+        thcRatioWeighting = product.pthc[0] / product.pthc[0];
+      }
+      let cbdToThc =
+        Math.round(cbdRatioWeighting) + ":" + Math.round(thcRatioWeighting);
+
       arr.push(
         <div key={product._id} className="w-full border border-white">
           <div className="w-full">
@@ -123,117 +145,104 @@ const Compare = props => {
                 {product.name.substring(0, 16)}...
               </h4>
             </div>
-            <div className="mt-4 text-sm font-bold w-full flex flex-col">
-              <div className="inline-flex w-full">
-                <div className="w-full text-center">
-                  <p className="p-2 font-normal">
-                    {product.inStock ? "In Stock" : "Sold Out"}
-                  </p>
+            <div className="text-sm font-bold w-full flex flex-col">
+              <div className="compareTableRows">
+                <div className="inline-flex w-full">
+                  <div className="w-full text-center">
+                    <p className="p-2 font-normal">
+                      {product.inStock ? "In Stock" : "Sold Out"}
+                    </p>
+                  </div>
+                </div>
+                <div className="inline-flex w-full">
+                  <div className="w-full text-center">
+                    <p className="p-2  font-normal">{product.genetic}</p>
+                  </div>
+                </div>
+                <div className="inline-flex w-full">
+                  <div className="w-full text-center">
+                    <p className="p-2 font-normal">{product.type}</p>
+                  </div>
+                </div>
+                <div className="inline-flex w-full ">
+                  <div className="w-full text-center">
+                    <p className="p-2 font-normal">{product.flowerTime}</p>
+                  </div>
+                </div>
+                <div className="inline-flex w-full">
+                  <div className="w-full text-center">
+                    <p className="p-2 font-normal">{product.avgYield}g</p>
+                  </div>
+                </div>
+                <div className="inline-flex w-full ">
+                  <div className="w-full text-center">
+                    <p className="p-2 font-normal">{product.indica * 100}%</p>
+                  </div>
+                </div>
+                <div className="inline-flex w-full">
+                  <div className="w-full text-center">
+                    <p className="p-2 font-normal">{product.sativa * 100}%</p>
+                  </div>
+                </div>
+                <div className="inline-flex w-full ">
+                  <div className="w-full text-center">
+                    <p className="p-2 font-normal">
+                      {product.ruderalis * 100}%
+                    </p>
+                  </div>
+                </div>
+                <div className="inline-flex w-full">
+                  <div className="w-full text-center">
+                    <p className="p-2 font-normal capitalize">{product.cbd}</p>
+                  </div>
+                </div>
+                <div className="inline-flex w-full ">
+                  <div className="w-full text-center">
+                    <p className="p-2 font-normal capitalize">{product.thc}</p>
+                  </div>
+                </div>
+                <div className="inline-flex w-full">
+                  <div className="w-full text-center">
+                    <p className="p-2 font-normal">{cbdToThc}</p>
+                  </div>
+                </div>
+
+                <div className="inline-flex w-full ">
+                  <div className="w-full text-center">
+                    <p className="p-2 font-normal">{pcbd}</p>
+                  </div>
+                </div>
+                <div className="inline-flex w-full">
+                  <div className="w-full text-center">
+                    <p className="p-2 font-normal">{pthc}</p>
+                  </div>
+                </div>
+                <div className="inline-flex w-full">
+                  <div className="w-full text-center">
+                    <p className="p-2 font-normal">{pcbn}</p>
+                  </div>
+                </div>
+                <div className="inline-flex w-full ">
+                  <div className="w-full text-center">
+                    <p className="p-2 font-normal items-center flex justify-center">
+                      {product.rating.toFixed(2)}
+                      <img
+                        src="../../static/img/CrownIcon.svg"
+                        className="ml-1 h-4 w-6 crown-icon text-red-dark opacity-50"
+                      />
+                    </p>
+                  </div>
+                </div>
+                <div className="inline-flex w-full ">
+                  <div className="w-full text-center">
+                    <p className="p-2 font-normal">
+                      ${product.price[0]} / ${product.price[1]} / $
+                      {product.price[2]}
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="inline-flex w-full">
-                <div className="w-full text-center">
-                  <p className="p-2 bg-grey-lightest font-normal">
-                    {product.genetic}
-                  </p>
-                </div>
-              </div>
-              <div className="inline-flex w-full">
-                <div className="w-full text-center">
-                  <p className="p-2 font-normal">{product.type}</p>
-                </div>
-              </div>
-              <div className="inline-flex w-full bg-grey-lightest">
-                <div className="w-full text-center">
-                  <p className="p-2 font-normal">{product.flowerTime}</p>
-                </div>
-              </div>
-              <div className="inline-flex w-full">
-                <div className="w-full text-center">
-                  <p className="p-2 font-normal">{product.avgYield}g</p>
-                </div>
-              </div>
-              <div className="inline-flex w-full bg-grey-lightest">
-                <div className="w-full text-center">
-                  <p className="p-2 font-normal">{product.indica * 100}%</p>
-                </div>
-              </div>
-              <div className="inline-flex w-full">
-                <div className="w-full text-center">
-                  <p className="p-2 font-normal">{product.sativa * 100}%</p>
-                </div>
-              </div>
-              <div className="inline-flex w-full bg-grey-lightest">
-                <div className="w-full text-center">
-                  <p className="p-2 font-normal">{product.ruderalis * 100}%</p>
-                </div>
-              </div>
-              <div className="inline-flex w-full">
-                <div className="w-full text-center">
-                  <p className="p-2 font-normal capitalize">{product.cbd}</p>
-                </div>
-              </div>
-              <div className="inline-flex w-full bg-grey-lightest">
-                <div className="w-full text-center">
-                  <p className="p-2 font-normal capitalize">{product.thc}</p>
-                </div>
-              </div>
-              <div className="inline-flex w-full">
-                <div className="w-full text-center">
-                  <p className="p-2 font-normal">
-                    {product.pthc[1] != null ? (
-                      <span>{`${product.pthc[0]}% - ${product.pthc[1]}`}</span>
-                    ) : (
-                      product.pthc
-                    )}
-                    %
-                  </p>
-                </div>
-              </div>
-              <div className="inline-flex w-full bg-grey-lightest">
-                <div className="w-full text-center">
-                  <p className="p-2 font-normal">
-                    {product.pcbd[1] != null ? (
-                      <span>{`${product.pcbd[0]}% - ${product.pcbd[1]}`}</span>
-                    ) : (
-                      product.pcbd
-                    )}
-                    %
-                  </p>
-                </div>
-              </div>
-              <div className="inline-flex w-full">
-                <div className="w-full text-center">
-                  <p className="p-2 font-normal">
-                    {product.pcbn[1] != null ? (
-                      <span>{`${product.pcbn[0]}% - ${product.pcbn[1]}`}</span>
-                    ) : (
-                      product.pcbn
-                    )}
-                    %
-                  </p>
-                </div>
-              </div>
-              <div className="inline-flex w-full bg-grey-lightest">
-                <div className="w-full text-center">
-                  <p className="p-2 font-normal items-center flex justify-center">
-                    {product.rating.toFixed(2)}
-                    <img
-                      src="../../static/img/CrownIcon.svg"
-                      class="ml-1 h-4 w-6 crown-icon text-red-dark opacity-50"
-                    />
-                  </p>
-                </div>
-              </div>
-              <div className="inline-flex w-full ">
-                <div className="w-full text-center">
-                  <p className="p-2 font-normal">
-                    ${product.price[0]} / ${product.price[1]} / $
-                    {product.price[2]}
-                  </p>
-                </div>
-              </div>
-              <div className="inline-flex w-full bg-grey-lightest mt-4">
+              <div className="inline-flex w-full  mt-4">
                 <div className="w-full text-center hover:bg-grey-lighter cursor-pointer">
                   <p className="p-2 uppercase hover:text-red-light">
                     <a
@@ -387,7 +396,7 @@ const Compare = props => {
       </div>
       <div className="w-full inline-flex">
         <div className="w-1/5">
-          <div className="p-2 bg-grey-lightest rounded">
+          <div className="p-2  rounded">
             <h4 className="font-bold text-xl uppercase text-grey rounded text-center">
               Strains
             </h4>
@@ -399,7 +408,7 @@ const Compare = props => {
           <div />
         </div>
         <div className="w-4/5 ml-4">
-          <p className="text-center bg-grey-lightest p-3 my-4 mt-0 font-bold rounded text-base uppercase text-grey">
+          <p className="text-center  p-3 my-4 mt-0 font-bold rounded text-base uppercase text-grey">
             Please, select at least{" "}
             <span className="font-bold underline">2</span> and max{" "}
             <span className="font-bold underline">5</span> strains to compare.
@@ -438,84 +447,93 @@ const Compare = props => {
                       Strain:
                     </h4>
                   </div>
-                  <div className="inline-flex w-full mt-4">
-                    <div className="w-full">
-                      <p className="p-2 font-bold uppercase">Status:</p>
+                  <div className="compareTableRows">
+                    <div className="inline-flex w-full">
+                      <div className="w-full">
+                        <p className="p-2 font-bold uppercase">Status:</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="inline-flex w-full">
-                    <div className="w-full bg-grey-lightest">
-                      <p className="p-2 font-bold uppercase">Genetic:</p>
+                    <div className="inline-flex w-full">
+                      <div className="w-full ">
+                        <p className="p-2 font-bold uppercase">Genetic:</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="inline-flex w-full">
-                    <div className="w-full">
-                      <p className="p-2 font-bold uppercase">Type:</p>
+                    <div className="inline-flex w-full">
+                      <div className="w-full">
+                        <p className="p-2 font-bold uppercase">Type:</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="inline-flex w-full bg-grey-lightest">
-                    <div className="w-full">
-                      <p className="p-2 font-bold uppercase">Flower Time: </p>
+                    <div className="inline-flex w-full ">
+                      <div className="w-full">
+                        <p className="p-2 font-bold uppercase">Flower Time: </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="inline-flex w-full">
-                    <div className="w-full">
-                      <p className="p-2 font-bold uppercase">Average Yield: </p>
+                    <div className="inline-flex w-full">
+                      <div className="w-full">
+                        <p className="p-2 font-bold uppercase">
+                          Average Yield:{" "}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="inline-flex w-full bg-grey-lightest">
-                    <div className="w-full">
-                      <p className="p-2 font-bold uppercase">Indica: </p>
+                    <div className="inline-flex w-full ">
+                      <div className="w-full">
+                        <p className="p-2 font-bold uppercase">Indica: </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="inline-flex w-full">
-                    <div className="w-full">
-                      <p className="p-2 font-bold uppercase">Sativa: </p>
+                    <div className="inline-flex w-full">
+                      <div className="w-full">
+                        <p className="p-2 font-bold uppercase">Sativa: </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="inline-flex w-full bg-grey-lightest">
-                    <div className="w-full">
-                      <p className="p-2 font-bold uppercase">Ruderalis: </p>
+                    <div className="inline-flex w-full ">
+                      <div className="w-full">
+                        <p className="p-2 font-bold uppercase">Ruderalis: </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="inline-flex w-full">
-                    <div className="w-full">
-                      <p className="p-2 font-bold uppercase">CBD Level:</p>
+                    <div className="inline-flex w-full">
+                      <div className="w-full">
+                        <p className="p-2 font-bold uppercase">CBD Level:</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="inline-flex w-full bg-grey-lightest">
-                    <div className="w-full">
-                      <p className="p-2 font-bold uppercase">THC Level: </p>
+                    <div className="inline-flex w-full ">
+                      <div className="w-full">
+                        <p className="p-2 font-bold uppercase">THC Level: </p>
+                      </div>
+                    </div>{" "}
+                    <div className="inline-flex w-full">
+                      <div className="w-full">
+                        <p className="p-2 font-bold uppercase">CBD/THC: </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="inline-flex w-full">
-                    <div className="w-full">
-                      <p className="p-2 font-bold uppercase">THC %: </p>
+                    <div className="inline-flex w-full ">
+                      <div className="w-full">
+                        <p className="p-2 font-bold uppercase">CBD %:</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="inline-flex w-full bg-grey-lightest">
-                    <div className="w-full">
-                      <p className="p-2 font-bold uppercase">CBD %:</p>
+                    <div className="inline-flex w-full">
+                      <div className="w-full">
+                        <p className="p-2 font-bold uppercase">THC %: </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="inline-flex w-full">
-                    <div className="w-full">
-                      <p className="p-2 font-bold uppercase">CBN %:</p>
+                    <div className="inline-flex w-full">
+                      <div className="w-full">
+                        <p className="p-2 font-bold uppercase">CBN %:</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="inline-flex w-full bg-grey-lightest">
-                    <div className="w-full">
-                      <p className="p-2 font-bold uppercase">Reviews:</p>
+                    <div className="inline-flex w-full ">
+                      <div className="w-full">
+                        <p className="p-2 font-bold uppercase">Reviews:</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="inline-flex w-full">
-                    <div className="w-full">
-                      <p className="p-2 font-bold uppercase">Prices:</p>
+                    <div className="inline-flex w-full">
+                      <div className="w-full">
+                        <p className="p-2 font-bold uppercase">Prices:</p>
+                      </div>
                     </div>
                   </div>
                   <div
                     style={{ height: "206px" }}
-                    className="inline-flex opacity-25 rounded w-full mt-4 bg-grey-lightest py-2 items-center flex"
+                    className="inline-flex opacity-25 rounded w-full mt-4  py-2 items-center flex"
                   >
                     <div className="w-full">
                       <p className="p-2 font-bold justify-center text-center uppercase">
