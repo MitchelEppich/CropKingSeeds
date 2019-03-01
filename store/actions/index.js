@@ -71,7 +71,8 @@ const actionTypes = {
   SET_NEWS_STEPPER: "SET_NEWS_STEPPER",
   IS_REPEAT_CUSTOMER: "IS_REPEAT_CUSTOMER",
   COMPARE_STRAIN: "COMPARE_STRAIN",
-  SET_EYES_SHOULD_MOVE: "SET_EYES_SHOULD_MOVE"
+  SET_EYES_SHOULD_MOVE: "SET_EYES_SHOULD_MOVE",
+  SET_COMPARE_SEARCH: "SET_COMPARE_SEARCH"
 };
 
 const actions = {
@@ -202,10 +203,14 @@ const actions = {
       index: index
     };
   },
-  getStrains: () => {
+  getStrains: input => {
     return async dispatch => {
+      let verbose =
+        input == null || input.verbose == null ? false : input.verbose;
       const link = new HttpLink({ uri, fetch: fetch });
-      const operation = { query: query.allStrains };
+      const operation = {
+        query: verbose ? query.allStrainsFull : query.allStrains
+      };
 
       return await makePromise(execute(link, operation))
         .then(data => {
@@ -282,6 +287,12 @@ const actions = {
           });
         })
         .catch(error => console.log(error));
+    };
+  },
+  setCompareSearchValue: input => {
+    return {
+      type: actionTypes.SET_COMPARE_SEARCH,
+      input: input
     };
   },
   setStrain: strain => {
@@ -625,6 +636,40 @@ const query = {
         ruderalis
         rating
         releaseDate
+      }
+    }
+  `,
+  allStrainsFull: gql`
+    query {
+      allStrains {
+        _id
+        name
+        price
+        strainImg
+        packageImg
+        inStock
+        genetic
+        yield
+        flowerTime
+        type
+        pthc
+        pcbd
+        pcbn
+        sotiId
+        sativa
+        indica
+        ruderalis
+        rating
+        releaseDate
+        description
+        effect
+        difficulty
+        og
+        country
+        env
+        reviews
+        ratingQuantity
+        featured
       }
     }
   `

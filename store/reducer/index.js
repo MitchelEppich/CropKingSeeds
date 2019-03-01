@@ -57,7 +57,8 @@ const initialState = {
   CFURL: "http://dcfgweqx7od72.cloudfront.net",
   newsTimeout: null,
   newCustomer: null,
-  eyesShouldMove: false
+  eyesShouldMove: false,
+  compareSearchValue: ""
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -110,6 +111,10 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.COMPARE_STRAIN:
       return updateObject(state, {
         compareStrains: action.compareStrains
+      });
+    case actionTypes.SET_COMPARE_SEARCH:
+      return updateObject(state, {
+        compareSearchValue: action.input
       });
     case actionTypes.SET_HOVER_ID:
       return updateObject(state, {

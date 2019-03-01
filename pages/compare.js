@@ -10,7 +10,9 @@ import Layout from "../HOC/Layout";
 import Compare from "../components/sections/compare";
 
 class Index extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.getStrains({ verbose: true });
+  }
   componentDidUpdate() {}
   componentWillUnmount() {
     this.props.modifyPotentialQuantity({
@@ -33,12 +35,15 @@ class Index extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     compareStrain: input => dispatch(actions.compareStrain(input)),
+    getStrains: input => dispatch(actions.getStrains(input)),
     quickAddToCartQty: (index, quickAddToCartQty, tag) =>
       dispatch(actions.quickAddToCartQty(index, quickAddToCartQty, tag)),
     modifyCart: input => dispatch(actions.modifyCart(input)),
     modifyPotentialQuantity: input =>
       dispatch(actions.modifyPotentialQuantity(input)),
-    toggleCartAnimation: () => dispatch(actions.toggleCartAnimation())
+    toggleCartAnimation: () => dispatch(actions.toggleCartAnimation()),
+    setCompareSearchValue: input =>
+      dispatch(actions.setCompareSearchValue(input))
   };
 };
 

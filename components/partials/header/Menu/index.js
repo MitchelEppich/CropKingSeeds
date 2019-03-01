@@ -169,7 +169,13 @@ const menu = props => {
           </div>*/}
           <div className="w-1/2">
             <a
-              href="tel:+1-844-276-7546"
+              name="phone"
+              href={
+                props.misc.ageVerification != null &&
+                "United States" == props.misc.ageVerification.country
+                  ? "tel:+1-844-276-7546"
+                  : "tel:+1-604-563-0291"
+              }
               style={phoneNumberPosition}
               className="no-underline text-grey absolute inline-flex pin-r shadow-md my-auto rounded -mr-2"
             >
