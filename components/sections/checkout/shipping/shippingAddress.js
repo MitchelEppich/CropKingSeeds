@@ -1,5 +1,7 @@
 import data from "../../../../static/data";
 import MinimumSeedsWarning from "../other/minimumSeedsWarning";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const ShippingAddress = props => {
   let pageGroup = "shipping";
@@ -112,6 +114,7 @@ const ShippingAddress = props => {
                   : ""
               }`}
             >
+              <FontAwesomeIcon icon={faUser} className="mr-2" />
               Load Profile
             </div>
           </div>

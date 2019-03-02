@@ -115,9 +115,10 @@ const PaymentReview = props => {
   }
 
   let box = {
-    border: "2px solid rgb(239, 239, 239)",
+    // border: "2px solid rgb(239, 239, 239)",
     borderRadius: "5px",
-    overflow: "hidden"
+    overflow: "hidden",
+    boxShadow: "rgba(29, 29, 29, 0.12) 0px 2px 9px"
   };
   let titleBox = {
     borderBottom: "2px solid #505050",
@@ -130,11 +131,12 @@ const PaymentReview = props => {
     <div className="w-full flex justify-end mb-6 lg:flex-col md:flex-col sm:flex-col">
       <div
         style={box}
-        className="w-1/3 h-200 lg:w-full lg:mt-2 sm:w-full sm:mt-2 md:w-full md:mt-2 mx-0 bg-white"
+        className="w-1/3 lg:w-full lg:mt-2 sm:w-full sm:mt-2 md:w-full md:mt-2 mx-0 bg-white"
       >
         <h3 style={titleBox}>Shipping Address</h3>
-        <div className="p-2">
-          <p className="mt-1">
+        <div className="">
+          {/* ADDRESS */}
+          <p className="p-1 pt-2 pl-3 bg-white">
             {_orderDetails.shipping != null ? (
               <span>
                 {_orderDetails.shipping.address.value}
@@ -144,8 +146,8 @@ const PaymentReview = props => {
               "Not Defined"
             )}
           </p>
-
-          <p className="mt-2">
+          {/* CITY */}
+          <p className="p-1 pt-2 pl-3 bg-white">
             {_orderDetails.shipping != null ? (
               <span>
                 {_orderDetails.shipping.city.value}
@@ -157,31 +159,31 @@ const PaymentReview = props => {
               "Not Defined"
             )}
           </p>
-
-          <p className="mt-2">
+          {/* POSTALZIP */}
+          <p className="p-1 pt-2 pl-3 bg-white">
             {_orderDetails.shipping != null
               ? _orderDetails.shipping.postalZip.value
               : "Not Defined"}
           </p>
-
-          <p className="mt-2">
+          {/* COUNTRY */}
+          <p className="p-1 pt-2 pl-3 bg-white">
             {_orderDetails.shipping != null
               ? _orderDetails.shipping.country.value
               : "Not Defined"}
           </p>
-
-          <p className="mt-2">
-            <span className="p-2 text-grey-light">
-              <FontAwesomeIcon icon={faPhone} className="fa-lg" />
+          {/* PHONE */}
+          <p className="pr-1 pt-2 pl-3 bg-white">
+            <span className="py-2 text-grey-light">
+              <FontAwesomeIcon icon={faPhone} className="fa-lg mr-2 pt-1" />
             </span>
             {_orderDetails.shipping != null
               ? _orderDetails.shipping.phone.value
               : "Not Defined"}
           </p>
-
-          <p className="mt-2">
-            <span className="p-2 text-grey-light">
-              <FontAwesomeIcon icon={faEnvelope} className="fa-lg" />
+          {/* EMAIL */}
+          <p className="p-1 py-2 pl-3 bg-white">
+            <span className="py-2 text-grey-light">
+              <FontAwesomeIcon icon={faEnvelope} className="fa-lg mr-2 pt-1" />
             </span>
             {_orderDetails.shipping != null ? (
               <span>{_orderDetails.shipping.email.value}</span>
@@ -193,11 +195,12 @@ const PaymentReview = props => {
       </div>
       <div
         style={box}
-        className="w-1/3 h-200 lg:w-full lg:mt-2 sm:w-full sm:mt-2 md:w-full md:mt-2 xxl:mx-4 xl:mx-2 bg-white"
+        className="w-1/3 lg:w-full lg:mt-2 sm:w-full sm:mt-2 md:w-full md:mt-2 xxl:mx-4 xl:mx-2 bg-white"
       >
         <h3 style={titleBox}>Billing Address</h3>
-        <div className="p-2">
-          <p className="mt-1">
+        <div className="">
+          {/* ADDRESS */}
+          <p className="p-1 pt-2 pl-3 bg-white">
             {_orderDetails.billing != null ? (
               <span>
                 {_orderDetails.billing.address.value}
@@ -207,8 +210,8 @@ const PaymentReview = props => {
               "Not Defined"
             )}
           </p>
-
-          <p className="mt-2">
+          {/* CITY */}
+          <p className="p-1 pt-2 pl-3 bg-white">
             {_orderDetails.billing != null ? (
               <span>
                 {_orderDetails.billing.city.value}
@@ -220,31 +223,31 @@ const PaymentReview = props => {
               "Not Defined"
             )}
           </p>
-
-          <p className="mt-2">
+          {/* POSTALZIP */}
+          <p className="p-1 pt-2 pl-3 bg-white">
             {_orderDetails.billing != null
               ? _orderDetails.billing.postalZip.value
               : "Not Defined"}
           </p>
-
-          <p className="mt-2">
+          {/* COUNTRY */}
+          <p className="p-1 pt-2 pl-3 bg-white">
             {_orderDetails.billing != null
               ? _orderDetails.billing.country.value
               : "Not Defined"}
           </p>
-
-          <p className="mt-2">
-            <span className="p-2 text-grey-light">
-              <FontAwesomeIcon icon={faPhone} className="fa-lg" />
+          {/* PHONE */}
+          <p className="pr-1 pt-2 pl-3 bg-white">
+            <span className="py-2 text-grey-light">
+              <FontAwesomeIcon icon={faPhone} className="fa-lg pt-1 mr-2" />
             </span>
             {_orderDetails.billing != null
               ? _orderDetails.billing.phone.value
               : "Not Defined"}
           </p>
-
-          <p className="mt-2">
-            <span className="p-2 text-grey-light">
-              <FontAwesomeIcon icon={faEnvelope} className="fa-lg" />
+          {/* EMAIL */}
+          <p className="p-1 py-2 pl-3 bg-white">
+            <span className="py-2 text-grey-light">
+              <FontAwesomeIcon icon={faEnvelope} className="fa-lg pt-1 mr-2" />
             </span>
             {_orderDetails.billing != null ? (
               <span>{_orderDetails.billing.email.value}</span>
@@ -256,103 +259,130 @@ const PaymentReview = props => {
       </div>
       <div
         style={box}
-        className="w-1/3 h-200 lg:w-full lg:mt-2 sm:w-full sm:h-full sm:mt-2 md:w-full md:mt-2 mx-0 bg-white"
+        className="w-1/3 relative lg:w-full lg:mt-2 sm:w-full sm:h-full sm:mt-2 md:w-full md:mt-2 mx-0 bg-white"
       >
         <h3 style={titleBox}>Payment Information</h3>
-        <div className="p-2 inline-flex w-full">
-          <div className="w-3/5 text-right">
-            <p className="mt-1">Subtotal:</p>
-            <p className="mt-2">Shipping: </p>
-            {_orderDetails[pageGroup].creditFee.value != 0 ? (
-              <p className="mt-2">
-                Credit Card Tax (
-                {(_orderDetails[pageGroup].creditTax * 100).toFixed(2)}%):{" "}
-              </p>
-            ) : null}
-            {_orderDetails.coupon != null &&
-            _orderDetails.coupon.code != null ? (
-              <p className="mt-2 text-red-dark">
-                Discount ({_orderDetails[pageGroup].discountAmt}
-                ):{" "}
-              </p>
-            ) : null}
-            <p className="mt-2">
-              Tax ({(_orderDetails[pageGroup].cumTax * 100).toFixed(2)}%):
-            </p>
-          </div>
-          <div className="w-2/5 pl-4 text-left">
-            <p className="mt-1">
-              {currency != null
-                ? `${currency.symbol}${(
-                    currency.convert *
-                    (_orderDetails[pageGroup].cartTotal.value +
-                      _orderDetails[pageGroup].discount)
-                  ).toFixed(2)}`
-                : ""}
-            </p>
-            <p className="mt-2">
-              {_orderDetails[pageGroup].shippingFee.value != 0
-                ? currency != null
-                  ? `${currency.symbol}${(
-                      currency.convert *
-                      _orderDetails[pageGroup].shippingFee.value
-                    ).toFixed(2)}`
-                  : ""
-                : "FREE"}
-            </p>
-            {_orderDetails[pageGroup].creditFee.value != 0 ? (
-              <p className="mt-2">
+        <div className="w-full">
+          {/* SUBTOTAL */}
+          <div className="w-full inline-flex bg-smoke-grey">
+            <div className="w-3/5 pl-3">
+              <p className="mt-1 p-1">Subtotal:</p>
+            </div>
+            <div className="w-2/5 text-left">
+              <p className="mt-1 p-1 pl-4">
                 {currency != null
                   ? `${currency.symbol}${(
                       currency.convert *
-                      _orderDetails[pageGroup].creditFee.value
+                      (_orderDetails[pageGroup].cartTotal.value +
+                        _orderDetails[pageGroup].discount)
                     ).toFixed(2)}`
                   : ""}
               </p>
-            ) : null}
-            {_orderDetails.coupon != null &&
-            _orderDetails.coupon.code != null ? (
-              <p className="mt-2 text-red-dark">
+            </div>
+          </div>
+          {/* SHIPPING */}
+          <div className="w-full inline-flex">
+            <div className="w-3/5 pl-3">
+              <p className="p-1">Shipping: </p>
+            </div>
+            <div className="w-2/5 text-left">
+              <p className="pl-4 p-1">
+                {_orderDetails[pageGroup].shippingFee.value != 0
+                  ? currency != null
+                    ? `${currency.symbol}${(
+                        currency.convert *
+                        _orderDetails[pageGroup].shippingFee.value
+                      ).toFixed(2)}`
+                    : ""
+                  : "FREE"}
+              </p>
+            </div>
+          </div>
+          {/* CREDIT CARD */}
+          {_orderDetails[pageGroup].creditFee.value != 0 ? (
+            <div className="w-full inline-flex bg-smoke-grey">
+              <div className="w-3/5 pl-3">
+                <p className="p-1">
+                  Credit C. Tax ({_orderDetails[pageGroup].creditTax * 100}%):{" "}
+                </p>
+              </div>
+              <div className="w-2/5 text-left">
+                <p className="pl-4 p-1">
+                  {currency != null
+                    ? `${currency.symbol}${(
+                        currency.convert *
+                        _orderDetails[pageGroup].creditFee.value
+                      ).toFixed(2)}`
+                    : ""}
+                </p>
+              </div>
+            </div>
+          ) : null}
+          {/* DISCOUNT */}
+          {_orderDetails.coupon != null && _orderDetails.coupon.code != null ? (
+            <div
+              className={` ${
+                _orderDetails[pageGroup].creditFee.value != 0
+                  ? "bg-white"
+                  : "bg-smoke-grey"
+              } w-full inline-flex `}
+            >
+              <div className="w-3/5 pl-3">
+                <p className="p-1 ">
+                  Discount ({parseInt(_orderDetails[pageGroup].discountAmt)}%):
+                </p>
+              </div>
+              <div className="w-2/5 text-left">
+                <p className="pl-4 p-1">
+                  {currency != null
+                    ? `${currency.symbol}${(
+                        currency.convert * _orderDetails[pageGroup].discount
+                      ).toFixed(2)}`
+                    : ""}
+                </p>
+              </div>
+            </div>
+          ) : null}
+          {/* TAX */}
+          <div
+            className={` ${
+              _orderDetails[pageGroup].creditFee.value != 0
+                ? "bg-smoke-grey"
+                : "bg-white"
+            } w-full inline-flex `}
+          >
+            <div className="w-3/5 pl-3">
+              <p className="p-1">
+                Tax ({_orderDetails[pageGroup].cumTax * 100}%):
+              </p>
+            </div>
+            <div className="w-2/5 text-left">
+              <p className="pl-4 p-1">
                 {currency != null
                   ? `${currency.symbol}${(
-                      currency.convert * _orderDetails[pageGroup].discount
+                      currency.convert * _orderDetails[pageGroup].taxFee
                     ).toFixed(2)}`
                   : ""}
               </p>
-            ) : null}
-            <p className="mt-2">
-              {currency != null
-                ? `${currency.symbol}${(
-                    currency.convert * _orderDetails[pageGroup].taxFee
-                  ).toFixed(2)}`
-                : ""}
-            </p>
+            </div>
           </div>
-        </div>
-        <div
-          className={`${
-            couponActive && ccFeeActive
-              ? "p-1"
-              : ccFeeActive | couponActive
-              ? "p-2 mt-5"
-              : "p-2 mt-12"
-          } border-t-2 border-grey-lightest inline-flex w-full`}
-        >
-          <div className="w-3/5 text-right">
-            {" "}
-            <p className="font-extrabold text-grey-light text-lg uppercase">
-              Total:
-            </p>{" "}
-          </div>
-          <div className="w-2/5 text-left pl-4">
-            {" "}
-            <p className="font-extrabold text-lg">
-              {currency != null
-                ? `${currency.symbol}${(
-                    currency.convert * _orderDetails[pageGroup].orderTotal.value
-                  ).toFixed(2)}`
-                : ""}
-            </p>{" "}
+          {/* TOTAL */}
+          <div className="absolute pin-b pin-x py-1 w-full inline-flex border-t-2 border-smoke-grey md:relative sm:relative lg:relative md:mt-4 sm:mt-4 lg:mt-4">
+            <div className="w-3/5 pl-3">
+              <p className="font-bold text-grey-light text-lg uppercase p-1">
+                Total:
+              </p>
+            </div>
+            <div className="w-2/5 text-left">
+              <p className="pl-4 p-1 font-bold text-lg">
+                {currency != null
+                  ? `${currency.symbol}${(
+                      currency.convert *
+                      _orderDetails[pageGroup].orderTotal.value
+                    ).toFixed(2)}`
+                  : ""}
+              </p>
+            </div>
           </div>
         </div>
       </div>

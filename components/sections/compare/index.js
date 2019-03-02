@@ -1,13 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faPlusCircle,
   faPlus,
   faTimes,
-  faCheck,
   faMinus,
   faCopy,
-  faExternalLinkAlt,
-  faSearch
+  faExternalLinkAlt
 } from "@fortawesome/free-solid-svg-icons";
 import CompareMenu from "./compareMenu";
 import CompareFilters from "./compareFilters";
@@ -223,7 +220,7 @@ const Compare = props => {
                     {product.rating.toFixed(2)}
                     <img
                       src="../../static/img/CrownIcon.svg"
-                      class="ml-1 h-4 w-6 crown-icon text-red-dark opacity-50"
+                      className="ml-1 h-4 w-6 crown-icon text-red-dark opacity-50"
                     />
                   </p>
                 </div>

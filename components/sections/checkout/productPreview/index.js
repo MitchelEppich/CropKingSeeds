@@ -97,7 +97,7 @@ const ProductPreview = props => {
                     {" "}
                     Sale Price:
                   </div>
-                  <div className="px-2 sm:text-left sm:w-full md:w-full md:text-left font-bold w-1/2 text-red-dark uppercase text-sm text-right">
+                  <div className="px-2 sm:text-left sm:w-full md:w-full md:text-left font-bold w-1/2 text-red-light uppercase text-sm text-right">
                     {currency != null
                       ? `${currency.symbol}${(
                           currency.convert * (_item.sale || 0)
@@ -193,7 +193,7 @@ const ProductPreview = props => {
                 <div className="text-right w-full mt-1 sm:mt-2 md:mt-2 items-center">
                   <p
                     className={`font-bold ${
-                      hasSale ? "text-red-dark" : "text-grey"
+                      hasSale ? "text-red-light" : "text-grey"
                     } text-lg`}
                   >
                     {currency != null

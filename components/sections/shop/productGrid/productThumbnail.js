@@ -150,13 +150,13 @@ const productThumbnail = props => {
                 </p>
               </div>
             ) : null}
-            {props.product.inStock ? (
-              <div className="absolute pin-t pin-r mr-10 -mt-2">
+            {/* {props.product.inStock ? (
+              <div className="absolute pin-t pin-r mr-10 mt-8">
                 <p className="text-white out-of-stock-icon text-sm h-10 flex items-center font-bold">
                   SOLD OUT
                 </p>
               </div>
-            ) : null}
+            ) : null} */}
             <img
               className={packagePins}
               src={
