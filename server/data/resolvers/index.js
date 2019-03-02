@@ -128,42 +128,48 @@ const resolvers = {
           pass: "etydthavvvnkdqxf"
         }
       });
-      let mailOptions = emailTemplates.contact({
-        ...input
-      });
-      var options = {
-        method: "POST",
-        uri: "https://www.google.com/recaptcha/api/siteverify",
-        formData: {
-          secret: "6LdVgJIUAAAAAAinDAgg0p2N2v3KuIIK7wDlpMhh",
-          response: input.response
-        },
-        headers: {
-          "content-type": "application/x-www-form-urlencoded"
-        }
-      };
-
-      request(options)
-        .then(function(parsedBody) {
-          // POST succeeded...
+      let mailOptions;
+      switch (input.type) {
+        case "contact":
+          mailOptions = emailTemplates.contact({
+            ...input
+          });
+          var options = {
+            method: "POST",
+            uri: "https://www.google.com/recaptcha/api/siteverify",
+            formData: {
+              secret: "6LdVgJIUAAAAAAinDAgg0p2N2v3KuIIK7wDlpMhh",
+              response: input.response
+            },
+            headers: {
+              "content-type": "application/x-www-form-urlencoded"
+            }
+          };
+          request(options)
+            .then(function(parsedBody) {
+              // POST succeeded...
+              transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                  // Do nothing
+                }
+              });
+            })
+            .catch(function(err) {
+              // POST failed...
+              console.log(err);
+            });
+          break;
+        case "confirmation":
+          mailOptions = emailTemplates.confirmation({
+            ...input
+          });
           transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
               // Do nothing
             }
           });
-        })
-        .catch(function(err) {
-          // POST failed...
-          console.log(err);
-        });
-
-      // switch (input.type) {
-      //   case "contact":
-      //     mailOptions = emailTemplates.contact({
-      //       ...input,
-      //     });
-      //     break;
-      // }
+          break;
+      }
     },
     processPayment: async (_, { input }) => {
       let { pivotal, bambora } = await getProcessorUsage();

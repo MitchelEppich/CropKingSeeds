@@ -392,45 +392,89 @@ const getActions = uri => {
       return async dispatch => {
         let _orderDetails = { ...input.orderDetails };
         let _paymentMethod = _orderDetails.payment.method.value;
+        let ccResponse = null;
+        // // Process Payment
+        // let ccResponse = await (async () => {
+        //   if (_paymentMethod == "Credit Card") {
+        //     let _orderAmount = _orderDetails.payment.cartTotal.value;
+        //     if (_orderAmount <= 300)
+        //       return await processPayment(
+        //         {
+        //           payment: _orderDetails.payment,
+        //           currency: _orderDetails.currency,
+        //           country: _orderDetails.billing.country.value
+        //         },
+        //         uri
+        //       );
+        //     return { status: "Missing" };
+        //   }
+        //   return null;
+        // })();
 
-        // Process Payment
-        let ccResponse = await (async () => {
-          if (_paymentMethod == "Credit Card") {
-            let _orderAmount = _orderDetails.payment.cartTotal.value;
-            if (_orderAmount <= 300)
-              return await processPayment(
-                {
-                  payment: _orderDetails.payment,
-                  currency: _orderDetails.currency,
-                  country: _orderDetails.billing.country.value
-                },
-                uri
-              );
-            return { status: "Missing" };
+        // if (ccResponse != null) {
+        //   if (ccResponse.currency != null)
+        //     _orderDetails.payment.currency.value = ccResponse.currency;
+        //   // if (ccResponse.processor != null && _paymentMethod == "Credit Card")
+        //   //   _orderDetails.payment.method.value = (() => {
+        //   //     switch (ccResponse.processor) {
+        //   //       case "Pivotal 3 VT":
+        //   //         return "Pivotal/Global1 - Kingmerch";
+        //   //       case "Bambora FD":
+        //   //         return "Bambora FD - Vancoast Seeds";
+        //   //       default:
+        //   //         return "Credit Card";
+        //   //     }
+        //   //   })();
+        // }
+
+        // // Process Order
+        // let response = await processOrder(_orderDetails, ccResponse, uri);
+        console.log(input);
+        // Send email confirmation
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = {
+          query: mutation.sendEmail,
+          variables: {
+            type: "confirmation",
+            name: _orderDetails.shipping.fullName.value,
+            email: _orderDetails.shipping.email.value,
+            subject:
+              "Crop King Seeds - Order Confirmation Order #" +
+              _orderDetails.payment.orderId.value,
+            body: null,
+            response: null,
+            ccStatus: ccResponse ? ccResponse.status : null,
+            ccDescriptor: ccResponse ? ccResponse.descriptor : null,
+            orderId: _orderDetails.payment.orderId.value,
+            productList: _orderDetails.payment.productList.value,
+            paymentMethod: _orderDetails.payment.method.value,
+            shippingDestination:
+              _orderDetails.shipping.address.value +
+              "&=>" +
+              _orderDetails.shipping.city.value +
+              "&=>" +
+              _orderDetails.shipping.postalZip.value +
+              "&=>" +
+              _orderDetails.shipping.state.value +
+              "&=>" +
+              _orderDetails.shipping.country.value,
+            shippingType: _orderDetails.shipping.shippingDetail.value,
+            shippingTypeDescription: _orderDetails.shippingTypeDescription,
+            subtotal: _orderDetails.payment.cartTotal.value,
+            total: _orderDetails.payment.orderTotal.value,
+            tax: _orderDetails.payment.taxFee,
+            shipping: _orderDetails.payment.shippingFee.value,
+            date: moment(_orderDetails.shipping.updatedAt).format(
+              "MMMM Do YYYY"
+            )
           }
-          return null;
-        })();
+        };
 
-        console.log("hello");
-
-        if (ccResponse != null) {
-          if (ccResponse.currency != null)
-            _orderDetails.payment.currency.value = ccResponse.currency;
-          // if (ccResponse.processor != null && _paymentMethod == "Credit Card")
-          //   _orderDetails.payment.method.value = (() => {
-          //     switch (ccResponse.processor) {
-          //       case "Pivotal 3 VT":
-          //         return "Pivotal/Global1 - Kingmerch";
-          //       case "Bambora FD":
-          //         return "Bambora FD - Vancoast Seeds";
-          //       default:
-          //         return "Credit Card";
-          //     }
-          //   })();
-        }
-
-        // Process Order
-        let response = await processOrder(_orderDetails, ccResponse, uri);
+        makePromise(execute(link, operation))
+          .then(data => {
+            console.log(data);
+          })
+          .catch(error => console.log(error));
 
         dispatch({
           type: actionTypes.PROCESS_ORDER,
@@ -557,6 +601,53 @@ const mutation = {
         processor
         descriptor
       }
+    }
+  `,
+  sendEmail: gql`
+    mutation(
+      $type: String
+      $email: String
+      $body: String
+      $name: String
+      $subject: String
+      $response: String
+      $ccStatus: String
+      $ccDescriptor: String
+      $orderId: String
+      $productList: String
+      $paymentMethod: String
+      $shippingDestination: String
+      $shippingType: String
+      $shippingTypeDescription: String
+      $subtotal: Float
+      $total: Float
+      $tax: Float
+      $shipping: Float
+      $date: String
+    ) {
+      sendEmail(
+        input: {
+          type: $type
+          email: $email
+          body: $body
+          name: $name
+          subject: $subject
+          response: $response
+          ccStatus: $ccStatus
+          ccDescriptor: $ccDescriptor
+          orderId: $orderId
+          productList: $productList
+          paymentMethod: $paymentMethod
+          shippingDestination: $shippingDestination
+          shippingType: $shippingType
+          shippingTypeDescription: $shippingTypeDescription
+          subtotal: $subtotal
+          total: $total
+          tax: $tax
+          shipping: $shipping
+          date: $date
+        }
+      )
     }
   `
 };

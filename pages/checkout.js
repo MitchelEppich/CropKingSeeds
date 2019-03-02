@@ -170,7 +170,15 @@ class Index extends Component {
                         orderId,
                         orderDetails: {
                           ..._orderDetails,
-                          currency: this.props.checkout.availableCurrency
+                          currency: this.props.checkout.availableCurrency,
+                          shippingTypeDescription: this.props.checkout.shippingMethods.find(
+                            a => {
+                              return (
+                                a.tag ==
+                                _orderDetails.shipping.shippingDetail.value
+                              );
+                            }
+                          ).description
                         }
                       })
                       .then(res => {

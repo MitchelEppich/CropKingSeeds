@@ -250,11 +250,25 @@ type PaymentResponse {
 }
 
 input EmailInput {
+  type: String
   name: String
   email: String
   subject: String
   body: String
   response: String
+  ccStatus: String
+  ccDescriptor: String
+  orderId: String
+  productList: String
+  paymentMethod: String
+  shippingDestination: String
+  shippingType: String
+  shippingTypeDescription: String
+  subtotal: Float
+  total: Float
+  tax: Float
+  shipping: Float
+  date: String
 }
 
 type News {

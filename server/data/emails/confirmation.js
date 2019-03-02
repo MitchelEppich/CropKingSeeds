@@ -1,76 +1,73 @@
-exports.contact = input => {
-    let paymentMethod = input.paymentMethod,
-        instructions,
-        shippingDestination = input.shippingDestination,
-        shippingType = input.shippingType,
-        products = input.products,
-        subtotal = input.subtotal,
-        total = input.total,
-        tax = input.tax,
-        shipping = input.shipping,
-        date = input.date;
-
-    products = products.map((product, index) => {
-        return `<div><span>${product.name}</span><span>${product.quantity}</span><span>${product.price}</span></div>`;
+exports.confirmation = input => {
+  let orderId = input.orderId,
+    fullName = input.name,
+    paymentMethod = input.paymentMethod,
+    instructions,
+    shippingDestination = input.shippingDestination.split("&=>"),
+    shippingType = input.shippingType,
+    shippingTypeDescription = input.shippingTypeDescription,
+    productList = input.productList,
+    subtotal = input.subtotal,
+    total = input.total,
+    tax = input.tax,
+    shipping = input.shipping,
+    date = input.date;
+  productList = productList.split(",").map((product, index) => {
+    return product.split("x");
+  });
+  for (let x in productList) {
+    productList[x] = productList[x].map((productDetail, ind) => {
+      return `<span>${productDetail.trim()}</span>`;
     });
+  }
 
-    switch (input.paymentMethod) {
-        case "Cash":
-            instructions = `<div className="bg-white shadow-md">
-                        <p className="w-main mx-auto pt-4">
+  switch (input.paymentMethod) {
+    case "Cash":
+      instructions = `<div style="padding: 0 10px">
+                        <p>
                             To ensure that your cash order is successfully recieved please document your order number (
-                            <strong>{fOrderId}</strong>) on a piece of paper, along side the requested amount in
+                            <strong>${orderId}-CKS</strong>) on a piece of paper, along side the requested amount in
                             applicable currency:
                         </p>
-                        <p className="font-bold text-center p-2 mt-4 text-xl">
-                            VanCoast Industries
+                        <p style="text-align:center">
+                            <b>VanCoast Industries</b>
                             <br />
-                            112 East 6th Ave
+                            <b>112 East 6th Ave</b>
                             <br />
-                            Vancouver, BC
+                            <b>Vancouver, BC</b>
                             <br />
-                            V5T 1J5
+                            <b>V5T 1J5</b>
                             <br />
-                            Canada
+                            <b>Canada</b>
                         </p>
-                        <p className="mt-4 p-2 text-center pb-4">
+                        <p>
                             It is recommended that you wrap any cash within your mail (in newspaper, charcoal paper or
                             tin foil) to ensure privacy.
                         </p>
                     </div>`;
-            break;
-        case "Interac E Transfer":
-            instructions = `<div className="bg-white shadow-md">
-                        <p className="w-main mx-auto pt-4">
+      break;
+    case "Interac E Transfer":
+      instructions = `<div>
+                        <p style="text-align:center">
                             To complete your order please initiate an interac e-transfer:
                         </p>
-                        <div className="inline-flex">
-                            <div className="w-1/2 text-right p-2">
-                                <p>Recipient email:</p>
-                                <p>Recipient name:</p>
-                                <p>Message (Order Number):</p>
-                                <p>Security question:</p>
-                                <p>Security answer:</p>
-                            </div>
-                            <div className="w-1/2 text-left p-2">
-                                <p>
-                                    <strong>organicmarketing11@gmail.com</strong>
-                                </p>
-                                <p>
-                                    <strong>Vancouver</strong>
-                                </p>
-                                <p>
-                                    <strong>{fOrderId}</strong>
-                                </p>
-                                <p>
-                                    <strong>What is your favorite color</strong>
-                                </p>
-                                <p>
-                                    <strong>green1</strong>
-                                </p>
-                            </div>
+                        <div style="text-align:center">
+                            <p style="display:inline-block;width:40%;text-align:right;margin: 0 10px 0 0;">
+                                Recipient email:<br/>
+                                Recipient name:<br/>
+                                Message (Order Number):<br/>
+                                Security question:<br/>
+                                Security answer:
+                            </p>
+                            <p style="display:inline-block;width:40%;text-align:left;margin: 0 10px 0 0;">
+                                <strong style="margin-left: 5px;">organicmarketing11@gmail.com</strong><br/>
+                                <strong style="margin-left: 5px;">Vancouver</strong><br/>
+                                <strong style="margin-left: 5px;">#${orderId}-CKS</strong><br/>
+                                <strong style="margin-left: 5px;">What is your favorite color</strong><br/>
+                                <strong style="margin-left: 5px;">green1</strong>
+                            </p> 
                         </div>
-                        <p className="mt-4 p-2 text-center pb-4">
+                        <p style="text-align:center">
                             <strong>Important</strong>: Interac E-Transfers may take a few hours to be approved. Once a
                             payment is successfully recieved we will ship your order on the next applicable business
                             day.
@@ -78,10 +75,10 @@ exports.contact = input => {
                             To ensure your order is shipped as soon as possible, please call us to confirm the transfer.
                         </p>
                     </div>`;
-            break;
-        case "Bitcoin":
-            instructions = `<div className="bg-white shadow-md">
-                        <p className="w-main mx-auto py-4">
+      break;
+    case "Bitcoin":
+      instructions = `<div>
+                        <p>
                             To complete your payment with BitCoin, a new tab has been opened in which you can proceed to
                             finalize your payment.
                             <br />
@@ -91,11 +88,11 @@ exports.contact = input => {
                             <br />
                         </p>
                     </div>`;
-            break;
-        case "Credit Card":
-            instructions = `<div className="bg-white shadow-md">
-                        <p className="w-main mx-auto pt-4" />
-                        <p className="text-center p-2 mt-4 text-xl">
+      break;
+    case "Credit Card":
+      instructions = `<div>
+                        <p/>
+                        <p>
                             {_ccr.status == "Declined" ? (
                                 <span>
                                     <strong>We are unable to process your order!</strong>
@@ -113,7 +110,7 @@ exports.contact = input => {
                                 </span>
                             )}
                         </p>
-                        <p className="mt-4 p-2 text-center pb-4">
+                        <p>
                             <strong>Important</strong>: The displayed order total may vary depending on fluctuations in
                             conversion rates and bank processing fees. All charges will show up as '{_ccr.descriptor}'
                             on your credit card statement once successfully processed.
@@ -122,35 +119,36 @@ exports.contact = input => {
                             help.
                         </p>
                     </div>`;
-            break;
-    }
+      break;
+  }
 
-    return {
-        from: "info@cropkingseeds.com",
-        to: input.email,
-        subject: "Order Confirmation - Crop King Seeds",
-        html: `<!DOCTYPE html>
+  return {
+    from: "info@cropkingseeds.com",
+    to: "adamsmithvci@gmail.com",
+    subject: input.subject,
+    html: `<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito:400,700,800" rel="stylesheet">
         <style>
             body {
                 width: 100%;
                 height: 100%;
                 margin: 0;
                 padding: 0;
-                font-family: sans-serif;
+                font-family: 'Nunito', sans-serif;
             }
             .container {
                 background-color: #f5f5f5;
                 width: 100%;
                 height: 100%;
-                padding: 100px 50px;
+                padding: 0 10px 25px 10px;
             }
             .innerContainer {
-                width: 66%;
+                width: 75%;
                 height: 100%;
                 margin: 0 auto;
             }
@@ -173,7 +171,7 @@ exports.contact = input => {
             }
             .payment {
                 width: 100%;
-                height: 300px;
+                padding-bottom: 0 10px;
                 background-color: white;
                 margin: 10px 0;
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
@@ -183,13 +181,14 @@ exports.contact = input => {
                 height: 200px;
                 background-color: white;
                 margin: 15px 0;
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+                padding: 0 10px;
             }
             .help {
                 width: 100%;
                 height: 200px;
                 display: inline-flex;
                 justify-content: space-between;
+                padding: 0 20px;
             }
             .thanks {
                 width: 500px;
@@ -197,7 +196,7 @@ exports.contact = input => {
                 text-align: center;
             }
             .heading-red {
-                height: 50px;
+                height: 35px;
                 width: 100%;
                 background-color: #ef5753;
                 border-top-left-radius: 5px;
@@ -209,52 +208,60 @@ exports.contact = input => {
         <div class="container">
             <div class="innerContainer">
                 <div class="thanks">
-                    <img src="http://dcfgweqx7od72.cloudfront.net/" class="" width="200px" />
+                    <img src="http://dcfgweqx7od72.cloudfront.net/logos/cks-confirmation.png" class="" width="200px" />
                     <h1>Thank you</h1>
                     <p>Your order has been placed.</p>
                     <p style="color:#ef5753">Please follow payment instructions below.</p>
                 </div>
-                <div class="orderDetails">
-                    <div class="heading-red">
+                <div class="orderDetails" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);">
+                    <div class="heading-red" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);">
                         <p
-                            style="color:white; padding: 15px;display: flex;
-                justify-content: space-between; font-weight:bold;font-size: 1.2rem;"
+                            style="color:white; padding: 4px 10px;display: flex;
+                 font-weight:bold;font-size: 1.2rem;"
                         >
-                            <span>Order#</span><span>Order made on:${date}</span>
+                            <span">Order #${orderId}-CKS</span><span style="margin: 0 0 0 auto">Date: ${date}</span>
                         </p>
                     </div>
                     <div class="orderDetailsContent">
-                        <div style="width: 33%; padding: 10px">
+                        <div style="width: 33%; padding: 0 10px">
                             <p><b>Payment Method:</b></p>
                             <p>${paymentMethod}</p>
                         </div>
-                        <div style="width: 33%; padding: 10px">
+                        <div style="width: 33%; padding: 0 10px">
                             <p><b>Shipping Destination:</b></p>
-                            <p>${shippingDestination}</p>
+                            <p>${fullName},<br/>
+                            ${shippingDestination[0]},<br/>
+                            ${shippingDestination[1]},<br/>
+                            ${shippingDestination[2]},<br/>
+                            ${shippingDestination[3]},<br/>
+                            ${shippingDestination[4]}</p>
                         </div>
-                        <div style="width: 33%; padding: 10px">
+                        <div style="width: 33%; padding: 0 10px">
                             <p><b>Shipping Type:</b></p>
                             <p>${shippingType}</p>
+                            <p style="color:#ef5753">*${shippingTypeDescription}
                         </div>
                     </div>
                 </div>
-                <div class="payment">
+                <div class="payment" style="">
                     <div class="heading-red">
-                        <p style="color:white; padding: 15px; font-weight:bold;font-size: 1.2rem;">
+                        <p style="color:white; padding: 4px 10px; font-weight:bold;font-size: 1.2rem;text-align:center;">
                             Payment Instructions
                         </p>
                     </div>
-                    ${instructions}
+                    <div style="padding: 0 20px">${instructions}</div>
                 </div>
                 <div class="products">
                     <div class="heading-red">
-                        <p style="color:white; padding: 15px; font-weight:bold;font-size: 1.2rem;">Product</p>
+                        <p style="color:white; padding: 4px 10px; font-weight:bold;font-size: 1.2rem;">Product</p>
                     </div>
-                    ${products}
+                    <p>
+                    ${productList.join("</p><p>")}
+                    </p>
                 </div>
                 <div class="help">
                     <div>
-                        <p>
+                    <p>
                             Need Help?
                         </p>
                         <p><b>We are available to assist you 24/7.</b></p>
@@ -263,16 +270,24 @@ exports.contact = input => {
                         <p>International: +1 (604) 563-0291.</p>
                         <p>Email: info@cropkingseeds.com.</p>
                     </div>
-                    <div>
-                        <p>Subtotal: ${subtotal}</p>
-                        <p>Shipping: ${shipping}</p>
-                        <p>Tax: ${tax}</p>
-                        <p>Total: ${total}</p>
+                    <div style="margin: 0 0 0 auto;">
+                        <p style="text-align:right;"><span>Subtotal:</span> <span>$${subtotal.toFixed(
+                          2
+                        )}</span></p>
+                        <p style="text-align:right;"><span>Shipping:</span> <span >$${shipping.toFixed(
+                          2
+                        )}</span></p>
+                        <p style="text-align:right;"><span>Tax:</span> <span>$${tax.toFixed(
+                          2
+                        )}</span></p>
+                        <p style="text-align:right;"><b>Total:</b> <b>$${total.toFixed(
+                          2
+                        )}</b></p>
                     </div>
                 </div>
             </div>
         </div>
     </body>
 </html>`
-    };
+  };
 };

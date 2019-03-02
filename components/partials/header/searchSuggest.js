@@ -6,9 +6,7 @@ import Router from "next/router";
 import { filter } from "../../../store/utilities/filter";
 
 class SearchSuggest extends Component {
-  componentDidMount() {
-    console.log(this.props);
-  }
+  componentDidMount() {}
 
   renderSuggestion = (suggestion, index) => (
     <div

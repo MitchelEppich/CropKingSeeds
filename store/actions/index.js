@@ -638,19 +638,35 @@ const mutation = {
   `,
   sendEmail: gql`
     mutation(
+      $type: String
       $email: String
       $body: String
       $name: String
       $subject: String
       $response: String
+      $shippingDestination: String
+      $shippingType: String
+      $subtotal: Float
+      $total: Float
+      $tax: Float
+      $shipping: Float
+      $date: String
     ) {
       sendEmail(
         input: {
+          type: $type
           email: $email
           body: $body
           name: $name
           subject: $subject
           response: $response
+          shippingDestination: $shippingDestination
+          shippingType: $shippingType
+          subtotal: $subtotal
+          total: $total
+          tax: $tax
+          shipping: $shipping
+          date: $date
         }
       )
     }

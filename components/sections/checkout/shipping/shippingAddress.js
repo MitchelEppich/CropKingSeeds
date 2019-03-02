@@ -97,7 +97,7 @@ const ShippingAddress = props => {
                 aria-label="save-data"
                 type="checkbox"
                 id="readOnly"
-                checked={true}
+                defaultChecked={true}
                 name=""
                 className="checkbox"
               />
