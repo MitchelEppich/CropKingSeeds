@@ -2,6 +2,10 @@ import data from "../../../../static/data";
 import MinimumSeedsWarning from "../other/minimumSeedsWarning";
 
 const ShippingAddress = props => {
+  let localProfiles = localStorage.getItem("profiles");
+  if (localProfiles != null) localProfiles = JSON.parse(localProfiles);
+  let localProfilesExist = localProfiles != null && localProfiles.length > 0;
+
   let pageGroup = "shipping";
   let stateOrProvinceInput;
   let _orderDetails = props.checkout.orderDetails;
@@ -96,12 +100,20 @@ const ShippingAddress = props => {
 
       <div className={`w-full mt-4`}>
         <div className="w-full flex inline-flex">
-          <div className="w-full flex justify-start">
+          <div
+            className={`w-full flex justify-start ${
+              !localProfilesExist
+                ? "unselectable opacity-0 pointer-events-none"
+                : ""
+            }`}
+          >
             <div
               onClick={() => {
+                let profileObj = props.checkout.foundProfiles[0];
                 props.loadLocalProfile({
                   orderDetails: _orderDetails,
-                  profile: props.checkout.foundProfiles[0],
+                  profile: profileObj.profile,
+                  profileID: profileObj.id,
                   cart: props.cart,
                   freeShippingThreshold: props.checkout.freeShippingThreshold
                 });
@@ -531,22 +543,50 @@ const ShippingAddress = props => {
           </div>
         </div>
       </div>
-      <div className="justify-between flex w-full mt-4 px-2">
+      <div className="justify-between flex w-full mt-4 opacity-75">
+        {props.checkout.profileID == null ? (
+          <div
+            onClick={() => {
+              props.purgeLocalProfile({});
+              props.clearOrderDetails({
+                orderDetails: _orderDetails,
+                group: pageGroup
+              });
+            }}
+            className={`p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light ${
+              !localProfilesExist
+                ? "unselectable opacity-0 pointer-events-none"
+                : ""
+            }`}
+          >
+            Purge all Profiles
+          </div>
+        ) : (
+          <div
+            onClick={() => {
+              props.purgeLocalProfile({
+                profileID: props.checkout.profileID
+              });
+              props.clearOrderDetails({
+                orderDetails: _orderDetails,
+                group: pageGroup
+              });
+            }}
+            className="p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light"
+          >
+            Purge My Profile
+          </div>
+        )}
         <div
           onClick={() => {
-            console.log("hello");
+            props.clearOrderDetails({
+              orderDetails: _orderDetails,
+              group: pageGroup
+            });
           }}
-          className="p-2 cursor-pointer capitalize bg-red-dark hover:bg-red-light text-white font-bold rounded"
+          className="p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light"
         >
-          Purge all Profiles
-        </div>
-        <div
-          onClick={() => {
-            console.log("hello2");
-          }}
-          className="p-2 cursor-pointer capitalize bg-red-dark hover:bg-red-light text-white font-bold rounded"
-        >
-          Purge my Profile
+          Clear Details
         </div>
       </div>
     </div>

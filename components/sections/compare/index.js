@@ -83,11 +83,13 @@ const Compare = props => {
               className="w-full justify-center scale-item flex p-4 relative"
             >
               <img
-                src={props.misc.CFURL + product.packageImg}
+                src={
+                  props.misc.CFURL + "/packages/P_" + product.sotiId + ".png"
+                }
                 className="h-40 w-auto absolute z-50 ml-2 shadow"
               />
               <img
-                src={props.misc.CFURL + product.strainImg}
+                src={props.misc.CFURL + "/plant/P_" + product.sotiId + ".jpg"}
                 className="h-32 items-baseline pin-b flex w-auto absolute -ml-6"
               />
               <span

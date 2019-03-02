@@ -15,7 +15,8 @@ const initialState = {
   error: {},
   freeShippingThreshold: 300,
   ccResponse: null,
-  foundProfiles: []
+  foundProfiles: [],
+  profileID: null
 };
 
 export default (state = initialState, action) => {
@@ -27,28 +28,57 @@ export default (state = initialState, action) => {
       });
     case actionTypes.STORE_ORDER_DETAILS:
       return updateObject(state, {});
+    case actionTypes.PURGE_LOCAL_PROFILE:
+      return updateObject(state, { profileID: null });
     case actionTypes.CHECK_FOR_LOCAL_PROFILE:
       return updateObject(state, { foundProfiles: action.input });
     case actionTypes.LOAD_LOCAL_PROFILE:
-      return updateObject(state, { orderDetails: action.input });
+      return updateObject(state, {
+        orderDetails: action.input,
+        foundProfiles: [],
+        profileID: action.id
+      });
     case actionTypes.GET_BLOCKED_IPS:
       return updateObject(state, { blockedIps: action.input });
     case actionTypes.GET_BLOCKED_ZIPS:
       return updateObject(state, { noCreditZip: action.input });
     case actionTypes.ACQUIRE_ORDER_ID:
-      return updateObject(state, { orderDetails: action.input });
+      return updateObject(state, {
+        orderDetails: action.input,
+        profileID: null
+      });
     case actionTypes.SET_ERROR:
       return updateObject(state, { error: action.input });
     case actionTypes.MODIFY_ORDER_DETAILS:
-      return updateObject(state, { orderDetails: action.input });
+      return updateObject(state, {
+        orderDetails: action.input,
+        profileID: null
+      });
     case actionTypes.PURGE_ORDER_DETAILS:
-      return updateObject(state, { orderDetails: action.input });
+      return updateObject(state, {
+        orderDetails: action.input,
+        profileID: null
+      });
+    case actionTypes.CLEAR_ORDER_DETAILS:
+      return updateObject(state, {
+        orderDetails: action.input,
+        profileID: null
+      });
     case actionTypes.APPLY_COUPON:
-      return updateObject(state, { orderDetails: action.input });
+      return updateObject(state, {
+        orderDetails: action.input,
+        profileID: null
+      });
     case actionTypes.SET_ORDER_DETAILS:
-      return updateObject(state, { orderDetails: action.input });
+      return updateObject(state, {
+        orderDetails: action.input,
+        profileID: null
+      });
     case actionTypes.RECALL_ORDER_DETAILS:
-      return updateObject(state, { orderDetails: action.input });
+      return updateObject(state, {
+        orderDetails: action.input,
+        profileID: null
+      });
     case actionTypes.GET_BITCOIN_DATA:
       return updateObject(state, { bitcoinData: action.input });
     case actionTypes.PROCESS_ORDER:
