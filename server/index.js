@@ -127,13 +127,13 @@ app.prepare().then(async () => {
   // HTTP Server
   // Redirect from http port 80 to https
   // ------------------
-  let ws = http.createServer(function(req, res) {
-    res.writeHead(301, {
-      Location: "https://" + req.headers["host"] + req.url
-    });
-    res.end();
-  });
-  ws.listen(80);
+  // let ws = http.createServer(function(req, res) {
+  //   res.writeHead(301, {
+  //     Location: "https://" + req.headers["host"] + req.url
+  //   });
+  //   res.end();
+  // });
+  // ws.listen(80);
   // --------------------
 
   // HTTPS Server

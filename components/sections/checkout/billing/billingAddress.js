@@ -85,13 +85,13 @@ const BillingAddress = props => {
     let _data;
     switch (_country.value) {
       case "Canada":
-        _data = Object.keys(data.provincesCA);
+        _data = Object.keys(props.misc.taxes);
         break;
       case "United States":
         _data = data.statesUS;
         break;
       default:
-        _data = [...data.statesUS, ...Object.keys(data.provincesCA)];
+        _data = [...data.statesUS, ...Object.keys(props.misc.taxes)];
     }
 
     let arr = [
