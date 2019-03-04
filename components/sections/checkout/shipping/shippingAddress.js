@@ -191,7 +191,13 @@ const ShippingAddress = props => {
             />
           </div>
           <div className="w-1/2 pl-2 sm:w-full sm:pl-0 sm:mt-4 inline-flex">
-            <div className="w-2/3">
+            <div
+              className={`w-2/3 ${
+                _orderDetails[pageGroup].noEmail
+                  ? "unselectable opacity-50 pointer-events-none"
+                  : ""
+              }`}
+            >
               <input
                 aria-label="email"
                 type="email"
@@ -226,10 +232,26 @@ const ShippingAddress = props => {
               <label className="cursor-pointer font-bold uppercase items-center flex">
                 <input
                   type="checkbox"
-                  value=""
-                  name=""
+                  id="noEmail"
+                  checked={
+                    _orderDetails[pageGroup] != null
+                      ? _orderDetails[pageGroup].noEmail
+                      : false
+                  }
+                  onChange={e => {
+                    let _target = e.target;
+                    let _key = _target.id;
+                    let _value = _target.checked;
+
+                    props.modifyOrderDetails({
+                      orderDetails: _orderDetails,
+                      group: pageGroup,
+                      key: _key,
+                      value: _value
+                    });
+                  }}
                   className="ml-2 checkbox"
-                />
+                />{" "}
                 No Email
               </label>
             </div>
