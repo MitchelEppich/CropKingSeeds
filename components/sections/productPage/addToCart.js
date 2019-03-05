@@ -83,9 +83,22 @@ const addToCart = props => {
                   coupon: _coupon
                 });
                 props.toggleCartAnimation();
+                props.updateRecentAdded({
+                  recentAdd: props.cart.recentAdd,
+                  sotiId: props.viewProduct.currentProduct._id
+                });
+                setTimeout(() => {
+                  props.updateRecentAdded({
+                    recentAdd: props.cart.recentAdd,
+                    sotiId: props.viewProduct.currentProduct._id
+                  });
+                }, 800);
               }}
             >
-              {props.shop.cartAnimation ? (
+              {console.log(props)}
+              {props.cart.recentAdd.includes(
+                props.viewProduct.currentProduct._id
+              ) ? (
                 <div className="inline-flex slowish">
                   Added
                   <FontAwesomeIcon icon={faCheck} className="ml-1" />

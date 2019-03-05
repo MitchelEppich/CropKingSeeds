@@ -14,6 +14,7 @@ import News from "../components/sections/news";
 import Carousel from "../components/sections/germination/carousel";
 
 import moment from "moment";
+import FeaturedStrains from "../components/sections/featuredStrains";
 
 class Index extends Component {
   componentWillMount() {
@@ -61,6 +62,7 @@ class Index extends Component {
               </h2>
               <Carousel {...this.props} />
             </div> */}
+            {/* <FeaturedStrains {...this.props} /> */}
             <News {...this.props} />
           </React.Fragment>
         ) : (

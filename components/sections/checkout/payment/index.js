@@ -39,7 +39,7 @@ const Payment = props => {
 
       <PaymentReview {...props} />
 
-      <div className="font-bold p-2 my-4">
+      <div className="font-bold py-2 my-4">
         <h2 className="text-3/5xl font-extrabold opacity-50 mt-2 mb-4 text-black">
           Important
         </h2>
@@ -92,8 +92,8 @@ const Payment = props => {
       <div
         className={
           props.checkout.error[105] != null
-            ? "opacity-50 unselectable pointer-events-none px-2"
-            : "px-2"
+            ? "opacity-50 unselectable pointer-events-none py-2"
+            : "py-2"
         }
       >
         <div

@@ -47,6 +47,7 @@ function enableScroll() {
 let showRating;
 let rating;
 let totalReviews;
+
 const productThumbnail = props => {
   let currency = props.checkout.viewCurrency;
   let _coupon = props.checkout.orderDetails.coupon;
@@ -357,9 +358,20 @@ const productThumbnail = props => {
                       coupon: _coupon
                     });
                     props.toggleCartAnimation();
+
+                    props.updateRecentAdded({
+                      recentAdd: props.cart.recentAdd,
+                      sotiId: props.product.sotiId
+                    });
+                    setTimeout(() => {
+                      props.updateRecentAdded({
+                        recentAdd: props.cart.recentAdd,
+                        sotiId: props.product.sotiId
+                      });
+                    }, 800);
                   }}
                 >
-                  {props.shop.cartAnimation ? (
+                  {props.cart.recentAdd.includes(props.product.sotiId) ? (
                     <div className="inline-flex slowish">
                       Added
                       <FontAwesomeIcon icon={faCheck} className="ml-1" />
@@ -430,7 +442,7 @@ const productThumbnail = props => {
         <div
           className={hover ? "w-full mx-auto text-center p-1" : "hidden slow"}
         >
-          <p className="text-sm italic uppercase font-bold py-1 text-red-dark text-right mr-6">
+          <p className="text-sm uppercase font-bold py-1 text-red-light text-right mr-6">
             {props.product.inStock ? "In Stock" : "Sold Out"}
           </p>
         </div>

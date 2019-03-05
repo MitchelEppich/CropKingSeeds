@@ -101,7 +101,6 @@ class Index extends Component {
                         }
                         className=""
                       />
-                      
                     </div>
                   ) : null}
 
@@ -248,7 +247,8 @@ const mapDispatchToProps = dispatch => {
     setCurrentImage: index => dispatch(actions.setCurrentImage(index)),
     showMoreFeatures: input => dispatch(actions.showMoreFeatures(input)),
     toggleCartAnimation: () => dispatch(actions.toggleCartAnimation()),
-    resetCartAnimation: () => dispatch(actions.resetCartAnimation())
+    resetCartAnimation: () => dispatch(actions.resetCartAnimation()),
+    updateRecentAdded: input => dispatch(actions.updateRecentAdded(input))
   };
 };
 

@@ -4,7 +4,8 @@ import {
   faTimes,
   faMinus,
   faCopy,
-  faExternalLinkAlt
+  faExternalLinkAlt,
+  faCheck
 } from "@fortawesome/free-solid-svg-icons";
 import CompareMenu from "./compareMenu";
 import CompareFilters from "./compareFilters";
@@ -362,9 +363,26 @@ const Compare = props => {
                           max: props.cart.maxPerPackage
                         });
                         props.toggleCartAnimation();
+                        props.updateRecentAdded({
+                          recentAdd: props.cart.recentAdd,
+                          sotiId: product.sotiId
+                        });
+                        setTimeout(() => {
+                          props.updateRecentAdded({
+                            recentAdd: props.cart.recentAdd,
+                            sotiId: product.sotiId
+                          });
+                        }, 800);
                       }}
                     >
-                      Add to Cart
+                      {props.cart.recentAdd.includes(product.sotiId) ? (
+                        <div className="inline-flex slowish">
+                          Added
+                          <FontAwesomeIcon icon={faCheck} className="ml-1" />
+                        </div>
+                      ) : (
+                        "Add to Cart"
+                      )}
                     </button>
                   </div>
                 </div>

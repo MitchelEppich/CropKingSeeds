@@ -43,7 +43,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.modifyPotentialQuantity(input)),
     toggleCartAnimation: () => dispatch(actions.toggleCartAnimation()),
     setCompareSearchValue: input =>
-      dispatch(actions.setCompareSearchValue(input))
+      dispatch(actions.setCompareSearchValue(input)),
+    updateRecentAdded: input => dispatch(actions.updateRecentAdded(input))
   };
 };
 

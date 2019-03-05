@@ -346,14 +346,17 @@ const PaymentReview = props => {
           {/* TAX */}
           <div
             className={` ${
-              _orderDetails[pageGroup].creditFee.value != 0
-                ? "bg-smoke-grey"
-                : "bg-white"
+              (!_orderDetails[pageGroup].creditFee.value != 0 &&
+                !_orderDetails[pageGroup].discountAmt != null) ||
+              _orderDetails[pageGroup].creditFee.value != 0 ||
+              _orderDetails[pageGroup].discountAmt != null
+                ? "bg-white"
+                : "bg-smoke-grey"
             } w-full inline-flex `}
           >
             <div className="w-3/5 pl-3">
               <p className="p-1">
-                Tax ({_orderDetails[pageGroup].cumTax * 100}%):
+                Tax ({(_orderDetails[pageGroup].cumTax * 100).toFixed()}%):
               </p>
             </div>
             <div className="w-2/5 text-left">

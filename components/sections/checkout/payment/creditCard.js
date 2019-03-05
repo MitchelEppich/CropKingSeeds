@@ -26,7 +26,7 @@ const CreditCard = props => {
 
   let ccNumberFormat = new StringMask("0000-0000-0000-0000");
 
-  console.log(props.checkout.orderDetails, "");
+  // console.log(props.checkout.orderDetails, "");
 
   return (
     <div className="w-full mb-6">
