@@ -1,19 +1,14 @@
-/*******************************************/
-/*Main page, Renders all home videos*/
-/******************************************/
-
+// lib
 import React, { Component } from "react";
-import withData from "../lib/withData";
 import { connect } from "react-redux";
+import moment from "moment";
+// custom
+import withData from "../lib/withData";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import BannerCarousel from "../components/sections/bannerCarousel";
 import GenePreview from "../components/sections/genePreview";
-import Post from "../components/sections/post";
 import News from "../components/sections/news";
-import Carousel from "../components/sections/germination/carousel";
-
-import moment from "moment";
 
 class Index extends Component {
   componentWillMount() {
@@ -33,16 +28,6 @@ class Index extends Component {
     }
   }
 
-  newsStepper = () => {
-    if (moment().diff(this.props.misc.currentEventUpdatedAt, "seconds") > 5) {
-      this.props.setCurrentEvent({
-        index: this.props.misc.currentEventObj + 1,
-        currentEventObj: this.props.misc.currentEventObj,
-        events: this.props.misc.featuredNews
-      });
-    }
-  };
-
   componentWillUnmount() {
     clearInterval(this.props.misc.newsTimeout);
   }
@@ -54,13 +39,6 @@ class Index extends Component {
           <React.Fragment>
             <BannerCarousel {...this.props} />
             <GenePreview {...this.props} />
-            {/* <Post {...this.props} /> */}
-            {/* <div className="pt-8">
-              <h2 className="w-full p-2 pl-6 font-bold text-center text-3xl my-3 text-grey bg-smoke-grey">
-                Germination
-              </h2>
-              <Carousel {...this.props} />
-            </div> */}
             <News {...this.props} />
           </React.Fragment>
         ) : (
@@ -71,6 +49,15 @@ class Index extends Component {
       </Layout>
     );
   }
+  newsStepper = () => {
+    if (moment().diff(this.props.misc.currentEventUpdatedAt, "seconds") > 5) {
+      this.props.setCurrentEvent({
+        index: this.props.misc.currentEventObj + 1,
+        currentEventObj: this.props.misc.currentEventObj,
+        events: this.props.misc.featuredNews
+      });
+    }
+  };
 }
 
 const mapDispatchToProps = dispatch => {

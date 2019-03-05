@@ -1,18 +1,20 @@
-/*******************************************/
-/*Main page, Renders all home videos*/
-/******************************************/
-
+// lib imports
 import React, { Component } from "react";
-import withData from "../lib/withData";
-import Link from "next/link";
 import { connect } from "react-redux";
+import Link from "next/link";
+import Router from "next/router";
+import {
+  faAngleLeft,
+  faAngleRight,
+  faCartArrowDown,
+  faTrash
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+// custom imports
+import withData from "../lib/withData";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
-import Header from "../components/partials/header";
-import BannerCarousel from "../components/sections/bannerCarousel";
-import GenePreview from "../components/sections/genePreview";
-import Post from "../components/sections/post";
-import Footer from "../components/partials/footer";
 import ProductPreview from "../components/sections/checkout/productPreview";
 import Coupon from "../components/sections/checkout/coupon";
 import Shipping from "../components/sections/checkout/shipping";
@@ -22,115 +24,36 @@ import Payment from "../components/sections/checkout/payment";
 import Checkout from "../components/sections/checkout";
 import Confirmation from "../components/sections/checkout/confirmation";
 import FreeShippingNotify from "../components/sections/checkout/freeShippingNotify";
-import {
-  faAngleLeft,
-  faAngleRight,
-  faPlus,
-  faCartPlus,
-  faCartArrowDown,
-  faTimes,
-  faTrash
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import Router from "next/router";
-
 import ErrorHandler from "../components/sections/checkout/errorHandler";
 
 class Index extends Component {
   componentDidMount() {
     this.props.toggleStepsCheckout(0);
     this.updateShippingMethod();
-
     this.props.getBlockedIps();
     this.props.getBlockedZips();
-
     window.onbeforeunload = () => {
       if (this.props.misc.stepsCheckout >= 4) this.props.purgeCart();
     };
   }
-
   componentDidUpdate(prevProps) {
     let error = ErrorHandler(this.props);
     if (JSON.stringify(error) != JSON.stringify(this.props.checkout.error)) {
       this.props.setError({ value: error });
     }
-
     // Update if price has changed
     if (this.props.cart.price != prevProps.cart.price) {
       this.updateShippingMethod();
     }
   }
-
   componentWillUnmount() {
     if (this.props.misc.stepsCheckout >= 4) this.props.purgeCart();
   }
-
-  updateShippingMethod() {
-    let _orderDetails = this.props.checkout.orderDetails;
-    if (
-      _orderDetails.shipping != null &&
-      _orderDetails.shipping.country != null &&
-      _orderDetails.shipping.state != null
-    ) {
-      this.props.setShippingMethods({
-        country: _orderDetails.shipping.country.value,
-        state: _orderDetails.shipping.state.value,
-        cartTotal: this.props.cart.price,
-        freeShippingThreshold: this.props.checkout.freeShippingThreshold,
-        orderDetails: _orderDetails
-      });
-    }
-  }
-
-  payBitcoin = (orderDetails, orderId) => {
-    let _billing = { ...orderDetails.billing };
-    let _payment = { ...orderDetails.payment };
-    let name = _billing.fullName.value.split(" ");
-
-    let fOrderId = [orderId.slice(0, 4), "-", orderId.slice(4), "-CKS"].join(
-      ""
-    );
-
-    this.open(
-      "POST",
-      "https://www.coinpayments.net/index.php",
-      {
-        cmd: "_pay",
-        reset: "1",
-        invoice: fOrderId,
-        custom: "",
-        merchant: "8c1706a0ba5ad9024ba30eb29b92563e",
-        first_name: name[0],
-        last_name: name[1],
-        email: _billing.email.value,
-        address1: _billing.address.value,
-        address2: billing.apartment != null ? billing.apartment.value : "",
-        city: _billing.city.value,
-        state: _billing.state.value,
-        zip: _billing.postalZip.value,
-        country: _billing.country.value.toUpperCase(),
-        phone: _billing.phone.value,
-        currency: _payment.currency.value,
-        amountf: _payment.cartTotal.value,
-        item_name: fOrderId,
-        quantity: _payment.itemQuantity.value,
-        allow_quantity: "0",
-        shippingf: _payment.shippingFee.value,
-        taxf: _payment.taxFee,
-        ipn_url: "",
-        success_url: "",
-        cancel_url: ""
-      },
-      "_blank"
-    );
-  };
 
   render() {
     let _orderDetails = this.props.checkout.orderDetails;
     let _stepsCheckout = this.props.misc.stepsCheckout;
     let _error = Object.keys(this.props.checkout.error).length != 0;
-
     let itemsCart = Object.keys(this.props.cart.items);
 
     return (
@@ -168,6 +91,7 @@ class Index extends Component {
                     this.props
                       .processOrder({
                         orderId,
+                        cart: this.props.cart,
                         orderDetails: {
                           ..._orderDetails,
                           currency: this.props.checkout.availableCurrency,
@@ -182,7 +106,7 @@ class Index extends Component {
                         }
                       })
                       .then(res => {
-                        this.props.toggleStepsCheckout(_stepsCheckout + 1);
+                        // this.props.toggleStepsCheckout(_stepsCheckout + 1);
                       });
                   });
               } else {
@@ -346,6 +270,66 @@ class Index extends Component {
       </Layout>
     );
   }
+
+  updateShippingMethod() {
+    let _orderDetails = this.props.checkout.orderDetails;
+    if (
+      _orderDetails.shipping != null &&
+      _orderDetails.shipping.country != null &&
+      _orderDetails.shipping.state != null
+    ) {
+      this.props.setShippingMethods({
+        country: _orderDetails.shipping.country.value,
+        state: _orderDetails.shipping.state.value,
+        cartTotal: this.props.cart.price,
+        freeShippingThreshold: this.props.checkout.freeShippingThreshold,
+        orderDetails: _orderDetails
+      });
+    }
+  }
+
+  payBitcoin = (orderDetails, orderId) => {
+    let _billing = { ...orderDetails.billing };
+    let _payment = { ...orderDetails.payment };
+    let name = _billing.fullName.value.split(" ");
+
+    let fOrderId = [orderId.slice(0, 4), "-", orderId.slice(4), "-CKS"].join(
+      ""
+    );
+
+    this.open(
+      "POST",
+      "https://www.coinpayments.net/index.php",
+      {
+        cmd: "_pay",
+        reset: "1",
+        invoice: fOrderId,
+        custom: "",
+        merchant: "8c1706a0ba5ad9024ba30eb29b92563e",
+        first_name: name[0],
+        last_name: name[1],
+        email: _billing.email.value,
+        address1: _billing.address.value,
+        address2: billing.apartment != null ? billing.apartment.value : "",
+        city: _billing.city.value,
+        state: _billing.state.value,
+        zip: _billing.postalZip.value,
+        country: _billing.country.value.toUpperCase(),
+        phone: _billing.phone.value,
+        currency: _payment.currency.value,
+        amountf: _payment.cartTotal.value,
+        item_name: fOrderId,
+        quantity: _payment.itemQuantity.value,
+        allow_quantity: "0",
+        shippingf: _payment.shippingFee.value,
+        taxf: _payment.taxFee,
+        ipn_url: "",
+        success_url: "",
+        cancel_url: ""
+      },
+      "_blank"
+    );
+  };
 }
 
 const mapDispatchToProps = dispatch => {

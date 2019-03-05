@@ -1,4 +1,3 @@
-import ProductThumbnail from "../productGrid/productThumbnail";
 import Router from "next/router";
 import FeaturedStrainThumbnail from "./featuredStrainThumbnail";
 import Link from "next/link";

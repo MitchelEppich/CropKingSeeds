@@ -1,15 +1,17 @@
-/*******************************************/
-/*Shop Page, renders shop products*/
-/******************************************/
-
+// lib
 import React, { Component } from "react";
-import withData from "../lib/withData";
 import { connect } from "react-redux";
+// custom
+import withData from "../lib/withData";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import Filters from "../components/sections/shop/filters";
 import ProductGrid from "../components/sections/shop/productGrid";
-import FeaturedStrainThumbnails from "../components/sections/shop/featuredStrainThumbnails";
+import FeaturedStrains from "../components/sections/shop/featuredStrains";
+import Catalogue from "../components/sections/shop/catalogue";
+import ReviewBanner from "../components/sections/shop/reviewBanner";
+import Sidebar from "../components/sections/shop/sidebar";
+import Gif from "../components/sections/shop/gif";
 
 class Index extends Component {
   // componentDidMount() {
@@ -18,17 +20,6 @@ class Index extends Component {
   //         count: 1
   //     });
   // }
-  printStrains() {
-    for (let i = 0; i < this.props.misc.strains.length; i++) {
-      // console.log(
-      //     this.props.misc.strains[i].name
-      //         .toLowerCase()
-      //         .split(" ")
-      //         .join("-")
-      // );
-    }
-  }
-
   componentDidMount() {
     let searchValue = this.props.misc.searchValue;
     if (searchValue != null) {
@@ -41,13 +32,11 @@ class Index extends Component {
       });
     }
   }
-
   componentWillUnmount() {
     this.props.clearFilters();
   }
 
   render() {
-    let mobile = ["sm", "md"].includes(this.props.misc.mediaSize);
     return (
       <Layout>
         {this.props.misc.strains != null &&
@@ -92,129 +81,22 @@ class Index extends Component {
                   <div>
                     <Filters {...this.props} />
                   </div>
-                  {!mobile ? (
-                    <div className="my-8 w-full justify-center flex relative sm:pt-8">
-                      <img
-                        src={
-                          this.props.misc.CFURL +
-                          "/sidebar/FreeShippingAnimated.gif"
-                        }
-                        className=""
-                      />
-                      
-                    </div>
+                  {!["sm", "md"].includes(this.props.misc.mediaSize) ? (
+                    <Gif {...this.props} />
                   ) : null}
-
-                  {!mobile ? (
-                    <div className="border border-grey-lightest mt-8 sm:mt-10 md:mt-20 md:mb-0 rounded overflow-hidden">
-                      <div className="">
-                        <h3 className="text-left pl-4 font-bold mx-auto p-2 text-xl w-full bg-grey-light font-bold text-white">
-                          Featured Strains
-                        </h3>
-                      </div>
-
-                      <FeaturedStrainThumbnails
-                        page={"shop"}
-                        initialCount={1}
-                        {...this.props}
-                      />
-                    </div>
+                  {!["sm", "md"].includes(this.props.misc.mediaSize) ? (
+                    <FeaturedStrains {...this.props} />
                   ) : null}
-                  {!mobile ? (
-                    <div className="w-full my-8 justify-center flex relative mt-2">
-                      <a
-                        href={
-                          this.props.misc.CFURL +
-                          "/catalogue/CropKingSeeds-2019-Catalogue.pdf"
-                        }
-                        target="_blank"
-                      >
-                        <img
-                          src={
-                            this.props.misc.CFURL +
-                            "/sidebar/downloadcatalogue.png"
-                          }
-                          className=""
-                        />
-                      </a>
-                    </div>
+                  {!["sm", "md"].includes(this.props.misc.mediaSize) ? (
+                    <Catalogue {...this.props} />
                   ) : null}
-                  {!mobile ? (
-                    <div className="my-8 w-full justify-center flex relative sm:pt-8">
-                      <a
-                        href="https://ca.trustpilot.com/review/cropkingseeds.com"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <img
-                          src={
-                            this.props.misc.CFURL + "/sidebar/reviewus_v1.gif"
-                          }
-                          className=""
-                        />
-                      </a>
-                    </div>
+                  {!["sm", "md"].includes(this.props.misc.mediaSize) ? (
+                    <ReviewBanner {...this.props} />
                   ) : null}
                 </div>
-
                 <ProductGrid {...this.props} />
-                {mobile ? (
-                  <div className="w-full">
-                    <div className="w-full mt-4 justify-center flex relative sm:pt-0 sm:border-t md:pt-0 md:border-t border-smoke-grey">
-                      <img
-                        src={
-                          this.props.misc.CFURL +
-                          "/sidebar/FreeShippingAnimated_mobile.gif"
-                        }
-                        style={{ width: "100%", height: "100%" }}
-                      />
-                    </div>
-                    <div className="w-full mt-8 justify-center flex relative mt-2">
-                      <a
-                        href={
-                          this.props.misc.CFURL +
-                          "/catalogue/CropKingSeeds-2019-Catalogue.pdf"
-                        }
-                        target="_blank"
-                      >
-                        <img
-                          src={
-                            this.props.misc.CFURL +
-                            "/sidebar/downloadcatalogue.png"
-                          }
-                          className=""
-                        />
-                      </a>
-                    </div>
-
-                    <div className="border border-grey-lightest mt-8 sm:mt-4 md:mt-4 md:mb-0">
-                      <div className="shadow-md">
-                        <h3 className="text-left pl-4 font-bold mx-auto bg-white text-grey p-2 text-xl w-full ">
-                          Featured Strains
-                        </h3>
-                      </div>
-
-                      <FeaturedStrainThumbnails
-                        page={"shop"}
-                        specificMax={8}
-                        initialCount={1}
-                        {...this.props}
-                      />
-                    </div>
-                    <div className="w-full justify-center flex relative mt-2">
-                      <a
-                        href="https://ca.trustpilot.com/review/cropkingseeds.com"
-                        target="_blank"
-                      >
-                        <img
-                          src={
-                            this.props.misc.CFURL + "/sidebar/review_mobile.gif"
-                          }
-                          className=""
-                        />
-                      </a>
-                    </div>
-                  </div>
+                {["sm", "md"].includes(this.props.misc.mediaSize) ? (
+                  <Sidebar {...this.props} />
                 ) : null}
               </div>
             </div>
@@ -224,6 +106,17 @@ class Index extends Component {
         )}
       </Layout>
     );
+  }
+
+  printStrains() {
+    for (let i = 0; i < this.props.misc.strains.length; i++) {
+      // console.log(
+      //     this.props.misc.strains[i].name
+      //         .toLowerCase()
+      //         .split(" ")
+      //         .join("-")
+      // );
+    }
   }
 }
 

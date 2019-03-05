@@ -7,8 +7,7 @@ import {
   faAngleRight
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import SeedSelectModule from "../../productPage/seedSelectModule";
-
+import SeedSelectModule from "../productPage/seedSelectModule";
 import Router from "next/router";
 
 function preventDefault(e) {

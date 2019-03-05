@@ -2,7 +2,8 @@ const StrainResolvers = require("./strain");
 const OrderResolvers = require("./order");
 
 const nodemailer = require("nodemailer");
-
+const path = require("path");
+const Emailer = require("email-templates");
 const emailTemplates = require("../emails");
 
 const axios = require("axios");
@@ -160,14 +161,50 @@ const resolvers = {
             });
           break;
         case "confirmation":
-          mailOptions = emailTemplates.confirmation({
-            ...input
-          });
-          transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-              // Do nothing
+          const email = new Emailer({
+            message: {
+              from: "info@cropkingseeds.com"
+            },
+            // uncomment below to send emails in development/test env:
+            // send: true,
+            transport: transporter,
+            webResources: {
+              //
+              // this is the relative directory to your CSS/image assets
+              // and its default path is `build/`:
+              //
+              // e.g. if you have the following in the `<head`> of your template:
+              // `<link rel="stylesheet" href="style.css" data-inline="data-inline">`
+              // then this assumes that the file `build/style.css` exists
+              //
+              // relativeTo: path.resolve("build")
+              //
+              // but you might want to change it to something like:
+              relativeTo: path.join(__dirname, "../emails", "mars")
+              // (so that you can re-use CSS/images that are used in your web-app)
+              //
             }
           });
+          console.log(path.join(__dirname, "../emails", "mars"));
+          email
+            .send({
+              template: path.join(__dirname, "../emails", "mars"),
+              message: {
+                to: "adamsmithvci@gmail.com"
+              },
+              locals: {
+                ...input
+              }
+            })
+            .then(console.log)
+            .catch(console.error);
+          // mailOptions = emailTemplates.confirmation({
+          // });
+          // transporter.sendMail(mailOptions, (error, info) => {
+          //   if (error) {
+          //     // Do nothing
+          //   }
+          // });
           break;
       }
     },

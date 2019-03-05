@@ -1,6 +1,5 @@
+// library imports
 import Document, { Head, Main, NextScript } from "next/document";
-
-import strainsData from "../static/strainsSchemaData";
 import {
   JSONLD,
   Generic,
@@ -12,66 +11,18 @@ import {
   Rating,
   Location
 } from "react-structured-data";
-
 import { library } from "@fortawesome/fontawesome-svg-core"; // FONTAWESOME
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+
+// custom imports
+import strainsData from "../static/strainsSchemaData";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
     return { ...initialProps };
   }
-  generateSchemaMarkup = strains => {
-    return strains.map((strain, index) => {
-      let reviews,
-        priceLength = strain.price[0] > 0;
-      if (strain.reviews != null && strain.reviews.length > 0) {
-        reviews = strain.reviews.map((review, index) => {
-          let str = review;
-          let { 0: name, 1: email, 2: body, 3: rating, 4: time } =
-            str != "" ? str.split("&=>") : ["", "", "", ""];
-          return (
-            <Review key={index * 2} reviewBody={body} datePublished={time}>
-              <Author name={name} />
-              <Location name="" />
-              <Rating ratingValue={rating} />
-            </Review>
-          );
-        });
-      }
-      return (
-        <JSONLD key={index * 3}>
-          <Generic
-            type="product"
-            jsonldtype="Product"
-            schema={{
-              name: strain.name,
-              description: strain.description,
-              image: "http://dcfgweqx7od72.cloudfront.net" + strain.packageImg,
-              price: strain.price[0] > 0 ? strain.price[0] : strain.price[1]
-            }}
-          >
-            <AggregateRating
-              ratingValue={strain.rating}
-              reviewCount={strain.reviews.length}
-            />
-            <GenericCollection type="review">
-              {reviews != null ? reviews : null}
-            </GenericCollection>
-            <Generic
-              type="AggregateOffer"
-              jsonldtype="AggregateOffer"
-              schema={{
-                highPrice: strain.price[2],
-                lowPrice: priceLength ? strain.price[0] : strain.price[1]
-              }}
-            />
-          </Generic>
-        </JSONLD>
-      );
-    });
-  };
   render() {
     return (
       <html lang="en">
@@ -132,4 +83,55 @@ export default class MyDocument extends Document {
       </html>
     );
   }
+
+  generateSchemaMarkup = strains => {
+    return strains.map((strain, index) => {
+      let reviews,
+        priceLength = strain.price[0] > 0;
+      if (strain.reviews != null && strain.reviews.length > 0) {
+        reviews = strain.reviews.map((review, index) => {
+          let str = review;
+          let { 0: name, 1: email, 2: body, 3: rating, 4: time } =
+            str != "" ? str.split("&=>") : ["", "", "", ""];
+          return (
+            <Review key={index * 2} reviewBody={body} datePublished={time}>
+              <Author name={name} />
+              <Location name="" />
+              <Rating ratingValue={rating} />
+            </Review>
+          );
+        });
+      }
+      return (
+        <JSONLD key={index * 3}>
+          <Generic
+            type="product"
+            jsonldtype="Product"
+            schema={{
+              name: strain.name,
+              description: strain.description,
+              image: "http://dcfgweqx7od72.cloudfront.net" + strain.packageImg,
+              price: strain.price[0] > 0 ? strain.price[0] : strain.price[1]
+            }}
+          >
+            <AggregateRating
+              ratingValue={strain.rating}
+              reviewCount={strain.reviews.length}
+            />
+            <GenericCollection type="review">
+              {reviews != null ? reviews : null}
+            </GenericCollection>
+            <Generic
+              type="AggregateOffer"
+              jsonldtype="AggregateOffer"
+              schema={{
+                highPrice: strain.price[2],
+                lowPrice: priceLength ? strain.price[0] : strain.price[1]
+              }}
+            />
+          </Generic>
+        </JSONLD>
+      );
+    });
+  };
 }

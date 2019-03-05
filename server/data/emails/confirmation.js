@@ -6,121 +6,14 @@ exports.confirmation = input => {
     shippingDestination = input.shippingDestination.split("&=>"),
     shippingType = input.shippingType,
     shippingTypeDescription = input.shippingTypeDescription,
-    productList = input.productList,
+    productList = input.productList.split("&=>"),
     subtotal = input.subtotal,
     total = input.total,
     tax = input.tax,
     shipping = input.shipping,
     date = input.date;
-  productList = productList.split(",").map((product, index) => {
-    return product.split("x");
-  });
-  for (let x in productList) {
-    productList[x] = productList[x].map((productDetail, ind) => {
-      return `<span>${productDetail.trim()}</span>`;
-    });
-  }
 
-  switch (input.paymentMethod) {
-    case "Cash":
-      instructions = `<div style="padding: 0 10px">
-                        <p>
-                            To ensure that your cash order is successfully recieved please document your order number (
-                            <strong>${orderId}-CKS</strong>) on a piece of paper, along side the requested amount in
-                            applicable currency:
-                        </p>
-                        <p style="text-align:center">
-                            <b>VanCoast Industries</b>
-                            <br />
-                            <b>112 East 6th Ave</b>
-                            <br />
-                            <b>Vancouver, BC</b>
-                            <br />
-                            <b>V5T 1J5</b>
-                            <br />
-                            <b>Canada</b>
-                        </p>
-                        <p>
-                            It is recommended that you wrap any cash within your mail (in newspaper, charcoal paper or
-                            tin foil) to ensure privacy.
-                        </p>
-                    </div>`;
-      break;
-    case "Interac E Transfer":
-      instructions = `<div>
-                        <p style="text-align:center">
-                            To complete your order please initiate an interac e-transfer:
-                        </p>
-                        <div style="text-align:center">
-                            <p style="display:inline-block;width:40%;text-align:right;margin: 0 10px 0 0;">
-                                Recipient email:<br/>
-                                Recipient name:<br/>
-                                Message (Order Number):<br/>
-                                Security question:<br/>
-                                Security answer:
-                            </p>
-                            <p style="display:inline-block;width:40%;text-align:left;margin: 0 10px 0 0;">
-                                <strong style="margin-left: 5px;">organicmarketing11@gmail.com</strong><br/>
-                                <strong style="margin-left: 5px;">Vancouver</strong><br/>
-                                <strong style="margin-left: 5px;">#${orderId}-CKS</strong><br/>
-                                <strong style="margin-left: 5px;">What is your favorite color</strong><br/>
-                                <strong style="margin-left: 5px;">green1</strong>
-                            </p> 
-                        </div>
-                        <p style="text-align:center">
-                            <strong>Important</strong>: Interac E-Transfers may take a few hours to be approved. Once a
-                            payment is successfully recieved we will ship your order on the next applicable business
-                            day.
-                            <br />
-                            To ensure your order is shipped as soon as possible, please call us to confirm the transfer.
-                        </p>
-                    </div>`;
-      break;
-    case "Bitcoin":
-      instructions = `<div>
-                        <p>
-                            To complete your payment with BitCoin, a new tab has been opened in which you can proceed to
-                            finalize your payment.
-                            <br />
-                            <br />
-                            <strong>Having an issue with your payment?</strong>{" "}
-                            <button type="submit">Click here</button> to retry your payment.
-                            <br />
-                        </p>
-                    </div>`;
-      break;
-    case "Credit Card":
-      instructions = `<div>
-                        <p/>
-                        <p>
-                            {_ccr.status == "Declined" ? (
-                                <span>
-                                    <strong>We are unable to process your order!</strong>
-                                    <br />
-                                    Please immediately call our customer support (at +1 (844) 276 - 7546) to resolve any
-                                    issues.
-                                    <br />
-                                    Once your payment has been recieved we will ship your order on the next applicable
-                                    business day.
-                                </span>
-                            ) : (
-                                <span>
-                                    Please allow some time for your payment to process, once your payment has been
-                                    recieved we will ship your order on the next applicable business day.
-                                </span>
-                            )}
-                        </p>
-                        <p>
-                            <strong>Important</strong>: The displayed order total may vary depending on fluctuations in
-                            conversion rates and bank processing fees. All charges will show up as '{_ccr.descriptor}'
-                            on your credit card statement once successfully processed.
-                            <br />
-                            If you have any concerns or issues please contact our customer service representatives for
-                            help.
-                        </p>
-                    </div>`;
-      break;
-  }
+  
 
   return {
     from: "info@cropkingseeds.com",
@@ -178,10 +71,20 @@ exports.confirmation = input => {
             }
             .products {
                 width: 100%;
-                height: 200px;
-                background-color: white;
+                padding-bottom: 20px;
                 margin: 15px 0;
-                padding: 0 10px;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+            }
+            .productDetail {
+                width: 25%;
+                text-align: center;
+                margin: 0 auto;
+            }
+            .productDetailName {
+                width: 50%;
+                text-align: center;
+                margin: 0 auto;
             }
             .help {
                 width: 100%;
@@ -224,11 +127,11 @@ exports.confirmation = input => {
                     </div>
                     <div class="orderDetailsContent">
                         <div style="width: 33%; padding: 0 10px">
-                            <p><b>Payment Method:</b></p>
+                            <p style="margin-bottom:0"><b>Payment Method:</b></p>
                             <p>${paymentMethod}</p>
                         </div>
                         <div style="width: 33%; padding: 0 10px">
-                            <p><b>Shipping Destination:</b></p>
+                            <p style="margin-bottom:0"><b>Shipping Destination:</b></p>
                             <p>${fullName},<br/>
                             ${shippingDestination[0]},<br/>
                             ${shippingDestination[1]},<br/>
@@ -237,7 +140,7 @@ exports.confirmation = input => {
                             ${shippingDestination[4]}</p>
                         </div>
                         <div style="width: 33%; padding: 0 10px">
-                            <p><b>Shipping Type:</b></p>
+                            <p style="margin-bottom:0"><b>Shipping Type:</b></p>
                             <p>${shippingType}</p>
                             <p style="color:#ef5753">*${shippingTypeDescription}
                         </div>
@@ -251,14 +154,15 @@ exports.confirmation = input => {
                     </div>
                     <div style="padding: 0 20px">${instructions}</div>
                 </div>
-                <div class="products">
-                    <div class="heading-red">
-                        <p style="color:white; padding: 4px 10px; font-weight:bold;font-size: 1.2rem;">Product</p>
-                    </div>
-                    <p>
-                    ${productList.join("</p><p>")}
-                    </p>
-                </div>
+                <table class="products">
+                    <tr class="heading-red">
+                        <td style="display:inline;width:50%;text-align:left;color:white;margin: 0; padding: 4px 10px; font-weight:bold;font-size: 1.2rem;">Product</td>
+                        <td style="display:inline;width:25%;text-align:center;color:white;margin: 0; padding: 4px 10px; font-weight:bold;font-size: 1.2rem;">Qty</td>
+                        <td style="display:inline;width:25%;text-align:center;color:white;margin: 0; padding: 4px 10px; font-weight:bold;font-size: 1.2rem;">Price</td>
+                    </tr>
+                    ${productList.toString().replace(",", "")}
+                   
+                </table>
                 <div class="help">
                     <div>
                     <p>

@@ -1,15 +1,13 @@
-/*******************************************/
-// Affiliates page
-/******************************************/
-
+// lib imports
 import React, { Component } from "react";
-import withData from "../lib/withData";
 import { connect } from "react-redux";
+import Link from "next/link";
+// custom imports
+import withData from "../lib/withData";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import Ads from "../components/sections/affiliates/ads";
 import Graph from "../components/sections/affiliates/Graph";
-import Link from "next/link";
 
 class Index extends Component {
   render() {

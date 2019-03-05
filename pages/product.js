@@ -1,7 +1,3 @@
-/*******************************************/
-/*Main page, Renders all home videos*/
-/******************************************/
-
 import React, { Component } from "react";
 import withData from "../lib/withData";
 import { connect } from "react-redux";

@@ -1,0 +1,273 @@
+
+doctype html
+html
+  head
+    block head
+      meta(charset="utf-8")
+      meta(name="viewport", content="width=device-width")
+      meta(http-equiv="X-UA-Compatible", content="IE=edge")
+      meta(name="x-apple-disable-message-reformatting")
+      link(href="https://fonts.googleapis.comcss?family=Nunito:400,700,800",rel="stylesheet")
+      style(type="text/css").
+        body {
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          font-family: "Nunito", sans-serif;
+        }
+        .container {
+          background-color: #f5f5f5;
+          width: 100%;
+          height: 100%;
+          padding: 0 10px 25px 10px;
+        }
+        .innerContainer {
+          width: 85%;
+          height: 100%;
+          margin: 0 auto;
+        }
+        .orderDetails {
+          width: 100%;
+          height: 200px;
+          background-color: green;
+        }
+        .orderDetails {
+          width: 100%;
+          height: 200px;
+          background-color: white;
+          margin: 10px 0;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+        }
+        .orderDetailsContent {
+          width: 100%;
+          height: 100%;
+          display: inline-flex;
+        }
+        .payment {
+          width: 100%;
+          padding-bottom: 10px;
+          background-color: white;
+          margin: 10px 0;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+        }
+        .products {
+          width: 100%;
+          padding-bottom: 20px;
+          margin: 15px 0;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+        }
+        .productInfoName{
+          background-color:white; 
+          margin: 10px 0;
+          height: 25px; 
+          font-weight: 600; 
+          display:inline-block; 
+          width: 59%;
+          text-align: center;
+          margin: 0 auto;
+        }
+        .productInfo{
+          background-color:white; 
+          margin: 10px 0;
+          height: 25px; 
+          font-weight: 600; 
+          display:inline-block; 
+          width: 20%;
+          text-align: center;
+          margin: 0 auto;
+        }
+        .help {
+          width: 100%;
+          height: 200px;
+          display: inline-flex;
+          justify-content: space-between;
+        }
+        .thanks {
+          width: 500px;
+          margin: 0 auto;
+          text-align: center;
+        }
+        .heading-red {
+          height: 35px;
+          width: 102%;
+          background-color: #ef5753;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+        }
+        @media only screen and (max-width: 1200px) {
+          .productInfoName{
+          background-color:white; 
+          margin: 10px 0;
+          height: 25px; 
+          font-weight: 600; 
+          display:inline-block; 
+          width: 89%;
+          text-align: center;
+          margin: 0 auto;
+        }
+         .productInfo{
+          background-color:white; 
+          margin: 10px 0;
+          height: 25px; 
+          font-weight: 600; 
+          display:inline-block; 
+          width: 5%;
+          text-align: center;
+          margin: 0 auto;
+        }
+        }
+
+
+  body
+    div(class="container")
+      div(class="innerContainer")
+        div(class="thanks")
+          img(src="http://dcfgweqx7od72.cloudfront.netlogoscks-confirmation.png", class="", width="200px")
+          h1 Thank you
+          p Your order has been placed.
+          p(style="color:#ef5753") Please follow payment instructions below.
+
+        div(class="orderDetails", style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);")
+          div(class="heading-red", style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);")
+            p(style="color:white; padding: 4px 10px;display: flex;font-weight:bold;font-size: 1.2rem;")
+              span Order ##{orderId}-CKS
+              span(style="margin: 0 0 0 auto") Date: #{date}
+
+          div(class="orderDetailsContent")
+            div(style="width: 33%; padding: 0 10px")
+              p(style="margin-bottom:0")
+                b Payment Method:
+              p(style="margin:0;") #{paymentMethod}
+
+            div(style="width: 33%; padding: 0 10px")
+              p(style="margin-bottom:0")
+                b Shipping Destination:
+              p(style="margin:0") #{name},
+              p(style="margin:0") #{shippingDestination.split("&=>")[0]},
+              p(style="margin:0") #{shippingDestination.split("&=>")[1]},
+              p(style="margin:0") #{shippingDestination.split("&=>")[2]},
+              p(style="margin:0") #{shippingDestination.split("&=>")[3]},
+              p(style="margin:0") #{shippingDestination.split("&=>")[4]}
+
+            div(style="width: 33%; padding: 0 10px")
+              p(style="margin-bottom:0")
+                b Shipping Type:
+              p(style="margin:0;") #{shippingType}
+              p(style="color:#ef5753") *#{shippingTypeDescription}
+
+
+
+        div(class="payment" style="") 
+          div(class="heading-red") 
+            p(style="color:white; padding: 4px 10px; font-weight:bold;font-size: 1.2rem;text-align:center;") Payment Instructions
+          div(style="padding: 0 20px") 
+            if paymentMethod =="Cash"
+              div(style="padding: 0 10px")
+                p To ensure that your cash order is successfully recieved please document your order number (
+                  strong #{orderId} -CKS) on a piece of paper, along side the requested amount in applicable currency:
+                p(style="text-align:center")
+                  b VanCoast Industries
+                  br
+                  b 112 East 6th Ave
+                  br
+                  b Vancouver, BC
+                  br
+                  b V5T 1J5
+                  br 
+                  b Canada
+                p It is recommended that you wrap any cash within your mail (in newspaper, charcoal paper or tin foil) to ensure privacy.
+
+            else if paymentMethod =="Interac E Transfer"
+              div
+                p(style="text-align:center") To complete your order please initiate an interac e-transfer:
+
+                div(style="text-align:center")
+                  div(style="display:inline-block;width:40%;text-align:right;margin: 0 10px 0 0;")
+                    p(style="margin:0") Recipient email:
+                    p(style="margin:0") Recipient name:
+                    p(style="margin:0") Message (Order Number):
+                    p(style="margin:0") Security question:
+                    p(style="margin:0") Security answer:
+
+                  p(style="display:inline-block;width:40%;text-align:left;margin: 0 10px 0 0;")
+                    strong(style="margin-left: 3px;") organicmarketing11@gmail.com
+                    br
+                    strong(style="margin-left: 3px;") Vancouver
+                    br
+                    strong(style="margin-left: 3px;") ##{orderId}-CKS
+                    br
+                    strong(style="margin-left: 3px;") What is your favorite color
+                    br
+                    strong(style="margin-left: 3px;") green1
+
+                  p(style="text-align:center")
+                    strong Important: Interac E-Transfers may take a few hours to be approved. Once a payment is successfully recieved we will ship your order on the next applicable business day.
+                    br 
+                    span To ensure your order is shipped as soon as possible, please call us to confirm the transfer.
+
+            else if paymentMethod =="Bitcoin"
+              div
+                p To complete your payment with BitCoin, a new tab has been opened in which you can proceed to finalize your payment.
+                 br 
+                 br 
+                 strong Having an issue with your payment?
+                 button(type="submit") Click here to retry your payment.
+                 br 
+            else 
+              div
+                p
+                  if _ccr.status == "Declined"  
+                    span
+                      strong We are unable to process your order!
+                      br 
+                      Please immediately call our customer support (at +1 (844) 276 - 7546) to resolve any issues.
+                      br
+                      Once your payment has been recieved we will ship your order on the next applicablebusiness day.
+                  else
+                    span Please allow some time for your payment to process, once your payment has been recieved we will ship your order on the next applicable business day.
+                  p
+                    strong Important: The displayed order total may vary depending on fluctuations in conversion rates and bank processing fees. All charges will show up as '#{_ccr.descriptor}' on your credit card statement once successfully processed.
+                    br 
+                    If you have any concerns or issues please contact our customer service representatives for help.
+
+        div(style="width: 100%;margin: 0 auto;height: 20px;border-top-left-radius: 5px;border-top-right-radius: 5px;position: relative;background-color: #ef5753;top: 20px;z-index:-10;")
+        table(class="products") 
+          tr(class="heading-red") 
+            td(style="display:inline-block;width:60%;text-align:center;color:white;margin: 0; padding: 4px 10px; font-weight:bold;font-size: 1.2rem;") Product
+            td(style="display:inline-block;width:20%;text-align:center;color:white;margin: 0; padding: 4px 10px; font-weight:bold;font-size: 1.2rem;") Qty
+            td(style="display:inline-block;width:20%;text-align:center;color:white;margin: 0; padding: 4px 10px; font-weight:bold;font-size: 1.2rem;") Price
+
+          each val in productList.split("&=>")
+            tr(style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.12),0 2px 4px 0 rgba(0,0,0,0.08); background-color:white; margin: 10px 0;padding: 0 10px;height: 25px; border-width: 5px 0px 5px 0px; border-style: solid; border-color: #f5f5f5;")
+              td(class="productInfoName") #{val.split("x")[0]} - #{val.split("x")[1]} seeds
+              td(class="productInfo") #{val.split("x")[3]}
+              td(class="productInfo") #{val.split("x")[2]}
+          
+
+
+        div(class="help")
+          div
+            p Need Help?
+
+              p 
+                b We are available to assist you 24/7.
+              p Canada: (604) 563-0291
+              p USA: +1 (844) 276-7546
+              p International: +1 (604) 563-0291.
+              p Email: info@cropkingseeds.com.
+
+          div(style="margin: 0 0 0 auto;")
+            p(style="text-align:right;") 
+              span Subtotal:
+              span(style="margin: 0 0 0 5px;") $#{subtotal.toFixed(2)}
+            p(style="text-align:right;") 
+              span Shipping:
+              span(style="margin: 0 0 0 5px;") $#{shipping.toFixed(2)}
+            p(style="text-align:right;") 
+              span Tax:
+              span(style="margin: 0 0 0 5px;") $#{tax.toFixed(2)}
+            p(style="text-align:right;") 
+              b Total:
+              b(style="margin: 0 0 0 5px;") $#{total.toFixed(2)}

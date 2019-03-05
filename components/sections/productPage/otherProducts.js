@@ -1,5 +1,5 @@
 import ProductThumbnail from "../shop/productGrid/productThumbnail";
-import FeaturedStrainThumbnail from "../shop/featuredStrainThumbnails/featuredStrainThumbnail";
+import FeaturedStrainThumbnail from "../shop/featuredStrainThumbnail";
 
 const otherProducts = props => {
   let hoverId = props.misc.hoverId;

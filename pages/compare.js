@@ -1,24 +1,19 @@
-/*******************************************/
-/*Main page, Renders all home videos*/
-/******************************************/
-
+// lib
 import React, { Component } from "react";
-import withData from "../lib/withData";
 import { connect } from "react-redux";
+// custom
+import withData from "../lib/withData";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import Compare from "../components/sections/compare";
 
 class Index extends Component {
-  componentDidMount() {}
-  componentDidUpdate() {}
   componentWillUnmount() {
     this.props.modifyPotentialQuantity({
       potentialQuantity: this.props.cart.potentialQuantity,
       action: "CLEAR"
     });
   }
-
   render() {
     return (
       <Layout>

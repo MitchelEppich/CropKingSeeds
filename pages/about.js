@@ -1,11 +1,9 @@
-/*******************************************/
-/*Main page, Renders all home videos*/
-/******************************************/
-
+// lib imports
 import React, { Component } from "react";
 import withData from "../lib/withData";
 import { connect } from "react-redux";
 import actions from "../store/actions";
+// custom imports
 import Layout from "../HOC/Layout";
 import About from "../components/sections/about";
 

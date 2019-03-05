@@ -391,7 +391,8 @@ const getActions = uri => {
     processOrder: input => {
       return async dispatch => {
         let _orderDetails = { ...input.orderDetails };
-        let _paymentMethod = _orderDetails.payment.method.value;
+        let _paymentMethod = _orderDetails.payment.method.value,
+          cart = input.cart;
         let ccResponse = null;
         // // Process Payment
         // let ccResponse = await (async () => {
@@ -429,8 +430,18 @@ const getActions = uri => {
 
         // // Process Order
         // let response = await processOrder(_orderDetails, ccResponse, uri);
-        console.log(input);
+
         // Send email confirmation
+        let products = Object.values(cart.items);
+        products = products.map((product, index) => {
+          let newProduct = {};
+          newProduct.name = product.product.name;
+          newProduct.amount = product.amount;
+          newProduct.price = product.per;
+          newProduct.quantity = product.quantity;
+          return Object.values(newProduct).join(" x ");
+        });
+        products = products.join("&=>");
         const link = new HttpLink({ uri, fetch: fetch });
         const operation = {
           query: mutation.sendEmail,
@@ -446,7 +457,7 @@ const getActions = uri => {
             ccStatus: ccResponse ? ccResponse.status : null,
             ccDescriptor: ccResponse ? ccResponse.descriptor : null,
             orderId: _orderDetails.payment.orderId.value,
-            productList: _orderDetails.payment.productList.value,
+            productList: products,
             paymentMethod: _orderDetails.payment.method.value,
             shippingDestination:
               _orderDetails.shipping.address.value +

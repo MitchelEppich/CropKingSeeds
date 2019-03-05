@@ -1,37 +1,19 @@
 /*******************************************/
 /*404 page*/
 /******************************************/
-
+// lib imports
 import React, { Component } from "react";
-import withData from "../lib/withData";
 import { connect } from "react-redux";
+// custom imports
+import withData from "../lib/withData";
 import actions from "../store/actions";
-
 import Layout from "../HOC/Layout";
 
 class Error extends Component {
-  componentDidMount() {
-    this.loop();
-  }
-
-  loop = () => {
-    let eyesShouldMove = this.props.misc.eyesShouldMove;
-
-    let min = eyesShouldMove ? 4000 : 4000;
-    let max = eyesShouldMove ? 8000 : 15000;
-
-    let rand = Math.round(Math.random() * (max - min)) + min;
-    setTimeout(() => {
-      this.props.setEyesShouldMove({ value: !this.props.misc.eyesShouldMove });
-      this.loop();
-    }, rand);
-  };
-
-  render() {
+  static async getInitialProps({ req }) {
     let styleKing = {
       // filter: "drop-shadow(60px 22px 19px rgba(0, 0, 0, 0.4))"
     };
-
     let styleBackground = {
       backgroundImage:
         "linear-gradient(to right, #bede94, #b7e29d, #afe5a7, #a9e8b1, #a3ebbb, #9cecc0, #95eec5, #8defcb, #7ff0ce, #6ef1d1, #5af1d5, #3df2da)"
@@ -40,8 +22,9 @@ class Error extends Component {
     let moveSpaceX = 45;
     let moveSpaceY = 30;
 
-    let eyesShouldMove = this.props.misc.eyesShouldMove;
-
+    return { styleKing, styleBackground, moveSpaceX, moveSpaceY };
+  }
+  componentDidMount() {
     if (typeof window !== "undefined") {
       window.addEventListener("mousemove", e => {
         let eyes = document.querySelector(".eyes");
@@ -62,24 +45,26 @@ class Error extends Component {
         for (let item of eye) {
           let iris = item.querySelector(".iris");
 
-          if (!eyesShouldMove) {
+          if (!this.props.misc.eyesShouldMove) {
             xF = 0.5;
             yF = 0.3;
           }
 
-          let left = moveSpaceX * xF + item.clientWidth / 2;
-          let top = moveSpaceY * yF + item.clientHeight / 2;
+          let left = this.props.moveSpaceX * xF + item.clientWidth / 2;
+          let top = this.props.moveSpaceY * yF + item.clientHeight / 2;
 
           iris.style.left = `${left}px`;
           iris.style.top = `${top}px`;
         }
       });
     }
-
+    this.loop();
+  }
+  render() {
     return (
       <Layout>
         <div
-          style={styleBackground}
+          style={this.props.styleBackground}
           className="w-full inline-flex md:flex-col-reverse sm:flex-col-reverse"
         >
           <div className="w-2/5 text-center justify-center md:w-full sm:w-full">
@@ -119,7 +104,7 @@ class Error extends Component {
             <div>
               <img
                 src={this.props.misc.CFURL + "/banners/King_No_eyes.png"}
-                style={styleKing}
+                style={this.props.styleKing}
                 className="relative z-999"
               />
             </div>
@@ -136,6 +121,20 @@ class Error extends Component {
       </Layout>
     );
   }
+
+  // kings eyes animation
+  loop = () => {
+    let eyesShouldMove = this.props.misc.eyesShouldMove;
+
+    let min = eyesShouldMove ? 4000 : 4000;
+    let max = eyesShouldMove ? 8000 : 15000;
+
+    let rand = Math.round(Math.random() * (max - min)) + min;
+    setTimeout(() => {
+      this.props.setEyesShouldMove({ value: !this.props.misc.eyesShouldMove });
+      this.loop();
+    }, rand);
+  };
 }
 
 const mapDispatchToProps = dispatch => {
