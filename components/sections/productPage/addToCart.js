@@ -95,7 +95,7 @@ const addToCart = props => {
                 }, 800);
               }}
             >
-              {console.log(props)}
+              {/* {console.log(props)} */}
               {props.cart.recentAdd.includes(
                 props.viewProduct.currentProduct._id
               ) ? (

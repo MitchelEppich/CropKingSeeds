@@ -49,8 +49,8 @@ class Index extends Component {
               >
                 <div className="w-full p-2">
                   <h2
-                    onClick={this.getResponse}
-                    className="cursor-pointer font-extrabold text-3xl md:text-2xl sm:text-2xl p-2 mt-4"
+                    // onClick={this.getResponse}
+                    className="font-extrabold text-3xl md:text-2xl sm:text-2xl p-2 mt-4"
                   >
                     Send us a message
                   </h2>
@@ -156,12 +156,10 @@ class Index extends Component {
                           />
                         </div>
                         <div className="w-main sm:w-full md:w-full flex justify-center">
-                          <div className="w-200 sm:w-full md:w-full md:justify-center flex justify-center">
+                          <div className="w-full sm:w-full md:w-full md:justify-center flex justify-center">
                             <button
                               type="submit"
-                              className="p-2 sm:p-3 md:p-3 px-4
-                                                              w-150 sm:w-full md:w-full text-lg text-white
-                                                              rounded bg-red-dark hover:bg-red-light font-bold"
+                              className="p-2 sm:p-3 md:p-3 px-4 w-full sm:w-full md:w-full text-lg text-white rounded bg-red-dark hover:bg-red-light font-bold"
                             >
                               {" "}
                               Submit
@@ -195,11 +193,11 @@ class Index extends Component {
                       <div className="inline-flex mt-4 items-center w-full flex">
                         <FontAwesomeIcon
                           icon={faPhone}
-                          className="fa-2x sm:p-1 mr-2 text-grey opacity-25"
+                          className="fa-lg sm:p-1 mr-2 text-grey opacity-25"
                         />
                         <p className="p-2 text-2xl font-black">Phone</p>
                       </div>
-                      <div className="ml-10 pl-1">
+                      <div className="ml-8 pl-1">
                         <p className="p-1 pb-2">
                           <span className="font-extrabold">Canada:</span> (604)
                           563-0291
@@ -216,12 +214,19 @@ class Index extends Component {
                       <div className="inline-flex mt-4 items-center w-full flex">
                         <FontAwesomeIcon
                           icon={faEnvelope}
-                          className="fa-2x mr-2 sm:p-1 text-grey opacity-25"
+                          className="fa-lg mr-2 sm:p-1 text-grey opacity-25"
                         />
                         <p className="p-2 text-2xl font-black">Email</p>
                       </div>
-                      <div className="ml-10 pl-1">
-                        <p className="p-1 pb-2">info@cropkingseeds.com</p>
+                      <div className="ml-8 pl-1">
+                        <p className="p-1 pb-2">
+                          <a
+                            className="text-grey hover:text-red"
+                            href="mailto:info@cropkingseeds.com"
+                          >
+                            info@cropkingseeds.com
+                          </a>
+                        </p>
                       </div>
                       <div
                         onClick={() => {

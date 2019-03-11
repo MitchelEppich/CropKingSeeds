@@ -289,11 +289,25 @@ const Footer = props => {
               Contact us
             </h3>
             <p className="text-white text-xl p-1 lg:text-lg">
-              info@cropkingseeds.com
+              <a
+                className="text-white hover:text-red"
+                href="mailto:info@cropkingseeds.com"
+              >
+                info@cropkingseeds.com
+              </a>
             </p>
             <a className="no-underline" href="tel:+1-844-276-7546">
               <p className="text-white text-xl p-1 lg:text-lg">
-                +1-844-276-7546
+                {props.misc.ageVerification != null &&
+                "United States" == props.misc.ageVerification.country ? (
+                  <React.Fragment>
+                    <span>+1-844-CROP-KING</span>
+                    <span className="-ml-2 mr-2">/</span>
+                    <span>(276-7546)</span>
+                  </React.Fragment>
+                ) : (
+                  "+1 (604) 563-0291"
+                )}
               </p>
             </a>
           </div>

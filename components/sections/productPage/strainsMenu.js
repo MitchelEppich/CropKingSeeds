@@ -2,7 +2,7 @@ import Router from "next/router";
 import Link from "next/link";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCannabis } from "@fortawesome/free-solid-svg-icons";
+import { faCannabis, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const strainsMenu = props => {
   let showMenu =
@@ -10,8 +10,8 @@ const strainsMenu = props => {
     props.viewProduct.showStrainsMenu;
   let position = showMenu
     ? {
-        transform: "translateX(0)",
-        overflow: "hidden"
+        transform: "translateX(0)"
+        // overflow: "hidden"
       }
     : {
         transform: "translateX(-255px)"
@@ -53,6 +53,7 @@ const strainsMenu = props => {
       let text = category[genetic];
       return (
         <p
+          key={arr}
           className={`bg-${color} ${
             Object.keys(category).indexOf(genetic) == 0 ? "mt-10" : ""
           } p-3 font-bold text-center text-white text-shadow uppercase w-full`}
@@ -73,7 +74,7 @@ const strainsMenu = props => {
             .join("-")}
         >
           <li
-            className={`text-black leading-loose mt-1 w-full list-reset text-left pl-4 font-bold`}
+            className={`text-black leading-loose cursor-pointer hover:bg-grey-lightest mt-1 w-full list-reset text-left pl-4 font-bold`}
             onClick={e => {
               let strains = props.misc.strains;
               props.getStrain({ sotiId: strain.sotiId, strains }).then(res => {
@@ -111,43 +112,54 @@ const strainsMenu = props => {
   };
   return (
     <div
-      // onClick={() => props.toggleStrainsMenu(false)}
+      onClick={() => props.toggleStrainsMenu(false)}
       style={position}
       className={
         showMenu
-          ? "w-250 h-screen bg-smoke-grey shadow-md slowish fixed pin-l pin-t mt-32 z-40 pb-2 list_container"
-          : "w-250 h-screen bg-smoke-grey shadow-md slowish fixed pin-l pin-t mt-32 z-40 pb-2 "
+          ? "w-250 h-full bg-smoke-grey shadow-md slowish fixed pin-l pin-t pt-32 sm:pt-24 sm:mt-4 z-40 pb-2 list_container"
+          : "w-250 h-full bg-smoke-grey shadow-md slowish fixed pin-l pin-t pt-32 sm:pt-24 sm:mt-4 z-40 pb-2"
       }
     >
       {Router.asPath.slice(1).includes("product/") ? (
         <div
           onClick={e => {
             e.stopPropagation();
-            props.toggleStrainsMenu(true);
+            props.toggleStrainsMenu(!props.viewProduct.showStrainsMenu);
           }}
           className="w-12 h-32 bg-red-darker hover:bg-red-light rounded-tr-lg rounded-br-lg mt-400 pin-r absolute pin-r -mr-12 cursor-pointer"
         >
           <p
             style={StrainText}
-            className="font-bold text-white w-8 h-10 pt-4 uppercase pb-4"
+            className="font-bold text-white w-12 pr-4 mt-2 uppercase pb-1"
           >
-            Strains
+            {!props.viewProduct.showStrainsMenu ? (
+              <span className="mt-2">Strains</span>
+            ) : (
+              "Close Tab"
+            )}
           </p>
-          <FontAwesomeIcon
-            icon={faCannabis}
-            style={{ transform: "rotate(90deg)" }}
-            className="fa-2x cursor-pointer flex justify-center mt-12 ml-2 py-1 text-white"
-          />
+
+          {!props.viewProduct.showStrainsMenu ? (
+            <FontAwesomeIcon
+              icon={faCannabis}
+              style={{ transform: "rotate(90deg)" }}
+              className="fa-2x cursor-pointer flex justify-center mt-0 ml-2 py-1 text-white"
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon={faTimes}
+              style={{ transform: "rotate(90deg)" }}
+              className="fa-2x cursor-pointer flex justify-center mt-0 mr-3 py-1 text-white"
+            />
+          )}
         </div>
       ) : null}
 
-      <div className="bg-white text-white relative -ml-1">
+      <div className="bg-white text-white relative -ml-1 h-full">
         <p className="bg-red-dark text-white text-center uppercase text-xl p-2 absolute w-full font-bold">
           All Strains
         </p>
-        <div className="overflow-y-auto w-full h-screen">
-          {showStrainsMenu()}
-        </div>
+        <div className="overflow-y-auto w-full h-full">{showStrainsMenu()}</div>
       </div>
     </div>
   );
