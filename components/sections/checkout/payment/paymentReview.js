@@ -31,7 +31,7 @@ const PaymentReview = props => {
     let { tax, provTax, taxType } =
       _orderDetails.billing.country.value.toLowerCase() == "canada"
         ? (() => {
-            let _province = data.provincesCA[_orderDetails.billing.state.value];
+            let _province = props.misc.taxes[_orderDetails.billing.state.value];
             let _type = _province.type;
             let _tax = _province.gst;
             let _provTax = 0;

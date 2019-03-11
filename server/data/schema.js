@@ -22,6 +22,7 @@ type Query {
   getBitcoinData(input: BitcoinDataInput): String
   getExchangeRates: String
   getCoupon(coupon: String, ip: String): Coupon
+  getTaxes: String
 
   getRandomWinnerBetweenDates(input: DateRangeInput!): Order
 

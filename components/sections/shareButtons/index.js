@@ -29,7 +29,7 @@ const ShareButtons = props => {
           className="text-white"
           target="_blank"
           rel="noreferrer"
-          href="https://www.facebook.com/cropkingseedsreview/"
+          href="https://www.facebook.com/CropKingSeeds/"
         >
           <FontAwesomeIcon
             icon={faFacebook}

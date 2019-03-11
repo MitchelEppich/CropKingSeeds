@@ -61,6 +61,14 @@ const ErrorHandler = props => {
     error[104] = "Price minimum is not met";
   }
 
+  if (
+    _orderDetails.details != null &&
+    (_orderDetails.details.infoConfirmed == null ||
+      _orderDetails.details.infoConfirmed == false)
+  ) {
+    error[105] = "Order information is not confirmed by customer";
+  }
+
   return error;
 };
 

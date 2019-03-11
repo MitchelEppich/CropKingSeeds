@@ -2,20 +2,30 @@ import data from "../../../../static/data";
 import MinimumSeedsWarning from "../other/minimumSeedsWarning";
 
 const ShippingAddress = props => {
+  let localProfiles = localStorage.getItem("profiles");
+  if (localProfiles != null) localProfiles = JSON.parse(localProfiles);
+  let localProfilesExist = localProfiles != null && localProfiles.length > 0;
+
   let pageGroup = "shipping";
   let stateOrProvinceInput;
-  if (props.checkout.orderDetails[pageGroup] == null) {
-    let _orderDetails = props.checkout.orderDetails;
+  let _orderDetails = props.checkout.orderDetails;
+  if (_orderDetails[pageGroup] == null) {
     props.modifyOrderDetails({
       orderDetails: _orderDetails,
       group: pageGroup,
       key: undefined,
       value: undefined
     });
+    props.modifyOrderDetails({
+      orderDetails: _orderDetails,
+      group: "details",
+      key: "saveForLater",
+      value: true
+    });
   } else {
-    if (props.checkout.orderDetails[pageGroup].country != null) {
+    if (_orderDetails[pageGroup].country != null) {
       stateOrProvinceInput = ["Canada", "United States"].includes(
-        props.checkout.orderDetails[pageGroup].country.value
+        _orderDetails[pageGroup].country.value
       );
     } else {
       stateOrProvinceInput = true;
@@ -48,23 +58,22 @@ const ShippingAddress = props => {
   };
 
   let showOptions = () => {
-    // if (props.checkout.orderDetails[pageGroup] == null || props.checkout.orderDetails[pageGroup].country == null)
+    // if (_orderDetails[pageGroup] == null || _orderDetails[pageGroup].country == null)
     //     return null;
     let _country =
-      props.checkout.orderDetails[pageGroup].country &&
-      props.checkout.orderDetails[pageGroup].country.value
-        ? props.checkout.orderDetails[pageGroup].country
+      _orderDetails[pageGroup].country && _orderDetails[pageGroup].country.value
+        ? _orderDetails[pageGroup].country
         : "";
     let _data;
     switch (_country.value) {
       case "Canada":
-        _data = Object.keys(data.provincesCA);
+        _data = Object.keys(props.misc.taxes);
         break;
       case "United States":
         _data = data.statesUS;
         break;
       default:
-        _data = [...data.statesUS, ...Object.keys(data.provincesCA)];
+        _data = [...data.statesUS, ...Object.keys(props.misc.taxes)];
     }
 
     let arr = [
@@ -84,28 +93,76 @@ const ShippingAddress = props => {
 
   return (
     <div className="w-full mt-6 px-8 sm:px-4">
-      <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-black">
+      <h2 className="text-3/5xl font-bold opacity-50 mt-8 mb-4 text-black">
         Shipping Address
       </h2>
       <MinimumSeedsWarning {...props} />
 
       <div className={`w-full mt-4`}>
-        <div className="w-full flex justify-end">
+        <div className="w-full flex inline-flex">
+          <div
+            className={`w-full flex justify-start ${
+              !localProfilesExist
+                ? "unselectable opacity-0 pointer-events-none"
+                : ""
+            }`}
+          >
+            <div
+              onClick={() => {
+                let profileObj = props.checkout.foundProfiles[0];
+                props.loadLocalProfile({
+                  orderDetails: _orderDetails,
+                  profile: profileObj.profile,
+                  profileID: profileObj.id,
+                  cart: props.cart,
+                  freeShippingThreshold: props.checkout.freeShippingThreshold
+                });
+              }}
+              className={`p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light ${
+                props.checkout.foundProfiles.length == 0
+                  ? "unselectable opacity-25 pointer-events-none"
+                  : ""
+              }`}
+            >
+              Load Profile
+            </div>
+          </div>
           <div className="w-full flex justify-end">
             <label className="p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light">
               <input
                 aria-label="save-data"
                 type="checkbox"
+<<<<<<< HEAD
                 id="readOnly"
                 defaultChecked={true}
+=======
+                id="saveForLater"
+                checked={
+                  _orderDetails["details"] != null
+                    ? _orderDetails["details"].saveForLater
+                    : false
+                }
+                onChange={e => {
+                  let _target = e.target;
+                  let _key = _target.id;
+                  let _value = _target.checked;
+
+                  props.modifyOrderDetails({
+                    orderDetails: _orderDetails,
+                    group: "details",
+                    key: _key,
+                    value: _value
+                  });
+                }}
+>>>>>>> 2a5b052d951ebbb2d002563e7ba449bcacd0e9d3
                 name=""
                 className="checkbox"
               />
-              Save for later
+              Save Details
             </label>
           </div>
         </div>
-        <div className="w-full p-2 inline-flex sm:flex-col">
+        <div className="w-full p-2 inline-flex sm:flex-col border-t-2 border-grey-lightest mt-2 pt-4">
           <div className="w-1/2 sm:w-full sm:pl-0 sm:mt-4">
             <input
               aria-label="name"
@@ -114,13 +171,12 @@ const ShippingAddress = props => {
               id="fullName"
               autoComplete="name"
               value={
-                props.checkout.orderDetails[pageGroup] != null &&
-                props.checkout.orderDetails[pageGroup].fullName != null
-                  ? props.checkout.orderDetails[pageGroup].fullName.value || ""
+                _orderDetails[pageGroup] != null &&
+                _orderDetails[pageGroup].fullName != null
+                  ? _orderDetails[pageGroup].fullName.value || ""
                   : ""
               }
               onChange={e => {
-                let _orderDetails = props.checkout.orderDetails;
                 let _target = e.target;
                 let _key = _target.id;
                 let _value = _target.value;
@@ -139,37 +195,71 @@ const ShippingAddress = props => {
               required
             />
           </div>
-          <div className="w-1/2 pl-2 sm:w-full sm:pl-0 sm:mt-4">
-            <input
-              aria-label="email"
-              type="email"
-              name="email"
-              id="email"
-              value={
-                props.checkout.orderDetails[pageGroup] != null &&
-                props.checkout.orderDetails[pageGroup].email != null
-                  ? props.checkout.orderDetails[pageGroup].email.value || ""
+          <div className="w-1/2 pl-2 sm:w-full sm:pl-0 sm:mt-4 inline-flex">
+            <div
+              className={`w-2/3 ${
+                _orderDetails[pageGroup].noEmail
+                  ? "unselectable opacity-50 pointer-events-none"
                   : ""
-              }
-              onChange={e => {
-                let _orderDetails = props.checkout.orderDetails;
-                let _target = e.target;
-                let _key = _target.id;
-                let _value = _target.value;
-                let _tag = "Email";
+              }`}
+            >
+              <input
+                aria-label="email"
+                type="email"
+                name="email"
+                id="email"
+                value={
+                  _orderDetails[pageGroup] != null &&
+                  _orderDetails[pageGroup].email != null
+                    ? _orderDetails[pageGroup].email.value || ""
+                    : ""
+                }
+                onChange={e => {
+                  let _target = e.target;
+                  let _key = _target.id;
+                  let _value = _target.value;
+                  let _tag = "Email";
 
-                props.modifyOrderDetails({
-                  orderDetails: _orderDetails,
-                  group: pageGroup,
-                  key: _key,
-                  value: _value,
-                  tag: _tag
-                });
-              }}
-              placeholder="Email Address"
-              className="p-2 w-full"
-              required
-            />
+                  props.modifyOrderDetails({
+                    orderDetails: _orderDetails,
+                    group: pageGroup,
+                    key: _key,
+                    value: _value,
+                    tag: _tag
+                  });
+                }}
+                placeholder="Email Address"
+                className="p-2 w-full"
+                required
+              />
+            </div>
+            <div className="w-1/3 pt-1">
+              <label className="cursor-pointer font-bold uppercase items-center flex">
+                <input
+                  type="checkbox"
+                  id="noEmail"
+                  checked={
+                    _orderDetails[pageGroup] != null
+                      ? _orderDetails[pageGroup].noEmail
+                      : false
+                  }
+                  onChange={e => {
+                    let _target = e.target;
+                    let _key = _target.id;
+                    let _value = _target.checked;
+
+                    props.modifyOrderDetails({
+                      orderDetails: _orderDetails,
+                      group: pageGroup,
+                      key: _key,
+                      value: _value
+                    });
+                  }}
+                  className="ml-2 checkbox"
+                />{" "}
+                No Email
+              </label>
+            </div>
           </div>
         </div>
         <div className="w-full p-2">
@@ -181,13 +271,12 @@ const ShippingAddress = props => {
             autoComplete="shipping street-address"
             id="address"
             value={
-              props.checkout.orderDetails[pageGroup] != null &&
-              props.checkout.orderDetails[pageGroup].address != null
-                ? props.checkout.orderDetails[pageGroup].address.value || ""
+              _orderDetails[pageGroup] != null &&
+              _orderDetails[pageGroup].address != null
+                ? _orderDetails[pageGroup].address.value || ""
                 : ""
             }
             onChange={e => {
-              let _orderDetails = props.checkout.orderDetails;
               let _target = e.target;
               let _key = _target.id;
               let _value = _target.value;
@@ -214,13 +303,12 @@ const ShippingAddress = props => {
             autoComplete="shipping apartment"
             id="apartment"
             value={
-              props.checkout.orderDetails[pageGroup] != null &&
-              props.checkout.orderDetails[pageGroup].apartment != null
-                ? props.checkout.orderDetails[pageGroup].apartment.value || ""
+              _orderDetails[pageGroup] != null &&
+              _orderDetails[pageGroup].apartment != null
+                ? _orderDetails[pageGroup].apartment.value || ""
                 : ""
             }
             onChange={e => {
-              let _orderDetails = props.checkout.orderDetails;
               let _target = e.target;
               let _key = _target.id;
               let _value = _target.value;
@@ -248,13 +336,12 @@ const ShippingAddress = props => {
               autoComplete="shipping postal-code"
               id="postalZip"
               value={
-                props.checkout.orderDetails[pageGroup] != null &&
-                props.checkout.orderDetails[pageGroup].postalZip != null
-                  ? props.checkout.orderDetails[pageGroup].postalZip.value || ""
+                _orderDetails[pageGroup] != null &&
+                _orderDetails[pageGroup].postalZip != null
+                  ? _orderDetails[pageGroup].postalZip.value || ""
                   : ""
               }
               onChange={e => {
-                let _orderDetails = props.checkout.orderDetails;
                 let _target = e.target;
                 let _key = _target.id;
                 let _value = _target.value;
@@ -281,13 +368,12 @@ const ShippingAddress = props => {
               autoComplete="shipping locality"
               id="city"
               value={
-                props.checkout.orderDetails[pageGroup] != null &&
-                props.checkout.orderDetails[pageGroup].city != null
-                  ? props.checkout.orderDetails[pageGroup].city.value || ""
+                _orderDetails[pageGroup] != null &&
+                _orderDetails[pageGroup].city != null
+                  ? _orderDetails[pageGroup].city.value || ""
                   : ""
               }
               onChange={e => {
-                let _orderDetails = props.checkout.orderDetails;
                 let _target = e.target;
                 let _key = _target.id;
                 let _value = _target.value;
@@ -313,13 +399,12 @@ const ShippingAddress = props => {
               autoComplete="shipping country"
               required
               value={
-                props.checkout.orderDetails[pageGroup] != null &&
-                props.checkout.orderDetails[pageGroup].country != null
-                  ? props.checkout.orderDetails[pageGroup].country.value || ""
+                _orderDetails[pageGroup] != null &&
+                _orderDetails[pageGroup].country != null
+                  ? _orderDetails[pageGroup].country.value || ""
                   : ""
               }
               onChange={e => {
-                let _orderDetails = props.checkout.orderDetails;
                 let _target = e.target;
                 let _key = _target.id;
                 let _value = _target.value;
@@ -360,13 +445,12 @@ const ShippingAddress = props => {
               required={stateOrProvinceInput ? "required" : null}
               id="state"
               value={
-                props.checkout.orderDetails[pageGroup] != null &&
-                props.checkout.orderDetails[pageGroup].state != null
-                  ? props.checkout.orderDetails[pageGroup].state.value || ""
+                _orderDetails[pageGroup] != null &&
+                _orderDetails[pageGroup].state != null
+                  ? _orderDetails[pageGroup].state.value || ""
                   : ""
               }
               onChange={e => {
-                let _orderDetails = props.checkout.orderDetails;
                 let _target = e.target;
                 let _key = _target.id;
                 let _value = _target.value;
@@ -410,13 +494,12 @@ const ShippingAddress = props => {
               required={stateOrProvinceInput ? "required" : null}
               id="state"
               value={
-                props.checkout.orderDetails[pageGroup] != null &&
-                props.checkout.orderDetails[pageGroup].state != null
-                  ? props.checkout.orderDetails[pageGroup].state.value || ""
+                _orderDetails[pageGroup] != null &&
+                _orderDetails[pageGroup].state != null
+                  ? _orderDetails[pageGroup].state.value || ""
                   : ""
               }
               onChange={e => {
-                let _orderDetails = props.checkout.orderDetails;
                 let _target = e.target;
                 let _key = _target.id;
                 let _value = _target.value;
@@ -456,13 +539,12 @@ const ShippingAddress = props => {
               required
               id="phone"
               value={
-                props.checkout.orderDetails[pageGroup] != null &&
-                props.checkout.orderDetails[pageGroup].phone != null
-                  ? props.checkout.orderDetails[pageGroup].phone.value || ""
+                _orderDetails[pageGroup] != null &&
+                _orderDetails[pageGroup].phone != null
+                  ? _orderDetails[pageGroup].phone.value || ""
                   : ""
               }
               onChange={e => {
-                let _orderDetails = props.checkout.orderDetails;
                 let _target = e.target;
                 let _key = _target.id;
                 let _value = _target.value;
@@ -486,6 +568,52 @@ const ShippingAddress = props => {
               className="p-2 w-full"
             />
           </div>
+        </div>
+      </div>
+      <div className="justify-between flex w-full mt-4 opacity-75">
+        {props.checkout.profileID == null ? (
+          <div
+            onClick={() => {
+              props.purgeLocalProfile({});
+              props.clearOrderDetails({
+                orderDetails: _orderDetails,
+                group: pageGroup
+              });
+            }}
+            className={`p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light ${
+              !localProfilesExist
+                ? "unselectable opacity-0 pointer-events-none"
+                : ""
+            }`}
+          >
+            Purge all Profiles
+          </div>
+        ) : (
+          <div
+            onClick={() => {
+              props.purgeLocalProfile({
+                profileID: props.checkout.profileID
+              });
+              props.clearOrderDetails({
+                orderDetails: _orderDetails,
+                group: pageGroup
+              });
+            }}
+            className="p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light"
+          >
+            Purge My Profile
+          </div>
+        )}
+        <div
+          onClick={() => {
+            props.clearOrderDetails({
+              orderDetails: _orderDetails,
+              group: pageGroup
+            });
+          }}
+          className="p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light"
+        >
+          Clear Details
         </div>
       </div>
     </div>

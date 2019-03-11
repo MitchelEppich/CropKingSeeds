@@ -281,9 +281,12 @@ let buildRelation = list => {
     let _soldQuantity = [...strain.soldQuantity];
     _soldQuantity[["5", "10", "25"].indexOf(_strain.quantity)] += 1;
     strain.soldQuantity = [..._soldQuantity];
-    let relation = decompress(strain.relationData)
-      .trim()
-      .split(" ");
+    let relation;
+    if (strain.relationData.length == 0) relation = "";
+    else
+      relation = decompress(strain.relationData)
+        .trim()
+        .split(" ");
     for (let _id of _products.map(a => a.id)) {
       if (_id == _strain.id) continue;
       let index = relation.findIndex(a => {

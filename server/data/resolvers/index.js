@@ -9,7 +9,14 @@ const emailTemplates = require("../emails");
 const axios = require("axios");
 const request = require("request-promise");
 
-const { Email, News, BlockedIp, BlockedZip, Banners } = require("../../models");
+const {
+  Email,
+  News,
+  BlockedIp,
+  BlockedZip,
+  Banners,
+  Tax
+} = require("../../models");
 
 const Strain = StrainResolvers.Strain;
 const Order = OrderResolvers.Order;
@@ -96,6 +103,22 @@ const resolvers = {
       let indexOf = page.indexOf(searchTerm);
       let value = indexOf + searchTerm.length;
       return parseFloat(page.slice(value).split('"')[0]);
+    },
+    getTaxes: async _ => {
+      let taxes = await Tax.find({});
+      let _taxes = {};
+
+      for (let tax of taxes) {
+        tax = tax.toObject();
+        let state = tax.state;
+        delete tax.state;
+        delete tax._id;
+        _taxes[state] = { ...tax };
+      }
+
+      // console.log(_taxes);
+
+      return JSON.stringify(_taxes);
     }
   },
   Strain,

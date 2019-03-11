@@ -52,7 +52,26 @@ const Payment = props => {
               <input
                 type="checkbox"
                 name="confirmation-data"
+                id="infoConfirmed"
+                checked={
+                  props.checkout.orderDetails["details"] != null
+                    ? props.checkout.orderDetails["details"].infoConfirmed
+                    : false
+                }
                 // checked={false}
+                onChange={e => {
+                  let _orderDetails = props.checkout.orderDetails;
+                  let _target = e.target;
+                  let _key = _target.id;
+                  let _value = _target.checked;
+
+                  props.modifyOrderDetails({
+                    orderDetails: _orderDetails,
+                    group: "details",
+                    key: _key,
+                    value: _value
+                  });
+                }}
                 className="checkbox"
               />
               I confirm that all my information is correct. *
@@ -71,49 +90,57 @@ const Payment = props => {
         </h2>
       </div>
       <div
-        style={titleBox}
-        className="font-bold py-2 p-2 mb-4 mt-2 bg-red-dark text-white"
+        className={
+          props.checkout.error[105] != null
+            ? "opacity-50 unselectable pointer-events-none"
+            : ""
+        }
       >
-        <p className="text-lg">
-          Please, select your Payment Method to finalize your Order:
-        </p>
-      </div>
-      {["Canada", "United States"].includes(
-        _orderDetails.billing.country.value
-      ) && allowCC ? (
-        <CreditCard {...props} />
-      ) : (
-        <div />
-      )}
-      {/* {["Canada", "United States"].includes(
+        <div
+          style={titleBox}
+          className="font-bold py-2 p-2 mb-4 mt-2 bg-red-dark text-white"
+        >
+          <p className="text-lg">
+            Please, select your Payment Method to finalize your Order:
+          </p>
+        </div>
+        {["Canada", "United States"].includes(
+          _orderDetails.billing.country.value
+        ) && allowCC ? (
+          <CreditCard {...props} />
+        ) : (
+          <div />
+        )}
+        {/* {["Canada", "United States"].includes(
         _orderDetails.billing.country.value
       ) && allowCC ? (
         <PrepaidCard {...props} />
       ) : (
         <div />
       )} */}
-      <Bitcoin {...props} />
-      {_orderDetails.billing.country.value != "Canada" ? (
-        <Moneygram {...props} />
-      ) : (
-        <div />
-      )}
-      <Cash {...props} />
-      {_orderDetails.billing.country.value == "Canada" ? (
-        <Transfer {...props} />
-      ) : (
-        <div />
-      )}
-      {!allowCC ? (
-        <div className="w-full">
-          <hr className="border-t-1 mb-8 opacity-25 border border-grey-lighter" />
-          <p className="text-red-dark w-full text-center opacity-75">
-            ** Credit Card has been disabled in your location **
-          </p>
-        </div>
-      ) : (
-        <div />
-      )}
+        <Bitcoin {...props} />
+        {_orderDetails.billing.country.value != "Canada" ? (
+          <Moneygram {...props} />
+        ) : (
+          <div />
+        )}
+        <Cash {...props} />
+        {_orderDetails.billing.country.value == "Canada" ? (
+          <Transfer {...props} />
+        ) : (
+          <div />
+        )}
+        {!allowCC ? (
+          <div className="w-full">
+            <hr className="border-t-1 mb-8 opacity-25 border border-grey-lighter" />
+            <p className="text-red-dark w-full text-center opacity-75">
+              ** Credit Card has been disabled in your location **
+            </p>
+          </div>
+        ) : (
+          <div />
+        )}
+      </div>
     </div>
   );
 };

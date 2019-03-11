@@ -53,7 +53,14 @@ class Index extends Component {
   render() {
     let _orderDetails = this.props.checkout.orderDetails;
     let _stepsCheckout = this.props.misc.stepsCheckout;
+<<<<<<< HEAD
     let _error = Object.keys(this.props.checkout.error).length != 0;
+=======
+    let errors = { ...this.props.checkout.error };
+    delete errors[105]; // This error is for checking if user confirms information, not for this section
+    let _error = Object.keys(errors).length != 0;
+
+>>>>>>> 2a5b052d951ebbb2d002563e7ba449bcacd0e9d3
     let itemsCart = Object.keys(this.props.cart.items);
 
     return (
@@ -123,7 +130,18 @@ class Index extends Component {
               }
             } else {
               _stepsCheckout < 4
-                ? this.props.toggleStepsCheckout(_stepsCheckout + 1)
+                ? (() => {
+                    this.props.toggleStepsCheckout(_stepsCheckout + 1);
+                    if (
+                      _orderDetails.details != null &&
+                      _orderDetails.details.saveForLater &&
+                      _stepsCheckout == 2
+                    ) {
+                      this.props.storeOrderDetails({
+                        orderDetails: _orderDetails
+                      });
+                    }
+                  })()
                 : null;
             }
           }}
@@ -354,6 +372,12 @@ const mapDispatchToProps = dispatch => {
     clearCart: () => dispatch(actions.clearCart()),
     purgeCart: () => dispatch(actions.purgeCart()),
     purgeOrderDetails: input => dispatch(actions.purgeOrderDetails(input)),
+    storeOrderDetails: input => dispatch(actions.storeOrderDetails(input)),
+    loadLocalProfile: input => dispatch(actions.loadLocalProfile(input)),
+    purgeLocalProfile: input => dispatch(actions.purgeLocalProfile(input)),
+    clearOrderDetails: input => dispatch(actions.clearOrderDetails(input)),
+    checkForLocalProfile: input =>
+      dispatch(actions.checkForLocalProfile(input)),
     acquireOrderId: input => dispatch(actions.acquireOrderId(input))
   }; // setCheckoutScreen: input => dispatch(actions.setCheckoutScreen(input)),
 };

@@ -25,7 +25,7 @@ import { inferStrainData } from "../utilities/strain";
 
 const uri = "https://127.0.0.1:3000/graphql";
 // const uri = "https://159.203.5.200:3000/graphql";
-// const uri = "https://192.168.0.51:3000/graphql";
+// const uri = "https://192.168.0.54:3000/graphql";
 
 const imports = {
   ...Cart(uri),
@@ -71,7 +71,9 @@ const actionTypes = {
   SET_NEWS_STEPPER: "SET_NEWS_STEPPER",
   IS_REPEAT_CUSTOMER: "IS_REPEAT_CUSTOMER",
   COMPARE_STRAIN: "COMPARE_STRAIN",
-  SET_EYES_SHOULD_MOVE: "SET_EYES_SHOULD_MOVE"
+  SET_EYES_SHOULD_MOVE: "SET_EYES_SHOULD_MOVE",
+  SET_COMPARE_SEARCH: "SET_COMPARE_SEARCH",
+  GET_TAXES: "GET_TAXES"
 };
 
 const actions = {
@@ -202,10 +204,14 @@ const actions = {
       index: index
     };
   },
-  getStrains: () => {
+  getStrains: input => {
     return async dispatch => {
+      let verbose =
+        input == null || input.verbose == null ? false : input.verbose;
       const link = new HttpLink({ uri, fetch: fetch });
-      const operation = { query: query.allStrains };
+      const operation = {
+        query: verbose ? query.allStrainsFull : query.allStrains
+      };
 
       return await makePromise(execute(link, operation))
         .then(data => {
@@ -216,6 +222,29 @@ const actions = {
           }
           dispatch(actions.setStrains(_new));
           return Promise.resolve(_new);
+        })
+        .catch(error => console.log(error));
+    };
+  },
+  getTaxes: () => {
+    return async dispatch => {
+      const link = new HttpLink({ uri, fetch: fetch });
+      const operation = {
+        query: query.getTaxes
+      };
+
+      return await makePromise(execute(link, operation))
+        .then(data => {
+          let _taxes = data.data.getTaxes;
+
+          if (_taxes != null) _taxes = JSON.parse(_taxes);
+
+          dispatch({
+            type: actionTypes.GET_TAXES,
+            input: _taxes
+          });
+
+          return Promise.resolve(_taxes);
         })
         .catch(error => console.log(error));
     };
@@ -282,6 +311,12 @@ const actions = {
           });
         })
         .catch(error => console.log(error));
+    };
+  },
+  setCompareSearchValue: input => {
+    return {
+      type: actionTypes.SET_COMPARE_SEARCH,
+      input: input
     };
   },
   setStrain: strain => {
@@ -503,6 +538,11 @@ const actions = {
 };
 
 const query = {
+  getTaxes: gql`
+    {
+      getTaxes
+    }
+  `,
   isRepeatCustomer: gql`
     query($ip: String) {
       isRepeatCustomer(input: { ip: $ip })
@@ -625,6 +665,40 @@ const query = {
         ruderalis
         rating
         releaseDate
+      }
+    }
+  `,
+  allStrainsFull: gql`
+    query {
+      allStrains {
+        _id
+        name
+        price
+        strainImg
+        packageImg
+        inStock
+        genetic
+        yield
+        flowerTime
+        type
+        pthc
+        pcbd
+        pcbn
+        sotiId
+        sativa
+        indica
+        ruderalis
+        rating
+        releaseDate
+        description
+        effect
+        difficulty
+        og
+        country
+        env
+        reviews
+        ratingQuantity
+        featured
       }
     }
   `

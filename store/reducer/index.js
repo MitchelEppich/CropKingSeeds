@@ -57,7 +57,9 @@ const initialState = {
   CFURL: "http://dcfgweqx7od72.cloudfront.net",
   newsTimeout: null,
   newCustomer: null,
-  eyesShouldMove: false
+  eyesShouldMove: false,
+  compareSearchValue: "",
+  taxes: null
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -103,6 +105,10 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         newCustomer: action.input
       });
+    case actionTypes.GET_TAXES:
+      return updateObject(state, {
+        taxes: action.input
+      });
     case actionTypes.SET_EYES_SHOULD_MOVE:
       return updateObject(state, {
         eyesShouldMove: action.input
@@ -110,6 +116,10 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.COMPARE_STRAIN:
       return updateObject(state, {
         compareStrains: action.compareStrains
+      });
+    case actionTypes.SET_COMPARE_SEARCH:
+      return updateObject(state, {
+        compareSearchValue: action.input
       });
     case actionTypes.SET_HOVER_ID:
       return updateObject(state, {
