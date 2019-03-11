@@ -1,4 +1,4 @@
-let inferStrainData = strain => {
+let inferStrainData = (strain, options = {}) => {
   let ret = {};
   let _countries = [
     "Canada",
@@ -6,7 +6,8 @@ let inferStrainData = strain => {
     "Spain",
     "Netherlands",
     "United Kingdom",
-    "South Africa"
+    "South Africa",
+    "Central America"
   ];
   let _genetics = ["Feminized", "Autoflower", "Regular", "CBD", "Dwarf", "Mix"];
   let _difficulties = ["Easy", "Moderate", "Experienced", "Master"];
@@ -31,16 +32,20 @@ let inferStrainData = strain => {
   if (country != null)
     (() => {
       let str = "";
+      let arr = [];
       do {
         let _countryIndex = country.shift();
         let _countriesLeft = country.length;
 
-        str += _countries[_countryIndex];
+        let _country = _countries[_countryIndex];
+        str += _country;
+        arr.push(_country);
 
         if (_countriesLeft > 1) str += ", ";
         else if (_countriesLeft == 1) str += " and ";
       } while (country.length > 0);
       ret.country = str;
+      ret.aCountry = arr;
     })();
 
   // Infer difficulty
@@ -50,15 +55,24 @@ let inferStrainData = strain => {
   }
 
   // Infer Genetics
-  if (genetic != null) ret.genetic = _genetics[genetic];
+  let _genetic;
+  if (genetic != null) {
+    _genetic = _genetics[genetic];
+    ret.genetic = _genetic;
+  }
 
   // Infer Names
   if (name != null)
     (() => {
       let _name = name;
       _name = _name.replace("Cannabis", "").replace("Seeds", "");
-      if (genetic != "Mix") _name = _name.replace(genetic, "");
-      else _name = _name.replace("Mix", "Mixed");
+
+      if (_genetic != null) {
+        if (_genetic != "Mix" && options.excludeGenetic)
+          _name = _name.replace(_genetic, "");
+        else _name = _name.replace("Mix", "Mixed");
+      }
+      console.log(genetic, _name);
       // if (genetic == "CBD") _name = _name.replace("CB", "");
       ret.name = _name.replace(/\s+/g, " ").trim();
     })();
@@ -128,11 +142,13 @@ let inferStrainData = strain => {
   }
 
   if (flowerTime != null) {
-    let _upper = (flowerTime.includes(" to ")
-      ? flowerTime.split(" to ")[1]
-      : flowerTime
-    ).replace(/\D/g, "");
-    ret.nFlowerTime = parseInt(_upper);
+    ret.nFlowerTime = [...flowerTime];
+    ret.flowerTime = (() => {
+      if (flowerTime.length == 2) {
+        return `${flowerTime[0]} to ${flowerTime[1]} Weeks`;
+      }
+      return `${flowerTime[0]} Weeks`;
+    })();
   }
 
   return {
