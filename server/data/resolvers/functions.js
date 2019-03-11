@@ -38,7 +38,6 @@ const orderFilters = ({ OR = [], coupon, ip }) => {
 
 // LZW-compress a string
 const compress = s => {
-  console.log(s);
   var dict = {};
   var data = (s + "").split("");
   var out = [];
@@ -56,7 +55,6 @@ const compress = s => {
       phrase = currChar;
     }
   }
-  console.log(phrase, data);
   out.push(phrase.length > 1 ? dict[phrase] : phrase.charCodeAt(0));
   for (var i = 0; i < out.length; i++) {
     out[i] = String.fromCharCode(out[i]);
