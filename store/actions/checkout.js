@@ -30,7 +30,9 @@ const actionTypes = {
   PURGE_ORDER_DETAILS: "PURGE_ORDER_DETAILS",
   STORE_ORDER_DETAILS: "STORE_ORDER_DETAILS",
   CHECK_FOR_LOCAL_PROFILE: "CHECK_FOR_LOCAL_PROFILE",
-  LOAD_LOCAL_PROFILE: "LOAD_LOCAL_PROFILE"
+  LOAD_LOCAL_PROFILE: "LOAD_LOCAL_PROFILE",
+  PURGE_LOCAL_PROFILE: "PURGE_LOCAL_PROFILE",
+  CLEAR_ORDER_DETAILS: "CLEAR_ORDER_DETAILS"
 };
 
 let shippingMethods = [
@@ -173,6 +175,12 @@ const getActions = uri => {
             ] = true;
         }
 
+        if (_key == "noEmail")
+          _orderDetails[_group].email = {
+            value: _value ? "no@mail.com" : null,
+            tag: _group == "shipping" ? "Ship" : "Bill" + "Email"
+          };
+
         if (_group != null) {
           if (_orderDetails[_group] == null) _orderDetails[_group] = {};
           _orderDetails[_group][_key] =
@@ -215,6 +223,7 @@ const getActions = uri => {
         let _freeShippingThreshold = input.freeShippingThreshold;
         let _cart = input.cart;
         let _profile = input.profile;
+        let _profileID = input.profileID;
         let _orderDetails = input.orderDetails;
 
         _orderDetails = {
@@ -237,34 +246,93 @@ const getActions = uri => {
           })
         );
 
+        sessionStorage.setItem(
+          "orderDetails",
+          JSON.stringify(
+            (() => {
+              let o = { ..._orderDetails };
+              delete o.payment;
+              return o;
+            })()
+          )
+        );
+
         dispatch({
           type: actionTypes.LOAD_LOCAL_PROFILE,
-          input: _orderDetails
+          input: _orderDetails,
+          id: _profileID
         });
       };
     },
     checkForLocalProfile: input => {
-      let _shipping = input.orderDetails.shipping;
+      let _shipping = { ...input.orderDetails.shipping };
+
+      _shipping = {
+        address: { ..._shipping.address },
+        apartment: { ..._shipping.apartment },
+        city: { ..._shipping.city },
+        country: { ..._shipping.country },
+        email: { ..._shipping.email },
+        fullName: { ..._shipping.fullName },
+        phone: { ..._shipping.phone },
+        postalZip: { ..._shipping.postalZip },
+        state: { ..._shipping.state }
+      };
+
       let _local = localStorage.getItem("profiles");
       if (_local != null) {
         _local = JSON.parse(_local);
+      } else {
+        _local = {};
       }
 
       let fields = [...fieldsForProfileSearch];
       let possibleProfiles = [];
 
+      let index = 0;
       for (let profile of Object.values(_local)) {
         let matched = false;
         let _profile = JSON.parse(profile);
+        if (_profile == null) continue;
         let $shipping = _profile.shipping;
 
-        if (JSON.stringify($shipping) == JSON.stringify(_shipping)) break;
+        let isCurrent = (() => {
+          let fields = [
+            "address",
+            "apartment",
+            "city",
+            "country",
+            "email",
+            "fullName",
+            "phone",
+            "postalZip",
+            "state"
+          ];
+          for (let field of fields) {
+            if (
+              $shipping[field] != null &&
+              _shipping[field] != null &&
+              $shipping[field].value != _shipping[field].value
+            )
+              return false;
+          }
+          return true;
+        })();
+
+        if (isCurrent) {
+          possibleProfiles = [];
+          break;
+        }
 
         for (let field of fields) {
           if (matched) break;
           if (
             $shipping[field] != null &&
             _shipping[field] != null &&
+            $shipping[field].value != null &&
+            _shipping[field].value != null &&
+            $shipping[field].value.trim().length != 0 &&
+            _shipping[field].value.trim().length != 0 &&
             $shipping[field].value
               .toLowerCase()
               .trim()
@@ -273,12 +341,55 @@ const getActions = uri => {
             matched = true;
         }
 
-        if (matched) possibleProfiles.push(_profile);
+        if (matched) possibleProfiles.push({ profile: _profile, id: index });
+        index++;
       }
 
       return {
         type: actionTypes.CHECK_FOR_LOCAL_PROFILE,
         input: possibleProfiles
+      };
+    },
+    clearOrderDetails: input => {
+      let _orderDetails = input.orderDetails;
+      let _group = input.group;
+
+      _orderDetails[_group] = {};
+
+      sessionStorage.setItem(
+        "orderDetails",
+        JSON.stringify(
+          (() => {
+            let o = { ..._orderDetails };
+            delete o.payment;
+            return o;
+          })()
+        )
+      );
+
+      return {
+        type: actionTypes.CLEAR_ORDER_DETAILS,
+        input: _orderDetails
+      };
+    },
+    purgeLocalProfile: input => {
+      let _profileID = input.profileID;
+      let _local = localStorage.getItem("profiles");
+      if (_local != null) {
+        _local = JSON.parse(_local);
+      } else {
+        _local = [];
+      }
+      if (_profileID == null) _local = [];
+      else {
+        if (_local.length == 1) _local = [];
+        else _local.splice(_profileID, 1);
+      }
+
+      localStorage.setItem("profiles", JSON.stringify(_local));
+
+      return {
+        type: actionTypes.PURGE_LOCAL_PROFILE
       };
     },
     storeOrderDetails: input => {
@@ -288,7 +399,11 @@ const getActions = uri => {
         delete _orderDetails.details.infoConfirmed;
       for (let key of Object.keys(_orderDetails)) {
         for (let _key of Object.keys(_orderDetails[key])) {
-          if (_key == "updatedAt") delete _orderDetails[key][_key];
+          if (["updatedAt", "shippingCost", "shippingDetail"].includes(_key)) {
+            _orderDetails[key] = { ..._orderDetails[key] };
+            _orderDetails[key][_key] = { ..._orderDetails[key][_key] };
+            delete _orderDetails[key][_key];
+          }
         }
       }
 

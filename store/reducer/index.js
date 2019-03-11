@@ -58,7 +58,8 @@ const initialState = {
   newsTimeout: null,
   newCustomer: null,
   eyesShouldMove: false,
-  compareSearchValue: ""
+  compareSearchValue: "",
+  taxes: null
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -103,6 +104,10 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.IS_REPEAT_CUSTOMER:
       return updateObject(state, {
         newCustomer: action.input
+      });
+    case actionTypes.GET_TAXES:
+      return updateObject(state, {
+        taxes: action.input
       });
     case actionTypes.SET_EYES_SHOULD_MOVE:
       return updateObject(state, {

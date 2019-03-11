@@ -375,6 +375,8 @@ const mapDispatchToProps = dispatch => {
     purgeOrderDetails: input => dispatch(actions.purgeOrderDetails(input)),
     storeOrderDetails: input => dispatch(actions.storeOrderDetails(input)),
     loadLocalProfile: input => dispatch(actions.loadLocalProfile(input)),
+    purgeLocalProfile: input => dispatch(actions.purgeLocalProfile(input)),
+    clearOrderDetails: input => dispatch(actions.clearOrderDetails(input)),
     checkForLocalProfile: input =>
       dispatch(actions.checkForLocalProfile(input)),
     acquireOrderId: input => dispatch(actions.acquireOrderId(input))

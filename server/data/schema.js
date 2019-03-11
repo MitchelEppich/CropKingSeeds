@@ -3,6 +3,7 @@ const resolvers = require("./resolvers");
 
 const typeDefs = `
 type Query {
+  exportAllStrains: String
   sendString: String
   strain(input: StrainInput!): Strain
   allStrains(filter: StrainFilter): [Strain]!
@@ -22,6 +23,7 @@ type Query {
   getBitcoinData(input: BitcoinDataInput): String
   getExchangeRates: String
   getCoupon(coupon: String, ip: String): Coupon
+  getTaxes: String
 
   getRandomWinnerBetweenDates(input: DateRangeInput!): Order
 

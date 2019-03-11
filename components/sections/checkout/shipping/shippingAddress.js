@@ -4,6 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const ShippingAddress = props => {
+  let localProfiles = localStorage.getItem("profiles");
+  if (localProfiles != null) localProfiles = JSON.parse(localProfiles);
+  let localProfilesExist = localProfiles != null && localProfiles.length > 0;
+
   let pageGroup = "shipping";
   let stateOrProvinceInput;
   let _orderDetails = props.checkout.orderDetails;
@@ -65,13 +69,13 @@ const ShippingAddress = props => {
     let _data;
     switch (_country.value) {
       case "Canada":
-        _data = Object.keys(data.provincesCA);
+        _data = Object.keys(props.misc.taxes);
         break;
       case "United States":
         _data = data.statesUS;
         break;
       default:
-        _data = [...data.statesUS, ...Object.keys(data.provincesCA)];
+        _data = [...data.statesUS, ...Object.keys(props.misc.taxes)];
     }
 
     let arr = [
@@ -98,12 +102,20 @@ const ShippingAddress = props => {
 
       <div className={`w-full mt-4`}>
         <div className="w-full flex inline-flex">
-          <div className="w-full flex justify-start">
+          <div
+            className={`w-full flex justify-start ${
+              !localProfilesExist
+                ? "unselectable opacity-0 pointer-events-none"
+                : ""
+            }`}
+          >
             <div
               onClick={() => {
+                let profileObj = props.checkout.foundProfiles[0];
                 props.loadLocalProfile({
                   orderDetails: _orderDetails,
-                  profile: props.checkout.foundProfiles[0],
+                  profile: profileObj.profile,
+                  profileID: profileObj.id,
                   cart: props.cart,
                   freeShippingThreshold: props.checkout.freeShippingThreshold
                 });
@@ -182,7 +194,13 @@ const ShippingAddress = props => {
             />
           </div>
           <div className="w-1/2 pl-2 sm:w-full sm:pl-0 sm:mt-4 inline-flex">
-            <div className="w-2/3">
+            <div
+              className={`w-2/3 ${
+                _orderDetails[pageGroup].noEmail
+                  ? "unselectable opacity-50 pointer-events-none"
+                  : ""
+              }`}
+            >
               <input
                 aria-label="email"
                 type="email"
@@ -217,10 +235,26 @@ const ShippingAddress = props => {
               <label className="cursor-pointer font-bold uppercase items-center flex">
                 <input
                   type="checkbox"
-                  value=""
-                  name=""
+                  id="noEmail"
+                  checked={
+                    _orderDetails[pageGroup] != null
+                      ? _orderDetails[pageGroup].noEmail
+                      : false
+                  }
+                  onChange={e => {
+                    let _target = e.target;
+                    let _key = _target.id;
+                    let _value = _target.checked;
+
+                    props.modifyOrderDetails({
+                      orderDetails: _orderDetails,
+                      group: pageGroup,
+                      key: _key,
+                      value: _value
+                    });
+                  }}
                   className="ml-2 checkbox"
-                />
+                />{" "}
                 No Email
               </label>
             </div>
@@ -534,22 +568,50 @@ const ShippingAddress = props => {
           </div>
         </div>
       </div>
-      <div className="justify-between flex w-full mt-4 px-2">
+      <div className="justify-between flex w-full mt-4 opacity-75">
+        {props.checkout.profileID == null ? (
+          <div
+            onClick={() => {
+              props.purgeLocalProfile({});
+              props.clearOrderDetails({
+                orderDetails: _orderDetails,
+                group: pageGroup
+              });
+            }}
+            className={`p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light ${
+              !localProfilesExist
+                ? "unselectable opacity-0 pointer-events-none"
+                : ""
+            }`}
+          >
+            Purge all Profiles
+          </div>
+        ) : (
+          <div
+            onClick={() => {
+              props.purgeLocalProfile({
+                profileID: props.checkout.profileID
+              });
+              props.clearOrderDetails({
+                orderDetails: _orderDetails,
+                group: pageGroup
+              });
+            }}
+            className="p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light"
+          >
+            Purge My Profile
+          </div>
+        )}
         <div
           onClick={() => {
-            console.log("hello");
+            props.clearOrderDetails({
+              orderDetails: _orderDetails,
+              group: pageGroup
+            });
           }}
-          className="p-2 cursor-pointer capitalize bg-red-dark hover:bg-red-light text-white font-bold rounded"
+          className="p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light"
         >
-          Purge all Profiles
-        </div>
-        <div
-          onClick={() => {
-            console.log("hello2");
-          }}
-          className="p-2 cursor-pointer capitalize bg-red-dark hover:bg-red-light text-white font-bold rounded"
-        >
-          Purge my Profile
+          Clear Details
         </div>
       </div>
     </div>

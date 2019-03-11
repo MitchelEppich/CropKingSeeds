@@ -19,14 +19,7 @@ const CompareMenu = props => {
     CBD: "CBD Medical",
     Mix: "Mix and Match"
   };
-  let headersPlacement = [];
-  let showMenu =
-    Router.asPath.slice(1).includes("compare") &&
-    props.viewProduct.showStrainsMenu;
-  let position = {
-    transform: "translateX(0)",
-    overflow: "hidden"
-  };
+
   let _strains = props.misc.strains;
 
   if (_strains == null) return <div />;
