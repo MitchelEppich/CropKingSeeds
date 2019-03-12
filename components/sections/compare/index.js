@@ -220,16 +220,10 @@ const Compare = props => {
                     <p className="p-2 font-normal">{pthc}</p>
                   </div>
                 </div>
-              </div>
-              <div className="inline-flex w-full bg-grey-lightest">
-                <div className="w-full text-center">
-                  <p className="p-2 font-normal items-center flex justify-center">
-                    {product.rating.toFixed(2)}
-                    <img
-                      src="../../static/img/CrownIcon.svg"
-                      className="ml-1 h-4 w-6 crown-icon text-red-dark opacity-50"
-                    />
-                  </p>
+                <div className="inline-flex w-full">
+                  <div className="w-full text-center">
+                    <p className="p-2 font-normal">{pcbn}</p>
+                  </div>
                 </div>
                 <div className="inline-flex w-full ">
                   <div className="w-full text-center">
@@ -251,6 +245,7 @@ const Compare = props => {
                   </div>
                 </div>
               </div>
+
               <div className="inline-flex w-full  mt-4">
                 <div className="w-full text-center hover:bg-grey-lighter cursor-pointer">
                   <p className="p-2 uppercase hover:text-red-light">

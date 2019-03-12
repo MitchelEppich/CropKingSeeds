@@ -20,6 +20,7 @@ import ViewProduct from "./viewProduct";
 import Germination from "./germination";
 import Faq from "./faq";
 import Cms from "./cms";
+import Wiki from "./wiki";
 
 import { inferStrainData } from "../utilities/strain";
 
@@ -36,7 +37,8 @@ const imports = {
   ...Germination(uri),
   ...About(uri),
   ...Faq(uri),
-  ...Cms(uri)
+  ...Cms(uri),
+  ...Wiki(uri)
 };
 
 const actionTypes = {
@@ -298,7 +300,6 @@ const actions = {
     };
   },
   sendEmail: input => {
-    console.log(input);
     return dispatch => {
       const link = new HttpLink({ uri, fetch: fetch });
       const operation = {

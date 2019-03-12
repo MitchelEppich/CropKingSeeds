@@ -1,6 +1,6 @@
 const ShippingMethod = props => {
   let methods = props.checkout.shippingMethods;
-
+  console.log(methods);
   let pageGroup = "shipping";
 
   let currency = props.checkout.viewCurrency;
@@ -8,7 +8,10 @@ const ShippingMethod = props => {
   let showMethods = () => {
     if (
       props.checkout.orderDetails.shipping.country == null ||
-      props.checkout.orderDetails.shipping.state == null
+      (props.checkout.orderDetails.shipping.state == null &&
+        ["Canada", "United States"].includes(
+          props.checkout.orderDetails.shipping.country.value
+        ))
     )
       return (
         <div>
@@ -90,7 +93,10 @@ const ShippingMethod = props => {
               <div className="w-1/8 sm:w-full sm:mt-4 sm:flex sm:justify-end">
                 <div className="text-2xl text-red-light font-extrabold">
                   {props.checkout.orderDetails.shipping.country == null ||
-                  props.checkout.orderDetails.shipping.state == null
+                  (props.checkout.orderDetails.shipping.state == null &&
+                    ["Canada", "United States"].includes(
+                      props.checkout.orderDetails.shipping.country.value
+                    ))
                     ? ""
                     : _method.price != 0
                     ? currency != null
@@ -114,7 +120,10 @@ const ShippingMethod = props => {
     <div
       className={`w-full px-8 mt-8 mb-4 pb-4 ${
         props.checkout.orderDetails.shipping.country == null ||
-        props.checkout.orderDetails.shipping.state == null
+        (props.checkout.orderDetails.shipping.state == null &&
+          ["Canada", "United States"].includes(
+            props.checkout.orderDetails.shipping.country.value
+          ))
           ? "opacity-50 pointer-events-none unselectable"
           : ""
       }`}

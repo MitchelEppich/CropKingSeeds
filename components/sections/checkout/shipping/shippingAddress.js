@@ -138,23 +138,6 @@ const ShippingAddress = props => {
               <FontAwesomeIcon icon={faUser} className="mr-2" />
               Load Profile
             </div>
-            {/* {props.checkout.foundProfiles.length > 0 ? ( */}
-            <select
-              onChange={e => {
-                let profileObj = e.target.value;
-                props.loadLocalProfile({
-                  orderDetails: _orderDetails,
-                  profile: profileObj.profile,
-                  profileID: profileObj.id,
-                  cart: props.cart,
-                  freeShippingThreshold: props.checkout.freeShippingThreshold
-                });
-              }}
-              className="px-2 pl-4 ml-3"
-            >
-              {profiles}
-            </select>
-            {/* ) : null} */}
           </div>
           <div className="w-full flex justify-end">
             <label className="p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light">
@@ -515,7 +498,6 @@ const ShippingAddress = props => {
               type="text"
               name="ship-state"
               autoComplete="shipping region"
-              required={stateOrProvinceInput ? "required" : null}
               id="state"
               value={
                 _orderDetails[pageGroup] != null &&
@@ -610,7 +592,7 @@ const ShippingAddress = props => {
                 : ""
             }`}
           >
-            Purge all Profiles
+            Delete all Profiles
           </div>
         ) : (
           <div

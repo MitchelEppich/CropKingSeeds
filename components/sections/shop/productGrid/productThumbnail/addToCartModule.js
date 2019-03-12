@@ -45,6 +45,7 @@ const addToCartModule = props => {
               }}
             >
               {props.shop.cartAnimation &&
+              Object.keys(props.cart.items).length > 0 &&
               Object.keys(props.cart.items)[
                 Object.keys(props.cart.items).length - 1
               ].includes(props.product.sotiId) ? (

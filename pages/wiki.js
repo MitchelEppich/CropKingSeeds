@@ -1,16 +1,19 @@
+//lib
 import React, { Component } from "react";
-import withData from "../lib/withData";
 import { connect } from "react-redux";
+//custom
+import withData from "../lib/withData";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
-import Privacy from "../components/sections/privacy";
+import { Menu, Content } from "../components/sections/wiki";
 
 class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
-        <div className="pt-0">
-          <Privacy {...this.props} />
+        <div className="flex py-24 w-3/4 mx-auto h-3xscreen min-h-screen">
+          <Menu {...this.props} />
+          <Content {...this.props} />
         </div>
       </Layout>
     );
@@ -19,7 +22,8 @@ class Index extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input))
+    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+    openMenuOption: optionsObj => dispatch(actions.openMenuOption(optionsObj))
   };
 };
 

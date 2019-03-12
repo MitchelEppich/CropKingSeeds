@@ -31,7 +31,6 @@ class Index extends Component {
     );
   }
   componentDidUpdate(prevProps) {
-    // console.log(this.props.shop.cartAnimation);
     // if (this.props.misc.hoverId == null) return;
     if (this.props.cart.recentAdd.length != 0) {
       if (this.props.shop.cartAnimation == true) {

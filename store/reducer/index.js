@@ -21,6 +21,7 @@ import GerminationReducer from "./germination";
 import FaqReducer from "./faq";
 import ArticleReducer from "./article";
 import CmsReducer from "./cms";
+import WikiReducer from "./wiki";
 
 const initialState = {
   visibleScreen: [], // When [] show main screen
@@ -229,5 +230,6 @@ export default combineReducers({
   about: AboutReducer,
   faq: FaqReducer,
   article: ArticleReducer,
-  cms: CmsReducer
+  cms: CmsReducer,
+  wiki: WikiReducer
 });

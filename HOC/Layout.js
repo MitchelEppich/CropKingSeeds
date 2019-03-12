@@ -63,7 +63,6 @@ class Layout extends Component {
     // iframe.sandbox = "allow-same-origin";
     // document.body.appendChild(iframe);
     // Check if new customer
-    console.log(this);
     if (sessionStorage.getItem("showNewCustomerPopUp") == null) {
       sessionStorage.setItem("showNewCustomerPopUp", 0);
     }
@@ -115,7 +114,6 @@ class Layout extends Component {
                 strains
               })
               .then(res => {
-                console.log("HEre");
                 this.props.setCurrentProduct({ product: res }).then(() => {
                   let product = this.props.viewProduct.currentProduct;
                   let _index = 0;
