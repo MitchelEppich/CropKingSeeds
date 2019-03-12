@@ -13,8 +13,6 @@ exports.confirmation = input => {
     shipping = input.shipping,
     date = input.date;
 
-  
-
   return {
     from: "info@cropkingseeds.com",
     to: "adamsmithvci@gmail.com",
@@ -128,11 +126,11 @@ exports.confirmation = input => {
                     <div class="orderDetailsContent">
                         <div style="width: 33%; padding: 0 10px">
                             <p style="margin-bottom:0"><b>Payment Method:</b></p>
-                            <p>${paymentMethod}</p>
+                            <p style="font-size: 12px;>${paymentMethod}</p>
                         </div>
                         <div style="width: 33%; padding: 0 10px">
                             <p style="margin-bottom:0"><b>Shipping Destination:</b></p>
-                            <p>${fullName},<br/>
+                            <p style="font-size: 12px;>${fullName},<br/>
                             ${shippingDestination[0]},<br/>
                             ${shippingDestination[1]},<br/>
                             ${shippingDestination[2]},<br/>
@@ -141,8 +139,8 @@ exports.confirmation = input => {
                         </div>
                         <div style="width: 33%; padding: 0 10px">
                             <p style="margin-bottom:0"><b>Shipping Type:</b></p>
-                            <p>${shippingType}</p>
-                            <p style="color:#ef5753">*${shippingTypeDescription}
+                            <p style="font-size: 12px;>${shippingType}</p>
+                            <p style="color:#ef5753"; font-size: 12px;>*${shippingTypeDescription}
                         </div>
                     </div>
                 </div>

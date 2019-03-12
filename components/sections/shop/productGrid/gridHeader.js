@@ -29,21 +29,21 @@ const gridHeader = props => {
           : filter + " %";
       return filtersArr.map((value, index) => {
         return (
-          <span
+          <div
             key={index}
-            onClick={() =>
+            onClick={() => {
               props.toggleFilter({
                 filter: props.shop.activeFilters,
                 [filter]: value,
                 multiple: filter == "genetic" || filter == "text" ? true : false
-              })
-            }
+              });
+            }}
             className="capitalize text-grey border bg-grey-lightest flex justify-center cursor-pointer hover:bg-red-light hover:text-white items-center rounded-tl-lg rounded-br-lg border-grey-lightest p-2 m-1 font-bold"
           >
             {filter == "text" ? "search: " : ""}
             {label || value}
             <FontAwesomeIcon className="fa-sm ml-2" icon={faTimes} />
-          </span>
+          </div>
         );
       });
     }

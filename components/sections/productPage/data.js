@@ -69,7 +69,7 @@ const data = props => {
   return (
     <div className="mt-6 w-full mx-auto bg-grey-lightest flex flex-wrap content-start">
       <div className="w-full bg-white xxl:inline-flex block border border-grey-lightest rounded overflow-hidden">
-        <div className="xxl:w-1/3 w-full border-r-2 border-grey-lightest sm:border-0 md:border-0">
+        <div className="xxl:w-1/3 w-full border-r-2 border-grey-lightest sm:border-0 md:border-0 lg:border-0 xl:border-0">
           <div className="bg-grey-light w-full">
             <h3
               style={{ letterSpacing: "1px" }}
@@ -234,7 +234,7 @@ const data = props => {
             </div>
           </div>
         </div>
-        <div className="xxl:w-1/3 w-full border-l-2 sm:pt-2 sm:mt-3 sm:border-t-4 sm:border-grey-lightest md:pt-2 md:mt-3 md:border-t-4 border-grey-lightest ">
+        <div className="xxl:w-1/3 w-full border-l-2 sm:border-0 md:border-0 lg:border-0 xl:border-0 sm:pt-2 sm:mt-3 sm:border-t-4 sm:border-grey-lightest md:pt-2 md:mt-3 md:border-t-4 border-grey-lightest ">
           {" "}
           <Details {...props} />
         </div>

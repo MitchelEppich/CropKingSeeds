@@ -33,7 +33,7 @@ const ProductPreview = props => {
             overflow: "hidden",
             boxShadow: "0 2px 9px rgba(29, 29, 29, 0.12)"
           }}
-          className="relative mx-2 sm:mx-0 mt-4 bg-white item-preview w-3col xl:w-2col lg:w-full md:w-full sm:w-full"
+          className="relative sm:mx-0 mt-4 bg-white item-preview w-3col xl:w-2col lg:w-full md:w-full sm:w-full"
         >
           <div className="inline-flex w-full items-center flex bg-red-light text-white">
             <div className="w-full">
@@ -223,7 +223,7 @@ const ProductPreview = props => {
       </h2>
       <MinimumSeedsWarning {...props} />
       <MinimumOrderWarning {...props} />
-      <div className="w-full inline-flex flex-wrap mb-4 mt-2">
+      <div className="w-full inline-flex flex-wrap mb-4 mt-2 justify-between">
         {_itemscart.length > 0 ? (
           showProducts()
         ) : (

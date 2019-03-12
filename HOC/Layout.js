@@ -115,7 +115,6 @@ class Layout extends Component {
                 strains
               })
               .then(res => {
-                console.log("HEre");
                 this.props.setCurrentProduct({ product: res }).then(() => {
                   let product = this.props.viewProduct.currentProduct;
                   let _index = 0;

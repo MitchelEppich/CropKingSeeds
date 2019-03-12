@@ -370,17 +370,16 @@ const menu = props => {
                       rel="noreferrer"
                       href="/contact"
                     >
+                      {/* route.includes("checkout") // ? "unselectable
+                      opacity-50 pointer-events-none" // : "cursor-pointer
+                      scale-item" */}
                       <li
-                        className={`${
-                          route.includes("checkout")
-                            ? "unselectable opacity-50 pointer-events-none"
-                            : "cursor-pointer scale-item"
-                        }
-                        ${
-                          isMobileNavVisible
-                            ? "font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish"
-                            : "font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish hidden"
-                        }`}
+                        className={`                         
+                            cursor-pointer scale-item" ${
+                              isMobileNavVisible
+                                ? "font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish"
+                                : "font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish hidden"
+                            }`}
                       >
                         Contact
                       </li>
