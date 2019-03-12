@@ -32,7 +32,14 @@ const sortOptions = props => {
       className="overflow-hidden mt-10 relative sm:mt-10"
     >
       <div className="absolute">
-        <div className="p-2 rounded border border-grey-lightest w-150">
+        <div
+          onClick={() =>
+            props.setVisibleScreen({
+              input: "showSortBy"
+            })
+          }
+          className="p-2 rounded border border-grey-lightest w-150"
+        >
           {showSortOptions}
         </div>
       </div>

@@ -686,7 +686,7 @@ const getActions = uri => {
           let newProduct = {};
           newProduct.name = product.product.name;
           newProduct.amount = product.amount;
-          newProduct.price = product.per;
+          newProduct.price = (product.quantity * product.per).toFixed(2);
           newProduct.quantity = product.quantity;
           return Object.values(newProduct).join(" x ");
         });

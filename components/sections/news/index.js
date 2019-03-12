@@ -53,7 +53,7 @@ const news = props => {
           index < 3 ? "mb-2 relative" : ""
         }  w-full sm:mx-0 md:mx-0 md:p-2 sm:p-2 cursor-pointer sm:shadow md:shadow relative shadow-md rounded relative`}
       >
-        <div className="absolute w-12 h-12 bg-red-dark text-white shadow-md">
+        <div className="absolute w-12 h-12 bg-grey-light text-white -ml-1 -mt-1">
           {" "}
           <p className="font-bold text-xl text-center pt-1">{formatDateDay}</p>
           <p className="font-bold text-sm text-center uppercase">
@@ -95,7 +95,7 @@ const news = props => {
                 window.open(locationUrl, "_blank");
                 window.focus();
               }}
-              className="sm:w-full md:w-full text-sm hover:text-grey-light pl-12 ml-2"
+              className="sm:w-full md:w-full text-sm hover:text-grey-light pl-12 sm:pl-2 ml-2"
             >
               <FontAwesomeIcon icon={faMapMarkerAlt} className="opacity-50" />{" "}
               {location}
@@ -122,7 +122,7 @@ const news = props => {
   return (
     <div className="lg:mt-12 w-full h-full bg-smoke-grey">
       <div className="pb-4 mt-6 w-full">
-        <h2 className="text-3/5xl font-bold h-32 pt-6 text-center w-full p-2 bg-red-darker text-white sm:text-3xl md:text-3xl">
+        <h2 className="text-3/5xl font-bold h-32 pt-4 text-center w-full p-2 text-grey sm:text-3xl md:text-3xl">
           Featured Events {"&"} News
         </h2>
       </div>

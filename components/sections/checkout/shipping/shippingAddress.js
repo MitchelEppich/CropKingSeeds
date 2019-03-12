@@ -8,14 +8,61 @@ const ShippingAddress = props => {
   if (localProfiles != null) localProfiles = JSON.parse(localProfiles);
   let localProfilesExist = localProfiles != null && localProfiles.length > 0;
 
-  let profiles = ["adam smith", "bobby jones"];
-  profiles = profiles.map((profile, index) => {
-    return (
-      <option key={index} value={profile}>
-        {profile}
-      </option>
-    );
-  });
+  let getProfiles = () => {
+    let arr = [];
+    let profiles = props.checkout.foundProfiles;
+    for (let profile of profiles) {
+      // console.log("profiles:", profiles.indexOf(profile));
+      arr.push(
+        <div
+          onClick={() => {
+            props.setVisibleScreen({
+              input: "getProfiles"
+            });
+            let profileObj = profile;
+            props.loadLocalProfile({
+              orderDetails: _orderDetails,
+              profile: profileObj.profile,
+              profileID: profileObj.id,
+              cart: props.cart,
+              freeShippingThreshold: props.checkout.freeShippingThreshold
+            });
+          }}
+          key={profile.profile.shipping.fullName.value}
+          className={`${
+            profiles.indexOf(profile) % 2 === 0
+              ? "bg-grey-lightest"
+              : "bg-white"
+          } inline-flex w-full font-bold capitalize cursor-pointer hover:bg-grey-lighter`}
+        >
+          <div className="w-1/3 p-2 px-4">
+            <p className="w-full text-base">
+              {profile.profile.shipping.fullName.value}
+            </p>
+          </div>
+          <div className="w-1/3 p-2 px-4">
+            <p className="w-full text-base lowercase">
+              {profile.profile.shipping.email.value != null
+                ? profile.profile.shipping.email.value
+                : profile.profile.shipping.phone.value}
+            </p>
+          </div>
+          <div className="w-1/3 p-2 px-4">
+            <p className="w-full text-base">
+              {profile.profile.shipping.city.value},{" "}
+              {profile.profile.shipping.country.value}
+            </p>
+          </div>
+          {/* <div className="w-1/4 p-2 px-4">
+            <p className="w-full text-base">
+              {profile.profile.shipping.address.value}
+            </p>
+          </div> */}
+        </div>
+      );
+    }
+    return arr;
+  };
 
   let pageGroup = "shipping";
   let stateOrProvinceInput;
@@ -120,16 +167,19 @@ const ShippingAddress = props => {
           >
             <div
               onClick={() => {
-                let profileObj = props.checkout.foundProfiles[0];
-                props.loadLocalProfile({
-                  orderDetails: _orderDetails,
-                  profile: profileObj.profile,
-                  profileID: profileObj.id,
-                  cart: props.cart,
-                  freeShippingThreshold: props.checkout.freeShippingThreshold
+                props.setVisibleScreen({
+                  input: "getProfiles"
                 });
+                // let profileObj = props.checkout.foundProfiles[0];
+                // props.loadLocalProfile({
+                //   orderDetails: _orderDetails,
+                //   profile: profileObj.profile,
+                //   profileID: profileObj.id,
+                //   cart: props.cart,
+                //   freeShippingThreshold: props.checkout.freeShippingThreshold
+                // });
               }}
-              className={`p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light ${
+              className={`p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light relative ${
                 props.checkout.foundProfiles.length == 0
                   ? "unselectable opacity-25 pointer-events-none"
                   : ""
@@ -138,6 +188,30 @@ const ShippingAddress = props => {
               <FontAwesomeIcon icon={faUser} className="mr-2" />
               Load Profile
             </div>
+
+            {props.misc.visibleScreen.includes("getProfiles") ? (
+              <div className="w-800 bg-white absolute shadow-md mt-10 z-50 ">
+                <div className="absolute pin-t inline-flex w-full bg-red-light font-bold text-white">
+                  <div className="w-1/3 p-2 px-4">
+                    <p>Name:</p>
+                  </div>
+                  <div className="w-1/3 p-2 px-4">
+                    <p>Contact:</p>
+                  </div>
+                  <div className="w-1/3 p-2 px-4">
+                    <p>Location:</p>
+                  </div>
+                  {/* <div className="w-1/4 p-2 px-4">
+                    <p>Address:</p>
+                  </div> */}
+                </div>
+                <div className="h-250 overflow-y-auto pt-8">
+                  {getProfiles()}
+                </div>
+              </div>
+            ) : (
+              <div />
+            )}
           </div>
           <div className="w-full flex justify-end">
             <label className="p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light">

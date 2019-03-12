@@ -13,12 +13,12 @@ const Privacy = props => {
           <div className="justify-center w-full mt-6 inline-flex items-center flex">
             <div className="">
               <img
-                src={props.misc.CFURL + "/logos/cropkingseed2s.png"}
+                src={props.misc.CFURL + "/logos/cks-logo-header.png"}
                 className="w-24"
               />
             </div>
             <div>
-              <h3 className="pl-2 font-black text-3xl uppercase">
+              <h3 className="pl-4 font-black text-3xl uppercase">
                 Privacy Policy
               </h3>
             </div>

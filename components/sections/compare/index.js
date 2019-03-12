@@ -225,24 +225,13 @@ const Compare = props => {
                     <p className="p-2 font-normal">{pcbn}</p>
                   </div>
                 </div>
-                <div className="inline-flex w-full ">
-                  <div className="w-full text-center">
-                    <p className="p-2 font-normal items-center flex justify-center">
-                      {product.rating.toFixed(2)}
-                      <img
-                        src="../../static/img/CrownIcon.svg"
-                        className="ml-1 h-4 w-6 crown-icon text-red-dark opacity-50"
-                      />
-                    </p>
-                  </div>
-                </div>
-                <div className="inline-flex w-full ">
-                  <div className="w-full text-center">
-                    <p className="p-2 font-normal">
-                      ${product.price[0]} / ${product.price[1]} / $
-                      {product.price[2]}
-                    </p>
-                  </div>
+              </div>
+              <div className="inline-flex w-full ">
+                <div className="w-full text-center">
+                  <p className="p-2 font-normal">
+                    ${product.price[0]} / ${product.price[1]} / $
+                    {product.price[2]}
+                  </p>
                 </div>
               </div>
 

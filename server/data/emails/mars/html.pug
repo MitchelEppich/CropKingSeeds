@@ -55,32 +55,36 @@ html
           width: 100%;
           padding-bottom: 20px;
           margin: 15px 0;
-          border-top-left-radius: 5px;
-          border-top-right-radius: 5px;
-        }
+          border-radius: 11px;
+          overflow: hidden;
+        }        
         .productInfoName{
           background-color:white; 
           margin: 10px 0;
-          height: 25px; 
+           padding: 6px 0;
           font-weight: 600; 
           display:inline-block; 
-          width: 59%;
-          text-align: center;
+          width: 55%;
+          text-align: left;
+          padding-left: 10px;
+          font-size: 14px;
           margin: 0 auto;
         }
         .productInfo{
           background-color:white; 
           margin: 10px 0;
-          height: 25px; 
+          padding: 6px 0;
           font-weight: 600; 
           display:inline-block; 
           width: 20%;
+          font-size: 14px;
           text-align: center;
           margin: 0 auto;
         }
         .help {
           width: 100%;
           height: 200px;
+              font-size: 14px;
           display: inline-flex;
           justify-content: space-between;
         }
@@ -91,7 +95,7 @@ html
         }
         .heading-red {
           height: 35px;
-          width: 102%;
+          width: 100%;
           background-color: #ef5753;
           border-top-left-radius: 5px;
           border-top-right-radius: 5px;
@@ -100,7 +104,7 @@ html
           .productInfoName{
           background-color:white; 
           margin: 10px 0;
-          height: 25px; 
+          padding: 6px 0;
           font-weight: 600; 
           display:inline-block; 
           width: 89%;
@@ -110,7 +114,7 @@ html
          .productInfo{
           background-color:white; 
           margin: 10px 0;
-          height: 25px; 
+           padding: 6px 0;
           font-weight: 600; 
           display:inline-block; 
           width: 5%;
@@ -131,7 +135,7 @@ html
 
         div(class="orderDetails", style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);")
           div(class="heading-red", style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);")
-            p(style="color:white; padding: 4px 10px;display: flex;font-weight:bold;font-size: 1.2rem;")
+            p(style="color:white; padding: 8px 10px;display: flex;font-weight:bold;font-size: 16px;")
               span Order ##{orderId}-CKS
               span(style="margin: 0 0 0 auto") Date: #{date}
 
@@ -139,33 +143,33 @@ html
             div(style="width: 33%; padding: 0 10px")
               p(style="margin-bottom:0")
                 b Payment Method:
-              p(style="margin:0;") #{paymentMethod}
+              p(style="margin:0; font-size: 12px;") #{paymentMethod}
 
             div(style="width: 33%; padding: 0 10px")
               p(style="margin-bottom:0")
                 b Shipping Destination:
-              p(style="margin:0") #{name},
-              p(style="margin:0") #{shippingDestination.split("&=>")[0]},
-              p(style="margin:0") #{shippingDestination.split("&=>")[1]},
-              p(style="margin:0") #{shippingDestination.split("&=>")[2]},
-              p(style="margin:0") #{shippingDestination.split("&=>")[3]},
-              p(style="margin:0") #{shippingDestination.split("&=>")[4]}
+              p(style="margin:0; font-size: 12px;") #{name},
+              p(style="margin:0; font-size: 12px;") #{shippingDestination.split("&=>")[0]},
+              p(style="margin:0; font-size: 12px;") #{shippingDestination.split("&=>")[1]},
+              p(style="margin:0; font-size: 12px;") #{shippingDestination.split("&=>")[2]},
+              p(style="margin:0; font-size: 12px;") #{shippingDestination.split("&=>")[3]},
+              p(style="margin:0; font-size: 12px;") #{shippingDestination.split("&=>")[4]}
 
             div(style="width: 33%; padding: 0 10px")
               p(style="margin-bottom:0")
                 b Shipping Type:
-              p(style="margin:0;") #{shippingType}
-              p(style="color:#ef5753") *#{shippingTypeDescription}
+              p(style="margin:0; font-size: 12px;") #{shippingType}
+              p(style="color:#ef5753; font-size: 12px;") *#{shippingTypeDescription}
 
 
 
         div(class="payment" style="") 
           div(class="heading-red") 
-            p(style="color:white; padding: 4px 10px; font-weight:bold;font-size: 1.2rem;text-align:center;") Payment Instructions
+            p(style="color:white; padding: 8px 10px; font-weight:bold;font-size: 16px;text-align:center;") Payment Instructions
           div(style="padding: 0 20px") 
             if paymentMethod =="Cash"
               div(style="padding: 0 10px")
-                p To ensure that your cash order is successfully recieved please document your order number (
+                p(style="font-size: 14px;") To ensure that your cash order is successfully recieved please document your order number (
                   strong #{orderId} -CKS) on a piece of paper, along side the requested amount in applicable currency:
                 p(style="text-align:center")
                   b VanCoast Industries
@@ -177,13 +181,13 @@ html
                   b V5T 1J5
                   br 
                   b Canada
-                p It is recommended that you wrap any cash within your mail (in newspaper, charcoal paper or tin foil) to ensure privacy.
+                p(style="text-align:center; font-size: 14px;") It is recommended that you wrap any cash within your mail (in newspaper, charcoal paper or tin foil) to ensure privacy.
 
             else if paymentMethod =="Interac E Transfer"
               div
-                p(style="text-align:center") To complete your order please initiate an interac e-transfer:
+                p(style="text-align:center; font-size: 14px;") To complete your order please initiate an interac e-transfer:
 
-                div(style="text-align:center")
+                div(style="text-align:center; font-size: 14px;")
                   div(style="display:inline-block;width:40%;text-align:right;margin: 0 10px 0 0;")
                     p(style="margin:0") Recipient email:
                     p(style="margin:0") Recipient name:
@@ -202,7 +206,7 @@ html
                     br
                     strong(style="margin-left: 3px;") green1
 
-                  p(style="text-align:center")
+                  p(style="text-align:center; font-size: 14px;")
                     strong Important: Interac E-Transfers may take a few hours to be approved. Once a payment is successfully recieved we will ship your order on the next applicable business day.
                     br 
                     span To ensure your order is shipped as soon as possible, please call us to confirm the transfer.
@@ -235,28 +239,28 @@ html
         div(style="width: 100%;margin: 0 auto;height: 20px;border-top-left-radius: 5px;border-top-right-radius: 5px;position: relative;background-color: #ef5753;top: 20px;z-index:-10;")
         table(class="products") 
           tr(class="heading-red") 
-            td(style="display:inline-block;width:60%;text-align:center;color:white;margin: 0; padding: 4px 10px; font-weight:bold;font-size: 1.2rem;") Product
-            td(style="display:inline-block;width:20%;text-align:center;color:white;margin: 0; padding: 4px 10px; font-weight:bold;font-size: 1.2rem;") Qty
-            td(style="display:inline-block;width:20%;text-align:center;color:white;margin: 0; padding: 4px 10px; font-weight:bold;font-size: 1.2rem;") Price
+            td(style="display:inline-block;width:54%;text-align:center;color:white;margin: 0; padding: 8px 10px; font-weight:bold;font-size: 16px;") Product
+            td(style="display:inline-block;width:15%;text-align:center;color:white;margin: 0; padding: 8px 10px; font-weight:bold;font-size: 16px;") Qty
+            td(style="display:inline-block;width:15%;text-align:center;color:white;margin: 0; padding: 8px 10px; font-weight:bold;font-size: 16px;") Price
 
           each val in productList.split("&=>")
-            tr(style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.12),0 2px 4px 0 rgba(0,0,0,0.08); background-color:white; margin: 10px 0;padding: 0 10px;height: 25px; border-width: 5px 0px 5px 0px; border-style: solid; border-color: #f5f5f5;")
+            tr(style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.12),0 2px 4px 0 rgba(0,0,0,0.08); background-color:white; margin: 10px 0;padding: 0 10px; border-width: 5px 0px 5px 0px; border-style: solid; border-color: #f5f5f5;")
               td(class="productInfoName") #{val.split("x")[0]} - #{val.split("x")[1]} seeds
               td(class="productInfo") #{val.split("x")[3]}
-              td(class="productInfo") #{val.split("x")[2]}
+              td(class="productInfo") $#{val.split("x")[2]}
           
 
 
         div(class="help")
           div
-            p Need Help?
+            p(style="margin: 5px 0;") Need Help?
 
-              p 
+              p(style="margin: 5px 0;") 
                 b We are available to assist you 24/7.
-              p Canada: (604) 563-0291
-              p USA: +1 (844) 276-7546
-              p International: +1 (604) 563-0291.
-              p Email: info@cropkingseeds.com.
+              p(style="margin: 5px 0;") Canada: (604) 563-0291
+              p(style="margin: 5px 0;") USA: +1 (844) 276-7546
+              p(style="margin: 5px 0;") International: +1 (604) 563-0291
+              p(style="margin: 5px 0;") Email: info@cropkingseeds.com
 
           div(style="margin: 0 0 0 auto;")
             p(style="text-align:right;") 

@@ -103,9 +103,9 @@ class Index extends Component {
                   ) : null}
                   {!this.state.mobile ? <Catalogue {...this.props} /> : null}
                   {!this.state.mobile ? <ReviewBanner {...this.props} /> : null}
+                  {this.state.mobile ? <Sidebar {...this.props} /> : null}
                 </div>
                 <ProductGrid {...this.props} />
-                {this.state.mobile ? <Sidebar {...this.props} /> : null}
               </div>
             </div>
           </React.Fragment>
