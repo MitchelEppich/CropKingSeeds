@@ -149,7 +149,6 @@ let inferStrainData = (strain, options = {}) => {
       return `${flowerTime[0]} Weeks`;
     })();
   }
-
   return {
     ...strain,
     ...ret

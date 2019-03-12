@@ -50,9 +50,11 @@ import axios from "axios";
 class Layout extends Component {
   constructor(props) {
     super(props);
-    let showNewCustomerPopUp = false;
-    let iframe;
-    let isClient = typeof document !== "undefined";
+    this.state = {
+      showNewCustomerPopUp: false,
+      iframe: null,
+      isClient: typeof document !== "undefined"
+    };
   }
   componentDidMount() {
     // iframe = document.createElement("iframe");
@@ -61,10 +63,11 @@ class Layout extends Component {
     // iframe.sandbox = "allow-same-origin";
     // document.body.appendChild(iframe);
     // Check if new customer
+    console.log(this);
     if (sessionStorage.getItem("showNewCustomerPopUp") == null) {
       sessionStorage.setItem("showNewCustomerPopUp", 0);
     }
-    if (this.isClient) {
+    if (this.state.isClient) {
       if (
         this.props.misc.newCustomer &&
         sessionStorage.getItem("showNewCustomerPopUp") == "0" &&
@@ -80,14 +83,14 @@ class Layout extends Component {
       }
 
       if (sessionStorage.getItem("showNewCustomerPopUp") == "2") {
-        this.showNewCustomerPopUp = true;
-      } else this.showNewCustomerPopUp = false;
+        this.state.showNewCustomerPopUp = true;
+      } else this.state.showNewCustomerPopUp = false;
     }
     this.recallSession();
     this.props.getFeaturedNews();
     this.props.getTaxes();
     this.props.getStrains().then(strains => {
-      if (!this.isClient) return;
+      if (!this.state.isClient) return;
       let url = Router.asPath.slice(1);
       if (url && url.length != 0) {
         let qr;
@@ -112,6 +115,7 @@ class Layout extends Component {
                 strains
               })
               .then(res => {
+                console.log("HEre");
                 this.props.setCurrentProduct({ product: res }).then(() => {
                   let product = this.props.viewProduct.currentProduct;
                   let _index = 0;
@@ -172,7 +176,7 @@ class Layout extends Component {
             <React.Fragment>
               <Header {...this.props} />
 
-              {this.showNewCustomerPopUp ? (
+              {this.state.showNewCustomerPopUp ? (
                 <PopUpBanner {...this.props} />
               ) : null}
 

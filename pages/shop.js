@@ -14,6 +14,13 @@ import Sidebar from "../components/sections/shop/sidebar";
 import Gif from "../components/sections/shop/gif";
 
 class Index extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobile: ["sm", "md"].includes(props.misc.mediaSize)
+    };
+  }
+
   // componentDidMount() {
   //     this.props.showMoreFeatures({
   //         max: this.props.misc.featuredStrains.length,
@@ -21,7 +28,6 @@ class Index extends Component {
   //     });
   // }
   componentDidMount() {
-    // console.log(this.props);
     let searchValue = this.props.misc.searchValue;
     if (searchValue != null) {
       this.props.setSearch(null);
@@ -44,7 +50,6 @@ class Index extends Component {
         this.props.misc.featuredStrains != null &&
         this.props.misc.strains.length > 0 ? (
           <React.Fragment>
-            {/* {this.printStrains()} */}
             <div
               className={
                 this.props.misc.hoverId != null &&
@@ -82,7 +87,7 @@ class Index extends Component {
                   <div>
                     <Filters {...this.props} />
                   </div>
-                  {!mobile ? (
+                  {!this.state.mobile ? (
                     <div className="my-8 w-full justify-center flex relative sm:pt-8">
                       <img
                         src={
@@ -93,20 +98,14 @@ class Index extends Component {
                       />
                     </div>
                   ) : null}
-                  {!["sm", "md"].includes(this.props.misc.mediaSize) ? (
+                  {!this.state.mobile ? (
                     <FeaturedStrains {...this.props} />
                   ) : null}
-                  {!["sm", "md"].includes(this.props.misc.mediaSize) ? (
-                    <Catalogue {...this.props} />
-                  ) : null}
-                  {!["sm", "md"].includes(this.props.misc.mediaSize) ? (
-                    <ReviewBanner {...this.props} />
-                  ) : null}
+                  {!this.state.mobile ? <Catalogue {...this.props} /> : null}
+                  {!this.state.mobile ? <ReviewBanner {...this.props} /> : null}
                 </div>
                 <ProductGrid {...this.props} />
-                {["sm", "md"].includes(this.props.misc.mediaSize) ? (
-                  <Sidebar {...this.props} />
-                ) : null}
+                {this.state.mobile ? <Sidebar {...this.props} /> : null}
               </div>
             </div>
           </React.Fragment>
