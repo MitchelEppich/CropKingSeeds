@@ -82,8 +82,16 @@ class Index extends Component {
                   <div>
                     <Filters {...this.props} />
                   </div>
-                  {!["sm", "md"].includes(this.props.misc.mediaSize) ? (
-                    <Gif {...this.props} />
+                  {!mobile ? (
+                    <div className="my-8 w-full justify-center flex relative sm:pt-8">
+                      <img
+                        src={
+                          this.props.misc.CFURL +
+                          "/sidebar/FreeShippingAnimated.gif"
+                        }
+                        className=""
+                      />
+                    </div>
                   ) : null}
                   {!["sm", "md"].includes(this.props.misc.mediaSize) ? (
                     <FeaturedStrains {...this.props} />
@@ -142,7 +150,8 @@ const mapDispatchToProps = dispatch => {
     setCurrentImage: index => dispatch(actions.setCurrentImage(index)),
     showMoreFeatures: input => dispatch(actions.showMoreFeatures(input)),
     toggleCartAnimation: () => dispatch(actions.toggleCartAnimation()),
-    resetCartAnimation: () => dispatch(actions.resetCartAnimation())
+    resetCartAnimation: () => dispatch(actions.resetCartAnimation()),
+    updateRecentAdded: input => dispatch(actions.updateRecentAdded(input))
   };
 };
 

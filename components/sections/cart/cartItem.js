@@ -73,7 +73,7 @@ const cartItem = props => {
             >
               <FontAwesomeIcon icon={faTimes} className="fa-sm" />
             </div>
-            <div className="w-100 flex justify-between h-6 items-center">
+            <div className="w-100 flex justify-between h-6 items-center sm:mt-2">
               <div className="w-100 flex justify-between h-6 items-center">
                 <button
                   name="decreaseItem"
@@ -153,8 +153,19 @@ const cartItem = props => {
                 </button>
               </div>
             </div>
-            <div className="flex items-center">
-              <p className="text-xl text-grey-light sm:text-lg font-bold">
+
+            <div className="flex items-center flex-col">
+              {props.checkout.orderDetails.coupon != null ? (
+                <p className="text-xl text-red-dark sm:text-base line-through font-bold opacity-50">
+                  {currency != null
+                    ? `${currency.symbol}${(
+                        currency.convert *
+                        (_item.quantity * _item.per)
+                      ).toFixed(2)}`
+                    : ""}
+                </p>
+              ) : null}
+              <p className="text-xl text-grey-light sm:text-base font-bold">
                 {currency != null
                   ? `${currency.symbol}${(
                       currency.convert * _item.price

@@ -39,16 +39,16 @@ const Payment = props => {
 
       <PaymentReview {...props} />
 
-      <div className="font-bold py-2 p-2 mb-4 mt-4">
+      <div className="font-bold py-2 my-4">
         <h2 className="text-3/5xl font-extrabold opacity-50 mt-2 mb-4 text-black">
-          Important *
+          Important
         </h2>
         <div style={titleBox}>
           <h2 className="text-xl">Confirmation</h2>
         </div>
-        <div className="p-4 bg-white border border-grey-lightest inline-flex w-full">
-          <div className="w-main">
-            <label className="text-lg cursor-pointer items-center flex">
+        <div className="p-4 bg-white border border-grey-lightest inline-flex w-full sm:flex-col">
+          <div className="w-main sm:w-full">
+            <label className="text-lg sm:text-sm cursor-pointer items-center flex">
               <input
                 type="checkbox"
                 name="confirmation-data"
@@ -72,14 +72,14 @@ const Payment = props => {
                     value: _value
                   });
                 }}
-                className="checkbox"
+                className="checkbox sm:mr-2"
               />
-              I confirm that all my information is correct. *
+              I confirm that all my information is correct.*
             </label>
           </div>
-          <div className="w-150 justify-end flex">
-            <p className="text-red-light font-bold text-sm p-2 flex justify-end items-center">
-              * Required field
+          <div className="w-150 justify-end flex sm:w-full sm:justify-end">
+            <p className="text-red-light font-bold text-sm p-2 flex justify-end items-center mr-6">
+              * Required field.
             </p>
           </div>
         </div>
@@ -92,8 +92,8 @@ const Payment = props => {
       <div
         className={
           props.checkout.error[105] != null
-            ? "opacity-50 unselectable pointer-events-none"
-            : ""
+            ? "opacity-50 unselectable pointer-events-none py-2"
+            : "py-2"
         }
       >
         <div

@@ -42,7 +42,7 @@ const Footer = props => {
             Menu
           </h3>
           <div className="text-white font-bold px-2 inline-flex sm:w-full sm:flex sm:mx-auto sm:justify-center md:w-full md:flex md:mx-auto md:justify-center w-full">
-            <div className="sm:ml-4 md:ml-4 w-1/2 text-right sm:flex sm:flex-wrap md:flex md:flex-wrap">
+            <div className="sm:ml-0 md:ml-4 w-1/2 text-right sm:flex sm:flex-wrap md:flex md:flex-wrap">
               <a
                 aria-label="about"
                 className="text-white sm:w-full md:w-full text-xl lg:text-lg md:text-lg  hover:text-grey-light cursor-pointer md:text-right sm:text-right"
@@ -102,7 +102,7 @@ const Footer = props => {
                 {/* </Link>{" "} */}
               </a>
             </div>
-            <div className="ml-4 w-1/2 text-left sm:flex sm:flex-wrap md:flex md:flex-wrap">
+            <div className="ml-4 w-1/2 text-left sm:flex sm:ml-0 sm:flex-wrap md:flex md:flex-wrap">
               <a
                 aria-label="affiliates"
                 className="text-white sm:w-full md:w-full text-xl lg:text-lg md:text-lg   hover:text-grey-light cursor-pointer"
@@ -289,11 +289,25 @@ const Footer = props => {
               Contact us
             </h3>
             <p className="text-white text-xl p-1 lg:text-lg">
-              info@cropkingseeds.com
+              <a
+                className="text-white hover:text-red"
+                href="mailto:info@cropkingseeds.com"
+              >
+                info@cropkingseeds.com
+              </a>
             </p>
             <a className="no-underline" href="tel:+1-844-276-7546">
               <p className="text-white text-xl p-1 lg:text-lg">
-                +1-844-276-7546
+                {props.misc.ageVerification != null &&
+                "United States" == props.misc.ageVerification.country ? (
+                  <React.Fragment>
+                    <span>+1-844-CROP-KING</span>
+                    <span className="-ml-2 mr-2">/</span>
+                    <span>(276-7546)</span>
+                  </React.Fragment>
+                ) : (
+                  "+1 (604) 563-0291"
+                )}
               </p>
             </a>
           </div>

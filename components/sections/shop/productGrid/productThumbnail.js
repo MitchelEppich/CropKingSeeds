@@ -47,6 +47,7 @@ function enableScroll() {
 let showRating;
 let rating;
 let totalReviews;
+
 const productThumbnail = props => {
   let currency = props.checkout.viewCurrency;
   let _coupon = props.checkout.orderDetails.coupon;
@@ -142,21 +143,31 @@ const productThumbnail = props => {
             }}
           >
             {props.product.releaseDate != null &&
+            Math.abs(moment().diff(props.product.releaseDate, "weeks")) < 2 ? (
+              <div className="absolute pin-t pin-r sm:mr-20 mr-10 -mt-2">
+                <p className="text-white uppercase coming-soon-icon text-sm h-10 flex items-center font-bold">
+                  Coming Soon
+                </p>
+              </div>
+            ) : null}
+            {props.product.releaseDate != null &&
+            Math.abs(moment().diff(props.product.releaseDate, "weeks")) > 2 &&
             Math.max(0, moment().diff(props.product.releaseDate, "months")) <
               3 ? (
-              <div className="absolute pin-t pin-r mr-10 -mt-2">
+              <div className="absolute pin-t pin-r sm:mr-20 mr-10 -mt-2">
                 <p className="text-white new-product-icon text-sm h-10 flex items-center font-bold">
                   NEW
                 </p>
               </div>
             ) : null}
             {!props.product.inStock ? (
-              <div className="absolute pin-t pin-r mr-10 -mt-2">
+              <div className="absolute pin-t pin-r sm:mr-20 mr-10 -mt-2">
                 <p className="text-white out-of-stock-icon text-sm h-10 flex items-center font-bold">
                   SOLD OUT
                 </p>
               </div>
-            ) : null}
+            ) : null}{" "}
+            */}
             <img
               className={packagePins}
               src={
@@ -357,9 +368,20 @@ const productThumbnail = props => {
                       coupon: _coupon
                     });
                     props.toggleCartAnimation();
+
+                    props.updateRecentAdded({
+                      recentAdd: props.cart.recentAdd,
+                      sotiId: props.product.sotiId
+                    });
+                    setTimeout(() => {
+                      props.updateRecentAdded({
+                        recentAdd: props.cart.recentAdd,
+                        sotiId: props.product.sotiId
+                      });
+                    }, 800);
                   }}
                 >
-                  {props.shop.cartAnimation ? (
+                  {props.cart.recentAdd.includes(props.product.sotiId) ? (
                     <div className="inline-flex slowish">
                       Added
                       <FontAwesomeIcon icon={faCheck} className="ml-1" />
@@ -430,7 +452,7 @@ const productThumbnail = props => {
         <div
           className={hover ? "w-full mx-auto text-center p-1" : "hidden slow"}
         >
-          <p className="text-sm italic uppercase font-bold py-1 text-red-dark text-right mr-6">
+          <p className="text-sm uppercase font-bold py-1 text-red-light text-right mr-6">
             {props.product.inStock ? "In Stock" : "Sold Out"}
           </p>
         </div>

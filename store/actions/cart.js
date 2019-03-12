@@ -15,7 +15,8 @@ const actionTypes = {
   MODIFY_POTENTIAL_QUANTITY: "MODIFY_POTENTIAL_QUANTITY",
   SET_CART_POSITION: "SET_CART_POSITION",
   RECALL_CART: "RECALL_CART",
-  PURGE_CART: "PURGE_CART"
+  PURGE_CART: "PURGE_CART",
+  RECENT_ADDED: "RECENT_ADDED"
 };
 
 const getActions = uri => {
@@ -24,6 +25,23 @@ const getActions = uri => {
       return {
         type: actionTypes.CLEAR_CART
       };
+    },
+    updateRecentAdded: input => {
+      let _recentAdd = input.recentAdd;
+      if (_recentAdd == null) _recentAdd = [];
+      let _sotiId = input.sotiId;
+      if (!_recentAdd.includes(_sotiId)) {
+        _recentAdd.push(_sotiId);
+      } else {
+        _recentAdd = _recentAdd.filter(a => {
+          if (a == _sotiId) return false;
+          return true;
+        });
+      }
+
+      console.log(_recentAdd);
+
+      return { type: actionTypes.RECENT_ADDED, input: _recentAdd };
     },
     refreshCart: input => {
       return dispatch => {

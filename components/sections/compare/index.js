@@ -1,13 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faPlusCircle,
   faPlus,
   faTimes,
-  faCheck,
   faMinus,
   faCopy,
   faExternalLinkAlt,
-  faSearch
+  faCheck
 } from "@fortawesome/free-solid-svg-icons";
 import CompareMenu from "./compareMenu";
 import CompareFilters from "./compareFilters";
@@ -222,10 +220,16 @@ const Compare = props => {
                     <p className="p-2 font-normal">{pthc}</p>
                   </div>
                 </div>
-                <div className="inline-flex w-full">
-                  <div className="w-full text-center">
-                    <p className="p-2 font-normal">{pcbn}</p>
-                  </div>
+              </div>
+              <div className="inline-flex w-full bg-grey-lightest">
+                <div className="w-full text-center">
+                  <p className="p-2 font-normal items-center flex justify-center">
+                    {product.rating.toFixed(2)}
+                    <img
+                      src="../../static/img/CrownIcon.svg"
+                      className="ml-1 h-4 w-6 crown-icon text-red-dark opacity-50"
+                    />
+                  </p>
                 </div>
                 <div className="inline-flex w-full ">
                   <div className="w-full text-center">
@@ -376,9 +380,26 @@ const Compare = props => {
                           max: props.cart.maxPerPackage
                         });
                         props.toggleCartAnimation();
+                        props.updateRecentAdded({
+                          recentAdd: props.cart.recentAdd,
+                          sotiId: product.sotiId
+                        });
+                        setTimeout(() => {
+                          props.updateRecentAdded({
+                            recentAdd: props.cart.recentAdd,
+                            sotiId: product.sotiId
+                          });
+                        }, 800);
                       }}
                     >
-                      Add to Cart
+                      {props.cart.recentAdd.includes(product.sotiId) ? (
+                        <div className="inline-flex slowish">
+                          Added
+                          <FontAwesomeIcon icon={faCheck} className="ml-1" />
+                        </div>
+                      ) : (
+                        "Add to Cart"
+                      )}
                     </button>
                   </div>
                 </div>
@@ -431,9 +452,6 @@ const Compare = props => {
         </div>
         {/* Container */}
         <div className="w-4/5 ml-4">
-<<<<<<< HEAD
-          <p className="text-center  p-3 my-4 mt-0 font-bold rounded text-base uppercase text-grey">
-=======
           <div>
             <div className="w-full relative">
               <p className="text-center bg-grey-lightest font-bold text-xl uppercase p-2 my-4 mt-0 font-bold rounded text-base uppercase text-grey">
@@ -448,7 +466,6 @@ const Compare = props => {
             </div>
           </div>
           <p className="text-center mt-6 bg-grey-lightest p-3 my-4 mt-0 font-bold rounded text-base uppercase text-grey">
->>>>>>> 2a5b052d951ebbb2d002563e7ba449bcacd0e9d3
             Please, select at least{" "}
             <span className="font-bold underline">2</span> and max{" "}
             <span className="font-bold underline">5</span> strains to compare.

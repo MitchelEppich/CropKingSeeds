@@ -265,6 +265,7 @@ const getActions = uri => {
     },
     checkForLocalProfile: input => {
       let _shipping = { ...input.orderDetails.shipping };
+
       _shipping = {
         address: { ..._shipping.address },
         apartment: { ..._shipping.apartment },
@@ -276,6 +277,7 @@ const getActions = uri => {
         postalZip: { ..._shipping.postalZip },
         state: { ..._shipping.state }
       };
+
       let _local = localStorage.getItem("profiles");
       if (_local != null) {
         _local = JSON.parse(_local);

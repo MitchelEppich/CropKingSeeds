@@ -1,5 +1,7 @@
 import data from "../../../../static/data";
 import MinimumSeedsWarning from "../other/minimumSeedsWarning";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const ShippingAddress = props => {
   let localProfiles = localStorage.getItem("profiles");
@@ -133,6 +135,7 @@ const ShippingAddress = props => {
                   : ""
               }`}
             >
+              <FontAwesomeIcon icon={faUser} className="mr-2" />
               Load Profile
             </div>
             {/* {props.checkout.foundProfiles.length > 0 ? ( */}

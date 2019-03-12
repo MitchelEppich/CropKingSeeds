@@ -19,14 +19,7 @@ const CompareMenu = props => {
     CBD: "CBD Medical",
     Mix: "Mix and Match"
   };
-  let headersPlacement = [];
-  let showMenu =
-    Router.asPath.slice(1).includes("compare") &&
-    props.viewProduct.showStrainsMenu;
-  let position = {
-    transform: "translateX(0)",
-    overflow: "hidden"
-  };
+
   let _strains = props.misc.strains;
 
   if (_strains == null) return <div />;
@@ -69,12 +62,12 @@ const CompareMenu = props => {
 
     let getStrain = strain => {
       let active =
-        props.misc.compareSearchValue != null
-          ? props.misc.compareSearchValue.indexOf(strain) > -1
+        props.misc.compareStrains != null
+          ? props.misc.compareStrains.indexOf(strain) > -1
           : false;
       return (
-        <li
-          key={strain.sotiId}
+        <div
+          key={arr}
           className={`text-base p-2 font-bold text-left border-b-2 text-grey hover:bg-grey-lightest hover:text-grey border-grey-lightest pl-4 cursor-pointer ${
             active ? "bg-grey-lightest" : "bg-white"
           }`}
@@ -109,11 +102,11 @@ const CompareMenu = props => {
         >
           {strain.name}{" "}
           {active ? (
-            <span className="h-8 px-2 justify-center px-1 text-white bg-grey-light absolute pin-r hover:bg-red-light">
+            <div className="p-2 w-10 px-2 justify-center -mt-6 text-white items-center flex bg-grey-light absolute pin-r hover:bg-red-light">
               <FontAwesomeIcon icon={faCheck} className="text-right" />
-            </span>
+            </div>
           ) : null}
-        </li>
+        </div>
       );
     };
 

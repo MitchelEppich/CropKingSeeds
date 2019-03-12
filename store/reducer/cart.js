@@ -7,13 +7,18 @@ const initialState = {
   potentialQuantity: 1,
   cartPosition: null,
   discount: null,
-  maxPerPackage: 500
+  maxPerPackage: 500,
+  recentAdd: []
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.CLEAR_CART:
       return updateObject(state, { items: {} });
+    case actionTypes.RECENT_ADDED:
+      return updateObject(state, {
+        recentAdd: action.input
+      });
     case actionTypes.RECALL_CART:
       return updateObject(state, {
         items: action.items,

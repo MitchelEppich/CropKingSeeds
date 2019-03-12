@@ -203,7 +203,8 @@ const mapDispatchToProps = dispatch => {
     toggleImageZoom: isImageZoomed =>
       dispatch(actions.toggleImageZoom(isImageZoomed)),
     toggleStrainsMenu: isStrainsMenuVisible =>
-      dispatch(actions.toggleStrainsMenu(isStrainsMenuVisible))
+      dispatch(actions.toggleStrainsMenu(isStrainsMenuVisible)),
+    updateRecentAdded: input => dispatch(actions.updateRecentAdded(input))
   };
 };
 

@@ -11,13 +11,13 @@ const addToCart = props => {
 
   return (
     <div className="w-full relative">
-      <div className="absolute pin-r mr-16">
-        <p className="w-125 p-2 text-center p-2 text-red-light font-bold">
+      <div className="absolute pin-r mr-16 sm:mr-0 sm:relative">
+        <p className="w-125 p-2 text-center p-2 text-red-light font-bold sm:w-full sm:text-right">
           {currentProduct.inStock ? "In Stock" : "Sold Out"}
         </p>
       </div>
       <div>
-        <div className="w-container sm:w-full md:w-full mx-auto mt-4">
+        <div className="w-container sm:w-full md:w-full mx-auto mt-4 sm:mt-0">
           <div className="inline-flex items-center flex w-full my-2 opacity-50">
             <div className="">
               <p className="w-100 text-left text-sm text-grey font-bold mx-auto">
@@ -83,9 +83,22 @@ const addToCart = props => {
                   coupon: _coupon
                 });
                 props.toggleCartAnimation();
+                props.updateRecentAdded({
+                  recentAdd: props.cart.recentAdd,
+                  sotiId: props.viewProduct.currentProduct._id
+                });
+                setTimeout(() => {
+                  props.updateRecentAdded({
+                    recentAdd: props.cart.recentAdd,
+                    sotiId: props.viewProduct.currentProduct._id
+                  });
+                }, 800);
               }}
             >
-              {props.shop.cartAnimation ? (
+              {/* {console.log(props)} */}
+              {props.cart.recentAdd.includes(
+                props.viewProduct.currentProduct._id
+              ) ? (
                 <div className="inline-flex slowish">
                   Added
                   <FontAwesomeIcon icon={faCheck} className="ml-1" />

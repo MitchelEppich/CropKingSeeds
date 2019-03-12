@@ -9,6 +9,10 @@ import Layout from "../HOC/Layout";
 import BannerCarousel from "../components/sections/bannerCarousel";
 import GenePreview from "../components/sections/genePreview";
 import News from "../components/sections/news";
+import Carousel from "../components/sections/germination/carousel";
+
+import moment from "moment";
+import FeaturedStrains from "../components/sections/featuredStrains";
 
 class Index extends Component {
   componentWillMount() {

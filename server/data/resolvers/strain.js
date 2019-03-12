@@ -10,8 +10,91 @@ const request = require("request-promise");
 
 const moment = require("moment");
 
+let sttIds = {
+  AFM: "54",
+  AFR: "95",
+  AHA: "40",
+  BBR: "96",
+  BCF: "01",
+  BIF: "02",
+  BKF: "03",
+  CBA: "41",
+  CBD: "80",
+  CBT: "81",
+  CCA: "42",
+  CHF: "04",
+  CRF: "05",
+  DAF: "43",
+  DPF: "06",
+  DWA: "44",
+  EMA: "45",
+  FMM: "17",
+  GCF: "07",
+  HPF: "08",
+  HXR: "97",
+  JHA: "46",
+  LBA: "47",
+  NLA: "48",
+  NYA: "49",
+  OSR: "98",
+  PKF: "09",
+  REA: "50",
+  SDF: "10",
+  SGA: "51",
+  SHF: "11",
+  SJF: "12",
+  SSF: "13",
+  TWA: "52",
+  WBF: "14",
+  WCF: "15",
+  WWA: "53",
+  WWF: "16",
+  GTF: "17",
+  CBI: "82"
+};
+
 const resolvers = {
   Query: {
+    exportAllStrains: async _ => {
+      let strains = await Strain.find({});
+      let arr = [];
+      for (strain of strains) {
+        strain = strain.toObject();
+        let flowerTime = strain.flowerTime;
+        if (flowerTime == null || flowerTime.match(/\d+/g) == null)
+          console.log(strain.name, flowerTime);
+        else flowerTime = flowerTime.match(/\d+/g).map(Number);
+
+        let sttId = sttIds[strain.sotiId];
+        arr.push({
+          company: "cropkingseeds.com",
+          name: strain.name,
+          price: strain.price,
+          description: strain.description,
+          effect: [],
+          yield: strain.yield,
+          genetic: strain.genetic,
+          flowerTime,
+          difficulty: strain.difficulty,
+          indica: strain.indica,
+          sativa: strain.sativa,
+          ruderalis: strain.ruderalis,
+          type: strain.type,
+          environment: strain.env,
+          relations: [],
+          pThc: strain.pthc,
+          pCbd: strain.pcbd,
+          pCbn: strain.pcbn,
+          sotiId: strain.sotiId,
+          country: strain.country,
+          sttId,
+          releaseDate: strain.releaseDate,
+          isFeatured: false
+        });
+      }
+
+      return JSON.stringify(arr);
+    },
     strain: (_, { input }) => {
       return Strain.findOne(input);
     },

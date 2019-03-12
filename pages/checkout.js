@@ -165,9 +165,7 @@ class Index extends Component {
                         }}
                         className="inline-flex font-bold text-grey-light text-lg p-2 items-center rounded cursor-pointer hover:text-grey scale-item text-xl "
                       >
-                        <p className="ml-8 justify-start flex underline">
-                          Clear Cart
-                        </p>
+                        <p className="ml-8 justify-start flex">Clear Cart</p>
                         <FontAwesomeIcon
                           icon={faTrash}
                           className="ml-2 items-center flex"

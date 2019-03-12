@@ -3,6 +3,7 @@ const resolvers = require("./resolvers");
 
 const typeDefs = `
 type Query {
+  exportAllStrains: String
   sendString: String
   strain(input: StrainInput!): Strain
   allStrains(filter: StrainFilter): [Strain]!
