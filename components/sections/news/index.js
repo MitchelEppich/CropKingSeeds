@@ -126,7 +126,7 @@ const news = props => {
           Featured Events {"&"} News
         </h2>
       </div>
-      <div className="w-95p mx-auto -mt-16 bg-white shadow-md rounded-lg">
+      <div className="w-95p mx-auto -mt-16 sm:-mt-8 bg-white shadow-md rounded-lg">
         <div className="inline-flex w-full sm:px-2 md:px-2 py-4 sm:flex-col md:flex-col lg:flex-col xl:flex-col">
           <div className="w-2/5 bg-white sm:w-full md:w-full lg:w-full xl:w-full p-3">
             <img

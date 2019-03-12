@@ -8,13 +8,10 @@ import Layout from "../HOC/Layout";
 import Compare from "../components/sections/compare";
 
 class Index extends Component {
-<<<<<<< HEAD
-=======
   componentDidMount() {
     this.props.getStrains({ verbose: true });
   }
   componentDidUpdate() {}
->>>>>>> 2a5b052d951ebbb2d002563e7ba449bcacd0e9d3
   componentWillUnmount() {
     this.props.modifyPotentialQuantity({
       potentialQuantity: this.props.cart.potentialQuantity,
@@ -23,7 +20,7 @@ class Index extends Component {
   }
   render() {
     return (
-      <Layout>
+      <Layout {...this.props}>
         <div className="pt-1">
           <Compare {...this.props} />
         </div>

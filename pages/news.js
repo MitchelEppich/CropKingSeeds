@@ -18,7 +18,7 @@ class Index extends Component {
 
   render() {
     return (
-      <Layout>
+      <Layout {...this.props}>
         <div className="pt-0 min-h-500">
           <Media {...this.props} />
         </div>

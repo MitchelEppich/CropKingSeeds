@@ -21,6 +21,7 @@ class Index extends Component {
   //     });
   // }
   componentDidMount() {
+    // console.log(this.props);
     let searchValue = this.props.misc.searchValue;
     if (searchValue != null) {
       this.props.setSearch(null);
@@ -38,7 +39,7 @@ class Index extends Component {
 
   render() {
     return (
-      <Layout>
+      <Layout supportedBrowser={this.props.supportedBrowser}>
         {this.props.misc.strains != null &&
         this.props.misc.featuredStrains != null &&
         this.props.misc.strains.length > 0 ? (

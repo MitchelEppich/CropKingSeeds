@@ -10,7 +10,7 @@ import About from "../components/sections/about";
 class Index extends Component {
   render() {
     return (
-      <Layout>
+      <Layout {...this.props}>
         <div className="pt-0 min-h-500">
           <About {...this.props} />
         </div>

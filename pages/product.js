@@ -41,7 +41,7 @@ class Index extends Component {
 
   render() {
     return (
-      <Layout>
+      <Layout {...this.props}>
         {this.props.misc.featuredStrains &&
         this.props.viewProduct.currentProduct &&
         this.props.viewProduct.currentProduct.reviews != null ? (

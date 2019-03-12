@@ -13,7 +13,7 @@ import Heading from "../components/sections/faq/heading";
 class Index extends Component {
   render() {
     return (
-      <Layout>
+      <Layout {...this.props}>
         <Heading {...this.props} />
         {this.props.faq.questionsCount > 0 ||
         this.props.faq.questionsCount == null ? (

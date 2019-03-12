@@ -193,7 +193,6 @@ const getActions = uri => {
         } else if (_tag != null)
           _orderDetails[_key] = { value: _value, tag: _tag };
         else _orderDetails[_key] = _value;
-
         if (_group == "shipping" && fieldsForProfileSearch.includes(_key)) {
           dispatch(
             objects.checkForLocalProfile({
@@ -280,6 +279,11 @@ const getActions = uri => {
       let _local = localStorage.getItem("profiles");
       if (_local != null) {
         _local = JSON.parse(_local);
+      } else {
+        return {
+          type: actionTypes.CHECK_FOR_LOCAL_PROFILE,
+          input: []
+        };
       }
 
       let fields = [...fieldsForProfileSearch];

@@ -12,7 +12,7 @@ import Graph from "../components/sections/affiliates/Graph";
 class Index extends Component {
   render() {
     return (
-      <Layout>
+      <Layout {...this.props}>
         <div className="flex flex-wrap justify-around pb-12 ">
           <div className="affiliatesBanner sm:mb-0 xxl:mb-24 xl:mb-16 lg:mb-6 ">
             <div className="w-1/3 sm:w-full md:w-full lg:w-2/3 xl:w-1/2 sm:pr-0 pr-12 flex flex-wrap md:justify-start lg:justify-start justify-between text-white">

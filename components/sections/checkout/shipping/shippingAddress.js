@@ -6,6 +6,15 @@ const ShippingAddress = props => {
   if (localProfiles != null) localProfiles = JSON.parse(localProfiles);
   let localProfilesExist = localProfiles != null && localProfiles.length > 0;
 
+  let profiles = ["adam smith", "bobby jones"];
+  profiles = profiles.map((profile, index) => {
+    return (
+      <option key={index} value={profile}>
+        {profile}
+      </option>
+    );
+  });
+
   let pageGroup = "shipping";
   let stateOrProvinceInput;
   let _orderDetails = props.checkout.orderDetails;
@@ -126,16 +135,29 @@ const ShippingAddress = props => {
             >
               Load Profile
             </div>
+            {/* {props.checkout.foundProfiles.length > 0 ? ( */}
+            <select
+              onChange={e => {
+                let profileObj = e.target.value;
+                props.loadLocalProfile({
+                  orderDetails: _orderDetails,
+                  profile: profileObj.profile,
+                  profileID: profileObj.id,
+                  cart: props.cart,
+                  freeShippingThreshold: props.checkout.freeShippingThreshold
+                });
+              }}
+              className="px-2 pl-4 ml-3"
+            >
+              {profiles}
+            </select>
+            {/* ) : null} */}
           </div>
           <div className="w-full flex justify-end">
             <label className="p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light">
               <input
                 aria-label="save-data"
                 type="checkbox"
-<<<<<<< HEAD
-                id="readOnly"
-                defaultChecked={true}
-=======
                 id="saveForLater"
                 checked={
                   _orderDetails["details"] != null
@@ -154,7 +176,6 @@ const ShippingAddress = props => {
                     value: _value
                   });
                 }}
->>>>>>> 2a5b052d951ebbb2d002563e7ba449bcacd0e9d3
                 name=""
                 className="checkbox"
               />

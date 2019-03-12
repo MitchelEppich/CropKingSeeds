@@ -73,7 +73,8 @@ const actionTypes = {
   COMPARE_STRAIN: "COMPARE_STRAIN",
   SET_EYES_SHOULD_MOVE: "SET_EYES_SHOULD_MOVE",
   SET_COMPARE_SEARCH: "SET_COMPARE_SEARCH",
-  GET_TAXES: "GET_TAXES"
+  GET_TAXES: "GET_TAXES",
+  SET_SUBJECT: "SET_SUBJECT"
 };
 
 const actions = {
@@ -297,6 +298,7 @@ const actions = {
     };
   },
   sendEmail: input => {
+    console.log(input);
     return dispatch => {
       const link = new HttpLink({ uri, fetch: fetch });
       const operation = {
@@ -534,6 +536,12 @@ const actions = {
         })
         .catch(error => console.log(error));
     };
+  },
+  setSubject: subject => {
+    return {
+      type: actionTypes.SET_SUBJECT,
+      subject: subject
+    };
   }
 };
 
@@ -725,6 +733,13 @@ const mutation = {
       $tax: Float
       $shipping: Float
       $date: String
+      $company: String
+      $cost: Float
+      $mediaKit: String
+      $phone: String
+      $location: String
+      $website: String
+      $eventName: String
     ) {
       sendEmail(
         input: {
@@ -741,6 +756,13 @@ const mutation = {
           tax: $tax
           shipping: $shipping
           date: $date
+          company: $company
+          cost: $cost
+          mediaKit: $mediaKit
+          phone: $phone
+          location: $location
+          website: $website
+          eventName: $eventName
         }
       )
     }

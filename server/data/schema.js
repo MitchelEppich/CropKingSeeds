@@ -270,6 +270,13 @@ input EmailInput {
   tax: Float
   shipping: Float
   date: String
+  company: String
+  cost: Float
+  mediaKit: String
+  phone: String
+  location: String
+  website: String
+  eventName: String
 }
 
 type News {

@@ -55,7 +55,7 @@ app.prepare().then(async () => {
   const server = express();
 
   //sitemap
-  let strains = await resolvers.Query.allStrains(null, {});
+  // let strains = await resolvers.Query.allStrains(null, {});
   // let sitemapStrains = strains.map((strain, index) => {
   //     return inferStrainData(strain)
   //         .name.toLowerCase()

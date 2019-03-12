@@ -12,7 +12,7 @@ import Privacy from "../components/sections/privacy";
 class Index extends Component {
   render() {
     return (
-      <Layout>
+      <Layout {...this.props}>
         <div className="pt-0">
           <Privacy {...this.props} />
         </div>

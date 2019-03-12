@@ -72,7 +72,6 @@ let inferStrainData = (strain, options = {}) => {
           _name = _name.replace(_genetic, "");
         else _name = _name.replace("Mix", "Mixed");
       }
-      console.log(genetic, _name);
       // if (genetic == "CBD") _name = _name.replace("CB", "");
       ret.name = _name.replace(/\s+/g, " ").trim();
     })();

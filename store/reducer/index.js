@@ -59,7 +59,8 @@ const initialState = {
   newCustomer: null,
   eyesShouldMove: false,
   compareSearchValue: "",
-  taxes: null
+  taxes: null,
+  contactSubject: "Shipping / Delivery"
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -205,6 +206,11 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         showMobileMenu: !state.showMobileMenu
       });
+    case actionTypes.SET_SUBJECT:
+      return updateObject(state, {
+        contactSubject: action.subject
+      });
+
     default:
       return state;
   }

@@ -53,14 +53,10 @@ class Index extends Component {
   render() {
     let _orderDetails = this.props.checkout.orderDetails;
     let _stepsCheckout = this.props.misc.stepsCheckout;
-<<<<<<< HEAD
-    let _error = Object.keys(this.props.checkout.error).length != 0;
-=======
     let errors = { ...this.props.checkout.error };
     delete errors[105]; // This error is for checking if user confirms information, not for this section
     let _error = Object.keys(errors).length != 0;
 
->>>>>>> 2a5b052d951ebbb2d002563e7ba449bcacd0e9d3
     let itemsCart = Object.keys(this.props.cart.items);
 
     return (
