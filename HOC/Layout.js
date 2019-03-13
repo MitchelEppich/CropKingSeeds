@@ -47,13 +47,18 @@ import PopUpBanner from "../components/sections/popup";
 const _browser = detect();
 import axios from "axios";
 
+let times = [],
+  fps = 0;
+
 class Layout extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showNewCustomerPopUp: false,
       iframe: null,
-      isClient: typeof document !== "undefined"
+      isClient: typeof document !== "undefined",
+      times: [],
+      fps: 0
     };
   }
   componentDidMount() {
@@ -246,10 +251,27 @@ class Layout extends Component {
       </React.Fragment>
     ) : (
       <div className="h-screen w-full noscriptpage">
-        <Loader {...this.props} />
+        {/* {this.state.isClient
+          ? this.refreshLoop(this.refreshLoop, this.state.times, this.state.fps)
+          : null} */}
+        <Loader isClient={this.state.isClient} {...this.props} />
       </div>
     );
   }
+
+  // refreshLoop(ctx, times, fps) {
+  //   window.requestAnimationFrame(function() {
+  //     const now = performance.now();
+  //     console.log(now);
+  //     while (times.length > 0 && times[0] <= now - 1000) {
+  //       times.shift();
+  //     }
+  //     times.push(now);
+  //     fps = times.length;
+  //     // console.log(fps);
+  //     ctx(ctx, times, fps);
+  //   });
+  // }
 
   setMediaSize = () => {
     let mediaSizes = {
@@ -280,6 +302,7 @@ class Layout extends Component {
   };
 
   recallSession = async () => {
+    this.props.recallGPUMode();
     let ageVerify = await this.props.recallAgeVerification();
     let cart = (await this.props.recallCart()) || {};
 
@@ -372,7 +395,11 @@ const mapDispatchToProps = dispatch => {
     purgeCart: () => dispatch(actions.purgeCart()),
     getTaxes: () => dispatch(actions.getTaxes()),
     setCompareSearchValue: input =>
-      dispatch(actions.setCompareSearchValue(input))
+      dispatch(actions.setCompareSearchValue(input)),
+    calculateFpsAvg: fpsArr => dispatch(actions.calculateFpsAvg(fpsArr)),
+    disableFpsCalc: () => dispatch(actions.disableFpsCalc()),
+    enableLowGPUMode: () => dispatch(actions.enableLowGPUMode()),
+    recallGPUMode: () => dispatch(actions.recallGPUMode())
   };
 };
 
@@ -380,71 +407,3 @@ export default connect(
   state => state,
   mapDispatchToProps
 )(Layout);
-
-// let getCustomerIP = callback => {
-//   var ip_dups = {};
-
-//   //compatibility for firefox and chrome
-//   var RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
-//   var useWebKit = !!window.webkitRTCPeerConnection;
-
-//   //bypass naive webrtc blocking using an iframe
-//   if (!RTCPeerConnection) {
-//     //NOTE: you need to have an iframe in the page right above the script tag
-//     //
-//     //<iframe id="iframe" sandbox="allow-same-origin" style="display: none"></iframe>
-//     //<script>...getIPs called in here...
-//     //
-//     var win = iframe.contentWindow;
-//     RTCPeerConnection = win.RTCPeerConnection || win.mozRTCPeerConnection || win.webkitRTCPeerConnection;
-//     useWebKit = !!win.webkitRTCPeerConnection;
-//   }
-
-//   //minimal requirements for data connection
-//   var mediaConstraints = {
-//     optional: [{ RtpDataChannels: true }]
-//   };
-
-//   var servers = { iceServers: [{ urls: "stun:stun.services.mozilla.com" }] };
-
-//   //construct a new RTCPeerConnection
-//   var pc = new RTCPeerConnection(servers, mediaConstraints);
-
-//   function handleCandidate(candidate) {
-//     //match just the IP address
-//     var ip_regex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/;
-//     var ip_addr = ip_regex.exec(candidate)[1];
-//     //remove duplicates
-//     if (ip_dups[ip_addr] === undefined) callback(ip_addr);
-
-//     ip_dups[ip_addr] = true;
-//   }
-
-//   //listen for candidate events
-//   pc.onicecandidate = function (ice) {
-//     //skip non-candidate events
-//     if (ice.candidate) handleCandidate(ice.candidate.candidate);
-//   };
-
-//   //create a bogus data channel
-//   pc.createDataChannel("");
-
-//   //create an offer sdp
-//   pc.createOffer(
-//     function (result) {
-//       //trigger the stun server request
-//       pc.setLocalDescription(result, function () { }, function () { });
-//     },
-//     function () { }
-//   );
-
-//   //wait for a while to let everything done
-//   setTimeout(function () {
-//     //read candidate info from local description
-//     var lines = pc.localDescription.sdp.split("\n");
-
-//     lines.forEach(function (line) {
-//       if (line.indexOf("a=candidate:") === 0) handleCandidate(line);
-//     });
-//   }, 1000);
-// };

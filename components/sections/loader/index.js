@@ -1,56 +1,44 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import actions from "../../../store/actions";
-import { TimelineLite } from "gsap";
-
-class Index extends Component {
-  constructor(props) {
-    super(props);
-    this.myTween = null;
-    this.myElement = null;
+const loader = props => {
+  var times = [];
+  var fps;
+  var fpsArr = [];
+  if (props.isClient && !props.misc.lowGPUMode) {
+    refreshLoop(times, fps, fpsArr, props);
   }
-  componentDidMount() {
-    // this.myTween = new TimelineLite({
-    //     onComplete: this.props.resetCartAnimation
-    // });
-    // this.myTween.pause();
-    // this.myTween.add(TweenLite.to(this.myElement, 0.2, { transform: "scale(1.4)" }));
-    // this.myTween.add(TweenLite.to(this.myElement, 0.2, { transform: "scale(0.8)" }));
-    // this.myTween.add(TweenLite.to(this.myElement, 0.2, { transform: "scale(1.3)" }));
-    // this.myTween.add(TweenLite.to(this.myElement, 0.2, { transform: "scale(0.9)" }));
-    // this.myTween.add(TweenLite.to(this.myElement, 0.2, { transform: "scale(1.2)" }));
-    // this.myTween.add(TweenLite.to(this.myElement, 0.2, { transform: "scale(1)" }));
-  }
-  componentDidUpdate(prevProps) {
-    // if (this.props.shop.cartAnimation) {
-    //     this.myTween.restart();
-    // }
-  }
-  render() {
-    return (
-      <div className="loader h-150 mx-auto text-center">
-        <div ref={div => (this.myElement = div)} className="lds-ring">
-          <div />
-          <div />
-          <div />
-          <div />
-        </div>
-        <img
-          alt="cks-logo"
-          src={this.props.misc.CFURL + "/logos/cks-logo-header.png"}
-          onClick={() => console.log(props)}
-          className="cks-logo-loader z-999 p-0 w-130 scale-item cursor-pointer"
-        />
+  return (
+    <div className="loader h-150 mx-auto text-center">
+      <div className="lds-ring">
+        <div />
+        <div />
+        <div />
+        <div />
       </div>
-    );
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {};
+      <img
+        alt="cks-logo"
+        src={props.misc.CFURL + "/logos/cks-logo-header.png"}
+        onClick={() => console.log(props)}
+        className="cks-logo-loader z-999 p-0 w-130 scale-item cursor-pointer"
+      />
+    </div>
+  );
 };
 
-export default connect(
-  state => state,
-  mapDispatchToProps
-)(Index);
+function refreshLoop(times, fps, fpsArr, props) {
+  window.requestAnimationFrame(function() {
+    const now = performance.now();
+    while (times.length > 0 && times[0] <= now - 1000) {
+      times.shift();
+    }
+    times.push(now);
+    fps = times.length;
+    fpsArr.push(fps);
+    if (fpsArr.length > 250) {
+      props.calculateFpsAvg(fpsArr.slice(150));
+      return;
+    } else {
+      refreshLoop(times, fps, fpsArr, props);
+    }
+  });
+}
+
+export default loader;

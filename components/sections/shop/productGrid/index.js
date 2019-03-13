@@ -20,12 +20,21 @@ class Index extends Component {
       props.checkout.orderDetails.details.device.value != "Desktop";
   }
   componentDidMount() {
-    this.myTween.staggerTo(this.myElements, 0.5, { autoAlpha: 1, y: -30 }, 0.1);
-    this.myTween.restart();
+    if (!this.props.lowGPUMode) {
+      this.myTween.staggerTo(
+        this.myElements,
+        0.5,
+        { autoAlpha: 1, y: -30 },
+        0.1
+      );
+      this.myTween.restart();
+    }
   }
 
   componentDidUpdate(prevProps) {
-    this.myTween.set(this.myElements, { autoAlpha: 1, y: -30 });
+    if (!this.props.lowGPUMode) {
+      this.myTween.set(this.myElements, { autoAlpha: 1, y: -30 });
+    }
   }
 
   render() {
@@ -71,7 +80,11 @@ class Index extends Component {
             key={index}
             ref={div => (this.myElements[index] = div)}
             onMouseEnter={() => {
-              if (this.isSmallMediumOrLargeDevice) {
+              if (
+                this.isSmallMediumOrLargeDevice ||
+                this.props.misc.lowGPUMode ||
+                window.innerHeight < 750
+              ) {
                 return null;
               }
               this.props.setHoverId(product._id, true).then(() => {

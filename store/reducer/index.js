@@ -61,7 +61,10 @@ const initialState = {
   eyesShouldMove: false,
   compareSearchValue: "",
   taxes: null,
-  contactSubject: "Shipping / Delivery"
+  contactSubject: "Shipping / Delivery",
+  poorFps: false,
+  fpsAvg: 0,
+  lowGPUMode: null
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -211,7 +214,23 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         contactSubject: action.subject
       });
-
+    case actionTypes.CALCULATE_FPS_AVG:
+      return updateObject(state, {
+        fpsAvg: action.avg,
+        poorFps: action.poorFps
+      });
+    case actionTypes.DISABLE_FPS_CALC:
+      return updateObject(state, {
+        poorFPS: false
+      });
+    case actionTypes.ENABLE_LOW_GPU_MODE:
+      return updateObject(state, {
+        lowGPUMode: action.lowGPUMode
+      });
+    case actionTypes.RECALL_GPU_MODE:
+      return updateObject(state, {
+        lowGPUMode: action.lowGPUMode
+      });
     default:
       return state;
   }

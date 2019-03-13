@@ -13,7 +13,6 @@ export default withRedux(makeStore)(
       const pageProps = Component.getInitialProps
         ? await Component.getInitialProps(ctx)
         : {};
-
       return { pageProps, router };
     }
 

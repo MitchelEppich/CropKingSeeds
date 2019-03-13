@@ -24,7 +24,7 @@ import Wiki from "./wiki";
 
 import { inferStrainData } from "../utilities/strain";
 
-const uri = "https://127.0.0.1:3000/graphql";
+const uri = "https://192.168.0.44:3000/graphql";
 // const uri = "https://159.203.5.200:3000/graphql";
 // const uri = "https://192.168.0.54:3000/graphql";
 
@@ -76,7 +76,11 @@ const actionTypes = {
   SET_EYES_SHOULD_MOVE: "SET_EYES_SHOULD_MOVE",
   SET_COMPARE_SEARCH: "SET_COMPARE_SEARCH",
   GET_TAXES: "GET_TAXES",
-  SET_SUBJECT: "SET_SUBJECT"
+  SET_SUBJECT: "SET_SUBJECT",
+  CALCULATE_FPS_AVG: "CALCULATE_FPS_AVG",
+  DISABLE_FPS_CALC: "DISABLE_FPS_CALC",
+  ENABLE_LOW_GPU_MODE: "ENABLE_LOW_GPU_MODE",
+  RECALL_GPU_MODE: "RECALL_GPU_MODE"
 };
 
 const actions = {
@@ -542,6 +546,40 @@ const actions = {
     return {
       type: actionTypes.SET_SUBJECT,
       subject: subject
+    };
+  },
+  calculateFpsAvg: fpsArr => {
+    let sum = fpsArr.reduce(function(a, b) {
+      return a + b;
+    });
+    let avg = sum / fpsArr.length;
+    return {
+      type: actionTypes.CALCULATE_FPS_AVG,
+      avg: avg,
+      poorFps: avg < 30
+    };
+  },
+  disableFpsCalc: () => {
+    return {
+      type: actionTypes.DISABLE_FPS_CALC,
+      poorFps: false
+    };
+  },
+  enableLowGPUMode: () => {
+    return {
+      type: actionTypes.ENABLE_LOW_GPU_MODE,
+      lowGPUMode: true
+    };
+  },
+  recallGPUMode: () => {
+    let recall = sessionStorage.getItem("lowGPU");
+    let lowGPUMode = null;
+    if (recall != null) {
+      lowGPUMode = recall;
+    }
+    return {
+      type: actionTypes.RECALL_GPU_MODE,
+      lowGPUMode: lowGPUMode
     };
   }
 };

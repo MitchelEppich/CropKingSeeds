@@ -4,13 +4,25 @@ import Images from "./images";
 import Details from "./details";
 import AddToCartModule from "./addToCartModule";
 import Prices from "./prices";
+import Router from "next/router";
 
 const index = props => {
   let hover = props.hoverId == props.product._id;
   let overlayClass = hover ? "overlayClass--hover" : "overlayClass";
 
   return (
-    <div className={overlayClass}>
+    <div
+      onClick={() => {
+        if (props.misc.lowGPUMode || window.innerHeight < 750) {
+          props.setCurrentProduct({ product: props.product });
+          Router.push(
+            "/product",
+            "/product/" + props.product.name.toLowerCase().replace(/ /g, "-")
+          );
+        }
+      }}
+      className={overlayClass}
+    >
       <div className="xl:hidden xxl:hidden">
         <FontAwesomeIcon
           onClick={() => {

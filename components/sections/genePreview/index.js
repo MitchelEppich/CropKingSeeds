@@ -42,7 +42,7 @@ const GenePreview = props => {
       screenStyle,
       packStyle = { opacity: 0 }
 
-    if (props.misc.geneHoverIndex == index || props.misc.mediaSize == "lg") {
+    if (props.misc.geneHoverIndex == index || props.misc.mediaSize == "lg" || props.misc.lowGPUMode) {
       strainImgStyle = {
         ...strainImgStyle,
         transform: "translateY(100%)",
