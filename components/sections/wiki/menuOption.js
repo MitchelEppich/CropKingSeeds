@@ -3,6 +3,7 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 const menuOption = props => {
   let open = props.openOptions.includes(props.option[0]);
+  let search = props.wiki.search;
   let angleDirection = open
     ? {
         transform: "rotate(90deg)"
@@ -20,11 +21,33 @@ const menuOption = props => {
         transition: "all 0.3s ease-in-out"
       };
   let subheadings = props.option[1].subheadings.map((heading, index) => {
+    let searchMatch;
+    if (search.length > 0) {
+      searchMatch = JSON.stringify(heading)
+        .toLowerCase()
+        .includes(search);
+    }
     return (
-      <li key={index} className="font-normal text-grey scale-item">
+      <li
+        key={index}
+        className={
+          searchMatch
+            ? "font-normal text-red-lighter scale-item"
+            : "font-normal text-grey scale-item"
+        }
+      >
         <a
-          className="w-full h-full"
-          href={"#" + props.option[0] + "-" + heading.name}
+          className={
+            searchMatch
+              ? "text-red-light  menu-option w-full h-full"
+              : "menu-option w-full h-full"
+          }
+          href={
+            "#" +
+            props.option[0].toLowerCase().replace(/ /g, "") +
+            "-" +
+            heading.name.toLowerCase().replace(/ /g, "")
+          }
         >
           {heading.name}
         </a>

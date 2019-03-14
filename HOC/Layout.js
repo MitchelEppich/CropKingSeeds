@@ -266,7 +266,6 @@ class Layout extends Component {
       xl: { min: 992, max: 1367 },
       xxl: { min: 1368, max: 999999999 }
     };
-    console.log("Ran");
     for (let mediaSize of Object.keys(mediaSizes)) {
       let _mediaSizeDim = mediaSizes[mediaSize];
       let _width = window.innerWidth;

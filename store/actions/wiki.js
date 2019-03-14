@@ -4,7 +4,8 @@ import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
 
 const actionTypes = {
-  OPEN_MENU_OPTION: "OPEN_MENU_OPTION"
+  OPEN_MENU_OPTION: "OPEN_MENU_OPTION",
+  SET_WIKI_SEARCH:"SET_WIKI_SEARCH"
 };
 
 const getActions = uri => {
@@ -19,6 +20,12 @@ const getActions = uri => {
         type: actionTypes.OPEN_MENU_OPTION,
         currentOptions: currentOptions
       };
+    },
+    setWikiSearch: searchTerm => {
+      return {
+        type: actionTypes.SET_WIKI_SEARCH,
+        searchTerm: searchTerm
+      }
     }
   };
 

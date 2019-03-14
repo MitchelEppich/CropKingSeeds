@@ -4,7 +4,6 @@ import ReviewBanner from "./reviewBanner";
 
 const sidebar = props => {
   let mobile = ["sm", "md"].includes(props.misc.mediaSize);
-  console.log(mobile);
   return (
     <div>
       {!mobile ? (

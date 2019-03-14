@@ -165,13 +165,16 @@ const initialState = {
       ]
     }
   },
-  openOptions: []
+  openOptions: [],
+  search: ""
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.OPEN_MENU_OPTION:
       return updateObject(state, { openOptions: action.currentOptions });
+    case actionTypes.SET_WIKI_SEARCH:
+      return updateObject(state, { search: action.searchTerm });
     default:
       return state;
   }
