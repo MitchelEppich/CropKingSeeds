@@ -7,26 +7,9 @@ import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import Filters from "../components/sections/shop/filters";
 import ProductGrid from "../components/sections/shop/productGrid";
-import FeaturedStrains from "../components/sections/shop/featuredStrains";
-import Catalogue from "../components/sections/shop/catalogue";
-import ReviewBanner from "../components/sections/shop/reviewBanner";
 import Sidebar from "../components/sections/shop/sidebar";
-import Gif from "../components/sections/shop/gif";
 
 class Index extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      mobile: ["sm", "md"].includes(props.misc.mediaSize)
-    };
-  }
-
-  // componentDidMount() {
-  //     this.props.showMoreFeatures({
-  //         max: this.props.misc.featuredStrains.length,
-  //         count: 1
-  //     });
-  // }
   componentDidMount() {
     let searchValue = this.props.misc.searchValue;
     if (searchValue != null) {
@@ -39,6 +22,7 @@ class Index extends Component {
       });
     }
   }
+
   componentWillUnmount() {
     this.props.clearFilters();
   }
@@ -87,23 +71,7 @@ class Index extends Component {
                   <div>
                     <Filters {...this.props} />
                   </div>
-                  {!this.state.mobile ? (
-                    <div className="my-8 w-full justify-center flex relative sm:pt-8">
-                      <img
-                        src={
-                          this.props.misc.CFURL +
-                          "/sidebar/FreeShippingAnimated.gif"
-                        }
-                        className=""
-                      />
-                    </div>
-                  ) : null}
-                  {!this.state.mobile ? (
-                    <FeaturedStrains {...this.props} />
-                  ) : null}
-                  {!this.state.mobile ? <Catalogue {...this.props} /> : null}
-                  {!this.state.mobile ? <ReviewBanner {...this.props} /> : null}
-                  {this.state.mobile ? <Sidebar {...this.props} /> : null}
+                  <Sidebar {...this.props} />
                 </div>
                 <ProductGrid {...this.props} />
               </div>
