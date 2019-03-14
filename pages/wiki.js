@@ -11,7 +11,7 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
-        <div className="flex py-24 w-3/4 mx-auto h-3xscreen min-h-screen">
+        <div className="flex py-24 w-3/4 mx-auto min-h-screen">
           <Menu {...this.props} />
           <Content {...this.props} />
         </div>

@@ -110,6 +110,8 @@ const strainsMenu = props => {
     writingMode: "vertical-rl",
     textOrientation: "mixed"
   };
+  let verticalPosition = window.innerHeight < 700 ? "mt-32" : "mt-400";
+  // console.log(window.innerHeight);
   return (
     <div
       onClick={() => props.toggleStrainsMenu(false)}
@@ -126,7 +128,10 @@ const strainsMenu = props => {
             e.stopPropagation();
             props.toggleStrainsMenu(!props.viewProduct.showStrainsMenu);
           }}
-          className="w-12 h-32 bg-red-darker hover:bg-red-light rounded-tr-lg rounded-br-lg mt-400 pin-r absolute pin-r -mr-12 cursor-pointer"
+          className={
+            "w-12 h-32 bg-red-darker hover:bg-red-light rounded-tr-lg rounded-br-lg pin-r absolute pin-r -mr-12 cursor-pointer " +
+            verticalPosition
+          }
         >
           <p
             style={StrainText}

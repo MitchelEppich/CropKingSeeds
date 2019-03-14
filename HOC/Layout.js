@@ -189,7 +189,9 @@ class Layout extends Component {
                             ) : null}*/}
 
               <div className="pt-32 md:pt-48">
-                <div className="relative">
+                <div
+                  className={window.innerHeight < 700 ? "hidden" : "relative"}
+                >
                   <ShareButtons {...this.props} />
                 </div>
                 <div
@@ -251,27 +253,10 @@ class Layout extends Component {
       </React.Fragment>
     ) : (
       <div className="h-screen w-full noscriptpage">
-        {/* {this.state.isClient
-          ? this.refreshLoop(this.refreshLoop, this.state.times, this.state.fps)
-          : null} */}
         <Loader isClient={this.state.isClient} {...this.props} />
       </div>
     );
   }
-
-  // refreshLoop(ctx, times, fps) {
-  //   window.requestAnimationFrame(function() {
-  //     const now = performance.now();
-  //     console.log(now);
-  //     while (times.length > 0 && times[0] <= now - 1000) {
-  //       times.shift();
-  //     }
-  //     times.push(now);
-  //     fps = times.length;
-  //     // console.log(fps);
-  //     ctx(ctx, times, fps);
-  //   });
-  // }
 
   setMediaSize = () => {
     let mediaSizes = {

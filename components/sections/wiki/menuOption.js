@@ -19,10 +19,22 @@ const menuOption = props => {
         height: "0",
         transition: "all 0.3s ease-in-out"
       };
+  let subheadings = props.option[1].subheadings.map((heading, index) => {
+    return (
+      <li key={index} className="font-normal text-grey scale-item">
+        <a
+          className="w-full h-full"
+          href={"#" + props.option[0] + "-" + heading.name}
+        >
+          {heading.name}
+        </a>
+      </li>
+    );
+  });
   return (
     <li
       // style={openOption}
-      className="w-full overflow-hidden text-xl font-bold flex flex-wrap justify-between my-1 scale-item cursor-pointer"
+      className="w-full overflow-hidden text-xl font-bold flex flex-wrap justify-between my-1  cursor-pointer"
     >
       <span
         onClick={() => {
@@ -31,7 +43,7 @@ const menuOption = props => {
             newOption: props.option[0]
           });
         }}
-        className="w-4/5"
+        className="w-4/5 "
       >
         {props.option[0]}
       </span>
@@ -50,13 +62,7 @@ const menuOption = props => {
           className="fa-x slowish"
         />
       </span>
-      <ul style={openOption}>
-        <li>Lorem</li>
-        <li>Lorem</li>
-        <li>Lorem</li>
-        <li>Lorem</li>
-        <li>Lorem</li>
-      </ul>
+      <ul style={openOption}>{subheadings}</ul>
     </li>
   );
 };
