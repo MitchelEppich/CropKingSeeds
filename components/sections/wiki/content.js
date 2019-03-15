@@ -25,6 +25,7 @@ const content = props => {
             contentWithImages.push(content.slice(lastIndex, i));
             contentWithImages.push(
               <a
+                key={key({ key: "Payments" })}
                 href="#payment-paymentmethods"
                 className="border border-red-grey shadow-md px-3 p-1 mx-2"
               >
@@ -38,8 +39,8 @@ const content = props => {
             contentWithImages.push(content.slice(lastIndex, i));
             contentWithImages.push(
               <img
-                key={option[1].images[imageIndex]}
-                src={option[1].images[imageIndex]}
+                key={key({ key: option[1].images[imageIndex] })}
+                srcSet={`${option[1].images[imageIndex]}`}
                 className="my-3 block mx-auto"
               />
             );
@@ -48,7 +49,6 @@ const content = props => {
           }
         }
         contentWithImages.push(content.slice(lastIndex));
-
         if (search.length > 0) {
           let i,
             contentArr = [];
@@ -56,7 +56,9 @@ const content = props => {
           for (i = 0; i < contentWithImages.length; i++) {
             if (
               contentWithImages[i].type != "img" &&
-              contentWithImages[i].type != "span"
+              contentWithImages[i].type != "span" &&
+              contentWithImages[i].type != "a" &&
+              contentWithImages[i].type != "picture"
             ) {
               for (let x = 0; x < contentWithImages[i].length; x++) {
                 if (

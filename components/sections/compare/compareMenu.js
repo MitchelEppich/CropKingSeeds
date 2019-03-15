@@ -53,6 +53,7 @@ const CompareMenu = props => {
       let text = category[genetic];
       return (
         <p
+          key={text}
           className={`bg-${color} p-3 font-bold text-center text-white text-shadow uppercase w-full mt-1`}
         >
           {text}

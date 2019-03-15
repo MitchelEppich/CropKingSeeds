@@ -54,33 +54,34 @@ const AgeVerification = props => {
     position: "fixed"
   };
   let chromeWarning =
-    props.supportedBrowser != null && props.supportedBrowser.browser == "chrome"
-      ? {
-          transform: "translateY(-100px)",
-          width: "50%",
-          height: "50px",
-          margin: "0px auto",
-          padding: "13px",
-          fontSize: "1.2rem",
-          textAlign: "center",
-          backgroundColor: "#ef5753",
-          color: "white"
-        }
-      : {
-          transform: "translateY(0)",
-          width: "50%",
-          height: "50px",
-          margin: "0px auto",
-          padding: "13px",
-          fontSize: "1.2rem",
-          textAlign: "center",
-          backgroundColor: "#ef5753",
-          color: "white"
-        };
+    // props.supportedBrowser != null && props.supportedBrowser.browser == "chrome"
+    // ? {
+    //     transform: "translateY(-100px)",
+    //     width: "100%",
+    //     height: "50px",
+    //     margin: "0px auto",
+    //     padding: "13px",
+    //     fontSize: "1.2rem",
+    //     textAlign: "center",
+    //     backgroundColor: "#ef5753",
+    //     color: "white"
+    //   }
+    // :
+    {
+      transform: "translateY(0)",
+      width: "100%",
+      height: "50px",
+      margin: "0px auto",
+      padding: "13px",
+      fontSize: "1.2rem",
+      textAlign: "center",
+      backgroundColor: "#ef5753",
+      color: "white"
+    };
   return (
     <div style={styleFullScreen} className="w-full h-full overflow-y-hidden">
       <div style={chromeWarning}>
-        <p>
+        <p className="w-4/5 mx-auto">
           This website is best experienced with Google Chrome.{" "}
           <a href="https://www.google.com/chrome/" target="_blank">
             Click here to download.
