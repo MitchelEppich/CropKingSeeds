@@ -7683,6 +7683,12 @@ watchr@~2.4.13:
     taskgroup "^4.2.0"
     typechecker "^2.0.8"
 
+weak-key@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/weak-key/-/weak-key-1.0.1.tgz#a8f8faa4ba211ceb1e34dbd198da942245213f2b"
+  dependencies:
+    core-js "^2.4.0"
+
 web-resource-inliner@^4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/web-resource-inliner/-/web-resource-inliner-4.2.1.tgz#a3ec33d85794675cb526cfb93d2115741869f8be"
