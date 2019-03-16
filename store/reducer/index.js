@@ -22,6 +22,7 @@ import FaqReducer from "./faq";
 import ArticleReducer from "./article";
 import CmsReducer from "./cms";
 import WikiReducer from "./wiki";
+import CompareReducer from "./compare"
 
 const initialState = {
   visibleScreen: [], // When [] show main screen
@@ -250,5 +251,6 @@ export default combineReducers({
   faq: FaqReducer,
   article: ArticleReducer,
   cms: CmsReducer,
-  wiki: WikiReducer
+  wiki: WikiReducer,
+  compare: CompareReducer
 });

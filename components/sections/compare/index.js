@@ -12,8 +12,8 @@ import CompareFilters from "./compareFilters";
 import SearchCompare from "./searchCompare";
 
 const Compare = props => {
-  let allProducts =
-    props.misc.compareStrains != null ? props.misc.compareStrains : null;
+  let allProducts = props.misc.compareStrains;
+  // != null ? props.misc.compareStrains : null;
 
   let showSeedAmounts = item => {
     let _arr = item.price;
@@ -45,13 +45,15 @@ const Compare = props => {
                 : "text-xs h-2 ml-1 flex items-center "
             }
           >
-            {" "}
             seeds
           </div>
         </button>
       );
     });
   };
+  allProducts = allProducts.map((product, index) => {
+    return product.slice(0, 5);
+  });
 
   let Products = () => {
     let arr = [];

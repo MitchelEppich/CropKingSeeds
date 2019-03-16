@@ -139,16 +139,22 @@ let inferStrainData = (strain, options = {}) => {
       ret.yield = arr;
     })();
   }
-
   if (flowerTime != null) {
-    ret.nFlowerTime = [...flowerTime];
-    ret.flowerTime = (() => {
-      if (flowerTime.length == 2) {
-        return `${flowerTime[0]} to ${flowerTime[1]} Weeks`;
-      }
-      return `${flowerTime[0]} Weeks`;
-    })();
+    let _upper = (flowerTime.includes(" to ")
+      ? flowerTime.split(" to ")[1]
+      : flowerTime
+    ).replace(/\D/g, "");
+    ret.nFlowerTime = parseInt(_upper);
   }
+  // if (flowerTime != null) {
+  //   ret.nFlowerTime = [...flowerTime];
+  //   ret.flowerTime = (() => {
+  //     if (flowerTime.length == 2) {
+  //       return `${flowerTime[0]} to ${flowerTime[1]} Weeks`;
+  //     }
+  //     return `${flowerTime[0]} Weeks`;
+  //   })();
+  // }
   return {
     ...strain,
     ...ret

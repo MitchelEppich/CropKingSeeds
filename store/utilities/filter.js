@@ -34,7 +34,6 @@ let filter = ([...strains], filter, withMatch = false) => {
       match = "Type";
       continue;
     }
-
     // Check if related to genetic
     if (
       _filter.genetic != null &&
@@ -59,7 +58,6 @@ let filter = ([...strains], filter, withMatch = false) => {
       pass = true;
       continue;
     }
-
     // Check if related to text fragments
     if (_filter.text != null && _filter.text.length != 0) {
       for (let text of _filter.text) {
@@ -92,8 +90,6 @@ let filter = ([...strains], filter, withMatch = false) => {
       if (pass) continue;
     }
   }
-
-  // console.log(_arr);
 
   return _arr;
 };

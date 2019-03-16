@@ -21,10 +21,11 @@ import Germination from "./germination";
 import Faq from "./faq";
 import Cms from "./cms";
 import Wiki from "./wiki";
+import Compare from "./compare";
 
 import { inferStrainData } from "../utilities/strain";
 
-const uri = "https://192.168.0.44:3000/graphql";
+const uri = "https://localhost:3000/graphql";
 // const uri = "https://159.203.5.200:3000/graphql";
 // const uri = "https://192.168.0.54:3000/graphql";
 
@@ -38,7 +39,8 @@ const imports = {
   ...About(uri),
   ...Faq(uri),
   ...Cms(uri),
-  ...Wiki(uri)
+  ...Wiki(uri),
+  ...Compare(uri)
 };
 
 const actionTypes = {
