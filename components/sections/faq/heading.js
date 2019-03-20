@@ -4,11 +4,11 @@ import SearchBar from "./searchBar";
 const heading = props => {
   return (
     <div className="mt-5 xxl:w-1/2 w-4/5 mx-auto text-center font-black">
-      <h1 className="mt-4 text-grey font-extrabold text-center text-3/5xl mx-auto w-full text-center mb-8">
+      <h1 className="mt-4 text-grey font-bold text-center text-3/5xl mx-auto w-full text-center mb-8">
         Frequently Asked Questions
       </h1>
       <SearchBar {...props} />
-      <p className="mt-12">
+      <p className="mt-12 text-lg">
         Can't find the answer to your question? Feel free to{" "}
         <Link prefetch href="/contact">
           <span className="text-red-dark cursor-pointer hover:text-grey">

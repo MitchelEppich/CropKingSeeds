@@ -751,6 +751,7 @@ module.exports = {
     "48": "12rem",
     "54": "15rem",
     "64": "16rem",
+    halfScreen: "50vh",
     "mobile-about": "270px",
     "400": "300px"
   },

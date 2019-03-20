@@ -12,6 +12,7 @@ import Cryptr from "cryptr";
 let cryptr = new Cryptr(
   "7T-f+!d8bvk&a2Em&xxwe?t3DFk!9f$FeSTYcNw8J4r-dz%D6qd*cv+CJhNdv2ZKvf$G-Zv?W&Dw^kFMVv_PssVRJxLScnEcnhv7FBXWPcVkVuR6$2N?AeVL$+A$wBv#"
 );
+const moment = require("moment");
 
 const actionTypes = {
   CLEAR_CART: "CLEAR_CART",
@@ -145,33 +146,51 @@ const getActions = uri => {
 
       let _quantity = Math.min(input.quantity, _max);
 
-      let _item, price;
+      // Check if product is avaliable and/or in stock, else skip
+      if (
+        _product.inStock &&
+        moment(_product.releaseDate).diff(moment(), "weeks") < 0
+      ) {
+        let _item, price;
 
-      switch (_action) {
-        case "REMOVE":
-          delete _items[_productIdentifier];
-          break;
-        case "APPEND":
-          if (_productIdentifier in _items) {
-            _quantity += _items[_productIdentifier].quantity;
-          }
-          _quantity = Math.min(_quantity, _max);
-          price = (sale == null ? _per : sale) * _quantity;
-          _items[_productIdentifier] = {
-            product: _product,
-            quantity: _quantity,
-            price,
-            per: _per,
-            sale,
-            amount: _amount
-          };
-          break;
-        case "MODIFY":
-          _item = _items[_productIdentifier];
-          _quantity = Math.min(Math.max(0, _quantity + _item.quantity), _max);
-          price = (sale == null ? _per : sale) * _quantity;
-          if (_quantity == 0) delete _items[_productIdentifier];
-          else {
+        switch (_action) {
+          case "REMOVE":
+            delete _items[_productIdentifier];
+            break;
+          case "APPEND":
+            if (_productIdentifier in _items) {
+              _quantity += _items[_productIdentifier].quantity;
+            }
+            _quantity = Math.min(_quantity, _max);
+            price = (sale == null ? _per : sale) * _quantity;
+            _items[_productIdentifier] = {
+              product: _product,
+              quantity: _quantity,
+              price,
+              per: _per,
+              sale,
+              amount: _amount
+            };
+            break;
+          case "MODIFY":
+            _item = _items[_productIdentifier];
+            _quantity = Math.min(Math.max(0, _quantity + _item.quantity), _max);
+            price = (sale == null ? _per : sale) * _quantity;
+            if (_quantity == 0) delete _items[_productIdentifier];
+            else {
+              _items[_productIdentifier] = {
+                ..._item,
+                quantity: _quantity,
+                price,
+                sale,
+                per: _per
+              };
+            }
+            break;
+          case "SET":
+            _quantity = Math.min(_quantity, _max);
+            price = (sale == null ? _per : sale) * _quantity;
+            _item = _items[_productIdentifier];
             _items[_productIdentifier] = {
               ..._item,
               quantity: _quantity,
@@ -179,20 +198,8 @@ const getActions = uri => {
               sale,
               per: _per
             };
-          }
-          break;
-        case "SET":
-          _quantity = Math.min(_quantity, _max);
-          price = (sale == null ? _per : sale) * _quantity;
-          _item = _items[_productIdentifier];
-          _items[_productIdentifier] = {
-            ..._item,
-            quantity: _quantity,
-            price,
-            sale,
-            per: _per
-          };
-        default:
+          default:
+        }
       }
 
       let _price = Object.values(_items)

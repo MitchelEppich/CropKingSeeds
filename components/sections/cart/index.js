@@ -119,7 +119,7 @@ const cart = props => {
                 input: "viewCart"
               })
             }
-            className={`mx-auto ml-16 bg-red-dark md:ml-6 sm:ml-6 lg:mx-8 text-lg block px-8 py-3 sm:h-10 sm:px-3 rounded hover:bg-grey font-extrabold hover:text-white slow text-white  ${
+            className={`mx-auto ml-16 bg-red-dark md:ml-6 sm:ml-6 lg:mx-8 text-lg block px-8 py-3 sm:h-10 sm:px-3 hover:bg-grey font-extrabold hover:text-white slow text-white  ${
               items.length == 0 ? "opacity-50 pointer-events-none" : ""
             }`}
           >

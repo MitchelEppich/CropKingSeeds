@@ -91,7 +91,7 @@ class Index extends Component {
                           <div className="w-full sm:w-full md:w-full md:justify-center flex justify-center">
                             <button
                               type="submit"
-                              className="p-2 sm:p-3 md:p-3 px-4 w-150 sm:w-full md:w-full text-lg text-white rounded bg-red-dark hover:bg-red-light font-bold"
+                              className="p-2 sm:p-3 md:p-3 px-4 w-full sm:w-full md:w-full text-lg text-white rounded bg-red-dark hover:bg-red-light font-bold"
                             >
                               Submit
                             </button>
