@@ -25,6 +25,8 @@ const content = props => {
             contentWithImages.push(content.slice(lastIndex, i));
             contentWithImages.push(
               <a
+                aria-label="paymentMethods-wiki"
+                rel="noreferrer"
                 key={key({ key: "Payments" })}
                 href="#payment-paymentmethods"
                 className="border border-red-grey shadow-md px-3 p-1 mx-2"

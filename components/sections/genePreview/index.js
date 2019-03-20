@@ -1,11 +1,11 @@
-import Link from "next/link"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons"
-library.add(faExternalLinkAlt)
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+library.add(faExternalLinkAlt);
 
 const GenePreview = props => {
-  let isSmallMediumDevice = ["sm", "md"].includes(props.misc.mediaSize)
+  let isSmallMediumDevice = ["sm", "md"].includes(props.misc.mediaSize);
   let types = [
     {
       name: "feminized",
@@ -35,22 +35,26 @@ const GenePreview = props => {
       background: `url(${props.misc.CFURL}/logos/Green.jpg)`,
       color: "#1C8B04"
     }
-  ]
+  ];
   let windows = types.map((val, index) => {
     let strainImgStyle = { position: "absolute", bottom: "0" },
       headingStyle,
       screenStyle,
-      packStyle = { opacity: 0 }
+      packStyle = { opacity: 0 };
 
-    if (props.misc.geneHoverIndex == index || props.misc.mediaSize == "lg" || props.misc.lowGPUMode) {
+    if (
+      props.misc.geneHoverIndex == index ||
+      props.misc.mediaSize == "lg" ||
+      props.misc.lowGPUMode
+    ) {
       strainImgStyle = {
         ...strainImgStyle,
         transform: "translateY(100%)",
         opacity: 0
-      }
-      headingStyle = { opacity: 0 }
-      screenStyle = { transform: "translateX(-130px) rotate(-90deg)" }
-      packStyle = { opacity: 1 }
+      };
+      headingStyle = { opacity: 0 };
+      screenStyle = { transform: "translateX(-130px) rotate(-90deg)" };
+      packStyle = { opacity: 1 };
     }
     return (
       <Link prefetch href="/shop" key={index}>
@@ -61,18 +65,19 @@ const GenePreview = props => {
               filter: props.shop.activeFilters,
               genetic: val.name,
               multiple: true
-            })
-            window.scroll(0, 0)
+            });
+            window.scroll(0, 0);
           }}
           onMouseEnter={() => {
-            if (!isSmallMediumDevice) props.setGeneHoverIndex(index)
+            if (!isSmallMediumDevice) props.setGeneHoverIndex(index);
           }}
           onMouseLeave={() => {
-            if (!isSmallMediumDevice) props.setGeneHoverIndex(index)
+            if (!isSmallMediumDevice) props.setGeneHoverIndex(index);
           }}
           className="genePreview"
         >
           <img
+            alt={val.name + "-strainImage"}
             className="sm:hidden md:hidden absolute w-full slow"
             src={val.strainImg}
             style={strainImgStyle}
@@ -82,6 +87,7 @@ const GenePreview = props => {
             className="screenClass bg-almost-black text-white uppercase"
           >
             <img
+              alt={val.name + "-packageImage"}
               src={val.packImg}
               style={packStyle}
               className="sm:hidden packClass"
@@ -104,14 +110,14 @@ const GenePreview = props => {
           </div>
         </div>
       </Link>
-    )
-  })
+    );
+  });
 
   return (
     <div className="genePreviewContainer flex flex-wrap w-full xl:mb-4  mx-auto relative overflow-hidden">
       {windows}
     </div>
-  )
-}
+  );
+};
 
-export default GenePreview
+export default GenePreview;

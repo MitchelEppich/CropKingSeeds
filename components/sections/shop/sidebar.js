@@ -36,6 +36,8 @@ const sidebar = props => {
                 props.misc.CFURL + "/catalogue/CropKingSeeds-2019-Catalogue.pdf"
               }
               target="_blank"
+               aria-label="cks-catalogue"
+        rel="noreferrer"
             >
               <img
                 src={props.misc.CFURL + "/sidebar/downloadcatalogue.png"}
@@ -56,6 +58,8 @@ const sidebar = props => {
             <a
               href="https://ca.trustpilot.com/review/cropkingseeds.com"
               target="_blank"
+              aria-label="trustpilot"
+              rel="noreferrer"
             >
               <img
                 src={props.misc.CFURL + "/sidebar/review_mobile.gif"}

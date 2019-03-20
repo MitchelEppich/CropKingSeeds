@@ -28,6 +28,7 @@ const cartItem = props => {
         >
           <img
             className="h-32 sm:h-24 mx-6"
+            alt={props.misc.CFURL + "/packages/P_" + _product.sotiId + ".png"}
             src={props.misc.CFURL + "/packages/P_" + _product.sotiId + ".png"}
           />
           <div className="flex relative flex-wrap justify-between lg:w-250 lg:mr-auto md:w-250 md:mr-auto sm:w-200 sm:mr-auto">

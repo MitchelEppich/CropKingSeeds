@@ -82,7 +82,12 @@ const AgeVerification = props => {
       <div style={chromeWarning}>
         <p className="w-4/5 mx-auto">
           This website is best experienced with Google Chrome.{" "}
-          <a href="https://www.google.com/chrome/" target="_blank">
+          <a
+            aria-label="download-chrome"
+            rel="noreferrer"
+            href="https://www.google.com/chrome/"
+            target="_blank"
+          >
             Click here to download.
           </a>
         </p>
@@ -112,6 +117,7 @@ const AgeVerification = props => {
         <div className="absolute-center pin md:w-400 md:h-500 sm:w-300 sm:h-500 w-600 h-600 bg-white shadow-lg text-grey relative">
           <div className="w-full text-center mt-4">
             <img
+              alt={props.misc.CFURL + "/logos/cks_logo.png"}
               src={props.misc.CFURL + "/logos/cks_logo.png"}
               className="w-48 md:w-32 sm:w-32"
             />

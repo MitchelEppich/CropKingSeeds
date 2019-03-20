@@ -30,7 +30,7 @@ const Partners = props => {
         </p>
         <div className="p-3 bg-red-dark text-white mx-auto mt-8 text-center cursor-pointer h-12 pt-3 xl:w-64 lg:w-64 md:w-48 sm:w-48 xxl:w-64 text-2xl font-extrabold scale-item rounded shadow-md hover:bg-red-light">
           <Link href="/contact">
-            <a className="text-white">Join Us! </a>
+            <span className="text-white">Join Us! </span>
           </Link>
         </div>
       </div>

@@ -131,6 +131,8 @@ class Index extends Component {
           <a
             className="w-1/4 sm:w-2/3 md:w-2/3 lg:w-1/3 xl:w-1/2 xxl:w-1/3 xxl:mx-48 block uppercase text-center mx-auto px-12 py-3 text-lg uppercase font-bold rounded bg-red-dark text-white hover:bg-grey"
             target="_blank"
+            aria-label="affiliates-signup"
+            rel="noreferrer"
             href="https://affiliates.cropkingseeds.com/signup.php"
           >
             join now!

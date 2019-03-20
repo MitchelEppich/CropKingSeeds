@@ -46,6 +46,7 @@ const contactDetails = props => {
         >
           <div className="w-full relative">
             <img
+              alt="CKS-Chat-Logo"
               style={props.styleLogoKing}
               src={props.misc.CFURL + "/logos/cks-logo-header.png"}
               className="w-32"

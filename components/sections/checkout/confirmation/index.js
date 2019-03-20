@@ -37,6 +37,7 @@ const Confirmation = props => {
           <div className="w-3/5">
             <div className="p-2 font-bold text-lg items-center md:text-left sm:text-left lg:text-left flex">
               <a
+                aria-label={"view-" + _item.product.name}
                 className="cursor-pointer hover:text-red-light"
                 href={
                   href +
@@ -73,6 +74,7 @@ const Confirmation = props => {
     <div className="w-full mt-6 text-center">
       <div>
         <img
+          alt={props.misc.CFURL + "/logos/cks-confirmation.png"}
           src={props.misc.CFURL + "/logos/cks-confirmation.png"}
           className="text-center"
           width="200px"

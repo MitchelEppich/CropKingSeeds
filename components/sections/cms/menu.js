@@ -81,7 +81,11 @@ const menu = props => {
     <div className="w-340 h-screen fixed pin-l z-999 pin-t bg-white text-grey pt-12 overflow-x-hidden overflow-y-auto">
       <div className="w-full">
         <div className="w-full text-center">
-          <img src="../../static/img/cropkingseeds.png" className="" />
+          <img
+            alt="cks-logo-Menu"
+            src="../../static/img/cropkingseeds.png"
+            className=""
+          />
         </div>
         <div className="p-2 text-center">
           <h3 className="text-center text-3/5xl mb-2 cursor-pointer font-bold">

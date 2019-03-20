@@ -94,6 +94,7 @@ const Media = props => {
             <div className="p-4 inline-flex bg-white relative sm:p-2 md:p-2 h-150 md:h-200 sm:h-200 w-full">
               <div className="px-2 ml-4 sm:ml-0 md:ml-0 lg:ml-0">
                 <img
+                  alt="newsImage"
                   src={imageUrl}
                   className="w-100 overflower-hidden"
                   style={styleImg}

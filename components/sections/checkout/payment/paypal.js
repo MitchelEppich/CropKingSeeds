@@ -33,6 +33,7 @@ const Paypal = props => {
               Proceeding will take you to Paypal to log in to your account.
             </p>
             <img
+              alt="../static/img/paypal_logo.png"
               src="../static/img/paypal_logo.png"
               width="200px"
               className="mt-4 cursor-pointer"

@@ -22,6 +22,7 @@ const FeaturedStrains = props => {
       arr.push(
         <div className="w-200 text-center mx-2 scale-item cursor-pointer mb-6">
           <img
+            alt="featuredStrainPackage"
             src={props.misc.CFURL + product.packageImg}
             className="mt-4 shadow-md"
           />

@@ -5,6 +5,7 @@ const LgArticles = props => {
     <div className="xxl:mt-64 xxl:pt-48 xl:mt-12 lg:pt-0 md:pt-0 md:mt-0 lg:mt-12 w-full scale-item flex-wrap flex justify-around ">
       <div className="w-1/2 sm:w-full md:w-full xl:pt-2 relative">
         <img
+          alt="../../static/img/LGimage-1.jpg"
           src="../../static/img/LGimage-1.jpg"
           className="absolute sm:mt-0 sm:w-full sm:relative sm:h-200 md:w-full md:relative md:h-250 lg:h-250 xl:h-300 h-400 lg:mt-0 md:mt-0 mt-6"
         />

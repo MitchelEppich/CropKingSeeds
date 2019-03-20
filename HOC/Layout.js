@@ -3,7 +3,22 @@
 component wraps each page. Naturally this
 component has the navigation menu and footer.*/
 /**************************************/
-
+//lib
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Router from "next/router";
+import Head from "next/head";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faComments,
+  faCaretUp,
+  faAngleUp,
+  faExclamationTriangle
+} from "@fortawesome/free-solid-svg-icons";
+import AnchorLink from "react-anchor-link-smooth-scroll";
+import axios from "axios";
+import { detect } from "detect-browser";
+//custom
 import "../scss/universal.scss";
 import "../scss/home.scss";
 import "../scss/shop.scss";
@@ -20,35 +35,18 @@ import "../scss/xl.scss";
 import "../scss/lg.scss";
 import "../scss/md.scss";
 import "../scss/sm.scss";
-import React, { Component } from "react";
-import { connect } from "react-redux";
+const _browser = detect();
 import actions from "../store/actions";
-import Router from "next/router";
 import Cart from "../components/sections/cart";
 import Header from "../components/partials/header";
 import Footer from "../components/partials/footer";
-import Head from "next/head";
 import ShareButtons from "../components/sections/shareButtons";
 import AgeVerification from "../components/sections/ageVerification";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faComments,
-  faCaretUp,
-  faAngleUp,
-  faExclamationTriangle
-} from "@fortawesome/free-solid-svg-icons";
-import AnchorLink from "react-anchor-link-smooth-scroll";
 import Loader from "../components/sections/loader";
 import SearchBar from "../components/partials/header/searchBar";
 import ImageZoom from "../components/sections/productPage/imageZoom";
 import StrainsMenu from "../components/sections/productPage/strainsMenu";
-import { detect } from "detect-browser";
 import PopUpBanner from "../components/sections/popup";
-const _browser = detect();
-import axios from "axios";
-
-let times = [],
-  fps = 0;
 
 class Layout extends Component {
   constructor(props) {
@@ -166,7 +164,7 @@ class Layout extends Component {
           <ImageZoom {...this.props} />
         ) : null}
         <div id="top" className="w-full bg-off-white noscriptpage">
-          {this.props.misc.ageVerification == null ||
+          {/* {this.props.misc.ageVerification == null ||
           !this.props.misc.ageVerification.verified ? (
             this.props.misc.ageVerification != null ? (
               <AgeVerification {...this.props} />
@@ -174,80 +172,85 @@ class Layout extends Component {
               <div className="h-screen w-full">
                 <Loader {...this.props} />
               </div>
-            )
-          ) : (
-            <React.Fragment>
-              <Header {...this.props} />
+            ) */}
+          {/* ) : ( */}
+          <React.Fragment>
+            <Header {...this.props} />
 
-              {this.state.showNewCustomerPopUp ? (
-                <PopUpBanner {...this.props} />
-              ) : null}
+            {this.state.showNewCustomerPopUp ? (
+              <PopUpBanner {...this.props} />
+            ) : null}
 
-              {/* {this.props.misc.hoverId == null ||
+            {/* {this.props.misc.hoverId == null ||
                             ["md", "lg", "xl", "xxl"].includes(this.props.misc.mediaSize) ? (
                                 <SearchBar {...this.props} />
                             ) : null}*/}
 
-              <div className="pt-32 md:pt-48">
-                <div
-                  className={window.innerHeight < 700 ? "hidden" : "relative"}
-                >
-                  <ShareButtons {...this.props} />
-                </div>
-                <div
-                  id="tawkto"
-                  className="pulse sm:hidden md:hidden lg:hidden fixed z-40 w-20 h-16 bg-red-darker mb-16 pin-b pin-l text-white text-center text-lg pt-3 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item shadow-md"
-                  onClick={() => {
-                    Tawk_API.toggle();
-                  }}
-                >
-                  <FontAwesomeIcon
-                    icon={faComments}
-                    className="ml-2 fa-2x cursor-pointer"
-                  />
-                  {/* <h3>CHAT</h3> */}
-                </div>
-                <div
-                  style={{
-                    marginLeft:
-                      this.props.viewProduct.showStrainsMenu &&
-                      ["md", "lg", "xl"].includes(this.props.misc.mediaSize)
-                        ? "250px"
-                        : "auto",
-                    transition: "all .4s ease"
-                  }}
-                  className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md"
-                >
-                  {this.props.misc.strains != null ? (
-                    this.props.children
-                  ) : (
-                    <div className="h-screen w-full">
-                      <Loader {...this.props} />
-                    </div>
-                  )}
-                </div>
-              </div>
-              {Router.asPath.slice(1).includes("product/") ? (
-                <StrainsMenu {...this.props} />
-              ) : null}
-              <AnchorLink
-                aria-label="toTop"
-                className="items-center flex"
-                href="#top"
+            <div className="pt-32 md:pt-48">
+              <div
+                className={() => {
+                  if (this.state.isClient) {
+                    return window.innerHeight < 700 ? "hidden" : "relative";
+                  }
+                  return "relative";
+                }}
               >
-                <div
-                  id="jumpToTop"
-                  className="fixed z-999 w-12 pb-2 mb-12 mr-4 h-12 bg-red-darker pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-red-dark scale-item items-center flex rounded shadow-md"
-                >
-                  <FontAwesomeIcon
-                    icon={faAngleUp}
-                    className="fa-2x cursor-pointer flex justify-center mt-1"
-                  />
-                </div>
-              </AnchorLink>
-              <Cart {...this.props} />
-              <Footer {...this.props} />
-            </React.Fragment>
+                <ShareButtons {...this.props} />
+              </div>
+              <div
+                id="tawkto"
+                className="pulse sm:hidden md:hidden lg:hidden fixed z-40 w-20 h-16 bg-red-darker mb-16 pin-b pin-l text-white text-center text-lg pt-3 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item shadow-md"
+                onClick={() => {
+                  Tawk_API.toggle();
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={faComments}
+                  className="ml-2 fa-2x cursor-pointer"
+                />
+                {/* <h3>CHAT</h3> */}
+              </div>
+              <div
+                style={{
+                  marginLeft:
+                    this.props.viewProduct.showStrainsMenu &&
+                    ["md", "lg", "xl"].includes(this.props.misc.mediaSize)
+                      ? "250px"
+                      : "auto",
+                  transition: "all .4s ease"
+                }}
+                className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md"
+              >
+                {this.props.misc.strains != null ? (
+                  this.props.children
+                ) : (
+                  <div className="h-screen w-full">
+                    <Loader {...this.props} />
+                  </div>
+                )}
+              </div>
+            </div>
+            {Router.asPath.slice(1).includes("product/") ? (
+              <StrainsMenu {...this.props} />
+            ) : null}
+            <AnchorLink
+              aria-label="toTop"
+              className="items-center flex"
+              href="#top"
+            >
+              <div
+                id="jumpToTop"
+                className="fixed z-999 w-12 pb-2 mb-12 mr-4 h-12 bg-red-darker pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-red-dark scale-item items-center flex rounded shadow-md"
+              >
+                <FontAwesomeIcon
+                  icon={faAngleUp}
+                  className="fa-2x cursor-pointer flex justify-center mt-1"
+                />
+              </div>
+            </AnchorLink>
+            <Cart {...this.props} />
+            <Footer {...this.props} />
+          </React.Fragment>
           )}
         </div>
       </React.Fragment>

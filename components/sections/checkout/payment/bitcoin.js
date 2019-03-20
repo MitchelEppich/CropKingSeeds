@@ -63,6 +63,7 @@ const Bitcoin = props => {
               Proceeding will take you to Bitcoin to log in to your account.
             </p>
             <img
+             alt={props.misc.CFURL + "/logos/bitcoin_logo.png"}
               src={props.misc.CFURL + "/logos/bitcoin_logo.png"}
               width="200px"
               className="mt-4 cursor-pointer"

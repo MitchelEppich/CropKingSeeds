@@ -105,12 +105,14 @@ const Compare = props => {
               className="w-full justify-center scale-item flex p-4 relative"
             >
               <img
+                alt="strainPackage"
                 src={
                   props.misc.CFURL + "/packages/P_" + product.sotiId + ".png"
                 }
                 className="h-40 w-auto absolute z-50 ml-2 shadow"
               />
               <img
+                alt="strainPlant"
                 src={props.misc.CFURL + "/plant/P_" + product.sotiId + ".jpg"}
                 className="h-32 items-baseline pin-b flex w-auto absolute -ml-6"
               />
@@ -246,6 +248,7 @@ const Compare = props => {
                         product.name.toLowerCase().replace(/ /g, "-")
                       }
                       target="_blank"
+                      aria-label="view-product"
                     >
                       See Product{" "}
                       <FontAwesomeIcon

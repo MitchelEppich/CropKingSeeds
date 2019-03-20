@@ -32,6 +32,7 @@ const Footer = props => {
           {" "}
           <img
             style={imgKingFooter}
+            alt={props.misc.CFURL + "/logos/cks-logo-footer.png"}
             src={props.misc.CFURL + "/logos/cks-logo-footer.png"}
             className="mt-8"
           />
@@ -81,6 +82,8 @@ const Footer = props => {
               </a>
               <a
                 style={{ color: "white" }}
+                rel="noreferrer"
+                aria-label="articles"
                 href="https://www.marijuanaseeds.com/"
                 target="_blank"
                 className="font-bold w-full text-right sm:w-full md:w-full text-xl lg:text-lg md:text-lg   hover:text-grey-light cursor-pointer md:text-right sm:text-right"

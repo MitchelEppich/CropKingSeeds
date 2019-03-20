@@ -76,7 +76,6 @@ const getActions = uri => {
       };
     },
     resetCartAnimation: () => {
-      console.log("Hit");
       return {
         type: actionTypes.RESET_CART_ANIMATION
       };

@@ -23,7 +23,7 @@ class Index extends Component {
 
           <div className="p-3 bg-red-dark text-white mt-8 mx-auto text-center cursor-pointer h-12 pt-3 w-64 text-2xl font-extrabold scale-item hover:bg-red-light rounded shadow-md">
             <Link href="/contact">
-              <a className="text-white">Contact! </a>
+              <span className="text-white">Contact! </span>
             </Link>
           </div>
         </div>

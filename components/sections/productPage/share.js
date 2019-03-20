@@ -37,6 +37,7 @@ const Share = props => {
         </div> */}
         <div className="p-2 flex w-full justify-center opacity-75">
           <a
+            aria-label="share-facebook"
             className="no-underline text-grey-light"
             target="_blank"
             rel="noreferrer"
@@ -51,6 +52,7 @@ const Share = props => {
             />
           </a>
           <a
+            aria-label="share-twitter"
             className="no-underline text-grey-light"
             target="_blank"
             href={

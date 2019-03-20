@@ -60,6 +60,9 @@ const ProductPreview = props => {
           <div className="inline-flex w-full">
             <div className="w-1/3 text-center cursor-pointer p-2">
               <img
+                alt={
+                  props.misc.CFURL + "/packages/P_" + _product.sotiId + ".png"
+                }
                 src={
                   props.misc.CFURL + "/packages/P_" + _product.sotiId + ".png"
                 }

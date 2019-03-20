@@ -5,6 +5,7 @@ const MdArticles = props => {
     <div className="w-full lg:mt-6">
       <div className="w-full relative scale-item xl:pt-6">
         <img
+          alt="../../static/img/hemp-seeds.jpg"
           src="../../static/img/hemp-seeds.jpg"
           className="object-cover xxl:h-400 xl:h-300 w-full"
           style={{ filter: "brightness(0.5)" }}

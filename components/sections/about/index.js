@@ -109,6 +109,7 @@ const About = props => {
         <img
           style={{ objectFit: "cover" }}
           className="h-200 w-200 lg:w-150 lg:h-150 rounded-full border-8 border-grey-lighter scale-item"
+          alt={props.misc.CFURL + val.src}
           src={props.misc.CFURL + val.src}
         />
         <h3 className="mt-6 text-3/5xl lg:text-3xl font-bold text-red-light">

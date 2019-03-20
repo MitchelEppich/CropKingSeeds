@@ -10,6 +10,7 @@ const SmArticles = props => {
         <img
           className="h-250 sm:h-125 md:h-150 lg:h-150 xl:h-150 w-full object-cover"
           src={`../../static/img/${props.src}`}
+          alt={`../../static/img/${props.src}`}
         />
         <h2 className="text-red-dark font-extrabold p-2 sm:text-lg sm:px-4 ">
           How to Grow Cannabis

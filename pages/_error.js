@@ -93,6 +93,8 @@ class Error extends Component {
 
             <div className="mt-24 xl:mt-10 lg:mt-8 md:mt-6 md:mb-8 sm:mt-6 sm:mb-8 w-full">
               <a
+                aria-label="cks-shop"
+                rel="noreferrer"
                 href="../shop"
                 className="p-2 px-8 bg-black text-white hover:bg-grey hover:text-white"
               >

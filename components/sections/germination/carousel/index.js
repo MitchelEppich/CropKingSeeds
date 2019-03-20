@@ -8,7 +8,12 @@ const Carousel = props => {
   let carouselWidth = carousel[props.misc.mediaSize].width;
   let images = props.germination.carousel.steps.map((step, index) => {
     return (
-      <img key={index} className="germinationCarouselImg" src={step.image} />
+      <img
+        alt="carouselImageGermination"
+        key={index}
+        className="germinationCarouselImg"
+        src={step.image}
+      />
     );
   });
   let progressDivs = carousel.steps.map((step, index) => {

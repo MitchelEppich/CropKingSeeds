@@ -29,7 +29,6 @@ const seedSelectModule = props => {
                 : "text-sm h-6 ml-1 flex items-center pt-1"
             }
           >
-            {" "}
             seeds
           </span>
         </button>

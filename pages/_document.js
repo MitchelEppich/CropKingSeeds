@@ -27,14 +27,14 @@ export default class MyDocument extends Document {
     return (
       <html lang="en">
         <Head>
-          <meta name="theme-color" content="#a90000" />
           <title>
             Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
           </title>
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+          <meta name="theme-color" content="#ef5753" />
           <meta
             name="viewport"
-            content="initial-scale=1.0, width=device-width, maximum-scale=1"
+            content="initial-scale=1.0, width=device-width, maximum-scale=6"
             key="viewport"
           />
           <meta httpEquiv="ScreenOrientation" content="autoRotate:disabled" />
@@ -51,7 +51,8 @@ export default class MyDocument extends Document {
             name="copyright"
             content="© 2005 - 2019 Crop King Seeds. All Rights Reserved."
           />
-          {/* <link rel="manifest" href="/_next/static/manifest.json" /> */}
+
+          <link rel="manifest" href="/_next/static/manifest.json" />
           <link rel="stylesheet" href="/_next/static/style.css" />
           <link rel="icon" href="../static/favicon.ico" />
           {this.generateSchemaMarkup(strainsData)}

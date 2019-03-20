@@ -37,6 +37,8 @@ const menuOption = props => {
         }
       >
         <a
+          aria-label={heading.name}
+          rel="noreferrer"
           className={
             searchMatch
               ? "text-red-light  menu-option w-full h-full"

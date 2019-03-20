@@ -96,6 +96,7 @@ const ArticleContent = props => {
           </div>
           <div className="md:w-full sm:w-full w-2/5 p-6">
             <img
+              alt="../../static/img/cannabis.jpg"
               src="../../static/img/cannabis.jpg"
               style={imgStyle}
               className="w-full"

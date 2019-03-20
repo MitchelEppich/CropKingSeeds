@@ -169,6 +169,7 @@ const menu = props => {
           </div>*/}
           <div className="w-1/2">
             <a
+              aria-label="cks-phone-toll-free"
               name="phone"
               href={
                 props.misc.ageVerification != null &&
@@ -217,6 +218,7 @@ const menu = props => {
                 {/* <Link href="/"> */}
                 <img
                   onClick={() => console.log(props)}
+                  alt={props.misc.CFURL + "/logos/cks-logo-header.png"}
                   src={props.misc.CFURL + "/logos/cks-logo-header.png"}
                   className="z-999 cks-logo-header p-0 w-125 sm:w-85px scale-item cursor-pointer sm:-mt-2 sm:-ml-1 md:-mt-3"
                 />
@@ -230,36 +232,21 @@ const menu = props => {
                   <li className="font-extrabold cursor-pointer slowish ">
                     <SearchBar {...props} />{" "}
                   </li>
-                  <a
-                    aria-label="home"
-                    className="text-white"
-                    rel="noreferrer"
-                    href="/"
-                  >
+                  <Link href="/">
                     <li className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark">
                       Home
                     </li>
-                  </a>
-                  <a
-                    aria-label="shop"
-                    className="text-white"
-                    rel="noreferrer"
-                    href="/shop"
-                  >
+                  </Link>
+                  <Link href="/shop">
                     <li className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark">
                       Shop
                     </li>
-                  </a>
-                  <a
-                    aria-label="contact"
-                    className="text-white"
-                    rel="noreferrer"
-                    href="/contact"
-                  >
+                  </Link>
+                  <Link href="/contact">
                     <li className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark">
                       Contact
                     </li>
-                  </a>
+                  </Link>
                   <li
                     className={`font-extrabold text-2xl px-2 cursor-pointer scale-item ${
                       route.includes("checkout")
@@ -332,12 +319,7 @@ const menu = props => {
                         : "text-white w-full mt-1 ml-0 pl-0 uppercase opacity-0 h-0 "
                     }
                   >
-                    <a
-                      aria-label="home"
-                      className="text-white"
-                      rel="noreferrer"
-                      href="/"
-                    >
+                    <Link href="/">
                       <li
                         className={
                           isMobileNavVisible
@@ -347,13 +329,8 @@ const menu = props => {
                       >
                         Home
                       </li>
-                    </a>
-                    <a
-                      aria-label="shop"
-                      className="text-white"
-                      rel="noreferrer"
-                      href="/shop"
-                    >
+                    </Link>
+                    <Link href="/shop">
                       <li
                         className={
                           isMobileNavVisible
@@ -363,13 +340,8 @@ const menu = props => {
                       >
                         Shop
                       </li>
-                    </a>
-                    <a
-                      aria-label="contact"
-                      className="text-white"
-                      rel="noreferrer"
-                      href="/contact"
-                    >
+                    </Link>
+                    <Link href="/contact">
                       {/* route.includes("checkout") // ? "unselectable
                       opacity-50 pointer-events-none" // : "cursor-pointer
                       scale-item" */}
@@ -383,7 +355,7 @@ const menu = props => {
                       >
                         Contact
                       </li>
-                    </a>
+                    </Link>
                   </ul>
                 </div>
               </div>

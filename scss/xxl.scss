@@ -4,453 +4,457 @@
 // @access public
 // @param {String} $element - Element's name
 @mixin element($element) {
-    &__#{$element} {
-        @content;
-    }
+  &__#{$element} {
+    @content;
+  }
 }
 // Block Modifier
 // @access public
 // @param {String} $modifier - Modifier's name
 @mixin modifier($modifier) {
-    &--#{$modifier} {
-        @content;
-    }
+  &--#{$modifier} {
+    @content;
+  }
 }
 
 //EXAMPLE FONT FACE IMPORT WITH TWO WEIGHTS
 @font-face {
-    font-family: "proxima nova";
-    src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff") format("truetype");
-    font-weight: thin;
-    font-style: normal;
-    font-display: swap;
+  font-family: "proxima nova";
+  src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff")
+    format("truetype");
+  font-weight: thin;
+  font-style: normal;
+  font-display: swap;
 }
 @font-face {
-    font-family: "proxima nova";
-    src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "proxima nova";
+  src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @media only screen and (min-width: 2560px) {
-    ////////////
-    // UNIVERSAL
-    .searchBar {
-        margin-left: 26%;
-    }
+  ////////////
+  // UNIVERSAL
+  .searchBar {
+    margin-left: 26%;
+  }
 
-    .ray_box {
-        /*HEADER ANIMATION */
-        left: calc(36% - 150px);
-        top: 70px;
-        right: 0;
-        position: absolute;
-        bottom: 0;
-        width: 30px;
-        height: 30px;
-        -webkit-animation: ray_anim 300s linear infinite;
-        animation: ray_anim 300s linear infinite;
-        z-index: -5;
-    }
-    .packagePinBig {
-        height: 8rem;
-        position: absolute;
-        right: -42px;
-        top: 225px;
-        pointer-events: none;
-    }
-    /////////////
+  .ray_box {
+    /*HEADER ANIMATION */
+    left: calc(36% - 150px);
+    top: 70px;
+    right: 0;
+    position: absolute;
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    -webkit-animation: ray_anim 300s linear infinite;
+    animation: ray_anim 300s linear infinite;
+    z-index: -5;
+  }
+  .packagePinBig {
+    height: 8rem;
+    position: absolute;
+    right: -42px;
+    top: 225px;
+    pointer-events: none;
+  }
+  /////////////
 }
 
 @media only screen and (min-width: 1922px) {
-    ////////////
-    // UNIVERSAL
-    .searchBar {
-        margin-left: 26%;
-    }
+  ////////////
+  // UNIVERSAL
+  .searchBar {
+    margin-left: 26%;
+  }
 
-    .ray_box {
-        /*HEADER ANIMATION */
-        left: calc(31% - 150px);
-        top: 70px;
-        right: 0;
-        position: absolute;
-        bottom: 0;
-        width: 30px;
-        height: 30px;
-        -webkit-animation: ray_anim 300s linear infinite;
-        animation: ray_anim 300s linear infinite;
-        z-index: -5;
-    }
-    .packagePinBig {
-        height: 8rem;
-        position: absolute;
-        right: -42px;
-        top: 225px;
-        pointer-events: none;
-    }
-    /////////////
+  .ray_box {
+    /*HEADER ANIMATION */
+    left: calc(31% - 150px);
+    top: 70px;
+    right: 0;
+    position: absolute;
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    -webkit-animation: ray_anim 300s linear infinite;
+    animation: ray_anim 300s linear infinite;
+    z-index: -5;
+  }
+  .packagePinBig {
+    height: 8rem;
+    position: absolute;
+    right: -42px;
+    top: 225px;
+    pointer-events: none;
+  }
+  /////////////
 
-    ///////////////
-    // ARTICLE PAGE
-    .imgFeatureNews {
-        width: 100%;
-        height: 460px;
-        overflow: hidden;
-        object-fit: contain;
-        object-position: center center;
-        box-shadow: rgba(0, 0, 0, 0.26) 0px 0px 10px;
-    }
-    // END ARTICLE PAGE
-    ///////////////////
+  ///////////////
+  // ARTICLE PAGE
+  .imgFeatureNews {
+    width: 100%;
+    height: 460px;
+    overflow: hidden;
+    object-fit: contain;
+    object-position: center center;
+    box-shadow: rgba(0, 0, 0, 0.26) 0px 0px 10px;
+  }
+  // END ARTICLE PAGE
+  ///////////////////
 
-    ////////////////
-    // CHECKOUT PAGE
-    // END CHECKOUT PAGE
-    ////////////////////
+  ////////////////
+  // CHECKOUT PAGE
+  // END CHECKOUT PAGE
+  ////////////////////
 
-    ///////////////////
-    // GERMINATION PAGE
-    // END GERMINATION PAGE
-    ///////////////////////
+  ///////////////////
+  // GERMINATION PAGE
+  // END GERMINATION PAGE
+  ///////////////////////
 
-    ////////////
-    // HOME PAGE
-    .bannerBuyNow {
-        color: white;
-        padding: 0.5rem 2rem;
-        border: 1px solid white;
-        position: absolute;
-        width: 14rem;
-        left: calc(50% - 7rem);
-        border-radius: 2px;
-        transition: all 0.3s ease-in-out;
-        box-shadow: 0 2px 10px #0000004f;
-        font-weight: bold;
-        background-color: rgba(14, 14, 14, 0.2);
-        bottom: 25px;
-        &:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
+  ////////////
+  // HOME PAGE
+  .bannerBuyNow {
+    color: white;
+    padding: 0.5rem 2rem;
+    border: 1px solid white;
+    position: absolute;
+    width: 14rem;
+    left: calc(50% - 7rem);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 10px #0000004f;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.5);
+    bottom: 25px;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
     }
-    .genePreview {
-        width: 25%;
-        height: 500px;
-        z-index: 10;
-        transition: all 0.4s ease-in-out;
-        background-position: center;
-        background-size: 500px 500px;
-        background-repeat: no-repeat;
-        overflow: hidden;
-        cursor: pointer;
-        &:nth-of-type(2) {
-            border-left: 5px solid white;
-        }
-        &:nth-of-type(3) {
-            border-left: 5px solid white;
-            border-right: 5px solid white;
-        }
+  }
+  .genePreview {
+    width: 25%;
+    height: 500px;
+    z-index: 10;
+    transition: all 0.4s ease-in-out;
+    background-position: center;
+    background-size: 500px 500px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    cursor: pointer;
+    &:nth-of-type(2) {
+      border-left: 5px solid white;
     }
+    &:nth-of-type(3) {
+      border-left: 5px solid white;
+      border-right: 5px solid white;
+    }
+  }
 
-    .headingClass {
-        transform: translateX(17px);
-        position: absolute;
-        bottom: 0;
-        transition: all 0.4s ease-in-out;
-    }
-    .packClass {
-        transform: rotate(90deg);
-        margin: 80px 128px;
-        width: 240px;
-        transition: all 0.4s ease-in-out;
-    }
-    .screenClass {
-        transform: translateX(-445px) rotate(-90deg);
-        transition: all 0.4s ease-in-out;
-        width: 33rem;
-        height: 100%;
-    }
+  .headingClass {
+    transform: translateX(17px);
+    position: absolute;
+    bottom: 0;
+    transition: all 0.4s ease-in-out;
+  }
+  .packClass {
+    transform: rotate(90deg);
+    margin: 80px 128px;
+    width: 240px;
+    transition: all 0.4s ease-in-out;
+  }
+  .screenClass {
+    transform: translateX(-445px) rotate(-90deg);
+    transition: all 0.4s ease-in-out;
+    width: 33rem;
+    height: 100%;
+  }
 
-    // END HOME PAGE
-    ////////////////
+  // END HOME PAGE
+  ////////////////
 
-    ////////////
-    // SHOP PAGE
-    .overlayClass {
-        height: 100%;
-        width: 100%;
-        transition: 0.4s all ease;
-        color: rgba(255, 255, 255, 0);
-        position: relative;
-        overflow: visible;
-        text-align: center;
-        @include modifier("hover") {
-            text-align: center;
-            transform: translateX(-60px) translateZ(0);
-            -webkit-transform: translateX(-60px) translateZ(0);
-            -moz-transform: translateX(-60px) translateZ(0);
-            -ms-transform: translateX(-60px) translateZ(0);
-            -o-transform: translateX(-60px) translateZ(0);
-            height: 635px;
-            width: 145%;
-            padding: 10px;
-            background-color: #fff;
-            transition: 0.4s all ease;
-            color: rgba(255, 255, 255, 1);
-            position: absolute;
-            box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
-            border: 0.5px solid #cecece;
-        }
+  ////////////
+  // SHOP PAGE
+  .overlayClass {
+    height: 100%;
+    width: 100%;
+    transition: 0.4s all ease;
+    color: rgba(255, 255, 255, 0);
+    position: relative;
+    overflow: visible;
+    text-align: center;
+    @include modifier("hover") {
+      text-align: center;
+      transform: translateX(-60px) translateZ(0);
+      -webkit-transform: translateX(-60px) translateZ(0);
+      -moz-transform: translateX(-60px) translateZ(0);
+      -ms-transform: translateX(-60px) translateZ(0);
+      -o-transform: translateX(-60px) translateZ(0);
+      height: 635px;
+      width: 145%;
+      padding: 10px;
+      background-color: #fff;
+      transition: 0.4s all ease;
+      color: rgba(255, 255, 255, 1);
+      position: absolute;
+      box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
+        0 5px 15px 0 rgba(0, 0, 0, 0.08);
+      border: 0.5px solid #cecece;
     }
-    // END SHOP PAGE
-    ////////////////
+  }
+  // END SHOP PAGE
+  ////////////////
 }
 
 // XXL
 @media only screen and (max-width: 1921px) {
-    ////////////
-    // UNIVERSAL
-    .ray_box {
-        /*HEADER ANIMATION */
-        left: calc(25% - 80px);
-        top: 100px;
-        right: 0;
-        position: absolute;
-        bottom: 0;
-        width: 30px;
-        height: 30px;
-        -webkit-animation: ray_anim 300s linear infinite;
-        animation: ray_anim 300s linear infinite;
-        z-index: -5;
-    }
+  ////////////
+  // UNIVERSAL
+  .ray_box {
+    /*HEADER ANIMATION */
+    left: calc(25% - 80px);
+    top: 100px;
+    right: 0;
+    position: absolute;
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    -webkit-animation: ray_anim 300s linear infinite;
+    animation: ray_anim 300s linear infinite;
+    z-index: -5;
+  }
 
-    .searchBar {
-        margin-left: 18%;
-    }
-    // END UNIVERSAL
-    ////////////////
+  .searchBar {
+    margin-left: 18%;
+  }
+  // END UNIVERSAL
+  ////////////////
 
-    ///////////////
-    // ARTICLE PAGE
-    .imgFeatureNews {
-        width: 100%;
-        height: 460px;
-        overflow: hidden;
-        object-fit: contain;
-        object-position: center center;
-        box-shadow: rgba(0, 0, 0, 0.26) 0px 0px 10px;
-    }
-    // END ARTICLE PAGE
-    ///////////////////
+  ///////////////
+  // ARTICLE PAGE
+  .imgFeatureNews {
+    width: 100%;
+    height: 460px;
+    overflow: hidden;
+    object-fit: contain;
+    object-position: center center;
+    box-shadow: rgba(0, 0, 0, 0.26) 0px 0px 10px;
+  }
+  // END ARTICLE PAGE
+  ///////////////////
 
-    ////////////////
-    // CHECKOUT PAGE
-    // END CHECKOUT PAGE
-    ////////////////////
+  ////////////////
+  // CHECKOUT PAGE
+  // END CHECKOUT PAGE
+  ////////////////////
 
-    ///////////////////
-    // GERMINATION PAGE
-    // END GERMINATION PAGE
-    ///////////////////////
+  ///////////////////
+  // GERMINATION PAGE
+  // END GERMINATION PAGE
+  ///////////////////////
 
-    ////////////
-    // HOME PAGE
-    .bannerBuyNow {
-        color: white;
-        padding: 0.5rem 2rem;
-        border: 1px solid white;
-        position: absolute;
-        width: 14rem;
-        left: calc(50% - 7rem);
-        border-radius: 2px;
-        transition: all 0.3s ease-in-out;
-        box-shadow: 0 2px 10px #0000004f;
-        font-weight: bold;
-        background-color: rgba(14, 14, 14, 0.2);
-        bottom: 25px;
-        &:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
+  ////////////
+  // HOME PAGE
+  .bannerBuyNow {
+    color: white;
+    padding: 0.5rem 2rem;
+    border: 1px solid white;
+    position: absolute;
+    width: 14rem;
+    left: calc(50% - 7rem);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 10px #0000004f;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.5);
+    bottom: 25px;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
     }
-    .genePreview {
-        width: 25%;
-        height: 500px;
-        z-index: 10;
-        transition: all 0.4s ease-in-out;
-        background-position: center;
-        background-size: 500px 500px;
-        background-repeat: no-repeat;
-        overflow: hidden;
-        cursor: pointer;
-        &:nth-of-type(2) {
-            border-left: 5px solid white;
-        }
-        &:nth-of-type(3) {
-            border-left: 5px solid white;
-            border-right: 5px solid white;
-        }
+  }
+  .genePreview {
+    width: 25%;
+    height: 500px;
+    z-index: 10;
+    transition: all 0.4s ease-in-out;
+    background-position: center;
+    background-size: 500px 500px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    cursor: pointer;
+    &:nth-of-type(2) {
+      border-left: 5px solid white;
     }
+    &:nth-of-type(3) {
+      border-left: 5px solid white;
+      border-right: 5px solid white;
+    }
+  }
 
-    .headingClass {
-        transform: translateX(17px);
-        position: absolute;
-        bottom: 0;
-        transition: all 0.4s ease-in-out;
-    }
-    .packClass {
-        transform: rotate(90deg);
-        margin: 80px 128px;
-        width: 240px;
-        transition: all 0.4s ease-in-out;
-    }
-    .screenClass {
-        transform: translateX(-445px) rotate(-90deg);
-        transition: all 0.4s ease-in-out;
-        width: 33rem;
-        height: 100%;
-    }
+  .headingClass {
+    transform: translateX(17px);
+    position: absolute;
+    bottom: 0;
+    transition: all 0.4s ease-in-out;
+  }
+  .packClass {
+    transform: rotate(90deg);
+    margin: 80px 128px;
+    width: 240px;
+    transition: all 0.4s ease-in-out;
+  }
+  .screenClass {
+    transform: translateX(-445px) rotate(-90deg);
+    transition: all 0.4s ease-in-out;
+    width: 33rem;
+    height: 100%;
+  }
 
-    // END HOME PAGE
-    ////////////////
+  // END HOME PAGE
+  ////////////////
 
-    ////////////
-    // SHOP PAGE
-    .overlayClass {
-        height: 100%;
-        width: 100%;
-        transition: 0.4s all ease;
-        color: rgba(255, 255, 255, 0);
-        position: relative;
-        overflow: visible;
-        text-align: center;
-        @include modifier("hover") {
-            text-align: center;
-            transform: translateX(-60px) translateZ(0);
-            -webkit-transform: translateX(-60px) translateZ(0);
-            -moz-transform: translateX(-60px) translateZ(0);
-            -ms-transform: translateX(-60px) translateZ(0);
-            -o-transform: translateX(-60px) translateZ(0);
-            height: 635px;
-            width: 145%;
-            padding: 10px;
-            background-color: #fff;
-            transition: 0.4s all ease;
-            color: rgba(255, 255, 255, 1);
-            position: absolute;
-            box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
-            border: 0.5px solid #cecece;
-        }
+  ////////////
+  // SHOP PAGE
+  .overlayClass {
+    height: 100%;
+    width: 100%;
+    transition: 0.4s all ease;
+    color: rgba(255, 255, 255, 0);
+    position: relative;
+    overflow: visible;
+    text-align: center;
+    @include modifier("hover") {
+      text-align: center;
+      transform: translateX(-60px) translateZ(0);
+      -webkit-transform: translateX(-60px) translateZ(0);
+      -moz-transform: translateX(-60px) translateZ(0);
+      -ms-transform: translateX(-60px) translateZ(0);
+      -o-transform: translateX(-60px) translateZ(0);
+      height: 635px;
+      width: 145%;
+      padding: 10px;
+      background-color: #fff;
+      transition: 0.4s all ease;
+      color: rgba(255, 255, 255, 1);
+      position: absolute;
+      box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
+        0 5px 15px 0 rgba(0, 0, 0, 0.08);
+      border: 0.5px solid #cecece;
     }
-    // END SHOP PAGE
-    ////////////////
+  }
+  // END SHOP PAGE
+  ////////////////
 
-    ///////////////////
-    // VIEWPRODUCT PAGE
-    .imgCarousel {
-        height: 390px !important;
-        width: auto !important;
-    }
+  ///////////////////
+  // VIEWPRODUCT PAGE
+  .imgCarousel {
+    height: 390px !important;
+    width: auto !important;
+  }
 
-    .lensStyle {
-        background-color: rgba(226, 226, 226, 0.09);
-    }
-    // END VIEWPRODUCT PAGE
-    ///////////////////////
+  .lensStyle {
+    background-color: rgba(226, 226, 226, 0.09);
+  }
+  // END VIEWPRODUCT PAGE
+  ///////////////////////
 
-    .packagePinBig {
-        height: 6rem;
-        position: absolute;
-        right: -40px;
-        top: 210px;
-        pointer-events: none;
-    }
+  .packagePinBig {
+    height: 6rem;
+    position: absolute;
+    right: -40px;
+    top: 210px;
+    pointer-events: none;
+  }
 }
 
 @media only screen and (max-width: 1850px) {
-    ////////////
-    // UNIVERSAL
-    .ray_box {
-        /*HEADER ANIMATION */
-        left: calc(25% - 110px);
-        top: 90px;
-        right: 0;
-        position: absolute;
-        bottom: 0;
-        width: 30px;
-        height: 30px;
-        -webkit-animation: ray_anim 300s linear infinite;
-        animation: ray_anim 300s linear infinite;
-        z-index: -5;
-    }
+  ////////////
+  // UNIVERSAL
+  .ray_box {
+    /*HEADER ANIMATION */
+    left: calc(25% - 110px);
+    top: 90px;
+    right: 0;
+    position: absolute;
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    -webkit-animation: ray_anim 300s linear infinite;
+    animation: ray_anim 300s linear infinite;
+    z-index: -5;
+  }
 }
 @media only screen and (max-width: 1710px) {
-    ////////////
-    // UNIVERSAL
-    .ray_box {
-        /*HEADER ANIMATION */
-        left: calc(23% - 110px);
-        top: 90px;
-        right: 0;
-        position: absolute;
-        bottom: 0;
-        width: 30px;
-        height: 30px;
-        -webkit-animation: ray_anim 300s linear infinite;
-        animation: ray_anim 300s linear infinite;
-        z-index: -5;
-    }
+  ////////////
+  // UNIVERSAL
+  .ray_box {
+    /*HEADER ANIMATION */
+    left: calc(23% - 110px);
+    top: 90px;
+    right: 0;
+    position: absolute;
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    -webkit-animation: ray_anim 300s linear infinite;
+    animation: ray_anim 300s linear infinite;
+    z-index: -5;
+  }
 }
 @media only screen and (max-width: 1570px) {
-    ////////////
-    // UNIVERSAL
-    .ray_box {
-        /*HEADER ANIMATION */
-        left: calc(22% - 110px);
-        top: 90px;
-        right: 0;
-        position: absolute;
-        bottom: 0;
-        width: 30px;
-        height: 30px;
-        -webkit-animation: ray_anim 300s linear infinite;
-        animation: ray_anim 300s linear infinite;
-        z-index: -5;
-    }
+  ////////////
+  // UNIVERSAL
+  .ray_box {
+    /*HEADER ANIMATION */
+    left: calc(22% - 110px);
+    top: 90px;
+    right: 0;
+    position: absolute;
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    -webkit-animation: ray_anim 300s linear infinite;
+    animation: ray_anim 300s linear infinite;
+    z-index: -5;
+  }
 }
 
 @media only screen and (max-width: 1500px) {
-    ////////////
-    // UNIVERSAL
-    .ray_box {
-        /*HEADER ANIMATION */
-        left: calc(20% - 110px);
-        top: 90px;
-        right: 0;
-        position: absolute;
-        bottom: 0;
-        width: 30px;
-        height: 30px;
-        -webkit-animation: ray_anim 300s linear infinite;
-        animation: ray_anim 300s linear infinite;
-        z-index: -5;
-    }
+  ////////////
+  // UNIVERSAL
+  .ray_box {
+    /*HEADER ANIMATION */
+    left: calc(20% - 110px);
+    top: 90px;
+    right: 0;
+    position: absolute;
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    -webkit-animation: ray_anim 300s linear infinite;
+    animation: ray_anim 300s linear infinite;
+    z-index: -5;
+  }
 }
 
 @media only screen and (max-width: 1460px) {
-    ////////////
-    // UNIVERSAL
-    .ray_box {
-        /*HEADER ANIMATION */
-        left: calc(18% - 110px);
-        top: 90px;
-        right: 0;
-        position: absolute;
-        bottom: 0;
-        width: 30px;
-        height: 30px;
-        -webkit-animation: ray_anim 300s linear infinite;
-        animation: ray_anim 300s linear infinite;
-        z-index: -5;
-    }
+  ////////////
+  // UNIVERSAL
+  .ray_box {
+    /*HEADER ANIMATION */
+    left: calc(18% - 110px);
+    top: 90px;
+    right: 0;
+    position: absolute;
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    -webkit-animation: ray_anim 300s linear infinite;
+    animation: ray_anim 300s linear infinite;
+    z-index: -5;
+  }
 }

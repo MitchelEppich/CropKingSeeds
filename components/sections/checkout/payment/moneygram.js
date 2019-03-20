@@ -55,6 +55,7 @@ const Moneygram = props => {
               Proceeding will take you to Moneygram to log in to your account.
             </p>
             <img
+              alt={props.misc.CFURL + "/logos/moneygram_logo.png"}
               src={props.misc.CFURL + "/logos/moneygram_logo.png"}
               width="200px"
               className="mt-4 cursor-pointer"

@@ -2,9 +2,8 @@ const catalogue = props => {
   return (
     <div className="w-full my-8 justify-center flex relative mt-2">
       <a
-        href={
-          props.misc.CFURL + "/catalogue/CropKingSeeds-2019-Catalogue.pdf"
-        }
+        href={props.misc.CFURL + "/catalogue/CropKingSeeds-2019-Catalogue.pdf"}
+        aria-label="download-catalogue"
         target="_blank"
       >
         <img

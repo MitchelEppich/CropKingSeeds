@@ -34,6 +34,7 @@ const ads = props => {
         </h2>
         <img
           className="w-100 lg:w-12 xl:w-16 block mt-6 mx-auto"
+          alt="../static/icons/affiliate/3.png"
           src="../static/icons/affiliate/3.png"
         />
         <p className="text-lg lg:text-sm xl:text-base mt-8 text-center font-bold px-8">

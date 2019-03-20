@@ -12,6 +12,7 @@ import News from "../components/sections/news";
 import Carousel from "../components/sections/germination/carousel";
 import FeaturedStrains from "../components/sections/featuredStrains";
 
+import registerServiceWorker from "../registerServiceWorker";
 class Index extends Component {
   componentWillMount() {
     this.props.getBanners();
@@ -28,6 +29,8 @@ class Index extends Component {
       let timeout = setInterval(this.newsStepper, 1000);
       this.props.setNewsStepper({ timeout });
     }
+
+    registerServiceWorker();
   }
 
   componentWillUnmount() {

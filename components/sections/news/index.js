@@ -51,7 +51,7 @@ const news = props => {
         }}
         className={`${
           index < 3 ? "mb-2 relative" : ""
-        }  w-full sm:mx-0 md:mx-0 md:p-2 sm:p-2 cursor-pointer sm:shadow md:shadow relative shadow-md rounded relative`}
+        }  w-full sm:mx-0 md:mx-0 md:p-2 sm:p-2 sm:shadow md:shadow relative shadow-md rounded relative`}
       >
         <div className="absolute w-12 h-12 bg-grey-light text-white -ml-1 -mt-1">
           {" "}
@@ -90,12 +90,11 @@ const news = props => {
           </p> */}
           {location != null ? (
             <a
-              onClick={e => {
-                e.stopPropagation();
-                window.open(locationUrl, "_blank");
-                window.focus();
-              }}
-              className="sm:w-full md:w-full text-sm hover:text-grey-light pl-12 sm:pl-2 ml-2"
+              aria-label="event-location"
+              href={locationUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="cursor-pointer sm:w-full md:w-full text-sm hover:text-grey-light pl-12 sm:pl-2 ml-2"
             >
               <FontAwesomeIcon icon={faMapMarkerAlt} className="opacity-50" />{" "}
               {location}
@@ -103,18 +102,17 @@ const news = props => {
           ) : null}
         </div>
         <p className="p-2 sm:text-sm md:text-sm sm:px-0 md:px-0">{body}</p>
-        <div
-          className="font-bold ml-auto p-1 cursor-pointer text-grey-lighter hover:text-grey text-sm sm:mr-2 md:mr-2 flex justify-end font-bold"
-          onClick={e => {
-            e.stopPropagation();
-            window.open(url, "_blank");
-            window.focus();
-          }}
+        <a
+          aria-label="event-more-info"
+          className="font-bold ml-auto p-1 cursor-pointer text-grey hover:text-red-light text-sm sm:mr-2 md:mr-2 flex justify-end font-bold"
+          href={url}
+          target="_blank"
+          rel="noreferrer"
         >
           {" "}
-          <p className="font-bold flex items-center">More Info</p>
+          <span className="font-bold flex items-center">More Info</span>
           <FontAwesomeIcon icon={faExternalLinkAlt} className="ml-1" />
-        </div>
+        </a>
       </div>
     );
   });
@@ -130,6 +128,7 @@ const news = props => {
         <div className="inline-flex w-full sm:px-2 md:px-2 py-4 sm:flex-col md:flex-col lg:flex-col xl:flex-col">
           <div className="w-2/5 bg-white sm:w-full md:w-full lg:w-full xl:w-full p-3">
             <img
+              alt="eventImage"
               style={{ objectFit: "contain" }}
               src={`${image}`}
               className="w-full sm:h-200 md:h-200 w-full h-450 lg:h-300 xl:mt-4 xxl:mt-4 xl:h-300 xl:w-full p-2"
