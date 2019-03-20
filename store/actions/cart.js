@@ -8,6 +8,10 @@ import { makePromise, execute } from "apollo-link";
 import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
 import Navigation from "./navigation";
+import Cryptr from "cryptr";
+let cryptr = new Cryptr(
+  "7T-f+!d8bvk&a2Em&xxwe?t3DFk!9f$FeSTYcNw8J4r-dz%D6qd*cv+CJhNdv2ZKvf$G-Zv?W&Dw^kFMVv_PssVRJxLScnEcnhv7FBXWPcVkVuR6$2N?AeVL$+A$wBv#"
+);
 
 const actionTypes = {
   CLEAR_CART: "CLEAR_CART",
@@ -38,8 +42,6 @@ const getActions = uri => {
           return true;
         });
       }
-
-      console.log(_recentAdd);
 
       return { type: actionTypes.RECENT_ADDED, input: _recentAdd };
     },
@@ -220,14 +222,10 @@ const getActions = uri => {
         }
       })();
 
-      let _obj = {
-        items: _items,
-        price: _price,
-        discount: _discount
-      };
-
-      sessionStorage.setItem("cart", JSON.stringify(_obj));
-
+      let _obj = { items: _items, price: _price, discount: _discount };
+      let _cart = JSON.stringify(_obj);
+      const encryptedString = cryptr.encrypt(_cart);
+      sessionStorage.setItem("cart", encryptedString);
       return {
         type: actionTypes.MODIFY_CART,
         ..._obj
@@ -248,9 +246,15 @@ const getActions = uri => {
             price: 0,
             discount: 0
           };
+
           if (recall != null) {
-            _obj = JSON.parse(recall);
-            resolve(_obj);
+            try {
+              let decrypted = cryptr.decrypt(recall.slice(0, 100));
+              _obj = JSON.parse(decrypted);
+              resolve(_obj);
+            } catch (err) {
+              resolve({});
+            }
           } else {
             resolve({});
           }

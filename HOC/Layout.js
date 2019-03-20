@@ -187,14 +187,7 @@ class Layout extends Component {
                             ) : null}*/}
 
             <div className="pt-32 md:pt-48">
-              <div
-                className={() => {
-                  if (this.state.isClient) {
-                    return window.innerHeight < 700 ? "hidden" : "relative";
-                  }
-                  return "relative";
-                }}
-              >
+              <div className={window.innerHeight < 700 ? "hidden" : "relative"}>
                 <ShareButtons {...this.props} />
               </div>
               <div
