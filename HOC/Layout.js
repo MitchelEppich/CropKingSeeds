@@ -184,10 +184,12 @@ class Layout extends Component {
                                 <SearchBar {...this.props} />
                             ) : null}*/}
 
-              <div className="pt-32 md:pt-48">
-                <div className="relative">
-                  <ShareButtons {...this.props} />
-                </div>
+              <div className="pt-32 ">
+                {Router.asPath.slice(1).includes("product/") ? null : (
+                  <div className="relative">
+                    <ShareButtons {...this.props} />
+                  </div>
+                )}
                 <div
                   id="tawkto"
                   className="pulse sm:hidden md:hidden lg:hidden fixed z-40 w-20 h-16 bg-red-darker mb-16 pin-b pin-l text-white text-center text-lg pt-3 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item shadow-md"

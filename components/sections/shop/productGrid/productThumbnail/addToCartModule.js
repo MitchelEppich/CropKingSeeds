@@ -30,7 +30,7 @@ const addToCartModule = props => {
           </div>
           <div className="w-full inline-flex sm:mt-0 mt-2">
             <button
-              className="bg-red-dark mr-1 w-full text-center text-white h-10 px-2 py-2 hover:bg-red-light slowish rounded"
+              className="bg-red-dark mr-1 w-full text-center text-white h-10 px-2 py-2 hover:bg-red-light slowish"
               onClick={() => {
                 props.modifyCart({
                   items: props.cart.items,
@@ -42,6 +42,16 @@ const addToCartModule = props => {
                   coupon: _coupon
                 });
                 props.toggleCartAnimation();
+                props.updateRecentAdded({
+                  recentAdd: props.cart.recentAdd,
+                  sotiId: props.viewProduct.currentProduct._id
+                });
+                setTimeout(() => {
+                  props.updateRecentAdded({
+                    recentAdd: props.cart.recentAdd,
+                    sotiId: props.viewProduct.currentProduct._id
+                  });
+                }, 800);
               }}
             >
               {props.shop.cartAnimation &&
@@ -58,7 +68,7 @@ const addToCartModule = props => {
             </button>
             <Link prefetch href="/checkout">
               <button
-                className="bg-grey-dark ml-1 w-full text-center text-white h-10 px-2 py-2 hover:bg-grey-light rounded"
+                className="bg-grey-dark ml-1 w-full text-center text-white h-10 px-2 py-2 hover:bg-grey-light"
                 onClick={() => {
                   props.modifyCart({
                     items: props.cart.items,

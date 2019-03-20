@@ -60,12 +60,29 @@ const FeaturedStrainThumbnail = props => {
 
   let showMoreText = {
     transform: hover
-      ? "translateX(0px) translateY(32px)"
-      : "translateX(-450px) translateY(32px)",
+      ? "translateX(0px) translateY(70px)"
+      : "translateX(0px) translateY(120px)",
     transition: "all 0.4s ease",
     width: "100%",
     height: "42px",
     zIndex: "50"
+  };
+  let imgAnimation = {
+    transform: !hover
+      ? "scale(1) translateY(0px)"
+      : "scale(0.9) translateY(-5px)",
+    transition: "all 0.4s ease",
+    zIndex: "50",
+    height: hover ? "170px" : "215px",
+    backgroundImage:
+      "url(" +
+      props.misc.CFURL +
+      "/packages/P_" +
+      props.product.sotiId +
+      ".png)",
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center"
   };
 
   return (
@@ -82,23 +99,13 @@ const FeaturedStrainThumbnail = props => {
       </div>
 
       <div
-        style={{
-          backgroundImage:
-            "url(" +
-            props.misc.CFURL +
-            "/packages/P_" +
-            props.product.sotiId +
-            ".png)",
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center"
-        }}
+        style={imgAnimation}
         className={`cursor-pointer mt-8 sm:mt-2 ${featuredStrainsPackage}`}
       />
 
       <div
         style={showMoreText}
-        className={`absolute text-base cursor-pointer items-center flex mx-auto mt-1 justify-center text-shadow text-white p-2 rounded shadow-md font-bold ${titleColorBackground} `}
+        className={`absolute text-base cursor-pointer items-center flex mx-auto mt-1 justify-center text-shadow text-white p-2 shadow-md font-bold ${titleColorBackground} `}
       >
         See More Information{" "}
         <span className="ml-3 text-xl items-center flex pt-1">></span>

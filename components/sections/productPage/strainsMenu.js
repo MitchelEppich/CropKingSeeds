@@ -126,7 +126,7 @@ const strainsMenu = props => {
             e.stopPropagation();
             props.toggleStrainsMenu(!props.viewProduct.showStrainsMenu);
           }}
-          className="w-12 h-32 bg-red-darker hover:bg-red-light rounded-tr-lg rounded-br-lg mt-400 pin-r absolute pin-r -mr-12 cursor-pointer"
+          className="w-12 h-32 bg-red-darker hover:bg-red-light rounded-tr-lg rounded-br-lg mt-halfScreen pin-t absolute pin-r -mr-12 cursor-pointer"
         >
           <p
             style={StrainText}

@@ -135,7 +135,7 @@ const news = props => {
               className="w-full sm:h-200 md:h-200 w-full h-450 lg:h-300 xl:mt-4 xxl:mt-4 xl:h-300 xl:w-full p-2"
             />
           </div>
-          <div className="w-3/5 bg-white sm:w-full md:w-full lg:w-full xl:w-full p-2 pr-6">
+          <div className="w-3/5 bg-white sm:w-full md:w-full lg:w-full xl:w-full p-2 xxl:pr-6">
             {showEvents}
           </div>
         </div>

@@ -1,4 +1,3 @@
-import FeaturedStrainThumbnail from "./featuredStrainThumbnail";
 import FeaturedStrains from "./featuredStrains";
 
 const sidebar = props => {

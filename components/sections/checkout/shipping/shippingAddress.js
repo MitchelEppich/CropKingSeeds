@@ -28,26 +28,26 @@ const ShippingAddress = props => {
               freeShippingThreshold: props.checkout.freeShippingThreshold
             });
           }}
-          key={profile.profile.shipping.fullName.value}
+          key={profiles.indexOf(profile)}
           className={`${
             profiles.indexOf(profile) % 2 === 0
               ? "bg-grey-lightest"
               : "bg-white"
           } inline-flex w-full font-bold capitalize cursor-pointer hover:bg-grey-lighter`}
         >
-          <div className="w-1/3 p-2 px-4">
+          <div className="w-1/3 md:w-1/2 sm:w-1/2 p-2 px-4">
             <p className="w-full text-base">
               {profile.profile.shipping.fullName.value}
             </p>
           </div>
-          <div className="w-1/3 p-2 px-4">
+          <div className="w-1/3 md:w-1/2 sm:w-1/2 p-2 px-4">
             <p className="w-full text-base lowercase">
               {profile.profile.shipping.email.value != null
                 ? profile.profile.shipping.email.value
                 : profile.profile.shipping.phone.value}
             </p>
           </div>
-          <div className="w-1/3 p-2 px-4">
+          <div className="w-1/3 md:hidden sm:hidden p-2 px-4">
             <p className="w-full text-base">
               {profile.profile.shipping.city.value},{" "}
               {profile.profile.shipping.country.value}
@@ -190,15 +190,15 @@ const ShippingAddress = props => {
             </div>
 
             {props.misc.visibleScreen.includes("getProfiles") ? (
-              <div className="w-800 bg-white absolute shadow-md mt-10 z-50 ">
+              <div className="w-800 xl:w-600 lg:w-500 md:w-300 sm:w-300 bg-white absolute shadow-md mt-10 z-50 ">
                 <div className="absolute pin-t inline-flex w-full bg-red-light font-bold text-white">
-                  <div className="w-1/3 p-2 px-4">
+                  <div className="w-1/3 md:w-1/2 sm:w-1/2 p-2 px-4">
                     <p>Name:</p>
                   </div>
-                  <div className="w-1/3 p-2 px-4">
+                  <div className="w-1/3 md:w-1/2 sm:w-1/2 p-2 px-4">
                     <p>Contact:</p>
                   </div>
-                  <div className="w-1/3 p-2 px-4">
+                  <div className="w-1/3 md:hidden sm:hidden p-2 px-4">
                     <p>Location:</p>
                   </div>
                   {/* <div className="w-1/4 p-2 px-4">
