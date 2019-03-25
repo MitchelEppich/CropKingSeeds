@@ -33,7 +33,10 @@ const resolvers = {
       return News.findOne(input);
     },
     allNews: async _ => {
-      return News.find({});
+      let news = (await News.find({})).sort((a, b) => {
+        return moment(b.date).diff(a.date, "days");
+      });
+      return news;
     },
     allBlockedIps: async _ => {
       return (await BlockedIp.find({})).map(a => a.value);

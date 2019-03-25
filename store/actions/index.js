@@ -26,8 +26,7 @@ import Compare from "./compare";
 import { inferStrainData } from "../utilities/strain";
 
 const uri = "https://127.0.0.1:443/graphql";
-// const uri = "https://159.203.5.200:3000/graphql";
-// const uri = "https://192.168.0.54:3000/graphql";
+// const uri = "https://159.203.5.200:443/graphql";
 
 const imports = {
   ...Cart(uri),

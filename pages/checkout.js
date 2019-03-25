@@ -51,6 +51,7 @@ class Index extends Component {
   }
 
   render() {
+    console.log(this.props);
     let _orderDetails = this.props.checkout.orderDetails;
     let _stepsCheckout = this.props.misc.stepsCheckout;
     let errors = { ...this.props.checkout.error };
