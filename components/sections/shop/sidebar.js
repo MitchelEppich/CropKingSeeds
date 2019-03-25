@@ -22,6 +22,14 @@ const sidebar = props => {
           />
         </a>
       </div>
+      <div className="w-full mt-8 justify-center flex relative mt-2">
+        <a href="http://www.seedtracker.com" target="_blank">
+          <img
+            src={props.misc.CFURL + "/sidebar/seedtracker.png"}
+            className=""
+          />
+        </a>
+      </div>
 
       <div className="">
         {/* <div className="shadow-md">

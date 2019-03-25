@@ -223,9 +223,9 @@ class Layout extends Component {
                   )}
                 </div>
               </div>
-              {Router.asPath.slice(1).includes("product/") ? (
-                <StrainsMenu {...this.props} />
-              ) : null}
+              {/* {Router.asPath.slice(1).includes("product/") ? ( */}
+              <StrainsMenu {...this.props} />
+              {/* ) : null} */}
               <AnchorLink
                 aria-label="toTop"
                 className="items-center flex"

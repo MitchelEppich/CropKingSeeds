@@ -12,6 +12,7 @@ import Catalogue from "../components/sections/shop/catalogue";
 import ReviewBanner from "../components/sections/shop/reviewBanner";
 import Sidebar from "../components/sections/shop/sidebar";
 import Gif from "../components/sections/shop/gif";
+import SeedTracker from "../components/sections/shop/seedtracker";
 
 class Index extends Component {
   constructor(props) {
@@ -101,6 +102,7 @@ class Index extends Component {
                   {!this.state.mobile ? (
                     <FeaturedStrains {...this.props} />
                   ) : null}
+                  {!this.state.mobile ? <SeedTracker {...this.props} /> : null}
                   {!this.state.mobile ? <Catalogue {...this.props} /> : null}
                   {!this.state.mobile ? <ReviewBanner {...this.props} /> : null}
                   {this.state.mobile ? <Sidebar {...this.props} /> : null}

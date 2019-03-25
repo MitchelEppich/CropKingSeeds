@@ -6,12 +6,11 @@ import { faCannabis, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const strainsMenu = props => {
   let showMenu =
-    Router.asPath.slice(1).includes("product/") &&
+    // Router.asPath.slice(1).includes("product/") &&
     props.viewProduct.showStrainsMenu;
   let position = showMenu
     ? {
         transform: "translateX(0)"
-        // overflow: "hidden"
       }
     : {
         transform: "translateX(-255px)"
@@ -120,40 +119,40 @@ const strainsMenu = props => {
           : "w-250 h-full bg-smoke-grey shadow-md slowish fixed pin-l pin-t pt-32 sm:pt-24 sm:mt-4 z-40 pb-2"
       }
     >
-      {Router.asPath.slice(1).includes("product/") ? (
-        <div
-          onClick={e => {
-            e.stopPropagation();
-            props.toggleStrainsMenu(!props.viewProduct.showStrainsMenu);
-          }}
-          className="w-12 h-32 bg-red-darker hover:bg-red-light rounded-tr-lg rounded-br-lg mt-halfScreen pin-t absolute pin-r -mr-12 cursor-pointer"
+      {/* {Router.asPath.slice(1).includes("product/") ? ( */}
+      <div
+        onClick={e => {
+          e.stopPropagation();
+          props.toggleStrainsMenu(!props.viewProduct.showStrainsMenu);
+        }}
+        className="w-12 h-32 bg-red-darker hover:bg-red-light rounded-tr-lg rounded-br-lg mt-halfScreen pin-t absolute pin-r -mr-12 cursor-pointer"
+      >
+        <p
+          style={StrainText}
+          className="font-bold text-white w-12 pr-4 mt-2 uppercase pb-1"
         >
-          <p
-            style={StrainText}
-            className="font-bold text-white w-12 pr-4 mt-2 uppercase pb-1"
-          >
-            {!props.viewProduct.showStrainsMenu ? (
-              <span className="mt-2">Strains</span>
-            ) : (
-              "Close Tab"
-            )}
-          </p>
-
           {!props.viewProduct.showStrainsMenu ? (
-            <FontAwesomeIcon
-              icon={faCannabis}
-              style={{ transform: "rotate(90deg)" }}
-              className="fa-2x cursor-pointer flex justify-center mt-0 ml-2 py-1 text-white"
-            />
+            <span className="mt-2">Strains</span>
           ) : (
-            <FontAwesomeIcon
-              icon={faTimes}
-              style={{ transform: "rotate(90deg)" }}
-              className="fa-2x cursor-pointer flex justify-center mt-0 mr-3 py-1 text-white"
-            />
+            "Close Tab"
           )}
-        </div>
-      ) : null}
+        </p>
+
+        {!props.viewProduct.showStrainsMenu ? (
+          <FontAwesomeIcon
+            icon={faCannabis}
+            style={{ transform: "rotate(90deg)" }}
+            className="fa-2x cursor-pointer flex justify-center mt-0 ml-2 py-1 text-white"
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon={faTimes}
+            style={{ transform: "rotate(90deg)" }}
+            className="fa-2x cursor-pointer flex justify-center mt-0 mr-3 py-1 text-white"
+          />
+        )}
+      </div>
+      {/* ) : null} */}
 
       <div className="bg-white text-white relative -ml-1 h-full">
         <p className="bg-red-dark text-white text-center uppercase text-xl p-2 absolute w-full font-bold">
