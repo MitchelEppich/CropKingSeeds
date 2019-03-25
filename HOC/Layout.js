@@ -48,6 +48,7 @@ import ImageZoom from "../components/sections/productPage/imageZoom";
 import StrainsMenu from "../components/sections/productPage/strainsMenu";
 import PopUpBanner from "../components/sections/popup";
 
+import registerServiceWorker from "../registerServiceWorker";
 class Layout extends Component {
   constructor(props) {
     super(props);
@@ -60,6 +61,7 @@ class Layout extends Component {
     };
   }
   componentDidMount() {
+    // registerServiceWorker();
     // iframe = document.createElement("iframe");
     // iframe.id = "iframe";
     // iframe.style.cssText = "display: none";
@@ -164,7 +166,7 @@ class Layout extends Component {
           <ImageZoom {...this.props} />
         ) : null}
         <div id="top" className="w-full bg-off-white noscriptpage">
-          {/* {this.props.misc.ageVerification == null ||
+          {this.props.misc.ageVerification == null ||
           !this.props.misc.ageVerification.verified ? (
             this.props.misc.ageVerification != null ? (
               <AgeVerification {...this.props} />
@@ -172,78 +174,78 @@ class Layout extends Component {
               <div className="h-screen w-full">
                 <Loader {...this.props} />
               </div>
-            ) */}
-          {/* ) : ( */}
-          <React.Fragment>
-            <Header {...this.props} />
+            )
+          ) : (
+            <React.Fragment>
+              <Header {...this.props} />
 
-            {this.state.showNewCustomerPopUp ? (
-              <PopUpBanner {...this.props} />
-            ) : null}
+              {this.state.showNewCustomerPopUp ? (
+                <PopUpBanner {...this.props} />
+              ) : null}
 
-            {/* {this.props.misc.hoverId == null ||
-                            ["md", "lg", "xl", "xxl"].includes(this.props.misc.mediaSize) ? (
-                                <SearchBar {...this.props} />
-                            ) : null}*/}
+              {/* {this.props.misc.hoverId == null ||
+              ["md", "lg", "xl", "xxl"].includes(this.props.misc.mediaSize) ? (
+                <SearchBar {...this.props} />
+              ) : null} */}
 
-            <div className="pt-32 md:pt-48">
-              <div className={window.innerHeight < 700 ? "hidden" : "relative"}>
-                <ShareButtons {...this.props} />
+              <div className="pt-32 md:pt-48">
+                <div
+                  className={window.innerHeight < 800 ? "hidden" : "relative"}
+                >
+                  <ShareButtons {...this.props} />
+                </div>
+                <div
+                  id="tawkto"
+                  className="pulse sm:hidden md:hidden lg:hidden fixed z-40 w-20 h-16 bg-red-darker mb-16 pin-b pin-l text-white text-center text-lg pt-3 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item shadow-md"
+                  onClick={() => {
+                    Tawk_API.toggle();
+                  }}
+                >
+                  <FontAwesomeIcon
+                    icon={faComments}
+                    className="ml-2 fa-2x cursor-pointer"
+                  />
+                  {/* <h3>CHAT</h3> */}
+                </div>
+                <div
+                  style={{
+                    marginLeft:
+                      this.props.viewProduct.showStrainsMenu &&
+                      ["md", "lg", "xl"].includes(this.props.misc.mediaSize)
+                        ? "250px"
+                        : "auto",
+                    transition: "all .4s ease"
+                  }}
+                  className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md"
+                >
+                  {this.props.misc.strains != null ? (
+                    this.props.children
+                  ) : (
+                    <div className="h-screen w-full">
+                      <Loader {...this.props} />
+                    </div>
+                  )}
+                </div>
               </div>
-              <div
-                id="tawkto"
-                className="pulse sm:hidden md:hidden lg:hidden fixed z-40 w-20 h-16 bg-red-darker mb-16 pin-b pin-l text-white text-center text-lg pt-3 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item shadow-md"
-                onClick={() => {
-                  Tawk_API.toggle();
-                }}
-              >
-                <FontAwesomeIcon
-                  icon={faComments}
-                  className="ml-2 fa-2x cursor-pointer"
-                />
-                {/* <h3>CHAT</h3> */}
-              </div>
-              <div
-                style={{
-                  marginLeft:
-                    this.props.viewProduct.showStrainsMenu &&
-                    ["md", "lg", "xl"].includes(this.props.misc.mediaSize)
-                      ? "250px"
-                      : "auto",
-                  transition: "all .4s ease"
-                }}
-                className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md"
-              >
-                {this.props.misc.strains != null ? (
-                  this.props.children
-                ) : (
-                  <div className="h-screen w-full">
-                    <Loader {...this.props} />
-                  </div>
-                )}
-              </div>
-            </div>
-            {Router.asPath.slice(1).includes("product/") ? (
               <StrainsMenu {...this.props} />
-            ) : null}
-            <AnchorLink
-              aria-label="toTop"
-              className="items-center flex"
-              href="#top"
-            >
-              <div
-                id="jumpToTop"
-                className="fixed z-999 w-12 pb-2 mb-12 mr-4 h-12 bg-red-darker pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-red-dark scale-item items-center flex rounded shadow-md"
+              <AnchorLink
+                aria-label="toTop"
+                className="items-center flex"
+                href="#top"
               >
-                <FontAwesomeIcon
-                  icon={faAngleUp}
-                  className="fa-2x cursor-pointer flex justify-center mt-1"
-                />
-              </div>
-            </AnchorLink>
-            <Cart {...this.props} />
-            <Footer {...this.props} />
-          </React.Fragment>
+                <div
+                  id="jumpToTop"
+                  className="fixed z-999 w-12 pb-2 mb-12 mr-4 h-12 bg-red-darker pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-red-dark scale-item items-center flex rounded shadow-md"
+                >
+                  <FontAwesomeIcon
+                    icon={faAngleUp}
+                    className="fa-2x cursor-pointer flex justify-center mt-1 mx-auto"
+                  />
+                </div>
+              </AnchorLink>
+              <Cart {...this.props} />
+              <Footer {...this.props} />
+            </React.Fragment>
           )}
         </div>
       </React.Fragment>
@@ -271,6 +273,7 @@ class Layout extends Component {
         this.props.misc.mediaSize != mediaSize
       ) {
         if (["sm", "md"].includes(mediaSize)) {
+          this.props.toggleLowGPUMode(false);
           this.props.toggleShowFilters(false);
           this.props.setMediaSize({ mediaSize: mediaSize });
         } else {
@@ -379,7 +382,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.setCompareSearchValue(input)),
     calculateFpsAvg: fpsArr => dispatch(actions.calculateFpsAvg(fpsArr)),
     disableFpsCalc: () => dispatch(actions.disableFpsCalc()),
-    enableLowGPUMode: () => dispatch(actions.enableLowGPUMode()),
+    toggleLowGPUMode: lowGpuMode =>
+      dispatch(actions.toggleLowGPUMode(lowGpuMode)),
     recallGPUMode: () => dispatch(actions.recallGPUMode())
   };
 };

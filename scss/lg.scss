@@ -104,11 +104,10 @@
     transition: all 0.3s ease-in-out;
     box-shadow: 0 2px 10px #0000004f;
     font-weight: bold;
-
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     bottom: 25px;
     &:hover {
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 1);
     }
   }
   .genePreview {
@@ -131,19 +130,31 @@
   }
   .headingClass {
     transform: translateX(10px);
+    -webkit-transform: translateX(10px);
+    -moz-transform: translateX(10px);
+    -ms-transform: translateX(10px);
+    -o-transform: translateX(10px);
     position: absolute;
     bottom: 0;
     transition: all 0.5s ease-in-out;
   }
   .packClass {
     transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
     margin: 98px 90px;
     width: 125px;
   }
   .screenClass {
     transform: translateX(-260px) rotate(-90deg);
+    -webkit-transform: translateX(-260px) rotate(-90deg);
+    -moz-transform: translateX(-260px) rotate(-90deg);
+    -ms-transform: translateX(-260px) rotate(-90deg);
+    -o-transform: translateX(-260px) rotate(-90deg);
     transition: all 0.5s ease-in-out;
-    width: 20.5rem;
+    width: 19rem;
     height: 100%;
   }
 

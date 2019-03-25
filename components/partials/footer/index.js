@@ -3,7 +3,8 @@ import Link from "next/link";
 import {
   faSignInAlt,
   faArrowRight,
-  faAngleRight
+  faAngleRight,
+  faCog
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -287,7 +288,21 @@ const Footer = props => {
               </a>
             </div>
           </div>
-          <div className="mt-12 pt-2 text-center sm:text-center md:text-center lg:text-center">
+          <div className="sm:hidden md:hidden h-10 my-1 w-full pt-5 flex justify-center">
+            <label className="text-red font-bold mr-4">
+              <FontAwesomeIcon icon={faCog} className="text-grey-light mr-1" />{" "}
+              Low GPU Mode
+            </label>
+            <input
+              onChange={() => {
+                props.toggleLowGPUMode(!props.misc.lowGPUMode);
+              }}
+              type="checkbox"
+              defaultChecked={props.misc.lowGPUMode}
+              value={props.misc.lowGPUMode}
+            />
+          </div>
+          <div className="sm:mt-12 md:mt-12 pt-2 text-center sm:text-center md:text-center lg:text-center">
             <h3 className="text-red p-1 text-center font-extrabold text-2xl uppercase ">
               Contact us
             </h3>

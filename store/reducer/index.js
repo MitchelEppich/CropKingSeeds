@@ -22,7 +22,7 @@ import FaqReducer from "./faq";
 import ArticleReducer from "./article";
 import CmsReducer from "./cms";
 import WikiReducer from "./wiki";
-import CompareReducer from "./compare"
+import CompareReducer from "./compare";
 
 const initialState = {
   visibleScreen: [], // When [] show main screen
@@ -63,7 +63,7 @@ const initialState = {
   compareSearchValue: "",
   taxes: null,
   contactSubject: "Shipping / Delivery",
-  poorFps: false,
+  poorFps: null,
   fpsAvg: 0,
   lowGPUMode: null
 };
@@ -224,7 +224,7 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         poorFPS: false
       });
-    case actionTypes.ENABLE_LOW_GPU_MODE:
+    case actionTypes.TOGGLE_LOW_GPU_MODE:
       return updateObject(state, {
         lowGPUMode: action.lowGPUMode
       });

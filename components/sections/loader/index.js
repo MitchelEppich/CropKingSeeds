@@ -1,9 +1,11 @@
+import calcFps from "../../../store/utilities/calcFps";
+
 const loader = props => {
   var times = [];
   var fps;
   var fpsArr = [];
-  if (props.isClient && !props.misc.lowGPUMode) {
-    refreshLoop(times, fps, fpsArr, props);
+  if (props.isClient && props.misc.lowGPUMode == null) {
+    calcFps(times, fps, fpsArr, props);
   }
   return (
     <div className="loader h-150 mx-auto text-center">
@@ -22,23 +24,5 @@ const loader = props => {
     </div>
   );
 };
-
-function refreshLoop(times, fps, fpsArr, props) {
-  window.requestAnimationFrame(function() {
-    const now = performance.now();
-    while (times.length > 0 && times[0] <= now - 1000) {
-      times.shift();
-    }
-    times.push(now);
-    fps = times.length;
-    fpsArr.push(fps);
-    if (fpsArr.length > 250) {
-      props.calculateFpsAvg(fpsArr.slice(150));
-      return;
-    } else {
-      refreshLoop(times, fps, fpsArr, props);
-    }
-  });
-}
 
 export default loader;

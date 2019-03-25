@@ -20,6 +20,7 @@ class Index extends Component {
     // this.runLoop(5000, this.props.nextBannerSlide);
   }
   componentDidMount() {
+    registerServiceWorker();
     this.props.setCurrentEvent({
       index: 0,
       currentEventObj: this.props.misc.currentEventObj,
@@ -29,8 +30,6 @@ class Index extends Component {
       let timeout = setInterval(this.newsStepper, 1000);
       this.props.setNewsStepper({ timeout });
     }
-
-    registerServiceWorker();
   }
 
   componentWillUnmount() {

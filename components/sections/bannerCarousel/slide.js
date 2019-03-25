@@ -21,10 +21,13 @@ const slide = props => {
       style={{
         ...position,
         ...props.style,
-        backgroundImage: "url(" + props.misc.CFURL + "/land_banner/" + num + ")"
+        backgroundImage:
+          "url(" + props.misc.CFURL + "/land_banner/" + num + ")",
+        backgroundSize: "contain",
+        backgroundPosiiton: "top"
       }}
       className={
-        "xxl:h-600 xl:h-400 lg:h-300 md:h-250 sm:h-44 w-full z-0 absolute"
+        "xxl:h-600 xl:h-400 lg:h-300 md:h-250 sm:h-48 w-full z-0 absolute"
       }
     >
       {props.text ? (

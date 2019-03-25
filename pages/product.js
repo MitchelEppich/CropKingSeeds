@@ -45,14 +45,7 @@ class Index extends Component {
         {this.props.misc.featuredStrains &&
         this.props.viewProduct.currentProduct &&
         this.props.viewProduct.currentProduct.reviews != null ? (
-          <div
-            onClick={() => {
-              if (this.props.viewProduct.showStrainsMenu) {
-                this.props.toggleStrainsMenu(false);
-              }
-            }}
-            className="p-8 lg:px-4 lg:py-8 md:px-4 md:py-8 sm:px-2 sm:py-2"
-          >
+          <div className="p-8 lg:px-4 lg:py-8 md:px-4 md:py-8 sm:px-2 sm:py-2">
             <Breadcrumb {...this.props} />
             <div className="flex flex-wrap justify-start pt-2 relative">
               <div className="w-full xxl:inline-flex xl:inline-flex px-4 xxl:px-20 relative block">

@@ -30,12 +30,13 @@ module.exports = withSass({
           short_name: "CKS",
           description:
             "Buy Feminized & Autoflowering Cannabis Seeds - Crop King Seeds.",
-          background_color: "#000000",
+          background_color: "#FFF",
+          crossorigin: "use-credentials",
           theme_color: "#ef5753",
           display: "standalone",
           orientation: "portrait",
-          fingerprints: false,
-          inject: false,
+          fingerprints: true,
+          inject: true,
           start_url: "./",
           ios: {
             "apple-mobile-web-app-title": "Crop King Seeds",
@@ -44,7 +45,8 @@ module.exports = withSass({
           icons: [
             {
               src: path.resolve("static/icons/cks-logo.png"),
-              sizes: [96, 128, 192, 256, 384, 512]
+              sizes: [96, 128, 192, 256, 384, 512],
+              destination: path.join("static", "icons")
             }
           ],
           publicPath: ".."
