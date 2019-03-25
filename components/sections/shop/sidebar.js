@@ -1,6 +1,7 @@
 import FeaturedStrains from "./featuredStrains";
 import Catalogue from "./catalogue";
 import ReviewBanner from "./reviewBanner";
+import SeedTracker from "./seedtracker";
 
 const sidebar = props => {
   let mobile = ["sm", "md"].includes(props.misc.mediaSize);
@@ -15,6 +16,7 @@ const sidebar = props => {
             />
           </div>
           <FeaturedStrains {...props} />
+          <SeedTracker {...props} />
           <Catalogue {...props} />
           <ReviewBanner {...props} />
         </React.Fragment>
@@ -31,13 +33,21 @@ const sidebar = props => {
             />
           </div>
           <div className="w-full mt-8 justify-center flex relative mt-2">
+            <a href="http://www.seedtracker.com" target="_blank">
+              <img
+                src={props.misc.CFURL + "/sidebar/seedtracker.png"}
+                className=""
+              />
+            </a>
+          </div>
+          <div className="w-full mt-8 justify-center flex relative mt-2">
             <a
               href={
                 props.misc.CFURL + "/catalogue/CropKingSeeds-2019-Catalogue.pdf"
               }
               target="_blank"
-               aria-label="cks-catalogue"
-        rel="noreferrer"
+              aria-label="cks-catalogue"
+              rel="noreferrer"
             >
               <img
                 src={props.misc.CFURL + "/sidebar/downloadcatalogue.png"}
