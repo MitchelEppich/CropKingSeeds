@@ -52,7 +52,7 @@ const strainsMenu = props => {
         <p
           key={arr}
           className={`bg-${color} ${
-            Object.keys(category).indexOf(genetic) == 0 ? "mt-10" : ""
+            Object.keys(category).indexOf(genetic) == 0 ? "mt-8 pt-5" : ""
           } p-3 font-bold text-center text-white text-shadow uppercase w-full`}
         >
           {text}
@@ -107,7 +107,14 @@ const strainsMenu = props => {
     writingMode: "vertical-rl",
     textOrientation: "mixed"
   };
-  let verticalPosition = window.innerHeight < 700 ? "mt-32" : "mt-halfScreen";
+  let verticalPosition =
+    window.innerHeight < 700
+      ? "mt-32 h-32 bg-red-darker"
+      : "mt-halfScreen h-32 bg-red-darker";
+  let verticalOpenPosition =
+    window.innerHeight < 700
+      ? "mt-32 h-10 bg-red-darker"
+      : "mt-32 h-10 bg-red-darker";
   return (
     <div
       style={position}
@@ -122,10 +129,14 @@ const strainsMenu = props => {
           e.stopPropagation();
           props.toggleStrainsMenu(!props.viewProduct.showStrainsMenu);
         }}
-        className={
-          "w-12 h-32 bg-red-darker hover:bg-red-light rounded-tr-lg rounded-br-lg pin-t absolute pin-r -mr-12 cursor-pointer " +
-          verticalPosition
-        }
+        className={`
+          w-12 hover:bg-red-light rounded-tr-lg rounded-br-lg pin-t absolute pin-r -mr-12 cursor-pointer ${
+            props.viewProduct.showStrainsMenu
+              ? verticalOpenPosition
+              : verticalPosition
+          }
+         
+        `}
       >
         <p
           style={StrainText}
@@ -134,7 +145,7 @@ const strainsMenu = props => {
           {!props.viewProduct.showStrainsMenu ? (
             <span className="mt-2">Strains</span>
           ) : (
-            "Close Tab"
+            ""
           )}
         </p>
 
@@ -148,7 +159,7 @@ const strainsMenu = props => {
           <FontAwesomeIcon
             icon={faTimes}
             style={{ transform: "rotate(90deg)" }}
-            className="fa-2x cursor-pointer flex justify-center mt-0 mr-3 py-1 text-white"
+            className="fa-2x cursor-pointer flex justify-center -mt-2 mr-3 py-1 text-white"
           />
         )}
       </div>

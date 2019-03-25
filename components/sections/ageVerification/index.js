@@ -50,7 +50,7 @@ const AgeVerification = props => {
   let styleFullScreen = {
     top: "0",
     zIndex: "9999",
-    background: "white",
+    background: "#cacaca",
     position: "fixed"
   };
   let chromeWarning =
@@ -114,7 +114,7 @@ const AgeVerification = props => {
           });
         }}
       >
-        <div className="absolute-center pin md:w-400 md:h-500 sm:w-300 sm:h-500 w-600 h-600 bg-white shadow-lg text-grey relative">
+        <div className="absolute-center pin md:w-400 md:h-500 sm:w-300 sm:h-500 w-500 h-400 bg-white shadow-lg text-grey relative">
           <div className="w-full text-center mt-4">
             <img
               alt={props.misc.CFURL + "/logos/cks_logo.png"}
@@ -125,20 +125,20 @@ const AgeVerification = props => {
           </div>
           <div className="text-center mt-6 w-full">
             <p className="p-2">
-              I am
-              <span className="font-extrabold mx-1">
+              Are you over legal age of your area?
+              {/* I am <span className="font-extrabold mx-1">
                 {props.misc.ageVerification != null &&
                 props.misc.ageVerification.country == "Canada" &&
                 props.misc.ageVerification.state != null
                   ? props.misc.taxes[props.misc.ageVerification.state].ageLegal
                   : 21}
                 +
-              </span>
-              or am a valid medical marijuana patient.
+              </span> */}
+              {/* or am a valid medical marijuana patient. */}
             </p>
-            <div className="mt-6 items-center mx-auto wrap w-400 sm:w-main md:w-main">
-              <p className="my-2 mr-4 text-grey-light text-sm">Country:</p>
-              <select
+            {/*<div className="mt-6 items-center mx-auto wrap w-400 sm:w-main md:w-main">
+               <p className="my-2 mr-4 text-grey-light text-sm">Country:</p> 
+               <select
                 id="country"
                 value={
                   props.misc.ageVerification != null
@@ -162,10 +162,10 @@ const AgeVerification = props => {
                 style={{ padding: "0.35rem" }}
               >
                 {showCountries()}
-              </select>
-            </div>
+              </select> 
+             </div> */}
 
-            {props.misc.ageVerification != null &&
+            {/* {props.misc.ageVerification != null &&
             "Canada" == props.misc.ageVerification.country ? (
               <div className="mt-6 items-center mx-auto wrap w-400 sm:w-main md:w-main">
                 <p className="my-2 mr-4 text-grey-light text-sm">Province:</p>
@@ -197,24 +197,26 @@ const AgeVerification = props => {
                   {showOptions()}
                 </select>
               </div>
-            ) : null}
-            <div className="absolute pin-b pin-x pb-4">
+            ) : null} */}
+            {/* <div className="absolute pin-b pin-x pb-4"> */}
+            <div className="pb-4">
               <div
-                className={`w-full inline-flex p-2 mx-auto justify-center mt-2 ${
-                  props.misc.ageVerification == null ||
-                  props.misc.ageVerification.country == null ||
-                  (props.misc.ageVerification.state == null &&
-                    props.misc.ageVerification.country == "Canada")
-                    ? "unselectable pointer-events-none opacity-50"
-                    : ""
-                }`}
+                className={`w-full inline-flex p-2 mx-auto justify-center mt-2 `}
+                // ${
+                //   props.misc.ageVerification == null ||
+                //   props.misc.ageVerification.country == null ||
+                //   (props.misc.ageVerification.state == null &&
+                //     props.misc.ageVerification.country == "Canada")
+                //     ? "opacity-50"
+                //     : ""
+                // }
               >
                 <button
                   type="submit"
                   name="ageVerification"
-                  className="bg-grey-dark text-white p-3 px-5 w-48 font-bold mx-2 text-center hover:bg-grey-light"
+                  className="bg-red-dark text-white p-3 px-5 w-64 font-bold mx-2 text-center hover:bg-grey-light"
                 >
-                  I Agree
+                  Yes
                 </button>
               </div>
             </div>

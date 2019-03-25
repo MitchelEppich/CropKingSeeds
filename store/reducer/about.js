@@ -7,20 +7,20 @@ const initialState = {
     {
       imgSrc: "/about/1.jpg",
       content:
-        "The idea for Crop King Seeds forms. Starting out with one employee shipping from an apartment, selling for a year. In 2005 operations are put on hold",
+        "The idea for Crop King Seeds forms. Starting out with one employee shipping from an apartment, selling for a year. In 2005 operations are put on hold.",
       date: "2014"
     },
     {
       imgSrc: "/about/2.jpg",
 
       content:
-        "Crop King employees travel around the world and tour the best cannabis farms to select and grow our seed genetics. Within the next month we had developed our website, packaging and began marketing ourselves to the public",
+        "Crop King employees travel around the world and tour the best cannabis farms to select and grow our seed genetics. Within the next month we had developed our website, packaging and began marketing ourselves to the public.",
       date: "December 2012 - January 2013"
     },
     {
       imgSrc: "/about/3.jpg",
       content:
-        "A need for a storefront was in high demand by our customers, thus the opening of our first Crop King Seeds office on Hastings Street in Vancouver. The smaller sized office reflected the humble beginnings of the company, with dreams to expand in the future",
+        "A need for a storefront was in high demand by our customers, thus the opening of our first Crop King Seeds office on Hastings Street in Vancouver. The smaller sized office reflected the humble beginnings of the company, with dreams to expand in the future.",
       date: "November 1, 2013"
     },
     {
@@ -50,7 +50,7 @@ const initialState = {
     {
       imgSrc: "/about/8.jpg",
       content:
-        "Crop King Seeds is growing fast with booths at dozens of trade shows and entertaining people with our very own Crop King Seeds mascot",
+        "Crop King Seeds is growing fast with booths at dozens of trade shows and entertaining people with our very own Crop King Seeds mascot.",
       date: "2016"
     },
     {

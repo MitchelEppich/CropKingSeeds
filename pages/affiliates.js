@@ -16,7 +16,7 @@ class Index extends Component {
         <div className="flex flex-wrap justify-around pb-12 ">
           <div className="affiliatesBanner sm:mb-0 xxl:mb-24 xl:mb-16 lg:mb-6 ">
             <div className="w-1/3 sm:w-full md:w-full lg:w-2/3 xl:w-1/2 sm:pr-0 pr-12 flex flex-wrap md:justify-start lg:justify-start justify-between text-white">
-              <h1 className="w-full sm:text-2xl font-black text-shadow">
+              <h1 className="w-full sm:text-2xl font-black text-shadow uppercase">
                 Grow your business with Crop King Seeds
               </h1>
               <p className="w-full my-4 mb-6 leading-normal text-shadow">
