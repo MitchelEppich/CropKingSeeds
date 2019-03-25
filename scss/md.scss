@@ -215,11 +215,11 @@
       width: 276px;
       padding: 10px 10px;
       text-align: center;
-      transform: translateX(0);
-      -webkit-transform: translateX(0);
-      -moz-transform: translateX(0);
-      -ms-transform: translateX(0);
-      -o-transform: translateX(0);
+      transform: translateX(-40px);
+      -webkit-transform: translateX(-40px);
+      -moz-transform: translateX(-40px);
+      -ms-transform: translateX(-40px);
+      -o-transform: translateX(-40px);
       background-color: #fff;
       transition: 0.3s all ease-in-out;
       color: rgba(255, 255, 255, 1);
@@ -279,7 +279,8 @@
     }
   }
   .plantClass {
-    height: 9rem;
+    // height: 100%;
+    width: 10rem;
     position: absolute;
     z-index: 0;
     transform: translateX(-100px);
@@ -290,15 +291,16 @@
     transition: 0.3s all ease-in-out;
     cursor: pointer;
     @include modifier("hover") {
-      height: 9rem;
+      // height: 100%;
+      width: 10rem;
       position: absolute;
       z-index: 0;
       transition: 0.3s all ease-in-out;
-      transform: translateX(-30px) translateY(13px);
-      -webkit-transform: translateX(-30px) translateY(13px);
-      -moz-transform: translateX(-30px) translateY(13px);
-      -ms-transform: translateX(-30px) translateY(13px);
-      -o-transform: translateX(-30px) translateY(13px);
+      transform: translateX(-30px) translateY(30px);
+      -webkit-transform: translateX(-30px) translateY(30px);
+      -moz-transform: translateX(-30px) translateY(30px);
+      -ms-transform: translateX(-30px) translateY(30px);
+      -o-transform: translateX(-30px) translateY(30px);
       cursor: pointer;
     }
   }

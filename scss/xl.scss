@@ -40,7 +40,7 @@
   // UNIVERSAL
   .ray_box {
     /*HEADER ANIMATION */
-    left: calc(22%);
+    left: calc((100vw - 900px) / 2 + 90px);
     position: absolute;
     top: 90px;
     bottom: 0;
@@ -218,11 +218,11 @@
     height: 14rem;
     width: 240px;
     position: relative;
-    transform: translateX(-15px) translateZ(0);
-    -webkit-transform: translateX(-15px) translateZ(0);
-    -moz-transform: translateX(-15px) translateZ(0);
-    -ms-transform: translateX(-15px) translateZ(0);
-    -o-transform: translateX(-15px) translateZ(0);
+    transform: translateX(0) translateZ(0);
+    -webkit-transform: translateX(0) translateZ(0);
+    -moz-transform: translateX(0) translateZ(0);
+    -ms-transform: translateX(0) translateZ(0);
+    -o-transform: translateX(0) translateZ(0);
     z-index: 10;
     transition: 0.3s all ease;
     padding: 5.5rem 3rem 0.5rem 3rem;
@@ -281,11 +281,11 @@
       top: 0;
       z-index: 0;
       transition: 0.5s all ease;
-      transform: translateX(-70px) translateY(40px) translateZ(0);
-      -webkit-transform: translateX(-70px) translateY(40px) translateZ(0);
-      -moz-transform: translateX(-70px) translateY(40px) translateZ(0);
-      -ms-transform: translateX(-70px) translateY(40px) translateZ(0);
-      -o-transform: translateX(-70px) translateY(40px) translateZ(0);
+      transform: translateX(-70px) translateY(42px) translateZ(0);
+      -webkit-transform: translateX(-70px) translateY(42px) translateZ(0);
+      -moz-transform: translateX(-70px) translateY(42px) translateZ(0);
+      -ms-transform: translateX(-70px) translateY(42px) translateZ(0);
+      -o-transform: translateX(-70px) translateY(42px) translateZ(0);
     }
   }
   .strainTitle {

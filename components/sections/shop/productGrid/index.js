@@ -17,7 +17,8 @@ class Index extends Component {
     this.myTween = new TimelineLite({ paused: true });
     this.myElements = [];
     this.isSmallMediumOrLargeDevice =
-      props.checkout.orderDetails.details.device.value != "Desktop";
+      props.checkout.orderDetails.details.device.value != "Desktop" ||
+      ["sm"].includes(props.misc.mediaSize);
   }
   componentDidMount() {
     if (!this.props.lowGPUMode) {
