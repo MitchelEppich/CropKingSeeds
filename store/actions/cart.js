@@ -256,7 +256,7 @@ const getActions = uri => {
 
           if (recall != null) {
             try {
-              let decrypted = cryptr.decrypt(recall.slice(0, 100));
+              let decrypted = cryptr.decrypt(recall);
               _obj = JSON.parse(decrypted);
               resolve(_obj);
             } catch (err) {

@@ -35,35 +35,35 @@
   font-display: swap;
 }
 
-@media only screen and (min-width: 2560px) {
-  ////////////
-  // UNIVERSAL
-  .searchBar {
-    margin-left: 26%;
-  }
+// @media only screen and (min-width: 2500px) {
+//   ////////////
+//   // UNIVERSAL
+//   .searchBar {
+//     margin-left: 26%;
+//   }
 
-  .ray_box {
-    /*HEADER ANIMATION */
-    left: calc(36% - 150px);
-    top: 70px;
-    right: 0;
-    position: absolute;
-    bottom: 0;
-    width: 30px;
-    height: 30px;
-    -webkit-animation: ray_anim 300s linear infinite;
-    animation: ray_anim 300s linear infinite;
-    z-index: -5;
-  }
-  .packagePinBig {
-    height: 8rem;
-    position: absolute;
-    right: -42px;
-    top: 225px;
-    pointer-events: none;
-  }
-  /////////////
-}
+//   .ray_box {
+//     /*HEADER ANIMATION */
+//     left: calc(36% - 200px);
+//     top: 70px;
+//     right: 0;
+//     position: absolute;
+//     bottom: 0;
+//     width: 30px;
+//     height: 30px;
+//     -webkit-animation: ray_anim 300s linear infinite;
+//     animation: ray_anim 300s linear infinite;
+//     z-index: -5;
+//   }
+//   .packagePinBig {
+//     height: 8rem;
+//     position: absolute;
+//     right: -42px;
+//     top: 225px;
+//     pointer-events: none;
+//   }
+//   /////////////
+// }
 
 @media only screen and (min-width: 1922px) {
   ////////////
@@ -74,8 +74,8 @@
 
   .ray_box {
     /*HEADER ANIMATION */
-    left: calc(31% - 150px);
-    top: 70px;
+    left: calc((100vw - 1300px) / 2 + 90px);
+    top: 85px;
     right: 0;
     position: absolute;
     bottom: 0;
@@ -228,7 +228,8 @@
   // UNIVERSAL
   .ray_box {
     /*HEADER ANIMATION */
-    left: calc(25% - 80px);
+    // left: calc(25% - 80px);
+    left: calc((100vw - 1300px) / 2 + 85px);
     top: 100px;
     right: 0;
     position: absolute;
