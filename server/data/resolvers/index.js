@@ -272,8 +272,6 @@ let processBambora = async input => {
     return error;
   });
 
-  console.log("FROM HERE", res);
-
   return {
     transactionId: res.reference,
     status: res.message,
