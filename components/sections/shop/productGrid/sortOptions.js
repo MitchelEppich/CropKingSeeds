@@ -20,7 +20,7 @@ const sortOptions = props => {
     <div
       style={{
         height: props.misc.visibleScreen.includes("showSortBy")
-          ? "262px"
+          ? "285px"
           : "0px",
         transition: "all 0.2s ease-in-out",
         background: "white",

@@ -49,7 +49,7 @@ const contactDetails = props => {
             document.getElementById("tawkto").click();
             props.refreshEmailForm();
           }}
-          className="w-full text-center mt-10 relative scale-item cursor-pointer sm:my-4 md:my-4"
+          className="w-full text-center mt-4 relative scale-item cursor-pointer sm:my-4 md:my-4"
         >
           <div className="w-full relative">
             <img

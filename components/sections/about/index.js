@@ -104,7 +104,7 @@ const About = props => {
     return (
       <div
         key={index}
-        className="xxl:w-300 w-250 lg:w-200 md:w-main md:block md:text-center sm:w-main sm:block sm:text-center bg-white rounded-lg md:my-5 sm:my-5 flex flex-wrap justify-center content-start p-4 shadow-lg sm:shadow-md sm:rounded md:rounded md:shadow-md scale-item"
+        className="xxl:w-340 w-250 lg:w-200 md:w-main md:block md:text-center sm:w-main sm:block sm:text-center bg-white rounded-lg md:my-5 sm:my-5 flex flex-wrap justify-center content-start p-4 shadow-lg sm:shadow-md sm:rounded md:rounded md:shadow-md scale-item"
       >
         <img
           style={{ objectFit: "cover" }}
@@ -125,7 +125,7 @@ const About = props => {
     <div className="w-full mt-3 pb-6 relative">
       <div style={bgHistory} className="h-500 relative">
         <div>
-          <h1 className="text-3/5xl pt-16 font-bold text-white p-2 text-center text-shadow">
+          <h1 className="uppercase text-3/5xl pt-16 font-bold text-white p-2 text-center text-shadow">
             About Us
           </h1>
           <p className="text-white text-xl text-center font-bold uppercase text-shadow">
@@ -134,10 +134,10 @@ const About = props => {
         </div>
         <div
           style={historySection}
-          className="mt-24 lg:mt-12 w-main mx-auto bg-white rounded overflow-hidden text-grey mt-20 h-350 md:h-full sm:h-auto xl:h-400 lg:h-500 my-auto"
+          className="mt-24 lg:mt-12 w-95p mx-auto bg-white rounded overflow-hidden text-grey mt-20 h-350 md:h-full sm:h-auto xl:h-400 lg:h-500 my-auto"
         >
           <div className="">
-            <h3 className="font-bold text-center items-center flex justify-center bg-grey-lightest text-3/5xl p-2 text-grey-light mb-6">
+            <h3 className="font-bold text-center items-center flex justify-center bg-grey-lightest text-3xl p-2 text-grey-light mb-6 uppercase">
               Our History
             </h3>
           </div>
@@ -146,10 +146,8 @@ const About = props => {
               <div className="w-1/3 sm:h-200 md:h-250 sm:w-full md:w-full lg:w-1/2 lg:pt-2 xl:pl-3 xl:pt-2 md:text-center inline-flex items-center flex">
                 {carouselImg}
               </div>
-              <div className="w-1/3 text-lg ml-4 bg-smoke-grey sm:w-full md:w-full sm:hidden md:hidden lg:hidden p-2 xxl:relative">
-                <p className="p-2 w-full text-justify px-6 xl:px-2">
-                  {content}
-                </p>
+              <div className="w-1/3 text-lg ml-4 bg-white sm:w-full md:w-full sm:hidden md:hidden lg:hidden p-2 xxl:relative">
+                <p className="p-2 w-full text-left px-6 xl:px-2">{content}</p>
                 <p className="text-center font-bold text-xl mt-12 absolute pin-b pin-x mb-2">
                   {date}
                 </p>
@@ -169,16 +167,16 @@ const About = props => {
           </div>
         </div>
       </div>
-      <div className="w-full mt-48 lg:mt-64 relative h-500 md:h-full sm:h-full mb-12 xl:mb-24 md:mt-mobile-about sm:mt-400">
+      <div className="w-full mt-48 lg:mt-64 relative md:h-full sm:h-full mb-4 xl:mb-4 md:mt-mobile-about sm:mt-400">
         <div
           style={{ borderTop: "15px solid #e9e8e8" }}
           className="h-24 w-full items-center flex justify-center shadow bg-red-darker "
         >
-          <h3 className="w-full h-full font-bold pt-6 text-center mb-8 p-2 text-3/5xl text-white">
+          <h3 className="w-full h-full font-bold pt-6 text-center mb-8 p-2 text-3xl text-white uppercase">
             Who We Are
           </h3>
         </div>
-        <div className="absolute md:relative sm:relative pin-t mt-20 md:mt-4 sm:mt-4 w-full flex flex-wrap justify-around">
+        <div className="md:relative sm:relative pin-t -mt-6 md:mt-4 sm:mt-4 w-full flex flex-wrap justify-around">
           {whoWeAre}
         </div>
       </div>

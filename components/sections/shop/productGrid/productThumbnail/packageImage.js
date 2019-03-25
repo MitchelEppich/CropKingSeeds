@@ -53,10 +53,10 @@ const packageImage = props => {
         Math.abs(moment().diff(props.product.releaseDate, "weeks")) < 2 ? (
           <div className="absolute pin-t pin-r sm:mr-20 mr-10 -mt-2">
             <div className="absolute text-grey z-20 w-16 items-center justify-center flex -mt-5">
-              <FontAwesomeIcon
+              {/* <FontAwesomeIcon
                 icon={faFire}
                 className="fa-2x text-yellow-dark"
-              />
+              /> */}
             </div>
             <p className="text-white uppercase coming-soon-icon text-sm h-10 flex items-center font-bold">
               Coming Soon
