@@ -15,9 +15,21 @@ importScripts(
   "/static/workbox/workbox-v3.6.3/workbox-sw.js",
   "/static/workbox/workbox-v3.6.3/workbox-sw.js",
   "/static/workbox/workbox-v3.6.3/workbox-sw.js",
+  "/static/workbox/workbox-v3.6.3/workbox-sw.js",
+  "/static/workbox/workbox-v3.6.3/workbox-sw.js",
+  "/static/workbox/workbox-v3.6.3/workbox-sw.js",
+  "/static/workbox/workbox-v3.6.3/workbox-sw.js",
+  "/static/workbox/workbox-v3.6.3/workbox-sw.js",
+  "/static/workbox/workbox-v3.6.3/workbox-sw.js",
   "/static/workbox/next-precache-manifest-bf67a47b52a4a283a3b0760e8822d6a7.js",
-  "/static/workbox/next-precache-manifest-fd39bc26dc8a7cecbcfc7137bcbcf0f5.js",
-  "/static/workbox/next-precache-manifest-76dd3558068deed8e2a54244c6a95cb8.js"
+  "/static/workbox/next-precache-manifest-bf67a47b52a4a283a3b0760e8822d6a7.js",
+  "/static/workbox/next-precache-manifest-eafdd4c3127373036041ed63a6980c57.js",
+  "/static/workbox/next-precache-manifest-eafdd4c3127373036041ed63a6980c57.js",
+  "/static/workbox/next-precache-manifest-eafdd4c3127373036041ed63a6980c57.js",
+  "/static/workbox/next-precache-manifest-7d0447df23d5c1da124316b012ae9724.js",
+  "/static/workbox/next-precache-manifest-7d0447df23d5c1da124316b012ae9724.js",
+  "/static/workbox/next-precache-manifest-7d0447df23d5c1da124316b012ae9724.js",
+  "/static/workbox/next-precache-manifest-7d0447df23d5c1da124316b012ae9724.js"
 );
 
 workbox.skipWaiting();
@@ -51,19 +63,19 @@ self.__precacheManifest = [
   },
   {
     "url": "/_next/static/commons/main.js",
-    "revision": "03cc0f5cdd0b5361a4d2074ac96bc0da"
+    "revision": "338eb1c44902ced65a467eed4f607ff2"
   },
   {
     "url": "/_next/static/commons/main.js.map",
-    "revision": "f057b9705d3b2e9bbaefa13c49284618"
+    "revision": "ba49ef090b4c1116951c919f42ec706e"
   },
   {
     "url": "/_next/static/commons/manifest.js",
-    "revision": "85b3d9beba4cbe3612df2e6c9b29d7a7"
+    "revision": "1ace3f3a7ecb38c3109b08ec1aeeb4ba"
   },
   {
     "url": "/_next/static/commons/manifest.js.map",
-    "revision": "571a8acb564cc0355755aca01b22593e"
+    "revision": "7ad0931b9cbec4c41f29fdbe95079555"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();

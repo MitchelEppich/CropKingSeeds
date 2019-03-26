@@ -161,7 +161,7 @@ const ShippingAddress = props => {
           <div
             className={`w-full flex justify-start ${
               !localProfilesExist
-                ? "unselectable opacity-0 pointer-events-none"
+                ? "unselectable opacity-50 pointer-events-none"
                 : ""
             }`}
           >

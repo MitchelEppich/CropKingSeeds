@@ -12,7 +12,7 @@ const addToCart = props => {
   return (
     <div className="w-full relative">
       <div className="absolute pin-r mr-16 sm:mr-0 sm:relative">
-        <p className="w-125 p-2 text-center p-2 text-red-light font-bold sm:w-full sm:text-right">
+        <p className="w-125 p-2 xxl:text-center text-right p-2 text-red-light font-bold sm:w-full sm:text-right">
           {currentProduct.inStock ? "In Stock" : "Sold Out"}
         </p>
       </div>
