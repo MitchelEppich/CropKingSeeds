@@ -9,7 +9,6 @@ import Router from "next/router";
 const index = props => {
   let hover = props.hoverId == props.product._id;
   let overlayClass = hover ? "overlayClass--hover" : "overlayClass";
-
   return (
     <div
       onClick={() => {
