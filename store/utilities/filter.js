@@ -16,7 +16,6 @@ let filter = (
   let match, pass, strain;
 
   while (strains.length != 0 || strain != null) {
-    console.log(pass, match);
     if (pass && match != null)
       _arr.push(withMatch ? { strain, match } : strain);
 
@@ -34,7 +33,6 @@ let filter = (
     let $flowerTime = strain.flowerTime.toLowerCase();
     let $yield = strain.yield[2].toLowerCase();
 
-    console.log($genetic, $type);
     // Check if related to type
     if (_filter.type != null) {
       if (_filter.type == $type) {
@@ -89,49 +87,35 @@ let filter = (
     // Check if related to text fragments
     if (_filter.text != null && _filter.text.length != 0) {
       for (let text of _filter.text) {
+        text = text.trim();
         if ($genetic.includes(text)) {
           match = "Genetic";
           pass = true;
-          if (isCompounding) break;
-        } else {
-          pass = false;
-          match = null;
-          break;
+          continue;
         }
         if ($name.includes(text)) {
           match = "Name";
           pass = true;
-          if (isCompounding) break;
-        } else {
-          pass = false;
-          match = null;
-          break;
+          continue;
         }
         if ($type.includes(text)) {
           match = "Type";
           pass = true;
-          if (isCompounding) break;
-        } else {
-          pass = false;
-          match = null;
-          break;
+          continue;
         }
         if ($flowerTime.includes(text)) {
           match = "Flower Time";
           pass = true;
-          if (isCompounding) break;
-        } else {
-          pass = false;
-          match = null;
-          break;
+          continue;
         }
         if ($yield.includes(text)) {
           match = "Yield";
           pass = true;
-          if (isCompounding) break;
-        } else {
-          pass = false;
+          continue;
+        }
+        if (!isCompounding) {
           match = null;
+          pass = false;
           break;
         }
       }
