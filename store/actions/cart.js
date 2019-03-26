@@ -156,7 +156,6 @@ const getActions = uri => {
 
         switch (_action) {
           case "REMOVE":
-            // console.log("actions", _items[_productIdentifier]);
             delete _items[_productIdentifier];
             break;
           case "APPEND":

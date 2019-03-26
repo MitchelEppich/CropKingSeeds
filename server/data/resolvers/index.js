@@ -33,7 +33,10 @@ const resolvers = {
       return News.findOne(input);
     },
     allNews: async _ => {
-      return News.find({});
+      let news = (await News.find({})).sort((a, b) => {
+        return moment(b.date).diff(a.date, "days");
+      });
+      return news;
     },
     allBlockedIps: async _ => {
       return (await BlockedIp.find({})).map(a => a.value);
@@ -129,7 +132,6 @@ const resolvers = {
       let newsEntry = new News({
         ...input
       });
-      console.log(input);
 
       newsEntry.save();
 
@@ -315,8 +317,6 @@ let processPivotal = async input => {
     }
   };
 
-  console.log(content);
-
   let res = JSON.parse(
     convert.xml2json(
       (await axios({
@@ -330,8 +330,6 @@ let processPivotal = async input => {
       { compact: true, spaces: 4 }
     )
   )["PAYMENTRESPONSE"];
-
-  console.log(res);
 
   return {
     transactionId: res.UNIQUEREF._text,

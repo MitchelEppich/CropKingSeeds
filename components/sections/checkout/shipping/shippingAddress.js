@@ -166,17 +166,22 @@ const ShippingAddress = props => {
           >
             <div
               onClick={() => {
-                props.setVisibleScreen({
-                  input: "getProfiles"
-                });
-                let profileObj = props.checkout.foundProfiles[0];
-                props.loadLocalProfile({
-                  orderDetails: _orderDetails,
-                  profile: profileObj.profile,
-                  profileID: profileObj.id,
-                  cart: props.cart,
-                  freeShippingThreshold: props.checkout.freeShippingThreshold
-                });
+                let _foundProfiles = props.checkout.foundProfiles;
+                if (_foundProfiles == 0) return;
+                if (_foundProfiles.length > 1) {
+                  props.setVisibleScreen({
+                    input: "getProfiles"
+                  });
+                } else {
+                  let profile = _foundProfiles[0];
+                  props.loadLocalProfile({
+                    orderDetails: _orderDetails,
+                    profile: profile.profile,
+                    profileID: profile.id,
+                    cart: props.cart,
+                    freeShippingThreshold: props.checkout.freeShippingThreshold
+                  });
+                }
               }}
               className={`p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light relative ${
                 props.checkout.foundProfiles.length == 0

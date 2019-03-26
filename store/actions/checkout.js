@@ -640,7 +640,6 @@ const getActions = uri => {
         let _orderDetails = { ...input.orderDetails };
         let _paymentMethod = _orderDetails.payment.method.value,
           cart = input.cart;
-        // let ccResponse = null;
         // Process Payment
         let ccResponse = await (async () => {
           if (_paymentMethod == "Credit Card") {
@@ -675,7 +674,7 @@ const getActions = uri => {
             })();
         }
 
-        // // Process Order
+        // Process Order
         let response = await processOrder(_orderDetails, ccResponse, uri);
 
         // Send email confirmation
@@ -728,11 +727,9 @@ const getActions = uri => {
           }
         };
 
-        makePromise(execute(link, operation))
-          .then(data => {
-            console.log(data);
-          })
-          .catch(error => console.log(error));
+        makePromise(execute(link, operation)).catch(error =>
+          console.log(error)
+        );
 
         dispatch({
           type: actionTypes.PROCESS_ORDER,

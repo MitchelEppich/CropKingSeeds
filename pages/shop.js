@@ -8,7 +8,6 @@ import Layout from "../HOC/Layout";
 import Filters from "../components/sections/shop/filters";
 import ProductGrid from "../components/sections/shop/productGrid";
 import Sidebar from "../components/sections/shop/sidebar";
-// import Gif from "../components/sections/shop/gif";
 
 class Index extends Component {
   componentDidMount() {
