@@ -34,40 +34,40 @@ workbox.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "/_next/static/791863919230013118ca972599033c54.woff",
-    "revision": "791863919230013118ca972599033c54"
+    url: "/_next/static/791863919230013118ca972599033c54.woff",
+    revision: "791863919230013118ca972599033c54"
   },
   {
-    "url": "/_next/static/9ccdb2e916cc1ec13bbe38acade5828d.woff",
-    "revision": "9ccdb2e916cc1ec13bbe38acade5828d"
+    url: "/_next/static/9ccdb2e916cc1ec13bbe38acade5828d.woff",
+    revision: "9ccdb2e916cc1ec13bbe38acade5828d"
   },
   {
-    "url": "/_next/static/manifest.json",
-    "revision": "12cfe26c2d0f86016471a2f5016cfedd"
+    url: "/_next/static/manifest.json",
+    revision: "12cfe26c2d0f86016471a2f5016cfedd"
   },
   {
-    "url": "/_next/static/style.css",
-    "revision": "ed36cf0c253d77f6fbe28811dae0f0fa"
+    url: "/_next/static/style.css",
+    revision: "ed36cf0c253d77f6fbe28811dae0f0fa"
   },
   {
-    "url": "/_next/static/style.css.map",
-    "revision": "b0cbb8380f09f58635b19197d464add1"
+    url: "/_next/static/style.css.map",
+    revision: "b0cbb8380f09f58635b19197d464add1"
   },
   {
-    "url": "/_next/static/commons/main.js",
-    "revision": "f2fc82fee6653418b614844fc2b1e078"
+    url: "/_next/static/commons/main.js",
+    revision: "f2fc82fee6653418b614844fc2b1e078"
   },
   {
-    "url": "/_next/static/commons/main.js.map",
-    "revision": "877fe425adbc6a142697e720f3ddd68b"
+    url: "/_next/static/commons/main.js.map",
+    revision: "877fe425adbc6a142697e720f3ddd68b"
   },
   {
-    "url": "/_next/static/commons/manifest.js",
-    "revision": "3933dd60b9f214bbecf91fc8495882cb"
+    url: "/_next/static/commons/manifest.js",
+    revision: "3933dd60b9f214bbecf91fc8495882cb"
   },
   {
-    "url": "/_next/static/commons/manifest.js.map",
-    "revision": "4f3944b256f19498356ef07680603420"
+    url: "/_next/static/commons/manifest.js.map",
+    revision: "4f3944b256f19498356ef07680603420"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
