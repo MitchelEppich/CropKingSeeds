@@ -20,7 +20,7 @@ class Index extends Component {
     // this.runLoop(5000, this.props.nextBannerSlide);
   }
   componentDidMount() {
-    registerServiceWorker();
+    // registerServiceWorker();
     this.props.setCurrentEvent({
       index: 0,
       currentEventObj: this.props.misc.currentEventObj,

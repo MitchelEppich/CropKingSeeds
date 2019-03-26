@@ -94,7 +94,6 @@ const getActions = uri => {
       return { type: actionTypes.SET_ERROR, input: input.value };
     },
     setShippingMethods: input => {
-      console.log(input.country);
       let _country = input.country;
       let _state = input.state;
 
@@ -416,7 +415,6 @@ const getActions = uri => {
       } else {
         _local = [];
       }
-
       let text = JSON.stringify(_orderDetails);
       if (!_local.includes(text)) {
         _local.push(text);

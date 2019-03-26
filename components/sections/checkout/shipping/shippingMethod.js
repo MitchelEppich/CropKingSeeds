@@ -1,6 +1,5 @@
 const ShippingMethod = props => {
   let methods = props.checkout.shippingMethods;
-  console.log(methods);
   let pageGroup = "shipping";
 
   let currency = props.checkout.viewCurrency;

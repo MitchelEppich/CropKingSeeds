@@ -12,7 +12,6 @@ const ShippingAddress = props => {
     let arr = [];
     let profiles = props.checkout.foundProfiles;
     for (let profile of profiles) {
-      // console.log("profiles:", profiles.indexOf(profile));
       arr.push(
         <div
           onClick={() => {
@@ -53,11 +52,11 @@ const ShippingAddress = props => {
               {profile.profile.shipping.country.value}
             </p>
           </div>
-          {/* <div className="w-1/4 p-2 px-4">
+          <div className="w-1/4 p-2 px-4">
             <p className="w-full text-base">
               {profile.profile.shipping.address.value}
             </p>
-          </div> */}
+          </div>
         </div>
       );
     }
@@ -170,14 +169,14 @@ const ShippingAddress = props => {
                 props.setVisibleScreen({
                   input: "getProfiles"
                 });
-                // let profileObj = props.checkout.foundProfiles[0];
-                // props.loadLocalProfile({
-                //   orderDetails: _orderDetails,
-                //   profile: profileObj.profile,
-                //   profileID: profileObj.id,
-                //   cart: props.cart,
-                //   freeShippingThreshold: props.checkout.freeShippingThreshold
-                // });
+                let profileObj = props.checkout.foundProfiles[0];
+                props.loadLocalProfile({
+                  orderDetails: _orderDetails,
+                  profile: profileObj.profile,
+                  profileID: profileObj.id,
+                  cart: props.cart,
+                  freeShippingThreshold: props.checkout.freeShippingThreshold
+                });
               }}
               className={`p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light relative ${
                 props.checkout.foundProfiles.length == 0
