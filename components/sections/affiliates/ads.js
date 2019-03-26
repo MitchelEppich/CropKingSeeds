@@ -9,7 +9,7 @@ const ads = props => {
           className="w-150 lg:w-16 md:w-19 xl:w-19 block mt-6 mx-auto"
           src="../static/icons/affiliate/1.png"
         />
-        <p className="text-lg lg:text-sm xl:text-base mt-8 text-center font-bold px-8">
+        <p className="text-base lg:text-sm xl:text-base mt-8 text-center font-bold px-8 text-justify">
           Our target partners are those with websites, email lists, retail
           stores such as garden centers and headshops.
         </p>
@@ -22,7 +22,7 @@ const ads = props => {
           className="w-100 lg:w-12 md:w-16 xl:w-16 block mt-6 mx-auto"
           src="../static/icons/affiliate/2.png"
         />
-        <p className="text-lg lg:text-sm xl:text-base mt-8 text-center font-bold px-8">
+        <p className="text-base lg:text-sm xl:text-base mt-8 text-center font-bold px-8 text-justify">
           We pay 20% commission on the first of each month when a minimum of
           $200 in commission is reached.
         </p>
@@ -37,7 +37,7 @@ const ads = props => {
           alt="../static/icons/affiliate/3.png"
           src="../static/icons/affiliate/3.png"
         />
-        <p className="text-lg lg:text-sm xl:text-base mt-8 text-center font-bold px-8">
+        <p className="text-base lg:text-sm xl:text-base mt-8 text-center font-bold px-8 text-justify">
           Simple, look at our packaging, strains, 24 hour customer service and
           reputation. We are a retail store with a lot of support to help make
           you some extra money.

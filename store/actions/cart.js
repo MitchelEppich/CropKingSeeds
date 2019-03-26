@@ -148,13 +148,15 @@ const getActions = uri => {
 
       // Check if product is avaliable and/or in stock, else skip
       if (
-        _product.inStock &&
-        moment(_product.releaseDate).diff(moment(), "weeks") < 0
+        _action == "REMOVE" ||
+        (_product.inStock &&
+          moment(_product.releaseDate).diff(moment(), "weeks") < 0)
       ) {
         let _item, price;
 
         switch (_action) {
           case "REMOVE":
+            // console.log("actions", _items[_productIdentifier]);
             delete _items[_productIdentifier];
             break;
           case "APPEND":
