@@ -22,7 +22,6 @@ export const makeStore = initialState => {
   );
   if (module.hot) {
     module.hot.accept("./reducer", () => {
-      // console.log('Replacing reducer');
       store.replaceReducer(require("./reducer").default);
     });
   }

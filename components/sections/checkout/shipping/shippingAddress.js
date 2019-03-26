@@ -12,7 +12,6 @@ const ShippingAddress = props => {
     let arr = [];
     let profiles = props.checkout.foundProfiles;
     for (let profile of profiles) {
-      // console.log("profiles:", profiles.indexOf(profile));
       arr.push(
         <div
           onClick={() => {

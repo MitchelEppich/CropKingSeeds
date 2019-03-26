@@ -156,7 +156,6 @@ const getActions = uri => {
 
         switch (_action) {
           case "REMOVE":
-            // console.log("actions", _items[_productIdentifier]);
             delete _items[_productIdentifier];
             break;
           case "APPEND":
@@ -260,7 +259,6 @@ const getActions = uri => {
             try {
               let decrypted = cryptr.decrypt(recall);
               _obj = JSON.parse(decrypted);
-              console.log(_obj);
               resolve(_obj);
             } catch (err) {
               resolve({});
