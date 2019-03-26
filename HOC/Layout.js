@@ -211,7 +211,7 @@ class Layout extends Component {
                   style={{
                     marginLeft:
                       this.props.viewProduct.showStrainsMenu &&
-                      ["md", "lg", "xl"].includes(this.props.misc.mediaSize)
+                      ["xl", "xxl"].includes(this.props.misc.mediaSize)
                         ? "250px"
                         : "auto",
                     transition: "all .4s ease"

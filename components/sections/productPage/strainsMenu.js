@@ -65,10 +65,13 @@ const strainsMenu = props => {
         <Link
           key={strain.sotiId}
           href="/product"
-          as={strain.name
-            .toLowerCase()
-            .split(" ")
-            .join("-")}
+          as={
+            "/product" +
+            strain.name
+              .toLowerCase()
+              .split(" ")
+              .join("-")
+          }
         >
           <li
             className={`text-black leading-loose cursor-pointer hover:bg-grey-lightest mt-1 w-full list-reset text-left pl-4 font-bold`}
