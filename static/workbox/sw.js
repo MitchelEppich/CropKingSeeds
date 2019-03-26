@@ -17,37 +17,11 @@ importScripts(
   "/static/workbox/workbox-v3.6.3/workbox-sw.js",
   "/static/workbox/workbox-v3.6.3/workbox-sw.js",
   "/static/workbox/workbox-v3.6.3/workbox-sw.js",
-  "/static/workbox/workbox-v3.6.3/workbox-sw.js",
-  "/static/workbox/workbox-v3.6.3/workbox-sw.js",
-  "/static/workbox/workbox-v3.6.3/workbox-sw.js",
-  "/static/workbox/workbox-v3.6.3/workbox-sw.js",
-  "/static/workbox/workbox-v3.6.3/workbox-sw.js",
-  "/static/workbox/workbox-v3.6.3/workbox-sw.js",
-  "/static/workbox/workbox-v3.6.3/workbox-sw.js",
-  "/static/workbox/workbox-v3.6.3/workbox-sw.js",
-  "/static/workbox/workbox-v3.6.3/workbox-sw.js",
-  "/static/workbox/workbox-v3.6.3/workbox-sw.js",
-  "/static/workbox/workbox-v3.6.3/workbox-sw.js",
-  "/static/workbox/workbox-v3.6.3/workbox-sw.js",
-  "/static/workbox/workbox-v3.6.3/workbox-sw.js",
   "/static/workbox/next-precache-manifest-bf67a47b52a4a283a3b0760e8822d6a7.js",
   "/static/workbox/next-precache-manifest-eafdd4c3127373036041ed63a6980c57.js",
   "/static/workbox/next-precache-manifest-eafdd4c3127373036041ed63a6980c57.js",
   "/static/workbox/next-precache-manifest-eafdd4c3127373036041ed63a6980c57.js",
-  "/static/workbox/next-precache-manifest-eafdd4c3127373036041ed63a6980c57.js",
-  "/static/workbox/next-precache-manifest-eafdd4c3127373036041ed63a6980c57.js",
-  "/static/workbox/next-precache-manifest-eafdd4c3127373036041ed63a6980c57.js",
-  "/static/workbox/next-precache-manifest-eafdd4c3127373036041ed63a6980c57.js",
-  "/static/workbox/next-precache-manifest-87b4609615a506c13902300c44a94fea.js",
-  "/static/workbox/next-precache-manifest-87b4609615a506c13902300c44a94fea.js",
-  "/static/workbox/next-precache-manifest-87b4609615a506c13902300c44a94fea.js",
-  "/static/workbox/next-precache-manifest-87b4609615a506c13902300c44a94fea.js",
-  "/static/workbox/next-precache-manifest-87b4609615a506c13902300c44a94fea.js",
-  "/static/workbox/next-precache-manifest-87b4609615a506c13902300c44a94fea.js",
-  "/static/workbox/next-precache-manifest-86f07e780b048b4c7d28433c7866ac06.js",
-  "/static/workbox/next-precache-manifest-d44fe7c87487d7cfc38a9868c62b6c13.js",
-  "/static/workbox/next-precache-manifest-d44fe7c87487d7cfc38a9868c62b6c13.js",
-  "/static/workbox/next-precache-manifest-d44fe7c87487d7cfc38a9868c62b6c13.js"
+  "/static/workbox/next-precache-manifest-eafdd4c3127373036041ed63a6980c57.js"
 );
 
 workbox.skipWaiting();
@@ -81,19 +55,19 @@ self.__precacheManifest = [
   },
   {
     "url": "/_next/static/commons/main.js",
-    "revision": "886c02b783105fe93ffd02fd92055d37"
+    "revision": "f2fc82fee6653418b614844fc2b1e078"
   },
   {
     "url": "/_next/static/commons/main.js.map",
-    "revision": "f8f1e85c6f5b81e65f2f53098ca8e9ae"
+    "revision": "877fe425adbc6a142697e720f3ddd68b"
   },
   {
     "url": "/_next/static/commons/manifest.js",
-    "revision": "d73630bf35a1c55c67d0fb3fdeb9a775"
+    "revision": "3933dd60b9f214bbecf91fc8495882cb"
   },
   {
     "url": "/_next/static/commons/manifest.js.map",
-    "revision": "81f68eb81a67520c876f110e2f20ec43"
+    "revision": "4f3944b256f19498356ef07680603420"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();

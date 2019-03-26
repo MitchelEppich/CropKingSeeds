@@ -51,7 +51,6 @@ class Index extends Component {
   }
 
   render() {
-    console.log(this.props);
     let _orderDetails = this.props.checkout.orderDetails;
     let _stepsCheckout = this.props.misc.stepsCheckout;
     let errors = { ...this.props.checkout.error };
@@ -70,7 +69,6 @@ class Index extends Component {
         <form
           onSubmit={e => {
             e.preventDefault();
-
             if (
               _stepsCheckout == 4 &&
               _orderDetails.payment.method.value == "Bitcoin"
@@ -110,7 +108,7 @@ class Index extends Component {
                         }
                       })
                       .then(res => {
-                        // this.props.toggleStepsCheckout(_stepsCheckout + 1);
+                        this.props.toggleStepsCheckout(_stepsCheckout + 1);
                       });
                   });
               } else {
@@ -301,6 +299,26 @@ class Index extends Component {
     }
   }
 
+  open = (verb, url, data, target) => {
+    let form = document.createElement("form");
+    form.action = url;
+    form.method = verb;
+    form.target = target || "_self";
+    if (data) {
+      for (let key in data) {
+        let input = document.createElement("textarea");
+        input.name = key;
+        input.value =
+          typeof data[key] === "object" ? JSON.stringify(data[key]) : data[key];
+        form.appendChild(input);
+      }
+    }
+    form.style.display = "none";
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
+  };
+
   payBitcoin = (orderDetails, orderId) => {
     let _billing = { ...orderDetails.billing };
     let _payment = { ...orderDetails.payment };
@@ -323,7 +341,7 @@ class Index extends Component {
         last_name: name[1],
         email: _billing.email.value,
         address1: _billing.address.value,
-        address2: billing.apartment != null ? billing.apartment.value : "",
+        address2: _billing.apartment != null ? _billing.apartment.value : "",
         city: _billing.city.value,
         state: _billing.state.value,
         zip: _billing.postalZip.value,

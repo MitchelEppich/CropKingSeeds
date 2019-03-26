@@ -132,7 +132,6 @@ const resolvers = {
       let newsEntry = new News({
         ...input
       });
-      console.log(input);
 
       newsEntry.save();
 
@@ -319,8 +318,6 @@ let processPivotal = async input => {
     }
   };
 
-  console.log(content);
-
   let res = JSON.parse(
     convert.xml2json(
       (await axios({
@@ -334,8 +331,6 @@ let processPivotal = async input => {
       { compact: true, spaces: 4 }
     )
   )["PAYMENTRESPONSE"];
-
-  console.log(res);
 
   return {
     transactionId: res.UNIQUEREF._text,

@@ -94,7 +94,6 @@ const getActions = uri => {
       return { type: actionTypes.SET_ERROR, input: input.value };
     },
     setShippingMethods: input => {
-      console.log(input.country);
       let _country = input.country;
       let _state = input.state;
 

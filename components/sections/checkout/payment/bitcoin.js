@@ -63,7 +63,7 @@ const Bitcoin = props => {
               Proceeding will take you to Bitcoin to log in to your account.
             </p>
             <img
-             alt={props.misc.CFURL + "/logos/bitcoin_logo.png"}
+              alt={props.misc.CFURL + "/logos/bitcoin_logo.png"}
               src={props.misc.CFURL + "/logos/bitcoin_logo.png"}
               width="200px"
               className="mt-4 cursor-pointer"
@@ -77,44 +77,6 @@ const Bitcoin = props => {
             >
               Pay Now
             </button>
-          </div>
-          <div className="w-main mx-auto mt-4">
-            <p
-              onClick={() => {
-                props.setVisibleScreen({ input: "bitcoinPaymentInstructions" });
-              }}
-              className="underline font-bold w-full text-center p-2 text-grey-light cursor-pointer hover:text-red-light"
-            >
-              How to Pay using Bitcoin - Payment Instructions
-            </p>
-            {props.misc.visibleScreen.includes("bitcoinPaymentInstructions") ? (
-              <div className="mt-2 px-2">
-                <p className="text-justify">
-                  Incididunt velit eiusmod cupidatat consectetur sit velit eu
-                  irure velit. Excepteur qui nostrud excepteur reprehenderit
-                  sint incididunt. Enim sunt non irure consequat commodo mollit
-                  commodo cupidatat ullamco eu consequat. Eiusmod Lorem
-                  voluptate proident non excepteur ex aliqua culpa est eu.
-                  Aliqua incididunt dolore esse non sunt labore et. Aliquip sunt
-                  sunt laboris fugiat aute excepteur laboris consectetur aliqua
-                  cillum ullamco est nulla. Fugiat qui minim adipisicing non
-                  consequat ea in anim. Enim esse occaecat fugiat fugiat eiusmod
-                  ut.
-                </p>
-                <p>
-                  Non aliquip minim reprehenderit ad. Nulla commodo nostrud
-                  exercitation occaecat ad excepteur. Nostrud elit ea voluptate
-                  duis officia sunt Lorem. Laborum Lorem magna magna do nulla
-                  tempor qui aute elit mollit. Consectetur Lorem esse cillum
-                  voluptate eiusmod ea ex veniam duis reprehenderit. Ad quis
-                  amet deserunt laborum qui dolor Lorem deserunt. Aute aliqua
-                  minim aute laborum sint dolor eiusmod ullamco officia do ea
-                  laborum commodo sint. Consectetur reprehenderit Lorem laboris
-                  consectetur ipsum. Fugiat mollit sint ex in ad ut veniam
-                  tempor qui.
-                </p>
-              </div>
-            ) : null}
           </div>
         </div>
       ) : null}
