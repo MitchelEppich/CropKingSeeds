@@ -22,7 +22,7 @@ const name = props => {
       href="/product"
       as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}
     >
-      <div style={{ zIndex: "1000", width: "92%" }} className="absolute w-full">
+      <div className="absolute w-full z-10">
         <h3
           onClick={() => {
             props.setHoverId(null, false);
