@@ -37,6 +37,7 @@ const contactDetails = props => {
         <div className="ml-8 pl-1">
           <p className="p-1 pb-2">
             <a
+              rel="nofollow"
               className="text-grey hover:text-red"
               href="mailto:info@cropkingseeds.com"
             >

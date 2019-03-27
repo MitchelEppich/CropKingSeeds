@@ -93,7 +93,7 @@ const news = props => {
               aria-label="event-location"
               href={locationUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="nofollow"
               className="cursor-pointer sm:w-full md:w-full text-sm hover:text-grey-light pl-12 sm:pl-2 ml-2"
             >
               <FontAwesomeIcon icon={faMapMarkerAlt} className="opacity-50" />{" "}

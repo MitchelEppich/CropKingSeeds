@@ -40,7 +40,7 @@ const Share = props => {
             aria-label="share-facebook"
             className="no-underline text-grey-light"
             target="_blank"
-            rel="noreferrer"
+            rel="nofollow"
             href={
               "https://www.facebook.com/sharer/sharer.php?u=https%3A//" +
               window.location.href.split("//")[1]
@@ -55,6 +55,7 @@ const Share = props => {
             aria-label="share-twitter"
             className="no-underline text-grey-light"
             target="_blank"
+            rel="nofollow"
             href={
               "https://twitter.com/home?status=https%3A//" +
               window.location.href.split("//")[1]

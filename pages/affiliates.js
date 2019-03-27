@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Link from "next/link";
+import Head from "next/head";
 // custom imports
 import withData from "../lib/withData";
 import actions from "../store/actions";
@@ -13,6 +14,9 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
+        <Head>
+          <meta name="robots" content="index, nofollow" />
+        </Head>
         <div className="flex flex-wrap justify-around pb-12 ">
           <div className="affiliatesBanner sm:mb-0 xxl:mb-24 xl:mb-16 lg:mb-6 ">
             <div className="w-1/3 sm:w-full md:w-full lg:w-2/3 xl:w-1/2 sm:pr-0 pr-12 flex flex-wrap md:justify-start lg:justify-start justify-between text-white">
@@ -25,6 +29,7 @@ class Index extends Component {
                 the cannabis industry.
               </p>
               <a
+                rel="nofollow"
                 target="_blank"
                 href="https://affiliates.cropkingseeds.com/signup.php"
               >
@@ -33,6 +38,7 @@ class Index extends Component {
                 </button>
               </a>
               <a
+                rel="nofollow"
                 target="_blank"
                 href="https://affiliates.cropkingseeds.com/index.php"
               >
@@ -132,7 +138,7 @@ class Index extends Component {
             className="w-1/4 sm:w-2/3 md:w-2/3 lg:w-1/3 xl:w-1/2 xxl:w-1/3 xxl:mx-48 block uppercase text-center mx-auto px-12 py-3 text-lg uppercase font-bold rounded bg-red-dark text-white hover:bg-grey"
             target="_blank"
             aria-label="affiliates-signup"
-            rel="noreferrer"
+            rel="nofollow"
             href="https://affiliates.cropkingseeds.com/signup.php"
           >
             join now!

@@ -4,7 +4,6 @@ const catalogue = props => {
       <a
         href={props.misc.CFURL + "/catalogue/CropKingSeeds-2019-Catalogue.pdf"}
         aria-label="download-catalogue"
-        target="_blank"
       >
         <img
           src={props.misc.CFURL + "/sidebar/downloadcatalogue.png"}

@@ -12,8 +12,8 @@ import CompareFilters from "./compareFilters";
 import SearchCompare from "./searchCompare";
 
 const Compare = props => {
-  let allProducts = props.misc.compareStrains;
-  // != null ? props.misc.compareStrains : null;
+  let allProducts =
+    props.misc.compareStrains != null ? props.misc.compareStrains : null;
 
   let showSeedAmounts = item => {
     let _arr = item.price;
@@ -51,9 +51,9 @@ const Compare = props => {
       );
     });
   };
-  allProducts = allProducts.map((product, index) => {
-    return product.slice(0, 5);
-  });
+  // allProducts = allProducts.map((product, index) => {
+  //   return product.slice(0, 5);
+  // });
 
   let Products = () => {
     let arr = [];
@@ -408,14 +408,14 @@ const Compare = props => {
 
   return (
     <div className="w-full mt-5">
-      <div className="text-center w-full pb-8">
+      {/* <div className="text-center w-full pb-8">
         <h1
           className="mt-5 text-grey font-extrabold text-center text-3/5xl mx-auto w-full text-center"
           onClick={() => console.log(props)}
         >
           Comparing our Strains
         </h1>
-      </div>
+      </div> */}
       <div className="w-full inline-flex">
         {/* Sidebar */}
         <div className="w-1/5">
@@ -441,7 +441,7 @@ const Compare = props => {
         </div>
         {/* Container */}
         <div className="w-4/5 ml-4">
-          <div>
+          {/* <div>
             <div className="w-full relative">
               <p className="text-center bg-grey-lightest font-bold text-xl uppercase p-2 my-4 mt-0 font-bold rounded text-base uppercase text-grey">
                 Main Filters:
@@ -453,7 +453,7 @@ const Compare = props => {
             <div>
               <CompareFilters {...props} />
             </div>
-          </div>
+          </div> */}
           <p className="text-center mt-6 bg-grey-lightest p-3 my-4 mt-0 font-bold rounded text-base uppercase text-grey">
             Please, select at least{" "}
             <span className="font-bold underline">2</span> and max{" "}

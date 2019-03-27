@@ -299,7 +299,7 @@ const Footer = props => {
               }}
               type="checkbox"
               defaultChecked={props.misc.lowGPUMode}
-              value={props.misc.lowGPUMode}
+              value={props.misc.lowGPUMode || false}
             />
           </div>
           <div className="sm:mt-12 md:mt-12 pt-2 text-center sm:text-center md:text-center lg:text-center">
