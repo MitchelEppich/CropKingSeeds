@@ -84,7 +84,8 @@ const actionTypes = {
   CALCULATE_FPS_AVG: "CALCULATE_FPS_AVG",
   DISABLE_FPS_CALC: "DISABLE_FPS_CALC",
   TOGGLE_LOW_GPU_MODE: "TOGGLE_LOW_GPU_MODE",
-  RECALL_GPU_MODE: "RECALL_GPU_MODE"
+  RECALL_GPU_MODE: "RECALL_GPU_MODE",
+  TOGGLE_HEADER_MESSAGE: "TOGGLE_HEADER_MESSAGE"
 };
 
 const actions = {
@@ -525,6 +526,20 @@ const actions = {
     return {
       type: actionTypes.TOGGLE_MOBILE_MENU,
       input: input
+    };
+  },
+  toggleHeaderMessage: input => {
+    return dispatch => {
+      if (input.value) {
+        setTimeout(
+          () => dispatch(actions.toggleHeaderMessage({ value: false })),
+          input.time
+        );
+      }
+      dispatch({
+        type: actionTypes.TOGGLE_HEADER_MESSAGE,
+        input: input.value
+      });
     };
   },
   toggleCartMenu: isCartMenuVisible => {

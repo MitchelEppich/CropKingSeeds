@@ -63,7 +63,7 @@ const gridHeader = props => {
             <p className="text-left w-1/2">Active Filters:</p>
             <p
               onClick={() => props.clearFilters()}
-              className="text-right w-1/2 flex items-center justify-end underline"
+              className="text-right w-1/2 flex items-center justify-end underline cursor-pointer"
             >
               Clear <FontAwesomeIcon icon={faTimes} className="ml-2 fa-lg" />
             </p>

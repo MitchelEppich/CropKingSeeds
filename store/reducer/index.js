@@ -57,6 +57,7 @@ const initialState = {
   news: {},
   featureCount: 1,
   showMobileMenu: null,
+  showHeaderMessage: null,
   showCartMenu: false,
   CFURL: "http://dcfgweqx7od72.cloudfront.net",
   newsTimeout: null,
@@ -233,6 +234,10 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.TOGGLE_LOW_GPU_MODE:
       return updateObject(state, {
         lowGPUMode: action.lowGPUMode
+      });
+    case actionTypes.TOGGLE_HEADER_MESSAGE:
+      return updateObject(state, {
+        showHeaderMessage: action.input
       });
     case actionTypes.RECALL_GPU_MODE:
       return updateObject(state, {

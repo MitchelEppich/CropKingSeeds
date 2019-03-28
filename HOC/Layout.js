@@ -64,6 +64,11 @@ class Layout extends Component {
     if (window.top !== window.self)
       window.top.location.replace(window.self.location.href);
 
+    setTimeout(
+      () => this.props.toggleHeaderMessage({ value: true, time: 7000 }),
+      2000
+    );
+
     // registerServiceWorker();
     // iframe = document.createElement("iframe");
     // iframe.id = "iframe";
@@ -386,6 +391,7 @@ const mapDispatchToProps = dispatch => {
     toggleLowGPUMode: lowGpuMode =>
       dispatch(actions.toggleLowGPUMode(lowGpuMode)),
     toggleCartMenu: input => dispatch(actions.toggleCartMenu(input)),
+    toggleHeaderMessage: input => dispatch(actions.toggleHeaderMessage(input)),
     recallGPUMode: () => dispatch(actions.recallGPUMode())
   };
 };

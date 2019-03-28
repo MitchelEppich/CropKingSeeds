@@ -17,6 +17,7 @@ import CartIcon from "./cartIcon";
 import SearchBar from "../searchBar";
 import Router from "next/router";
 import SearchSuggest from "../searchSuggest";
+import HeaderMessage from "../headerMessage";
 
 const menu = props => {
   let menuStyle = {
@@ -385,6 +386,7 @@ const menu = props => {
               </div>
             </div>
           </div>
+          <HeaderMessage {...props} />
         </div>
       </div>
     </div>

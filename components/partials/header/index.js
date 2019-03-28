@@ -1,6 +1,7 @@
 import Menu from "./menu";
 // import SearchBar from "./searchBar";
 import calcFps from "../../../store/utilities/calcFps";
+import HeaderMessage from "./headerMessage";
 
 const Header = props => {
   let HeaderStyle = {
@@ -33,9 +34,12 @@ const Header = props => {
     <div
       onClick={() => props.toggleStrainsMenu(false)}
       style={HeaderStyle}
-      className="preserve-3d"
+      className="preserve-3d relative"
     >
-      <Menu {...props} />
+      <div>
+        <Menu {...props} />
+      </div>
+
       {/* <SearchBar {...props} /> */}
     </div>
   );
