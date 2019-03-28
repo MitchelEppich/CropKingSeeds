@@ -477,7 +477,7 @@ const actions = {
         .then(data => {
           let banners = data.data.getBanners.map((banner, index) => {
             let str = banner;
-            let { 0: text, 1: url, 2: sotiId } =
+            let { 0: type, 1: url, 2: sotiId } =
               str != "" ? str.split("&=>") : ["", "", ""];
             return {
               style: {
@@ -485,7 +485,7 @@ const actions = {
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat"
               },
-              text,
+              type,
               url,
               sotiId
             };
