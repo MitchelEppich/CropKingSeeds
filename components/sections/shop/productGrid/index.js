@@ -53,7 +53,7 @@ class Index extends Component {
             }
             this.props.setHoverId(this.props.misc.hoverId, false);
           }}
-          className="ml-10 md:ml-2 lg:ml-8 xl:ml-6 xxl:ml-12 sm:ml-2 flex flex-wrap pt-6 sm:justify-center md:justify-center lg:justify-start xl:justify-start xxl:justify-start sm:overflow-hidden sm:pb-4"
+          className="ml-10 md:ml-2 lg:ml-8 xl:ml-6 xxl:ml-12 sm:ml-0 flex flex-wrap pt-6 sm:justify-center md:justify-center lg:justify-start xl:justify-start xxl:justify-start sm:overflow-hidden sm:pb-4"
         >
           {this.mapProducts()}
         </div>
@@ -106,7 +106,7 @@ class Index extends Component {
             className={
               this.props.misc.hoverId == product._id
                 ? "w-64 h-64 sm:w-screen sm:h-screen sm:pin-t sm:mt-4 md:w-44 md:h-48 lg:h-48 lg:w-44 text-white relative sm:absolute z-50 slowishish lg:my-4 sm:my-0 md:my-2 lg:ml-2 xl:mx-2 xxl:my-4 xxl:mx-4"
-                : "w-64 h-64 sm:cursor-pointer md:cursor-pointer sm:w-32 sm:h-32 md:w-44 md:h-48 lg:h-48 lg:w-44 text-white relative z-0 slowishish lg:my-4 sm:my-2 md:my-2 lg:ml-2 xl:mx-2 xxl:my-4 xxl:mx-4"
+                : "w-64 h-64 sm:cursor-pointer md:cursor-pointer sm:w-32 sm:mt-4 sm:h-48 md:w-44 md:h-48 lg:h-48 lg:w-44 text-white relative z-0 slowishish lg:my-4 sm:my-2 md:my-2 lg:ml-2 xl:mx-2 xxl:my-4 xxl:mx-4"
             }
           >
             <ProductThumbnail

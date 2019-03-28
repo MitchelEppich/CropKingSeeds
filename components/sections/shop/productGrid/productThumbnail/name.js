@@ -32,7 +32,7 @@ const name = props => {
             props.hover
               ? "w-full mt-2 mb-2 text-black font-black text-center cursor-pointer strainTitle--hover " +
                 nameSize
-              : "text-center sm:text-xs text-grey p-2 font-extrabold z-50 strainTitle " +
+              : "text-center flex justify-center items-center sm:text-xs text-grey p-2 font-extrabold z-50 strainTitle " +
                 nameSizeHover +
                 titleColorBackground
           }

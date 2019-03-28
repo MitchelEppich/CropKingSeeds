@@ -289,7 +289,7 @@ const Footer = props => {
             </div>
           </div>
           <div className="sm:hidden md:hidden h-10 my-1 w-full pt-5 flex justify-center items-center">
-            <label className="text-red-light uppercase cursor-pointer hover:text-red-dark  font-bold mr-4">
+            <label className="text-red uppercase cursor-pointer hover:text-red-dark  font-bold mr-4">
               <FontAwesomeIcon
                 icon={faCog}
                 className="text-grey-light mr-1 fa-lg mt-1"

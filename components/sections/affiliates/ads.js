@@ -1,6 +1,6 @@
 const ads = props => {
   return (
-    <div className="w-main xl:w-95p lg:w-95p flex sm:flex-wrap sm:justify-center md:flex-wrap md:justify-center -mt-16 md:-mt-12 sm:-mt-32 justify-between">
+    <div className="w-main xl:w-95p lg:w-95p flex sm:flex-wrap sm:justify-center md:flex-wrap md:justify-center -mt-16 md:-mt-12 sm:mt-0 justify-between">
       <div className="w-300 sm:h-auto sm:pb-4 sm:my-4 sm:mx-4 md:my-4 md:mx-4 md:w-300 md:h-300 lg:w-175 lg:h-350 xl:w-250 xl:h-350 h-400 bg-white rounded-lg shadow-lg overflow-hidden">
         <h3 className="xxl:h-100 xl:h-20 xl:items-center xl:flex xl:justify-center xl:p-2 lg:p-2 lg:h-20 lg:items-center lg:flex lg:justify-center font-black sm:text-2xl md:text-2xl md:p-2 md:h-auto lg:text-lg xl:text-2xl text-3xl bg-red-dark text-center text-white px-8 pt-4">
           Who can participate?

@@ -17,48 +17,43 @@ class Index extends Component {
         <Head>
           <meta name="robots" content="index, nofollow" />
         </Head>
-        <div className="flex flex-wrap justify-around pb-12 ">
-          <div className="affiliatesBanner sm:mb-0 lg:mb-6 ">
-            <div className="w-1/3 sm:w-full md:w-4/5 lg:w-2/3 xl:w-1/2 sm:pr-0 pr-12 md:pr-0 flex flex-wrap md:justify-start lg:justify-start justify-between text-white">
-              <h1 className="w-full sm:text-2xl font-black text-shadow uppercase">
-                Grow your business with Crop King Seeds
-              </h1>
-              <p className="w-full my-4 mb-6 leading-normal text-shadow">
-                Are you ready to earn some money? Full affiliate support
-                available so you can be apart of Crop King Seeds fast growth in
-                the cannabis industry.
-              </p>
-              <div className="w-full justify-around flex sm:flex-col">
-                <a
-                  rel="nofollow"
-                  target="_blank"
-                  href="https://affiliates.cropkingseeds.com/signup.php"
-                >
-                  <button className="w-32 sm:w-full sm:my-2 md:m-1 sm:px-4 py-2 text-lg uppercase font-bold rounded bg-red-dark text-white hover:bg-red-light">
-                    Sign Up
-                  </button>
-                </a>
-                <a
-                  rel="nofollow"
-                  target="_blank"
-                  href="https://affiliates.cropkingseeds.com/index.php"
-                >
-                  <button className="w-32 sm:w-full sm:my-2 md:m-1 py-2 text-lg uppercase font-bold rounded bg-white text-red-dark hover:bg-grey-darker hover:text-white">
-                    Login
-                  </button>
-                </a>
+        <div className="flex flex-wrap justify-around pb-12">
+          <div className="h-full">
+            <div className="affiliatesBanner sm:mb-0 lg:mb-6 ">
+              <div className="w-1/3 sm:w-full md:w-4/5 lg:w-2/3 xl:w-1/2 sm:pr-0 pr-12 md:pr-0 flex flex-wrap md:justify-start lg:justify-start justify-between text-white">
+                <h1 className="w-full sm:text-2xl font-black text-shadow uppercase">
+                  Grow your business with Crop King Seeds
+                </h1>
+                <p className="w-full my-4 mb-6 leading-normal text-shadow">
+                  Are you ready to earn some money? Full affiliate support
+                  available so you can be apart of Crop King Seeds fast growth
+                  in the cannabis industry.
+                </p>
+                <div className="w-full justify-around flex sm:flex-col">
+                  <a
+                    rel="nofollow"
+                    target="_blank"
+                    href="https://affiliates.cropkingseeds.com/signup.php"
+                  >
+                    <button className="w-32 sm:w-full sm:my-2 md:m-1 sm:px-4 py-2 text-lg uppercase font-bold rounded bg-red-dark text-white hover:bg-red-light">
+                      Sign Up
+                    </button>
+                  </a>
+                  <a
+                    rel="nofollow"
+                    target="_blank"
+                    href="https://affiliates.cropkingseeds.com/index.php"
+                  >
+                    <button className="w-32 sm:w-full sm:my-2 md:m-1 py-2 text-lg uppercase font-bold rounded bg-white text-red-dark hover:bg-grey-darker hover:text-white">
+                      Login
+                    </button>
+                  </a>
+                </div>
               </div>
             </div>
-
-            {/* {!["sm", "md"].includes(this.props.misc.mediaSize) ? (
-              <Ads {...this.props} />
-            ) : null} */}
           </div>
-          {/* {["sm", "md"].includes(this.props.misc.mediaSize) ? ( */}
           <Ads {...this.props} />
-          {/* ) : null} */}
 
-          {/* <Login {...this.props} /> */}
           <div className="mt-10 xl:mt-10 xl:w-95p lg:mt-10 md:mt-12 sm:mt-6 sm:w-300 sm:px-1 xxl:px-100 w-full">
             <div className="w-full sm:h-auto md:h-500 h-400 xl:h-250 lg:h-250 flex sm:flex-wrap sm:justify-center md:flex-wrap md:justify-center mx-auto justify-between bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="h-full sm:h-24 sm:w-24 sm:pt-6 md:h-16 w-1/3 text-center md:pt-8 pt-20 lg:pt-16">

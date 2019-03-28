@@ -90,7 +90,7 @@ const FeaturedStrainThumbnail = props => {
 
   let imgMobile = {
     zIndex: "50",
-    height: hover ? "150px" : "175px",
+    height: hover ? "150px" : "165px",
     backgroundImage:
       "url(" +
       props.misc.CFURL +
@@ -109,7 +109,7 @@ const FeaturedStrainThumbnail = props => {
           onClick={() => {
             props.setHoverId(null, false);
           }}
-          className={`w-full p-2 md:text-base sm:text-sm shadow-md text-shadow text-lg text-white text-center cursor-pointer ${titleColorBackground}`}
+          className={`w-full p-2 md:text-base sm:text-sm shadow-md text-shadow sm:items-center sm:flex sm:justify-center sm:h-12 text-lg text-white text-center cursor-pointer ${titleColorBackground}`}
         >
           {name}
         </h3>

@@ -70,14 +70,14 @@ const packageImage = props => {
           Math.abs(moment().diff(props.product.releaseDate, "weeks")) > 2 &&
           Math.max(0, moment().diff(props.product.releaseDate, "months")) <
             3 ? (
-            <div className="absolute pin-t pin-r sm:mr-20 mr-10 -mt-2">
+            <div className="absolute pin-t pin-l sm:ml-20 ml-10 -mt-2">
               <p className="text-white new-product-icon text-sm h-10 flex items-center font-bold">
                 NEW
               </p>
             </div>
           ) : null}
           {!props.product.inStock ? (
-            <div className="absolute pin-t pin-r sm:mr-20 mr-10 -mt-2">
+            <div className="absolute pin-t pin-l sm:ml-20 ml-10 -mt-2">
               <p className="text-white out-of-stock-icon text-sm h-10 flex items-center font-bold">
                 SOLD OUT
               </p>
