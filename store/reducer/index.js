@@ -244,7 +244,7 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.TOGGLE_HEADER_MESSAGE:
       return updateObject(state, {
         showHeaderMessage: action.input,
-        dailyMessageShown: action.shown
+        dailyMessageShown: state.dailyMessageShown || action.shown
       });
     case actionTypes.RECALL_GPU_MODE:
       return updateObject(state, {

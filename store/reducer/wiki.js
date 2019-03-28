@@ -13,7 +13,7 @@ const initialState = {
         {
           name: "Reporting Issues",
           content:
-            "As this is a new website we are doing our best to ensure it is bug free, but should you find any issues or have any questions; please don’t hesitate to reach out to us through our contact form. Select “Bug/Issue” in the subject dropdown and then proceed to fill out the form. We appreciate your help and support!"
+            "As this is a new website we are doing our best to ensure it is bug-free, but should you find any issues or have any questions; please don’t hesitate to reach out to us through our contact form. Select “Bug/Issue” in the subject dropdown and then proceed to fill out the form. We appreciate your help and support!"
         }
       ],
       images: []
@@ -45,12 +45,12 @@ const initialState = {
         {
           name: "Products review",
           content:
-            "This first step lists all the products you are about to purchase and allows you to adjust this list if need be. Here you can also add any coupon codes you may have. &=> The subtotal is calculated in the bottom right, above the &=> button whick allows you to proceed to the next step."
+            "This first step lists all the products you are about to purchase and allows you to adjust this list if need be. Here you can also add any coupon codes you may have. &=> The subtotal is calculated in the bottom right, above the &=> button which allows you to proceed to the next step."
         },
         {
           name: "Shipping Details",
           content:
-            "This step requires you to fill out your shipping details. Once your details are filled out, shipping methods will populate below for you to select. You will not be able to process your order without selecting a shipping method. &=> Profiles: CKS allows you to save user profiles to your local machine for later use.This keeps your information private and secure, only accessible on your machine, while allowing you to fill out your order details quickly. When you begin filling out your Shipping Details, CKS will detect if you have any saved profiles that match your current details. The &=> button will become active when a match has been found allowing you to click and select a profile from the drop down list. You can modify profiles in the dropdown or &=> in the bottom left corner of this step. CKS saves your profile by default, if you do not want your profile saved on your computer deselect the option in the top right corner. &=> "
+            "This step requires you to fill out your shipping details. Once your details are filled out, shipping methods will populate below for you to select. You will not be able to process your order without selecting a shipping method. &=> Profiles: CKS allows you to save user profiles to your local machine for later use.This keeps your information private and secure, only accessible on your machine while allowing you to fill out your order details quickly. When you begin filling out your Shipping Details, CKS will detect if you have any saved profiles that match your current details. The &=> button will become active when a match has been found allowing you to click and select a profile from the dropdown list. You can modify profiles in the dropdown or &=> in the bottom left corner of this step. CKS saves your profile by default if you do not want your profile saved on your computer deselect the option in the top right corner. &=> "
         },
         {
           name: "Billing Details",
@@ -86,12 +86,12 @@ const initialState = {
         {
           name: "Search",
           content:
-            "In the top left of the compare page you can enter in any keywords to narrow down your search for the strains you want to compare. &=> "
+            "In the top left of the compare page, you can enter in any keywords to narrow down your search for the strains you want to compare. &=> "
         },
         {
           name: "Filters",
           content:
-            "Commonly used keywords have been pre-built into filter buttons at the top of the page. Selecting one of these will fill the compare table with 5 of the top strains matching this filter."
+            "Commonly used keywords have been pre-built into filter buttons at the top of the page. Selecting one of these will fill the comparison table with 5 of the top strains matching this filter."
         },
         {
           name: "Menu",
@@ -134,7 +134,7 @@ const initialState = {
         {
           name: "Strains Menu",
           content:
-            "When viewing a products individual page you can access a menu of all our strains on the left of the screen via the &=> tab. This allows you to switch between viewing different strains as quickly as possible."
+            "When viewing products individual page you can access a menu of all our strains on the left of the screen via the &=> tab. This allows you to switch between viewing different strains as quickly as possible."
         },
         {
           name: "Details",
@@ -157,7 +157,7 @@ const initialState = {
         {
           name: "Filters",
           content:
-            "The CKS shop page has a detailed filter section on the left hand side of the page or the top if you’re on mobile. &=> The filters are sorted into categories and can be toggled on and off upon clicking them. The whole filter section can be hidden by clicking the top heading.  &=> Active filters are listed above the strains at the top of the page. &=> "
+            "The CKS shop page has a detailed filter section on the left-hand side of the page or the top if you’re on mobile. &=> The filters are sorted into categories and can be toggled on and off upon clicking them. The whole filter section can be hidden by clicking the top heading.  &=> Active filters are listed above the strains at the top of the page. &=> "
         },
         {
           name: "Sorting",
@@ -173,7 +173,7 @@ const initialState = {
         {
           name: "Featured Strains",
           content:
-            "CKSs’ featured strains are listed in a special section on the left sidebar below the filters ection and banner ad. Click one of the strains to view its product page."
+            "CKSs’ featured strains are listed in a special section on the left sidebar below the filters section and banner ad. Click one of the strains to view its product page."
         }
       ],
       images: [
