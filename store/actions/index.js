@@ -486,7 +486,8 @@ const actions = {
               style: {
                 backgroundPosition: "top",
                 backgroundSize: "contain",
-                backgroundRepeat: "no-repeat"
+                backgroundRepeat: "no-repeat",
+                height: "100%"
               },
               type,
               url,

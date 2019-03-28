@@ -24,7 +24,7 @@ const BannerCarousel = props => {
         props.misc.bannerSlidePositions.length;
     }
     return (
-      <div key={index}>
+      <React.Fragment key={index}>
         <div className="w-24 arrowsBanner cursor-pointer ml-4 justify-start flex items-center absolute pin-y pin-l z-999 text-white sm:w-10 sm:text-xs sm:ml-1 md:w-10 md:text-xs md:ml-1">
           <FontAwesomeIcon
             onClick={() => {
@@ -38,15 +38,12 @@ const BannerCarousel = props => {
             className="fa-4x"
           />
         </div>
-        <div className="w-full">
-          {" "}
-          <Slide
-            {...props}
-            {...banner}
-            position={props.misc.activeBannerSlide}
-            index={index}
-          />
-        </div>
+        <Slide
+          {...props}
+          {...banner}
+          position={props.misc.activeBannerSlide}
+          index={index}
+        />
         <div
           onClick={() => {
             props.changeBannerSlide({
@@ -59,7 +56,7 @@ const BannerCarousel = props => {
         >
           <FontAwesomeIcon icon={faAngleRight} className="fa-4x" />
         </div>
-      </div>
+      </React.Fragment>
     );
   });
 
@@ -72,6 +69,10 @@ const BannerCarousel = props => {
     boxShadow: "0 6px 18px rgba(0, 0, 0, 0.25)"
   };
   let bullets = banners.map((val, index) => {
+    let active = props.misc.activeBannerSlide == index + 1;
+    if (props.misc.activeBannerSlide == 0 && index == 2) {
+      active = true;
+    }
     return (
       <div
         key={index + 1}
@@ -83,9 +84,7 @@ const BannerCarousel = props => {
           });
         }}
         className={`cursor-pointer scale-item ${
-          props.misc.activeBannerSlide == index + 1
-            ? "bg-red-dark"
-            : "bg-grey-light"
+          active ? "bg-red-dark" : "bg-grey-light"
         } `}
         style={bulletStyle}
       />
@@ -98,8 +97,8 @@ const BannerCarousel = props => {
 
   return (
     <div className="w-full">
-      <div className="xxl:h-600 overflow-hidden xl:h-400 lg:h-300 md:h-250 sm:mt-6 sm:h-200 w-full relative  inline-flex">
-        <div className="w-full">{banners}</div>
+      <div className="xxl:h-600 overflow-hidden xl:h-400 lg:h-300 md:h-250 sm:h-40 w-full relative inline-flex">
+        {banners}
       </div>
       <div className="w-full block justify-center flex p-3 mb-2 opacity-75">
         {bullets}
