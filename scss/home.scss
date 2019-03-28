@@ -4,34 +4,34 @@
 // @access public
 // @param {String} $element - Element's name
 @mixin element($element) {
-    &__#{$element} {
-        @content;
-    }
+  &__#{$element} {
+    @content;
+  }
 }
 // Block Modifier
 // @access public
 // @param {String} $modifier - Modifier's name
 @mixin modifier($modifier) {
-    &--#{$modifier} {
-        @content;
-    }
+  &--#{$modifier} {
+    @content;
+  }
 }
 
 //EXAMPLE FONT FACE IMPORT WITH TWO WEIGHTS
-@font-face {
-    font-family: "proxima nova";
-    src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff") format("truetype");
-    font-weight: thin;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: "proxima nova";
-    src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
+// @font-face {
+//     font-family: "proxima nova";
+//     src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff") format("truetype");
+//     font-weight: thin;
+//     font-style: normal;
+//     font-display: swap;
+// }
+// @font-face {
+//     font-family: "proxima nova";
+//     src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff") format("truetype");
+//     font-weight: normal;
+//     font-style: normal;
+//     font-display: swap;
+// }
 
 /////////////
 // HOME PAGE
@@ -49,55 +49,55 @@
 }
 
 .bannerBuyNow {
-    position: absolute;
-    width: 14rem;
-    left: calc(50% - 7rem);
-    border-radius: 2px;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 2px 10px #0000004f;
-    font-weight: bold;
-    background-color: rgba(14, 14, 14, 0.2);
-    bottom: 25px;
-    &:hover {
-        background-color: rgba(0, 0, 0, 0.8);
-    }
+  position: absolute;
+  width: 14rem;
+  left: calc(50% - 7rem);
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 10px #0000004f;
+  font-weight: bold;
+  background-color: rgba(14, 14, 14, 0.2);
+  bottom: 25px;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 }
 .genePreview {
-    width: 25%;
-    transition: all 0.5s ease-in-out;
-    background-position: center;
-    background-size: 500px 500px;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    cursor: pointer;
-    border-top: 5px solid white;
-    border-bottom: 5px solid white;
+  width: 25%;
+  transition: all 0.5s ease-in-out;
+  background-position: center;
+  background-size: 500px 500px;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  cursor: pointer;
+  border-top: 5px solid white;
+  border-bottom: 5px solid white;
 }
 .headingClass {
-    transform: translateX(90px);
-    position: absolute;
-    bottom: 0;
-    transition: all 0.5s ease-in-out;
+  transform: translateX(90px);
+  position: absolute;
+  bottom: 0;
+  transition: all 0.5s ease-in-out;
 }
 .packClass {
-    transform: rotate(90deg);
-    margin: 80px 165px;
-    width: 240px;
+  transform: rotate(90deg);
+  margin: 80px 165px;
+  width: 240px;
 }
 .screenClass {
-    transform: translateX(-445px) rotate(-90deg);
-    transition: all 0.5s ease-in-out;
-    width: 32rem;
-    height: 100%;
+  transform: translateX(-445px) rotate(-90deg);
+  transition: all 0.5s ease-in-out;
+  width: 32rem;
+  height: 100%;
 }
 
 .arrowsBanner {
-    opacity: 0.005;
-    transition: all 0.5s ease;
+  opacity: 0.005;
+  transition: all 0.5s ease;
 }
 .arrowsBanner:hover {
-    opacity: 1;
-    transition: all 0.5s ease;
+  opacity: 1;
+  transition: all 0.5s ease;
 }
 // END HOME PAGE
 ////////////////
