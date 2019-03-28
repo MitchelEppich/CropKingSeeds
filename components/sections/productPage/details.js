@@ -46,7 +46,7 @@ const Details = props => {
             </div>
             <div className="w-full p-2 xl:text-sm lg:text-sm md:text-sm sm:text-sm">
               <p className="pl-6 text-xs opacity-75 text-grey font-bold">
-                Flower Time:
+                Flower Time
               </p>
               <p className="font-bold text-sm pl-6 uppercase text-grey">
                 {_product.flowerTime}{" "}
@@ -64,7 +64,7 @@ const Details = props => {
             </div>
             <div className="w-full p-2 xl:text-sm lg:text-sm md:text-sm sm:text-sm">
               <p className="pl-6 text-xs opacity-75 text-grey font-bold">
-                Yield:
+                Yield (may vary)
               </p>
               <p className="font-bold text-sm pl-6 uppercase text-grey">
                 {" "}
@@ -84,7 +84,7 @@ const Details = props => {
             </div>
             <div className="w-full p-2 xl:text-sm lg:text-sm md:text-sm sm:text-sm">
               <p className="pl-6 text-xs opacity-75 text-grey font-bold">
-                Difficulty:
+                Difficulty
               </p>
               <p className="font-bold text-sm pl-6 uppercase text-grey">
                 {_product.difficulty}
@@ -103,7 +103,7 @@ const Details = props => {
             </div>
             <div className="w-full p-2 xl:text-sm lg:text-sm md:text-sm sm:text-sm">
               <p className="pl-6 text-xs opacity-75 text-grey font-bold">
-                Origin:
+                Origin
               </p>
               <p className="font-bold text-sm pl-6 uppercase text-grey">
                 {_product.country}
@@ -122,7 +122,7 @@ const Details = props => {
             </div>
             <div className="w-full p-2 xl:text-sm lg:text-sm md:text-sm sm:text-sm">
               <p className="pl-6 text-xs opacity-75 text-grey font-bold">
-                Environment:
+                Environment
               </p>
               <p className="font-bold text-sm pl-6 uppercase text-grey">
                 {_product.env}

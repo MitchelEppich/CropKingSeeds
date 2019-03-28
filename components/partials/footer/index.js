@@ -294,6 +294,7 @@ const Footer = props => {
               Low GPU Mode
             </label>
             <input
+              aria-label="lowGPUMode"
               onChange={() => {
                 props.toggleLowGPUMode(!props.misc.lowGPUMode);
               }}

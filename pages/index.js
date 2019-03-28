@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import moment from "moment";
+import Head from "next/head";
 // custom
 import withData from "../lib/withData";
 import actions from "../store/actions";

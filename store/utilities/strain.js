@@ -114,13 +114,13 @@ let inferStrainData = (strain, options = {}) => {
         let _o = _yield[1];
         if (_i != -1 && _o != -1 && _i != _o) {
           _avg = (_i + _o) / 2;
-          if (_i > _o) _str = `${_o}g to ${_i}g *`;
-          else _str = `${_i}g to ${_o}g *`;
+          if (_i > _o) _str = `${_o}g to ${_i}g`;
+          else _str = `${_i}g to ${_o}g`;
         } else if (_i == _o || _o == -1) {
-          _str = `${_i}g *`;
+          _str = `${_i}g`;
           _avg = _i;
         } else if (_i == -1) {
-          _str = `${_o}g *`;
+          _str = `${_o}g`;
           _avg = _o;
         }
 

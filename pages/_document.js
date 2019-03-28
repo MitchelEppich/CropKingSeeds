@@ -18,7 +18,7 @@ export default class MyDocument extends Document {
           <title>
             Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
           </title>
-          <meta charset="utf-8" />
+          <meta charSet="utf-8" />
           <meta name="theme-color" content="#ef5753" />
           <meta
             name="viewport"

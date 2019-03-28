@@ -22,7 +22,7 @@ const extraData = props => {
         <div className="text-center w-full pt-1 inline-flex flex items-center justify-between">
           <FontAwesomeIcon icon={faSeedling} className="fa-lg ml-2 mb-1" />
           <p className="w-full font-extrabold p-1 text-center justify-center">
-            {props.product.yield[2]}
+            {props.product.yield[2] + " *"}
           </p>
         </div>
       </div>

@@ -17,6 +17,7 @@ const SearchBar = props => {
     <div className="w-full inline-flex relative h-10 overflow-hidden rounded">
       <div className="w-full">
         <input
+          aria-label="searchBar"
           type="text"
           className="p-2 w-full h-10"
           placeholder="How can we help you?"

@@ -60,6 +60,7 @@ const PrepaidCard = props => {
           <div className="w-full mt-2 text-center relative inline-flex">
             <div className="w-full">
               <input
+                aria-label="cardNumber"
                 type="text"
                 id="cardNumber"
                 required
@@ -198,6 +199,7 @@ const PrepaidCard = props => {
             <div className="w-1/3 inline-flex sm:w-full sm:mt-2 relative">
               <div className="ml-2 sm:ml-0 w-full">
                 <input
+                  aria-label="securityCode"
                   type="text"
                   placeholder="Security Code"
                   id="cvv"

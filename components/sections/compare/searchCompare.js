@@ -10,6 +10,7 @@ const SearchCompare = props => {
             let value = e.target.value;
             props.setCompareSearchValue(value.toLowerCase());
           }}
+          aria-label="comparePageSearch"
           type="text"
           className="p-2 w-full"
           placeholder="Search here your strain..."

@@ -32,6 +32,7 @@ const menu = props => {
     >
       <li className="my-4 pr-5">
         <input
+          aria-label="wikiSearch"
           onChange={e => {
             let value = e.target.value;
             props.setWikiSearch(value.toLowerCase());

@@ -305,6 +305,7 @@ const Compare = props => {
                       />
                     </button>
                     <input
+                    aria-label="modifyCart"
                       onBlur={e => {
                         let _value = e.target.value;
                         if (
