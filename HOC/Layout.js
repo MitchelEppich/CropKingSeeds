@@ -62,10 +62,6 @@ class Layout extends Component {
   }
   componentDidMount() {
     this.props.getDailyMessage().then(res => {
-      console.log(
-        this.props.misc.dailyMessage == null,
-        this.props.misc.dailyMessageShown
-      );
       if (
         this.props.misc.dailyMessage == null ||
         this.props.misc.dailyMessageShown
