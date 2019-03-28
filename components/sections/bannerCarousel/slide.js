@@ -70,11 +70,13 @@ const slide = props => {
   let video = (
     <div
       style={{
+        background: "url(../../static/img/bg-video2.jpg",
+        backgroundSize: "contain",
         ...position
       }}
       className="flex justify-between items-center w-full"
     >
-      <div className="sm:hidden pl-12 pr-4 flex flex-wrap justify-center">
+      <div className="sm:hidden p-4 flex w-1/3 mx-4 flex-wrap justify-center bg-grey shadow-md">
         <div className="flex flex-wrap">
           <img
             src={
@@ -104,7 +106,7 @@ const slide = props => {
           />
         </div>
         <button
-          className="mx-auto border border-black px-8 py-2 mt-4 text-center"
+          className="mx-auto h-10 bg-white px-8 py-2 mt-4 text-center"
           onClick={() => Router.push("/shop")}
         >
           VISIT SHOP
@@ -115,7 +117,7 @@ const slide = props => {
           let self = document.querySelector("#video" + props.index);
           self.muted = !self.muted;
         }}
-        className="sm:w-full w-2/3 shadow-lg border-red-lighter border-2"
+        className="sm:w-full w-2/3 shadow-md mr-10"
         style={{
           ...position,
           backgroundImage: $url,
