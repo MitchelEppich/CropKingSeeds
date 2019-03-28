@@ -32,11 +32,12 @@ const THCCharts = props => {
         return `YIELD`;
       case "nFlowerTime":
         return `FLOWER TIME`;
+      default:
+        return `THC`;
     }
   };
 
   let buttons = Object.keys(arr).map((item, index) => {
-    console.log(item, Object.values(arr)[index], tag);
     return (
       <div
         key={index}
