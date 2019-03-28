@@ -21,6 +21,7 @@ import Germination from "./germination";
 import Faq from "./faq";
 import Cms from "./cms";
 import Wiki from "./wiki";
+import Charts from "./charts";
 import Compare from "./compare";
 
 import { inferStrainData } from "../utilities/strain";
@@ -39,6 +40,7 @@ const imports = {
   ...Faq(uri),
   ...Cms(uri),
   ...Wiki(uri),
+  ...Charts(uri),
   ...Compare(uri)
 };
 
@@ -69,6 +71,7 @@ const actionTypes = {
   SHOW_MORE_FEATURES: "SHOW_MORE_FEATURES",
   SET_STRAIN: "SET_STRAIN",
   TOGGLE_MOBILE_MENU: "TOGGLE_MOBILE_MENU",
+  TOGGLE_CART_MENU: "TOGGLE_CART_MENU",
   GET_BANNERS: "GET_BANNERS",
   GET_RELATED_LIST: "GET_RELATED_LIST",
   SET_NEWS_STEPPER: "SET_NEWS_STEPPER",
@@ -522,6 +525,12 @@ const actions = {
     return {
       type: actionTypes.TOGGLE_MOBILE_MENU,
       input: input
+    };
+  },
+  toggleCartMenu: isCartMenuVisible => {
+    return {
+      type: actionTypes.TOGGLE_CART_MENU,
+      isCartMenuVisible: isCartMenuVisible
     };
   },
   isRepeatCustomer: input => {

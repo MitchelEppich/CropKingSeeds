@@ -22,16 +22,16 @@ const FeaturedStrainThumbnail = props => {
   let currency = props.checkout.viewCurrency;
   let _coupon = props.checkout.orderDetails.coupon;
   let hover = props.hoverId == props.product._id;
-  let featuredStrainsPackage = hover
-    ? "featuredStrainsPackage--hover"
-    : "featuredStrainsPackage";
-  let featuredStrainsPlant = hover
-    ? "featuredStrainsPlant--hover"
-    : "featuredStrainsPlant";
-  let overlayClass = hover ? "overlayClass--hover" : "overlayClass";
-  let packagePins = hover
-    ? "featuredStrainsPackage-pins--hover"
-    : "featuredStrainsPackage-pins";
+  // let featuredStrainsPackage = hover
+  //   ? "featuredStrainsPackage--hover"
+  //   : "featuredStrainsPackage";
+  // let featuredStrainsPlant = hover
+  //   ? "featuredStrainsPlant--hover"
+  //   : "featuredStrainsPlant";
+  // let overlayClass = hover ? "overlayClass--hover" : "overlayClass";
+  // let packagePins = hover
+  //   ? "featuredStrainsPackage-pins--hover"
+  //   : "featuredStrainsPackage-pins";
   let productIdentifier =
     props.product.sotiId + [5, 10, 25][props.shop.quickAddToCartQty];
   let name = props.product.name;
@@ -58,6 +58,8 @@ const FeaturedStrainThumbnail = props => {
     return arr;
   };
 
+  let mobile = ["sm", "md"].includes(props.misc.mediaSize);
+
   let showMoreText = {
     transform: hover
       ? "translateX(0px) translateY(70px)"
@@ -67,6 +69,7 @@ const FeaturedStrainThumbnail = props => {
     height: "42px",
     zIndex: "50"
   };
+
   let imgAnimation = {
     transform: !hover
       ? "scale(1) translateY(0px)"
@@ -74,6 +77,20 @@ const FeaturedStrainThumbnail = props => {
     transition: "all 0.4s ease",
     zIndex: "50",
     height: hover ? "170px" : "215px",
+    backgroundImage:
+      "url(" +
+      props.misc.CFURL +
+      "/packages/P_" +
+      props.product.sotiId +
+      ".png)",
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center"
+  };
+
+  let imgMobile = {
+    zIndex: "50",
+    height: hover ? "150px" : "175px",
     backgroundImage:
       "url(" +
       props.misc.CFURL +
@@ -99,8 +116,8 @@ const FeaturedStrainThumbnail = props => {
       </div>
 
       <div
-        style={imgAnimation}
-        className={`cursor-pointer mt-8 sm:mt-2 ${featuredStrainsPackage}`}
+        style={!mobile ? imgAnimation : imgMobile}
+        className={`cursor-pointer mt-8 sm:mt-2 `}
       />
 
       <div

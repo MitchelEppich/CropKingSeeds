@@ -29,6 +29,7 @@ class Index extends Component {
   }
 
   render() {
+    let mobile = ["sm", "md"].includes(this.props.misc.mediaSize);
     return (
       <Layout supportedBrowser={this.props.supportedBrowser}>
         <Head>
@@ -75,9 +76,11 @@ class Index extends Component {
                   <div>
                     <Filters {...this.props} />
                   </div>
-                  <Sidebar {...this.props} />
+                  {!mobile ? <Sidebar {...this.props} /> : null}
+                  {mobile ? <ProductGrid {...this.props} /> : null}
                 </div>
-                <ProductGrid {...this.props} />
+                {!mobile ? <ProductGrid {...this.props} /> : null}
+                {mobile ? <Sidebar {...this.props} /> : null}
               </div>
             </div>
           </React.Fragment>

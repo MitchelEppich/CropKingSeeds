@@ -23,6 +23,7 @@ import ArticleReducer from "./article";
 import CmsReducer from "./cms";
 import WikiReducer from "./wiki";
 import CompareReducer from "./compare";
+import ChartsReducer from "./charts";
 
 const initialState = {
   visibleScreen: [], // When [] show main screen
@@ -56,6 +57,7 @@ const initialState = {
   news: {},
   featureCount: 1,
   showMobileMenu: null,
+  showCartMenu: false,
   CFURL: "http://dcfgweqx7od72.cloudfront.net",
   newsTimeout: null,
   newCustomer: null,
@@ -211,6 +213,10 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         showMobileMenu: !state.showMobileMenu
       });
+    case actionTypes.TOGGLE_CART_MENU:
+      return updateObject(state, {
+        showCartMenu: action.isCartMenuVisible
+      });
     case actionTypes.SET_SUBJECT:
       return updateObject(state, {
         contactSubject: action.subject
@@ -252,5 +258,6 @@ export default combineReducers({
   article: ArticleReducer,
   cms: CmsReducer,
   wiki: WikiReducer,
-  compare: CompareReducer
+  compare: CompareReducer,
+  charts: ChartsReducer
 });
