@@ -9,8 +9,12 @@ const slide = props => {
   let position = props.misc.bannerSlidePositions[positionIndex];
   let protocol = props.url != null ? props.url.includes("http") : false;
   let num = (props.index + 1).toString().padStart(2, "0");
-
   let $url = props.misc.CFURL + "/land_banner/" + num;
+
+  let featuredStrainImage =
+    props.misc.featuredStrains.length > 0
+      ? props.misc.featuredStrains[0]
+      : props.misc.relatedStrains[0];
 
   let onClick = e => {
     if (props.url == null) return;
@@ -31,11 +35,11 @@ const slide = props => {
   let imageBanner = (
     <div
       onMouseEnter={() => {
-        if (props.sotiId == null) return;
-        let strains = props.misc.strains;
-        props.getStrain({ sotiId: props.sotiId, strains }).then(res => {
-          props.setCurrentProduct({ product: res }).then(() => {});
-        });
+        // if (props.sotiId == null) return;
+        // let strains = props.misc.strains;
+        // props.getStrain({ sotiId: props.sotiId, strains }).then(res => {
+        //   props.setCurrentProduct({ product: res }).then(() => {});
+        // });
       }}
       onClick={e => onClick(e)}
       style={{
@@ -46,7 +50,7 @@ const slide = props => {
         backgroundPosiiton: "top"
       }}
       className={
-        "xxl:h-600 xl:h-400 lg:h-300 md:h-250 sm:h-48 w-full z-0 absolute"
+        "xxl:h-600 xl:h-400 lg:h-300 md:h-250 sm:h-40 w-full z-0 absolute"
       }
     />
   );
@@ -63,12 +67,61 @@ const slide = props => {
     }
   }
 
-  let videoBanner = () => {
-    let video = (
+  let video = (
+    <div
+      style={{
+        ...position
+      }}
+      className="flex justify-between items-center w-full"
+    >
+      <div className="sm:hidden pl-12 pr-4 flex flex-wrap justify-center">
+        <div className="flex flex-wrap">
+          <img
+            src={
+              props.misc.CFURL +
+              "/plant/P_" +
+              featuredStrainImage.sotiId +
+              ".jpg"
+            }
+            className="h-32"
+          />
+          <div
+            style={{
+              backgroundImage:
+                "url(" +
+                props.misc.CFURL +
+                "/packages/" +
+                featuredStrainImage.sotiId +
+                ".png)",
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              height: "10rem",
+              width: "auto",
+              position: "absolute",
+              zIndex: "30"
+            }}
+          />
+        </div>
+        <button
+          className="mx-auto border border-black px-8 py-2 mt-4 text-center"
+          onClick={() => Router.push("/shop")}
+        >
+          VISIT SHOP
+        </button>
+      </div>
       <video
         onClick={() => {
           let self = document.querySelector("#video" + props.index);
           self.muted = !self.muted;
+        }}
+        className="sm:w-full w-2/3 shadow-lg border-red-lighter border-2"
+        id={id}
+        onPlaying={() => {
+          console.log("Playing");
+        }}
+        onWaiting={() => {
+          console.log("Paused");
         }}
         style={{
           ...position,
@@ -82,12 +135,10 @@ const slide = props => {
         id={"video" + props.index}
         src={$url}
       />
-    );
+    </div>
+  );
 
-    return video;
-  };
-
-  return props.type == "image" ? imageBanner : videoBanner();
+  return props.type == "image" ? imageBanner : video;
 };
 
 export default slide;
