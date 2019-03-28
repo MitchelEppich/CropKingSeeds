@@ -27,6 +27,7 @@ const plantImage = props => {
               quantity: 1
             });
           }
+          window.scrollTo(0, 0);
         }}
         alt={props.product.name + "plant"}
       />

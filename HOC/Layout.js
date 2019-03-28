@@ -61,6 +61,9 @@ class Layout extends Component {
     };
   }
   componentDidMount() {
+    if (window.top !== window.self)
+      window.top.location.replace(window.self.location.href);
+
     // registerServiceWorker();
     // iframe = document.createElement("iframe");
     // iframe.id = "iframe";

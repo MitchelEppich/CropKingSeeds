@@ -482,7 +482,7 @@ const actions = {
             return {
               style: {
                 backgroundPosition: "top",
-                backgroundSize: "cover",
+                backgroundSize: "contain",
                 backgroundRepeat: "no-repeat"
               },
               text,

@@ -31,7 +31,7 @@ const BannerCarousel = props => {
               props.changeBannerSlide({
                 bannersLength: props.misc.banners.length,
                 index: props.misc.activeBannerSlide + 1,
-                direction: 0
+                direction: +1
               });
             }}
             icon={faAngleLeft}
