@@ -18,6 +18,7 @@ const index = props => {
             "/product",
             "/product/" + props.product.name.toLowerCase().replace(/ /g, "-")
           );
+          window.scrollTo(0, 0);
         }
       }}
       className={overlayClass}

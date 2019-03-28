@@ -54,6 +54,7 @@ const packageImage = props => {
                 quantity: 1
               });
             }
+            window.scrollTo(0, 0);
           }}
         >
           {props.product.releaseDate != null &&

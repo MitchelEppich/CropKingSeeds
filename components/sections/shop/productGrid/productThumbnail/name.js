@@ -26,6 +26,7 @@ const name = props => {
         <h3
           onClick={() => {
             props.setHoverId(null, false);
+            window.scrollTo(0, 0);
           }}
           className={
             props.hover

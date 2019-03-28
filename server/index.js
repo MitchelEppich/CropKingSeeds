@@ -5,7 +5,8 @@ const redirects = require("../scripts/redirects.js");
 const next = require("next");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
+const helmet = require("helmet");
+const frameguard = require("frameguard");
 const compression = require("compression");
 const express = require("express");
 const mongoose = require("mongoose");
@@ -55,6 +56,16 @@ app
   .then(async () => {
     const server = express();
 
+    server.use(helmet());
+    server.use(
+      helmet({
+        frameguard: {
+          action: "deny"
+        }
+      })
+    );
+    
+    server.use(frameguard({ action: "deny" }));
     server.use(compression());
     server.use(
       express.static(__dirname + "/static", {
