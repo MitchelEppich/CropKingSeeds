@@ -210,11 +210,11 @@
     position: relative;
     z-index: 10;
     transition: 0.3s all ease-in-out;
-    transform: translateX(-42px);
-    -webkit-transform: translateX(-42px);
-    -moz-transform: translateX(-42px);
-    -ms-transform: translateX(-42px);
-    -o-transform: translateX(-42px);
+    transform: translateX(-33px);
+    -webkit-transform: translateX(-33px);
+    -moz-transform: translateX(-33px);
+    -ms-transform: translateX(-33px);
+    -o-transform: translateX(-33px);
     padding: 4.5rem 3.5rem 0.5rem 3rem;
     cursor: pointer;
     @include modifier("hover") {
@@ -257,11 +257,11 @@
     height: 10rem;
     position: absolute;
     z-index: 0;
-    transform: translateX(-115px) translateY(20px);
-    -webkit-transform: translateX(-115px) translateY(20px);
-    -moz-transform: translateX(-115px) translateY(20px);
-    -ms-transform: translateX(-115px) translateY(20px);
-    -o-transform: translateX(-115px) translateY(20px);
+    transform: translateX(-120px) translateY(0px);
+    -webkit-transform: translateX(-120px) translateY(0px);
+    -moz-transform: translateX(-120px) translateY(0px);
+    -ms-transform: translateX(-120px) translateY(0px);
+    -o-transform: translateX(-120px) translateY(0px);
     transition: 0.3s all ease-in-out;
     cursor: pointer;
     @include modifier("hover") {

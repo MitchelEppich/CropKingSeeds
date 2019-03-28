@@ -58,6 +58,7 @@ const seedSelectModule = props => {
           />
         </button>
         <input
+          aria-label="modifyCart"
           onBlur={e => {
             let _value = e.target.value;
             if (_value == null || _value == "" || parseInt(_value) < 1) {

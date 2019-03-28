@@ -21,8 +21,8 @@ const Sidebar = props => {
     <div>
       <div className="p-2 justify-center mx-auto inline-flex mt-2 bg-smoke-grey">
         <div className="w-10 mx-2 cursor-pointer text-center p-2">
-          {" "}
           <a
+            rel="nofollow"
             aria-label="share-facebook"
             className="no-underline text-grey-light hover:text-red-dark"
             target="_blank"
@@ -37,6 +37,7 @@ const Sidebar = props => {
         <div className="w-10 mx-2 cursor-pointer text-center p-2">
           {" "}
           <a
+            rel="nofollow"
             aria-label="share-twitter"
             className="no-underline text-grey-light hover:text-red-dark"
             target="_blank"
@@ -53,6 +54,7 @@ const Sidebar = props => {
             aria-label="share-google-plus"
             className="no-underline text-grey-light hover:text-red-dark"
             target="_blank"
+            rel="nofollow"
             href={
               "https://plus.google.com/share?url=http%3A//localhost%3A3000/" +
               props.article.currentArticle.name.toLowerCase().replace(/ /g, "-")
@@ -64,6 +66,7 @@ const Sidebar = props => {
         <div className="w-10 mx-2 cursor-pointer text-center p-2">
           <a
             aria-label="share-linkin"
+            rel="nofollow"
             className="no-underline text-grey-light hover:text-red-dark"
             href={
               "https://www.linkedin.com/shareArticle?mini=true&url=http%3A//localhost%3A3000/" +

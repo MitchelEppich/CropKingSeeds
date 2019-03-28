@@ -97,6 +97,7 @@ const cartItem = props => {
                   />
                 </button>
                 <input
+                  aria-label="addToCartQuantity"
                   onBlur={e => {
                     let _value = e.target.value;
                     if (_value == "") {

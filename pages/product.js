@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import withData from "../lib/withData";
 import { connect } from "react-redux";
+import Head from "next/head";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import FeaturedStrainThumbnails from "../components/sections/shop/featuredStrainThumbnails";
@@ -42,6 +43,38 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
+        <Head>
+          <title>{this.props.viewProduct.currentProduct}</title>
+          {this.props.viewProduct.currentProduct ? (
+            <React.Fragment>
+              <meta name="robots" content="index, follow" />
+              <meta
+                id="og-title"
+                property="og:title"
+                content={this.props.viewProduct.currentProduct.name}
+              />
+              <meta
+                id="og-url"
+                property="og:url"
+                content={window.location.href}
+              />
+              <meta id="og-locale" property="og:locale" content="en_US" />
+              <meta
+                id="og-description"
+                property="og:description"
+                content={this.props.viewProduct.currentProduct.description}
+              />
+              <meta
+                id="og-image"
+                property="og:image"
+                content={
+                  "http://dcfgweqx7od72.cloudfront.net" +
+                  this.props.viewProduct.currentProduct.images[0]
+                }
+              />
+            </React.Fragment>
+          ) : null}
+        </Head>
         {this.props.misc.featuredStrains &&
         this.props.viewProduct.currentProduct &&
         this.props.viewProduct.currentProduct.reviews != null ? (

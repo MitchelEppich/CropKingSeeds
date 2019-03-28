@@ -219,6 +219,7 @@ const BillingAddress = props => {
             <div className="w-1/3 pt-1">
               <label className="cursor-pointer font-bold uppercase items-center flex">
                 <input
+                  aria-label="noEmail"
                   type="checkbox"
                   id="noEmail"
                   checked={

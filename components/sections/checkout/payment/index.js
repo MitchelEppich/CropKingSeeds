@@ -50,6 +50,7 @@ const Payment = props => {
           <div className="w-main sm:w-full">
             <label className="text-lg sm:text-sm cursor-pointer items-center flex">
               <input
+                aria-label="orderConfirmation"
                 type="checkbox"
                 name="confirmation-data"
                 id="infoConfirmed"

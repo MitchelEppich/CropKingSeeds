@@ -50,11 +50,18 @@ const index = props => {
         <AddToCartModule {...props} hover={hover} />
         <Prices {...props} hover={hover} />
         <div
-          className={hover ? "w-full mx-auto text-center p-1" : "hidden slow"}
+          className={
+            hover
+              ? "w-full mx-auto text-center p-1 flex justify-between"
+              : "hidden slow"
+          }
         >
-          <p className="text-sm italic uppercase font-bold py-1 text-red-dark text-right mr-6">
+          <span className="text-sm font-bold py-1 text-grey-light text-right ml-6">
+            * may vary
+          </span>
+          <span className="text-sm italic uppercase font-bold py-1 text-red-dark text-right mr-6">
             {props.product.inStock ? "In Stock" : "Sold Out"}
-          </p>
+          </span>
         </div>
       </div>
     </div>

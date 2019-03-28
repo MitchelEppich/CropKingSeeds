@@ -5,6 +5,7 @@ const email = props => {
         Email Address: <span className="text-red">*</span>
       </label>{" "}
       <input
+        aria-label="email"
         type="email"
         name="email"
         required="required"

@@ -5,6 +5,7 @@
 import React, { Component } from "react";
 import withData from "../lib/withData";
 import { connect } from "react-redux";
+import Head from "next/head";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import About from "../components/sections/about";
@@ -19,6 +20,9 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
+        <Head>
+          <meta name="robots" content="index, nofollow" />
+        </Head>
         <div className="pt-0 min-h-500">
           <Media {...this.props} />
         </div>

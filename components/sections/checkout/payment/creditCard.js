@@ -73,6 +73,7 @@ const CreditCard = props => {
           <div className="w-full mt-6">
             <label className="p-2 mb-2 flex items-center">
               <input
+                aria-label="prepaidVisa"
                 id="isPrepaid"
                 onChange={e => {
                   let _orderDetails = props.checkout.orderDetails;
@@ -103,6 +104,7 @@ const CreditCard = props => {
             {props.checkout.orderDetails.payment.isPrepaid != null &&
             props.checkout.orderDetails.payment.isPrepaid.value != "Yes" ? (
               <input
+                aria-label="cardHolder"
                 type="text"
                 id="cardHolder"
                 required
@@ -134,6 +136,7 @@ const CreditCard = props => {
           <div className="w-full mt-2 text-center relative inline-flex">
             <div className="w-full">
               <input
+                aria-label="cardNumber"
                 type="text"
                 id="cardNumber"
                 required
@@ -294,6 +297,7 @@ const CreditCard = props => {
             <div className="w-1/3 sm:w-full sm:mt-2 inline-flex relative">
               <div className="ml-2 sm:ml-0 w-full">
                 <input
+                  aria-label="securityCode"
                   type="text"
                   placeholder="Security Code"
                   id="cvv"

@@ -105,6 +105,7 @@ class SearchSuggest extends Component {
           onKeyDown={e => {
             this.changeHighlightedSuggestion(e);
           }}
+          aria-label="search"
           type="search"
           name="searchInput"
           autoComplete="off"

@@ -415,7 +415,6 @@ const getActions = uri => {
       } else {
         _local = [];
       }
-
       let text = JSON.stringify(_orderDetails);
       if (!_local.includes(text)) {
         _local.push(text);
@@ -641,7 +640,6 @@ const getActions = uri => {
         let _orderDetails = { ...input.orderDetails };
         let _paymentMethod = _orderDetails.payment.method.value,
           cart = input.cart;
-
         // Process Payment
         let ccResponse = await (async () => {
           if (_paymentMethod == "Credit Card") {

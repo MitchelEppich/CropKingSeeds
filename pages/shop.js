@@ -1,6 +1,7 @@
 // lib
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Head from "next/head";
 // custom
 import withData from "../lib/withData";
 import actions from "../store/actions";
@@ -30,6 +31,9 @@ class Index extends Component {
   render() {
     return (
       <Layout supportedBrowser={this.props.supportedBrowser}>
+        <Head>
+          <meta name="robots" content="index, follow" />
+        </Head>
         {this.props.misc.strains != null &&
         this.props.misc.featuredStrains != null &&
         this.props.misc.strains.length > 0 ? (
