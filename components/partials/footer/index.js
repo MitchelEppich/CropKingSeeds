@@ -237,7 +237,7 @@ const Footer = props => {
             <h3 className="text-red  p-1 text-center font-extrabold text-2xl uppercase sm:text-center md:text-center lg:text-center">
               Follow us
             </h3>
-            <div className="pl-2 inline-flex mt-2 sm:w-full sm:mx-auto sm:justify-center md:w-full md:mx-auto md:justify-center md:text-right sm:text-right">
+            <div className="pl-2 inline-flex mt-1 sm:w-full sm:mx-auto sm:justify-center md:w-full md:mx-auto md:justify-center md:text-right sm:text-right">
               <a
                 aria-label="instagram"
                 className="text-white"
@@ -247,7 +247,7 @@ const Footer = props => {
               >
                 <FontAwesomeIcon
                   icon={faInstagram}
-                  className="fa-2x pt-1 text-white mx-1 cursor-pointer hover:text-grey-light"
+                  className="fa-2x px-1 text-white cursor-pointer hover:text-grey-light"
                 />
               </a>
               <a
@@ -259,7 +259,7 @@ const Footer = props => {
               >
                 <FontAwesomeIcon
                   icon={faFacebook}
-                  className="fa-2x pt-1 text-white mx-1 cursor-pointer hover:text-grey-light"
+                  className="fa-2x px-1 text-white cursor-pointer hover:text-grey-light"
                 />
               </a>
               <a
@@ -271,7 +271,7 @@ const Footer = props => {
               >
                 <FontAwesomeIcon
                   icon={faTwitter}
-                  className="fa-2x pt-1 text-white mx-1 cursor-pointer hover:text-grey-light"
+                  className="fa-2x px-1 text-white cursor-pointer hover:text-grey-light"
                 />
               </a>
               <a
@@ -283,31 +283,35 @@ const Footer = props => {
               >
                 <FontAwesomeIcon
                   icon={faPinterest}
-                  className="fa-2x pt-1 text-white cursor-pointer hover:text-grey-light"
+                  className="fa-2x px-1 text-white cursor-pointer hover:text-grey-light"
                 />
               </a>
             </div>
           </div>
-          <div className="sm:hidden md:hidden h-10 my-1 w-full pt-5 flex justify-center">
-            <label className="text-red font-bold mr-4">
-              <FontAwesomeIcon icon={faCog} className="text-grey-light mr-1" />{" "}
+          <div className="sm:hidden md:hidden h-10 my-1 w-full pt-5 flex justify-center items-center">
+            <label className="text-green uppercase cursor-pointer font-bold mr-4">
+              <FontAwesomeIcon
+                icon={faCog}
+                className="text-grey-light mr-1 fa-lg mt-1"
+              />{" "}
               Low GPU Mode
+              <input
+                aria-label="lowGPUMode"
+                onChange={() => {
+                  props.toggleLowGPUMode(!props.misc.lowGPUMode);
+                }}
+                type="checkbox"
+                className="ml-1"
+                defaultChecked={props.misc.lowGPUMode}
+                value={props.misc.lowGPUMode || false}
+              />
             </label>
-            <input
-              aria-label="lowGPUMode"
-              onChange={() => {
-                props.toggleLowGPUMode(!props.misc.lowGPUMode);
-              }}
-              type="checkbox"
-              defaultChecked={props.misc.lowGPUMode}
-              value={props.misc.lowGPUMode || false}
-            />
           </div>
           <div className="sm:mt-12 md:mt-12 pt-2 text-center sm:text-center md:text-center lg:text-center">
-            <h3 className="text-red p-1 text-center font-extrabold text-2xl uppercase ">
+            <h3 className="text-red mt-2 p-1 text-center font-extrabold text-2xl uppercase ">
               Contact us
             </h3>
-            <p className="text-white text-xl p-1 lg:text-lg">
+            <p className="text-white text-lg p-1 lg:text-lg">
               <a
                 className="text-white hover:text-red"
                 href="mailto:info@cropkingseeds.com"
@@ -316,7 +320,7 @@ const Footer = props => {
               </a>
             </p>
             <a className="no-underline" href="tel:+1-844-276-7546">
-              <p className="text-white text-xl p-1 lg:text-lg">
+              <p className="text-white text-lg p-1 lg:text-lg">
                 {props.misc.ageVerification != null &&
                 "United States" == props.misc.ageVerification.country ? (
                   <React.Fragment>
@@ -333,7 +337,7 @@ const Footer = props => {
         </div>
       </div>
       <div className="w-full xl:hidden xxl:hidden">
-        <p className="p-3 mt-4 w-full text-center text-white bg-grey-dark font-bold  xl:hidden xxl:hidden md:mt-8 sm:mt-8">
+        <p className="p-3 mt-4 w-full text-center text-white bg-grey-dark font-bold xl:hidden xxl:hidden md:mt-8 sm:mt-8">
           Copyright © 2019 Crop King Seeds
         </p>{" "}
       </div>

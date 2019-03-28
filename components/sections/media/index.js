@@ -65,17 +65,17 @@ const Media = props => {
             className="w-full inline-flex p-2 font-bold cursor-pointer unselectable"
           >
             <div className="w-3/4 py-2">
-              <p className="pl-2 sm:pl-2">
+              <p className="pl-2 sm:pl-0 sm:text-sm">
                 {" "}
                 <FontAwesomeIcon
                   icon={faAngleRight}
-                  className="opacity-25 mr-2"
+                  className="opacity-25 mr-2 sm:mr-1"
                 />
                 {title}
               </p>
             </div>
             <div className="p-2">
-              <p>
+              <p className="sm:text-sm sm:text-right sm:mr-4">
                 <FontAwesomeIcon
                   icon={faCalendarAlt}
                   className="opacity-25 mr-2"
@@ -101,11 +101,11 @@ const Media = props => {
                 />
               </div>
               <div className="w-3/4 ml-4">
-                <div className="inline-flex w-full lg:flex-col md:flex-col sm:flex-col ">
+                {location != null ? ( <div className="inline-flex w-full lg:flex-col md:flex-col sm:flex-col ">
                   {/* <div className="w-1/2 text-left font-bold p-1 lg:w-full md:w-full sm:w-full sm:text-sm md:text-sm">
                     <p>{moment(date, "LL").format("LL")}</p>
                   </div> */}
-                  {location != null ? (
+                  
                     <div
                       className="w-full justify-start items-center flex font-bold sm:text-xs md:text-xs"
                       onClick={e => {
@@ -118,8 +118,8 @@ const Media = props => {
                         <FontAwesomeIcon icon={faMapMarkerAlt} /> {location}
                       </p>
                     </div>
-                  ) : null}
-                </div>
+                  
+                </div> ) : null}
                 <p className="mt-4 ml-1 sm:mt-2 lg:mt-2 md:mt-2 sm:text-sm md:text-sm">
                   {body}
                   <span

@@ -6,17 +6,17 @@ const contactDetails = props => {
     <div className="absolute sm:w-full sm:relative md:w-full md:relative overflow-hidden sm:pin md:pin my-auto pin-r pin-y w-350 h-500 sm:h-full sm:border sm:border-grey-lightest md:border md:border-grey-lightest md:mt-8 md:pt-0 sm:pt-0 sm:mt-8 sm:pb-4 xxl:shadow-lg xl:shadow-lg lg:shadow-lg bg-white -mr-20 md:rounded-lg sm:rounded-lg">
       <div className="bg-red-dark text-center text-white py-2 p-1">
         <h2 className="p-3 py-0 text-3xl font-bold">Contact Us</h2>
-        <p className="text-white font-bold">24 hour customer service</p>
+        <p className="text-white font-bold">24 Hour Customer Service</p>
       </div>
       <div className="bg-white p-2 px-6 md:px-3 sm:px-2">
         <div className="inline-flex mt-4 items-center w-full flex">
           <FontAwesomeIcon
             icon={faPhone}
-            className="fa-lg sm:p-1 mr-2 text-grey opacity-25"
+            className="fa-lg sm:pl-1 mr-2 text-grey opacity-25"
           />
           <p className="p-2 text-2xl font-black">Phone</p>
         </div>
-        <div className="ml-8 pl-1">
+        <div className="ml-8 sm:ml-2 pl-1">
           <p className="p-1 pb-2">
             <span className="font-bold">Canada:</span> (604) 563-0291
           </p>
@@ -30,11 +30,11 @@ const contactDetails = props => {
         <div className="inline-flex mt-4 items-center w-full flex">
           <FontAwesomeIcon
             icon={faEnvelope}
-            className="fa-lg mr-2 sm:p-1 text-grey opacity-25"
+            className="fa-lg mr-2 sm:pl-1 text-grey opacity-25"
           />
           <p className="p-2 text-2xl font-black">Email</p>
         </div>
-        <div className="ml-8 pl-1">
+        <div className="ml-8 sm:ml-2 pl-1">
           <p className="p-1 pb-2">
             <a
               rel="nofollow"

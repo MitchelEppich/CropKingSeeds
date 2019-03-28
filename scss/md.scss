@@ -84,7 +84,7 @@
     background-position: center;
     background-repeat: no-repeat;
     width: 100%;
-    height: 32vh;
+    height: 40vh;
     padding: 28px 0px 0 35px;
   }
   // END AFFILIATES PAGE
@@ -143,8 +143,15 @@
     background-repeat: no-repeat;
     overflow: hidden;
     cursor: pointer;
-    border-left: 0 !important;
-    border-right: 0 !important;
+    border-left: 0;
+    border-right: 0;
+    &:nth-of-type(2) {
+      border-left: 0px solid white;
+    }
+    &:nth-of-type(3) {
+      border-left: 0px solid white;
+      border-right: 0px solid white;
+    }
   }
   .headingClass {
     transform: translateX(20px);
@@ -332,8 +339,8 @@
   ///////////////////
   // VIEWPRODUCT PAGE
   .imgCarousel {
-    height: 325px !important;
-    width: auto !important;
+    height: 325px;
+    width: auto;
   }
 
   .packagePinBig {

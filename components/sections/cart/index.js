@@ -14,10 +14,11 @@ import Link from "next/link";
 //takes list of cart items as prop
 // returns the cart, offscreen to the right until the cart icon is clicked
 const cart = props => {
+  let mobile = ["sm", "md"].includes(props.misc.mediaSize);
   let currency = props.checkout.viewCurrency;
   //styles
   let viewCart;
-  viewCart = props.misc.visibleScreen.includes("viewCart")
+  viewCart = props.misc.showCartMenu
     ? {
         transform: "translateX(0px)",
         transition: "all 0.2s ease-in-out",
@@ -50,31 +51,27 @@ const cart = props => {
       style={viewCart}
       className="w-500 sm:w-full lg:w-400 md:w-400 text-black text-3xl sm:w-300 max-w-screen z-40 pin-t pin-r h-screen bg-white fixed pb-12 shadow-lg pt-32"
     >
-      <div className="relative h-20 sm:h-16 w-full">
-        <div className="absolute w-full">
-          <p
-            onClick={() =>
-              props.setVisibleScreen({
-                input: "viewCart"
-              })
-            }
-            className="absolute pin-t pin-l mt-4 ml-12 text-red-dark cursor-pointer"
+      <div className="relative h-16 sm:h-16 w-full">
+        <div className="absolute w-full sm:h-16">
+          <div
+            onClick={() => {
+              props.toggleCartMenu(!props.misc.showCartMenu);
+            }}
+            className="absolute pin-t pin-l mt-4 h-10 w-10 hover:bg-grey-lightest hover:text-grey sm:ml-6 ml-12 text-red-dark cursor-pointer flex justify-center items-center"
           >
             <FontAwesomeIcon
-              icon={faAngleDoubleRight}
-              className="fa-lg sm:px-1"
+              icon={!mobile ? faAngleDoubleRight : faTimes}
+              className="fa-lg cursor-pointer sm:px-1"
             />
-          </p>
-          <h2
-            onClick={() =>
-              props.setVisibleScreen({
-                input: "viewCart"
-              })
-            }
-            className="text-red-dark border-b-2 border-red-dark w-full h-16 sm:h-12 text-center text-3/5xl sm:text-3xl font-extrabold mt-4 cursor-pointer"
-          >
-            Cart
-          </h2>
+          </div>
+          <div className="w-full">
+            <h2
+              onClick={() => props.toggleCartMenu(!props.misc.showCartMenu)}
+              className="text-red-dark border-b-2 border-red-dark w-full sm:h-12 text-center text-3/5xl sm:text-3xl font-extrabold mt-4 cursor-pointer"
+            >
+              Cart
+            </h2>
+          </div>
         </div>
       </div>
       <div className="min-h-300 h-full w-full font-thin bg-smoke-grey overflow-y-auto pb-32">
@@ -114,11 +111,7 @@ const cart = props => {
         <Link prefetch href="/checkout">
           <button
             name="viewCart"
-            onClick={() =>
-              props.setVisibleScreen({
-                input: "viewCart"
-              })
-            }
+            onClick={() => props.toggleCartMenu(!props.misc.showCartMenu)}
             className={`mx-auto ml-16 bg-red-dark md:ml-6 sm:ml-6 lg:mx-8 text-lg block px-8 py-3 sm:h-10 sm:px-3 hover:bg-grey font-extrabold hover:text-white slow text-white  ${
               items.length == 0 ? "opacity-50 pointer-events-none" : ""
             }`}

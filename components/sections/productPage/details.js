@@ -35,7 +35,7 @@ const Details = props => {
       </div>
       <div className="flex xl:block lg:block md:block sm:block mt-0 md:mt-0 md:pt-0 sm:mt-0 sm:pt-0">
         <div className="w-full">
-          <div className="w-full inline-flex items-center flex pl-6 bg-white mb-1">
+          <div className="w-full inline-flex items-center flex pl-6 sm:pl-2 bg-white mb-1">
             <div className="w-16 inline-flex">
               <div
                 style={{ background: "#128671" }}
@@ -53,7 +53,7 @@ const Details = props => {
               </p>
             </div>
           </div>
-          <div className="w-full inline-flex items-center flex pl-6 bg-white mb-1">
+          <div className="w-full inline-flex items-center flex pl-6 sm:pl-2 bg-white mb-1">
             <div className="w-16 inline-flex items-center flex">
               <div
                 style={{ background: "#086554" }}
@@ -73,7 +73,7 @@ const Details = props => {
             </div>
           </div>
 
-          <div className="w-full inline-flex items-center flex pl-6 bg-white mb-1">
+          <div className="w-full inline-flex items-center flex pl-6 sm:pl-2 bg-white mb-1">
             <div className="w-16 inline-flex items-center flex">
               <div
                 style={{ background: "#158442" }}
@@ -92,7 +92,7 @@ const Details = props => {
             </div>
           </div>
 
-          <div className="w-full inline-flex items-center flex pl-6 bg-white mb-1">
+          <div className="w-full inline-flex items-center flex pl-6 sm:pl-2 bg-white mb-1">
             <div className="w-16 inline-flex items-center flex">
               <div
                 style={{ background: "#1cb058" }}
@@ -111,7 +111,7 @@ const Details = props => {
             </div>
           </div>
 
-          <div className="w-full inline-flex items-center flex pl-6 bg-white">
+          <div className="w-full inline-flex items-center flex pl-6 sm:pl-2 bg-white">
             <div className="w-16 inline-flex items-center flex">
               <div
                 style={{ background: "#23dc6e" }}

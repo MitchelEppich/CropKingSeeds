@@ -233,17 +233,32 @@ const menu = props => {
                     <SearchBar {...props} />{" "}
                   </li>
                   <Link href="/">
-                    <li className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark">
+                    <li
+                      onClick={() => {
+                        props.toggleCartMenu(false);
+                      }}
+                      className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark"
+                    >
                       Home
                     </li>
                   </Link>
                   <Link href="/shop">
-                    <li className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark">
+                    <li
+                      onClick={() => {
+                        props.toggleCartMenu(false);
+                      }}
+                      className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark"
+                    >
                       Shop
                     </li>
                   </Link>
                   <Link href="/contact">
-                    <li className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark">
+                    <li
+                      onClick={() => {
+                        props.toggleCartMenu(false);
+                      }}
+                      className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark"
+                    >
                       Contact
                     </li>
                   </Link>
@@ -256,7 +271,7 @@ const menu = props => {
                   >
                     <div
                       onClick={() => {
-                        props.setVisibleScreen({ input: "viewCart" });
+                        props.toggleCartMenu(!props.misc.showCartMenu);
                       }}
                       className="text-center cursor-pointer mt-1 text-white"
                     >
@@ -287,7 +302,7 @@ const menu = props => {
 
               <div
                 onClick={() => {
-                  props.setVisibleScreen({ input: "viewCart" });
+                  props.toggleCartMenu(!props.misc.showCartMenu);
                 }}
                 className={
                   "font-extrabold text-2xl h-12 mr-6 lg:mr-12 md:mr-8 pt-2 hover:bg-red-navMobile cursor-pointer slowish xl:hidden xxl:hidden sm:ml-auto"
@@ -321,6 +336,9 @@ const menu = props => {
                   >
                     <Link href="/">
                       <li
+                        onClick={() => {
+                          props.toggleCartMenu(false);
+                        }}
                         className={
                           isMobileNavVisible
                             ? "font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish"
@@ -332,6 +350,9 @@ const menu = props => {
                     </Link>
                     <Link href="/shop">
                       <li
+                        onClick={() => {
+                          props.toggleCartMenu(false);
+                        }}
                         className={
                           isMobileNavVisible
                             ? "font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish"
@@ -346,6 +367,9 @@ const menu = props => {
                       opacity-50 pointer-events-none" // : "cursor-pointer
                       scale-item" */}
                       <li
+                        onClick={() => {
+                          props.toggleCartMenu(false);
+                        }}
                         className={`                         
                             cursor-pointer scale-item" ${
                               isMobileNavVisible

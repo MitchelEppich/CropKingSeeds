@@ -38,7 +38,7 @@ const gridHeader = props => {
                 multiple: filter == "genetic" || filter == "text" ? true : false
               });
             }}
-            className="capitalize text-grey border bg-grey-lightest flex justify-center cursor-pointer hover:bg-red-light hover:text-white items-center rounded-tl-lg rounded-br-lg border-grey-lightest p-2 m-1 font-bold"
+            className="capitalize text-white border bg-red-light flex justify-center cursor-pointer hover:bg-red-dark hover:text-white items-center rounded-tl-lg rounded-br-lg border-grey-lightest p-2 m-1 font-bold"
           >
             {filter == "text" ? "search: " : ""}
             {label || value}
@@ -59,9 +59,15 @@ const gridHeader = props => {
     >
       {Object.keys(props.shop.activeFilters).length != 0 ? (
         <div className="flex flex-wrap xxl:w-4/5 xl:w-3/5 w-3/5 sm:w-full bg-white rounded border border-grey-lightest">
-          <p className="w-full mb-1 pl-2 font-bold p-2 bg-grey-lighter text-white uppercase">
-            Active Filters:
-          </p>
+          <div className="inline-flex w-full mb-2 pl-2 font-bold p-2 bg-red-light text-white uppercase w-full">
+            <p className="text-left w-1/2">Active Filters:</p>
+            <p
+              onClick={() => props.clearFilters()}
+              className="text-right w-1/2 flex items-center justify-end underline"
+            >
+              Clear <FontAwesomeIcon icon={faTimes} className="ml-2 fa-lg" />
+            </p>
+          </div>
           {activeFilters}
         </div>
       ) : null}
@@ -72,7 +78,7 @@ const gridHeader = props => {
               input: "showSortBy"
             });
           }}
-          className="font-bold flex relative items-center w-150 sm:w-150 p-2 bg-grey-lighter justify-center z-50 rounded text-white cursor-pointer hover:bg-red-light"
+          className="font-bold flex relative items-center w-150 sm:w-150 p-2 bg-red-light justify-center z-50 rounded text-white cursor-pointer hover:bg-red-dark"
         >
           {props.shop.sort == null || props.shop.sort == "" ? (
             <div className="text-base uppercase font-bold">

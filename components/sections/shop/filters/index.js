@@ -76,15 +76,15 @@ const filters = props => {
       className={
         props.shop.showFilters
           ? "h-550 lg:h-550 xl:h-550 w-full absolute bg-white rounded z-999 xxl:z-0 xl:z-0 lg:z-0 lg:sticky xl:sticky xxl:sticky text-red-dark border border-grey-lighter cursor-pointer overflow-hidden"
-          : "h-10 pb-2 w-full absolute bg-white z-999 overflow-hidden rounded lg:sticky xl:sticky xxl:sticky text-red-dark border border-grey-lighter cursor-pointer"
+          : "h-10 pb-2 w-full absolute bg-white z-999 overflow-hidden rounded lg:sticky xl:sticky xxl:sticky text-red-dark border-0 border-grey-lighter cursor-pointer"
       }
     >
       <p
         onClick={() => props.toggleShowFilters(!props.shop.showFilters)}
-        className="px-4 p-2 h-10 rounded leading-tight text-xl bg-grey-lightest font-bold text-grey font-bold flex justify-between hover:text-white hover:bg-red-light"
+        className="pb-1 px-4 p-2 rounded  text-xl bg-grey-lightest font-bold text-grey font-bold flex justify-between hover:text-white hover:bg-red-light cursor-pointer"
       >
         <span className="">Filters:</span>
-        <FontAwesomeIcon className="fa-lg " icon={faSlidersH} />
+        <FontAwesomeIcon className="fa-lg pl-1 -mt-1" icon={faSlidersH} />
       </p>
       <ul className="leading-loose flex flex-wrap pl-4 pt-2">
         <li className="text-red-dark font-bold w-full text-xl">Type</li>
