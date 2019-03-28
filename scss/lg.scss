@@ -257,11 +257,11 @@
     height: 10rem;
     position: absolute;
     z-index: 0;
-    transform: translateX(-120px) translateY(0px);
-    -webkit-transform: translateX(-120px) translateY(0px);
-    -moz-transform: translateX(-120px) translateY(0px);
-    -ms-transform: translateX(-120px) translateY(0px);
-    -o-transform: translateX(-120px) translateY(0px);
+    transform: translateX(-120px) translateY(-11px);
+    -webkit-transform: translateX(-120px) translateY(-11px);
+    -moz-transform: translateX(-120px) translateY(-11px);
+    -ms-transform: translateX(-120px) translateY(-11px);
+    -o-transform: translateX(-120px) translateY(-11px);
     transition: 0.3s all ease-in-out;
     cursor: pointer;
     @include modifier("hover") {

@@ -287,27 +287,27 @@
   }
   .plantClass {
     // height: 100%;
-    width: 10rem;
+    height: 8rem;
     position: absolute;
     z-index: 0;
-    transform: translateX(-100px);
-    -webkit-transform: translateX(-100px);
-    -moz-transform: translateX(-100px);
-    -ms-transform: translateX(-100px);
-    -o-transform: translateX(-100px);
+    transform: translateX(-110px) translateY(-11px);
+    -webkit-transform: translateX(-110px) translateY(-11px);
+    -moz-transform: translateX(-110px) translateY(-11px);
+    -ms-transform: translateX(-110px) translateY(-11px);
+    -o-transform: translateX(-110px) translateY(-11px);
     transition: 0.3s all ease-in-out;
     cursor: pointer;
     @include modifier("hover") {
       // height: 100%;
-      width: 10rem;
+      height: 9.5rem;
       position: absolute;
       z-index: 0;
       transition: 0.3s all ease-in-out;
-      transform: translateX(-30px) translateY(30px);
-      -webkit-transform: translateX(-30px) translateY(30px);
-      -moz-transform: translateX(-30px) translateY(30px);
-      -ms-transform: translateX(-30px) translateY(30px);
-      -o-transform: translateX(-30px) translateY(30px);
+      transform: translateX(-50px) translateY(38px);
+      -webkit-transform: translateX(-50px) translateY(38px);
+      -moz-transform: translateX(-50px) translateY(38px);
+      -ms-transform: translateX(-50px) translateY(38px);
+      -o-transform: translateX(-50px) translateY(38px);
       cursor: pointer;
     }
   }
