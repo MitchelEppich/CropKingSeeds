@@ -68,15 +68,15 @@ class Layout extends Component {
         this.props.misc.dailyMessageShown
       )
         return;
-      setTimeout(() => {
-        console.log("hit");
-        this.props.toggleHeaderMessage({
-          value: true,
-          time: 3000,
-          shown: true
-        }),
-          1000;
-      });
+      setTimeout(
+        () =>
+          this.props.toggleHeaderMessage({
+            value: true,
+            time: 7000,
+            shown: true
+          }),
+        2000
+      );
     });
 
     if (window.top !== window.self)

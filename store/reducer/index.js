@@ -70,7 +70,8 @@ const initialState = {
   fpsAvg: 0,
   lowGPUMode: null,
   dailyMessageShown: false,
-  dailyMessage: null
+  dailyMessage: null,
+  dailyMessageTimer: null
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -244,7 +245,8 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.TOGGLE_HEADER_MESSAGE:
       return updateObject(state, {
         showHeaderMessage: action.input,
-        dailyMessageShown: state.dailyMessageShown || action.shown
+        dailyMessageShown: state.dailyMessageShown || action.shown,
+        dailyMessageTimer: action.time
       });
     case actionTypes.RECALL_GPU_MODE:
       return updateObject(state, {

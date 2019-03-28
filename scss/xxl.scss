@@ -17,24 +17,6 @@
   }
 }
 
-//EXAMPLE FONT FACE IMPORT WITH TWO WEIGHTS
-// @font-face {
-//   font-family: "proxima nova";
-//   src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff")
-//     format("truetype");
-//   font-weight: thin;
-//   font-style: normal;
-//   font-display: swap;
-// }
-// @font-face {
-//   font-family: "proxima nova";
-//   src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff")
-//     format("truetype");
-//   font-weight: normal;
-//   font-style: normal;
-//   font-display: swap;
-// }
-
 // @media only screen and (min-width: 2500px) {
 //   ////////////
 //   // UNIVERSAL
@@ -381,6 +363,28 @@
     right: -40px;
     top: 210px;
     pointer-events: none;
+  }
+
+  .dailyMessage {
+    text-align: center;
+    transform: translateY(0rem);
+    height: 3rem;
+    transition: all 1s ease-in-out;
+    -webkit-transition: all 1s ease-in-out;
+    opacity: 0;
+    z-index: 11;
+    position: absolute;
+    width: 1300px;
+    padding: 0.5rem;
+    font-weight: bold;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+    background: white;
+    left: calc(((100vw - 1300px) / 2) - 0.5rem);
+    border: 1px solid #f9acaa;
+    @include modifier("view") {
+      transform: translateY(8rem);
+      opacity: 1;
+    }
   }
 }
 

@@ -531,19 +531,24 @@ const actions = {
     };
   },
   toggleHeaderMessage: input => {
-    return dispatch => {
-      if (input.value) {
-        setTimeout(
-          () => dispatch(actions.toggleHeaderMessage({ value: false })),
-          input.time
-        );
-      }
-      dispatch({
-        type: actionTypes.TOGGLE_HEADER_MESSAGE,
-        input: input.value,
-        shown: input.shown
-      });
+    return {
+      type: actionTypes.TOGGLE_HEADER_MESSAGE,
+      input: input.value,
+      shown: input.shown,
+      time: input.time
     };
+
+    // if (input.value) {
+    //   setTimeout(
+    //     () =>
+    //       dispatch({
+    //         type: actionTypes.TOGGLE_HEADER_MESSAGE,
+    //         input: false,
+    //         shown: true
+    //       }),
+    //     input.time
+    //   );
+    // }
   },
   toggleCartMenu: isCartMenuVisible => {
     return {
