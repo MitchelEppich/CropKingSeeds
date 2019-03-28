@@ -386,7 +386,7 @@ const menu = props => {
               </div>
             </div>
           </div>
-          <HeaderMessage {...props} />
+          {/* <HeaderMessage {...props} /> */}
         </div>
       </div>
     </div>

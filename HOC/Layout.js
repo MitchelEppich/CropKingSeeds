@@ -62,10 +62,6 @@ class Layout extends Component {
   }
   componentDidMount() {
     this.props.getDailyMessage().then(res => {
-      console.log(
-        this.props.misc.dailyMessage == null,
-        this.props.misc.dailyMessageShown
-      );
       if (
         this.props.misc.dailyMessage == null ||
         this.props.misc.dailyMessageShown
@@ -75,10 +71,10 @@ class Layout extends Component {
         () =>
           this.props.toggleHeaderMessage({
             value: true,
-            time: 7000,
+            time: 3000,
             shown: true
           }),
-        2000
+        1000
       );
     });
 
@@ -183,6 +179,24 @@ class Layout extends Component {
   }
 
   render() {
+    let viewMessage = {
+      transform: "translateY(8rem)",
+      height: "3rem",
+      transition: "all 5s ease-in-out",
+      WebkitTransition: "all 5s ease-in-out",
+      opacity: "1",
+      zIndex: "11",
+      position: "absolute"
+    };
+    // : {
+    //     transform: "translateY(0rem)",
+    //     height: "3rem",
+    //     transition: "all 5s ease-in-out",
+    //     WebkitTransition: "all 5s ease-in-out",
+    //     opacity: "1",
+    //     zIndex: "-999999999999999",
+    //     position: "absolute"
+    //   };
     return this.props.misc.strains != null ? (
       <React.Fragment>
         {this.props.viewProduct.currentProduct &&
@@ -202,7 +216,12 @@ class Layout extends Component {
           ) : ( */}
           <React.Fragment>
             <Header {...this.props} />
-
+            <div
+              style={viewMessage}
+              className="w-1300 xl:w-900 lg:w-700 mx-auto bg-white border-b border-red-light border-l border-r p-2 font-bold shadow-md slow"
+            >
+              {this.props.misc.dailyMessage}
+            </div>
             {this.state.showNewCustomerPopUp ? (
               <PopUpBanner {...this.props} />
             ) : null}
@@ -238,7 +257,7 @@ class Layout extends Component {
                       : "auto",
                   transition: "all .4s ease"
                 }}
-                className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md"
+                className="bg-white relative z-10 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md"
               >
                 {this.props.misc.strains != null ? (
                   this.props.children
