@@ -38,15 +38,13 @@ const BannerCarousel = props => {
             className="fa-4x"
           />
         </div>
-        <div className="w-full">
-          {" "}
-          <Slide
-            {...props}
-            {...banner}
-            position={props.misc.activeBannerSlide}
-            index={index}
-          />
-        </div>
+
+        <Slide
+          {...props}
+          {...banner}
+          position={props.misc.activeBannerSlide}
+          index={index}
+        />
         <div
           onClick={() => {
             props.changeBannerSlide({
