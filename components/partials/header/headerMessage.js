@@ -1,25 +1,30 @@
 const HeaderMessage = props => {
-  let viewMessage = props.misc.showHeaderMessage
-    ? {
-        transform: "translateY(0px)",
-        transition: "all 0.3s ease-in-out",
-        WebkitTransition: "all 0.3s ease-in-out",
-        opacity: "1",
-        zIndex: "1"
-      }
-    : {
-        // transform: "translateY(70px)",
-        transform: "translateY(-190px)",
-        transition: "all 0.3s ease-in-out",
-        WebkitTransition: "all 0.3s ease-in-out",
-        opacity: "0",
-        zIndex: "-999999999999999"
-      };
+  console.log(props.misc.dailyMessageShown);
+  let viewMessage =
+    props.misc.dailyMessageShown == null
+      ? {
+          transform: "translateY(8rem)",
+          height: "3rem",
+          transition: "all 1s ease-in-out",
+          WebkitTransition: "all 1s ease-in-out",
+          opacity: "1",
+          zIndex: "11",
+          position: "absolute"
+        }
+      : {
+          transform: "translateY(0rem)",
+          height: "3rem",
+          transition: "all 1s ease-in-out",
+          WebkitTransition: "all 1s ease-in-out",
+          opacity: "0",
+          zIndex: "11",
+          position: "absolute"
+        };
   return (
     <div>
       <div
         style={viewMessage}
-        className="w-full lg:w-700 lg:mx-auto bg-white border-b border-red-light border-l border-r p-2 font-bold shadow-md"
+        className="w-1300 xl:w-900 lg:w-700 mx-auto bg-white border-b border-red-light border-l border-r p-2 font-bold shadow-md slow"
       >
         {props.misc.dailyMessage}
       </div>

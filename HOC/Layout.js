@@ -47,6 +47,7 @@ import SearchBar from "../components/partials/header/searchBar";
 import ImageZoom from "../components/sections/productPage/imageZoom";
 import StrainsMenu from "../components/sections/productPage/strainsMenu";
 import PopUpBanner from "../components/sections/popup";
+import HeaderMessage from "../components/partials/header/headerMessage";
 
 import registerServiceWorker from "../registerServiceWorker";
 class Layout extends Component {
@@ -67,15 +68,15 @@ class Layout extends Component {
         this.props.misc.dailyMessageShown
       )
         return;
-      setTimeout(
-        () =>
-          this.props.toggleHeaderMessage({
-            value: true,
-            time: 7000,
-            shown: true
-          }),
-        2000
-      );
+      setTimeout(() => {
+        console.log("hit");
+        this.props.toggleHeaderMessage({
+          value: true,
+          time: 3000,
+          shown: true
+        }),
+          1000;
+      });
     });
 
     if (window.top !== window.self)
@@ -179,6 +180,25 @@ class Layout extends Component {
   }
 
   render() {
+    // let viewMessage = this.props.misc.viewMessage
+    //   ? {
+    //       transform: "translateY(8rem)",
+    //       height: "3rem",
+    //       transition: "all 1s ease-in-out",
+    //       WebkitTransition: "all 1s ease-in-out",
+    //       opacity: "1",
+    //       zIndex: "11",
+    //       position: "absolute"
+    //     }
+    //   : {
+    //       transform: "translateY(8rem)",
+    //       height: "3rem",
+    //       transition: "all 1s ease-in-out",
+    //       WebkitTransition: "all 1s ease-in-out",
+    //       opacity: "0",
+    //       zIndex: "11",
+    //       position: "absolute"
+    //     };
     return this.props.misc.strains != null ? (
       <React.Fragment>
         {this.props.viewProduct.currentProduct &&
@@ -198,7 +218,14 @@ class Layout extends Component {
           ) : ( */}
           <React.Fragment>
             <Header {...this.props} />
+            {/* <div
+              style={viewMessage}
+              className="w-1300 xl:w-900 lg:w-700 mx-auto bg-white border-b border-red-light border-l border-r p-2 font-bold shadow-md slow"
+            >
+              {this.props.misc.dailyMessage}
+            </div> */}
 
+            <HeaderMessage {...this.props} />
             {this.state.showNewCustomerPopUp ? (
               <PopUpBanner {...this.props} />
             ) : null}
@@ -234,7 +261,7 @@ class Layout extends Component {
                       : "auto",
                   transition: "all .4s ease"
                 }}
-                className="bg-white relative z-30 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md"
+                className="bg-white relative z-10 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md"
               >
                 {this.props.misc.strains != null ? (
                   this.props.children

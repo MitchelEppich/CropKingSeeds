@@ -227,7 +227,7 @@ const Footer = props => {
             className="p-2 px-8 bg-yellow-dark text-white text-2xl w-container mt-2 mx-auto rounded font-bold text-center cursor-pointer hover:bg-grey-light">
             Subscribe
           </div> */}
-          <p className="p-2 mt-10 w-container mx-auto text-center sm:hidden md:hidden text-xl lg:hidden">
+          <p className="p-2 mt-12 w-container mx-auto text-center sm:hidden md:hidden text-base lg:hidden font-bold">
             Copyright © 2019 Crop King Seeds
           </p>
         </div>
@@ -289,7 +289,7 @@ const Footer = props => {
             </div>
           </div>
           <div className="sm:hidden md:hidden h-10 my-1 w-full pt-5 flex justify-center items-center">
-            <label className="text-green uppercase cursor-pointer font-bold mr-4">
+            <label className="text-red-light uppercase cursor-pointer hover:text-red-dark  font-bold mr-4">
               <FontAwesomeIcon
                 icon={faCog}
                 className="text-grey-light mr-1 fa-lg mt-1"
@@ -301,7 +301,7 @@ const Footer = props => {
                   props.toggleLowGPUMode(!props.misc.lowGPUMode);
                 }}
                 type="checkbox"
-                className="ml-1"
+                className="ml-1 mt-1"
                 defaultChecked={props.misc.lowGPUMode}
                 value={props.misc.lowGPUMode || false}
               />
