@@ -71,7 +71,9 @@ let colors = {
   "red-sativa": "#E53B3A",
   crimson: "#600706",
 
-  "orange-feminized": "#FFC90A",
+  // "orange-feminized NEW": "#f3000f",
+  // "orange-feminized": "#FFC90A",
+  "orange-feminized": "#e43131",
   orange: "#f6993f",
   "orange-hybrid": "#FFAE23",
   "orange-mix": "#36AD9B",

@@ -22,7 +22,7 @@ const plantImage = props => {
           });
         }
       }}
-      alt={props.product.name + "plant"}
+      alt={props.product.name + " Plant"}
     />
   );
 };

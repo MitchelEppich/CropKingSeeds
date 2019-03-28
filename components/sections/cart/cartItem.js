@@ -62,8 +62,7 @@ const cartItem = props => {
               </h3>
             </Link>
             <div
-              onClick={() => {
-                console.log("here");
+              onClick={() => {                
                 props.modifyCart({
                   items: props.cart.items,
                   action: "REMOVE",

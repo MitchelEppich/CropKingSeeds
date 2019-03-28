@@ -21,7 +21,7 @@ const ShareButtons = props => {
         >
           <FontAwesomeIcon
             icon={faInstagram}
-            className="fa-2x my-1 pr-1 hover:text-red-light scale-item cursor-pointer"
+            className="fa-2x  px-1 hover:text-red-light scale-item cursor-pointer"
           />
         </a>
         <a
@@ -33,7 +33,7 @@ const ShareButtons = props => {
         >
           <FontAwesomeIcon
             icon={faFacebook}
-            className="fa-2x my-1 pr-1 hover:text-red-light scale-item cursor-pointer"
+            className="fa-2x  px-1 hover:text-red-light scale-item cursor-pointer"
           />
         </a>
         <a
@@ -45,7 +45,7 @@ const ShareButtons = props => {
         >
           <FontAwesomeIcon
             icon={faTwitter}
-            className="fa-2x my-1 pr-1 hover:text-red-light scale-item cursor-pointer"
+            className="fa-2x  px-1 hover:text-red-light scale-item cursor-pointer"
           />
         </a>
         <a
@@ -57,7 +57,7 @@ const ShareButtons = props => {
         >
           <FontAwesomeIcon
             icon={faPinterest}
-            className="fa-2x my-1 pr-1 hover:text-red-light scale-item cursor-pointer"
+            className="fa-2x  px-1 hover:text-red-light scale-item cursor-pointer"
           />
         </a>
         {/* <a

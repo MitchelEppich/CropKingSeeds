@@ -384,6 +384,7 @@ const mapDispatchToProps = dispatch => {
     disableFpsCalc: () => dispatch(actions.disableFpsCalc()),
     toggleLowGPUMode: lowGpuMode =>
       dispatch(actions.toggleLowGPUMode(lowGpuMode)),
+    toggleCartMenu: input => dispatch(actions.toggleCartMenu(input)),
     recallGPUMode: () => dispatch(actions.recallGPUMode())
   };
 };

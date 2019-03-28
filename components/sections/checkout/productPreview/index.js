@@ -226,7 +226,7 @@ const ProductPreview = props => {
       </h2>
       <MinimumSeedsWarning {...props} />
       <MinimumOrderWarning {...props} />
-      <div className="w-full inline-flex flex-wrap mb-4 mt-2 justify-between">
+      <div className="w-full inline-flex flex-wrap mb-4 mt-2 justify-around">
         {_itemscart.length > 0 ? (
           showProducts()
         ) : (

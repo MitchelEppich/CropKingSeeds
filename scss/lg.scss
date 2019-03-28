@@ -35,7 +35,7 @@
   font-display: swap;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (min-width: 768px) and (max-width: 991px) {
   ////////////
   // UNIVERSAL
   .ray_box {
