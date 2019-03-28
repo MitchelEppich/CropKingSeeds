@@ -11,10 +11,10 @@ const slide = props => {
   let num = (props.index + 1).toString().padStart(2, "0");
   let $url = props.misc.CFURL + "/land_banner/" + num;
 
-  let featuredStrainImage =
-    props.misc.featuredStrains.length > 0
-      ? props.misc.featuredStrains[0]
-      : props.misc.relatedStrains[0];
+  let strain = props.misc.featuredStrains;
+  if (strain == null) return null;
+
+  let featuredStrainImage = props.misc.featuredStrains[0];
 
   let onClick = e => {
     if (props.url == null) return;
@@ -116,13 +116,6 @@ const slide = props => {
           self.muted = !self.muted;
         }}
         className="sm:w-full w-2/3 shadow-lg border-red-lighter border-2"
-        id={id}
-        onPlaying={() => {
-          console.log("Playing");
-        }}
-        onWaiting={() => {
-          console.log("Paused");
-        }}
         style={{
           ...position,
           backgroundImage: $url,
@@ -130,7 +123,6 @@ const slide = props => {
           backgroundPosiiton: "top"
         }}
         muted={true}
-        className={"w-full z-0 absolute"}
         loop
         id={"video" + props.index}
         src={$url}

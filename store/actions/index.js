@@ -85,7 +85,8 @@ const actionTypes = {
   DISABLE_FPS_CALC: "DISABLE_FPS_CALC",
   TOGGLE_LOW_GPU_MODE: "TOGGLE_LOW_GPU_MODE",
   RECALL_GPU_MODE: "RECALL_GPU_MODE",
-  TOGGLE_HEADER_MESSAGE: "TOGGLE_HEADER_MESSAGE"
+  TOGGLE_HEADER_MESSAGE: "TOGGLE_HEADER_MESSAGE",
+  GET_DAILY_MESSAGE: "GET_DAILY_MESSAGE"
 };
 
 const actions = {
@@ -539,7 +540,8 @@ const actions = {
       }
       dispatch({
         type: actionTypes.TOGGLE_HEADER_MESSAGE,
-        input: input.value
+        input: input.value,
+        shown: input.shown
       });
     };
   },
@@ -608,10 +610,34 @@ const actions = {
       type: actionTypes.RECALL_GPU_MODE,
       lowGPUMode: lowGPUMode
     };
+  },
+  getDailyMessage: () => {
+    return dispatch => {
+      const link = new HttpLink({ uri, fetch: fetch });
+      const operation = {
+        query: query.getDailyMessage
+      };
+
+      return makePromise(execute(link, operation))
+        .then(data => {
+          let message = data.data.getDailyMessage;
+          dispatch({
+            type: actionTypes.GET_DAILY_MESSAGE,
+            input: message
+          });
+          return Promise.resolve(message);
+        })
+        .catch(error => console.log(error));
+    };
   }
 };
 
 const query = {
+  getDailyMessage: gql`
+    {
+      getDailyMessage
+    }
+  `,
   getTaxes: gql`
     {
       getTaxes

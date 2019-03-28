@@ -68,7 +68,9 @@ const initialState = {
   contactSubject: "Shipping / Delivery",
   poorFps: null,
   fpsAvg: 0,
-  lowGPUMode: null
+  lowGPUMode: null,
+  dailyMessageShown: false,
+  dailyMessage: null
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -113,6 +115,10 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.IS_REPEAT_CUSTOMER:
       return updateObject(state, {
         newCustomer: action.input
+      });
+    case actionTypes.GET_DAILY_MESSAGE:
+      return updateObject(state, {
+        dailyMessage: action.input
       });
     case actionTypes.GET_TAXES:
       return updateObject(state, {
@@ -237,7 +243,8 @@ const indexReducer = (state = initialState, action) => {
       });
     case actionTypes.TOGGLE_HEADER_MESSAGE:
       return updateObject(state, {
-        showHeaderMessage: action.input
+        showHeaderMessage: action.input,
+        dailyMessageShown: action.shown
       });
     case actionTypes.RECALL_GPU_MODE:
       return updateObject(state, {

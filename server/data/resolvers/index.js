@@ -15,7 +15,8 @@ const {
   BlockedIp,
   BlockedZip,
   Banners,
-  Tax
+  Tax,
+  DailyMessage
 } = require("../../models");
 
 const Strain = StrainResolvers.Strain;
@@ -122,6 +123,11 @@ const resolvers = {
       // console.log(_taxes);
 
       return JSON.stringify(_taxes);
+    },
+    getDailyMessage: async _ => {
+      let temp = await DailyMessage.find({});
+      if (temp.length != 0) return temp[0].message;
+      return null;
     }
   },
   Strain,

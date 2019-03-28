@@ -61,13 +61,29 @@ class Layout extends Component {
     };
   }
   componentDidMount() {
+    this.props.getDailyMessage().then(res => {
+      console.log(
+        this.props.misc.dailyMessage == null,
+        this.props.misc.dailyMessageShown
+      );
+      if (
+        this.props.misc.dailyMessage == null ||
+        this.props.misc.dailyMessageShown
+      )
+        return;
+      setTimeout(
+        () =>
+          this.props.toggleHeaderMessage({
+            value: true,
+            time: 7000,
+            shown: true
+          }),
+        2000
+      );
+    });
+
     if (window.top !== window.self)
       window.top.location.replace(window.self.location.href);
-
-    setTimeout(
-      () => this.props.toggleHeaderMessage({ value: true, time: 7000 }),
-      2000
-    );
 
     // registerServiceWorker();
     // iframe = document.createElement("iframe");
@@ -392,6 +408,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.toggleLowGPUMode(lowGpuMode)),
     toggleCartMenu: input => dispatch(actions.toggleCartMenu(input)),
     toggleHeaderMessage: input => dispatch(actions.toggleHeaderMessage(input)),
+    getDailyMessage: () => dispatch(actions.getDailyMessage()),
     recallGPUMode: () => dispatch(actions.recallGPUMode())
   };
 };

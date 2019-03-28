@@ -28,6 +28,8 @@ type Query {
   getRandomWinnerBetweenDates(input: DateRangeInput!): Order
 
   getTrustPilotRating: Float
+
+  getDailyMessage: String
 }
 
 input RelatedInput {

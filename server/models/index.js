@@ -8,6 +8,7 @@ const BlockedIpSchema = require("./blockedIp");
 const BlockedZipSchema = require("./blockedZip");
 const BannersSchema = require("./banners");
 const TaxSchema = require("./tax");
+const DailyMessageSchema = require("./dailyMessage");
 
 const Strain = mongoose.model("Strain", StrainSchema);
 const Order = mongoose.model("Order", OrderSchema);
@@ -17,6 +18,7 @@ const BlockedIp = mongoose.model("BlockedIp", BlockedIpSchema);
 const BlockedZip = mongoose.model("BlockedZip", BlockedZipSchema);
 const Banners = mongoose.model("Banners", BannersSchema);
 const Tax = mongoose.model("Tax", TaxSchema);
+const DailyMessage = mongoose.model("DailyMessage", DailyMessageSchema);
 
 exports.Strain = Strain;
 exports.Order = Order;
@@ -26,3 +28,4 @@ exports.BlockedIp = BlockedIp;
 exports.BlockedZip = BlockedZip;
 exports.Banners = Banners;
 exports.Tax = Tax;
+exports.DailyMessage = DailyMessage;

@@ -21,7 +21,7 @@ const HeaderMessage = props => {
         style={viewMessage}
         className="w-full lg:w-700 lg:mx-auto bg-white border-b border-red-light border-l border-r p-2 font-bold shadow-md"
       >
-        Welcome to our new website!
+        {props.misc.dailyMessage}
       </div>
     </div>
   );
