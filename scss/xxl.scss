@@ -18,22 +18,22 @@
 }
 
 //EXAMPLE FONT FACE IMPORT WITH TWO WEIGHTS
-@font-face {
-  font-family: "proxima nova";
-  src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff")
-    format("truetype");
-  font-weight: thin;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "proxima nova";
-  src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff")
-    format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+// @font-face {
+//   font-family: "proxima nova";
+//   src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff")
+//     format("truetype");
+//   font-weight: thin;
+//   font-style: normal;
+//   font-display: swap;
+// }
+// @font-face {
+//   font-family: "proxima nova";
+//   src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff")
+//     format("truetype");
+//   font-weight: normal;
+//   font-style: normal;
+//   font-display: swap;
+// }
 
 // @media only screen and (min-width: 2500px) {
 //   ////////////

@@ -23,7 +23,7 @@
 //EXAMPLE FONT FACE IMPORT WITH TWO WEIGHTS
 @font-face {
   font-family: "proxima nova";
-  src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff")
+  src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff2")
     format("truetype");
   font-weight: thin;
   font-style: normal;
@@ -31,7 +31,7 @@
 }
 @font-face {
   font-family: "proxima nova";
-  src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff")
+  src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff2")
     format("truetype");
   font-weight: normal;
   font-style: normal;

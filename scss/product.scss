@@ -4,72 +4,72 @@
 // @access public
 // @param {String} $element - Element's name
 @mixin element($element) {
-    &__#{$element} {
-        @content;
-    }
+  &__#{$element} {
+    @content;
+  }
 }
 // Block Modifier
 // @access public
 // @param {String} $modifier - Modifier's name
 @mixin modifier($modifier) {
-    &--#{$modifier} {
-        @content;
-    }
+  &--#{$modifier} {
+    @content;
+  }
 }
 
 //EXAMPLE FONT FACE IMPORT WITH TWO WEIGHTS
-@font-face {
-    font-family: "proxima nova";
-    src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff") format("truetype");
-    font-weight: thin;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: "proxima nova";
-    src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
+// @font-face {
+//     font-family: "proxima nova";
+//     src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff") format("truetype");
+//     font-weight: thin;
+//     font-style: normal;
+//     font-display: swap;
+// }
+// @font-face {
+//     font-family: "proxima nova";
+//     src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff") format("truetype");
+//     font-weight: normal;
+//     font-style: normal;
+//     font-display: swap;
+// }
 
 //////////////////
 //VIEWPRODUCT PAGE
 #zoomedImg img {
-    max-width: none;
+  max-width: none;
 }
 
 .imgCarousel {
-    height: 450px !important;
+  height: 450px !important;
 }
 .imgCarousel div {
-    z-index: 9999;
+  z-index: 9999;
 }
 
 .active-border {
-    position: relative;
-    text-align: center;
-    width: 110px;
-    height: 110px;
-    border-radius: 100%;
-    background-color: #39b4cc;
-    background-image: linear-gradient(250deg, transparent 50%, #a2ecfb 50%),
-        linear-gradient(0deg, #a2ecfb 50%, transparent 50%);
+  position: relative;
+  text-align: center;
+  width: 110px;
+  height: 110px;
+  border-radius: 100%;
+  background-color: #39b4cc;
+  background-image: linear-gradient(250deg, transparent 50%, #a2ecfb 50%),
+    linear-gradient(0deg, #a2ecfb 50%, transparent 50%);
 }
 .circle {
-    position: relative;
-    top: 5px;
-    left: 5px;
-    text-align: center;
-    width: 100px;
-    height: 100px;
-    border-radius: 100%;
-    background-color: #e6f4f7;
+  position: relative;
+  top: 5px;
+  left: 5px;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  background-color: #e6f4f7;
 }
 .prec {
-    top: 30px;
-    position: relative;
-    font-size: 30px;
+  top: 30px;
+  position: relative;
+  font-size: 30px;
 }
 // END VIEWPRODUCT PAGE
 ///////////////////////
