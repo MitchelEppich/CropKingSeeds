@@ -75,30 +75,28 @@ const slide = props => {
       className="flex justify-between items-center w-full"
     >
       <div className="sm:hidden pl-12 pr-4 flex flex-wrap justify-center">
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap mb-4">
+          <img
+            src={
+              props.misc.CFURL + "/plant/" + featuredStrainImage.sotiId + ".png"
+            }
+            style={{
+              height: "8rem",
+              transform: "translateY(31px) translateX(-70px)",
+              position: "absolute"
+            }}
+          />
           <img
             src={
               props.misc.CFURL +
-              "/plant/P_" +
+              "/packages/" +
               featuredStrainImage.sotiId +
-              ".jpg"
+              ".png"
             }
-            className="h-32"
-          />
-          <div
             style={{
-              backgroundImage:
-                "url(" +
-                props.misc.CFURL +
-                "/packages/" +
-                featuredStrainImage.sotiId +
-                ".png)",
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
               height: "10rem",
               width: "auto",
-              position: "absolute",
+              position: "relative",
               zIndex: "30"
             }}
           />
