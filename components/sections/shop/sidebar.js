@@ -33,7 +33,7 @@ const sidebar = props => {
             />
           </div>
           <div className="w-full mt-8 justify-center flex relative mt-2">
-            <a href="http://www.seedtracker.com" target="_blank">
+            <a rel="nofollow" href="http://www.seedtracker.com" target="_blank">
               <img
                 src={props.misc.CFURL + "/sidebar/seedtracker.png"}
                 className=""
@@ -69,7 +69,7 @@ const sidebar = props => {
               href="https://ca.trustpilot.com/review/cropkingseeds.com"
               target="_blank"
               aria-label="trustpilot"
-              rel="noreferrer"
+              rel="nofollow"
             >
               <img
                 src={props.misc.CFURL + "/sidebar/review_mobile.gif"}

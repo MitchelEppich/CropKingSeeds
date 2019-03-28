@@ -72,6 +72,11 @@ const initialState = {
         "At Crop King Seeds we stand by our product. Our seeds are inspected, tested and handpicked to be mature and viable. Each strain differs somewhat in size, shape and colour. Some seeds such as White Widow will actually be paler in appearance, or “white”, which is completely normal. An immature seed is green in colour or has a husk still attached to it. The guarantee is for germination only and does not extend to growing in your choice of medium such as soil."
     },
     {
+      question: "How tall will my plants grow?",
+      answer:
+        "The height of a plant is dependant on the environment the plant was grown in, anything from the soil, the light or even the air quality can cause a plants height to vary. In general dwarfs are shorter, indicas tend to grow wider and bushier and sativas grow thinner and taller."
+    },
+    {
       question: "Can a feminized seed turn out to be male or hermaphrodite?",
       answer:
         "Yes, in rare circumstances this can happen. On average it is about 1 in 1000. This is caused by stress during the germination process. Always watch your plants carefully for characteristics of hermaphrodism. If you do begin to see such traits, move the plant to another room or dispose of it immediately to ensure you do not seed out your own plants or those of your neighbours."

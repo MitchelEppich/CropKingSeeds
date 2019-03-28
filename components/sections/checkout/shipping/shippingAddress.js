@@ -12,7 +12,6 @@ const ShippingAddress = props => {
     let arr = [];
     let profiles = props.checkout.foundProfiles;
     for (let profile of profiles) {
-      // console.log("profiles:", profiles.indexOf(profile));
       arr.push(
         <div
           onClick={() => {
@@ -53,11 +52,11 @@ const ShippingAddress = props => {
               {profile.profile.shipping.country.value}
             </p>
           </div>
-          {/* <div className="w-1/4 p-2 px-4">
+          <div className="w-1/4 p-2 px-4">
             <p className="w-full text-base">
               {profile.profile.shipping.address.value}
             </p>
-          </div> */}
+          </div>
         </div>
       );
     }
@@ -322,6 +321,7 @@ const ShippingAddress = props => {
             <div className="w-1/3 pt-1">
               <label className="cursor-pointer font-bold uppercase items-center flex">
                 <input
+                  aria-label="noEmail"
                   type="checkbox"
                   id="noEmail"
                   checked={

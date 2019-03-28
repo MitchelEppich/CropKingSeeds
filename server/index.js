@@ -5,7 +5,8 @@ const redirects = require("../scripts/redirects.js");
 const next = require("next");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
+const helmet = require("helmet");
+const frameguard = require("frameguard");
 const compression = require("compression");
 const express = require("express");
 const mongoose = require("mongoose");
@@ -55,15 +56,33 @@ app
   .then(async () => {
     const server = express();
 
+    server.use(helmet());
+    server.use(
+      helmet({
+        frameguard: {
+          action: "deny"
+        }
+      })
+    );
+    
+    server.use(frameguard({ action: "deny" }));
     server.use(compression());
     server.use(
       express.static(__dirname + "/static", {
         maxAge: "365d"
       })
     );
-
+    const robotsTextOptions = {
+      root: __dirname + "/static/",
+      headers: {
+        "Content-Type": "text/plain;charset=UTF-8"
+      }
+    };
+    server.get("/robots.txt", (req, res) =>
+      res.status(200).sendFile("robots.txt", robotsTextOptions)
+    );
     //sitemap
-    // let strains = await resolvers.Query.allStrains();
+    let strains = await resolvers.Query.allStrains(null, { filter: null });
     // let sitemapStrains = strains.map((strain, index) => {
     //   return inferStrainData(strain)
     //     .name.toLowerCase()
@@ -72,11 +91,11 @@ app
     // });
     // siteMapBuilder(sitemapStrains);
     // //schema markup
-    // let _strains = strains.map((strain, index) => {
-    //   delete strain._id;
-    //   delete strain.__v;
-    //   return strain;
-    // });
+    let _strains = strains.map((strain, index) => {
+      delete strain._id;
+      delete strain.__v;
+      return strain;
+    });
     // schemaBuilder(JSON.stringify(_strains));
     // // 301 redirects
     // redirects.forEach(({ from, to, type = 301, method = "get" }) => {

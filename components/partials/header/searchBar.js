@@ -49,7 +49,8 @@ const SearchBar = props => {
           setFilters={setFilters}
         />{" "}
         <Link href="/shop" as={"/shop?" + props.misc.searchValue}>
-          <a
+          <button
+            type="submit"
             aria-label="submit-search"
             onClick={e => {
               if (Router.asPath.includes("/shop")) e.preventDefault();
@@ -59,7 +60,7 @@ const SearchBar = props => {
             className="bg-yellow-dark hover:bg-yellow slowish w-12 sm:w-20 border-0 pl-1 leading-loose z-999 rounded sm:absolute sm:pin-r"
           >
             <FontAwesomeIcon icon={faSearch} className="fa-lg mt-1 ml-1" />
-          </a>
+          </button>
         </Link>
       </div>
     </form>

@@ -296,13 +296,14 @@ const Footer = props => {
               />{" "}
               Low GPU Mode
               <input
+                aria-label="lowGPUMode"
                 onChange={() => {
                   props.toggleLowGPUMode(!props.misc.lowGPUMode);
                 }}
                 type="checkbox"
                 className="ml-1"
                 defaultChecked={props.misc.lowGPUMode}
-                value={props.misc.lowGPUMode}
+                value={props.misc.lowGPUMode || false}
               />
             </label>
           </div>

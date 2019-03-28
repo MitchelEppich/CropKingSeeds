@@ -84,7 +84,7 @@ const AgeVerification = props => {
           This website is best experienced with Google Chrome.{" "}
           <a
             aria-label="download-chrome"
-            rel="noreferrer"
+            rel="nofollow"
             href="https://www.google.com/chrome/"
             target="_blank"
           >

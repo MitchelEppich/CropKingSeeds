@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import moment from "moment";
+import Head from "next/head";
 // custom
 import withData from "../lib/withData";
 import actions from "../store/actions";
@@ -20,7 +21,7 @@ class Index extends Component {
     // this.runLoop(5000, this.props.nextBannerSlide);
   }
   componentDidMount() {
-    registerServiceWorker();
+    // registerServiceWorker();
     this.props.setCurrentEvent({
       index: 0,
       currentEventObj: this.props.misc.currentEventObj,
@@ -39,6 +40,13 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
+        <Head>
+          <meta
+            name="description"
+            content="Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
+          />
+          <meta name="robots" content="index, follow" />
+        </Head>
         {this.props.misc.strains != null && this.props.misc.banners != null ? (
           <React.Fragment>
             <BannerCarousel {...this.props} />

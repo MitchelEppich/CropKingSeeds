@@ -9,7 +9,7 @@ import moment from "moment";
 const Confirmation = props => {
   const isClient = typeof document !== "undefined";
   if (!isClient) return;
-  let href = window.location.href.replace(Router.router.asPath, "");
+  let hrefPrefix = window.location.href.replace(Router.router.asPath, "");
 
   let _orderDetails = props.checkout.orderDetails;
   if (_orderDetails.payment == null) return <div />;
@@ -40,7 +40,7 @@ const Confirmation = props => {
                 aria-label={"view-" + _item.product.name}
                 className="cursor-pointer hover:text-red-light"
                 href={
-                  href +
+                  hrefPrefix +
                   "/product/" +
                   _item.product.name.toLowerCase().replace(/ /g, "-")
                 }

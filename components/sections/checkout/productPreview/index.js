@@ -68,29 +68,33 @@ const ProductPreview = props => {
                 }
               />
             </div>
-            <div className="mt-1 p-2 pt-2 w-2/3 relative">
-              <div className="sm:mt-0 mt-2 w-full inline-flex items-center flex">
+            <div className="mt-1 p-2 pt-2 w-2/3 relative md:flex md:flex-wrap md:content-start">
+              <div className="sm:mt-0 mt-2 md:w-full md:h-6 md:items-start md:mt-0 w-full inline-flex items-center flex">
                 <div className="sm:hidden md:hidden font-bold w-1/2 text-grey-light uppercase text-xs">
                   Package:
-                </div>{" "}
-                <div className="px-2 sm:text-left sm:w-full md:w-full md:text-left font-bold w-1/2 text-grey uppercase text-sm text-right">
+                </div>
+                <div className="px-2 md:px-0 sm:text-left sm:w-full md:w-full md:text-left font-bold w-1/2 text-grey uppercase text-sm text-right">
                   {_item.amount} Pack
                 </div>
               </div>
-              <div className="sm:mt-0 mt-2 w-full inline-flex items-center flex">
+              <div className="sm:mt-0 mt-2 md:w-1/2 md:h-6 md:items-start md:mt-0 w-full inline-flex items-center flex">
                 <div className="sm:hidden md:hidden font-bold w-1/2 text-grey-light uppercase text-xs">
                   Strain Type:
-                </div>{" "}
-                <div className="px-2 sm:text-left sm:w-full md:w-full md:text-left font-bold w-1/2 text-grey uppercase text-sm text-right">
+                </div>
+                <div className="px-2 md:px-0 sm:text-left sm:w-full md:w-full md:text-left font-bold w-1/2 text-grey uppercase text-sm text-right">
                   {_product.type}
                 </div>
               </div>
-              <div className="sm:mt-0 mt-2 w-full inline-flex items-center flex">
+              <div className="sm:mt-0 mt-2 md:w-1/2 md:h-6 md:items-end md:mt-0 w-full inline-flex items-center flex">
                 <div className="sm:hidden md:hidden font-bold w-1/2 text-grey-light uppercase text-xs">
-                  {" "}
                   Per pack:
                 </div>
-                <div className="px-2 sm:text-left sm:w-full md:w-full md:text-left font-bold w-1/2 text-grey uppercase text-sm text-right">
+                <div
+                  className={
+                    "px-2 sm:text-left sm:w-full md:w-full md:h-6 md:items-start md:mt-0 md:text-right font-bold w-1/2 text-grey uppercase text-sm text-right" +
+                    (hasSale ? " line-through" : "")
+                  }
+                >
                   {currency != null
                     ? `${currency.symbol}${(
                         currency.convert * (_item.per || 0)
@@ -99,12 +103,12 @@ const ProductPreview = props => {
                 </div>
               </div>
               {hasSale ? (
-                <div className="sm:mt-0 mt-2 w-full inline-flex items-center flex">
+                <div className="sm:mt-0 mt-2 w-full md:h-6 md:mt-0 md:text-right inline-flex items-center flex">
                   <div className="sm:hidden md:hidden font-bold w-1/2 text-grey-light uppercase text-xs">
                     {" "}
                     Sale Price:
                   </div>
-                  <div className="px-2 sm:text-left sm:w-full md:w-full md:text-left font-bold w-1/2 text-red-light uppercase text-sm text-right">
+                  <div className="px-2 sm:text-left sm:w-full md:w-full md:text-right font-bold w-1/2 text-red-light uppercase text-sm text-right">
                     {currency != null
                       ? `${currency.symbol}${(
                           currency.convert * (_item.sale || 0)
@@ -138,6 +142,7 @@ const ProductPreview = props => {
                       />
                     </button>
                     <input
+                      aria-label="modifyCart"
                       onBlur={e => {
                         let _value = e.target.value;
                         if (_value == "") {

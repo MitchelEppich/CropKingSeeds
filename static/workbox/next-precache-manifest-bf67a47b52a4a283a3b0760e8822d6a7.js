@@ -1,1 +1,0 @@
-self.__precacheManifest = ["/_next/-/page/_app.js","/_next/-/page/_document.js","/_next/-/page/_error.js"]

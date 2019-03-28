@@ -13,7 +13,7 @@ const data = props => {
   // pcbdWidth = _product.pcbd[1] * 50 + "%";
   // pcbnWidth = _product.pcbn[1] * 10 + "%";
   // pthcWidth = _product.pthc[1] * 2 + "%";
-  pcbdWidth = (_product.pcbd[0] / 8) * 100 + "%";
+  pcbdWidth = (_product.pcbd[0] / 20) * 100 + "%";
   pcbnWidth = (_product.pcbn[0] / 4.2) * 100 + "%";
   pthcWidth = (_product.pthc[0] / 27.5) * 100 + "%";
 

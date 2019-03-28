@@ -1,9 +1,11 @@
 const advertisement = props => {
   return (
     <div className="w-main sm:w-full md:w-full mt-3 p-1">
-      <label className="font-bold">Phone:</label>
+      <label htmlFor="phone" className="font-bold">
+        Phone:
+      </label>
       <input type="text" name="phone" className="p-2 my-1 mb-6 w-full" />
-      <label className="font-bold">
+      <label htmlFor="company" className="font-bold">
         Company: <span className="text-red">*</span>
       </label>
       <input
@@ -12,7 +14,7 @@ const advertisement = props => {
         required="required"
         className="p-2 my-1 mb-6 w-full"
       />
-      <label className="font-bold">
+      <label htmlFor="website" className="font-bold">
         Website: <span className="text-red">*</span>
       </label>
       <input
@@ -21,9 +23,11 @@ const advertisement = props => {
         required="required"
         className="p-2 my-1 mb-6 w-full"
       />
-      <label className="font-bold">Date:</label>
+      <label htmlFor="date" className="font-bold">
+        Date:
+      </label>
       <input type="date" name="date" className="p-2 my-1 mb-6 w-full" />
-      <label className="font-bold">
+      <label htmlFor="cost" className="font-bold">
         Cost (estimate, in USD or CAD): <span className="text-red">*</span>
       </label>
       <input
@@ -32,7 +36,7 @@ const advertisement = props => {
         required="required"
         className="p-2 my-1 mb-6 w-full"
       />
-      <label className="font-bold">
+      <label htmlFor="mediaKit" className="font-bold">
         Media Kit (URL): <span className="text-red">*</span>
       </label>
       <input

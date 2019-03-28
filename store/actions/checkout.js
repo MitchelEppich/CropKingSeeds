@@ -415,7 +415,6 @@ const getActions = uri => {
       } else {
         _local = [];
       }
-
       let text = JSON.stringify(_orderDetails);
       if (!_local.includes(text)) {
         _local.push(text);
@@ -641,43 +640,42 @@ const getActions = uri => {
         let _orderDetails = { ...input.orderDetails };
         let _paymentMethod = _orderDetails.payment.method.value,
           cart = input.cart;
-        let ccResponse = null;
-        // // Process Payment
-        // let ccResponse = await (async () => {
-        //   if (_paymentMethod == "Credit Card") {
-        //     let _orderAmount = _orderDetails.payment.cartTotal.value;
-        //     if (_orderAmount <= 300)
-        //       return await processPayment(
-        //         {
-        //           payment: _orderDetails.payment,
-        //           currency: _orderDetails.currency,
-        //           country: _orderDetails.billing.country.value
-        //         },
-        //         uri
-        //       );
-        //     return { status: "Missing" };
-        //   }
-        //   return null;
-        // })();
+        // Process Payment
+        let ccResponse = await (async () => {
+          if (_paymentMethod == "Credit Card") {
+            let _orderAmount = _orderDetails.payment.cartTotal.value;
+            if (_orderAmount <= 300)
+              return await processPayment(
+                {
+                  payment: _orderDetails.payment,
+                  currency: _orderDetails.currency,
+                  country: _orderDetails.billing.country.value
+                },
+                uri
+              );
+            return { status: "Missing" };
+          }
+          return null;
+        })();
 
-        // if (ccResponse != null) {
-        //   if (ccResponse.currency != null)
-        //     _orderDetails.payment.currency.value = ccResponse.currency;
-        //   // if (ccResponse.processor != null && _paymentMethod == "Credit Card")
-        //   //   _orderDetails.payment.method.value = (() => {
-        //   //     switch (ccResponse.processor) {
-        //   //       case "Pivotal 3 VT":
-        //   //         return "Pivotal/Global1 - Kingmerch";
-        //   //       case "Bambora FD":
-        //   //         return "Bambora FD - Vancoast Seeds";
-        //   //       default:
-        //   //         return "Credit Card";
-        //   //     }
-        //   //   })();
-        // }
+        if (ccResponse != null) {
+          if (ccResponse.currency != null)
+            _orderDetails.payment.currency.value = ccResponse.currency;
+          if (ccResponse.processor != null && _paymentMethod == "Credit Card")
+            _orderDetails.payment.method.value = (() => {
+              switch (ccResponse.processor) {
+                case "Pivotal 3 VT":
+                  return "Pivotal/Global1 - Kingmerch";
+                case "Bambora FD":
+                  return "Bambora FD - Vancoast Seeds";
+                default:
+                  return "Credit Card";
+              }
+            })();
+        }
 
-        // // Process Order
-        // let response = await processOrder(_orderDetails, ccResponse, uri);
+        // Process Order
+        let response = await processOrder(_orderDetails, ccResponse, uri);
 
         // Send email confirmation
         let products = Object.values(cart.items);
@@ -729,11 +727,9 @@ const getActions = uri => {
           }
         };
 
-        makePromise(execute(link, operation))
-          .then(data => {
-            console.log(data);
-          })
-          .catch(error => console.log(error));
+        makePromise(execute(link, operation)).catch(error =>
+          console.log(error)
+        );
 
         dispatch({
           type: actionTypes.PROCESS_ORDER,

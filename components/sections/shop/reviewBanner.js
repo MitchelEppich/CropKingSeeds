@@ -5,7 +5,7 @@ const reviewBanner = props => {
         href="https://ca.trustpilot.com/review/cropkingseeds.com"
         target="_blank"
         aria-label="trustpilot"
-        rel="noreferrer"
+        rel="nofollow"
       >
         <img src={props.misc.CFURL + "/sidebar/reviewus_v1.gif"} className="" />
       </a>

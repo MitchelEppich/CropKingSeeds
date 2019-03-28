@@ -105,8 +105,8 @@ class Index extends Component {
             }}
             className={
               this.props.misc.hoverId == product._id
-                ? "w-64 h-64 sm:w-screen sm:h-screen sm:pin-t sm:mt-4 md:w-44 md:h-48 lg:h-48 lg:w-44 text-white relative sm:absolute z-50 slowishish lg:my-4 sm:my-0 md:my-2 lg:mx-0 xl:mx-0 xxl:my-4 xxl:mx-4"
-                : "w-64 h-64 sm:cursor-pointer md:cursor-pointer sm:w-32 sm:h-32 md:w-44 md:h-48 lg:h-48 lg:w-44 text-white relative z-0 slowishish lg:my-4 sm:my-2 md:my-2 lg:mx-0 xl:mx-0 xxl:my-4 xxl:mx-4"
+                ? "w-64 h-64 sm:w-screen sm:h-screen sm:pin-t sm:mt-4 md:w-44 md:h-48 lg:h-48 lg:w-44 text-white relative sm:absolute z-50 slowishish lg:my-4 sm:my-0 md:my-2 lg:ml-0 xl:mx-0 xxl:my-4 xxl:mx-4"
+                : "w-64 h-64 sm:cursor-pointer md:cursor-pointer sm:w-32 sm:h-32 md:w-44 md:h-48 lg:h-48 lg:w-44 text-white relative z-0 slowishish lg:my-4 sm:my-2 md:my-2 lg:ml-0 xl:mx-0 xxl:my-4 xxl:mx-4"
             }
           >
             <ProductThumbnail

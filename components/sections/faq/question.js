@@ -27,7 +27,7 @@ const question = props => {
       );
     });
   }
-  // console.log(typeof props.answer);
+
   return (
     <div
       onClick={() => props.toggleFAQQuestion(props.index)}

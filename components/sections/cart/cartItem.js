@@ -62,7 +62,7 @@ const cartItem = props => {
               </h3>
             </Link>
             <div
-              onClick={() => {                
+              onClick={() => {
                 props.modifyCart({
                   items: props.cart.items,
                   action: "REMOVE",
@@ -97,6 +97,7 @@ const cartItem = props => {
                   />
                 </button>
                 <input
+                  aria-label="addToCartQuantity"
                   onBlur={e => {
                     let _value = e.target.value;
                     if (_value == "") {

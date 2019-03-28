@@ -73,6 +73,7 @@ class reviewForm extends Component {
         <div className="w-full inline-flex sm:block justify-between">
           <div className="w-1/2 sm:w-full mr-2">
             <input
+              aria-label="reviewAuthorName"
               className="w-full h-12 my-2 pl-2"
               placeholder="Name (optional)"
               id="name"
@@ -88,6 +89,7 @@ class reviewForm extends Component {
           </div>
           <div className="w-1/2 sm:w-full ml-2 sm:ml-0">
             <input
+              aria-label="email"
               className="w-full h-12 my-2 pl-2"
               placeholder="Email"
               required

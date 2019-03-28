@@ -210,7 +210,6 @@ const resolvers = {
               //
             }
           });
-          console.log(path.join(__dirname, "../emails", "mars"));
           email
             .send({
               template: path.join(__dirname, "../emails", "mars"),
