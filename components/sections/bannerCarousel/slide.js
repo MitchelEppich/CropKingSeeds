@@ -47,7 +47,7 @@ const slide = props => {
         ...props.style,
         backgroundImage: "url(" + $url + ")",
         backgroundSize: "contain",
-        backgroundPosiiton: "top"
+        backgroundPosition: "top"
       }}
       className={
         "xxl:h-600 xl:h-400 lg:h-300 md:h-250 sm:h-40 w-full z-0 absolute"
@@ -70,23 +70,26 @@ const slide = props => {
   let video = (
     <div
       style={{
+        // background: "url(../../static/img/bg-video2.jpg",
+        // backgroundSize: "contain",
         ...position
       }}
-      className="flex justify-between items-center w-full"
+      className="flex items-center flex justify-end w-full bg-grey-lightest"
     >
-      <div className="sm:hidden pl-12 pr-4 flex flex-wrap justify-center">
-        <div className="flex flex-wrap mb-4">
+      <div className="w-1/3 pin-l z-50 sm:hidden md:hidden absolute p-4 flex flex-wrap justify-center">
+        <div className="flex flex-wrap mb-4 w-full justify-center scale-item cursor-pointer">
           <img
+            className="xxl:h-275 h-225 lg:h-175 -ml-8 mt-6 xxl:mt-12 xxl:-ml-12"
             src={
               props.misc.CFURL + "/plant/" + featuredStrainImage.sotiId + ".png"
             }
             style={{
-              height: "8rem",
-              transform: "translateY(31px) translateX(-70px)",
+              // transform: "translateY(32px) translateX(-50px)",
               position: "absolute"
             }}
           />
           <img
+            className="xxl:h-300 h-250 lg:h-200"
             src={
               props.misc.CFURL +
               "/packages/" +
@@ -94,26 +97,28 @@ const slide = props => {
               ".png"
             }
             style={{
-              height: "10rem",
               width: "auto",
               position: "relative",
-              zIndex: "30"
+              zIndex: "30",
+              boxShadow: "1px 5px 13px rgba(35, 35, 35, 0.52)"
             }}
           />
         </div>
-        <button
-          className="mx-auto border border-black px-8 py-2 mt-4 text-center"
-          onClick={() => Router.push("/shop")}
-        >
-          VISIT SHOP
-        </button>
+        <div className="w-full justify-center flex">
+          <button
+            className="mx-auto h-10 w-200 shadow-md bg-red-dark text-white px-8 py-2 mt-4 text-center hover:bg-red-light cursor-pointer hover:text-white font-bold"
+            onClick={() => Router.push("/shop")}
+          >
+            VISIT SHOP
+          </button>
+        </div>
       </div>
       <video
         onClick={() => {
           let self = document.querySelector("#video" + props.index);
           self.muted = !self.muted;
         }}
-        className="sm:w-full w-2/3 shadow-lg border-red-lighter border-2"
+        className="sm:w-full md:w-full md:mr-0 sm:mr-0 w-2/3 lg:w-3/5 shadow-md mr-10 flex justify-end"
         style={{
           ...position,
           backgroundImage: $url,
