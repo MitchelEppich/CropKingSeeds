@@ -15,7 +15,7 @@ export default class MyDocument extends Document {
     return (
       <html lang="en">
         <Head>
-          <meta charSet="utf-8" />{" "}
+          <meta charSet="utf-8" />
           <meta
             name="description"
             content="Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."

@@ -19,10 +19,7 @@ const slide = props => {
       window.target = "_blank";
       window.open(props.url);
     } else {
-      Router.push(
-        "/product",
-        "/product/" + props.url.toLowerCase().replace(/ /g, "-")
-      );
+      Router.push("/product", props.url);
     }
   };
 

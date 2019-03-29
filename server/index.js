@@ -56,6 +56,8 @@ app
   .prepare()
   .then(async () => {
     const server = express();
+
+    //middleware
     server.use(helmet());
     server.use(
       helmet({
@@ -67,10 +69,32 @@ app
     server.use(frameguard({ action: "deny" }));
     server.use(compression());
     server.use(
-      express.static(__dirname + "/static", {
+      cors({
+        origin: "*"
+      })
+    );
+    server.use(
+      express.static(__dirname + "/static/", {
         maxAge: "365d"
       })
     );
+    // server.get("/*", function(req, res, next) {
+    //   if (req.headers.host.match(/^www/) !== null) {
+    //     res.redirect(
+    //       "http://" + req.headers.host.replace(/^www\./, "") + req.url
+    //     );
+    //   } else {
+    //     next();
+    //   }
+    // });
+    // server.use(function(req, res, next) {
+    //   res.setHeader(
+    //     "Content-Security-Policy",
+    //     "script-src https://apis.google.com https://embed.tawk.to/5ae8bd0d5f7cdf4f0533c472/default https://cdn.jsdelivr.net/emojione/2.2.7/lib/js/emojione.min.js"
+    //   );
+    //   return next();
+    // });
+
     //sitemap
     let strains = await resolvers.Query.allStrains(null, { filter: null });
     let sitemapStrains = strains.map((strain, index) => {
@@ -98,11 +122,6 @@ app
     server.get("/sitemap.xml", (req, res) => {
       app.serveStatic(req, res, path.resolve("./static/sitemap.xml"));
     });
-    server.use(
-      cors({
-        origin: "*"
-      })
-    );
     server.use(
       "/graphql",
       bodyParser.json(),
