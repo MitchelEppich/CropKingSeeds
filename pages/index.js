@@ -41,10 +41,10 @@ class Index extends Component {
     return (
       <Layout {...this.props}>
         <Head>
-          <meta
+          {/* <meta
             name="description"
             content="Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
-          />
+          /> */}
           <meta name="robots" content="index, follow" />
         </Head>
         {this.props.misc.strains != null && this.props.misc.banners != null ? (

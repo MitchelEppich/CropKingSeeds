@@ -97,7 +97,7 @@ const BannerCarousel = props => {
 
   return (
     <div className="w-full">
-      <div className="xxl:h-600 overflow-hidden xl:h-400 lg:h-300 md:h-250 sm:h-40 w-full relative inline-flex">
+      <div className="xxl:h-600 overflow-hidden xl:h-400 lg:h-300 md:h-250 sm:h-48 w-full relative inline-flex">
         {banners}
       </div>
       <div className="w-full block justify-center flex p-3 mb-2 opacity-75">

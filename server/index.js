@@ -14,6 +14,7 @@ const { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
 const { execute, subscribe } = require("graphql");
 const fs = require("fs");
 const http = require("http");
+const path = require("path");
 const { SubscriptionServer } = require("subscriptions-transport-ws");
 
 require("dotenv").config();
@@ -43,7 +44,6 @@ app
   .prepare()
   .then(async () => {
     const server = express();
-
     server.use(helmet());
     server.use(
       helmet({
@@ -52,7 +52,6 @@ app
         }
       })
     );
-
     server.use(frameguard({ action: "deny" }));
     server.use(compression());
     server.use(
@@ -60,39 +59,33 @@ app
         maxAge: "365d"
       })
     );
-    const robotsTextOptions = {
-      root: __dirname + "/static/",
-      headers: {
-        "Content-Type": "text/plain;charset=UTF-8"
-      }
-    };
-    server.get("/robots.txt", (req, res) =>
-      res.status(200).sendFile("robots.txt", robotsTextOptions)
-    );
     //sitemap
     let strains = await resolvers.Query.allStrains(null, { filter: null });
-    // let sitemapStrains = strains.map((strain, index) => {
-    //   return inferStrainData(strain)
-    //     .name.toLowerCase()
-    //     .split(" ")
-    //     .join("-");
-    // });
-    // siteMapBuilder(sitemapStrains);
+    let sitemapStrains = strains.map((strain, index) => {
+      return inferStrainData(strain);
+    });
+    siteMapBuilder(sitemapStrains);
     // //schema markup
     let _strains = strains.map((strain, index) => {
       delete strain._id;
       delete strain.__v;
       return strain;
     });
-    // schemaBuilder(JSON.stringify(_strains));
-    // // 301 redirects
-    // redirects.forEach(({ from, to, type = 301, method = "get" }) => {
-    //   server[method](from, (req, res) => {
-    //     res.redirect(type, to);
-    //   });
-    // });
+    schemaBuilder(JSON.stringify(_strains));
+    // 301 redirects
+    redirects.forEach(({ from, to, type = 301, method = "get" }) => {
+      server[method](from, (req, res) => {
+        res.redirect(type, to);
+      });
+    });
 
     //routes
+    server.get("/robots.txt", (req, res) => {
+      app.serveStatic(req, res, path.resolve("./static/robots.txt"));
+    });
+    server.get("/sitemap.xml", (req, res) => {
+      app.serveStatic(req, res, path.resolve("./static/sitemap.xml"));
+    });
     server.use(
       cors({
         origin: "*"
