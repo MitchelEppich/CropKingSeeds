@@ -185,15 +185,17 @@ class Index extends Component {
                     />
                   </div>
                 </div>
-                {/* <div>
-                                <h3 className="w-full p-2 pl-6 font-bold text-3xl my-3 text-grey bg-smoke-grey">
-                                    Information on {this.props.viewProduct.currentProduct.name}
-                                </h3>
-                                <MoreInfo {...this.props} />
-                            </div> */}
-                <div className="w-full">
-                  <Reviews {...this.props} />
+              </div>
+              {this.props.viewProduct.currentProduct.moreInfo != null ? (
+                <div>
+                  <h3 className="w-full p-2 pl-6 font-bold text-3xl my-3 text-grey bg-smoke-grey">
+                    More about {this.props.viewProduct.currentProduct.name}
+                  </h3>
+                  <MoreInfo {...this.props} />
                 </div>
+              ) : null}
+              <div className="w-full">
+                <Reviews {...this.props} />
               </div>
             </div>
           </React.Fragment>

@@ -44,12 +44,6 @@
 body,
 html {
   font-family: "proxima nova", arial, sans-serif;
-  // color: #252525;
-  // font-size: 15px;
-  // padding: 0;
-  // margin: 0;
-  // background: white;
-  // font-weight: 500;
 }
 button:focus,
 input:focus,
@@ -143,9 +137,7 @@ img {
 .compareTableRows div:nth-of-type(2n) {
   background-color: #fff;
 }
-.example {
-  background-color: red;
-}
+
 .hr {
   @include element("filters") {
     width: 95%;

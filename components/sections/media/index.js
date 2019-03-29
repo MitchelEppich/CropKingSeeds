@@ -15,6 +15,7 @@ import moment from "moment";
 
 const Media = props => {
   let news = props.misc.news;
+  // console.log(news);
 
   let group = "news";
 
@@ -53,7 +54,6 @@ const Media = props => {
       arr.push(
         <div
           key={i}
-          //   style={{ background: "rgb(250, 250, 250)" }}
           className={`w-main lg:w-full sm:w-full h-full bg-smoke-grey hover:bg-white mx-auto mt-4 rounded shadow-md relative ${
             active ? "mb-2" : ""
           }`}
@@ -101,11 +101,8 @@ const Media = props => {
                 />
               </div>
               <div className="w-3/4 ml-4">
-                {location != null ? ( <div className="inline-flex w-full lg:flex-col md:flex-col sm:flex-col ">
-                  {/* <div className="w-1/2 text-left font-bold p-1 lg:w-full md:w-full sm:w-full sm:text-sm md:text-sm">
-                    <p>{moment(date, "LL").format("LL")}</p>
-                  </div> */}
-                  
+                {location != null ? (
+                  <div className="inline-flex w-full lg:flex-col md:flex-col sm:flex-col ">
                     <div
                       className="w-full justify-start items-center flex font-bold sm:text-xs md:text-xs"
                       onClick={e => {
@@ -118,8 +115,8 @@ const Media = props => {
                         <FontAwesomeIcon icon={faMapMarkerAlt} /> {location}
                       </p>
                     </div>
-                  
-                </div> ) : null}
+                  </div>
+                ) : null}
                 <p className="mt-4 ml-1 sm:mt-2 lg:mt-2 md:mt-2 sm:text-sm md:text-sm">
                   {body}
                   <span

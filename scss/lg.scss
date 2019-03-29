@@ -17,24 +17,6 @@
   }
 }
 
-//EXAMPLE FONT FACE IMPORT WITH TWO WEIGHTS
-// @font-face {
-//   font-family: "proxima nova";
-//   src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff")
-//     format("truetype");
-//   font-weight: thin;
-//   font-style: normal;
-//   font-display: swap;
-// }
-// @font-face {
-//   font-family: "proxima nova";
-//   src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff")
-//     format("truetype");
-//   font-weight: normal;
-//   font-style: normal;
-//   font-display: swap;
-// }
-
 @media screen and (min-width: 768px) and (max-width: 991px) {
   ////////////
   // UNIVERSAL
@@ -375,11 +357,19 @@
     opacity: 0;
     z-index: 11;
     position: absolute;
+    text-transform: uppercase;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-shadow: 0 2px 3px rgba(45, 45, 45, 0.69);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background: #cc515b;
+    color: #fff;
     width: 700px;
     padding: 0.5rem;
     font-weight: bold;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
-    background: white;
     left: calc(((100vw - 700px) / 2) - 0.5rem);
     @include modifier("view") {
       transform: translateY(8rem);

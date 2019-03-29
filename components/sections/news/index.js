@@ -19,8 +19,8 @@ const news = props => {
   let newsIndex = props.misc.currentEventObj;
   let newsEntry = props.misc.featuredNews[newsIndex];
   let image = newsEntry != null ? newsEntry.imageUrl : "";
-
-  let showEvents = props.misc.featuredNews.map((item, index) => {
+  // displaying the last 3
+  let showEvents = props.misc.featuredNews.slice(0, 3).map((item, index) => {
     let {
       body,
       category,
@@ -84,10 +84,6 @@ const news = props => {
           </div>
         </div>
         <div className="inline-flex w-full items-center flex py-2">
-          {/* <p className="px-2 sm:px-0 md:px-0 sm:w-full md:w-full text-sm sm:py-2 md:py-2 ">
-            <FontAwesomeIcon icon={faCalendarAlt} className="mr-2 opacity-25" />
-             {formatDate}{" "} 
-          </p> */}
           {location != null ? (
             <a
               aria-label="event-location"

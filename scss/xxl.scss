@@ -366,19 +366,26 @@
   }
 
   .dailyMessage {
-    text-align: center;
     transform: translateY(0rem);
     height: 3rem;
     transition: all 1s ease-in-out;
     -webkit-transition: all 1s ease-in-out;
     opacity: 0;
     z-index: 11;
+    text-transform: uppercase;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: #fff;
+    text-shadow: 0 2px 3px rgba(45, 45, 45, 0.69);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
     position: absolute;
     width: 1300px;
     padding: 0.5rem;
     font-weight: bold;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
-    background: white;
+    background: #cc515b;
     left: calc(((100vw - 1300px) / 2) - 0.5rem);
     @include modifier("view") {
       transform: translateY(8rem);
