@@ -78,12 +78,7 @@ option {
 select.sizeable-opt {
   font-size: 95%;
 }
-// svg {
-//   height: 100%;
-//   &:not(:root) {
-//     display: inline-block;
-//   }
-// }
+
 img {
   max-width: 100%;
 }
@@ -96,6 +91,15 @@ img {
 
 .shadow-text {
   text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.45);
+}
+
+.scale-item {
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+.scale-item:hover {
+  transform: scale(1.03);
+  transition: transform 0.3s ease;
 }
 
 .absolute-center {

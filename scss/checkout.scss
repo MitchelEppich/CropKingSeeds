@@ -17,22 +17,6 @@
   }
 }
 
-//EXAMPLE FONT FACE IMPORT WITH TWO WEIGHTS
-// @font-face {
-//     font-family: "proxima nova";
-//     src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff") format("truetype");
-//     font-weight: thin;
-//     font-style: normal;
-//     font-display: swap;
-// }
-// @font-face {
-//     font-family: "proxima nova";
-//     src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff") format("truetype");
-//     font-weight: normal;
-//     font-style: normal;
-//     font-display: swap;
-// }
-
 ////////////////
 // CHECKOUT PAGE
 .item-preview {
@@ -63,7 +47,6 @@
   position: absolute;
   top: -0.5em;
   left: 50%;
-  // margin-left: -0.25em;
   margin-left: -8px;
 }
 
