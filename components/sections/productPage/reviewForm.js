@@ -164,8 +164,8 @@ class reviewForm extends Component {
           </div>
           <div className="w-2/5 lg:w-full  lg:my-2 sm:w-full justify-center mr-auto flex md:w-full">
             <ReCAPTCHA
-              // size="normal"
-              size="invisible"
+              size="normal"
+              // size="invisible"
               sitekey="6LdVgJIUAAAAADf3mm-422DqVktwJJuPs5TB2578"
               ref="recaptchaRefReviews"
             />
