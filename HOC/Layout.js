@@ -154,7 +154,7 @@ class Layout extends Component {
       }
     });
     this.props.getFeaturedList({
-      limit: 5
+      limit: 6
     });
 
     if (this.props.checkout.viewCurrency == null)

@@ -25,7 +25,7 @@ const BannerCarousel = props => {
     }
     return (
       <React.Fragment key={index}>
-        <div className="w-24 arrowsBanner cursor-pointer ml-4 justify-start flex items-center absolute pin-y pin-l z-999 text-white sm:w-10 sm:text-xs sm:ml-1 md:w-10 md:text-xs md:ml-1">
+        <div className="w-16 text-white hover:text-red-light slowish opacity-25 hover:opacity-100 cursor-pointer ml-4 justify-start flex items-center absolute pin-y pin-l z-999 sm:w-10 sm:text-xs sm:ml-1 md:w-10 md:text-xs md:ml-1">
           <FontAwesomeIcon
             onClick={() => {
               props.changeBannerSlide({
@@ -52,7 +52,7 @@ const BannerCarousel = props => {
               direction: -1
             });
           }}
-          className="w-24 arrowsBanner cursor-pointer mr-4 justify-end flex items-center absolute pin-y pin-r z-999 text-white sm:w-10 sm:text-xs sm:mr-1 md:w-10 md:text-xs md:mr-1"
+          className="w-16 text-white hover:text-red-light slowish opacity-25 hover:opacity-100 cursor-pointer mr-4 justify-end flex items-center absolute pin-y pin-r z-999 sm:w-10 sm:text-xs sm:mr-1 md:w-10 md:text-xs md:mr-1"
         >
           <FontAwesomeIcon icon={faAngleRight} className="fa-4x" />
         </div>
