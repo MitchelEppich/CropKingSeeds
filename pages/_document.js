@@ -18,7 +18,11 @@ export default class MyDocument extends Document {
           <title>
             Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
           </title>
-          <meta charSet="utf-8" />
+          <meta charSet="utf-8" />{" "}
+          <meta
+            name="description"
+            content="Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
+          />
           <meta name="theme-color" content="#ef5753" />
           <meta
             name="viewport"
@@ -33,7 +37,6 @@ export default class MyDocument extends Document {
             name="copyright"
             content="© 2005 - 2019 Crop King Seeds. All Rights Reserved."
           />
-
           {/* <link rel="manifest" href="/_next/static/manifest.json" /> */}
           <link rel="stylesheet" href="/_next/static/style.css" />
           <link rel="icon" href="../static/favicon.ico" />

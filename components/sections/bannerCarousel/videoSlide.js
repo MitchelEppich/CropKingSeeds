@@ -36,15 +36,14 @@ const videoSlide = props => {
       />
     );
   });
-  console.log(props.slidePosition);
   return (
     <div
       style={{
         ...props.slidePosition
       }}
-      className="flex items-center flex justify-end w-full bg-grey-lightest absolute"
+      className="flex items-center flex justify-end w-full h-full bg-grey-lightest absolute"
     >
-      <div className="w-1/5 z-50 flex flex-wrap sm:hidden md:hidden mb-4 justify-around cursor-pointer pl-8">
+      <div className="w-1/5 z-50 flex flex-wrap sm:hidden md:hidden lg:hidden xl:hidden mb-4 justify-around cursor-pointer pl-8">
         {packages.slice(0, 3)}
       </div>
       <video
@@ -52,13 +51,13 @@ const videoSlide = props => {
           let self = document.querySelector("#video" + props.index);
           self.muted = !self.muted;
         }}
-        className="sm:w-full md:w-full md:mr-0 sm:mr-0 w-full lg:w-3/5 shadow-md flex justify-end"
+        className="sm:w-full md:w-full md:mr-0 sm:mr-0 w-full lg:w-4/5 lg:mx-auto xl:w-4/5 xl:mx-auto shadow-md flex justify-end "
         muted={true}
         loop
         id={"video" + props.index}
         src={props.$url}
       />
-      <div className="w-1/5 z-50 flex flex-wrap sm:hidden md:hidden mb-4 justify-around cursor-pointer pr-8">
+      <div className="w-1/5 z-50 flex flex-wrap sm:hidden md:hidden lg:hidden xl:hidden mb-4 justify-around cursor-pointer pr-8">
         {packages.slice(3)}
       </div>
     </div>
