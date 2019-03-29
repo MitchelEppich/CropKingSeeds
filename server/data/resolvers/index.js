@@ -46,7 +46,10 @@ const resolvers = {
       return (await BlockedZip.find({})).map(a => a.value);
     },
     allFeaturedNews: async _ => {
-      return News.find({ featured: true });
+      let news = (await News.find({ featured: true })).sort((a, b) => {
+        return moment(b.date).diff(a.date, "days");
+      });
+      return news;
     },
     getBanners: async _ => {
       return (await Banners.find({}))[0].value;
