@@ -132,7 +132,7 @@ class Layout extends Component {
               );
             });
             if (index < 0) {
-              Router.push("/_error", "/404/product/" + qr);
+              Router.push("/_error", "/404");
             }
             this.props
               .getStrain({

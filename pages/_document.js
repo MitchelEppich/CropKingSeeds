@@ -15,9 +15,6 @@ export default class MyDocument extends Document {
     return (
       <html lang="en">
         <Head>
-          <title>
-            Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
-          </title>
           <meta charSet="utf-8" />{" "}
           <meta
             name="description"

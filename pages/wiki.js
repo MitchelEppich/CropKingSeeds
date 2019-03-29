@@ -1,6 +1,7 @@
 //lib
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Head from "next/head";
 //custom
 import withData from "../lib/withData";
 import actions from "../store/actions";
@@ -37,6 +38,12 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
+        <Head>
+          <title>
+            Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
+          </title>
+          <meta name="robots" content="index, follow" />
+        </Head>
         <div className="flex py-24 w-3/4 mx-auto min-h-screen">
           <Menu {...this.props} />
           <Content {...this.props} />
