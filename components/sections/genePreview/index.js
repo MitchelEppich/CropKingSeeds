@@ -59,7 +59,10 @@ const GenePreview = props => {
     return (
       <Link prefetch href="/shop" key={index}>
         <div
-          style={{ position: "relative", backgroundImage: val.background }}
+          style={{
+            position: "relative",
+            backgroundImage: val.background
+          }}
           onClick={() => {
             props.toggleFilter({
               filter: props.shop.activeFilters,
