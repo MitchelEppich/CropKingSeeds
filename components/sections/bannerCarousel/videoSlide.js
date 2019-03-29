@@ -36,7 +36,7 @@ const videoSlide = props => {
       />
     );
   });
-  console.log(props.slidePosition);
+  // console.log(props.slidePosition);
   return (
     <div
       style={{

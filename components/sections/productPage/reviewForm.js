@@ -6,7 +6,6 @@ import { faCannabis } from "@fortawesome/free-solid-svg-icons";
 import {} from "@fortawesome/free-brands-svg-icons";
 
 import ReCAPTCHA from "react-google-recaptcha";
-
 class reviewForm extends Component {
   render() {
     let _review = this.props.viewProduct.review;
@@ -154,7 +153,7 @@ class reviewForm extends Component {
           />
         </div>
         <div className="w-full inline-flex lg:flex-col flex-wrap sm:block md:block">
-          <div className="w-3/5 lg:w-full lg:justify-center lg:my-2 sm:w-full md:w-full md:mx-0 content-center flex mt-2">
+          <div className="lg:w-full lg:justify-center lg:my-2 sm:w-full md:w-full md:mx-0 content-center flex mt-2">
             <p className="flex items-center mr-2 text-sm font-bold sm:text-sm sm:mx-auto">
               {" "}
               <span className="text-base text-grey-light opacity-75 font-bold mr-2">
@@ -163,23 +162,26 @@ class reviewForm extends Component {
               {reviewIcons}
             </p>
           </div>
-          <div className="w-2/5 lg:w-full lg:justify-center lg:my-2 sm:w-full justify-center mr-auto flex md:w-full md:justify-center">
+          <div className="w-2/5 lg:w-full  lg:my-2 sm:w-full justify-center mr-auto flex md:w-full">
             <ReCAPTCHA
-              // size="invisible"
+              // size="normal"
+              size="invisible"
               sitekey="6LdVgJIUAAAAADf3mm-422DqVktwJJuPs5TB2578"
               ref="recaptchaRefReviews"
             />
           </div>
-          <button
-            className={`w-1/2 sm:w-full sm:mt-6 md:w-full md:mt-4 mt-4 mx-auto p-2 mt-2 text-xl hover:bg-red-light bg-red-dark text-lg text-white rounded cursor-pointer ${
-              _review.rating == null
-                ? "opacity-50 unselectable pointer-events-none"
-                : ""
-            }`}
-            type="submit"
-          >
-            Submit
-          </button>
+          <div className="justify-center flex">
+            <button
+              className={`w-200 h-10 sm:w-full sm:mt-6 md:w-full md:mt-4 mt-4 mx-auto p-2 mt-2 text-xl hover:bg-red-light bg-red-dark text-lg text-white rounded cursor-pointer ${
+                _review.rating == null
+                  ? "opacity-50 unselectable pointer-events-none"
+                  : ""
+              }`}
+              type="submit"
+            >
+              Submit
+            </button>
+          </div>
         </div>
       </form>
     );

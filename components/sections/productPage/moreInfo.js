@@ -23,7 +23,7 @@ const moreInfo = props => {
           duis sint excepteur duis dolor.
           <br />
         </p>
-        <video
+        {/* <video
           className="mb-4 mt-2 w-3/5 px-5 md:px-2 xm:px-2 sm:w-full h-full md:w-full lg:w-full"
           controls
           width="600"
@@ -31,7 +31,7 @@ const moreInfo = props => {
           <source src="/media/examples/flower.webm" type="video/webm" />
           <source src="/media/examples/flower.mp4" type="video/mp4" />
           Sorry, your browser doesn't support embedded videos.
-        </video>
+        </video> */}
       </div>
       <p className="p-2">
         Labore et proident incididunt veniam labore id adipisicing nostrud elit

@@ -417,12 +417,20 @@
     -webkit-transition: all 1s ease-in-out;
     opacity: 0;
     z-index: 11;
+    text-transform: uppercase;
+    align-items: center;
+    justify-content: center;
+    display: flex;
     position: absolute;
     width: 505px;
     padding: 0.5rem;
     font-weight: bold;
+    text-shadow: 0 2px 3px rgba(45, 45, 45, 0.69);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
-    background: white;
+    background: #cc515b;
+    color: #fff;
     left: calc(((100vw - 505px) / 2) - 0.5rem);
     @include modifier("view") {
       transform: translateY(8rem);
