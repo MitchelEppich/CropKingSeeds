@@ -30,6 +30,7 @@
     "email-templates": "^5.0.4",
     "emit-file-loader": "^0.0.2",
     "express": "^4.16.3",
+    "express-lowercase-paths": "^1.0.0",
     "file-loader": "^3.0.1",
     "frameguard": "^3.0.0",
     "fs": "^0.0.1-security",

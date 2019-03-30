@@ -7,6 +7,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const helmet = require("helmet");
 const frameguard = require("frameguard");
+const lowercasePaths = require("express-lowercase-paths");
+const { parse } = require("url");
 const compression = require("compression");
 const express = require("express");
 const mongoose = require("mongoose");
@@ -44,8 +46,8 @@ app
   .then(async () => {
     const server = express();
 
+    ////////////
     //middleware
-    server.use(helmet());
     server.use(
       helmet({
         frameguard: {
@@ -53,7 +55,40 @@ app
         }
       })
     );
-    server.use(frameguard({ action: "deny" }));
+    //Need to get rid of tawkto before configuring properly
+    // server.use(
+    //   helmet.contentSecurityPolicy({
+    //     directives: {
+    //       defaultSrc: ["'self'"],
+    //       scriptSrc: [
+    //         "'self'",
+    //         "https://cdn.jsdelivr.net/emojione/2.2.7/lib/js/emojione.min.js",
+    //         "https://embed.tawk.to/5ae8bd0d5f7cdf4f0533c472/default",
+    //         "https://apis.google.com "
+    //       ],
+    //       styleSrc: [
+    //         "'self'",
+    //         "https://fonts.googleapis.com/",
+    //         "https://embed.tawk.to/5ae8bd0d5f7cdf4f0533c472/default",
+    //         "https://cdn.jsdelivr.net/emojione/2.2.7/assets/css/emojione.min.css"
+    //       ],
+    //       fontSrc: ["'self'", "https://fonts.gstatic.com/"],
+    //       imgSrc: [
+    //         "'self'",
+    //         "http://dcfgweqx7od72.cloudfront.net/",
+    //         "https://static-v.tawk.to/a-v3-47/images/"
+    //       ],
+    //       connectSrc: [
+    //         "'self'",
+    //         "https://static-v.tawk.to/a-v3-47/audio/",
+    //         "https://va.tawk.to/register/",
+    //         "https://vs22.tawk.to/",
+    //         "wss://vs22.tawk.to/s/",
+    //         "https://vs62.tawk.to"
+    //       ]
+    //     }
+    //   })
+    // );
     server.use(compression());
     server.use(
       cors({
@@ -65,23 +100,25 @@ app
         maxAge: "365d"
       })
     );
-    // server.get("/*", function(req, res, next) {
-    //   if (req.headers.host.match(/^www/) !== null) {
-    //     res.redirect(
-    //       "http://" + req.headers.host.replace(/^www\./, "") + req.url
-    //     );
-    //   } else {
-    //     next();
-    //   }
-    // });
-    // server.use(function(req, res, next) {
-    //   res.setHeader(
-    //     "Content-Security-Policy",
-    //     "script-src https://apis.google.com https://embed.tawk.to/5ae8bd0d5f7cdf4f0533c472/default https://cdn.jsdelivr.net/emojione/2.2.7/lib/js/emojione.min.js"
-    //   );
-    //   return next();
-    // });
-
+    //lowercase urls
+    server.use(lowercasePaths());
+    //ignore trailing slash
+    server.use((req, res, next) => {
+      const test = /\?[^]*\//.test(req.url);
+      if (req.url.substr(-1) === "/" && req.url.length > 1 && !test)
+        res.redirect(301, req.url.slice(0, -1));
+      else next();
+    });
+    // redirect www
+    server.get("/*", function(req, res, next) {
+      if (req.headers.host.match(/^www/) !== null) {
+        res.redirect(
+          "http://" + req.headers.host.replace(/^www\./, "") + req.url
+        );
+      } else {
+        next();
+      }
+    });
     //sitemap
     let strains = await resolvers.Query.allStrains(null, { filter: null });
     let sitemapStrains = strains.map((strain, index) => {
@@ -102,6 +139,7 @@ app
       });
     });
 
+    ////////
     //routes
     server.get("/robots.txt", (req, res) => {
       app.serveStatic(req, res, path.resolve("./static/robots.txt"));

@@ -30,8 +30,11 @@ module.exports = strains => {
         fileObj[`/${cleanFileName}`] = {
           page: `/${cleanFileName}`,
           lastModified: fileStat.mtime,
-          changefreq: "weekly",
-          priority: 1.0
+          changefreq: "monthly",
+          priority: 0.6,
+          imageLoc:
+            "http://dcfgweqx7od72.cloudfront.net/logos/cks-logo-header.png",
+          name: "Crop King Seeds"
         };
         return;
       }
@@ -39,7 +42,6 @@ module.exports = strains => {
         const filePath = `${dir}${file}`;
         const fileStat = fs.statSync(filePath);
         for (let i = 0; i < strains.length; i++) {
-          if (i == 1) console.log(strains[i]._doc.sotiId);
           const fileName =
             filePath
               .substr(0, filePath.lastIndexOf("."))
@@ -53,7 +55,7 @@ module.exports = strains => {
             page: `/${fileName}`,
             lastModified: fileStat.mtime,
             changefreq: "monthly",
-            priority: 0.6,
+            priority: 0.8,
             imageLoc:
               "http://dcfgweqx7od72.cloudfront.net/packages/" +
               strains[i]._doc.sotiId +

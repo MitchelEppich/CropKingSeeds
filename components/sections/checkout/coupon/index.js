@@ -136,7 +136,7 @@ const Coupon = props => {
             </div>
           ) : null}
         </div>
-        <div className="w-2/3 lg:w-full md:w-full sm:w-full flex justify-end sm:mt-3">
+        <div className="w-2/3 xxl:w-full lg:w-full md:w-full sm:w-full flex justify-end sm:mt-3">
           <div className="w-full text-right xl:ml-2 xxl:ml-2">
             <div className="text-center text-xl md:text-lg md:ml-2 inline-flex items-center flex">
               <p className="text-grey-light font-bold uppercase">Subtotal: </p>

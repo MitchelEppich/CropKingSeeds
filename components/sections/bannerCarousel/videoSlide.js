@@ -13,10 +13,12 @@ const videoSlide = props => {
             props.setCurrentProduct({ product: res }).then(() => {
               let product = props.viewProduct.currentProduct;
               let _index = 0;
-              while (product.price[_index] == -1) {
-                _index++;
+              if (product) {
+                while (product.price[_index] == -1) {
+                  _index++;
+                }
+                props.quickAddToCartQty(_index);
               }
-              props.quickAddToCartQty(_index);
             });
           });
         }}
@@ -27,7 +29,7 @@ const videoSlide = props => {
             "/product/" + strain.name.toLowerCase().replace(/ /g, "-")
           );
         }}
-        className="xxl:h-40 xxl:mx-6 h-250 lg:h-200 my-2 scale-item"
+        className="xxl:h-40 xxl:mx-6 h-250 lg:h-200 my-2 scale-item cursor-pointer"
         src={props.misc.CFURL + "/packages/" + strain.sotiId + ".png"}
         style={{
           zIndex: "30",

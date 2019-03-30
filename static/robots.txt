@@ -1,5 +1,4 @@
 User-agent: *
 Disallow: /checkout/
-Allow: /shop/
 
 Sitemap: https://www.cropkingseeds.com/static/sitemap.xml

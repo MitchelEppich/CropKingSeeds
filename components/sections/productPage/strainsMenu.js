@@ -113,8 +113,9 @@ const strainsMenu = props => {
       : "mt-halfScreen h-32 bg-red-darker";
   let verticalOpenPosition =
     window.innerHeight < 700
-      ? "mt-32 h-10 bg-red-darker"
-      : "mt-32 h-10 bg-red-darker";
+      ? "mt-48 h-10 bg-red-darker"
+      : "mt-48 h-10 bg-red-darker";
+
   return (
     <div
       style={position}

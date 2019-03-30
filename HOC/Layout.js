@@ -183,7 +183,9 @@ class Layout extends Component {
     return this.props.misc.strains != null ? (
       <React.Fragment>
         <Head>
-          {this.state.isClient && Router.asPath.includes("product") ? (
+          {this.state.isClient &&
+          Router.asPath.includes("product") &&
+          this.props.viewProduct.currentProduct ? (
             <React.Fragment>
               <meta name="robots" content="index, follow" />
               <meta
