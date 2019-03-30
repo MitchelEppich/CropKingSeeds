@@ -72,6 +72,8 @@ const resolvers = {
         )
       )["Data"];
 
+      console.log(res);
+
       // Check if code exists
       if (res.NoCode._text == "1") return { error: "Invalid Code Entered" };
 
@@ -98,6 +100,12 @@ const resolvers = {
         }
         return {};
       })();
+
+      // Check if code is before date
+      if (startDate != null && moment().diff(startDate, "days") < 0)
+        return {
+          error: "Coupon is valid on " + moment(startDate).format("LL")
+        };
 
       // Check if code is within set date
       if (

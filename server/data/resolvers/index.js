@@ -47,7 +47,7 @@ const resolvers = {
     },
     allFeaturedNews: async _ => {
       let news = (await News.find({ featured: true })).sort((a, b) => {
-        return moment(b.date).diff(a.date, "days");
+        return moment(a.date).diff(b.date, "days");
       });
       return news;
     },
@@ -245,6 +245,7 @@ const resolvers = {
       let { pivotal, bambora } = await getProcessorUsage();
       let _amount = parseFloat(input.amount);
       let response;
+
       if (
         input.country.toLowerCase() == "canada" &&
         (bambora.limit == -1 || bambora.available - _amount > 0)
@@ -326,18 +327,17 @@ let processPivotal = async input => {
     }
   };
 
+  let $res = await axios({
+    method: "post",
+    headers: {
+      "Content-Type": "text/xml"
+    },
+    url: "https://payments.globalone.me/merchant/xmlpayment",
+    data: toXML(content)
+  });
+
   let res = JSON.parse(
-    convert.xml2json(
-      (await axios({
-        method: "post",
-        headers: {
-          "Content-Type": "text/xml"
-        },
-        url: "https://payments.globalone.me/merchant/xmlpayment",
-        data: toXML(content)
-      })).data,
-      { compact: true, spaces: 4 }
-    )
+    convert.xml2json($res.data, { compact: true, spaces: 4 })
   )["PAYMENTRESPONSE"];
 
   return {
