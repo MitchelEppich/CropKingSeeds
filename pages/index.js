@@ -87,7 +87,8 @@ const mapDispatchToProps = dispatch => {
     getStrain: input => dispatch(actions.getStrain(input)),
     setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
     quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
-    toggleCartMenu: input => dispatch(actions.toggleCartMenu(input))
+    toggleCartMenu: input => dispatch(actions.toggleCartMenu(input)),
+    toggleMute: () => dispatch(actions.toggleMute())
   };
 };
 

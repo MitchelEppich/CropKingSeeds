@@ -168,7 +168,7 @@ const strainsMenu = props => {
         <p className="bg-red-dark text-white text-center uppercase text-xl p-2 absolute w-full font-bold">
           All Strains
         </p>
-        <div className="overflow-y-auto w-full h-full">{showStrainsMenu()}</div>
+        <div className="overflow-y-auto w-full h-full pb-4">{showStrainsMenu()}</div>
       </div>
     </div>
   );

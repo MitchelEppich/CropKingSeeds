@@ -4,7 +4,8 @@ import {
   faSignInAlt,
   faArrowRight,
   faAngleRight,
-  faCog
+  faCog,
+  faCogs
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -18,7 +19,7 @@ import {
 const Footer = props => {
   let imgKingFooter = {
     filter: "drop-shadow(0px 4px 13px rgba(0, 0, 0, 0.5))",
-    width: "180px",
+    width: "170px",
     height: "auto"
   };
 
@@ -27,9 +28,33 @@ const Footer = props => {
       onClick={() => props.toggleStrainsMenu(false)}
       className="w-full border-b-8 border-grey-darker mt-10 bg-grey inline-flex justify-between xxl:px-12 xl:px-12 sm:block md:block lg:block relative pb-1 sm:pb-0 md:pb-0 lg:pb-0"
     >
-      {" "}
-      <div className="mx-auto inline-flex sm:block md:block w-1300 sm:w-full md:w-full lg:w-full">
-        <div className="w-1/8 sm:w-full md:w-full lg:w-full sm:hidden md:hidden lg:hidden xl:hidden">
+      <div className="mx-auto inline-flex sm:block md:block w-1300 sm:w-full md:w-full lg:w-full relative">
+        {/* <div className="absolute sm:hidden md:hidden w-200 mx-auto pin-t pin-r pt-3 -mt-10 bg-grey text-white p-2">
+          <div className="w-full flex justify-around items-center">
+            <label className="uppercase cursor-pointer text-white hover:text-red font-bold flex justify-around items-center w-full">
+              <FontAwesomeIcon
+                icon={faCog}
+                className="mr-1 fa-lg text-grey-light"
+              />{" "}
+              Low GPU Mode
+              <input
+                aria-label="lowGPUMode"
+                onChange={() => {
+                  props.toggleLowGPUMode(!props.misc.lowGPUMode);
+                }}
+                type="checkbox"
+                style={{
+                  height: "18px",
+                  width: "18px"
+                }}
+                className="ml-2 cursor-pointer"
+                defaultChecked={props.misc.lowGPUMode}
+                value={props.misc.lowGPUMode || false}
+              />
+            </label>
+          </div>
+        </div> */}
+        <div className="sm:w-full md:w-full lg:w-full sm:hidden md:hidden lg:hidden xl:hidden">
           {" "}
           <img
             style={imgKingFooter}
@@ -38,7 +63,7 @@ const Footer = props => {
             className="mt-8"
           />
         </div>
-        <div className="mt-6 sm:pb-4 xl:pl-0 sm:pt-4 md:pt-10 pl-6 w-1/4 lg:w-1/2 lg:pl-6 md:w-full sm:w-full sm:pl-0 md:pl-0 sm:block md:block">
+        <div className="mt-6 sm:pb-4 xl:pl-0 sm:pt-4 md:pt-10 w-1/4 lg:w-1/2 lg:pl-6 md:w-full sm:w-full sm:pl-0 md:pl-0 sm:block md:block">
           {" "}
           <h3 className="text-red p-1 text-center pl-2 uppercase text-2xl font-extrabold sm:pl-0 md:pl-0 sm:text-center md:text-center">
             Menu
@@ -64,7 +89,7 @@ const Footer = props => {
                 href="/contact"
               >
                 {/* <Link href="/contact"> */}
-                <p className="sm:w-full md:w-full text-xl lg:text-lg p-2 md:text-lg hover:text-grey-light cursor-pointer md:text-right sm:text-right">
+                <p className="sm:w-full md:w-full text-xl lg:text-lg p-2 md:text-lg hover:text-grey-light cursor-pointer whitespace-no-wrap md:text-right sm:text-right">
                   Contact Us
                 </p>
                 {/* </Link>{" "} */}
@@ -106,7 +131,7 @@ const Footer = props => {
                 {/* </Link>{" "} */}
               </a>
             </div>
-            <div className="ml-4 w-1/2 text-left sm:flex sm:ml-0 sm:flex-wrap md:flex md:flex-wrap">
+            <div className="ml-4 xl:ml-0 w-1/2 text-left sm:flex sm:ml-0 sm:flex-wrap md:flex md:flex-wrap">
               <a
                 aria-label="affiliates"
                 className="text-white sm:w-full md:w-full text-xl lg:text-lg md:text-lg   hover:text-grey-light cursor-pointer"
@@ -126,7 +151,7 @@ const Footer = props => {
                 href="/privacy"
               >
                 {/* <Link href="/privacy"> */}
-                <p className="sm:w-full md:w-full text-xl lg:text-lg p-2 md:text-lg  hover:text-grey-light cursor-pointer">
+                <p className="sm:w-full md:w-full text-xl lg:text-lg p-2 md:text-lg  hover:text-grey-light cursor-pointer whitespace-no-wrap">
                   Privacy/TOS
                 </p>
                 {/* </Link> */}
@@ -187,7 +212,7 @@ const Footer = props => {
                 props.subscribeToNewsletter({ email: formData.get("email") });
                 props.setEmail({ email: null });
               }}
-              className="inline-flex relative w-container lg:w-2/3 lg:mx-auto rounded-tr rounded-br h-10 items-center mt-4 md:mb-6 sm:mb-6 overflow-hidden"
+              className="inline-flex relative w-3/5 lg:w-2/3 lg:mx-auto rounded-tr rounded-br h-10 items-center mt-4 md:mb-6 sm:mb-6 overflow-hidden"
             >
               <input
                 type="email"
@@ -214,11 +239,14 @@ const Footer = props => {
                 type="submit"
                 className="absolute pin-r pl-2 h-10  bg-red-darker text-white cursor-pointer hover:bg-grey-light hover:text-red-darker w-16"
               >
-                <FontAwesomeIcon icon={faAngleRight} className="fa-2x h-10 " />
+                <FontAwesomeIcon
+                  icon={faAngleRight}
+                  className="fa-2x h-10 "
+                />
               </button>
             </form>
           ) : (
-            <p className="text-2xl font-bold text-red-light mt-8">
+            <p className="text-2xl font-bold text-red mt-8">
               Thank you for subscribing!
             </p>
           )}
@@ -227,14 +255,24 @@ const Footer = props => {
             className="p-2 px-8 bg-yellow-dark text-white text-2xl w-container mt-2 mx-auto rounded font-bold text-center cursor-pointer hover:bg-grey-light">
             Subscribe
           </div> */}
-          <p className="p-2 mt-12 w-container mx-auto text-center sm:hidden md:hidden text-base lg:hidden font-bold">
+          <p className="p-2 mt-8 w-container mx-auto text-center sm:hidden md:hidden text-base lg:hidden">
             Copyright © 2019 Crop King Seeds
           </p>
         </div>
-        <div className="p-2 mr-4 w-1/5 xl:w-1/4 sm:w-full md:w-full lg:w-1/3 sm:mx-0 md:mx-0 sm:p-0 md:p-0 sm:block md:block lg:hidden lg:w-1/8 md:mt-8 pt:mt-8">
-          {" "}
-          <div className="mt-4 text-white sm:text-center md:text-center lg:text-center text-center">
-            <h3 className="text-red  p-1 text-center font-extrabold text-2xl uppercase sm:text-center md:text-center lg:text-center">
+        <div className="p-2 w-1/5 xl:w-1/4 sm:w-full md:w-full lg:w-1/3 sm:mx-0 md:mx-0 sm:p-0 md:p-0 sm:block md:block lg:hidden lg:w-1/8 md:mt-8 pt:mt-8">
+          <div className="w-225 bg-red-darker p-1 flex justify-center md:hidden sm:hidden mx-auto items-center mt-4">
+            <p
+              onClick={() => {
+                props.toggleLowGPUMode(!props.misc.lowGPUMode);
+              }}
+              className="uppercase cursor-pointer text-white hover:text-grey font-bold flex justify-center items-center w-full text-lg"
+            >
+              <FontAwesomeIcon icon={faCog} className="mr-2 fa-lg" />
+              Animations {!props.misc.lowGPUMode ? "On" : "Off"}
+            </p>
+          </div>
+          <div className="mt-2 text-white sm:text-center md:text-center lg:text-center text-center">
+            <h3 className="text-red p-1 text-center font-extrabold text-2xl uppercase sm:text-center md:text-center lg:text-center">
               Follow us
             </h3>
             <div className="pl-2 inline-flex mt-1 sm:w-full sm:mx-auto sm:justify-center md:w-full md:mx-auto md:justify-center md:text-right sm:text-right">
@@ -288,30 +326,11 @@ const Footer = props => {
               </a>
             </div>
           </div>
-          <div className="sm:hidden md:hidden h-10 my-1 w-full pt-5 flex justify-center items-center">
-            <label className="text-red uppercase cursor-pointer hover:text-red-dark  font-bold mr-4">
-              <FontAwesomeIcon
-                icon={faCog}
-                className="text-grey-light mr-1 fa-lg mt-1"
-              />{" "}
-              Low GPU Mode
-              <input
-                aria-label="lowGPUMode"
-                onChange={() => {
-                  props.toggleLowGPUMode(!props.misc.lowGPUMode);
-                }}
-                type="checkbox"
-                className="ml-1 mt-1"
-                defaultChecked={props.misc.lowGPUMode}
-                value={props.misc.lowGPUMode || false}
-              />
-            </label>
-          </div>
           <div className="sm:mt-12 md:mt-12 pt-2 text-center sm:text-center md:text-center lg:text-center">
             <h3 className="text-red mt-2 p-1 text-center font-extrabold text-2xl uppercase ">
               Contact us
             </h3>
-            <p className="text-white text-lg p-1 lg:text-lg">
+            <p className="text-white text-base p-1">
               <a
                 className="text-white hover:text-red"
                 href="mailto:info@cropkingseeds.com"
@@ -320,7 +339,7 @@ const Footer = props => {
               </a>
             </p>
             <a className="no-underline" href="tel:+1-844-276-7546">
-              <p className="text-white text-lg p-1 lg:text-lg">
+              <p className="text-white text-base p-1 hover:text-red">
                 {props.misc.ageVerification != null &&
                 "United States" == props.misc.ageVerification.country ? (
                   <React.Fragment>
@@ -337,7 +356,7 @@ const Footer = props => {
         </div>
       </div>
       <div className="w-full xl:hidden xxl:hidden">
-        <p className="p-3 mt-4 w-full text-center text-white bg-grey-dark font-bold xl:hidden xxl:hidden md:mt-8 sm:mt-8">
+        <p className="p-3 mt-4 w-full text-center text-white bg-grey-dark xl:hidden xxl:hidden md:mt-8 sm:mt-8">
           Copyright © 2019 Crop King Seeds
         </p>{" "}
       </div>

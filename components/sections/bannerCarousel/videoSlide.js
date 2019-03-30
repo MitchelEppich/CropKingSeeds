@@ -1,5 +1,11 @@
 import Router from "next/router";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faVolumeMute,
+  faVolumeOff,
+  faVolumeUp
+} from "@fortawesome/free-solid-svg-icons";
 
 const videoSlide = props => {
   let strains =
@@ -36,27 +42,42 @@ const videoSlide = props => {
       />
     );
   });
+
+  let self = document.querySelector("#video" + props.index);
   return (
     <div
       style={{
         ...props.slidePosition
       }}
-      className="flex items-center flex justify-end w-full h-full bg-grey-lightest absolute"
+      className="flex items-center flex justify-end w-full h-full bg-white absolute shadow-md"
     >
       <div className="w-1/5 z-50 flex flex-wrap sm:hidden md:hidden lg:hidden xl:hidden mb-4 justify-around cursor-pointer pl-8">
         {packages.slice(0, 3)}
       </div>
-      <video
-        onClick={() => {
-          let self = document.querySelector("#video" + props.index);
-          self.muted = !self.muted;
-        }}
-        className="sm:w-full md:w-full md:mr-0 sm:mr-0 w-full lg:w-4/5 lg:mx-auto xl:w-4/5 xl:mx-auto shadow-md flex justify-end "
-        muted={true}
-        loop
-        id={"video" + props.index}
-        src={props.$url}
-      />
+      <div className="w-full relative">
+        <video
+          onClick={() => {
+            props.toggleMute();
+          }}
+          className="sm:w-full md:w-full md:mr-0 sm:mr-0 w-full lg:w-4/5 lg:mx-auto xl:w-4/5 xl:mx-auto shadow-md flex justify-end "
+          muted={props.misc.muted}
+          loop
+          id={"video" + props.index}
+          src={props.$url}
+          playsInline
+        />
+        <div
+          onClick={() => {
+            props.toggleMute();
+          }}
+          className="absolute pin-r pin-b mr-2 mb-2 scale-item"
+        >
+          <FontAwesomeIcon
+            icon={props.misc.muted ? faVolumeMute : faVolumeUp}
+            className="text-white text-shadow fa-2x pr-1 cursor-pointer"
+          />
+        </div>
+      </div>
       <div className="w-1/5 z-50 flex flex-wrap sm:hidden md:hidden lg:hidden xl:hidden mb-4 justify-around cursor-pointer pr-8">
         {packages.slice(3)}
       </div>
