@@ -72,8 +72,6 @@ const resolvers = {
         )
       )["Data"];
 
-      console.log(res);
-
       // Check if code exists
       if (res.NoCode._text == "1") return { error: "Invalid Code Entered" };
 

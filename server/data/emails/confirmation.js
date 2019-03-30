@@ -15,7 +15,7 @@ exports.confirmation = input => {
 
   return {
     from: "info@cropkingseeds.com",
-    to: "adamsmithvci@gmail.com",
+    to: input.email,
     subject: input.subject,
     html: `<!DOCTYPE html>
 <html lang="en">

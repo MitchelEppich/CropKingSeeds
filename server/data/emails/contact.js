@@ -8,7 +8,7 @@ exports.contact = input => {
   //           recipient = "vanessa@vancoastind.com";
   return {
     from: input.email,
-    to: "mitchel@vancoastind.com, adamsmithvci@gmail.com",
+    to: "jenn@vancoastind.com",
     recipient,
     subject: "CropKingSeeds.com Contact Form: " + input.subject,
     html: `
