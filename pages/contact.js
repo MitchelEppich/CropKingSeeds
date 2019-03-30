@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ReCAPTCHA from "react-google-recaptcha";
+import Head from "next/head";
 // custom
 import withData from "../lib/withData";
 import actions from "../store/actions";
@@ -34,6 +35,12 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
+        <Head>
+          <title>
+            Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
+          </title>
+          <meta name="robots" content="index, follow" />
+        </Head>
         <div className="pt-1">
           <div className="w-full p-2 pb-12">
             <Heading {...this.props} />

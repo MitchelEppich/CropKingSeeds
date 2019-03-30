@@ -19,10 +19,7 @@ const slide = props => {
       window.target = "_blank";
       window.open(props.url);
     } else {
-      Router.push(
-        "/product",
-        "/product/" + props.url.toLowerCase().replace(/ /g, "-")
-      );
+      Router.push("/product", props.url);
     }
   };
 
@@ -35,10 +32,12 @@ const slide = props => {
           props.setCurrentProduct({ product: res }).then(() => {
             let product = props.viewProduct.currentProduct;
             let _index = 0;
-            while (product.price[_index] == -1) {
-              _index++;
+            if (product) {
+              while (product.price[_index] == -1) {
+                _index++;
+              }
+              props.quickAddToCartQty(_index);
             }
-            props.quickAddToCartQty(_index);
           });
         });
       }}
@@ -51,7 +50,7 @@ const slide = props => {
         backgroundPosition: "top"
       }}
       className={
-        "xxl:h-600 xl:h-400 lg:h-300 md:h-250 sm:h-40 w-full z-0 absolute"
+        "xxl:h-600 xl:h-400 lg:h-300 md:h-250 sm:h-40 w-full z-0 absolute cursor-pointer"
       }
     />
   );

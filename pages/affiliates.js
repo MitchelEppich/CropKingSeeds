@@ -15,7 +15,10 @@ class Index extends Component {
     return (
       <Layout {...this.props}>
         <Head>
-          <meta name="robots" content="index, nofollow" />
+          <title>
+            Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
+          </title>
+          <meta name="robots" content="index, follow" />
         </Head>
         <div className="flex flex-wrap justify-around pb-12">
           <div className="h-full">

@@ -132,7 +132,7 @@ class Layout extends Component {
               );
             });
             if (index < 0) {
-              Router.push("/_error", "/404/product/" + qr);
+              Router.push("/_error", "/404");
             }
             this.props
               .getStrain({
@@ -180,27 +180,57 @@ class Layout extends Component {
   }
 
   render() {
-    // let viewMessage = this.props.misc.viewMessage
-    //   ? {
-    //       transform: "translateY(8rem)",
-    //       height: "3rem",
-    //       transition: "all 1s ease-in-out",
-    //       WebkitTransition: "all 1s ease-in-out",
-    //       opacity: "1",
-    //       zIndex: "11",
-    //       position: "absolute"
-    //     }
-    //   : {
-    //       transform: "translateY(8rem)",
-    //       height: "3rem",
-    //       transition: "all 1s ease-in-out",
-    //       WebkitTransition: "all 1s ease-in-out",
-    //       opacity: "0",
-    //       zIndex: "11",
-    //       position: "absolute"
-    //     };
     return this.props.misc.strains != null ? (
       <React.Fragment>
+        <Head>
+          {this.state.isClient &&
+          Router.asPath.includes("product") &&
+          this.props.viewProduct.currentProduct ? (
+            <React.Fragment>
+              <meta name="robots" content="index, follow" />
+              <meta
+                id="og-title"
+                property="og:title"
+                content={this.props.viewProduct.currentProduct.name}
+              />
+              <meta
+                id="og-url"
+                property="og:url"
+                content={window.location.href}
+              />
+              <meta id="og-locale" property="og:locale" content="en_US" />
+              <meta
+                id="og-description"
+                property="og:description"
+                content={this.props.viewProduct.currentProduct.description}
+              />
+              <meta
+                id="og-image"
+                property="og:image"
+                content={
+                  "http://dcfgweqx7od72.cloudfront.net" +
+                  this.props.viewProduct.currentProduct.images[0]
+                }
+              />
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <meta
+                property="og:title"
+                content="Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds"
+              />
+              <meta property="og:type" content="The type" />
+              <meta
+                property="og:url"
+                content={"http://cropkingseeds.com/" + Router.asPath}
+              />
+              <meta
+                property="og:image"
+                content="http://dcfgweqx7od72.cloudfront.net/logos/cks-logo-header.png"
+              />
+            </React.Fragment>
+          )}
+        </Head>
         {this.props.viewProduct.currentProduct &&
         this.props.viewProduct.imageZoom ? (
           <ImageZoom {...this.props} />
@@ -218,13 +248,6 @@ class Layout extends Component {
           ) : ( */}
           <React.Fragment>
             <Header {...this.props} />
-            {/* <div
-              style={viewMessage}
-              className="w-1300 xl:w-900 lg:w-700 mx-auto bg-white border-b border-red-light border-l border-r p-2 font-bold shadow-md slow"
-            >
-              {this.props.misc.dailyMessage}
-            </div> */}
-
             <HeaderMessage {...this.props} />
             {this.state.showNewCustomerPopUp ? (
               <PopUpBanner {...this.props} />
@@ -250,7 +273,6 @@ class Layout extends Component {
                   icon={faComments}
                   className="ml-2 fa-2x cursor-pointer"
                 />
-                {/* <h3>CHAT</h3> */}
               </div>
               <div
                 style={{

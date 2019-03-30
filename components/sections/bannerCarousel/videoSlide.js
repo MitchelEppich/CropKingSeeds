@@ -2,22 +2,24 @@ import Router from "next/router";
 import Link from "next/link";
 
 const videoSlide = props => {
-  let strains =
-    props.misc.featuredStrains > 0
-      ? props.misc.featuredStrains
-      : props.misc.strains;
+  let strains = props.misc.strains;
   let packages = strains.slice(0, 6).map((strain, index) => {
     return (
       <img
         key={index}
         onMouseEnter={() => {
-          props.setCurrentProduct({ product: strain }).then(() => {
-            let product = props.viewProduct.currentProduct;
-            let _index = 0;
-            while (product.price[_index] == -1) {
-              _index++;
-            }
-            props.quickAddToCartQty(_index);
+          if (props.sotiId == null) return;
+          props.getStrain({ sotiId: strain.sotiId, strains }).then(res => {
+            props.setCurrentProduct({ product: res }).then(() => {
+              let product = props.viewProduct.currentProduct;
+              let _index = 0;
+              if (product) {
+                while (product.price[_index] == -1) {
+                  _index++;
+                }
+                props.quickAddToCartQty(_index);
+              }
+            });
           });
         }}
         onClick={e => {
@@ -27,7 +29,7 @@ const videoSlide = props => {
             "/product/" + strain.name.toLowerCase().replace(/ /g, "-")
           );
         }}
-        className="xxl:h-40 xxl:mx-6 h-250 lg:h-200 my-2 scale-item"
+        className="xxl:h-40 xxl:mx-6 h-250 lg:h-200 my-2 scale-item cursor-pointer"
         src={props.misc.CFURL + "/packages/" + strain.sotiId + ".png"}
         style={{
           zIndex: "30",

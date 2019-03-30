@@ -33,6 +33,9 @@ class Index extends Component {
     return (
       <Layout supportedBrowser={this.props.supportedBrowser}>
         <Head>
+          <title>
+            Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
+          </title>
           <meta name="robots" content="index, follow" />
         </Head>
         {this.props.misc.strains != null &&

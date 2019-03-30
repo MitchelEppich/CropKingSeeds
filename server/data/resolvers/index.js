@@ -223,7 +223,7 @@ const resolvers = {
             .send({
               template: path.join(__dirname, "../emails", "mars"),
               message: {
-                to: "adamsmithvci@gmail.com"
+                to: "mitchel@vancoastind.com"
               },
               locals: {
                 ...input

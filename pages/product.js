@@ -49,35 +49,9 @@ class Index extends Component {
           <React.Fragment>
             <Head>
               <title>
-                {this.props.viewProduct.currentProduct + " | Crop King Seeds"}
+                {this.props.viewProduct.currentProduct.name +
+                  " | Crop King Seeds"}
               </title>
-              <React.Fragment>
-                <meta name="robots" content="index, follow" />
-                <meta
-                  id="og-title"
-                  property="og:title"
-                  content={this.props.viewProduct.currentProduct}
-                />
-                <meta
-                  id="og-url"
-                  property="og:url"
-                  content={window.location.href}
-                />
-                <meta id="og-locale" property="og:locale" content="en_US" />
-                <meta
-                  id="og-description"
-                  property="og:description"
-                  content={this.props.viewProduct.currentProduct.description}
-                />
-                <meta
-                  id="og-image"
-                  property="og:image"
-                  content={
-                    "http://dcfgweqx7od72.cloudfront.net" +
-                    this.props.viewProduct.currentProduct.images[0]
-                  }
-                />
-              </React.Fragment>
             </Head>
             <div className="p-8 lg:px-4 lg:py-8 md:px-4 md:py-8 sm:px-2 sm:py-2">
               <Breadcrumb {...this.props} />

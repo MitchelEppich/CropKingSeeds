@@ -10,6 +10,7 @@ import {
   faTrash
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Head from "next/head";
 
 // custom imports
 import withData from "../lib/withData";
@@ -61,6 +62,12 @@ class Index extends Component {
 
     return (
       <Layout>
+        <Head>
+          <title>
+            Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
+          </title>
+          <meta name="robots" content="index, follow" />
+        </Head>
         <div className="text-center w-full pt-12 bg-white relative">
           <h1 className="text-4xl font-black text-black">
             {_stepsCheckout == 5 ? "Confirmation" : "Checkout Preview"}

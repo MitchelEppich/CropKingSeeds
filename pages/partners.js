@@ -5,6 +5,7 @@
 import React, { Component } from "react";
 import withData from "../lib/withData";
 import { connect } from "react-redux";
+import Head from "next/head";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import Partners from "../components/sections/partners";
@@ -14,6 +15,12 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
+        <Head>
+          <title>
+            Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
+          </title>
+          <meta name="robots" content="index, follow" />
+        </Head>
         <Partners {...this.props} />
         <div className="w-container mx-auto mt-8 text-center pb-12">
           <h3 className="text-2xl">Interested in joining the list?</h3>

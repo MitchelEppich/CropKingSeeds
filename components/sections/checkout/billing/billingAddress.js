@@ -487,11 +487,12 @@ const BillingAddress = props => {
           <div className="w-1/2 pl-2 pb-8 mb-6 sm:w-full sm:pl-0 sm:mt-4">
             <input
               aria-label="tel"
-              required
+              required={
+                props.checkout.orderDetails.shipping.noEmail ? true : false
+              }
               type="text"
               name="phone"
               autoComplete="tel"
-              required
               id="phone"
               value={
                 _orderDetails[pageGroup] != null &&
@@ -518,7 +519,11 @@ const BillingAddress = props => {
                 e.target.setCustomValidity("Must be a valid phone number");
               }}
               maxLength="15"
-              pattern="\+?\(?\d{2,4}\)?[\d\s-]{3,}"
+              pattern={
+                props.checkout.orderDetails.shipping.noEmail
+                  ? "^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$"
+                  : null
+              }
               placeholder="Phone"
               className="p-2 w-full"
             />

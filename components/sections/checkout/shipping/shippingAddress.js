@@ -343,6 +343,7 @@ const ShippingAddress = props => {
                   }}
                   className="ml-2 checkbox"
                 />{" "}
+                {console.log(props)}
                 No Email
               </label>
             </div>
@@ -621,7 +622,9 @@ const ShippingAddress = props => {
               name="phone"
               aria-label="tel"
               autoComplete="tel"
-              required
+              required={
+                props.checkout.orderDetails.shipping.noEmail ? true : false
+              }
               id="phone"
               value={
                 _orderDetails[pageGroup] != null &&
@@ -648,7 +651,11 @@ const ShippingAddress = props => {
                 e.target.setCustomValidity("Must be a valid phone number");
               }}
               maxLength="15"
-              pattern="\+?\(?\d{2,4}\)?[\d\s-]{3,}"
+              pattern={
+                props.checkout.orderDetails.shipping.noEmail
+                  ? "^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$"
+                  : null
+              }
               placeholder="Phone"
               className="p-2 w-full"
             />
