@@ -305,6 +305,7 @@ let buildRelation = list => {
         relation[index] = `${_id}!${_}`;
       }
     }
+    console.log(relation);
     strain.relationData = compress(
       relation
         .sort((a, b) => {

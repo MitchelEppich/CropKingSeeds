@@ -18,8 +18,9 @@ const resolvers = {
       for (strain of strains) {
         strain = strain.toObject();
         let flowerTime = strain.flowerTime;
-        if (flowerTime == null || flowerTime.match(/\d+/g) == null)
-          console.log(strain.name, flowerTime);
+        if (flowerTime == null || flowerTime.match(/\d+/g) == null) {
+        }
+        // console.log(strain.name, flowerTime);
         else flowerTime = flowerTime.match(/\d+/g).map(Number);
 
         let sttId = sttIds[strain.sotiId];

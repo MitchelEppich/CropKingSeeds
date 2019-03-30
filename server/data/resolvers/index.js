@@ -159,10 +159,11 @@ const resolvers = {
       let transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-          user: "growreel.noreply@gmail.com",
-          pass: "etydthavvvnkdqxf"
+          user: "cropkingseeds.noreply@gmail.com",
+          pass: "ag498zip^"
         }
       });
+      console.log(input);
       let mailOptions;
       switch (input.type) {
         case "contact":
@@ -223,7 +224,7 @@ const resolvers = {
             .send({
               template: path.join(__dirname, "../emails", "mars"),
               message: {
-                to: "mitchel@vancoastind.com"
+                to: input.email
               },
               locals: {
                 ...input

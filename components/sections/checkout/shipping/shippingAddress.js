@@ -343,7 +343,6 @@ const ShippingAddress = props => {
                   }}
                   className="ml-2 checkbox"
                 />{" "}
-                {console.log(props)}
                 No Email
               </label>
             </div>

@@ -18,7 +18,6 @@ const loader = props => {
       <img
         alt="cks-logo"
         src={props.misc.CFURL + "/logos/cks-logo-header.png"}
-        onClick={() => console.log(props)}
         className="cks-logo-loader z-999 p-0 w-130 scale-item cursor-pointer"
       />
     </div>
