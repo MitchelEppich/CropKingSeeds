@@ -17,24 +17,6 @@
   }
 }
 
-//EXAMPLE FONT FACE IMPORT WITH TWO WEIGHTS
-// @font-face {
-//   font-family: "proxima nova";
-//   src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff")
-//     format("truetype");
-//   font-weight: thin;
-//   font-style: normal;
-//   font-display: swap;
-// }
-// @font-face {
-//   font-family: "proxima nova";
-//   src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff")
-//     format("truetype");
-//   font-weight: normal;
-//   font-style: normal;
-//   font-display: swap;
-// }
-
 @media only screen and (max-width: 479px) {
   ////////////
   // UNIVERSAL
@@ -268,18 +250,6 @@
     -o-transform: translateX(-37px) translateY(43px);
     transition: 0.3s all ease-in-out;
     cursor: pointer;
-    // @include modifier("hover") {
-    //   height: 8rem;
-    //   position: absolute;
-    //   z-index: 0;
-    //   transition: 0.3s all ease-in-out;
-    //   transform: translateX(-20px) translateY(60px);
-    //   -webkit-transform: translateX(-20px) translateY(60px);
-    //   -moz-transform: translateX(-20px) translateY(60px);
-    //   -ms-transform: translateX(-20px) translateY(60px);
-    //   -o-transform: translateX(-20px) translateY(60px);
-    //   cursor: pointer;
-    // }
   }
   .strainTitle {
     margin-left: auto;
@@ -309,7 +279,6 @@
     position: relative;
     display: inline-block;
     background: #f92f22;
-    // border-radius: 5px;
     color: white;
     filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.28));
     -webkit-filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.28));
@@ -439,17 +408,25 @@
   .dailyMessage {
     text-align: center;
     transform: translateY(0rem);
-    height: 3rem;
+    height: 6rem;
+    padding: 5px;
     transition: all 1s ease-in-out;
     -webkit-transition: all 1s ease-in-out;
     opacity: 0;
     z-index: 11;
     position: absolute;
+    text-transform: uppercase;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-shadow: 0 2px 3px rgba(45, 45, 45, 0.69);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
     width: 90vw;
-    padding: 0.5rem;
     font-weight: bold;
+    color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
-    background: white;
+    background: #cc515b;
     left: 5vw;
     @include modifier("view") {
       transform: translateY(8rem);

@@ -17,22 +17,6 @@
   }
 }
 
-//EXAMPLE FONT FACE IMPORT WITH TWO WEIGHTS
-// @font-face {
-//     font-family: "proxima nova";
-//     src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff") format("truetype");
-//     font-weight: thin;
-//     font-style: normal;
-//     font-display: swap;
-// }
-// @font-face {
-//     font-family: "proxima nova";
-//     src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff") format("truetype");
-//     font-weight: normal;
-//     font-style: normal;
-//     font-display: swap;
-// }
-
 ////////////////
 // ARTICLES PAGE
 .articleSlider {
@@ -41,13 +25,6 @@
   width: 100%;
   filter: brightness(0.5);
 }
-.scale-item {
-  transform: scale(1);
-  transition: transform 0.3s ease;
-}
-.scale-item:hover {
-  transform: scale(1.03);
-  transition: transform 0.3s ease;
-}
+
 // END ARTICLES PAGE
 ////////////////////

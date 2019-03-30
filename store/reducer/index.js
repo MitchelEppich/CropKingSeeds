@@ -71,7 +71,8 @@ const initialState = {
   lowGPUMode: null,
   dailyMessageShown: false,
   dailyMessage: null,
-  dailyMessageTimer: null
+  dailyMessageTimer: null,
+  muted: true
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -124,6 +125,10 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.GET_TAXES:
       return updateObject(state, {
         taxes: action.input
+      });
+    case actionTypes.TOGGLE_MUTE:
+      return updateObject(state, {
+        muted: !state.muted
       });
     case actionTypes.SET_EYES_SHOULD_MOVE:
       return updateObject(state, {

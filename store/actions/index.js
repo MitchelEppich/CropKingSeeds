@@ -86,7 +86,8 @@ const actionTypes = {
   TOGGLE_LOW_GPU_MODE: "TOGGLE_LOW_GPU_MODE",
   RECALL_GPU_MODE: "RECALL_GPU_MODE",
   TOGGLE_HEADER_MESSAGE: "TOGGLE_HEADER_MESSAGE",
-  GET_DAILY_MESSAGE: "GET_DAILY_MESSAGE"
+  GET_DAILY_MESSAGE: "GET_DAILY_MESSAGE",
+  TOGGLE_MUTE: "TOGGLE_MUTE"
 };
 
 const actions = {
@@ -633,6 +634,11 @@ const actions = {
           return Promise.resolve(message);
         })
         .catch(error => console.log(error));
+    };
+  },
+  toggleMute: () => {
+    return {
+      type: actionTypes.TOGGLE_MUTE
     };
   }
 };

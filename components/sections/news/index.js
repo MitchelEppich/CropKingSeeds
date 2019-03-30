@@ -115,12 +115,12 @@ const news = props => {
 
   return (
     <div className="lg:mt-12 w-full h-full bg-smoke-grey">
-      <div className="pb-4 mt-6 w-full">
+      <div className="pb-4 mt-6 w-full bg-white">
         <h2 className="text-3/5xl font-bold h-32 pt-4 text-center w-full p-2 text-grey sm:text-3xl md:text-3xl">
           Featured Events {"&"} News
         </h2>
       </div>
-      <div className="w-95p mx-auto -mt-16 sm:-mt-8 bg-white shadow-md rounded-lg">
+      <div className="w-95p mx-auto -mt-12 sm:-mt-8 bg-white shadow-md rounded-lg">
         <div className="inline-flex w-full sm:px-2 md:px-2 py-4 sm:flex-col md:flex-col lg:flex-col xl:flex-col">
           <div className="w-2/5 bg-white sm:w-full md:w-full lg:w-full xl:w-full p-3">
             <img
@@ -138,7 +138,7 @@ const news = props => {
       <div className="w-full">
         <div className="flex justify-end w-full">
           <Link href="/news">
-            <p className="p-2 bg-red-darker text-grey-lightest font-bold px-6 mr-8 my-4 text-right inline-flex items-center uppercase cursor-pointer hover:bg-red-light hover:text-white justify-center md:w-full sm:w-full md:mr-0 sm:mr-0">
+            <p className="p-2 bg-grey-light text-grey-lightest font-bold px-6 mr-8 my-4 text-right inline-flex items-center uppercase cursor-pointer hover:bg-red-light hover:text-white justify-center md:w-full sm:w-full md:mr-0 sm:mr-0">
               See all events {"&"} news{" "}
               <FontAwesomeIcon icon={faAngleRight} className="ml-2 fa-lg" />
             </p>

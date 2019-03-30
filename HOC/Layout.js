@@ -454,7 +454,8 @@ const mapDispatchToProps = dispatch => {
     toggleCartMenu: input => dispatch(actions.toggleCartMenu(input)),
     toggleHeaderMessage: input => dispatch(actions.toggleHeaderMessage(input)),
     getDailyMessage: () => dispatch(actions.getDailyMessage()),
-    recallGPUMode: () => dispatch(actions.recallGPUMode())
+    recallGPUMode: () => dispatch(actions.recallGPUMode()),
+    toggleMute: () => dispatch(actions.toggleMute())
   };
 };
 

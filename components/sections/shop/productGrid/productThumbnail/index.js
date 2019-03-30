@@ -39,7 +39,6 @@ const index = props => {
         />
       </div>
       <Images hover={hover} {...props} />
-
       <div
         onClick={() => {
           enableScroll();
@@ -58,7 +57,7 @@ const index = props => {
           }
         >
           <span className="text-sm font-bold py-1 text-grey-light text-right ml-6">
-            * may vary
+            * May vary
           </span>
           <span className="text-sm italic uppercase font-bold py-1 text-red-dark text-right mr-6">
             {props.product.inStock ? "In Stock" : "Sold Out"}
