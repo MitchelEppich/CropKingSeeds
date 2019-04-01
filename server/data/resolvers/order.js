@@ -255,8 +255,6 @@ const resolvers = {
     processOrder: async (_, { input }) => {
       let _input = JSON.parse(input.content);
 
-      console.log(_input);
-
       let res = (await axios({
         method: "post",
         headers: {
