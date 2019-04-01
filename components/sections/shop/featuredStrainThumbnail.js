@@ -48,7 +48,7 @@ const FeaturedStrainThumbnail = props => {
       arr.push(
         <div key={i}>
           <img
-            src="../../static/img/CrownIcon_Inv.png"
+            src={props.misc.CFURL + "/icon/crownicon_inv.png"}
             className="w-7"
             alt={props.product.name + "rating"}
           />

@@ -25,7 +25,7 @@ class reviewForm extends Component {
         >
           <span>
             <img
-              src="../../static/img/CrownIcon.svg"
+              src={this.props.misc.CFURL + "/icon/crownicon.svg"}
               className={`
           ${
             _review.rating > i
