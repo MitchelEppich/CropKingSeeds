@@ -658,7 +658,7 @@ const getActions = uri => {
           return null;
         })();
 
-        console.log(ccResponse);
+        // console.log(ccResponse);
 
         if (ccResponse != null) {
           if (ccResponse.currency != null)

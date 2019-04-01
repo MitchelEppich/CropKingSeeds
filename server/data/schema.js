@@ -117,7 +117,7 @@ type Strain {
   releaseDate: String
   soldQuantity: [Int]
   inStock: Boolean
-  article: String
+  moreInfo: [String]
 }
 
 input StrainInput {
@@ -147,7 +147,7 @@ input StrainInput {
   relationData: String,
   response: String
   releaseDate: String
-  article: String
+  moreInfo: [String]
 }
 
 type Order {

@@ -163,7 +163,7 @@ class Index extends Component {
               {/* {this.props.viewProduct.currentProduct.moreInfo != null ? ( */}
               <div>
                 <h3 className="w-full p-2 pl-6 font-bold text-3xl my-3 text-grey bg-smoke-grey">
-                  More about {this.props.viewProduct.currentProduct.name}
+                  More About {this.props.viewProduct.currentProduct.name}
                 </h3>
                 <MoreInfo {...this.props} />
               </div>

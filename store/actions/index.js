@@ -26,9 +26,9 @@ import Compare from "./compare";
 
 import { inferStrainData } from "../utilities/strain";
 
-// const uri = "http://127.0.0.1:3000/graphql";
+const uri = "http://127.0.0.1:3000/graphql";
 // const uri = "https://142.93.159.223/graphql";
-const uri = "http://142.93.159.223/graphql";
+// const uri = "http://142.93.159.223/graphql";
 
 const imports = {
   ...Cart(uri),
@@ -735,6 +735,7 @@ const query = {
         strainImg
         inStock
         sotiId
+        moreInfo
       }
     }
   `,
@@ -811,6 +812,7 @@ const query = {
         reviews
         ratingQuantity
         featured
+        moreInfo
       }
     }
   `
