@@ -1,5 +1,6 @@
 const { Strain } = require("../../models");
 
+const strainInfo = require("../../../moreInfo.js");
 const { strainFilters, decompress } = require("./functions");
 
 const request = require("request-promise");
@@ -209,6 +210,23 @@ const resolvers = {
           // POST failed...
           console.log(err);
         });
+    },
+    updateStrainInfo: async (_, { input }) => {
+      // console.log(strainInfo);
+      let strains = [];
+      for (let i = 0; i < strainInfo.length; i++) {
+        console.log(strainInfo[i]);
+        let strainToUpdate = await Strain.findOne({
+          sotiId: strainInfo[i].sotiId
+        }).then(dbStrain => {
+          dbStrain.moreInfo = strainInfo[i].info;
+          if (dbStrain.moreInfo != null) console.log(dbStrain.moreInfo);
+          dbStrain.save();
+          return dbStrain;
+        });
+        strains.push(strainToUpdate);
+      }
+      return strains;
     },
     typeToDom: async (_, { input }) => {
       let _strains = await Strain.find({});

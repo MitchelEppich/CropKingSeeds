@@ -164,7 +164,6 @@ const resolvers = {
           pass: "ag498zip^"
         }
       });
-      console.log(input);
       let mailOptions;
       switch (input.type) {
         case "contact":

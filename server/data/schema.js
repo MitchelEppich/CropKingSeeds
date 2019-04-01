@@ -320,6 +320,7 @@ input SotiInput {
 type Mutation {
   createStrain(input: StrainInput): Strain
   updateStrain(input: StrainInput): Strain
+  updateStrainInfo: [Strain]
   typeToDom: [Strain]
 
   postToProcessOrder(input: SotiInput): String

@@ -187,16 +187,16 @@ const menu = props => {
                 </p>
               </div>
               <p className="pl-3 pr-4 p-2 uppercase font-extrabold text-lg sm:hidden">
-                {props.misc.ageVerification != null &&
-                "United States" == props.misc.ageVerification.country ? (
-                  <React.Fragment>
-                    <span>+1-844-CROP-KING</span>
-                    <span className="-ml-2 mr-2">/</span>
-                    <span>(276-7546)</span>
-                  </React.Fragment>
-                ) : (
+                {/* {props.misc.ageVerification != null &&
+                "United States" == props.misc.ageVerification.country ? ( */}
+                <React.Fragment>
+                  <span>+1-844-CROP-KING</span>
+                  <span className="-ml-2 mr-2">/</span>
+                  <span>(276-7546)</span>
+                </React.Fragment>
+                {/* ) : (
                   "CALL NOW: +1 (604) 563-0291"
-                )}
+                )} */}
               </p>
             </a>
           </div>

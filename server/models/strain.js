@@ -32,7 +32,8 @@ const StrainSchema = Schema({
   reviews: { type: [String], default: [] },
   ratingQuantity: { type: [Number], default: [0, 0, 0, 0, 0] },
   featured: Boolean,
-  releaseDate: { type: Date, default: new Date() }
+  releaseDate: { type: Date, default: new Date() },
+  moreInfo: [String]
 });
 
 module.exports = StrainSchema;

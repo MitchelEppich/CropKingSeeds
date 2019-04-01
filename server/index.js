@@ -54,40 +54,6 @@ app
     server.use("/api", routers);
     ////////////
     //middleware
-    //Need to get rid of tawkto before configuring properly
-    // server.use(
-    //   helmet.contentSecurityPolicy({
-    //     directives: {
-    //       defaultSrc: ["'self'"],
-    //       scriptSrc: [
-    //         "'self'",
-    //         "https://cdn.jsdelivr.net/emojione/2.2.7/lib/js/emojione.min.js",
-    //         "https://embed.tawk.to/5ae8bd0d5f7cdf4f0533c472/default",
-    //         "https://apis.google.com "
-    //       ],
-    //       styleSrc: [
-    //         "'self'",
-    //         "https://fonts.googleapis.com/",
-    //         "https://embed.tawk.to/5ae8bd0d5f7cdf4f0533c472/default",
-    //         "https://cdn.jsdelivr.net/emojione/2.2.7/assets/css/emojione.min.css"
-    //       ],
-    //       fontSrc: ["'self'", "https://fonts.gstatic.com/"],
-    //       imgSrc: [
-    //         "'self'",
-    //         "http://dcfgweqx7od72.cloudfront.net/",
-    //         "https://static-v.tawk.to/a-v3-47/images/"
-    //       ],
-    //       connectSrc: [
-    //         "'self'",
-    //         "https://static-v.tawk.to/a-v3-47/audio/",
-    //         "https://va.tawk.to/register/",
-    //         "https://vs22.tawk.to/",
-    //         "wss://vs22.tawk.to/s/",
-    //         "https://vs62.tawk.to"
-    //       ]
-    //     }
-    //   })
-    // );
     server.use(compression());
     server.use(
       cors({
@@ -137,6 +103,7 @@ app
         res.redirect(type, to);
       });
     });
+    // let updated = await resolvers.Mutation.updateStrainInfo(null, {});
 
     ////////
     //routes
