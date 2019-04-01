@@ -19,6 +19,8 @@ const http = require("http");
 const path = require("path");
 const { SubscriptionServer } = require("subscriptions-transport-ws");
 
+const routers = require("./routes/api/");
+
 require("dotenv").config();
 const resolvers = require("./data/resolvers");
 // our packages
@@ -46,15 +48,18 @@ app
   .then(async () => {
     const server = express();
 
+    server.use(bodyParser.json()); // support json encoded bodies
+    server.use(bodyParser.urlencoded({ extended: true }));
+    server.use("/api", routers);
     ////////////
     //middleware
-    server.use(
-      helmet({
-        frameguard: {
-          action: "deny"
-        }
-      })
-    );
+    // server.use(
+    //   helmet({
+    //     frameguard: {
+    //       action: "deny"
+    //     }
+    //   })
+    // );
     //Need to get rid of tawkto before configuring properly
     // server.use(
     //   helmet.contentSecurityPolicy({

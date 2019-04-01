@@ -12,6 +12,8 @@ const axios = require("axios");
 const moment = require("moment");
 const convert = require("xml-js");
 
+const request = require("request-promise");
+
 const resolvers = {
   Query: {
     order: (_, { input }) => {
@@ -189,6 +191,43 @@ const resolvers = {
   Order: {},
   Subscription: {},
   Mutation: {
+    postToProcessOrder: async (_, { input }) => {
+      return request.post(
+        {
+          url: "https://www.cksoti.com/posttoprocessorder/",
+          form: {
+            websitename: "cropkingseeds.com",
+            ordernumber: `${input.orderId}`
+          }
+        },
+        function(err, httpResponse, body) {
+          if (err) {
+            return console.error("ERROR:", err);
+          }
+          return body;
+        }
+      );
+    },
+    postToAddNoteToOrder: async (_, { input }) => {
+      console.log(input);
+      return request.post(
+        {
+          url: "https://www.cksoti.com/posttoaddnotesonorder/",
+          form: {
+            websitename: "cropkingseeds.com",
+            ordernumber: input.orderId,
+            transactionid: input.transactionId,
+            status: input.status
+          }
+        },
+        function(err, httpResponse, body) {
+          if (err) {
+            return console.error("ERROR:", err);
+          }
+          return body;
+        }
+      );
+    },
     acquireOrderId: async (_, {}) => {
       let orderId = (await Order.find({})).slice(-1)[0].orderId + 1;
       let order = new Order({
@@ -216,14 +255,14 @@ const resolvers = {
     processOrder: async (_, { input }) => {
       let _input = JSON.parse(input.content);
 
-      let res = (await axios({
-        method: "post",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        url: "https://www.cksoti.com/save-order-customer-details",
-        data: toUrlEncoded(_input)
-      })).data;
+      // let res = (await axios({
+      //   method: "post",
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded"
+      //   },
+      //   url: "https://www.cksoti.com/save-order-customer-details",
+      //   data: toUrlEncoded(_input)
+      // })).data;
 
       buildRelation(_input.productlist);
 

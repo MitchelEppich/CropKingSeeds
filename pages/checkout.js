@@ -361,9 +361,9 @@ class Index extends Component {
         allow_quantity: "0",
         shippingf: _payment.shippingFee.value,
         taxf: _payment.taxFee,
-        ipn_url: "",
-        success_url: "",
-        cancel_url: ""
+        ipn_url: "https://142.93.159.223/api/coinpayments/verify",
+        success_url: "https://142.93.159.223/api/coinpayments/success",
+        cancel_url: "https://142.93.159.223/api/coinpayments/cancel"
       },
       "_blank"
     );

@@ -25,6 +25,7 @@ const StrainSchema = Schema({
   country: [Number],
   sotiId: String,
   rating: Number,
+  article: String,
   inStock: { type: Boolean, default: true },
   soldQuantity: { type: [Number], default: [0, 0, 0] },
   relationData: { type: String, default: "" },

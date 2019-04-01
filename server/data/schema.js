@@ -117,6 +117,7 @@ type Strain {
   releaseDate: String
   soldQuantity: [Int]
   inStock: Boolean
+  article: String
 }
 
 input StrainInput {
@@ -146,6 +147,7 @@ input StrainInput {
   relationData: String,
   response: String
   releaseDate: String
+  article: String
 }
 
 type Order {
@@ -309,11 +311,20 @@ input NewsInput {
   featured: Boolean
 }
 
+input SotiInput {
+  orderId: Int
+  transactionId: String
+  status: String
+}
+
 type Mutation {
   createStrain(input: StrainInput): Strain
   updateStrain(input: StrainInput): Strain
   typeToDom: [Strain]
-  
+
+  postToProcessOrder(input: SotiInput): String
+  postToAddNoteToOrder(input: SotiInput): String
+
   createOrder(input: OrderInput): Order
 
   createNewsEntry(input: NewsInput): News
