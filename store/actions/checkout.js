@@ -11,7 +11,7 @@ import Navigation from "./navigation";
 
 import Cart from "./cart";
 
-import moment from "moment";
+import moment from "moment-timezone";
 
 const actionTypes = {
   MODIFY_ORDER_DETAILS: "MODIFY_ORDER_DETAILS",
@@ -1022,7 +1022,9 @@ let buildOrderPost = orderDetails => {
   let _orderDetails = orderDetails;
   let orderPost = {
     Website_From: "cropkingseeds.com",
-    Order_Date: moment().format("YY-MM-DD HH:mm:ss")
+    Order_Date: moment()
+      .tz("America/Vancouver")
+      .format("YY-MM-DD HH:mm:ss")
   };
   if (_orderDetails.payment.ccExpireMonth != null) {
     let _month = _orderDetails.payment.ccExpireMonth.value;
