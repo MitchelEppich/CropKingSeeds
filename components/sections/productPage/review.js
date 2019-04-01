@@ -10,7 +10,10 @@ const review = props => {
   for (let i = 0; i < 5; i++) {
     ratings.push(
       <div key={i}>
-        <img src="../../static/img/CrownIcon_Inv.png" className="w-8" />
+        <img
+          src={props.misc.CFURL + "/icon/crownicon_inv.png"}
+          className="w-8"
+        />
       </div>
     );
   }
