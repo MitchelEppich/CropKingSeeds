@@ -54,17 +54,6 @@ const slide = props => {
     />
   );
 
-  if (props.type == "video") {
-    let self = document.querySelector("#video" + props.index);
-    if (self != null) {
-      if (props.misc.activeBannerSlide == props.index && self.paused) {
-        self.play();
-      } else if (props.misc.activeBannerSlide != props.index && !self.paused) {
-        self.pause();
-        self.muted = true;
-      }
-    }
-  }
   return props.type == "image" ? (
     imageBanner
   ) : (
@@ -73,6 +62,7 @@ const slide = props => {
       $url={$url}
       slidePosition={position}
       {...props}
+      type={props.type}
     />
   );
 };
