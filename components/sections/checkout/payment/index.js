@@ -119,8 +119,7 @@ const Payment = props => {
       ) : (
         <div />
       )} */}
-        {/* UNCOMMENT ONCE BITCOIN IS FIXED */}
-        {/* <Bitcoin {...props} /> */}
+        <Bitcoin {...props} />
         {_orderDetails.billing.country.value != "Canada" ? (
           <Moneygram {...props} />
         ) : (

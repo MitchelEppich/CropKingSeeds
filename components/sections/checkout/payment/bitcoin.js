@@ -70,13 +70,14 @@ const Bitcoin = props => {
             />
           </div>
           <div className="w-200 p-2 mx-auto mt-6 text-center">
-            <button
+            {/* <button
               name="bitcoinPay"
               type="submit"
               className="w-full font-bold text-white text-center p-2 font-extrabold bg-red-dark text-white text-xl hover:bg-grey-light cursor-pointer rounded"
             >
               Pay Now
-            </button>
+            </button> */}
+            <p>Bitcoin Payment Services Are Temporarily Disabled</p>
           </div>
         </div>
       ) : null}
