@@ -176,7 +176,8 @@ const PaymentReview = props => {
             <span className="py-2 text-grey-light">
               <FontAwesomeIcon icon={faPhone} className="fa-lg mr-2 pt-1" />
             </span>
-            {_orderDetails.shipping != null
+            {_orderDetails.shipping != null &&
+            _orderDetails.shipping.phone != null
               ? _orderDetails.shipping.phone.value
               : "Not Defined"}
           </p>
@@ -185,7 +186,7 @@ const PaymentReview = props => {
             <span className="py-2 text-grey-light">
               <FontAwesomeIcon icon={faEnvelope} className="fa-lg mr-2 pt-1" />
             </span>
-            {_orderDetails.shipping != null ? (
+            {_orderDetails.shipping != null && _orderDetails.shipping.phone ? (
               <span>{_orderDetails.shipping.email.value}</span>
             ) : (
               "Not Defined"
@@ -240,7 +241,8 @@ const PaymentReview = props => {
             <span className="py-2 text-grey-light">
               <FontAwesomeIcon icon={faPhone} className="fa-lg pt-1 mr-2" />
             </span>
-            {_orderDetails.billing != null
+            {_orderDetails.billing != null &&
+            _orderDetails.billing.phone != null
               ? _orderDetails.billing.phone.value
               : "Not Defined"}
           </p>
