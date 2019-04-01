@@ -106,6 +106,13 @@ app
 
     ////////
     //routes
+    server.get("/google60466b74b41063c8.html", (req, res) => {
+      app.serveStatic(
+        req,
+        res,
+        path.resolve("./static/google60466b74b41063c8.html")
+      );
+    });
     server.get("/robots.txt", (req, res) => {
       app.serveStatic(req, res, path.resolve("./static/robots.txt"));
     });
