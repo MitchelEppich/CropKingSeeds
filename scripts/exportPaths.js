@@ -31,8 +31,8 @@ module.exports = strains => {
         fileObj[`/${cleanFileName}`] = {
           page: `/${cleanFileName}`,
           lastModified: fileStat.mtime,
-          changefreq: "monthly",
-          priority: 0.6,
+          changefreq: "weekly",
+          priority: 1,
           imageLoc:
             "http://dcfgweqx7od72.cloudfront.net/logos/cks-logo-header.png",
           name: "Crop King Seeds"
@@ -56,7 +56,7 @@ module.exports = strains => {
             page: `/${fileName}`,
             lastModified: fileStat.mtime,
             changefreq: "monthly",
-            priority: 0.8,
+            priority: 0.7,
             imageLoc:
               "http://dcfgweqx7od72.cloudfront.net/packages/" +
               strains[i]._doc.sotiId +
