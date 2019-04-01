@@ -64,10 +64,10 @@ const videoSlide = props => {
           className="sm:w-4/5 sm:mx-auto md:w-full md:mr-0 w-full lg:w-4/5 lg:mx-auto xl:w-4/5 xl:mx-auto shadow-md flex justify-end "
           muted={props.misc.muted}
           loop
-          playsInline
+          controls
           id={"video" + props.index}
           src={props.$url}
-          playsInline
+          // playsInline
         />
         <div
           onClick={() => {
