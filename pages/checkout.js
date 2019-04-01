@@ -272,6 +272,7 @@ class Index extends Component {
                       name="nextCheckout"
                       className="flex items-center font-extrabold text-red-light hover:text-red-light text-2xl uppercase"
                       type="submit"
+                      onClick={() => window.scrollTo(0, 0)}
                     >
                       Next
                       <FontAwesomeIcon

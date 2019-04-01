@@ -328,8 +328,8 @@
   .packagePinBig {
     height: 5rem;
     position: absolute;
-    right: -30px;
-    top: 180px;
+    right: -25px;
+    top: 140px;
     pointer-events: none;
   }
   // END VIEWPRODUCT PAGE
@@ -394,7 +394,7 @@
   .dailyMessage {
     text-align: center;
     transform: translateY(0rem);
-    height: 3rem;
+    height: 5rem;
     transition: all 1s ease-in-out;
     -webkit-transition: all 1s ease-in-out;
     opacity: 0;
@@ -406,6 +406,7 @@
     position: absolute;
     width: 505px;
     padding: 0.5rem;
+    padding-top: 1rem;
     font-weight: bold;
     text-shadow: 0 2px 3px rgba(45, 45, 45, 0.69);
     border-bottom-left-radius: 15px;

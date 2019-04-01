@@ -330,14 +330,15 @@
   .packagePinBig {
     height: 6rem;
     position: absolute;
-    right: -40px;
-    top: 210px;
+    right: -30px;
+    top: 170px;
     pointer-events: none;
   }
 
   .dailyMessage {
     transform: translateY(0rem);
-    height: 3rem;
+    height: 5rem;
+    font-size: 1.5rem;
     transition: all 1s ease-in-out;
     -webkit-transition: all 1s ease-in-out;
     opacity: 0;

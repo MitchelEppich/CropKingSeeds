@@ -79,8 +79,8 @@ const index = props => {
           }}
           className={
             hoverId == product._id
-              ? "relative bg-white mx-4 my-2 w-64 h-350 md:w-2col md:mx-1 sm:w-2col sm:mx-1 rounded overflow-hidden shadow-md slowishish  sm:h-300"
-              : "relative bg-white mx-4 my-2 w-64 h-350 md:w-2col md:mx-1 sm:w-2col sm:mx-1 rounded overflow-hidden shadow-md slowishish  sm:h-300"
+              ? "relative bg-white mx-4 xl:w-54 xl:mx-1 my-2 w-64 sm:w-48 h-350 md:w-48 col md:mx-4 col sm:mx-1 rounded overflow-hidden shadow-md slowish sm:h-300"
+              : "relative bg-white mx-4 xl:w-54 xl:mx-1 my-2 w-64 sm:w-48 h-350 md:w-48 col md:mx-4 col sm:mx-1 rounded overflow-hidden shadow-md slowish sm:h-300"
           }
         >
           <FeaturedStrainThumbnail
@@ -95,7 +95,7 @@ const index = props => {
     );
   });
   return (
-    <div className="flex flex-wrap w-full py-6 pb-4 sm:justify-between md:justify-between lg:justify-center xl:justify-start xxl:justify-around sm:overflow-hidden">
+    <div className="flex flex-wrap w-full py-6 pb-4 sm:justify-center md:justify-center lg:justify-center xl:justify-center xxl:justify-around sm:overflow-hidden">
       {products}
 
       <div className="w-container mt-2 mx-auto">

@@ -241,12 +241,60 @@ const Confirmation = props => {
                     <p className="w-main mx-auto py-4">
                       To complete your payment with BitCoin, a new tab has been
                       opened in which you can proceed to finalize your payment.
-                      <br />
+                      {/* <br />
                       <br />
                       <strong>Having an issue with your payment?</strong>{" "}
                       <button type="submit">Click here</button> to retry your
                       payment.
+                      <br /> */}
+                    </p>
+                  </div>
+                </div>
+              );
+            case "MoneyGram":
+              return (
+                <div className="mt-10">
+                  <div style={sectionTitle} className="bg-red-light p-2 mb-1">
+                    <p className="font-bold uppercase text-center text-white p-1 text-lg">
+                      MoneyGram Instructions
+                    </p>
+                  </div>
+                  <div className="bg-white shadow-md">
+                    <p className="w-main mx-auto py-4 leading-normal text-left">
+                      The person you are sending the MoneyGram to is: <br />
+                      <span className="text-left">
+                        Name of Receiver : <b>Lawrence Covey</b>
+                        <br />
+                        Street: <b>1394 Keith Road</b>
+                        <br />
+                        City: <b>North Vancouver, B.C.</b>
+                        <br />
+                        Postal/Zip Code: <b>V5T 2C1</b>
+                        <br />
+                        Country: <b>Canada</b>
+                        <br /> Phone Number : <b>604-987-1803</b>
+                      </span>
                       <br />
+                      You are best to go to a retail MoneyGram location near you
+                      and pay cash in US dollars, as they will release the funds
+                      immediately.
+                      <br /> After sending the payment, please provide us with
+                      the following information so that we can claim the
+                      payment: <br />
+                      <span className="text-left">
+                        Name of Sender: <br />
+                        Payment Sent to:
+                        <br />
+                        Street: <br />
+                        City: <br />
+                        Postal/Zip Code: <br />
+                        Country:
+                        <br />
+                        Amount: <br />
+                        Reference #:
+                      </span>
+                      <br />
+                      We will then process and ship your order within 48 hours.
                     </p>
                   </div>
                 </div>

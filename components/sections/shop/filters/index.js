@@ -86,12 +86,26 @@ const filters = props => {
         <span className="">Filters:</span>
         <FontAwesomeIcon className="fa-lg pl-1 -mt-1" icon={faSlidersH} />
       </p>
-      <ul className="leading-loose flex flex-wrap pl-4 pt-2">
+      <ul
+        onClick={() => {
+          if (props.misc.mediaSize == "sm") {
+            props.toggleShowFilters(false);
+          }
+        }}
+        className="leading-loose flex flex-wrap pl-4 pt-2"
+      >
         <li className="text-red-dark font-bold w-full text-xl">Type</li>
         {showFilter(["sativa", "indica", "hybrid"], "type")}
       </ul>
       <hr className="hr__filters" />
-      <ul className="leading-loose flex flex-wrap pl-4">
+      <ul
+        onClick={() => {
+          if (props.misc.mediaSize == "sm") {
+            props.toggleShowFilters(false);
+          }
+        }}
+        className="leading-loose flex flex-wrap pl-4"
+      >
         <li className="text-red-dark font-bold w-full text-xl">Genetics</li>
         {showFilter(
           ["autoflower", "feminized", "regular", "cbd", "dwarf", "mix"],
@@ -100,14 +114,28 @@ const filters = props => {
         )}
       </ul>
       <hr className="hr__filters" />
-      <ul className="leading-loose flex flex-wrap pl-4">
+      <ul
+        onClick={() => {
+          if (props.misc.mediaSize == "sm") {
+            props.toggleShowFilters(false);
+          }
+        }}
+        className="leading-loose flex flex-wrap pl-4"
+      >
         <li className="text-red-dark font-bold w-full text-xl">
           THC Percentage
         </li>
         {showFilter(["low", "high"], "thc")}
       </ul>
       <hr className="hr__filters" />
-      <ul className="leading-loose flex flex-wrap pl-4">
+      <ul
+        onClick={() => {
+          if (props.misc.mediaSize == "sm") {
+            props.toggleShowFilters(false);
+          }
+        }}
+        className="leading-loose flex flex-wrap pl-4"
+      >
         <li className="text-red-dark font-bold w-full text-xl">
           CBD Percentage
         </li>

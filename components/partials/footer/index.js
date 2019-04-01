@@ -239,10 +239,7 @@ const Footer = props => {
                 type="submit"
                 className="absolute pin-r pl-2 h-10  bg-red-darker text-white cursor-pointer hover:bg-grey-light hover:text-red-darker w-16"
               >
-                <FontAwesomeIcon
-                  icon={faAngleRight}
-                  className="fa-2x h-10 "
-                />
+                <FontAwesomeIcon icon={faAngleRight} className="fa-2x h-10 " />
               </button>
             </form>
           ) : (
@@ -268,7 +265,7 @@ const Footer = props => {
               className="uppercase cursor-pointer text-white hover:text-grey font-bold flex justify-center items-center w-full text-lg"
             >
               <FontAwesomeIcon icon={faCog} className="mr-2 fa-lg" />
-              Animations {!props.misc.lowGPUMode ? "On" : "Off"}
+              Animations {!props.misc.lowGPUMode ? "Off" : "On"}
             </p>
           </div>
           <div className="mt-2 text-white sm:text-center md:text-center lg:text-center text-center">

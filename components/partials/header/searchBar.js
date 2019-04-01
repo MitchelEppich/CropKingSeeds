@@ -8,7 +8,7 @@ const SearchBar = props => {
   let setFilters = () => {
     let searchValue = props.misc.searchValue;
     if (searchValue != null) {
-      let _activeFilters = props.shop.activeFilters;
+      let _activeFilters = {};
       props.setSearch(null);
       let text = [...searchValue.split(",")];
       if (_activeFilters.text != null) text.push(..._activeFilters.text);
@@ -42,7 +42,7 @@ const SearchBar = props => {
       }}
       className="w-full z-50"
     >
-      <div className="flex w-400 sm:w-full xl:w-225 lg:w-225 md:w-225 z-40 h-8 mt-1 bg-white border-0 text-grey rounded shadow-md sm:relative">
+      <div className="flex w-400 sm:w-full xl:w-225 lg:w-300 md:w-225 z-40 h-8 mt-1 bg-white border-0 text-grey rounded shadow-md sm:relative">
         <SearchSuggest
           {...props}
           clearSuggestions={clearSuggestions}
@@ -57,9 +57,12 @@ const SearchBar = props => {
               clearSuggestions();
               setFilters();
             }}
-            className="bg-yellow-dark hover:bg-yellow slowish w-12 sm:w-20 border-0 pl-1 leading-loose z-999 rounded sm:absolute sm:pin-r"
+            className="bg-yellow-dark hover:bg-yellow slowish w-12 lg:w-50 sm:w-12 sm:pr-2 border-0 pl-1 leading-loose z-999 rounded sm:absolute sm:pin-r"
           >
-            <FontAwesomeIcon icon={faSearch} className="fa-lg mt-1 ml-1" />
+            <FontAwesomeIcon
+              icon={faSearch}
+              className="fa-lg mt-1 ml-1 xl:mx-2"
+            />
           </button>
         </Link>
       </div>

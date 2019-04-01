@@ -59,6 +59,9 @@ const imageCarousel = props => {
             <img
               src={currentImage}
               onClick={() => {
+                if (props.misc.mediaSize == "sm") {
+                  return null;
+                }
                 props.toggleImageZoom(true);
               }}
               className="cursor-pointer imgCarousel relative"
