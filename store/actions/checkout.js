@@ -653,10 +653,12 @@ const getActions = uri => {
                 },
                 uri
               );
-            return { status: "Missing" };
+            return { status: "" };
           }
           return null;
         })();
+
+        console.log(ccResponse);
 
         if (ccResponse != null) {
           if (ccResponse.currency != null)
