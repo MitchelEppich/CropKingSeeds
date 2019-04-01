@@ -13,7 +13,8 @@ module.exports = strains => {
       "article.js",
       "articles.js",
       "cms.js",
-      "germination.js"
+      "germination.js",
+      "_error.js"
     ];
     files.forEach(file => {
       if (noMap.includes(file)) {

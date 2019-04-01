@@ -30,17 +30,37 @@ class SearchSuggest extends Component {
               this.props.setFilters();
             }
           });
+        // this.props
+        //   .getStrain({
+        //     sotiId: strains[index].sotiId,
+        //     strains
+        //   })
+        //   .then(res => {
+        //     this.props.setCurrentProduct({ product: res }).then(() => {
+        //       let product = this.props.viewProduct.currentProduct;
+        //       let _index = 0;
+        //       while (product.price[_index] == -1) {
+        //         _index++;
+        //       }
+        //       this.props.quickAddToCartQty(_index);
+        //     });
+        //   });
+        // Router.push(
+        //   "/product",
+        //   "/product/" + props.product.name.toLowerCase().replace(/ /g, "-")
+        // );
+        // window.scrollTo(0, 0);
       }}
       className={
         this.props.misc.highlightedSuggestion == index
-          ? "bg-red-light text-white font-bold h-10 z-999 py-1 shadow-lg leading-loose text-sm"
-          : "bg-white text-grey font-bold h-10 z-999 py-1 shadow-lg leading-loose text-sm"
+          ? "bg-red-light text-white font-bold h-10 sm:h-12 sm:w-full xxl:w-full lg:w-250 xl:h-16 xl:w-48 z-999 py-1 shadow-lg leading-normal text-sm"
+          : "bg-white text-grey font-bold h-10 sm:h-12 sm:w-full xxl:w-full lg:w-250 xl:h-16 xl:w-48 z-999 py-1 shadow-lg leading-normal text-sm"
       }
     >
       <div className="inline-flex w-full">
-        <div className="w-3/5 text-left pl-2">
+        <div className="w-3/5 sm:w-full xl:w-4/5 text-left pl-2">
           {suggestion.strain.name.length > 17 &&
-          ["sm", "md", "lg", "xl"].includes(this.props.misc.mediaSize)
+          ["md", "lg"].includes(this.props.misc.mediaSize)
             ? suggestion.strain.name.slice(0, 18) + "..."
             : suggestion.strain.name}
         </div>
@@ -100,10 +120,17 @@ class SearchSuggest extends Component {
   };
   render() {
     return (
-      <div className="bg-white rounded-lg">
+      <div className="bg-white rounded-lg flex flex-wrap justify-start lg:w-250 xxl:w-350">
         <input
           onKeyDown={e => {
             this.changeHighlightedSuggestion(e);
+          }}
+          onBlur={() => {
+            if (this.props.misc.mediaSize == "sm") {
+              this.props.setVisibleScreen({
+                input: "showSearchBar"
+              });
+            }
           }}
           aria-label="search"
           type="search"

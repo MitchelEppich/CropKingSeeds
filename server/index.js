@@ -48,13 +48,6 @@ app
 
     ////////////
     //middleware
-    server.use(
-      helmet({
-        frameguard: {
-          action: "deny"
-        }
-      })
-    );
     //Need to get rid of tawkto before configuring properly
     // server.use(
     //   helmet.contentSecurityPolicy({

@@ -42,7 +42,7 @@ class Index extends Component {
     return (
       <div className="sm:w-full sm:pt-4 md:w-full lg:w-3/5 xl:w-2/3 xxl:w-3/4 min-h-700 text-white mb-20 md:mb-2 md:mt-16 sm:mb-0">
         <GridHeader {...this.props} />
-        <div className="flex w-full justify-end font-bold text-black pl-2 pr-3 p-2 text-sm mt-10 xxl:mb-0 mb-6">
+        <div className="flex w-full justify-end font-bold text-black pl-2 pr-3 p-2 text-sm mt-10 xxl:mb-0 sm:mb-0 sm:mt-2 mb-6">
           Showing {this.showQuantity}{" "}
           {this.showQuantity <= 1 ? "Product" : "Products"}
         </div>

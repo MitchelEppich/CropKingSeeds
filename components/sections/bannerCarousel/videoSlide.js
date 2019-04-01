@@ -61,9 +61,10 @@ const videoSlide = props => {
           onClick={() => {
             props.toggleMute();
           }}
-          className="sm:w-full md:w-full md:mr-0 sm:mr-0 w-full lg:w-4/5 lg:mx-auto xl:w-4/5 xl:mx-auto shadow-md flex justify-end "
+          className="sm:w-4/5 sm:mx-auto md:w-full md:mr-0 w-full lg:w-4/5 lg:mx-auto xl:w-4/5 xl:mx-auto shadow-md flex justify-end "
           muted={props.misc.muted}
           loop
+          playsInline
           id={"video" + props.index}
           src={props.$url}
           playsInline
@@ -72,7 +73,7 @@ const videoSlide = props => {
           onClick={() => {
             props.toggleMute();
           }}
-          className="absolute pin-r pin-b mr-2 mb-2 scale-item"
+          className="absolute pin-r pin-b mr-2 sm:mr-12 xl:mr-24 lg:mr-20 mb-2 scale-item"
         >
           <FontAwesomeIcon
             icon={props.misc.muted ? faVolumeMute : faVolumeUp}

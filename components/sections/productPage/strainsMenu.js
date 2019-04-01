@@ -83,6 +83,9 @@ const strainsMenu = props => {
                   props.quickAddToCartQty(_index);
                 });
               });
+              if (props.misc.mediaSize == "sm") {
+                props.toggleStrainsMenu(false);
+              }
             }}
           >
             {strain.name}
@@ -109,7 +112,7 @@ const strainsMenu = props => {
   };
   let verticalPosition =
     window.innerHeight < 700
-      ? "mt-32 h-32 bg-red-darker"
+      ? "mt-32 sm:mt-250 h-32 bg-red-darker"
       : "mt-halfScreen h-32 bg-red-darker";
   let verticalOpenPosition =
     window.innerHeight < 700
@@ -169,7 +172,9 @@ const strainsMenu = props => {
         <p className="bg-red-dark text-white text-center uppercase text-xl p-2 absolute w-full font-bold">
           All Strains
         </p>
-        <div className="overflow-y-auto w-full h-full pb-4">{showStrainsMenu()}</div>
+        <div className="overflow-y-auto w-full h-full pb-4">
+          {showStrainsMenu()}
+        </div>
       </div>
     </div>
   );

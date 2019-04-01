@@ -337,10 +337,10 @@
   }
 
   .packagePinBig {
-    height: 4rem;
+    height: 3.75rem;
     position: absolute;
-    right: -20px;
-    top: 127px;
+    right: -15px;
+    top: 105px;
     pointer-events: none;
   }
   // END VIEWPRODUCT PAGE
@@ -429,7 +429,7 @@
     background: #cc515b;
     left: 5vw;
     @include modifier("view") {
-      transform: translateY(8rem);
+      transform: translateY(7rem);
       opacity: 1;
     }
   }

@@ -424,6 +424,7 @@ const mapDispatchToProps = dispatch => {
     toggleShowFilters: isFilterVisible =>
       dispatch(actions.toggleShowFilters(isFilterVisible)),
     toggleFilter: input => dispatch(actions.toggleFilter(input)),
+    clearFilters: () => dispatch(actions.clearFilters()),
     getFeaturedList: input => dispatch(actions.getFeaturedList(input)),
     isRepeatCustomer: input => dispatch(actions.isRepeatCustomer(input)),
     getExchangeRates: () => dispatch(actions.getExchangeRates()),

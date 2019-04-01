@@ -8,7 +8,7 @@ import {
 const imageZoom = props => {
   return (
     <div className="bg-black-transparent fixed w-screen h-screen z-999999 pin-t pin-l text-center">
-      <div className="w-main mx-auto inline-flex justify-center flex mt-20">
+      <div className="w-main mx-auto inline-flex justify-center flex mt-4">
         <div
           onClick={() =>
             props.setCurrentImage({
@@ -16,7 +16,7 @@ const imageZoom = props => {
               index: props.viewProduct.currentImage - 1
             })
           }
-          className="xxl:h-screen xl:h-screen h-400 sm:h-300 md:h-300 lg:h-500 lg:mt-auto sm:mt-auto md:mt-auto w-24 items-center flex unselectable"
+          className="xxl:h-screen xl:h-screen h-400 sm:h-300 md:h-300 lg:h-500 w-24 items-center flex unselectable"
         >
           <FontAwesomeIcon
             icon={faAngleLeft}
@@ -25,7 +25,7 @@ const imageZoom = props => {
         </div>
         <div className="w-600">
           <img
-            className="h-600 lg:h-500 md:h-400 sm:h-300 flex my-auto w-auto mx-auto inline-block lg:mt-48 md:mt-48 sm:mt-32 mt-32 unselectable"
+            className="h-600 lg:h-500 md:h-400 sm:h-200 flex mx-auto inline-block mt-8 unselectable"
             src={
               props.misc.CFURL +
               props.viewProduct.currentProduct.images[
@@ -41,7 +41,7 @@ const imageZoom = props => {
               index: props.viewProduct.currentImage + 1
             })
           }
-          className="xxl:h-screen xl:h-screen h-400 sm:h-300 md:h-300 lg:h-500 lg:mt-auto sm:mt-auto md:mt-auto w-24 items-center flex unselectable justify-end"
+          className="xxl:h-screen xl:h-screen h-400 sm:h-300 md:h-300 lg:h-500 w-24 items-center flex unselectable justify-end"
         >
           <FontAwesomeIcon
             icon={faAngleRight}
@@ -51,7 +51,7 @@ const imageZoom = props => {
 
         <div
           onClick={() => props.toggleImageZoom(false)}
-          className="absolute pin-t pin-r mr-64 mt-32 xl:mr-32 xl:mt-48 lg:mr-10 lg:mt-48 md:mr-10 md:mt-48 sm:mr-10 sm:mt-48 unselectable"
+          className="absolute pin-t pin-r mt-4 mr-64 xl:mr-32 lg:mr-10 md:mr-10 sm:mr-4 unselectable"
         >
           <FontAwesomeIcon
             icon={faTimes}

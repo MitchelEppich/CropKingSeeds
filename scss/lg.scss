@@ -351,7 +351,7 @@
   .dailyMessage {
     text-align: center;
     transform: translateY(0rem);
-    height: 3rem;
+    height: 4rem;
     transition: all 1s ease-in-out;
     -webkit-transition: all 1s ease-in-out;
     opacity: 0;
@@ -368,6 +368,7 @@
     color: #fff;
     width: 700px;
     padding: 0.5rem;
+    padding-top: 1rem;
     font-weight: bold;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
     left: calc(((100vw - 700px) / 2) - 0.5rem);
