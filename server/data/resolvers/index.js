@@ -230,7 +230,7 @@ const resolvers = {
                 ...input
               }
             })
-            .then(console.log)
+            .then(console.log("Confirmation email sent."))
             .catch(console.error);
           // mailOptions = emailTemplates.confirmation({
           // });
