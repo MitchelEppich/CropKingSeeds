@@ -8,5 +8,5 @@ static/fonts/manifesto/
 !.data/.gitkeep
 cks_static/
 static/workbox/
-static/sitemap.xml/
-static/strainsSchemaData.js/
+static/sitemap.xml
+static/strainsSchemaData.js
