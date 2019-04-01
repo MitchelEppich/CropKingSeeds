@@ -73,7 +73,7 @@ const Privacy = props => {
               <ul className="pl-4">
                 <li className="my-2 flex">
                   <img
-                    src="../../static/img/CrownIcon_Inv.png"
+                    src={props.misc.CFURL + "/icon/crownicon_inv.png"}
                     className="h-4 bg-red-light mr-1"
                   />
                   <span>
@@ -84,7 +84,7 @@ const Privacy = props => {
                 </li>
                 <li className="my-2 flex">
                   <img
-                    src="../../static/img/CrownIcon_Inv.png"
+                    src={props.misc.CFURL + "/icon/crownicon_inv.png"}
                     className="h-4 bg-red-light mr-1"
                   />
                   <span>
@@ -96,7 +96,7 @@ const Privacy = props => {
                 </li>
                 <li className="my-2 flex">
                   <img
-                    src="../../static/img/CrownIcon_Inv.png"
+                    src={props.misc.CFURL + "/icon/crownicon_inv.png"}
                     className="h-4 bg-red-light mr-1"
                   />
                   <span>
@@ -107,7 +107,7 @@ const Privacy = props => {
                 </li>
                 <li className="my-2 flex">
                   <img
-                    src="../../static/img/CrownIcon_Inv.png"
+                    src={props.misc.CFURL + "/icon/crownicon_inv.png"}
                     className="h-4 bg-red-light mr-1"
                   />
                   <span>
@@ -120,7 +120,7 @@ const Privacy = props => {
                 </li>
                 <li className="my-2 flex">
                   <img
-                    src="../../static/img/CrownIcon_Inv.png"
+                    src={props.misc.CFURL + "/icon/crownicon_inv.png"}
                     className="h-4 bg-red-light mr-1"
                   />
                   <span>
@@ -134,7 +134,7 @@ const Privacy = props => {
                 </li>
                 <li className="my-2 flex">
                   <img
-                    src="../../static/img/CrownIcon_Inv.png"
+                    src={props.misc.CFURL + "/icon/crownicon_inv.png"}
                     className="h-4 bg-red-light mr-1"
                   />
                   <span>

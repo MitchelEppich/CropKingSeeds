@@ -229,6 +229,17 @@ const Compare = props => {
                     <p className="p-2 font-normal">{pcbn}</p>
                   </div>
                 </div>
+                <div className="inline-flex w-full">
+                  <div className="w-full text-center">
+                    <p className="p-2 font-normal inline-flex">
+                      {product.rating.toFixed(2)}
+                      <img
+                        src={props.misc.CFURL + "/icon/crownicon.svg"}
+                        className="w-6 h-4 crown-icon"
+                      />
+                    </p>
+                  </div>
+                </div>
               </div>
               <div className="inline-flex w-full ">
                 <div className="w-full text-center">
@@ -305,7 +316,7 @@ const Compare = props => {
                       />
                     </button>
                     <input
-                    aria-label="modifyCart"
+                      aria-label="modifyCart"
                       onBlur={e => {
                         let _value = e.target.value;
                         if (
