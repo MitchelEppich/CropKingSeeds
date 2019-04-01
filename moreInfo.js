@@ -1,6 +1,6 @@
 info = [
   {
-    sotiId: "BBR5",
+    sotiId: "BBR",
     info: [
       "This Indica - dominant plant has purplish buds, which is what earned it its monicker inthe rst place.The leaves are vibrant and colorful and usually grow in a unique fan - like arrangement.Meanwhile, Blueberry buds are among the best you can get your hands on today.They have a delicious and tempting!avor that leaves a tantalizing aftertaste that lasts an incredibly long time.",
 
@@ -14,7 +14,7 @@ info = [
     ]
   },
   {
-    sotiId: "HXR5",
+    sotiId: "HXR",
     info: [
       " As the name suggests, this strain is an intensified version of the legendary favorite Haze cannabis strain.This strain amplifies the already extreme effects of its parent and delivers a more potent high effect.These are the things that have pushed Haze Xtreme to fame and converted many growers and users into instant fans.",
 
@@ -25,7 +25,7 @@ info = [
     ]
   },
   {
-    sotiId: "AFR5",
+    sotiId: "AFR",
     info: [
       " Crowd favorite Afghani is a high - yield strain that is very potent and delivers a lasting high like noother.Extremely high on THC, this Indica - dominant original landrace strain gives way for a relaxing and happy high that works for both new and experienced users any time of day.This is the perfect smoke to cap the night because its body buzz, which is a signature Indica effect, will surely glue you to your bed while soothing and calming your tired muscles.",
 
@@ -39,7 +39,7 @@ info = [
     ]
   },
   {
-    sotiId: "OSR5",
+    sotiId: "OSR",
     info: [
       "Our take on the classic favorite Original Skunk lives up to its name.This stinky plant announces its full, pungent presence from miles away, and boy, do you want to soak yourself in that aroma.This strain has THC levels reaching over 15%.Although this figure is not as high as those of other strains, Original Skunk is favored and patronized anyway by users and growers alike because of its unique characteristics and amazing effects.",
 
@@ -55,7 +55,7 @@ info = [
     ]
   },
   {
-    sotiId: "WBF5",
+    sotiId: "WBF",
     info: [
       "Growing the White Banner strain ranges between easy to moderate difficulty.This is because it fares well in both indoor and outdoor environments.It only requires the natural elements outdoors, and with minimum supervision, you can grow these plants in just a period of 8 to 10 weeks.As a 50% indica and 50% sativa hybrid, what you can expect is a strain that can give you that ultimately memorable cerebral high.",
 
@@ -67,7 +67,7 @@ info = [
     ]
   },
   {
-    sotiId: "BCF5",
+    sotiId: "BCF",
     info: [
       "Blue cookies got its name from its parent strains – Girl Scout Cookies and Blueberry.Cookies, in general, are popular because they simply taste good, and they appeal to the desire of the palate.In the cannabis world, however, strains become even tastier as they are combined with other varieties.When Girl Scout Cookies are added with Blueberry, flavors change.",
 
@@ -79,7 +79,7 @@ info = [
     ]
   },
   {
-    sotiId: "WBF5",
+    sotiId: "WBF",
     info: [
       "Blue cookies got its name from its parent strains – Girl Scout Cookies and Blueberry.Cookies, in general, are popular because they simply taste good, and they appeal to the desire of the palate.In the cannabis world, however, strains become even tastier as they are combined with other varieties.When Girl Scout Cookies are added with Blueberry, flavors change.",
 
@@ -91,7 +91,7 @@ info = [
     ]
   },
   {
-    sotiId: "GTF5",
+    sotiId: "GTF",
     info: [
       "Gelato Feminized Marijuana Strain - Growing, THC & CBD Content, Yield, Flowering Time and Other Information",
       "Gelato is a cross breed between Mint Girl Scout Cookies, with another strain, Sunset Sherbet.The resulting strain was actually unexpected.",
@@ -104,7 +104,7 @@ info = [
     ]
   },
   {
-    sotiId: "DPF5",
+    sotiId: "DPF",
     info: [
       "   Descended from the Original Durban, which is named after its origin location of Durban in South Africa, Durban Poison comes with the same highly psychedelic effects that its parent is known for.That is not surprising at all, given the high THC content of this cannabis strain, which can go up to more than 20%.",
 
@@ -118,7 +118,7 @@ info = [
     ]
   },
   {
-    sotiId: "SJF5",
+    sotiId: "SJF",
     info: [
       "As offspring of two of the most popular strains in the world(Jack Herer and Sour Diesel), Sour Jack possesses an effect that focuses mainly on body buzz.We do not see any reason for you not to grow it indoors or outdoors, considering that it is such an easy grow and can thrive in any grow environment.",
 
@@ -132,7 +132,7 @@ info = [
     ]
   },
   {
-    sotiId: "SSF5",
+    sotiId: "SSF",
     info: [
       "As suggested by its name, Sativa Star is 90 % sativa.As such, it is a strain which is perfect for growing both indoors and outdoors.This strain is ideal for growing even for first time growers, as it does not take too much skill to care for these babies.It is also described as a high yielding strain, with a yield that can reach up to 350 grams indoors, and 600 grams when grown outdoors.The flowering time reaches 14 weeks, with bountiful yields to expect at harvest time.",
 
@@ -144,7 +144,7 @@ info = [
     ]
   },
   {
-    sotiId: "CHF5",
+    sotiId: "CHF",
     info: [
       "This exclusive strain, which is a unique cross between our widely praised Amnesia Haze and equally popular OG Kush, is predominantly Sativa.In terms of growing difficulty, this strain is rated moderate, and the typical flowering time under best conditions is up to 10 weeks.",
 
@@ -158,7 +158,7 @@ info = [
     ]
   },
   {
-    sotiId: "DAF5",
+    sotiId: "DAF",
     info: [
       "This strain deserves way more credit than what it is getting.Being equal parts Indica and Sativa, Dark Angel lets you have a taste of the best of both worlds.Capable of growing and yielding handsome quantities of resin - rich buds indoors and outdoors, this plant is classified as an easy grow.Therefore, if you are new to growing weed, this may be an excellent option for you.",
 
@@ -172,7 +172,7 @@ info = [
     ]
   },
   {
-    sotiId: "PKF5",
+    sotiId: "PKF",
     info: [
       " Having a unique purple color and buds with orange and white hairs, Purple Kush has become one of the most iconic strains of our time.Indeed, one look is all it takes to distinguish this plant from the others.Its scent is distinctly pungent, so there is no mistaking it once a little Purple Kush bud is brought into a room.",
 
@@ -186,7 +186,7 @@ info = [
     ]
   },
   {
-    sotiId: "SHF5",
+    sotiId: "SHF",
     info: [
       "This award - winning strain is an indoor grow that is predominantly a Sativa.The good news is that this is known as a moderate grow, which means that not only the most seasoned veteran growers can get their hands on these and have the pleasure of harvesting yields of only the best looking buds today.",
 
@@ -200,7 +200,7 @@ info = [
     ]
   },
   {
-    sotiId: "WWF5",
+    sotiId: "WWF",
     info: [
       "For information about how to grow white widow feminized seeds you have come to the best marijuana seed bank.The White Widow strain was reported to be bred in Europe and won the Cannabis cup in 1995. This is a plant that has bright green leaves and white hairs and can grow over 8 feet tall outdoors and should stay under 4 feet with hydroponics, soil or with LED lighting.For lights we suggest you check with your local hydroponics store in either the USA or Canada.The time it takes for growing White Widow will vary with outdoor and indoor.You will have to change the light from light to increase the darkness when you are ready to turn them into a flowering stage.For more information about White Widow, we suggest you review our growing forum.",
 
@@ -208,7 +208,7 @@ info = [
     ]
   },
   {
-    sotiId: "BIF5",
+    sotiId: "BIF",
     info: [
       "Black Indica strain is the offspring of two of the strongest and most potent marijuana strains we know today: Pure Kush and Afghan.Originated from the country of Spain, Black Indica is predominantly an Indica and can thrive both indoors and outdoors.With a flowering period of around 8 weeks, this is classified as an easy or moderate grow.",
 
@@ -222,7 +222,7 @@ info = [
     ]
   },
   {
-    sotiId: "HPF5",
+    sotiId: "HPF",
     info: [
       "Originated from the Netherlands, Hash Plant is known for its hardcore effect.Fortunately, this is a versatile plant that can grow indoors and outdoors.Flowering lasts around 8 weeks, which is about the same as that of our other strains.Hash Plant is categorized as an easy to moderate grow.",
 
@@ -236,7 +236,7 @@ info = [
     ]
   },
   {
-    sotiId: "WCF5",
+    sotiId: "WCF",
     info: [
       "The offspring of the widely popular White Widow and Girl Scout Cookies, White Cookies is slightly more Indica than Sativa.The difficulty level of growing this strain ranges from easy to moderate, which is good news because that means it is not restricted to veteran growers only.White Cookies flowers within 9 weeks, which is about average relative to our other strains.",
 
@@ -250,7 +250,7 @@ info = [
     ]
   },
   {
-    sotiId: "CRF5",
+    sotiId: "CRF",
     info: [
       "This beautiful Crown Royale cannabis strain is a signature variety of Crop King Seeds.Bred as a cross between Purple Kush and Blueberry, this plant mixes the benefits of these two popular strains in perfect harmony and produces a unique effect that is greater than the sum of the advantages of its parents.",
 
@@ -264,7 +264,7 @@ info = [
     ]
   },
   {
-    sotiId: "SDF5",
+    sotiId: "SDF",
     info: [
       "If you are looking to grow a Sativa hybrid indoors or outdoors, then Sour Diesel strain is ideal for you.Classified as moderate in terms of growing difficulty, Sour Diesel flowers in 8 to 9 weeks, but flowers may take 10 weeks to fully mature.Expect fast growth, especially in the first couple of weeks into flowering.",
 
@@ -278,7 +278,7 @@ info = [
     ]
   },
   {
-    sotiId: "BKF5",
+    sotiId: "BKF",
     info: [
       "As a member of the Kush family, Bubba Kush is one of the more widely known strains you can get your hands on today.This easy to moderate grow thrives both indoors and outdoors and typically completes flowering in just 9 short weeks.This Indica grows bushy plants that produce huge, dense, and sticky buds.",
 
@@ -292,7 +292,7 @@ info = [
     ]
   },
   {
-    sotiId: "GCF5",
+    sotiId: "GCF",
     info: [
       "Named by Snoop Dogg, Green Crack is a well - known strain that is mostly Indica and grows indoors and outdoors.Classified as an easy to grow cannabis strain, Green Crack takes 9 to 10 weeks to flower.The THC content of this strain is quite high at more than 21 %, and that is mainly felt through a full body high.",
 
@@ -306,7 +306,7 @@ info = [
     ]
   },
   {
-    sotiId: "SGA5",
+    sotiId: "SGA",
     info: [
       "Sour Girl is an amazing combination of three interesting strains – Early Girl, Sour Diesel and Ruderalis.Thus, it exhibits characteristics which are evident as coming from both powerful strains.One thing that makes this strain standout is the fact that it offers a generous density, together with a gassy, complex aroma which can easily get in your face.",
 
@@ -318,7 +318,7 @@ info = [
     ]
   },
   {
-    sotiId: "LBA5",
+    sotiId: "LBA",
     info: [
       "The Lambs Breath strain is oftentimes claimed to be smoked by none other than Bob Marley.The origin of this strain can be traced back in Jamaica, where it grew in the wilds.Recently, however, this strain has been considered as among the in -demand strains, even though it is also one that is quite difficult to find.For this reason, if you are planning to take advantage of the benefits of this strain, growing your own plants would be the best thing to do.",
 
@@ -330,7 +330,7 @@ info = [
     ]
   },
   {
-    sotiId: "WWA5",
+    sotiId: "WWA",
     info: [
       "As a top strain, White Widow has been around for a long time now and continues to tantalize, tempt, and daze weed lovers through its unique class of high.From its distinct scent to its lasting flavor and aftertaste, White Widow is an undisputed winner.This is why we decided to bring it to you in the best form possible: auto - flowering feminized.We took the best so we could make it better.",
 
@@ -344,7 +344,7 @@ info = [
     ]
   },
   {
-    sotiId: "CCA5",
+    sotiId: "CCA",
     info: [
       "You can’t possibly be any luckier than this.This Candy Cane variant is an autoflowering feminized one that is categorized as an easy or moderate grow.The flowering time is amazingly short at merely 7 weeks, and this strain can grow indoors and outdoors.This variant is mostly Indica at 60 % and partly Sativa(30 %) and Ruderalis(10 %).",
 
@@ -358,7 +358,7 @@ info = [
     ]
   },
   {
-    sotiId: "NLA5",
+    sotiId: "NLA",
     info: [
       "We are sure you have heard of Northern Lights before.This has been one of the most popular strains for the longest time now, and that is for a very good reason.The Northern Lights family is known for their undeniably memorable scent and one- of - a - kind stoning.This is why we decided to take this beautiful plant and make it an autoflowering strain.",
 
@@ -372,7 +372,7 @@ info = [
     ]
   },
   {
-    sotiId: "REA5",
+    sotiId: "REA",
     info: [
       "Just like most of our other autoflowering marijuana strains, Revolver Autoflowering is an easy to moderate grow.The flowering time is merely 7 glorious weeks, which is a lot shorter than those of most strains.A cross between NY City Diesel and Original White Widow, this strain is 70% Indica, 20% Sativa, and 10% Ruderalis.",
 
@@ -386,7 +386,7 @@ info = [
     ]
   },
   {
-    sotiId: "EMA5",
+    sotiId: "EMA",
     info: [
       "Thriving in both indoor and outdoor grows, our fast autoflowering Early Miss is an easy to moderate grow.It flowers in a relatively short time too, taking merely 7 weeks.In that short amount of time, you will be greeted by thick buds with way more resin than you can ever imagine.",
 
@@ -400,7 +400,7 @@ info = [
     ]
   },
   {
-    sotiId: "JHA5",
+    sotiId: "JHA",
     info: [
       "We want to help you grow the best strains the easiest way possible.This is why we decided to take the awesome Jack Herer and make it autoflower.This amazing strain is classified as an easy to moderate grow and takes merely 9 weeks to flower.You can’t possibly get anything better than that.",
 
