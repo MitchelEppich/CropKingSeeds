@@ -311,20 +311,32 @@ const Confirmation = props => {
                   <div className="bg-white shadow-md">
                     <p className="w-main mx-auto pt-4" />
                     <p className="text-center p-2 mt-4 text-xl">
-                      {_ccr.status == "Declined" ? (
+                      {_ccr.status.toLowerCase() == "declined" ? (
                         <span>
                           <strong>We are unable to process your order!</strong>
                           <br />
-                          Please immediately call our customer support (at +1
+                          Please call our customer support immediately (at +1
                           (844) 276 - 7546) to resolve any issues.
                           <br />
-                          Once your payment has been recieved we will ship your
+                          Once your payment has been received we will ship your
+                          order on the next applicable business day.
+                        </span>
+                      ) : _ccr.status == "" ? (
+                        <span>
+                          <strong>
+                            We are unable to process your large order!
+                          </strong>
+                          <br />
+                          Please call our customer support immediately (at +1
+                          (844) 276 - 7546) to resolve any issues.
+                          <br />
+                          Once your payment has been received we will ship your
                           order on the next applicable business day.
                         </span>
                       ) : (
                         <span>
                           Please allow some time for your payment to process,
-                          once your payment has been recieved we will ship your
+                          once your payment has been received we will ship your
                           order on the next applicable business day.
                         </span>
                       )}

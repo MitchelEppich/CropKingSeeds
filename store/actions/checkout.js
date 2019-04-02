@@ -637,6 +637,7 @@ const getActions = uri => {
     },
     processOrder: input => {
       return async dispatch => {
+        console.log(_orderDetails);
         let _orderDetails = { ...input.orderDetails };
         let _paymentMethod = _orderDetails.payment.method.value,
           cart = input.cart;
@@ -677,6 +678,7 @@ const getActions = uri => {
         }
 
         // Process Order
+        console.log(_orderDetails);
         let response = await processOrder(_orderDetails, ccResponse, uri);
         // let response = null;
         // Send email confirmation
