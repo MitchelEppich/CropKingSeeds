@@ -1,8 +1,9 @@
 import Link from "next/link";
 
 const FeaturedStrains = props => {
-  console.log(props.misc);
   let showProducts = () => {
+    if (props.misc.featuredStrains == null) return null;
+
     let rating;
     let showRating = () => {
       rating = props.misc.featuredStrains.rating || 0;

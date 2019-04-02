@@ -52,9 +52,7 @@ const ExtraContent = props => {
           </p>
         </div>
 
-        <div>
-          <StrainsHome {...props} />
-        </div>
+        <div>{/* <StrainsHome {...props} /> */}</div>
       </div>
     </div>
   );
