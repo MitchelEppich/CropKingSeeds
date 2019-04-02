@@ -34,7 +34,7 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const subscriptionsPath = "/subscriptions";
-const subscriptionsEndpoint = `wss://${url}:${port}${subscriptionsPath}`;
+const subscriptionsEndpoint = `ws://${url}:${port}${subscriptionsPath}`;
 // const subscriptionsEndpoint = `wss://142.93.159.223${subscriptionsPath}`;
 // const subscriptionsEndpoint = `wss://cropkingseeds.com${subscriptionsPath}`;
 
@@ -50,7 +50,11 @@ app
     const server = express();
 
     server.use(bodyParser.json()); // support json encoded bodies
-    server.use(bodyParser.urlencoded({ extended: true }));
+    server.use(
+      bodyParser.urlencoded({
+        extended: true
+      })
+    );
     server.use("/api", routers);
     ////////////
     //middleware
@@ -94,13 +98,14 @@ app
     });
     schemaBuilder(JSON.stringify(_strains));
     // 301 redirects
-    // let redirects = redirectUrls(sitemapStrains);
-    // redirects.forEach(({ from, to, type = 301, method = "get" }) => {
-    //   console.log(from, to);
-    //   server[method](from, (req, res) => {
-    //     res.redirect(type, to);
-    //   });
-    // });
+    // let redirects = redirectUrls;
+    let redirects = redirectUrls(sitemapStrains);
+    console.log(redirects);
+    redirects.forEach(({ from, to, type = 301, method = "get" }) => {
+      server[method](from, (req, res) => {
+        res.redirect(type, to);
+      });
+    });
 
     // update strains to add moreInfo
     // let updated = await resolvers.Mutation.updateStrainInfo(null, {});

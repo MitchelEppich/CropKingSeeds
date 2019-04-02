@@ -35,7 +35,11 @@ export default class MyDocument extends Document {
             content="© 2005 - 2019 Crop King Seeds. All Rights Reserved."
           />
           {/* <link rel="manifest" href="/_next/static/manifest.json" /> */}
-          <link rel="stylesheet" href="/_next/static/style.css" />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/_next/static/style.css"
+          />
           <link rel="icon" href="../static/favicon.ico" />
         </Head>
         <body>
