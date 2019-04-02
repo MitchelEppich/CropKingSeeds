@@ -120,7 +120,7 @@ const news = props => {
   return (
     <div className="lg:mt-12 w-full h-full bg-smoke-grey">
       <div className="pb-4 mt-6 w-full bg-white">
-        <h2 className="text-3xl font-bold h-24 pt-4 mt-10 text-center w-full p-2 text-grey md:text-3xl bg-grey-dark text-white sm:text-2xl">
+        <h2 className="text-3xl font-bold h-24 pt-4 mt-10 text-center w-full p-2 text-grey md:text-3xl bg-grey-light text-white sm:text-2xl uppercase">
           Featured Events {"&"} News
         </h2>
       </div>

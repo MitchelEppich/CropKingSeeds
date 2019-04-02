@@ -177,7 +177,7 @@ const getActions = uri => {
 
         if (_key == "noEmail")
           _orderDetails[_group].email = {
-            value: _value ? "no@mail.com" : null,
+            value: _value ? "notgiven@mail.com" : null,
             tag: _group == "shipping" ? "Ship" : "Bill" + "Email"
           };
 
