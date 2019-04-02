@@ -469,7 +469,7 @@ const Compare = props => {
           <p className="text-center mt-6 bg-grey-lightest p-3 my-4 mt-0 font-bold rounded text-base uppercase text-grey">
             Please, select at least{" "}
             <span className="font-bold underline">2</span> and max{" "}
-            <span className="font-bold underline">5</span> strains to compare.
+            <span className="font-bold underline">4</span> strains to compare.
           </p>
           {props.misc.compareStrains != null &&
           props.misc.compareStrains.length != 0 ? (
@@ -523,14 +523,12 @@ const Compare = props => {
                     </div>
                     <div className="inline-flex w-full ">
                       <div className="w-full">
-                        <p className="p-2 font-bold uppercase">Flower Time: </p>
+                        <p className="p-2 font-bold uppercase">Time: </p>
                       </div>
                     </div>
                     <div className="inline-flex w-full">
                       <div className="w-full">
-                        <p className="p-2 font-bold uppercase">
-                          Average Yield:{" "}
-                        </p>
+                        <p className="p-2 font-bold uppercase">Yield:</p>
                       </div>
                     </div>
                     <div className="inline-flex w-full ">

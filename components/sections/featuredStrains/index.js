@@ -55,7 +55,7 @@ const FeaturedStrains = props => {
             <div className="mt-4">
               <div className="w-150 relative text-left justify-center flex mx-auto">
                 <div
-                  className="inline-flex bg-red-dark"
+                  className="inline-flex bg-red-light"
                   style={{
                     width: `${150 * (product.rating / 5)}px`,
                     height: "17px",
@@ -69,7 +69,7 @@ const FeaturedStrains = props => {
                     width: `${150 * ((5 - product.rating) / 5)}px`,
                     height: "17px",
                     marginTop: "2px",
-                    background: "#fbb2b2"
+                    background: "#cecece"
                   }}
                 />
                 <div className="absolute pin-l inline-flex">{showRating()}</div>

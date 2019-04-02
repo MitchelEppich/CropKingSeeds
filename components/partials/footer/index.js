@@ -345,7 +345,11 @@ const Footer = props => {
                     <span>(276-7546)</span>
                   </React.Fragment>
                 ) : (
-                  "+1 (604) 563-0291"
+                  <React.Fragment>
+                    <span>+1-844-CROP-KING</span>
+                    <span className="-ml-2 mr-2">/</span>
+                    <span>(276-7546)</span>
+                  </React.Fragment>
                 )}
               </p>
             </a>

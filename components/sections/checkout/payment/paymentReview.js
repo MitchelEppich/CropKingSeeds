@@ -135,19 +135,32 @@ const PaymentReview = props => {
       >
         <h3 style={titleBox}>Shipping Address</h3>
         <div className="">
-          {/* ADDRESS */}
-          <p className="p-1 pt-2 pl-3 bg-white">
+          {/* NAME */}
+          <p className="p-1 pt-2 pl-3 bg-white capitalize">
             {_orderDetails.shipping != null ? (
-              <span>
-                {_orderDetails.shipping.address.value}
-                {", "}
-              </span>
+              <span>{_orderDetails.shipping.fullName.value}</span>
+            ) : (
+              "Not Defined"
+            )}
+          </p>
+          {/* ADDRESS */}
+          <p className="p-1 pt-2 pl-3 bg-white capitalize">
+            {_orderDetails.shipping != null ? (
+              <span>{_orderDetails.shipping.address.value}</span>
+            ) : (
+              "Not Defined"
+            )}
+          </p>
+          {/* APARTMENT */}
+          <p className="p-1 pt-2 pl-3 bg-white capitalize">
+            {_orderDetails.shipping.apartment != null ? (
+              <span>{_orderDetails.shipping.apartment.value}</span>
             ) : (
               "Not Defined"
             )}
           </p>
           {/* CITY */}
-          <p className="p-1 pt-2 pl-3 bg-white">
+          <p className="p-1 pt-2 pl-3 bg-white capitalize">
             {_orderDetails.shipping != null ? (
               <span>
                 {_orderDetails.shipping.city.value}
@@ -159,16 +172,16 @@ const PaymentReview = props => {
               "Not Defined"
             )}
           </p>
-          {/* POSTALZIP */}
-          <p className="p-1 pt-2 pl-3 bg-white">
-            {_orderDetails.shipping != null
-              ? _orderDetails.shipping.postalZip.value
-              : "Not Defined"}
-          </p>
           {/* COUNTRY */}
-          <p className="p-1 pt-2 pl-3 bg-white">
+          <p className="p-1 pt-2 pl-3 bg-white capitalize">
             {_orderDetails.shipping != null
               ? _orderDetails.shipping.country.value
+              : "Not Defined"}
+          </p>
+          {/* POSTALZIP */}
+          <p className="p-1 pt-2 pl-3 bg-white capitalize">
+            {_orderDetails.shipping != null
+              ? _orderDetails.shipping.postalZip.value
               : "Not Defined"}
           </p>
           {/* PHONE */}
@@ -200,19 +213,32 @@ const PaymentReview = props => {
       >
         <h3 style={titleBox}>Billing Details</h3>
         <div className="">
-          {/* ADDRESS */}
-          <p className="p-1 pt-2 pl-3 bg-white">
+          {/* NAME */}
+          <p className="p-1 pt-2 pl-3 bg-white capitalize">
             {_orderDetails.billing != null ? (
-              <span>
-                {_orderDetails.billing.address.value}
-                {", "}
-              </span>
+              <span>{_orderDetails.billing.fullName.value}</span>
+            ) : (
+              "Not Defined"
+            )}
+          </p>
+          {/* ADDRESS */}
+          <p className="p-1 pt-2 pl-3 bg-white capitalize">
+            {_orderDetails.billing != null ? (
+              <span>{_orderDetails.billing.address.value}</span>
+            ) : (
+              "Not Defined"
+            )}
+          </p>
+          {/* APARTMENT */}
+          <p className="p-1 pt-2 pl-3 bg-white capitalize">
+            {_orderDetails.billing.apartment != null ? (
+              <span>{_orderDetails.billing.apartment.value}</span>
             ) : (
               "Not Defined"
             )}
           </p>
           {/* CITY */}
-          <p className="p-1 pt-2 pl-3 bg-white">
+          <p className="p-1 pt-2 pl-3 bg-white capitalize">
             {_orderDetails.billing != null ? (
               <span>
                 {_orderDetails.billing.city.value}
@@ -224,16 +250,16 @@ const PaymentReview = props => {
               "Not Defined"
             )}
           </p>
-          {/* POSTALZIP */}
-          <p className="p-1 pt-2 pl-3 bg-white">
-            {_orderDetails.billing != null
-              ? _orderDetails.billing.postalZip.value
-              : "Not Defined"}
-          </p>
           {/* COUNTRY */}
-          <p className="p-1 pt-2 pl-3 bg-white">
+          <p className="p-1 pt-2 pl-3 bg-white capitalize">
             {_orderDetails.billing != null
               ? _orderDetails.billing.country.value
+              : "Not Defined"}
+          </p>
+          {/* POSTALZIP */}
+          <p className="p-1 pt-2 pl-3 bg-white capitalize">
+            {_orderDetails.billing != null
+              ? _orderDetails.billing.postalZip.value
               : "Not Defined"}
           </p>
           {/* PHONE */}
@@ -331,7 +357,8 @@ const PaymentReview = props => {
             >
               <div className="w-3/5 pl-3">
                 <p className="p-1 ">
-                  Discount ({parseInt(_orderDetails[pageGroup].discountAmt)}%):
+                  Discount ({parseInt(_orderDetails[pageGroup].discountAmt)}
+                  %):
                 </p>
               </div>
               <div className="w-2/5 text-left">
