@@ -10,6 +10,7 @@ import Layout from "../HOC/Layout";
 import BannerCarousel from "../components/sections/bannerCarousel";
 import GenePreview from "../components/sections/genePreview";
 import News from "../components/sections/news";
+import ExtraContent from "../components/sections/extraContent";
 import Carousel from "../components/sections/germination/carousel";
 import FeaturedStrains from "../components/sections/featuredStrains";
 
@@ -50,6 +51,7 @@ class Index extends Component {
           <React.Fragment>
             <BannerCarousel {...this.props} />
             <GenePreview {...this.props} />
+            <ExtraContent {...this.props} />
             <News {...this.props} />
           </React.Fragment>
         ) : (

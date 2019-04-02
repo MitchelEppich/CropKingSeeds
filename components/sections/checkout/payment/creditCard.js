@@ -101,37 +101,37 @@ const CreditCard = props => {
               Are you using a Prepaid Card?
             </label>
 
-            {props.checkout.orderDetails.payment.isPrepaid != null &&
-            props.checkout.orderDetails.payment.isPrepaid.value != "Yes" ? (
-              <input
-                aria-label="cardHolder"
-                type="text"
-                id="cardHolder"
-                required
-                value={
-                  props.checkout.orderDetails[pageGroup] != null
-                    ? props.checkout.orderDetails[pageGroup].cardHolder || ""
-                    : undefined
-                }
-                onChange={e => {
-                  let _orderDetails = props.checkout.orderDetails;
-                  let _target = e.target;
-                  let _key = _target.id;
-                  let _value = _target.value;
-                  let _tag = undefined;
+            {/* {props.checkout.orderDetails.payment.isPrepaid != null &&
+            props.checkout.orderDetails.payment.isPrepaid.value != "Yes" ? ( */}
+            <input
+              aria-label="cardHolder"
+              type="text"
+              id="cardHolder"
+              required
+              value={
+                props.checkout.orderDetails[pageGroup] != null
+                  ? props.checkout.orderDetails[pageGroup].cardHolder || ""
+                  : undefined
+              }
+              onChange={e => {
+                let _orderDetails = props.checkout.orderDetails;
+                let _target = e.target;
+                let _key = _target.id;
+                let _value = _target.value;
+                let _tag = undefined;
 
-                  props.modifyOrderDetails({
-                    orderDetails: _orderDetails,
-                    group: pageGroup,
-                    key: _key,
-                    value: _value,
-                    tag: _tag
-                  });
-                }}
-                placeholder="Card Holder Name ..."
-                className="p-2 w-full mt-2"
-              />
-            ) : null}
+                props.modifyOrderDetails({
+                  orderDetails: _orderDetails,
+                  group: pageGroup,
+                  key: _key,
+                  value: _value,
+                  tag: _tag
+                });
+              }}
+              placeholder="Card Holder Name ..."
+              className="p-2 w-full mt-2"
+            />
+            {/* ) : null} */}
           </div>
           <div className="w-full mt-2 text-center relative inline-flex">
             <div className="w-full">
