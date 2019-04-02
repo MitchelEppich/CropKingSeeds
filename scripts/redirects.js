@@ -9,7 +9,8 @@ module.exports = oldUrls.map((oldUrl, index) => {
         newUrl = "/shop";
       }
       if (categorie == "germination" || categorie == "grow") {
-        newUrl = "/germination";
+        newUrl =
+          "https://www.marijuanaseeds.com/how-to-germinate-marijuana-seeds-successfully/";
       }
       if (categorie == "buy") {
         newUrl = "/shop";
