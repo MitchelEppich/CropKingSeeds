@@ -68,7 +68,11 @@ const news = props => {
           }`}
         >
           <div className="w-3/4 sm:w-full md:w-full">
-            <h3 className={`px-2 font-bold text-lg pl-12 ml-2`}>{title}</h3>
+            <h3
+              className={`px-2 font-bold text-lg pl-12 ml-2 h-10 flex items-center`}
+            >
+              {title}
+            </h3>
           </div>
           <div className="w-1/4 sm:w-full md:w-full items-center flex justify-end mr-2 md:hidden sm:hidden">
             {sponsored ? (
@@ -116,7 +120,7 @@ const news = props => {
   return (
     <div className="lg:mt-12 w-full h-full bg-smoke-grey">
       <div className="pb-4 mt-6 w-full bg-white">
-        <h2 className="text-3xl font-bold h-24 pt-4 mt-10 text-center w-full p-2 text-grey sm:text-3xl md:text-3xl bg-grey-dark text-white">
+        <h2 className="text-3xl font-bold h-24 pt-4 mt-10 text-center w-full p-2 text-grey md:text-3xl bg-grey-dark text-white sm:text-2xl">
           Featured Events {"&"} News
         </h2>
       </div>
