@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://cropkingseeds.com/sitemap.xml
+Sitemap: https://www.cropkingseeds.com/sitemap.xml
