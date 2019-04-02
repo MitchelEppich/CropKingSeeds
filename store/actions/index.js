@@ -28,7 +28,11 @@ import { inferStrainData } from "../utilities/strain";
 
 const uri = "http://127.0.0.1:3000/graphql";
 // const uri = "https://142.93.159.223/graphql";
+<<<<<<< HEAD
 // const uri = "https://cropkingseeds.com/graphql";
+=======
+const uri = "http://127.0.0.1:3000/graphql";
+>>>>>>> 8b152a2b232d5be2854ffec4ee8037692ac8f10d
 
 const imports = {
   ...Cart(uri),

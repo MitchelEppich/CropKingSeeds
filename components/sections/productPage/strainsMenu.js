@@ -6,6 +6,7 @@ import { faCannabis, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const strainsMenu = props => {
   let showMenu = props.viewProduct.showStrainsMenu;
+
   let position = showMenu
     ? {
         transform: "translateX(0)"

@@ -76,7 +76,6 @@ app
     });
     // redirect www
     // server.get("/*", function(req, res, next) {
-    //   console.log(req.headers);
     //   console.log("URL", req.url);
     //   res.redirect("http://" + req.url);
     //   next();
