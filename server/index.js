@@ -75,15 +75,12 @@ app
       else next();
     });
     // redirect www
-    // server.get("/*", function(req, res, next) {
-    //   if (req.headers.host.match(/^www/) !== null) {
-    //     res.redirect(
-    //       "http://" + req.headers.host.replace(/^www\./, "") + req.url
-    //     );
-    //   } else {
-    //     next();
-    //   }
-    // });
+    server.get("/*", function(req, res, next) {
+      console.log(req.headers);
+      console.log("URL", req.url);
+      res.redirect("http://" + req.url);
+      next();
+    });
     //sitemap
     let strains = await resolvers.Query.allStrains(null, { filter: null });
     let sitemapStrains = strains.map((strain, index) => {
@@ -103,6 +100,8 @@ app
         res.redirect(type, to);
       });
     });
+
+    // update strains to add moreInfo
     // let updated = await resolvers.Mutation.updateStrainInfo(null, {});
 
     ////////

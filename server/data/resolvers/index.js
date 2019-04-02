@@ -263,7 +263,7 @@ const resolvers = {
 let processBambora = async input => {
   let content = {
     merchant_id: "225812615",
-    order_number: "100000000",
+    order_number: input.orderId,
     amount: parseFloat(input.amount),
     payment_method: "card",
     card: {
