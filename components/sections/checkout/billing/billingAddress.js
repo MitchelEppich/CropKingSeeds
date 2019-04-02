@@ -140,9 +140,7 @@ const BillingAddress = props => {
       </div>
       <div
         className={`w-full mt-4 ${
-          _orderDetails[pageGroup].readOnly
-            ? "opacity-50 pointer-events-none unselectable"
-            : ""
+          _orderDetails[pageGroup].readOnly ? "opacity-50" : ""
         }`}
       >
         <div className="w-full p-2 inline-flex sm:flex-col border-t-2 border-grey-lightest mt-2 pt-4">
@@ -274,7 +272,7 @@ const BillingAddress = props => {
               });
             }}
             placeholder="Street Address"
-            className="p-2 w-full"
+            className="p-2 w-full capitalize"
             required
           />
         </div>
@@ -306,44 +304,11 @@ const BillingAddress = props => {
               });
             }}
             placeholder="Apart. / Suite / Other"
-            className="p-2 w-full"
+            className="p-2 w-full capitalize"
           />
         </div>
         <div className="w-full p-2 sm:flex-col inline-flex">
-          <div className="w-1/3 sm:w-full">
-            <input
-              aria-label="ship-zip"
-              type="text"
-              name="ship-zip"
-              required
-              autoComplete="shipping postal-code"
-              id="postalZip"
-              value={
-                _orderDetails[pageGroup] != null &&
-                _orderDetails[pageGroup].postalZip != null
-                  ? _orderDetails[pageGroup].postalZip.value || ""
-                  : ""
-              }
-              onChange={e => {
-                let _target = e.target;
-                let _key = _target.id;
-                let _value = _target.value;
-                let _tag = "Postal_Zip_Code";
-
-                props.modifyOrderDetails({
-                  orderDetails: _orderDetails,
-                  group: pageGroup,
-                  key: _key,
-                  value: _value,
-                  tag: _tag
-                });
-              }}
-              placeholder="ZIP Code"
-              className="p-2 w-full"
-              required
-            />
-          </div>
-          <div className="w-1/3 px-2 sm:w-full sm:px-0 sm:mt-4">
+          <div className="w-1/3 mr-2 sm:w-full sm:px-0 sm:mt-4">
             <input
               aria-label="ship-city"
               type="text"
@@ -371,50 +336,11 @@ const BillingAddress = props => {
                 });
               }}
               placeholder="City"
-              className="p-2 w-full"
+              className="p-2 w-full capitalize"
               required
             />
           </div>
-          <div className="w-1/3 sm:w-full sm:mt-4">
-            <select
-              id="country"
-              name="ship-country"
-              autoComplete="shipping country"
-              required
-              value={
-                _orderDetails[pageGroup] != null &&
-                _orderDetails[pageGroup].country != null
-                  ? _orderDetails[pageGroup].country.value || ""
-                  : ""
-              }
-              onChange={e => {
-                let _target = e.target;
-                let _key = _target.id;
-                let _value = _target.value;
-                let _tag = "Country";
-
-                props.modifyOrderDetails({
-                  orderDetails: _orderDetails,
-                  group: pageGroup,
-                  key: _key,
-                  value: _value,
-                  tag: _tag,
-                  requestUpdateOfGroup: {
-                    value: true,
-                    group: "payment"
-                  }
-                });
-              }}
-              placeholder="Country"
-              className="w-full"
-              style={{ padding: "0.35rem" }}
-            >
-              {showCountries()}
-            </select>
-          </div>
-        </div>
-        <div className="w-full p-2 inline-flex sm:flex-col">
-          <div className="w-1/2 sm:w-full sm:pl-0">
+          <div className="w-1/3 sm:w-full sm:pl-0 mr-2">
             <select
               type="text"
               name="ship-state"
@@ -484,6 +410,79 @@ const BillingAddress = props => {
               }
             />
           </div>
+          <div className="w-1/3 sm:w-full sm:mt-4">
+            <select
+              id="country"
+              name="ship-country"
+              autoComplete="shipping country"
+              required
+              value={
+                _orderDetails[pageGroup] != null &&
+                _orderDetails[pageGroup].country != null
+                  ? _orderDetails[pageGroup].country.value || ""
+                  : ""
+              }
+              onChange={e => {
+                let _target = e.target;
+                let _key = _target.id;
+                let _value = _target.value;
+                let _tag = "Country";
+
+                props.modifyOrderDetails({
+                  orderDetails: _orderDetails,
+                  group: pageGroup,
+                  key: _key,
+                  value: _value,
+                  tag: _tag,
+                  requestUpdateOfGroup: {
+                    value: true,
+                    group: "payment"
+                  }
+                });
+              }}
+              placeholder="Country"
+              className="w-full"
+              style={{ padding: "0.35rem" }}
+            >
+              {showCountries()}
+            </select>
+          </div>
+        </div>
+        <div className="w-full p-2 inline-flex sm:flex-col">
+          <div className="w-1/2 sm:w-full mr-2">
+            <input
+              aria-label="ship-zip"
+              type="text"
+              name="ship-zip"
+              required
+              autoComplete="shipping postal-code"
+              id="postalZip"
+              value={
+                _orderDetails[pageGroup] != null &&
+                _orderDetails[pageGroup].postalZip != null
+                  ? _orderDetails[pageGroup].postalZip.value || ""
+                  : ""
+              }
+              onChange={e => {
+                let _target = e.target;
+                let _key = _target.id;
+                let _value = _target.value;
+                let _tag = "Postal_Zip_Code";
+
+                props.modifyOrderDetails({
+                  orderDetails: _orderDetails,
+                  group: pageGroup,
+                  key: _key,
+                  value: _value,
+                  tag: _tag
+                });
+              }}
+              placeholder="ZIP Code"
+              className="p-2 w-full"
+              required
+            />
+          </div>
+
           <div className="w-1/2 pl-2 pb-8 mb-6 sm:w-full sm:pl-0 sm:mt-4">
             <input
               aria-label="tel"

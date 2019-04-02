@@ -29,15 +29,10 @@ const Payment = props => {
 
   return (
     <div className="w-full px-8 mb-6 sm:px-4">
-      <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-black">
-        Payment Review
-      </h2>
       <div className="mb-4">
         <MinimumSeedsWarning {...props} />
         <MinimumOrderWarning {...props} />
       </div>
-
-      <PaymentReview {...props} />
 
       <div className="font-bold py-2 my-4">
         <h2 className="text-3/5xl font-extrabold opacity-50 mt-2 mb-4 text-black">
@@ -75,7 +70,7 @@ const Payment = props => {
                 }}
                 className="checkbox sm:mr-2"
               />
-              I confirm that all my information is correct.*
+              I confirm that all my billing / shipping information is correct.*
             </label>
           </div>
           <div className="w-150 justify-end flex sm:w-full sm:justify-end">
@@ -85,6 +80,13 @@ const Payment = props => {
           </div>
         </div>
       </div>
+      <div>
+        <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-black">
+          Payment Review
+        </h2>
+        <PaymentReview {...props} />
+      </div>
+
       <div>
         <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-black">
           Payment Method

@@ -160,7 +160,7 @@ const Confirmation = props => {
                       side the requested amount in applicable currency:
                     </p>
                     <p className="font-bold text-center p-2 mt-4 text-xl">
-                      VanCoast Industries
+                      In-Organics
                       <br />
                       112 East 6th Ave
                       <br />
