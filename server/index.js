@@ -75,12 +75,11 @@ app
       else next();
     });
     // redirect www
-    server.get("/*", function(req, res, next) {
-      console.log(req.headers);
-      console.log("URL", req.url);
-      res.redirect("http://" + req.url);
-      next();
-    });
+    // server.get("/*", function(req, res, next) {
+    //   console.log("URL", req.url);
+    //   res.redirect("http://" + req.url);
+    //   next();
+    // });
     //sitemap
     let strains = await resolvers.Query.allStrains(null, { filter: null });
     let sitemapStrains = strains.map((strain, index) => {

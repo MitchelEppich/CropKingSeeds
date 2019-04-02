@@ -264,7 +264,7 @@ class Layout extends Component {
               </div>
               <div
                 id="tawkto"
-                className="pulse sm:hidden md:hidden lg:hidden fixed z-40 w-20 h-16 bg-red-darker mb-16 pin-b pin-l text-white text-center text-lg pt-3 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item shadow-md"
+                className="pulse fixed z-40 w-20 h-16 bg-red-darker mb-16 pin-b pin-l text-white text-center text-lg pt-3 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item shadow-md"
                 onClick={() => {
                   Tawk_API.toggle();
                 }}
@@ -294,7 +294,9 @@ class Layout extends Component {
                 )}
               </div>
             </div>
-            <StrainsMenu {...this.props} />
+            {!Router.asPath.includes("shop") ? (
+              <StrainsMenu {...this.props} />
+            ) : null}
             <AnchorLink
               aria-label="toTop"
               className="items-center flex"
@@ -456,7 +458,7 @@ const mapDispatchToProps = dispatch => {
     toggleHeaderMessage: input => dispatch(actions.toggleHeaderMessage(input)),
     getDailyMessage: () => dispatch(actions.getDailyMessage()),
     recallGPUMode: () => dispatch(actions.recallGPUMode()),
-    toggleMute: () => dispatch(actions.toggleMute()),
+    toggleMute: () => dispatch(actions.toggleMute())
   };
 };
 
