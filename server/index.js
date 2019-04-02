@@ -75,15 +75,15 @@ app
       else next();
     });
     // redirect www
-    server.get("/*", function(req, res, next) {
-      if (req.headers.host.match(/^www/) !== null) {
-        res.redirect(
-          "http://" + req.headers.host.replace(/^www\./, "") + req.url
-        );
-      } else {
-        next();
-      }
-    });
+    // server.get("/*", function(req, res, next) {
+    //   if (req.headers.host.match(/^www/) !== null) {
+    //     res.redirect(
+    //       "http://" + req.headers.host.replace(/^www\./, "") + req.url
+    //     );
+    //   } else {
+    //     next();
+    //   }
+    // });
     //sitemap
     let strains = await resolvers.Query.allStrains(null, { filter: null });
     let sitemapStrains = strains.map((strain, index) => {
