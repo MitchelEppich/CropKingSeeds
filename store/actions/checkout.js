@@ -677,8 +677,8 @@ const getActions = uri => {
         }
 
         // Process Order
-        // let response = await processOrder(_orderDetails, ccResponse, uri);
-        let response = null;
+        let response = await processOrder(_orderDetails, ccResponse, uri);
+        // let response = null;
         // Send email confirmation
         let products = Object.values(cart.items);
         products = products.map((product, index) => {
