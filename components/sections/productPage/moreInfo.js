@@ -6,7 +6,7 @@ const moreInfo = props => {
   let paragraphs = props.viewProduct.currentProduct.moreInfo.map(
     (paragraph, index) => {
       return (
-        <React.Fragment>
+        <React.Fragment key={index}>
           <p>{paragraph}</p>
           <br />
         </React.Fragment>
