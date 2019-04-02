@@ -59,7 +59,7 @@ const initialState = {
   showMobileMenu: null,
   showHeaderMessage: null,
   showCartMenu: false,
-  CFURL: "http://dcfgweqx7od72.cloudfront.net",
+  CFURL: "https://dcfgweqx7od72.cloudfront.net",
   newsTimeout: null,
   newCustomer: null,
   eyesShouldMove: false,
