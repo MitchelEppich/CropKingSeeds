@@ -5,9 +5,9 @@ const ExtraContent = props => {
   return (
     <div>
       <div className="w-full mx-auto mt-8">
-        <h2 className="p-2 bg-red-dark text-center text-white uppercase font-bold text-3xl sm:text-xl md:text-2xl">
-          Buy Marijuana Seeds from Crop King Seeds
-        </h2>
+        <h1 className="p-2 bg-red-dark text-center text-white uppercase font-bold text-3xl sm:text-xl md:text-2xl">
+          Buy Marijuana Seeds from Crop King
+        </h1>
 
         <div className="p-2 w-95p mx-auto mt-2">
           <p className="my-1">

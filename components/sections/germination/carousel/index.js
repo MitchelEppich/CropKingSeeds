@@ -13,6 +13,7 @@ const Carousel = props => {
         key={index}
         className="germinationCarouselImg"
         src={step.image}
+        // src={props.misc.CFURL + step.image}
       />
     );
   });
@@ -57,7 +58,7 @@ const Carousel = props => {
   });
 
   return (
-    <div className="sm:w-full sm:pt-4 sm:h-400 md:h-400 lg:h-250 xl:h-300 xxl:h-400 xl:pt-4 xxl:pt-12 text-xl relative overflow-hidden mx-auto bg-white">
+    <div className="sm:w-full w-main mx-auto mt-48 shadow-md sm:pt-4 sm:h-400 md:h-400 lg:h-250 xl:h-300 xxl:h-400 xl:pt-4 xxl:pt-12 text-xl relative overflow-hidden mx-auto bg-white">
       <div className="w-1/3 sm:mb-6 md:mb-12 sm:pin-b md:pin-b sm:h-48 md:h-48 sm:w-full md:w-full lg:ml-24 xl:ml-24 xxl:ml-24 absolute z-0">
         <h2 className="px-4 sm:my-2 text-2xl bg-red-dark text-white p-1 uppercase lg:my-2 xl:my-2 xxl:my-4 lg:text-left xl:text-left xxl:text-left text-center sm:bg-white md:bg-white sm:text-red-dark md:text-red-dark">
           Step {currentStep + 1}

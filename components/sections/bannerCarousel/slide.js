@@ -46,10 +46,10 @@ const slide = props => {
         ...position,
         ...props.style,
         backgroundImage: "url(" + $url + ")",
-        backgroundPosition: "top"
+        backgroundPosition: "center"
       }}
       className={
-        "xxl:h-600 xl:h-400 lg:h-300 md:h-250 sm:h-full bg-contain w-full z-0 absolute cursor-pointer"
+        "xxl:h-600 xl:h-400 lg:h-300 md:h-250 sm:h-175 bg-contain w-full z-0 absolute cursor-pointer"
       }
     />
   );

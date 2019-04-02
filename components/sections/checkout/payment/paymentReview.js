@@ -152,13 +152,11 @@ const PaymentReview = props => {
             )}
           </p>
           {/* APARTMENT */}
-          <p className="p-1 pt-2 pl-3 bg-white capitalize">
-            {_orderDetails.shipping.apartment != null ? (
+          {_orderDetails.shipping.apartment != null ? (
+            <p className="p-1 pt-2 pl-3 bg-white capitalize">
               <span>{_orderDetails.shipping.apartment.value}</span>
-            ) : (
-              "Not Defined"
-            )}
-          </p>
+            </p>
+          ) : null}
           {/* CITY */}
           <p className="p-1 pt-2 pl-3 bg-white capitalize">
             {_orderDetails.shipping != null ? (
@@ -230,13 +228,11 @@ const PaymentReview = props => {
             )}
           </p>
           {/* APARTMENT */}
-          <p className="p-1 pt-2 pl-3 bg-white capitalize">
-            {_orderDetails.billing.apartment != null ? (
+          {_orderDetails.billing.apartment != null ? (
+            <p className="p-1 pt-2 pl-3 bg-white capitalize">
               <span>{_orderDetails.billing.apartment.value}</span>
-            ) : (
-              "Not Defined"
-            )}
-          </p>
+            </p>
+          ) : null}
           {/* CITY */}
           <p className="p-1 pt-2 pl-3 bg-white capitalize">
             {_orderDetails.billing != null ? (

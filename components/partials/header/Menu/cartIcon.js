@@ -42,7 +42,7 @@ class Index extends Component {
     return (
       <div
         ref={div => (this.myElement = div)}
-        className="text-center cursor-pointer mt-1 text-white"
+        className="text-center mt-1 text-white"
       >
         <div>
           <FontAwesomeIcon icon={faShoppingCart} className="fa-lg pl-1" />
