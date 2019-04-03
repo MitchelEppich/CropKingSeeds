@@ -209,7 +209,6 @@ const resolvers = {
       );
     },
     postToAddNoteToOrder: async (_, { input }) => {
-      console.log(input);
       return request.post(
         {
           url: "https://www.cksoti.com/posttoaddnotesonorder/",
@@ -254,8 +253,6 @@ const resolvers = {
     },
     processOrder: async (_, { input }) => {
       let _input = JSON.parse(input.content);
-
-      console.log(_input);
 
       let res = (await axios({
         method: "post",
@@ -322,7 +319,6 @@ let buildRelation = list => {
       quantity: a.substring(3, 5).trim()
     };
   });
-  console.log(list, _products);
   _products.map(async _strain => {
     let strain = await Strain.findOne({ sotiId: _strain.id });
     let _soldQuantity = [...strain.soldQuantity];
@@ -346,7 +342,6 @@ let buildRelation = list => {
         relation[index] = `${_id}!${_}`;
       }
     }
-    console.log(relation);
     strain.relationData = compress(
       relation
         .sort((a, b) => {

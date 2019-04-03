@@ -147,7 +147,6 @@ const resolvers = {
       return newsEntry;
     },
     subscribeToNewsletter: async (_, input) => {
-      console.log(input);
       let email = new Email({
         ...input
       });

@@ -296,7 +296,6 @@ const actions = {
   },
   subscribeToNewsletter: input => {
     return dispatch => {
-      console.log(input);
       const link = new HttpLink({ uri, fetch: fetch });
       const operation = {
         query: mutation.subscribeToNewsletter,
