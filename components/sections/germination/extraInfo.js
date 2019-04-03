@@ -98,7 +98,7 @@ const ExtraInfo = props => {
             </div>
           </div>
           <div className="w-400 lg:w-main md:w-main sm:w-main lg:h-full md:h-full xl:h-full xl:mt-12 xl:mr-2 mx-auto my-6 sm:mt-4 shadow-md scale-item">
-            <img src="../../static/img/how-to-germinate-marijuana-seeds.jpg" />
+            <img src={props.misc.CFURL + "/germ/ad_link"} />
             <p className="p-2">
               For more information, please visit this article about How to
               Germinate Marijuana Seeds Successfully from one of our partners.
