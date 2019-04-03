@@ -313,7 +313,9 @@ const Confirmation = props => {
                     <p className="text-center p-2 mt-4 text-xl">
                       {_ccr.status.toLowerCase() == "declined" ? (
                         <span>
-                          <strong>We are unable to process your order!</strong>
+                          <strong>
+                            Declined! We are unable to process your order!
+                          </strong>
                           <br />
                           Please call our customer support immediately (at +1
                           (844) 276 - 7546) to resolve any issues.
