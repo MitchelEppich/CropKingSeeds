@@ -4,7 +4,6 @@ import { library } from "@fortawesome/fontawesome-svg-core"; // FONTAWESOME
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 // custom imports
-import strainsData from "../static/strainsSchemaData";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -72,57 +71,21 @@ export default class MyDocument extends Document {
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify(this.generateSchemaMarkup(strainsData))
+              __html: JSON.stringify({
+                "@context": "http://schema.org",
+                "@type": "Organization",
+                name: "Crop King Seeds",
+                url: "https://www.cropkingseeds.com",
+                sameAs: [
+                  "https://www.instagram.com/cropkingseeds/",
+                  "https://twitter.com/cropkingseeds",
+                  "https://www.facebook.com/cropkingSeeds/"
+                ]
+              })
             }}
           />
         </body>
       </html>
     );
   }
-
-  generateSchemaMarkup = strains => {
-    return strains.map((strain, index) => {
-      let reviews,
-        priceLength = strain.price[0] > 0;
-      if (strain.reviews != null && strain.reviews.length > 0) {
-        reviews = strain.reviews.map((review, index) => {
-          let str = review;
-          let { 0: name, 1: email, 2: body, 3: rating, 4: time } =
-            str != "" ? str.split("&=>") : ["", "", "", ""];
-          return {
-            "@type": "Review",
-            reviewBody: body,
-            datePublished: time,
-            author: {
-              "@type": "Person",
-              name: name
-            },
-            reviewRating: {
-              "@type": "Rating",
-              ratingValue: rating
-            }
-          };
-        });
-      }
-      return {
-        "@context": "http://schema.org/",
-        "@type": "Product",
-        name: strain.name,
-        description: strain.description,
-        image: "http://dcfgweqx7od72.cloudfront.net" + strain.packageImg,
-        price: strain.price[0] > 0 ? strain.price[0] : strain.price[1],
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: strain.rating,
-          reviewCount: strain.reviews.length
-        },
-        AggregateOffer: {
-          "@type": "AggregateOffer",
-          highPrice: strain.price[2],
-          lowPrice: priceLength ? strain.price[0] : strain.price[1]
-        },
-        reviews
-      };
-    });
-  };
 }

@@ -177,9 +177,11 @@ class Index extends Component {
             </div>
           </React.Fragment>
         ) : (
-          <div className="h-screen w-full">
-            <Loader {...this.props} />
-          </div>
+          <React.Fragment>
+            <div className="h-screen w-full">
+              <Loader {...this.props} />
+            </div>
+          </React.Fragment>
         )}
       </Layout>
     );
