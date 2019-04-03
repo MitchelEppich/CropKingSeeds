@@ -18,7 +18,7 @@ const ExtraInfo = props => {
         </p>
         <div className="inline-flex w-full lg:flex-col md:flex-col sm:flex-col">
           <div className="px-4 p-2 mt-8 text-base w-3/5 lg:w-full md:w-full sm:w-full">
-            <div className="inline-flex w-full p-1">
+            <div className="inline-flex w-full p-1 scale-item">
               <div className="w-10 h-8 text-red-light flex items-center justify-center">
                 <FontAwesomeIcon icon={faAngleRight} className="fa-2x pb-1" />
               </div>
@@ -28,7 +28,7 @@ const ExtraInfo = props => {
                 </p>
               </div>
             </div>
-            <div className="inline-flex w-full p-1">
+            <div className="inline-flex w-full p-1 scale-item">
               <div className="w-10 h-8 text-red-light flex items-center justify-center">
                 <FontAwesomeIcon icon={faAngleRight} className="fa-2x pb-1" />
               </div>
@@ -39,7 +39,7 @@ const ExtraInfo = props => {
                 </p>
               </div>
             </div>
-            <div className="inline-flex w-full p-1">
+            <div className="inline-flex w-full p-1 scale-item">
               <div className="w-10 h-8 text-red-light flex items-center justify-center">
                 <FontAwesomeIcon icon={faAngleRight} className="fa-2x pb-1" />
               </div>
@@ -51,7 +51,7 @@ const ExtraInfo = props => {
               </div>
             </div>
 
-            <div className="inline-flex w-full p-1">
+            <div className="inline-flex w-full p-1 scale-item">
               <div className="w-10 h-8 text-red-light flex items-center justify-center">
                 <FontAwesomeIcon icon={faTimes} className="fa-lg" />
               </div>
@@ -62,7 +62,7 @@ const ExtraInfo = props => {
               </div>
             </div>
 
-            <div className="inline-flex w-full p-1">
+            <div className="inline-flex w-full p-1 scale-item">
               <div className="w-10 h-8 text-red-light flex items-center justify-center">
                 <FontAwesomeIcon icon={faTimes} className="fa-lg" />
               </div>
@@ -74,7 +74,7 @@ const ExtraInfo = props => {
               </div>
             </div>
 
-            <div className="inline-flex w-full p-1">
+            <div className="inline-flex w-full p-1 scale-item">
               <div className="w-10 h-8 text-red-light flex items-center justify-center">
                 <FontAwesomeIcon icon={faTimes} className="fa-lg" />
               </div>
@@ -85,7 +85,7 @@ const ExtraInfo = props => {
               </div>
             </div>
 
-            <div className="inline-flex w-full p-1">
+            <div className="inline-flex w-full p-1 scale-item">
               <div className="w-10 h-8 text-red-light flex items-center justify-center">
                 <FontAwesomeIcon icon={faTimes} className="fa-lg" />
               </div>

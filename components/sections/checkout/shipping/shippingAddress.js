@@ -289,7 +289,7 @@ const ShippingAddress = props => {
           </div>
           <div className="w-1/2 pl-2 sm:w-full sm:pl-0 sm:mt-4 inline-flex">
             <div
-              className={`w-2/3 ${
+              className={`w-full ${
                 _orderDetails[pageGroup].noEmail
                   ? "unselectable opacity-50 pointer-events-none"
                   : ""
