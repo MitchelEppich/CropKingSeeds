@@ -48,7 +48,7 @@ const BillingAddress = props => {
   let showCountries = () => {
     let arr = [
       <option key="default" disabled value="">
-        Select...
+        Country...
       </option>,
       <option key="_Canada" value="Canada">
         Canada
@@ -94,7 +94,7 @@ const BillingAddress = props => {
 
     let arr = [
       <option key="default" disabled value="">
-        Select...
+        State/Province...
       </option>
     ];
     for (let state of _data) {
