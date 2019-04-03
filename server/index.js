@@ -77,12 +77,6 @@ app
         res.redirect(301, req.url.slice(0, -1));
       else next();
     });
-    // redirect www
-    // server.get("/*", function(req, res, next) {
-    //   console.log("URL", req.url);
-    //   res.redirect("http://" + req.url);
-    //   next();
-    // });
     //sitemap
     let strains = await resolvers.Query.allStrains(null, { filter: null });
     let sitemapStrains = strains.map((strain, index) => {
@@ -96,21 +90,6 @@ app
       return strain;
     });
     schemaBuilder(JSON.stringify(_strains));
-    // 301 redirects
-    // let redirects = redirectUrls;
-    // let redirects = redirectUrls(sitemapStrains);
-    // for (let i = 0; i < 200; i++) {
-    //   let url = redirects[i];
-    //   server.get(url.from, (req, res) => {
-    //     res.redirect(301, url.to);
-    //   });
-    //   return next();
-    // }
-    // redirects.forEach(({ from, to, type = 301, method = "get" }) => {
-    //   server[method](from, (req, res) => {
-    //     res.redirect(type, to);
-    //   });
-    // });
 
     // update strains to add moreInfo
     // let updated = await resolvers.Mutation.updateStrainInfo(null, {});
@@ -156,6 +135,15 @@ app
     server.get("/product/:_id", (req, res) => {
       app.render(req, res, "/product", {});
     });
+    // 301 redirects
+    let redirects = redirectUrls(sitemapStrains);
+    for (let i = 0; i < redirects.length; i++) {
+      let url = redirects[i];
+      server.get(url.from, (req, res) => {
+        res.redirect(301, url.to);
+      });
+    }
+
     server.get("*", (req, res) => {
       return handle(req, res);
     });

@@ -246,6 +246,8 @@ const resolvers = {
       let _amount = parseFloat(input.amount);
       let response;
 
+      console.log(_amount, pivotal, bambora);
+
       if (
         input.country.toLowerCase() == "canada" &&
         (bambora.limit == -1 || bambora.available - _amount > 0)
@@ -253,6 +255,8 @@ const resolvers = {
         response = await processBambora(input);
       else if (pivotal.limit == -1 || pivotal.available - _amount > 0)
         response = await processPivotal(input);
+
+      console.log(response);
 
       return response;
     }
@@ -274,6 +278,8 @@ let processBambora = async input => {
     }
   };
 
+  console.log(content);
+
   let beanstream = require("beanstream-node")(
     "225812615",
     "32f630b674F24A73941Ee23b9237874A"
@@ -283,9 +289,11 @@ let processBambora = async input => {
     return error;
   });
 
+  console.log(res);
+
   return {
     transactionId: res.reference,
-    status: res.message,
+    status: res.message.toLowerCase() == "approved" ? "APPROVED" : "DECLINED",
     approvalCode: res.code,
     response: res.status,
     processor: "Bambora FD",
@@ -336,11 +344,20 @@ let processPivotal = async input => {
     data: toXML(content)
   });
 
+  console.log($res.data);
+
   let res = JSON.parse(
     convert.xml2json($res.data, { compact: true, spaces: 4 })
   )["PAYMENTRESPONSE"];
 
-  if (res == null) return { status: "DECLINED" };
+  console.log(res);
+
+  if (res == null)
+    return {
+      status: "DECLINED",
+      processor: "Pivotal 3 VT",
+      descriptor: "King Merch"
+    };
 
   return {
     transactionId: res.UNIQUEREF._text,
