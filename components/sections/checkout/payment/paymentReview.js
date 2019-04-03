@@ -431,7 +431,8 @@ let buildProductList = items => {
     } Cannabis Seeds (${item.amount} Seeds)`;
 
     itemQuantity += item.quantity;
-    productList.push(`${_name} x ${item.quantity} x ${item.price}`);
+
+    productList.push(`${_name} x ${item.quantity} x ${item.per}`);
   }
 
   return { productList: productList.toString(), itemQuantity };

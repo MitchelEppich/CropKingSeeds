@@ -204,7 +204,7 @@ const getActions = uri => {
                   if (statesCAUS[item].includes(_value)) return item;
                 }
               })(),
-              tag: _tag.includes("bill") ? "BillCountry" : "ShipCountry"
+              tag: "Country"
             };
           }
           _orderDetails[_group].updatedAt = new Date();

@@ -26,7 +26,7 @@ const FreeShippingNotify = props => {
                   {amount}
                 </span>{" "}
                 <span className="uppercase ml-1 text-grey-light">
-                  to receive{" "}
+                  more to receive{" "}
                   <span className="font-bold">Free Express Shipping</span>
                 </span>
               </p>
