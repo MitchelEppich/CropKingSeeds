@@ -26,6 +26,7 @@ import Checkout from "../components/sections/checkout";
 import Confirmation from "../components/sections/checkout/confirmation";
 import FreeShippingNotify from "../components/sections/checkout/freeShippingNotify";
 import ErrorHandler from "../components/sections/checkout/errorHandler";
+import LoaderCheckout from "../components/sections/checkout/loaderCheckout";
 
 class Index extends Component {
   componentDidMount() {
@@ -198,7 +199,6 @@ class Index extends Component {
                   className="my-2"
                 />
                 <Coupon {...this.props} />
-                <FreeShippingNotify {...this.props} />
               </div>
             ) : null}
 
@@ -253,6 +253,7 @@ class Index extends Component {
                     </span>
                   ) : null}
                 </div>
+                <LoaderCheckout {...this.props} />
 
                 <span
                   style={{

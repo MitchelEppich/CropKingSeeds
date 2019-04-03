@@ -195,15 +195,33 @@ img {
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: #f9acaa transparent transparent transparent;
 }
-.lds-ring div:nth-child(1) {
+
+.lds-ring div,
+.lds-mini-ring div:nth-child(1) {
   animation-delay: -0.45s;
 }
-.lds-ring div:nth-child(2) {
+.lds-ring div,
+.lds-mini-ring div:nth-child(2) {
   animation-delay: -0.3s;
 }
-.lds-ring div:nth-child(3) {
+.lds-ring div,
+.lds-mini-ring div:nth-child(3) {
   animation-delay: -0.15s;
 }
+
+.lds-mini-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin: 6px;
+  border: 9px solid #ef5753;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #ef5753 transparent transparent transparent;
+}
+
 @keyframes lds-ring {
   0% {
     transform: rotate(0deg);

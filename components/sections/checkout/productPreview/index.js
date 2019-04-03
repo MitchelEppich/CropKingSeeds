@@ -4,6 +4,7 @@ import { faTimes, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import MinimumSeedsWarning from "../other/minimumSeedsWarning";
 import MinimumOrderWarning from "../other/minimumOrderWarning";
+import FreeShippingNotify from "../freeShippingNotify";
 
 const ProductPreview = props => {
   let imgPack = {
@@ -229,6 +230,7 @@ const ProductPreview = props => {
       <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-center text-black">
         Shopping Cart
       </h2>
+      <FreeShippingNotify {...props} />
       <MinimumSeedsWarning {...props} />
       <MinimumOrderWarning {...props} />
       <div className="w-full inline-flex flex-wrap mb-4 mt-2 justify-around">
