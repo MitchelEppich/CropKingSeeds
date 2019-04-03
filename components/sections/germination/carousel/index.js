@@ -12,49 +12,53 @@ const Carousel = props => {
         alt="carouselImageGermination"
         key={index}
         className="germinationCarouselImg"
-        src={step.image}
-        // src={props.misc.CFURL + step.image}
+        src={props.misc.CFURL + step.image}
       />
     );
   });
-  let progressDivs = carousel.steps.map((step, index) => {
-    let style =
-      currentStep == index
-        ? {
-            transform: "translateY(-40px)",
-            width: "50px",
-            height: "50px",
-            transition: "all .2s ease",
-            fontSize: "1.5rem",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat"
-          }
-        : {
-            transform: "translateY(-35px)",
-            width: "40px",
-            height: "40px",
-            fontSize: "1.5rem",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat"
-          };
-    return (
-      <div
-        onClick={() => {
-          props.changeStep({
-            _incrOrDecr: 0,
-            _currentStep: index,
-            _totalSteps: carousel.steps.length
-          });
-        }}
-        className="bg-white z-50 pt-3 cursor-pointer"
-        key={index}
-      >
-        <div style={{ ...style, backgroundImage: "url(" + step.icon + ")" }} />
-      </div>
-    );
-  });
+  // let progressDivs = carousel.steps.map((step, index) => {
+  //   let style =
+  //     currentStep == index
+  //       ? {
+  //           transform: "translateY(-40px)",
+  //           width: "50px",
+  //           height: "50px",
+  //           transition: "all .2s ease",
+  //           fontSize: "1.5rem",
+  //           backgroundSize: "cover",
+  //           backgroundPosition: "center",
+  //           backgroundRepeat: "no-repeat"
+  //         }
+  //       : {
+  //           transform: "translateY(-35px)",
+  //           width: "40px",
+  //           height: "40px",
+  //           fontSize: "1.5rem",
+  //           backgroundSize: "cover",
+  //           backgroundPosition: "center",
+  //           backgroundRepeat: "no-repeat"
+  //         };
+  //   return (
+  //     <div
+  //       onClick={() => {
+  //         props.changeStep({
+  //           _incrOrDecr: 0,
+  //           _currentStep: index,
+  //           _totalSteps: carousel.steps.length
+  //         });
+  //       }}
+  //       className="bg-white z-50 pt-3 cursor-pointer"
+  //       key={index}
+  //     >
+  //       <div
+  //         style={{
+  //           ...style,
+  //           backgroundImage: "url(" + props.misc.CFURL + step.icon + ")"
+  //         }}
+  //       />
+  //     </div>
+  //   );
+  // });
 
   let paragraphs = carousel.steps[currentStep].instruction.map(
     (paragraph, index) => {
