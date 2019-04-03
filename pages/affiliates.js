@@ -19,12 +19,12 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
-        <Head>
+        {/* <Head>
           <title>
             Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
           </title>
           <meta name="robots" content="index, follow" />
-        </Head>
+        </Head> */}
         <div className="flex flex-wrap justify-around pb-12">
           <div className="h-full">
             <div className="affiliatesBanner sm:mb-0 lg:mb-6 ">

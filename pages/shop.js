@@ -35,12 +35,12 @@ class Index extends Component {
     let mobile = ["sm", "md"].includes(this.props.misc.mediaSize);
     return (
       <Layout supportedBrowser={this.props.supportedBrowser}>
-        <Head>
+        {/* <Head>
           <title>
             Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
           </title>
           <meta name="robots" content="index, follow" />
-        </Head>
+        </Head> */}
         {this.props.misc.strains != null &&
         this.props.misc.featuredStrains != null &&
         this.props.misc.strains.length > 0 ? (

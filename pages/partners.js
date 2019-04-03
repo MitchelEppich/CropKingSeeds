@@ -20,12 +20,12 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
-        <Head>
+        {/* <Head>
           <title>
             Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
           </title>
           <meta name="robots" content="index, follow" />
-        </Head>
+        </Head> */}
         <Partners {...this.props} />
         <div className="w-container mx-auto mt-8 text-center pb-12">
           <h3 className="text-2xl">Interested in joining the list?</h3>

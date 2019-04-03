@@ -50,12 +50,12 @@ class Index extends Component {
         this.props.viewProduct.currentProduct &&
         this.props.viewProduct.currentProduct.reviews != null ? (
           <React.Fragment>
-            <Head>
+            {/* <Head>
               <title>
                 {this.props.viewProduct.currentProduct.name +
                   " | Crop King Seeds"}
               </title>
-            </Head>
+            </Head> */}
             <div className="p-8 lg:px-4 lg:py-8 md:px-4 md:py-8 sm:px-2 sm:py-2">
               <Breadcrumb {...this.props} />
               <div className="flex flex-wrap justify-start pt-2 relative">

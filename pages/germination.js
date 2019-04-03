@@ -15,10 +15,10 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
-        <Head>
+        {/* <Head>
           <title className="">Germination</title>
           <meta name="robots" content="index, follow" />
-        </Head>
+        </Head> */}
         <div className="pt-0">
           <Germination {...this.props} />
         </div>

@@ -20,12 +20,12 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
-        <Head>
+        {/* <Head>
           <title>
             Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
           </title>
           <meta name="robots" content="index, follow" />
-        </Head>
+        </Head> */}
         <Heading {...this.props} />
         {this.props.faq.questionsCount > 0 ||
         this.props.faq.questionsCount == null ? (

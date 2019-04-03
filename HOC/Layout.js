@@ -248,7 +248,8 @@ class Layout extends Component {
               <meta
                 property="og:image"
                 content="http://dcfgweqx7od72.cloudfront.net/logos/cks-logo-header.png"
-              />
+              />{" "}
+              <meta name="robots" content="index, follow" />
             </React.Fragment>
           )}
         </Head>
