@@ -27,7 +27,7 @@
                 <priority>0.3</priority>
             </url>,<url>
                 <loc>http://cropkingeeds.com/contact</loc>
-                <lastmod>2019-03-29</lastmod>
+                <lastmod>2019-04-02</lastmod>
                 <changefreq>yearly</changefreq>
                 <priority>0.3</priority>
             </url>,<url>
@@ -61,11 +61,16 @@
                 <changefreq>yearly</changefreq>
                 <priority>0.3</priority>
             </url>,<url>
+<<<<<<< HEAD
                 <loc>http://cropkingeeds.com/product/black-indica-feminized</loc>
+=======
+                <loc>http://cropkingeeds.com/product/candy-cane-autoflower</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/BIF.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Black Indica Feminized Seeds</image:title>
@@ -79,6 +84,11 @@
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/TWA.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Train Wreck Autoflower Seeds</image:title>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/CCA.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Candy Cane Autoflower Seeds</image:title>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/original-skunk-regular</loc>
@@ -91,6 +101,7 @@
                     <image:title>Original Skunk Regular Seeds</image:title>
                 </image:image >
             </url>,<url>
+<<<<<<< HEAD
                 <loc>http://cropkingeeds.com/product/sour-diesel-feminized</loc>
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
@@ -102,173 +113,321 @@
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/sour-girl-autoflower</loc>
+=======
+                <loc>http://cropkingeeds.com/product/nyc-diesel-autoflower</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
-                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/SGA.png</image:loc>
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/NYA.png</image:loc>
                     <image:caption></image:caption>
-                    <image:title>Sour Girl Autoflower Seeds</image:title>
+                    <image:title>NYC Diesel Autoflower Seeds</image:title>
                 </image:image >
             </url>,<url>
+<<<<<<< HEAD
                 <loc>http://cropkingeeds.com/product/cb-autoflower-cheese</loc>
+=======
+                <loc>http://cropkingeeds.com/product/amnesia-haze-autoflower</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/CBA.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>CB Autoflower Cheese Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/green-crack-feminized</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/AHA.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Amnesia Haze Autoflower Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/sativa-star-feminized</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/GCF.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Green Crack Feminized Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/early-miss-autoflower</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/SSF.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Sativa Star Feminized Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/white-widow-autoflower</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/EMA.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Early Miss Autoflower Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/sativa-star-feminized</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/WWA.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>White Widow Autoflower Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/sour-jack-feminized</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/SSF.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Sativa Star Feminized Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/gelato-feminized</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/SJF.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Sour Jack Feminized Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/cb-dutch-treat-feminized</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/GTF.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Gelato Feminized Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/amnesia-haze-autoflower</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/CBT.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>CB Dutch Treat Feminized Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/hash-plant-feminized</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/AHA.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Amnesia Haze Autoflower Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/revolver-autoflower</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/HPF.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Hash Plant Feminized Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/cali-og-kush-/-haze</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/REA.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Revolver Autoflower Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/sour-jack-feminized</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/CHF.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Cali OG Kush / Haze Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/dwarf-low-flyer-autoflower</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/SJF.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Sour Jack Feminized Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/purple-kush-feminized</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/DWA.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Dwarf Low Flyer Autoflower Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/crown-royale-feminized</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/PKF.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Purple Kush Feminized Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/jack-herer-autoflower</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/CRF.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Crown Royale Feminized Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/dark-angel-feminized</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/JHA.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Jack Herer Autoflower Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/feminized-mixed</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/DAF.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Dark Angel Feminized Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/bubba-kush-feminized</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/FMM.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Feminized Mixed Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/blueberry-regular</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/BKF.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Bubba Kush Feminized Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/sour-diesel-feminized</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/BBR.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Blueberry Regular Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/blue-cookies-feminized</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/SDF.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Sour Diesel Feminized Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/durban-poison-feminized</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/BCF.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Blue Cookies Feminized Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/bubba-kush-feminized</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/DPF.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Durban Poison Feminized Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/white-cookies-feminized</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/BKF.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Bubba Kush Feminized Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/autoflower-mixed</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/WCF.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>White Cookies Feminized Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/lambs-breath-autoflower</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/AFM.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Autoflower Mixed Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/white-widow-feminized</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/LBA.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Lambs Breath Autoflower Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/cb-diesel-feminized</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/WWF.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>White Widow Feminized Seeds</image:title>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/CBI.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>CB Diesel Feminized Seeds</image:title>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/cb-dream-feminized</loc>
@@ -281,14 +440,24 @@
                     <image:title>CB Dream Feminized Seeds</image:title>
                 </image:image >
             </url>,<url>
+<<<<<<< HEAD
                 <loc>http://cropkingeeds.com/product/dwarf-low-flyer-autoflower</loc>
+=======
+                <loc>http://cropkingeeds.com/product/cb-dream-feminized</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/DWA.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Dwarf Low Flyer Autoflower Seeds</image:title>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/CBD.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>CB Dream Feminized Seeds</image:title>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/lambs-breath-autoflower</loc>
@@ -301,44 +470,81 @@
                     <image:title>Lambs Breath Autoflower Seeds</image:title>
                 </image:image >
             </url>,<url>
+<<<<<<< HEAD
                 <loc>http://cropkingeeds.com/product/white-cookies-feminized</loc>
+=======
+                <loc>http://cropkingeeds.com/product/feminized-mixed</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/WCF.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>White Cookies Feminized Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/cb-dutch-treat-feminized</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/FMM.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Feminized Mixed Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/early-miss-autoflower</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/CBT.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>CB Dutch Treat Feminized Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/haze-xtreme-regular</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/EMA.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Early Miss Autoflower Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/white-banner-feminized</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/HXR.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Haze Xtreme Regular Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/super-silver-haze-feminized</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/WBF.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>White Banner Feminized Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/purple-kush-feminized</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/SHF.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Super Silver Haze Feminized Seeds</image:title>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/PKF.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Purple Kush Feminized Seeds</image:title>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/cali-og-kush-/-haze</loc>
@@ -351,118 +557,225 @@
                     <image:title>Cali OG Kush / Haze Seeds</image:title>
                 </image:image >
             </url>,<url>
+<<<<<<< HEAD
                 <loc>http://cropkingeeds.com/product/white-banner-feminized</loc>
+=======
+                <loc>http://cropkingeeds.com/product/revolver-autoflower</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/WBF.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>White Banner Feminized Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/white-widow-autoflower</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/REA.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Revolver Autoflower Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/jack-herer-autoflower</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/WWA.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>White Widow Autoflower Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/candy-cane-autoflower</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/JHA.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Jack Herer Autoflower Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/afghani-regular</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/CCA.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Candy Cane Autoflower Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/durban-poison-feminized</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/AFR.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Afghani Regular Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/super-silver-haze-feminized</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/DPF.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Durban Poison Feminized Seeds</image:title>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/SHF.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Super Silver Haze Feminized Seeds</image:title>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 </image:image >
             </url>,<url>
-                <loc>http://cropkingeeds.com/product/crown-royale-feminized</loc>
+                <loc>http://cropkingeeds.com/product/sour-girl-autoflower</loc>
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
-                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/CRF.png</image:loc>
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/SGA.png</image:loc>
                     <image:caption></image:caption>
-                    <image:title>Crown Royale Feminized Seeds</image:title>
+                    <image:title>Sour Girl Autoflower Seeds</image:title>
                 </image:image >
             </url>,<url>
+<<<<<<< HEAD
                 <loc>http://cropkingeeds.com/product/dark-angel-feminized</loc>
+=======
+                <loc>http://cropkingeeds.com/product/black-indica-feminized</loc>
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
-                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/DAF.png</image:loc>
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/BIF.png</image:loc>
                     <image:caption></image:caption>
-                    <image:title>Dark Angel Feminized Seeds</image:title>
+                    <image:title>Black Indica Feminized Seeds</image:title>
                 </image:image >
             </url>,<url>
-                <loc>http://cropkingeeds.com/product/nyc-diesel-autoflower</loc>
+                <loc>http://cropkingeeds.com/product/train-wreck-autoflower</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/TWA.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Train Wreck Autoflower Seeds</image:title>
+                </image:image >
+            </url>,<url>
+<<<<<<< HEAD
+                <loc>http://cropkingeeds.com/product/nyc-diesel-autoflower</loc>
+=======
+                <loc>http://cropkingeeds.com/product/northern-lights-autoflower</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
+                <lastmod>2019-04-01</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.7</priority>
+                <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/NYA.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>NYC Diesel Autoflower Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/northern-lights-autoflower</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/NLA.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Northern Lights Autoflower Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/white-widow-feminized</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/NLA.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Northern Lights Autoflower Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/hash-plant-feminized</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/WWF.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>White Widow Feminized Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/blue-cookies-feminized</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/HPF.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Hash Plant Feminized Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/cb-diesel-feminized</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/BCF.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Blue Cookies Feminized Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/green-crack-feminized</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/CBI.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>CB Diesel Feminized Seeds</image:title>
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/product/afghani-regular</loc>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/GCF.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Green Crack Feminized Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/blueberry-regular</loc>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 <lastmod>2019-04-01</lastmod>
                 <changefreq>monthly</changefreq>
                 <priority>0.7</priority>
                 <image:image>
+<<<<<<< HEAD
                     <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/AFR.png</image:loc>
                     <image:caption></image:caption>
                     <image:title>Afghani Regular Seeds</image:title>
+=======
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/BBR.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Blueberry Regular Seeds</image:title>
+                </image:image >
+            </url>,<url>
+                <loc>http://cropkingeeds.com/product/autoflower-mixed</loc>
+                <lastmod>2019-04-01</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.7</priority>
+                <image:image>
+                    <image:loc>http://dcfgweqx7od72.cloudfront.net/packages/AFM.png</image:loc>
+                    <image:caption></image:caption>
+                    <image:title>Autoflower Mixed Seeds</image:title>
+>>>>>>> 270bdda8a0e31fc8c6b4215cebdb6c4e24672e21
                 </image:image >
             </url>,<url>
                 <loc>http://cropkingeeds.com/shop</loc>
-                <lastmod>2019-04-02</lastmod>
+                <lastmod>2019-04-01</lastmod>
                 <changefreq>yearly</changefreq>
                 <priority>0.3</priority>
             </url>,<url>

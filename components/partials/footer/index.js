@@ -109,13 +109,13 @@ const Footer = props => {
               <a
                 style={{ color: "white" }}
                 rel="noreferrer"
-                aria-label="germinate"
-                href="https://www.marijuanaseeds.com/how-to-germinate-marijuana-seeds-successfully/"
+                aria-label="articles"
+                href="https://www.marijuanaseeds.com"
                 target="_blank"
                 className="font-bold w-full text-right sm:w-full md:w-full text-xl lg:text-lg md:text-lg   hover:text-grey-light cursor-pointer md:text-right sm:text-right"
               >
                 <p className="sm:w-full md:w-full text-xl lg:text-lg p-2 md:text-lg hover:text-grey-light cursor-pointer">
-                  Germinate
+                  Articles
                 </p>
               </a>
               <a

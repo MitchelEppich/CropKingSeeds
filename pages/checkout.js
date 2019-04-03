@@ -79,6 +79,8 @@ class Index extends Component {
 
             if (
               _stepsCheckout == 4 &&
+              _orderDetails.payment != null &&
+              _orderDetails.payment.method != null &&
               _orderDetails.payment.method.value == "Bitcoin"
             ) {
               this.payBitcoin(
