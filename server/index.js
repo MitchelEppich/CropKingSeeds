@@ -77,6 +77,16 @@ app
         res.redirect(301, req.url.slice(0, -1));
       else next();
     });
+    // redirect www
+    server.get("*", function(req, res, next) {
+      if (req.headers.host.slice(0, 3) != "www" && !dev) {
+        res.redirect(301, "https://www." + req.headers.host + req.url);
+      } else if (!req.secure && !dev) {
+        res.redirect("https://" + req.headers.host + req.url);
+      } else {
+        next();
+      }
+    });
     //sitemap
     let strains = await resolvers.Query.allStrains(null, { filter: null });
     let sitemapStrains = strains.map((strain, index) => {
