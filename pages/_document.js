@@ -17,6 +17,10 @@ export default class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <meta
+            name="title"
+            content="Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds"
+          />
+          <meta
             name="description"
             content="Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
           />

@@ -12,6 +12,7 @@ import GenePreview from "../components/sections/genePreview";
 import News from "../components/sections/news";
 import ExtraContent from "../components/sections/extraContent";
 import Carousel from "../components/sections/germination/carousel";
+import { initGA, logPageView } from "../scripts/ga";
 
 import registerServiceWorker from "../registerServiceWorker";
 class Index extends Component {
@@ -22,6 +23,8 @@ class Index extends Component {
   }
   componentDidMount() {
     // registerServiceWorker();
+    initGA();
+    logPageView();
     this.props.setCurrentEvent({
       index: 0,
       currentEventObj: this.props.misc.currentEventObj,
