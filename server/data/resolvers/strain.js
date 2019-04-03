@@ -218,7 +218,6 @@ const resolvers = {
           sotiId: strainInfo[i].sotiId
         }).then(dbStrain => {
           dbStrain.moreInfo = strainInfo[i].info;
-          if (dbStrain.moreInfo != null) console.log(dbStrain.moreInfo);
           dbStrain.save();
           return dbStrain;
         });

@@ -170,10 +170,17 @@ const BillingAddress = props => {
                   value: _value,
                   tag: _tag
                 });
+                e.target.setCustomValidity("");
+              }}
+              onInvalid={e => {
+                e.target.setCustomValidity(
+                  "First and last name only, separated by a space."
+                );
               }}
               placeholder="Full Name"
               className="p-2 w-full"
               required
+              pattern="^\S+\s\S+$"
             />
           </div>
           <div className="w-1/2 pl-2 sm:w-full sm:pl-0 sm:mt-4 inline-flex">
