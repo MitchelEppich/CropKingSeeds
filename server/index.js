@@ -1,7 +1,6 @@
 const { inferStrainData } = require("../store/utilities/strain");
 const siteMapBuilder = require("../scripts/postBuild.js");
 const schemaBuilder = require("../scripts/schemaBuilder.js");
-// const redirects = require("../scripts/redirects.js");
 const redirectUrls = require("../scripts/redirects.js");
 const next = require("next");
 const bodyParser = require("body-parser");
@@ -35,7 +34,7 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const subscriptionsPath = "/subscriptions";
-const subscriptionsEndpoint = `wss://${url}:${port}${subscriptionsPath}`;
+const subscriptionsEndpoint = `ws://${url}:${port}${subscriptionsPath}`;
 // const subscriptionsEndpoint = `wss://142.93.159.223${subscriptionsPath}`;
 // const subscriptionsEndpoint = `wss://cropkingseeds.com${subscriptionsPath}`;
 
@@ -49,9 +48,12 @@ app
   .prepare()
   .then(async () => {
     const server = express();
-
     server.use(bodyParser.json()); // support json encoded bodies
-    server.use(bodyParser.urlencoded({ extended: true }));
+    server.use(
+      bodyParser.urlencoded({
+        extended: true
+      })
+    );
     server.use("/api", routers);
     ////////////
     //middleware
@@ -75,12 +77,6 @@ app
         res.redirect(301, req.url.slice(0, -1));
       else next();
     });
-    // redirect www
-    // server.get("/*", function(req, res, next) {
-    //   console.log("URL", req.url);
-    //   res.redirect("http://" + req.url);
-    //   next();
-    // });
     //sitemap
     let strains = await resolvers.Query.allStrains(null, { filter: null });
     let sitemapStrains = strains.map((strain, index) => {
@@ -94,19 +90,6 @@ app
       return strain;
     });
     schemaBuilder(JSON.stringify(_strains));
-    // 301 redirects
-    // redirects.forEach(({ from, to, type = 301, method = "get" }) => {
-    //   server[method](from, (req, res) => {
-    //     res.redirect(type, to);
-    //   });
-    // });
-    let redirects = redirectUrls(sitemapStrains);
-    for (let i = 0; i < 100; i++) {
-      let url = redirects[i];
-      server.get(url.from, (req, res) => {
-        res.redirect(301, url.to);
-      });
-    }
 
     // update strains to add moreInfo
     // let updated = await resolvers.Mutation.updateStrainInfo(null, {});
@@ -152,6 +135,15 @@ app
     server.get("/product/:_id", (req, res) => {
       app.render(req, res, "/product", {});
     });
+    // 301 redirects
+    let redirects = redirectUrls(sitemapStrains);
+    for (let i = 0; i < redirects.length; i++) {
+      let url = redirects[i];
+      server.get(url.from, (req, res) => {
+        res.redirect(301, url.to);
+      });
+    }
+
     server.get("*", (req, res) => {
       return handle(req, res);
     });

@@ -423,7 +423,6 @@ export default PaymentReview;
 let buildProductList = items => {
   let productList = [];
   let itemQuantity = 0;
-  console.log(items);
   for (let key of Object.keys(items)) {
     let item = items[key];
     let product = item.product;
@@ -434,8 +433,6 @@ let buildProductList = items => {
     itemQuantity += item.quantity;
     productList.push(`${_name} x ${item.quantity} x ${item.price}`);
   }
-
-  console.log(productList, itemQuantity);
 
   return { productList: productList.toString(), itemQuantity };
 };

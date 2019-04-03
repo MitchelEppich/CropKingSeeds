@@ -16,7 +16,8 @@ const initialState = {
   freeShippingThreshold: 300,
   ccResponse: null,
   foundProfiles: [],
-  profileID: null
+  profileID: null,
+  processing: false
 };
 
 export default (state = initialState, action) => {
@@ -87,6 +88,8 @@ export default (state = initialState, action) => {
       return updateObject(state, { viewCurrency: action.input });
     case actionTypes.GET_EXCHANGE_RATES:
       return updateObject(state, { availableCurrency: action.input });
+    case actionTypes.TOGGLE_PROCESSING:
+      return updateObject(state, { processing: action.processing });
     default:
       return state;
   }

@@ -170,10 +170,17 @@ const BillingAddress = props => {
                   value: _value,
                   tag: _tag
                 });
+                e.target.setCustomValidity("");
+              }}
+              onInvalid={e => {
+                e.target.setCustomValidity(
+                  "First and last name only, separated by a space."
+                );
               }}
               placeholder="Full Name"
               className="p-2 w-full"
               required
+              pattern="^\S+\s\S+$"
             />
           </div>
           <div className="w-1/2 pl-2 sm:w-full sm:pl-0 sm:mt-4 inline-flex">
@@ -214,7 +221,7 @@ const BillingAddress = props => {
                 required
               />
             </div>
-            <div className="w-1/3 pt-1">
+            {/* <div className="w-1/3 pt-1">
               <label className="cursor-pointer font-bold uppercase items-center flex">
                 <input
                   aria-label="noEmail"
@@ -241,7 +248,7 @@ const BillingAddress = props => {
                 />{" "}
                 No Email
               </label>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="w-full p-2">
@@ -486,9 +493,10 @@ const BillingAddress = props => {
           <div className="w-1/2 pl-2 pb-8 mb-6 sm:w-full sm:pl-0 sm:mt-4">
             <input
               aria-label="tel"
-              required={
-                props.checkout.orderDetails.shipping.noEmail ? true : false
-              }
+              required={false}
+              // required={
+              //   props.checkout.orderDetails.shipping.noEmail ? true : false
+              // }
               type="text"
               name="phone"
               autoComplete="tel"
@@ -519,10 +527,11 @@ const BillingAddress = props => {
               }}
               maxLength="15"
               pattern={
-                props.checkout.orderDetails.shipping.noEmail
-                  ? "^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$"
-                  : null
+                // props.checkout.orderDetails.shipping.noEmail ?
+                "^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$"
               }
+              //     : null
+              // }
               placeholder="Phone"
               className="p-2 w-full"
             />

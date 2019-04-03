@@ -147,7 +147,6 @@ const resolvers = {
       return newsEntry;
     },
     subscribeToNewsletter: async (_, input) => {
-      console.log(input);
       let email = new Email({
         ...input
       });
@@ -340,6 +339,8 @@ let processPivotal = async input => {
   let res = JSON.parse(
     convert.xml2json($res.data, { compact: true, spaces: 4 })
   )["PAYMENTRESPONSE"];
+
+  if (res == null) return { status: "DECLINED" };
 
   return {
     transactionId: res.UNIQUEREF._text,

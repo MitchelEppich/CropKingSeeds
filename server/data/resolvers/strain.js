@@ -212,16 +212,12 @@ const resolvers = {
         });
     },
     updateStrainInfo: async (_, { input }) => {
-      // console.log(strainInfo);
       let strains = [];
       for (let i = 0; i < strainInfo.length; i++) {
-        // console.log(strainInfo[i].sotiId);
         let strainToUpdate = await Strain.findOne({
           sotiId: strainInfo[i].sotiId
         }).then(dbStrain => {
-          // console.log(dbStrain);
           dbStrain.moreInfo = strainInfo[i].info;
-          if (dbStrain.moreInfo != null) console.log(dbStrain.moreInfo);
           dbStrain.save();
           return dbStrain;
         });

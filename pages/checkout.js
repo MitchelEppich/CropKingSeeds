@@ -77,6 +77,7 @@ class Index extends Component {
         <form
           onSubmit={e => {
             e.preventDefault();
+
             if (
               _stepsCheckout == 4 &&
               _orderDetails.payment != null &&
@@ -88,6 +89,7 @@ class Index extends Component {
                 _orderDetails.payment.orderId.value.toString()
               );
             } else if (_stepsCheckout == 3) {
+              this.props.toggleProcessing(true);
               if (
                 !this.props.checkout.blockedIps.includes(
                   _orderDetails.details.ip.value
@@ -119,6 +121,7 @@ class Index extends Component {
                       })
                       .then(res => {
                         this.props.toggleStepsCheckout(_stepsCheckout + 1);
+                        this.props.toggleProcessing(false);
                       });
                   });
               } else {
@@ -127,7 +130,7 @@ class Index extends Component {
                 this.props.purgeOrderDetails({
                   orderDetails: _orderDetails
                 });
-
+                this.props.toggleProcessing(false);
                 // Redirect to 404
                 const isClient = typeof document !== "undefined";
                 if (!isClient) return;
@@ -402,7 +405,9 @@ const mapDispatchToProps = dispatch => {
     clearOrderDetails: input => dispatch(actions.clearOrderDetails(input)),
     checkForLocalProfile: input =>
       dispatch(actions.checkForLocalProfile(input)),
-    acquireOrderId: input => dispatch(actions.acquireOrderId(input))
+    acquireOrderId: input => dispatch(actions.acquireOrderId(input)),
+    toggleProcessing: processing =>
+      dispatch(actions.toggleProcessing(processing))
   }; // setCheckoutScreen: input => dispatch(actions.setCheckoutScreen(input)),
 };
 

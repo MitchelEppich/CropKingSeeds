@@ -84,9 +84,8 @@ module.exports = strains => {
           lastModified: fileStat.mtime,
           changefreq: changefreq,
           priority: priority,
-          imageLoc:
-            "http://dcfgweqx7od72.cloudfront.net/logos/cks-logo-header.png",
-          name: "Crop King Seeds"
+          imageLoc: null,
+          name: null
         };
       }
     });

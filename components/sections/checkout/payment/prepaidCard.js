@@ -96,9 +96,16 @@ const PrepaidCard = props => {
                     value: _value,
                     tag: _tag
                   });
+                  e.target.setCustomValidity("");
+                }}
+                onInvalid={e => {
+                  e.target.setCustomValidity("Must be a valid Card Number");
                 }}
                 placeholder="Prepaid Card Number ..."
                 className="p-2 w-full"
+                pattern={
+                  "^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35d{3})d{11})$"
+                }
               />
             </div>
           </div>
@@ -242,13 +249,17 @@ const PrepaidCard = props => {
           </div>
           <div className="w-200 p-2 mx-auto mt-6 text-center">
             <p className="text-center p-2 font-extrabold bg-red-dark text-white hover:bg-grey-light cursor-pointer rounded">
-              <button
-                name="prepaidCreditPay"
-                type="submit"
-                className="font-bold text-white"
-              >
-                Pay Now
-              </button>
+              {!props.checkout.processing ? (
+                <button
+                  name="prepaidCreditPay"
+                  type="submit"
+                  className="font-bold text-white"
+                >
+                  Pay Now
+                </button>
+              ) : (
+                <p>Processing your order...</p>
+              )}
             </p>
           </div>
         </div>

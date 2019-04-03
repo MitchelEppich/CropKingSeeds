@@ -299,7 +299,7 @@ const Confirmation = props => {
                   </div>
                 </div>
               );
-            case "Credit Card":
+            default:
               let _ccr = props.checkout.ccResponse;
               return (
                 <div className="mt-10">

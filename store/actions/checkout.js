@@ -32,7 +32,8 @@ const actionTypes = {
   CHECK_FOR_LOCAL_PROFILE: "CHECK_FOR_LOCAL_PROFILE",
   LOAD_LOCAL_PROFILE: "LOAD_LOCAL_PROFILE",
   PURGE_LOCAL_PROFILE: "PURGE_LOCAL_PROFILE",
-  CLEAR_ORDER_DETAILS: "CLEAR_ORDER_DETAILS"
+  CLEAR_ORDER_DETAILS: "CLEAR_ORDER_DETAILS",
+  TOGGLE_PROCESSING: "TOGGLE_PROCESSING"
 };
 
 let shippingMethods = [
@@ -637,7 +638,6 @@ const getActions = uri => {
     },
     processOrder: input => {
       return async dispatch => {
-        console.log(_orderDetails);
         let _orderDetails = { ...input.orderDetails };
         let _paymentMethod = _orderDetails.payment.method.value,
           cart = input.cart;
@@ -678,7 +678,6 @@ const getActions = uri => {
         }
 
         // Process Order
-        console.log(_orderDetails);
         let response = await processOrder(_orderDetails, ccResponse, uri);
         // let response = null;
         // Send email confirmation
@@ -739,6 +738,12 @@ const getActions = uri => {
           type: actionTypes.PROCESS_ORDER,
           ccResponse
         });
+      };
+    },
+    toggleProcessing: processing => {
+      return {
+        type: actionTypes.TOGGLE_PROCESSING,
+        processing: processing
       };
     }
   };
