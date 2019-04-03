@@ -9,8 +9,13 @@ import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import Ads from "../components/sections/affiliates/ads";
 import Graph from "../components/sections/affiliates/Graph";
+import { initGA, logPageView } from "../scripts/ga";
 
 class Index extends Component {
+  componentDidMount() {
+    initGA();
+    logPageView();
+  }
   render() {
     return (
       <Layout {...this.props}>

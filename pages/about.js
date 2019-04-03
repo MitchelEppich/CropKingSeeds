@@ -7,8 +7,13 @@ import Head from "next/head";
 // custom imports
 import Layout from "../HOC/Layout";
 import About from "../components/sections/about";
+import { initGA, logPageView } from "../scripts/ga";
 
 class Index extends Component {
+  componentDidMount() {
+    initGA();
+    logPageView();
+  }
   render() {
     return (
       <Layout {...this.props}>

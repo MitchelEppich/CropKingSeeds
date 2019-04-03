@@ -22,11 +22,14 @@ import Loader from "../components/sections/loader";
 import ImageCarousel from "../components/sections/productPage/imageCarousel";
 import Ratings from "../components/sections/productPage/ratings";
 import Router from "next/router";
+import { initGA, logPageView } from "../scripts/ga";
 
 let lowerImageCar;
 
 class Index extends Component {
   componentDidMount() {
+    initGA();
+    logPageView();
     lowerImageCar = ["sm", "md", "lg"].includes(this.props.misc.mediaSize);
   }
   componentDidUpdate(prevProps) {

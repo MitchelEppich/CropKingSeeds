@@ -11,9 +11,12 @@ import Layout from "../HOC/Layout";
 import About from "../components/sections/about";
 import Media from "../components/sections/media";
 import News from "../components/sections/news";
+import { initGA, logPageView } from "../scripts/ga";
 
 class Index extends Component {
   componentDidMount() {
+    initGA();
+    logPageView();
     this.props.getAllNews();
   }
 

@@ -18,6 +18,7 @@ import {
   Sponsorship,
   Advertisement
 } from "../components/sections/contactUs/form";
+import { initGA, logPageView } from "../scripts/ga";
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -31,6 +32,10 @@ class Index extends Component {
         "drop-shadow(6px 0px 0 #ef5753) drop-shadow(-6px 0px 0px #ef5753) drop-shadow(0px 3px 0px #ef5753) drop-shadow(0px -3px 0px #ef5753)"
     };
     return { styleLogoKing };
+  }
+  componentDidMount() {
+    initGA();
+    logPageView();
   }
   render() {
     return (
