@@ -48,7 +48,6 @@ app
   .prepare()
   .then(async () => {
     const server = express();
-
     server.use(bodyParser.json()); // support json encoded bodies
     server.use(
       bodyParser.urlencoded({
@@ -100,10 +99,12 @@ app
     // 301 redirects
     // let redirects = redirectUrls;
     let redirects = redirectUrls(sitemapStrains);
-    for (let i of redirects) {
-      server.get(i.from, (req, res) => {
-        res.redirect(301, i.to);
+    for (let i = 0; i < 200; i++) {
+      let url = redirects[i];
+      server.get(url.from, (req, res) => {
+        res.redirect(301, url.to);
       });
+      return next();
     }
     // redirects.forEach(({ from, to, type = 301, method = "get" }) => {
     //   server[method](from, (req, res) => {

@@ -339,13 +339,17 @@ const CreditCard = props => {
             </div>
           </div>
           <div className="w-200 p-2 mx-auto mt-6 text-center">
-            <button
-              name="creditPay"
-              type="submit"
-              className="w-full font-bold text-white text-center p-2 font-extrabold bg-red-dark text-white text-xl hover:bg-grey-light cursor-pointer rounded"
-            >
-              Pay Now
-            </button>
+            {!props.checkout.processing ? (
+              <button
+                name="creditPay"
+                type="submit"
+                className="w-full font-bold text-white text-center p-2 font-extrabold bg-red-dark text-white text-xl hover:bg-grey-light cursor-pointer rounded"
+              >
+                Pay Now
+              </button>
+            ) : (
+              <p>Processing your order...</p>
+            )}
           </div>
         </div>
       ) : null}

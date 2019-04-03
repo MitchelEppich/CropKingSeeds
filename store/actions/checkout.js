@@ -32,7 +32,8 @@ const actionTypes = {
   CHECK_FOR_LOCAL_PROFILE: "CHECK_FOR_LOCAL_PROFILE",
   LOAD_LOCAL_PROFILE: "LOAD_LOCAL_PROFILE",
   PURGE_LOCAL_PROFILE: "PURGE_LOCAL_PROFILE",
-  CLEAR_ORDER_DETAILS: "CLEAR_ORDER_DETAILS"
+  CLEAR_ORDER_DETAILS: "CLEAR_ORDER_DETAILS",
+  TOGGLE_PROCESSING: "TOGGLE_PROCESSING"
 };
 
 let shippingMethods = [
@@ -737,6 +738,12 @@ const getActions = uri => {
           type: actionTypes.PROCESS_ORDER,
           ccResponse
         });
+      };
+    },
+    toggleProcessing: processing => {
+      return {
+        type: actionTypes.TOGGLE_PROCESSING,
+        processing: processing
       };
     }
   };
