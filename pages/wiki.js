@@ -7,6 +7,7 @@ import withData from "../lib/withData";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import { Menu, Content } from "../components/sections/wiki";
+import { initGA, logPageView } from "../scripts/ga";
 
 class Index extends Component {
   constructor(props) {
@@ -16,6 +17,8 @@ class Index extends Component {
     };
   }
   componentDidMount() {
+    initGA();
+    logPageView();
     // Captures click events of all <a> elements with href starting with #
     if (this.state.isClient) {
       let menuOptions = document.getElementsByClassName("menu-option");

@@ -26,9 +26,12 @@ import Checkout from "../components/sections/checkout";
 import Confirmation from "../components/sections/checkout/confirmation";
 import FreeShippingNotify from "../components/sections/checkout/freeShippingNotify";
 import ErrorHandler from "../components/sections/checkout/errorHandler";
+import { initGA, logPageView } from "../scripts/ga";
 
 class Index extends Component {
   componentDidMount() {
+    initGA();
+    logPageView();
     this.props.toggleStepsCheckout(0);
     this.updateShippingMethod();
     this.props.getBlockedIps();

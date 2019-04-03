@@ -7,10 +7,12 @@ import withData from "../lib/withData";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import Charts from "../components/sections/charts";
+import { initGA, logPageView } from "../scripts/ga";
 
 class Index extends Component {
   componentDidMount() {
-    // this.props.getStrains({ verbose: true });
+    initGA();
+    logPageView();
   }
   componentDidUpdate() {}
   componentWillUnmount() {

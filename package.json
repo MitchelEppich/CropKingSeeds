@@ -61,6 +61,7 @@
     "react-apollo": "^2.1.11",
     "react-detect-offline": "^2.1.2",
     "react-dom": "^16.4.2",
+    "react-ga": "^2.5.7",
     "react-google-invisible-recaptcha": "^0.2.11",
     "react-google-recaptcha": "^1.0.5",
     "react-no-ssr": "^1.1.0",

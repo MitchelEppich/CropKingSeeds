@@ -205,6 +205,14 @@ class Layout extends Component {
                 content={this.props.viewProduct.currentProduct.description}
               />
               <meta
+                name="title"
+                content={this.props.viewProduct.currentProduct.name}
+              />
+              <meta
+                name="description"
+                content={this.props.viewProduct.currentProduct.description}
+              />
+              <meta
                 id="og-image"
                 property="og:image"
                 content={
@@ -223,6 +231,19 @@ class Layout extends Component {
               <meta
                 property="og:url"
                 content={"http://cropkingseeds.com/" + Router.asPath}
+              />
+              <meta
+                id="og-description"
+                property="og:description"
+                content="Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
+              />
+              <meta
+                name="title"
+                content="Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds"
+              />
+              <meta
+                name="description"
+                content="Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
               />
               <meta
                 property="og:image"

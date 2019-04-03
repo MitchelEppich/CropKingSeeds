@@ -5,8 +5,13 @@ import { connect } from "react-redux";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import Privacy from "../components/sections/privacy";
+import { initGA, logPageView } from "../scripts/ga";
 
 class Index extends Component {
+  componentDidMount() {
+    initGA();
+    logPageView();
+  }
   render() {
     return (
       <Layout {...this.props}>

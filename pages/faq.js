@@ -10,8 +10,13 @@ import DeliveryQuestions from "../components/sections/faq/deliveryQuestions";
 import PaymentQuestions from "../components/sections/faq/paymentQuestions";
 import OtherQuestions from "../components/sections/faq/otherQuestions";
 import Heading from "../components/sections/faq/heading";
+import { initGA, logPageView } from "../scripts/ga";
 
 class Index extends Component {
+  componentDidMount() {
+    initGA();
+    logPageView();
+  }
   render() {
     return (
       <Layout {...this.props}>

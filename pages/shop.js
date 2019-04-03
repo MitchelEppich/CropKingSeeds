@@ -10,8 +10,11 @@ import Filters from "../components/sections/shop/filters";
 import ProductGrid from "../components/sections/shop/productGrid";
 import Sidebar from "../components/sections/shop/sidebar";
 
+import { initGA, logPageView } from "../scripts/ga";
 class Index extends Component {
   componentDidMount() {
+    initGA();
+    logPageView();
     let searchValue = this.props.misc.searchValue;
     if (searchValue != null) {
       this.props.setSearch(null);
