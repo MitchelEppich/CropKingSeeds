@@ -1,7 +1,8 @@
 const { inferStrainData } = require("../store/utilities/strain");
 const siteMapBuilder = require("../scripts/postBuild.js");
 const schemaBuilder = require("../scripts/schemaBuilder.js");
-const redirects = require("../scripts/redirects.js");
+// const redirects = require("../scripts/redirects.js");
+const redirectUrls = require("../scripts/redirects.js");
 const next = require("next");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -94,11 +95,19 @@ app
     });
     schemaBuilder(JSON.stringify(_strains));
     // 301 redirects
-    redirects.forEach(({ from, to, type = 301, method = "get" }) => {
-      server[method](from, (req, res) => {
-        res.redirect(type, to);
+    // redirects.forEach(({ from, to, type = 301, method = "get" }) => {
+    //   server[method](from, (req, res) => {
+    //     res.redirect(type, to);
+    //   });
+    // });
+    let redirects = redirectUrls(sitemapStrains);
+    for (let i = 0; i < 250; i++) {
+      let url = redirects[i];
+      console.log(url);
+      server.get(url.from, (req, res) => {
+        res.redirect(301, url.to);
       });
-    });
+    }
 
     // update strains to add moreInfo
     // let updated = await resolvers.Mutation.updateStrainInfo(null, {});
