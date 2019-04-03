@@ -341,6 +341,8 @@ let processPivotal = async input => {
     convert.xml2json($res.data, { compact: true, spaces: 4 })
   )["PAYMENTRESPONSE"];
 
+  if (res == null) return { status: "DECLINED" };
+
   return {
     transactionId: res.UNIQUEREF._text,
     status: res.RESPONSECODE._text == "A" ? "APPROVED" : "DECLINED",

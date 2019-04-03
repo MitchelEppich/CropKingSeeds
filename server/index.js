@@ -98,14 +98,14 @@ app
     schemaBuilder(JSON.stringify(_strains));
     // 301 redirects
     // let redirects = redirectUrls;
-    let redirects = redirectUrls(sitemapStrains);
-    for (let i = 0; i < 200; i++) {
-      let url = redirects[i];
-      server.get(url.from, (req, res) => {
-        res.redirect(301, url.to);
-      });
-      return next();
-    }
+    // let redirects = redirectUrls(sitemapStrains);
+    // for (let i = 0; i < 200; i++) {
+    //   let url = redirects[i];
+    //   server.get(url.from, (req, res) => {
+    //     res.redirect(301, url.to);
+    //   });
+    //   return next();
+    // }
     // redirects.forEach(({ from, to, type = 301, method = "get" }) => {
     //   server[method](from, (req, res) => {
     //     res.redirect(type, to);
