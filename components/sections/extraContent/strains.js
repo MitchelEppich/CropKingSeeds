@@ -1,4 +1,4 @@
-import FeaturedStrains from "../featuredStrains";
+import FeaturedStrains from "./featuredStrains/";
 
 const StrainsHome = props => {
   return (

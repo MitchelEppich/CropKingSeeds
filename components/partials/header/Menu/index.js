@@ -263,9 +263,9 @@ const menu = props => {
                     </li>
                   </Link>
                   <li
-                    className={`font-extrabold text-2xl px-2 cursor-pointer scale-item ${
+                    className={`font-extrabold text-2xl px-2 scale-item ${
                       route.includes("checkout")
-                        ? "unselectable opacity-50 pointer-events-none"
+                        ? "opacity-50 cursor-not-allowed"
                         : "cursor-pointer scale-item"
                     }`}
                   >
@@ -273,7 +273,7 @@ const menu = props => {
                       onClick={() => {
                         props.toggleCartMenu(!props.misc.showCartMenu);
                       }}
-                      className="text-center cursor-pointer mt-1 text-white"
+                      className="text-center mt-1 text-white"
                     >
                       <CartIcon {...props} />
                     </div>

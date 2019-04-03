@@ -12,7 +12,6 @@ import GenePreview from "../components/sections/genePreview";
 import News from "../components/sections/news";
 import ExtraContent from "../components/sections/extraContent";
 import Carousel from "../components/sections/germination/carousel";
-import FeaturedStrains from "../components/sections/featuredStrains";
 
 import registerServiceWorker from "../registerServiceWorker";
 class Index extends Component {

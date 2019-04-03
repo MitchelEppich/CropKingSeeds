@@ -1,6 +1,10 @@
 const { inferStrainData } = require("../store/utilities/strain");
 const siteMapBuilder = require("../scripts/postBuild.js");
 const schemaBuilder = require("../scripts/schemaBuilder.js");
+<<<<<<< HEAD
+=======
+// const redirects = require("../scripts/redirects.js");
+>>>>>>> 35f9ef797850f131b3205526fe8b3c0409d211d5
 const redirectUrls = require("../scripts/redirects.js");
 const next = require("next");
 const bodyParser = require("body-parser");
@@ -90,6 +94,22 @@ app
       return strain;
     });
     schemaBuilder(JSON.stringify(_strains));
+<<<<<<< HEAD
+=======
+    // 301 redirects
+    // redirects.forEach(({ from, to, type = 301, method = "get" }) => {
+    //   server[method](from, (req, res) => {
+    //     res.redirect(type, to);
+    //   });
+    // });
+    let redirects = redirectUrls(sitemapStrains);
+    for (let i = 0; i < 100; i++) {
+      let url = redirects[i];
+      server.get(url.from, (req, res) => {
+        res.redirect(301, url.to);
+      });
+    }
+>>>>>>> 35f9ef797850f131b3205526fe8b3c0409d211d5
 
     // update strains to add moreInfo
     // let updated = await resolvers.Mutation.updateStrainInfo(null, {});

@@ -72,7 +72,7 @@ const videoSlide = props => {
       </div>
       <div className="w-full relative">
         <video
-          className="sm:w-4/5 sm:mx-auto md:w-full md:mr-0 w-full lg:w-4/5 lg:mx-auto xl:w-4/5 xl:mx-auto shadow-md flex justify-end "
+          className="sm:w-full sm:mx-auto md:w-full md:mr-0 w-full lg:w-4/5 lg:mx-auto xl:w-4/5 xl:mx-auto shadow-md flex justify-end "
           muted={props.misc.muted}
           loop
           id={"video" + props.index}

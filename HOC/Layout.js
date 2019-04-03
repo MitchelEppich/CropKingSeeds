@@ -269,9 +269,10 @@ class Layout extends Component {
                   Tawk_API.toggle();
                 }}
               >
+                CHAT
                 <FontAwesomeIcon
                   icon={faComments}
-                  className="ml-2 fa-2x cursor-pointer"
+                  className="ml-1 fa-lg cursor-pointer"
                 />
               </div>
               <div

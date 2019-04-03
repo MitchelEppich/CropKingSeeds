@@ -51,13 +51,13 @@ const cart = props => {
       style={viewCart}
       className="w-500 sm:w-full lg:w-400 md:w-400 text-black text-3xl sm:w-300 max-w-screen z-40 pin-t pin-r h-screen bg-white fixed pb-12 shadow-lg pt-32"
     >
-      <div className="relative h-16 sm:h-16 w-full">
-        <div className="absolute w-full sm:h-16">
+      <div className="relative h-16 sm:h-12 w-full">
+        <div className="absolute w-full sm:h-12">
           <div
             onClick={() => {
               props.toggleCartMenu(!props.misc.showCartMenu);
             }}
-            className="absolute pin-t pin-l mt-4 h-10 w-10 hover:bg-grey-lightest hover:text-grey sm:ml-6 ml-12 text-red-dark cursor-pointer flex justify-center items-center"
+            className="absolute pin-t pin-l mt-4 sm:mt-0 h-10 w-10 hover:bg-grey-lightest hover:text-grey sm:ml-6 ml-12 text-red-dark cursor-pointer flex justify-center items-center"
           >
             <FontAwesomeIcon
               icon={!mobile ? faAngleDoubleRight : faTimes}
@@ -67,7 +67,7 @@ const cart = props => {
           <div className="w-full">
             <h2
               onClick={() => props.toggleCartMenu(!props.misc.showCartMenu)}
-              className="text-red-dark border-b-2 border-red-dark w-full sm:h-12 text-center text-3/5xl sm:text-3xl font-extrabold mt-4 cursor-pointer"
+              className="text-red-dark border-b-2 border-red-dark w-full sm:h-12 text-center text-3/5xl sm:text-3xl font-extrabold mt-4 sm:mt-0 cursor-pointer"
             >
               Cart
             </h2>
@@ -107,7 +107,7 @@ const cart = props => {
           </div>
         )}
       </div>
-      <div className="pr-4 h-16 items-center flex bg-white text-red-dark flex absolute pin-b border-t-2 border-red-dark w-500 sm:w-full md:w-full">
+      <div className="pr-4 h-16 sm:h-20 items-center flex bg-white text-red-dark flex absolute pin-b border-t-2 border-red-dark w-500 sm:w-full md:w-full">
         <Link prefetch href="/checkout">
           <button
             name="viewCart"
