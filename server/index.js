@@ -1,7 +1,7 @@
 const { inferStrainData } = require("../store/utilities/strain");
 const siteMapBuilder = require("../scripts/postBuild.js");
 const schemaBuilder = require("../scripts/schemaBuilder.js");
-const redirects = require("../scripts/redirects.js");
+const redirectUrls = require("../scripts/redirects.js");
 const next = require("next");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -34,7 +34,7 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const subscriptionsPath = "/subscriptions";
-const subscriptionsEndpoint = `wss://${url}:${port}${subscriptionsPath}`;
+const subscriptionsEndpoint = `ws://${url}:${port}${subscriptionsPath}`;
 // const subscriptionsEndpoint = `wss://142.93.159.223${subscriptionsPath}`;
 // const subscriptionsEndpoint = `wss://cropkingseeds.com${subscriptionsPath}`;
 
@@ -48,9 +48,12 @@ app
   .prepare()
   .then(async () => {
     const server = express();
-
     server.use(bodyParser.json()); // support json encoded bodies
-    server.use(bodyParser.urlencoded({ extended: true }));
+    server.use(
+      bodyParser.urlencoded({
+        extended: true
+      })
+    );
     server.use("/api", routers);
     ////////////
     //middleware
@@ -94,11 +97,20 @@ app
     });
     schemaBuilder(JSON.stringify(_strains));
     // 301 redirects
-    redirects.forEach(({ from, to, type = 301, method = "get" }) => {
-      server[method](from, (req, res) => {
-        res.redirect(type, to);
+    // let redirects = redirectUrls;
+    let redirects = redirectUrls(sitemapStrains);
+    for (let i = 0; i < 200; i++) {
+      let url = redirects[i];
+      server.get(url.from, (req, res) => {
+        res.redirect(301, url.to);
       });
-    });
+      return next();
+    }
+    // redirects.forEach(({ from, to, type = 301, method = "get" }) => {
+    //   server[method](from, (req, res) => {
+    //     res.redirect(type, to);
+    //   });
+    // });
 
     // update strains to add moreInfo
     // let updated = await resolvers.Mutation.updateStrainInfo(null, {});
