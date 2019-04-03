@@ -49,47 +49,54 @@ const initialState = {
     currentStep: 0,
     sm: {
       positions: [
-        "translateX(0rem)",
+        "translateX(calc(103vw))",
+        "translateX(calc(2vw))",
         "translateX(calc(-100vw))",
         "translateX(calc(-200vw))",
-        "translateX(calc(-300vw))",
-        "translateX(calc(-400vw))",
-        "translateX(calc(-500vw))",
-        "translateX(calc(-600vw))"
+        "translateX(calc(-300vw))"
       ],
       width: "calc(300vw - 6rem)"
     },
     md: {
       positions: [
-        "translateX(calc(-3.75rem)",
-        "translateX(calc(-100vw - 1.75rem))",
-        "translateX(calc(-200vw + 0.25rem))"
+        "translateX(calc(0px)",
+        "translateX(calc(-400px))",
+        "translateX(calc(-800px))",
+        "translateX(calc(-1200px))",
+        "translateX(calc(-1600px))"
       ],
-      width: "calc(300vw - 6rem)"
+      width: "2000px",
+      height: "44%"
     },
     lg: {
       positions: [
-        "translateX(303px)",
-        "translateX(-582px)",
-        "translateX(-1467px)"
+        "translateX(265px)",
+        "translateX(-620px)",
+        "translateX(-1500px)",
+        "translateX(-2390px)",
+        "translateX(-3270px)"
       ],
-      width: "2100px"
+      width: "3860px"
     },
     xl: {
       positions: [
-        "translateX(245px)",
-        "translateX(-725px)",
-        "translateX(-1695px)"
+        "translateX(65px)",
+        "translateX(-910px)",
+        "translateX(-1885px)",
+        "translateX(-2860px)",
+        "translateX(-3835px)"
       ],
-      width: "2700px"
+      width: "4880px"
     },
     xxl: {
       positions: [
-        "translateX(335px)",
-        "translateX(-865px)",
-        "translateX(-2065px)"
+        "translateX(145px)",
+        "translateX(-1045px)",
+        "translateX(-2255px)",
+        "translateX(-3455px)",
+        "translateX(-4645px)"
       ],
-      width: "3600px"
+      width: "6000px"
     }
   }
 };

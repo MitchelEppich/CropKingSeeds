@@ -101,9 +101,8 @@ app
     //   });
     // });
     let redirects = redirectUrls(sitemapStrains);
-    for (let i = 0; i < 250; i++) {
+    for (let i = 0; i < 100; i++) {
       let url = redirects[i];
-      console.log(url);
       server.get(url.from, (req, res) => {
         res.redirect(301, url.to);
       });

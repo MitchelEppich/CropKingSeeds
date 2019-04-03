@@ -34,7 +34,6 @@ const Carousel = props => {
             transform: "translateY(-35px)",
             width: "40px",
             height: "40px",
-
             fontSize: "1.5rem",
             backgroundSize: "cover",
             backgroundPosition: "center",
@@ -57,20 +56,32 @@ const Carousel = props => {
     );
   });
 
+  let paragraphs = carousel.steps[currentStep].instruction.map(
+    (paragraph, index) => {
+      return (
+        <React.Fragment key={index}>
+          <p className="my-2 p-1">{paragraph}</p>
+        </React.Fragment>
+      );
+    }
+  );
+
   return (
-    <div className="sm:w-full w-main mx-auto mt-48 shadow-md sm:pt-4 sm:h-400 md:h-400 lg:h-250 xl:h-300 xxl:h-400 xl:pt-4 xxl:pt-12 text-xl relative overflow-hidden mx-auto bg-white">
-      <div className="w-1/3 sm:mb-6 md:mb-12 sm:pin-b md:pin-b sm:h-48 md:h-48 sm:w-full md:w-full lg:ml-24 xl:ml-24 xxl:ml-24 absolute z-0">
-        <h2 className="px-4 sm:my-2 text-2xl bg-red-dark text-white p-1 uppercase lg:my-2 xl:my-2 xxl:my-4 lg:text-left xl:text-left xxl:text-left text-center sm:bg-white md:bg-white sm:text-red-dark md:text-red-dark">
+    <div className="xl:w-95p lg:w-95p md:w-95p sm:w-full w-main mx-auto mt-48 md:mt-24 sm:mt-24 shadow-md sm:pt-4 sm:h-450 md:h-450 lg:h-350 xl:h-300 xxl:h-400 xl:pt-4 xxl:pt-12 text-xl relative overflow-hidden mx-auto bg-white">
+      <div className="w-1/3 sm:mb-6 md:mb-12 sm:pin-b md:pin-b sm:h-200 md:h-48 sm:w-full md:w-full md:pt-4 lg:ml-12 xl:ml-12 xxl:ml-24 absolute z-0">
+        <h2 className="px-4 sm:my-2 text-2xl bg-red-dark text-white p-1 uppercase lg:my-2 xl:my-2 xxl:my-4 lg:text-left xl:text-left xxl:text-left text-center sm:bg-white md:bg-white sm:text-red-light md:text-red-light">
           Step {currentStep + 1}
         </h2>
-        <p className="w-full slow sm:px-8 sm:text-sm md:text-base text-base md:px-24 lg:px-2 xl:px-4 xxl:px-4 lg:text-base">
-          {carousel.steps[currentStep].instruction}
+        <p className="w-full slow sm:px-4 sm:text-sm md:text-base text-base md:px-10 lg:px-2 xl:px-4 xxl:px-4 lg:text-base xl:text-base">
+          {paragraphs}
         </p>
       </div>
       <div
+        className="xxl:mt-10 md:mt-8"
         style={{
           width: carouselWidth,
-          height: "100%",
+          // height: "100%",
+          alignItems: "center",
           top: "0",
           position: "absolute",
           transform: "translateZ(1000px) " + carouselPositions[currentStep],
@@ -93,11 +104,14 @@ const Carousel = props => {
           }}
           className={
             currentStep > 0
-              ? "sm:hidden text-white bg-red-dark w-10 p-2 font-bold slowish hover:bg-grey hover:text-white items-center flex"
-              : "sm:hidden cursor-not-allowed text-white bg-grey-lightest w-10 p-2 font-bold slowish"
+              ? "text-red-light w-10 p-2 font-bold slowish sm:bg-transparent sm:text-red-light hover:text-red-dark items-center flex"
+              : "cursor-not-allowed bg-transparent text-red-light hover:text-grey-lightest w-10 p-2 font-bold slowish"
           }
         >
-          <FontAwesomeIcon icon={faAngleLeft} className="fa-2x" />
+          <FontAwesomeIcon
+            icon={faAngleLeft}
+            className="fa-2x sm:mt-12 md:mt-10"
+          />
         </button>
 
         <button
@@ -111,18 +125,21 @@ const Carousel = props => {
           }}
           className={
             currentStep < carousel.steps.length - 1
-              ? "sm:hidden text-white bg-red-dark w-10 p-2 font-bold slowish hover:bg-grey hover:text-white items-center flex"
-              : "sm:hidden cursor-not-allowed text-white bg-grey-lightest w-10 p-2 font-bold slowish"
+              ? "text-red-light w-10 p-2 font-bold slowish sm:bg-transparent sm:text-red-light hover:text-red-dark items-center flex"
+              : "cursor-not-allowed bg-transparent text-grey-light hover:text-grey-lightest w-10 p-2 font-bold slowish"
           }
         >
-          <FontAwesomeIcon icon={faAngleRight} className="fa-2x" />
+          <FontAwesomeIcon
+            icon={faAngleRight}
+            className="fa-2x sm:mt-12 md:mt-10"
+          />
         </button>
       </div>
-      <div className="w-full h-60px absolute pin-b">
+      {/* <div className="w-full h-60px absolute pin-b">
         <div className="bg-grey-lightest h-1px w-full sm:px-8 px-32 mt-8 flex justify-between mx-auto">
           {progressDivs}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
