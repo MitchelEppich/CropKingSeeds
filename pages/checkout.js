@@ -65,12 +65,12 @@ class Index extends Component {
 
     return (
       <Layout>
-        <Head>
+        {/* <Head>
           <title>
             Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
           </title>
           <meta name="robots" content="index, follow" />
-        </Head>
+        </Head> */}
         <div className="text-center w-full pt-12 bg-white relative">
           <h1 className="text-4xl font-black text-black">
             {_stepsCheckout == 5 ? "Confirmation" : "Checkout Preview"}

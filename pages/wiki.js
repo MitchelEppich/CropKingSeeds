@@ -41,12 +41,12 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
-        <Head>
+        {/* <Head>
           <title>
             Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
           </title>
           <meta name="robots" content="index, follow" />
-        </Head>
+        </Head> */}
         <div className="flex py-24 w-3/4 mx-auto min-h-screen">
           <Menu {...this.props} />
           <Content {...this.props} />
