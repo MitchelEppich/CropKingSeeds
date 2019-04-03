@@ -30,11 +30,13 @@ const FeaturedStrains = props => {
     if (["xl"].includes(props.misc.mediaSize)) {
       products = products.slice(0, 5);
     }
-    for (let product of products) {
+    for (let i = 0; i < products.length; i++) {
+      let product = products[i];
       let titleColorBackground =
         " bg-" + props.detail.geneColor[product.genetic.toLowerCase()];
       arr.push(
         <Link
+          key={i}
           prefetch
           href="/product"
           as={"/product/" + product.name.toLowerCase().replace(/ /g, "-")}
