@@ -161,7 +161,6 @@ const CreditCard = props => {
                     value: _value,
                     tag: _tag
                   });
-
                   _key = "type";
                   _value = getCardType(_value);
                   _tag = "Typeofcard";
@@ -172,9 +171,16 @@ const CreditCard = props => {
                     value: _value,
                     tag: _tag
                   });
+                  e.target.setCustomValidity("");
+                }}
+                onInvalid={e => {
+                  e.target.setCustomValidity("Must be a valid Card Number");
                 }}
                 placeholder="Credit Card Number ..."
                 className="p-2 w-full"
+                pattern={
+                  "^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35d{3})d{11})$"
+                }
               />
             </div>
             <div className="absolute pin-r text-grey-light opacity-75">
