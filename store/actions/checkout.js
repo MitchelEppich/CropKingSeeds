@@ -969,13 +969,15 @@ let processOrder = async (orderDetails, res, uri) => {
 let processPayment = async (details, uri) => {
   return await new Promise(async (resolve, reject) => {
     let _payment = details.payment;
-    let _currency = details.currency["cad"];
+    let _currency = details.currency;
     let _country = details.country;
 
-    let amount = (
-      _payment.orderTotal.value *
-      (_payment.currency.value == "USD" ? _currency.convert : 1)
-    ).toFixed(2);
+    let amount = _payment.orderTotal.value;
+
+    if (details.country.toLowerCase() != "canada")
+      amount *= _currency["cad"].convert;
+
+    amount = amount.toFixed(2);
 
     let currency =
       _payment.currency.value == "USD" ? "CAD" : _payment.currency.value;
