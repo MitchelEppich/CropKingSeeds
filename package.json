@@ -1,6 +1,6 @@
 {
   "name": "cropkingseeds",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "main": "index.js",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
