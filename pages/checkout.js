@@ -206,7 +206,6 @@ class Index extends Component {
                   className="my-2"
                 />
                 <Coupon {...this.props} />
-                <FreeShippingNotify {...this.props} />
               </div>
             ) : null}
 
