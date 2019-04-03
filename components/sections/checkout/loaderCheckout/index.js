@@ -1,13 +1,7 @@
 const LoaderCheckout = props => {
-  //   var times = [];
-  //   var fps;
-  //   var fpsArr = [];
-  //   if (props.isClient && props.misc.lowGPUMode == null) {
-  //     calcFps(times, fps, fpsArr, props);
-  //   }
   return (
-    <div className="loader h-100 mx-auto text-center">
-      <div className="lds-mini-ring">
+    <div className="loader h-20 mx-auto text-center">
+      <div className="lds-mini-ring w-200 flex justify-center">
         <div />
         <div />
         <div />
