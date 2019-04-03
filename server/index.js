@@ -100,12 +100,16 @@ app
     // 301 redirects
     // let redirects = redirectUrls;
     let redirects = redirectUrls(sitemapStrains);
-    console.log(redirects);
-    redirects.forEach(({ from, to, type = 301, method = "get" }) => {
-      server[method](from, (req, res) => {
-        res.redirect(type, to);
+    for (let i of redirects) {
+      server.get(i.from, (req, res) => {
+        res.redirect(301, i.to);
       });
-    });
+    }
+    // redirects.forEach(({ from, to, type = 301, method = "get" }) => {
+    //   server[method](from, (req, res) => {
+    //     res.redirect(type, to);
+    //   });
+    // });
 
     // update strains to add moreInfo
     // let updated = await resolvers.Mutation.updateStrainInfo(null, {});
