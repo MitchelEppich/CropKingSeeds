@@ -1,6 +1,8 @@
 import React from "react";
 import Caroulsel from "../germination/carousel/";
-import Tips from "../germination/tips/";
+// import Tips from "../germination/tips/";
+import ExtraInfo from "./extraInfo";
+// import Link from "next/link";
 
 const Germination = props => {
   // let backgroundImg = {
@@ -14,14 +16,19 @@ const Germination = props => {
       <h1 className="mt-4 text-grey font-bold text-center text-3/5xl mx-auto w-full text-center mb-8">
         Germination
       </h1>
-      <div className="pt-8 w-full germinationBackground mb-24">
-        <Caroulsel {...props} />
+      <div className="germinationBackground">
+        <p className="w-main mx-auto xxl:w-full text-center sm:bg-white md:bg-white font-bold text-lg text-grey-light uppercase my-4">
+          By following these steps we guarantee a germination rate of over 80%
+          on our seeds.
+        </p>
+
+        <div className="pt-1 w-full mb-16">
+          <Caroulsel {...props} />
+        </div>
+        <div className="w-full mx-auto h-full">
+          <ExtraInfo {...props} />
+        </div>
       </div>
-      {/* <div className="w-main mx-auto my-24 sm:mt-32">
-        <p className="p-3 bg-red-light mx-auto w-95p font-bold text-white text-center uppercase hover:bg-red-dark shadow-md cursor-pointer">
-          More Info
-        </p>       
-      </div> */}
     </div>
   );
 };
