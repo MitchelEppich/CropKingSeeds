@@ -2,13 +2,13 @@ info = [
   {
     sotiId: "BBR",
     info: [
-      "This Indica - dominant plant has purplish buds, which is what earned it its monicker inthe rst place.The leaves are vibrant and colorful and usually grow in a unique fan - like arrangement.Meanwhile, Blueberry buds are among the best you can get your hands on today.They have a delicious and tempting!avor that leaves a tantalizing aftertaste that lasts an incredibly long time.",
+      "This Indica - dominant plant has purplish buds, which is what earned it its monicker inthe first place. The leaves are vibrant and colorful and usually grow in a unique fan - like arrangement. Meanwhile, Blueberry buds are among the best you can get your hands on today.They have a delicious and tempting!avor that leaves a tantalizing aftertaste that lasts an incredibly long time.",
 
-      "A single plant can yield up to 300 grams of glistening, trichome - rich buds.However, you can push that number up to 500 grams by growing indoors with the best setup.The THC content is fairly substantial, and the high is of the relaxing kind you normally look for after several consecutive days of long meetings, killer deadlines, and toxic clients.",
+      "A single plant can yield up to 300g of glistening, trichome - rich buds. However, you can push that number up to 500g by growing indoors with the best setup. The THC content is fairly substantial, and the high is of the relaxing kind you normally look for after several consecutive days of long meetings, killer deadlines, and toxic clients.",
 
       "A lot of people use Blueberry for its relaxation and pain relieving properties, thus making this strain among the most commonly used medical strain.This strain is the perfect choice for unfortunate cannabis lovers who often suffer from stress and painin various areas of the body.",
 
-      "The effect is simply unbeatable, and this is not surprising, considering how Blueberry has been around for a long time, even winning the Cannabis Cup at one point.Clearly, this is a must- have for recreational and medical marijuana users alikebecause it offers something for everyone.It does not matter if you are after the highalone or relief from ailments.Blueberry will take care of you.",
+      "The effect is simply unbeatable, and this is not surprising, considering how Blueberry has been around for a long time, even winning the Cannabis Cup at one point. Clearly, this is a must- have for recreational and medical marijuana users alikebecause it offers something for everyone. It does not matter if you are after the highalone or relief from ailments.Blueberry will take care of you.",
 
       "This award - winning strain is recommended for growers wanting to work with an easy to moderate grow.The!owering time is merely more or less two months, which is about the same as that of many other common strains.Just make sure to use the right and only the best nutrients because this strain can be a little picky."
     ]
@@ -69,19 +69,7 @@ info = [
   {
     sotiId: "BCF",
     info: [
-      "Blue cookies got its name from its parent strains – Girl Scout Cookies and Blueberry.Cookies, in general, are popular because they simply taste good, and they appeal to the desire of the palate.In the cannabis world, however, strains become even tastier as they are combined with other varieties.When Girl Scout Cookies are added with Blueberry, flavors change.",
-
-      "While the flavor of the Blue Cookies seem innocent, it would be wrong to take it lightly.In fact, this strain is jam packed with THC, with a content level reaching as high as 28%.What does this mean ? You can be guaranteed of a high that you may have never even experienced before.Since this is a mostly Indica strain that offers a high THC content, you have a potent cannabis strain in your hand.No doubt that this strain can be considered as one of the strongest currently available on the market.",
-
-      "Blue Cookies hits quite fast, starting with that buzzing head high which may be surprising.Afterwards, you can experience that intense physical high which overpowers the head high.When you finally feel the effects of the strain, you can feel that feeling of liberation as you start feeling euphoric.When both physical and mental high starts to combine, you will feel happiness and relaxation at the same time.Blue Cookies hits quite fast, starting with that buzzing head high which may be surprising.Afterwards, you can experience that intense physical high which overpowers the head high.When you finally feel the effects of the strain, you can feel that feeling of liberation as you start feeling euphoric.When both physical and mental high starts to combine, you will feel happiness and relaxation at the same time.",
-
-      "One thing that connoisseurs love about this strain is that it offers a pleasant smell, that is, something fruity and sweet.This strain is also smooth, with a sweet flavor that is certainly delightful.You can also detect berry taste which makes this strain one of the best tasting weed you could ever try."
-    ]
-  },
-  {
-    sotiId: "WBF",
-    info: [
-      "Blue cookies got its name from its parent strains – Girl Scout Cookies and Blueberry.Cookies, in general, are popular because they simply taste good, and they appeal to the desire of the palate.In the cannabis world, however, strains become even tastier as they are combined with other varieties.When Girl Scout Cookies are added with Blueberry, flavors change.",
+      "Blue cookies got its name from its parent strains – Girl Scout Cookies and Blueberry Cookies, in general, are popular because they simply taste good, and they appeal to the desire of the palate.In the cannabis world, however, strains become even tastier as they are combined with other varieties.When Girl Scout Cookies are added with Blueberry, flavors change.",
 
       "While the flavor of the Blue Cookies seem innocent, it would be wrong to take it lightly.In fact, this strain is jam packed with THC, with a content level reaching as high as 28%.What does this mean ? You can be guaranteed of a high that you may have never even experienced before.Since this is a mostly Indica strain that offers a high THC content, you have a potent cannabis strain in your hand.No doubt that this strain can be considered as one of the strongest currently available on the market.",
 
@@ -93,8 +81,7 @@ info = [
   {
     sotiId: "GTF",
     info: [
-      "Gelato Feminized Marijuana Strain - Growing, THC & CBD Content, Yield, Flowering Time and Other Information",
-      "Gelato is a cross breed between Mint Girl Scout Cookies, with another strain, Sunset Sherbet.The resulting strain was actually unexpected.",
+      "Gelato is a cross breed between Mint Girl Scout Cookies, with another strain, Sunset Sherbet. The resulting strain was actually unexpected.",
       "This well- balanced hybrid is indica dominant.What is amazing though, is that despite its leaning towards its indica side, it offers energizing and uplifting effects.",
       "The THC content of this strain is recorded at 27 %, which is on the higher end of the scale.This means that this strain is perfect for those who would like to enjoy weed that lasts long.It also requires just a few buds to consume before experiencing its strong effects.",
       "Thanks to its indica dominance, this strain only grows to a manageable height.In fact, it grows short to medium in stature, which means that it is suited for those who are planning to grow this strain in an indoor setup and do not have enough head space.",
@@ -106,7 +93,7 @@ info = [
   {
     sotiId: "DPF",
     info: [
-      "   Descended from the Original Durban, which is named after its origin location of Durban in South Africa, Durban Poison comes with the same highly psychedelic effects that its parent is known for.That is not surprising at all, given the high THC content of this cannabis strain, which can go up to more than 20%.",
+      "Descended from the Original Durban, which is named after its origin location of Durban in South Africa, Durban Poison comes with the same highly psychedelic effects that its parent is known for.That is not surprising at all, given the high THC content of this cannabis strain, which can go up to more than 20%.",
 
       "It can be grown outdoors and indoors, and its buds are always fat and heavy and coated in thick layers of sparkling trichomes.You do not even have to smoke Durban Poison to get excited.The sight of its large glands generously overflowing with resin should be enough to make you drool.",
 
@@ -134,11 +121,11 @@ info = [
   {
     sotiId: "SSF",
     info: [
-      "As suggested by its name, Sativa Star is 90 % sativa.As such, it is a strain which is perfect for growing both indoors and outdoors.This strain is ideal for growing even for first time growers, as it does not take too much skill to care for these babies.It is also described as a high yielding strain, with a yield that can reach up to 350 grams indoors, and 600 grams when grown outdoors.The flowering time reaches 14 weeks, with bountiful yields to expect at harvest time.",
+      "As suggested by its name, Sativa Star is 90% sativa.As such, it is a strain which is perfect for growing both indoors and outdoors. This strain is ideal for growing even for first time growers, as it does not take too much skill to care for these babies.It is also described as a high yielding strain, with a yield that can reach up to 350 grams indoors, and 600 grams when grown outdoors. The flowering time reaches 14 weeks, with bountiful yields to expect at harvest time.",
 
       "As this plant is tall, it is perfect for outdoor growing, where they can enjoy the space.When grown indoors, it prefers a space where there is plenty of head height.These plants exhibit tall, thin and narrow leaves, with a lighter shade of green compared to their Indica counterparts.",
 
-      "The strain produces a long lasting sativa effect, which means a cerebral high.As such, it is the perfect strain to use for diminishing stress and anxiety.With its extreme sativa characteristics, you can use this strain to treat some common disorders, similar to stress and anxiety, as well as other mental disorders, lack of sleep, and others.",
+      "The strain produces a long lasting sativa effect, which means a cerebral high. As such, it is the perfect strain to use for diminishing stress and anxiety.With its extreme sativa characteristics, you can use this strain to treat some common disorders, similar to stress and anxiety, as well as other mental disorders, lack of sleep, and others.",
 
       "The Sativa Strain from Crop King Seeds is a feminized strain, which means that you can expect to see the characteristics common among feminized strains in this plant.Overall, what you can expect is a high yield, and high THC with this plant."
     ]
@@ -176,9 +163,9 @@ info = [
     info: [
       " Having a unique purple color and buds with orange and white hairs, Purple Kush has become one of the most iconic strains of our time.Indeed, one look is all it takes to distinguish this plant from the others.Its scent is distinctly pungent, so there is no mistaking it once a little Purple Kush bud is brought into a room.",
 
-      "Capable of thriving both indoors and outdoors, this strain is classified as an easy to moderate grow.Flowering takes an average length of time, and the yields are fantastic.Indoors, this plant can produce up to 400 g of dense orange- ish purple buds.Outdoors, that number becomes 250 g.",
+      "Capable of thriving both indoors and outdoors, this strain is classified as an easy to moderate grow.Flowering takes an average length of time, and the yields are fantastic.Indoors, this plant can produce up to 400 g of dense orange-ish purple buds.Outdoors, that number becomes 250 g.",
 
-      "The THC content of Purple Kush is amazingly high at over 24 %.The effect is not highly psychedelic, though, which is what is commonly expected from high - THC strains.Instead, Purple Kush offers an equally tempting alternative.",
+      "The THC content of Purple Kush is amazingly high at over 24 %. The effect is not highly psychedelic, though, which is what is commonly expected from high - THC strains.Instead, Purple Kush offers an equally tempting alternative.",
 
       "The effect of this strain is strong enough to keep you glued to the couch for hours on end while keeping the muscles soothed and relaxed and the mind pleasant.This is the perfect smoke for those lazy Sundays when you just want to lie down and experience a certain level of calm that you rarely get to feel nowadays.",
 
@@ -388,7 +375,7 @@ info = [
   {
     sotiId: "EMA",
     info: [
-      "Thriving in both indoor and outdoor grows, our fast autoflowering Early Miss is an easy to moderate grow.It flowers in a relatively short time too, taking merely 7 weeks.In that short amount of time, you will be greeted by thick buds with way more resin than you can ever imagine.",
+      "Thriving in both indoor and outdoor grows, our fast autoflowering Early Miss is an easy to moderate grow.It flowers in a relatively short time too, taking merely 7 weeks. In that short amount of time, you will be greeted by thick buds with way more resin than you can ever imagine.",
 
       "A cross between crowd favorites Big Bud and Original White Widow, Early Miss is also a Spanish strain that is predominantly Indica(60%).A small percentage is shared by its Sativa(30 %) and Ruderalis(10 %) roots.The yield of this plant is amazing, especially relative to other autoflowering strains.Outdoors, you can expect to have up to 100 g in yield; indoors, that figure shoots up to 200 g.",
 

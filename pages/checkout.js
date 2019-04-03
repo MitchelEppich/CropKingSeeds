@@ -76,7 +76,6 @@ class Index extends Component {
         <form
           onSubmit={e => {
             e.preventDefault();
-            console.log(_orderDetails);
 
             if (this.props.checkout.processing && _stepsCheckout == 3) return;
 

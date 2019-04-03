@@ -25,7 +25,7 @@ const BannerCarousel = props => {
     }
     return (
       <React.Fragment key={index}>
-        <div className="w-16 text-grey hover:text-grey-light slowish opacity-25 hover:opacity-100 cursor-pointer ml-4 justify-start flex items-center absolute pin-y pin-l z-999 sm:w-10 sm:text-xs sm:ml-1 md:w-10 md:text-xs md:ml-1">
+        <div className="w-16 text-grey hover:text-grey-light slowish opacity-25 hover:opacity-100 cursor-pointer ml-4 justify-start flex items-center absolute pin-y pin-l z-999 sm:w-10 sm:text-xs sm:ml-1 md:w-10 md:text-xs md:ml-1 sm:hidden">
           <FontAwesomeIcon
             onClick={() => {
               props.changeBannerSlide({
@@ -38,6 +38,16 @@ const BannerCarousel = props => {
             className="fa-4x"
           />
         </div>
+        <div
+          onTouchStart={() => {
+            props.changeBannerSlide({
+              bannersLength: props.misc.banners.length,
+              index: props.misc.activeBannerSlide + 1,
+              direction: +1
+            });
+          }}
+          className="xxl:hidden xl:hidden lg:hidden md:hidden cursor-pointer justify-start flex items-center absolute pin-y pin-l z-999 w-20"
+        />
         <Slide
           {...props}
           {...banner}
@@ -52,10 +62,20 @@ const BannerCarousel = props => {
               direction: -1
             });
           }}
-          className="w-16 text-grey hover:text-grey-light slowish opacity-25 hover:opacity-100 cursor-pointer mr-4 justify-end flex items-center absolute pin-y pin-r z-999 sm:w-10 sm:text-xs sm:mr-1 md:w-10 md:text-xs md:mr-1"
+          className="w-16 text-grey hover:text-grey-light slowish opacity-25 hover:opacity-100 cursor-pointer mr-4 justify-end flex items-center absolute pin-y pin-r z-999 sm:w-10 sm:text-xs sm:mr-1 md:w-10 md:text-xs md:mr-1 sm:hidden"
         >
           <FontAwesomeIcon icon={faAngleRight} className="fa-4x" />
         </div>
+        <div
+          onTouchStart={() => {
+            props.changeBannerSlide({
+              bannersLength: props.misc.banners.length,
+              index: props.misc.activeBannerSlide - 1,
+              direction: -1
+            });
+          }}
+          className="xxl:hidden xl:hidden lg:hidden md:hidden cursor-pointer justify-end flex items-center absolute pin-y pin-r z-999 w-20"
+        />
       </React.Fragment>
     );
   });
@@ -97,7 +117,7 @@ const BannerCarousel = props => {
 
   return (
     <div className="w-full">
-      <div className="xxl:h-600 overflow-hidden xl:h-400 lg:h-300 md:h-250 sm:h-36 w-full relative inline-flex">
+      <div className="xxl:h-600 overflow-hidden xl:h-400 lg:h-300 md:h-250 sm:h-175 w-full relative inline-flex">
         {banners}
       </div>
       <div className="w-full block justify-center flex p-3 mb-2 opacity-75">

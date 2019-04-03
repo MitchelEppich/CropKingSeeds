@@ -11,7 +11,7 @@ module.exports = strains => {
         ${Object.keys(pathsObj).map(path =>
           pathsObj[path].imageLoc != null
             ? `<url>
-                <loc>http://cropkingeeds.com${path}</loc>
+                <loc>http://cropkingseeds.com${path}</loc>
                 <lastmod>${formatDate(
                   new Date(pathsObj[path].lastModified)
                 )}</lastmod>
@@ -24,7 +24,7 @@ module.exports = strains => {
                 </image:image >
             </url>`
             : `<url>
-                <loc>http://cropkingeeds.com${path}</loc>
+                <loc>http://cropkingseeds.com${path}</loc>
                 <lastmod>${formatDate(
                   new Date(pathsObj[path].lastModified)
                 )}</lastmod>
