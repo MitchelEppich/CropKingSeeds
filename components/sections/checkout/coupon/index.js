@@ -45,7 +45,7 @@ const Coupon = props => {
               onChange={e => {
                 let _target = e.target;
                 let _key = _target.id;
-                let _value = _target.value;
+                let _value = _target.value.toUpperCase();
                 let _tag = "Coupon";
 
                 props.modifyOrderDetails({

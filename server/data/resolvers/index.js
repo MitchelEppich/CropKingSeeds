@@ -285,7 +285,7 @@ let processBambora = async input => {
 
   return {
     transactionId: res.reference,
-    status: res.message,
+    status: res.message.toLowerCase() == "approved" ? "APPROVED" : "DECLINED",
     approvalCode: res.code,
     response: res.status,
     processor: "Bambora FD",
@@ -340,7 +340,12 @@ let processPivotal = async input => {
     convert.xml2json($res.data, { compact: true, spaces: 4 })
   )["PAYMENTRESPONSE"];
 
-  if (res == null) return { status: "DECLINED" };
+  if (res == null)
+    return {
+      status: "DECLINED",
+      processor: "Pivotal 3 VT",
+      descriptor: "King Merch"
+    };
 
   return {
     transactionId: res.UNIQUEREF._text,

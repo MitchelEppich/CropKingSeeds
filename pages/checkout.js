@@ -80,6 +80,8 @@ class Index extends Component {
           onSubmit={e => {
             e.preventDefault();
 
+            if (this.props.checkout.processing && _stepsCheckout == 3) return;
+
             if (
               _stepsCheckout == 4 &&
               _orderDetails.payment != null &&
@@ -204,7 +206,6 @@ class Index extends Component {
                   className="my-2"
                 />
                 <Coupon {...this.props} />
-                <FreeShippingNotify {...this.props} />
               </div>
             ) : null}
 

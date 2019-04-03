@@ -39,7 +39,7 @@ const Paypal = props => {
               className="mt-4 cursor-pointer"
             />
           </div>
-          <div className="w-200 p-2 mx-auto mt-6 text-center">
+          <div className="w-225 p-2 mx-auto mt-6 text-center">
             {!props.checkout.processing ? (
               <button
                 name="paypalPay"
@@ -49,7 +49,13 @@ const Paypal = props => {
                 Pay Now
               </button>
             ) : (
-              <p>Processing your order...</p>
+              <div className="text-center">
+                <p className="p-1 uppercase font-bold pb-2">
+                  Please Do NOT Refresh
+                </p>
+                <LoaderCheckout {...props} />
+                <p className="p-1 blink font-bold">Processing your order...</p>
+              </div>
             )}
           </div>
         </div>

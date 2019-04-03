@@ -16,7 +16,10 @@ class Index extends Component {
     return (
       <Layout {...this.props}>
         {/* <Head>
-          <title className="">Germination</title>
+          <title>
+            Germinate Feminized &amp; Autoflowering Cannabis Seeds - Crop King
+            Seeds
+          </title>
           <meta name="robots" content="index, follow" />
         </Head> */}
         <div className="pt-0">

@@ -107,12 +107,12 @@ const cart = props => {
           </div>
         )}
       </div>
-      <div className="pr-4 h-16 sm:h-20 items-center flex bg-white text-red-dark flex absolute pin-b border-t-2 border-red-dark w-500 sm:w-full md:w-full">
+      <div className="pr-4 h-16 sm:h-24 items-center flex bg-white sm:bg-red-dark text-red-dark flex absolute pin-b border-t-2 border-red-dark w-500 sm:w-full md:w-full">
         <Link prefetch href="/checkout">
           <button
             name="viewCart"
             onClick={() => props.toggleCartMenu(!props.misc.showCartMenu)}
-            className={`mx-auto ml-16 bg-red-dark md:ml-6 sm:ml-6 lg:mx-8 text-lg block px-8 py-3 sm:h-10 sm:px-3 hover:bg-grey font-extrabold hover:text-white slow text-white  ${
+            className={`mx-auto ml-16 bg-red-dark sm:bg-grey-dark md:ml-6 sm:ml-6 lg:mx-8 text-lg block px-8 py-3 sm:h-10 sm:px-3 hover:bg-grey font-extrabold hover:text-white slow text-white ${
               items.length == 0 ? "opacity-50 pointer-events-none" : ""
             }`}
           >
@@ -120,10 +120,10 @@ const cart = props => {
           </button>
         </Link>
         <div className="flex mr-4 items-center sm:mx-4">
-          <p className="inline-block mr-4 text-xl font-medium text-grey sm:text-lg">
+          <p className="inline-block mr-4 text-xl font-medium text-grey sm:text-white sm:text-lg">
             Subtotal:
           </p>
-          <p className="inline-block text-2xl font-extrabold sm:text-xl text-red-dark">
+          <p className="inline-block text-2xl font-extrabold sm:text-xl sm:text-white text-red-dark">
             {currency != null
               ? `${currency.symbol}${(
                   currency.convert * props.cart.price
