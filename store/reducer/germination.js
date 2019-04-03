@@ -10,7 +10,7 @@ const initialState = {
         instruction: [
           "Drop your seeds into a glass with 1/2 cup of SPRING water.",
           "Soak them for 15 to 18 hours. Do not over soak because too much water can kill them.",
-          "Fold a thick paper towel which is free from perfumes/dyes and position it on top of the plate."
+          "Fold a thick paper towel free from perfumes/dyes and position it on top of the plate."
         ]
       },
       {

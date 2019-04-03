@@ -84,7 +84,7 @@ const menu = props => {
 
   showMobileNav = isMobileNavVisible
     ? {
-        height: "170px",
+        height: "230px",
         transition: "all 0.2s ease-in-out",
         WebkitTransition: "all 0.2s ease-in-out",
         zIndex: "60",
@@ -208,7 +208,7 @@ const menu = props => {
       >
         <div className="w-full xxl:w-1300 px-4 sm:pr-0 md:pr-0 lg:pr-0 xl:w-900 lg:w-700 sm:w-full md:w-full lg:w-full mx-auto text-center relative">
           <div className="inline-flex w-full sm:block md:block lg:block">
-            <div className="w-1/4 sm:w-full md:w-full lg:w-full flex justify-start sm:justify-center">
+            <div className="w-1/5 sm:w-full md:w-full lg:w-full flex justify-start sm:justify-center">
               <div
                 className={
                   props.misc.strains != null
@@ -225,7 +225,7 @@ const menu = props => {
                 </Link>
               </div>
             </div>
-            <div className="w-3/4 sm:w-full md:w-full lg:w-full flex justify-start">
+            <div className="w-4/5 sm:w-full md:w-full lg:w-full flex justify-start">
               {/* MAIN MENU */}
               <div className="sm:hidden md:hidden lg:hidden w-full">
                 <ul className="flex justify-around text-white mt-1 uppercase w-full">
@@ -237,7 +237,7 @@ const menu = props => {
                       onClick={() => {
                         props.toggleCartMenu(false);
                       }}
-                      className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark"
+                      className="font-bold text-xl pt-3 p-2  ml-4 mr-2 cursor-pointer slowish hover:text-yellow-dark"
                     >
                       Home
                     </li>
@@ -247,9 +247,19 @@ const menu = props => {
                       onClick={() => {
                         props.toggleCartMenu(false);
                       }}
-                      className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark"
+                      className="font-bold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark"
                     >
                       Shop
+                    </li>
+                  </Link>
+                  <Link href="/germination">
+                    <li
+                      onClick={() => {
+                        props.toggleCartMenu(false);
+                      }}
+                      className="font-bold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark"
+                    >
+                      Germinate
                     </li>
                   </Link>
                   <Link href="/contact">
@@ -257,13 +267,13 @@ const menu = props => {
                       onClick={() => {
                         props.toggleCartMenu(false);
                       }}
-                      className="font-extrabold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark"
+                      className="font-bold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark"
                     >
                       Contact
                     </li>
                   </Link>
                   <li
-                    className={`font-extrabold text-2xl px-2 scale-item ${
+                    className={`font-bold text-2xl px-2 scale-item ${
                       route.includes("checkout")
                         ? "opacity-50 cursor-not-allowed"
                         : "cursor-pointer scale-item"
@@ -305,7 +315,7 @@ const menu = props => {
                   props.toggleCartMenu(!props.misc.showCartMenu);
                 }}
                 className={
-                  "font-extrabold text-2xl h-12 mr-6 lg:mr-12 md:mr-8 pt-2 hover:bg-red-navMobile cursor-pointer slowish xl:hidden xxl:hidden sm:ml-auto"
+                  "font-bold text-2xl h-12 mr-6 lg:mr-12 md:mr-8 pt-2 hover:bg-red-navMobile cursor-pointer slowish xl:hidden xxl:hidden sm:ml-auto"
                 }
               >
                 <CartIcon {...props} />
@@ -341,8 +351,8 @@ const menu = props => {
                         }}
                         className={
                           isMobileNavVisible
-                            ? "font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish"
-                            : "font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish hidden"
+                            ? "font-bold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish"
+                            : "font-bold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish hidden"
                         }
                       >
                         Home
@@ -355,11 +365,25 @@ const menu = props => {
                         }}
                         className={
                           isMobileNavVisible
-                            ? "font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish"
-                            : "font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish hidden"
+                            ? "font-bold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish"
+                            : "font-bold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish hidden"
                         }
                       >
                         Shop
+                      </li>
+                    </Link>
+                    <Link href="/germination">
+                      <li
+                        onClick={() => {
+                          props.toggleCartMenu(false);
+                        }}
+                        className={
+                          isMobileNavVisible
+                            ? "font-bold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish"
+                            : "font-bold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish hidden"
+                        }
+                      >
+                        Germinate
                       </li>
                     </Link>
                     <Link href="/contact">
@@ -373,8 +397,8 @@ const menu = props => {
                         className={`                         
                             cursor-pointer scale-item" ${
                               isMobileNavVisible
-                                ? "font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish"
-                                : "font-extrabold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish hidden"
+                                ? "font-bold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish"
+                                : "font-bold text-xl pt-3 p-2 my-1 hover:bg-red-navMobile cursor-pointer slowish hidden"
                             }`}
                       >
                         Contact
