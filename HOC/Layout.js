@@ -48,8 +48,9 @@ import ImageZoom from "../components/sections/productPage/imageZoom";
 import StrainsMenu from "../components/sections/productPage/strainsMenu";
 import PopUpBanner from "../components/sections/popup";
 import HeaderMessage from "../components/partials/header/headerMessage";
-
+import generateSchemaMarkup from "../scripts/generateSchemaMarkup";
 import registerServiceWorker from "../registerServiceWorker";
+
 class Layout extends Component {
   constructor(props) {
     super(props);
@@ -61,7 +62,9 @@ class Layout extends Component {
       fps: 0
     };
   }
+
   componentDidMount() {
+    this.props.getCookie(document.cookie, "idev");
     this.props.getDailyMessage().then(res => {
       if (
         this.props.misc.dailyMessage == null ||
@@ -340,11 +343,23 @@ class Layout extends Component {
           </React.Fragment>
           {/* )} */}
         </div>
+        {/* {this.props.viewProduct.currentProduct ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(
+                generateSchemaMarkup(this.props.viewProduct.currentProduct)
+              )
+            }}
+          />
+        ) : null} */}
       </React.Fragment>
     ) : (
-      <div className="h-screen w-full noscriptpage">
-        <Loader isClient={this.state.isClient} {...this.props} />
-      </div>
+      <React.Fragment>
+        <div className="h-screen w-full noscriptpage">
+          <Loader isClient={this.state.isClient} {...this.props} />
+        </div>
+      </React.Fragment>
     );
   }
 
@@ -481,7 +496,8 @@ const mapDispatchToProps = dispatch => {
     toggleHeaderMessage: input => dispatch(actions.toggleHeaderMessage(input)),
     getDailyMessage: () => dispatch(actions.getDailyMessage()),
     recallGPUMode: () => dispatch(actions.recallGPUMode()),
-    toggleMute: () => dispatch(actions.toggleMute())
+    toggleMute: () => dispatch(actions.toggleMute()),
+    getCookie: (cookie, name) => dispatch(actions.getCookie(cookie, name))
   };
 };
 

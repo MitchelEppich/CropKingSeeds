@@ -108,6 +108,7 @@ class Index extends Component {
                     }
                     this.props
                       .processOrder({
+                        idevAffiliate: this.props.checkout.idevCookie,
                         orderId,
                         cart: this.props.cart,
                         orderDetails: {

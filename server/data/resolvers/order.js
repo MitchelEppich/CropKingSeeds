@@ -253,6 +253,7 @@ const resolvers = {
     },
     processOrder: async (_, { input }) => {
       let _input = JSON.parse(input.content);
+      let profile = _input.profile;
 
       let res = (await axios({
         method: "post",
@@ -264,6 +265,11 @@ const resolvers = {
       })).data;
 
       buildRelation(_input.productlist);
+
+      let orderAmount = _input.Order_Amt;
+      let orderId = _input.Order_ID;
+      let coupon = _input.Coupon;
+      let total = _input.Total;
 
       resolvers.Mutation.createOrder(null, {
         input: {
@@ -287,17 +293,17 @@ const resolvers = {
           shipState: _input.ShipState,
           shipCost: _input.Shipping,
           shipDetail: _input.Shipped_Type,
-          orderId: _input.Order_ID,
+          orderId,
           transactionId: _input.Transaction_ID,
           productList: _input.productlist,
           tax: _input.tax,
           provTax: _input.prov_tax,
           provTaxType: _input.prov_tax_type,
           currency: _input.Currency,
-          coupon: _input.Coupon,
+          coupon,
           ccPaidAmount: _input.credit_paid_amount,
-          orderAmount: _input.Order_Amt,
-          total: _input.Total,
+          orderAmount,
+          total,
           processor: _input.Payment_Method,
           ccType: _input.Typeofcard,
           orderDate: _input.Order_Date,
@@ -307,7 +313,13 @@ const resolvers = {
         }
       });
 
-      return "Order Processed.";
+      let affiliateUrl;
+      if (profile != null) {
+        affiliateUrl = `https://affiliates.cropkingseeds.com/sale.php?profile=${profile}&idev_saleamt=${total ||
+          ""}&idev_ordernum=${orderId || ""}&coupon_code=${coupon || ""}`;
+      }
+
+      return affiliateUrl || "Order Processed.";
     }
   }
 };

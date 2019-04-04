@@ -242,17 +242,18 @@ const resolvers = {
       }
     },
     processPayment: async (_, { input }) => {
-      let { pivotal, bambora } = await getProcessorUsage();
+      // let { pivotal, bambora } = await getProcessorUsage();
+      let { pivotal } = await getProcessorUsage();
       let _amount = parseFloat(input.amount);
       let response;
 
-      if (
-        input.country.toLowerCase() == "canada" &&
-        (bambora.limit == -1 || bambora.available - _amount > 0)
-      )
-        response = await processBambora(input);
-      else if (pivotal.limit == -1 || pivotal.available - _amount > 0)
-        response = await processPivotal(input);
+      // if (
+      //   input.country.toLowerCase() == "canada" &&
+      //   (bambora.limit == -1 || bambora.available - _amount > 0)
+      // )
+      //   response = await processBambora(input);
+      // else if (pivotal.limit == -1 || pivotal.available - _amount > 0)
+      response = await processPivotal(input);
 
       return response;
     }
@@ -359,28 +360,28 @@ let processPivotal = async input => {
 
 let getProcessorUsage = async () => {
   // Bambora
-  let bambora = JSON.parse(
-    convert.xml2json(
-      (await request({
-        method: "GET",
-        uri: "https://www.cksoti.com/getprocessorusage/bambora"
-      }))
-        .toLowerCase()
-        .replace("<br/><?xml?>", "</Data>")
-        .replace(
-          '<?xml version="1.0" encoding="utf-8"?>',
-          '<?xml version="1.0" encoding="utf-8"?><Data>'
-        ),
-      { compact: true, spaces: 4 }
-    )
-  )["Data"];
-  bambora = {
-    current: parseFloat(bambora.currentamount._text.replace(/[,$]/g, "")) || -1,
-    available:
-      parseFloat(bambora.availableamount._text.replace(/[,$]/g, "")) || -1,
-    limit:
-      parseFloat(bambora.amountlimitperday._text.replace(/[,$]/g, "")) || -1
-  };
+  // let bambora = JSON.parse(
+  //   convert.xml2json(
+  //     (await request({
+  //       method: "GET",
+  //       uri: "https://www.cksoti.com/getprocessorusage/bambora"
+  //     }))
+  //       .toLowerCase()
+  //       .replace("<br/><?xml?>", "</Data>")
+  //       .replace(
+  //         '<?xml version="1.0" encoding="utf-8"?>',
+  //         '<?xml version="1.0" encoding="utf-8"?><Data>'
+  //       ),
+  //     { compact: true, spaces: 4 }
+  //   )
+  // )["Data"];
+  // bambora = {
+  //   current: parseFloat(bambora.currentamount._text.replace(/[,$]/g, "")) || -1,
+  //   available:
+  //     parseFloat(bambora.availableamount._text.replace(/[,$]/g, "")) || -1,
+  //   limit:
+  //     parseFloat(bambora.amountlimitperday._text.replace(/[,$]/g, "")) || -1
+  // };
 
   // Pivotal
   let pivotal = JSON.parse(
@@ -406,7 +407,8 @@ let getProcessorUsage = async () => {
       parseFloat(pivotal.amountlimitperday._text.replace(/[,$]/g, "")) || -1
   };
 
-  return { pivotal, bambora };
+  // return { pivotal, bambora };
+  return { pivotal };
 };
 
 let encodeMD5 = function(d) {

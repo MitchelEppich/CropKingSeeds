@@ -34,7 +34,8 @@ const actionTypes = {
   LOAD_LOCAL_PROFILE: "LOAD_LOCAL_PROFILE",
   PURGE_LOCAL_PROFILE: "PURGE_LOCAL_PROFILE",
   CLEAR_ORDER_DETAILS: "CLEAR_ORDER_DETAILS",
-  TOGGLE_PROCESSING: "TOGGLE_PROCESSING"
+  TOGGLE_PROCESSING: "TOGGLE_PROCESSING",
+  GET_COOKIE: "GET_COOKIE"
 };
 
 let statesCAUS = {
@@ -655,6 +656,8 @@ const getActions = uri => {
     },
     processOrder: input => {
       return async dispatch => {
+        let _idevAffiliate = input.idevAffiliate;
+
         let _orderDetails = { ...input.orderDetails };
         let _paymentMethod = _orderDetails.payment.method.value,
           cart = input.cart;
@@ -695,8 +698,13 @@ const getActions = uri => {
         }
 
         // Process Order
-        let response = await processOrder(_orderDetails, ccResponse, uri);
-        // let response = null;
+        let response = await processOrder(
+          _orderDetails,
+          ccResponse,
+          uri,
+          _idevAffiliate
+        );
+
         // Send email confirmation
         let products = Object.values(cart.items);
         products = products.map((product, index) => {
@@ -753,7 +761,8 @@ const getActions = uri => {
 
         dispatch({
           type: actionTypes.PROCESS_ORDER,
-          ccResponse
+          ccResponse,
+          url: response
         });
       };
     },
@@ -761,6 +770,24 @@ const getActions = uri => {
       return {
         type: actionTypes.TOGGLE_PROCESSING,
         processing: processing
+      };
+    },
+    getCookie: (cookie, name) => {
+      let value = "; " + cookie,
+        idev = null;
+      let parts = value.split("; " + name + "=");
+      if (parts.length == 2) {
+        idev = parts
+          .pop()
+          .split(";")
+          .shift();
+      }
+      if (idev != null) {
+        idev = idev.split("-")[0];
+      }
+      return {
+        type: actionTypes.GET_COOKIE,
+        idevCookie: idev
       };
     }
   };
@@ -817,39 +844,7 @@ const mutation = {
   `,
   processOrder: gql`
     mutation($content: String) {
-      processOrder(input: { content: $content }) {
-        _id
-        billAddress
-        billApartment
-        billCity
-        billCountry
-        billEmail
-        billFullName
-        billPhone
-        billPostalZip
-        billState
-        shipAddress
-        shipApartment
-        shipCity
-        shipCountry
-        shipEmail
-        shipFullName
-        shipPhone
-        shipPostalZip
-        shipState
-        shipCost
-        shipDetail
-        orderId
-        transactionId
-        productList
-        tax
-        provTax
-        provTaxType
-        currency
-        coupon
-        paymentMethod
-        paymentStatus
-      }
+      processOrder(input: { content: $content })
     }
   `,
   processPayment: gql`
@@ -933,7 +928,7 @@ const mutation = {
   `
 };
 
-let processOrder = async (orderDetails, res, uri) => {
+let processOrder = async (orderDetails, res, uri, idevAffiliate) => {
   return await new Promise(async (resolve, reject) => {
     let _orderPost = {
       ...buildOrderPost(orderDetails)
@@ -968,19 +963,20 @@ let processOrder = async (orderDetails, res, uri) => {
     //   }
     // }
 
+    if (idevAffiliate != null) {
+      _orderPost.profile = idevAffiliate;
+    }
+
     const link = new HttpLink({ uri, fetch: fetch });
     const operation = {
       query: mutation.processOrder,
       variables: { content: JSON.stringify(_orderPost) }
     };
 
-    resolve(
-      await makePromise(execute(link, operation))
-        .then(async data => {
-          return data.data.processOrder;
-        })
-        .catch(error => console.log(error))
-    );
+    let data = await makePromise(execute(link, operation));
+    let url = data.data.processOrder;
+    if (!url.includes("http")) url = "";
+    resolve(url);
   });
 };
 let processPayment = async (details, uri) => {
