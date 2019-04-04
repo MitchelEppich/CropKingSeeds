@@ -253,6 +253,7 @@ const resolvers = {
     },
     processOrder: async (_, { input }) => {
       let _input = JSON.parse(input.content);
+      let profile = _input.profile;
 
       let res = (await axios({
         method: "post",
@@ -311,7 +312,7 @@ const resolvers = {
         }
       });
 
-      let affiliateUrl = `https://affiliates.cropkingseeds.com/sale.php?profile=61516&idev_saleamt=${orderAmount ||
+      let affiliateUrl = `https://affiliates.cropkingseeds.com/sale.php?profile=${profile}&idev_saleamt=${orderAmount ||
         ""}&idev_ordernum=${orderId || ""}&coupon_code=${coupon || ""}`;
 
       request.get(affiliateUrl);

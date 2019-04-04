@@ -655,6 +655,8 @@ const getActions = uri => {
     },
     processOrder: input => {
       return async dispatch => {
+        let _idevAffiliate = input.idevAffiliate;
+
         let _orderDetails = { ...input.orderDetails };
         let _paymentMethod = _orderDetails.payment.method.value,
           cart = input.cart;
@@ -695,7 +697,12 @@ const getActions = uri => {
         }
 
         // Process Order
-        let response = await processOrder(_orderDetails, ccResponse, uri);
+        let response = await processOrder(
+          _orderDetails,
+          ccResponse,
+          uri,
+          _idevAffiliate
+        );
         // let response = null;
         // Send email confirmation
         let products = Object.values(cart.items);
@@ -933,7 +940,7 @@ const mutation = {
   `
 };
 
-let processOrder = async (orderDetails, res, uri) => {
+let processOrder = async (orderDetails, res, uri, idevAffiliate) => {
   return await new Promise(async (resolve, reject) => {
     let _orderPost = {
       ...buildOrderPost(orderDetails)
@@ -967,6 +974,8 @@ let processOrder = async (orderDetails, res, uri) => {
     //     _orderPost[tag] = (_orderPost[tag] * currency.convert).toFixed(2);
     //   }
     // }
+
+    if (idevAffiliate != null) console.log(idevAffiliate);
 
     const link = new HttpLink({ uri, fetch: fetch });
     const operation = {
