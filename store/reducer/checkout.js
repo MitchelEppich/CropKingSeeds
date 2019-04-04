@@ -18,7 +18,8 @@ const initialState = {
   foundProfiles: [],
   profileID: null,
   processing: false,
-  idevCookie: null
+  idevCookie: null,
+  affiliateUrl: null
 };
 
 export default (state = initialState, action) => {
@@ -84,7 +85,10 @@ export default (state = initialState, action) => {
     case actionTypes.GET_BITCOIN_DATA:
       return updateObject(state, { bitcoinData: action.input });
     case actionTypes.PROCESS_ORDER:
-      return updateObject(state, { ccResponse: action.ccResponse });
+      return updateObject(state, {
+        ccResponse: action.ccResponse,
+        affiliateUrl: action.url
+      });
     case actionTypes.SET_CURRENCY:
       return updateObject(state, { viewCurrency: action.input });
     case actionTypes.GET_EXCHANGE_RATES:

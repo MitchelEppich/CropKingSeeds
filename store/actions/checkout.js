@@ -704,7 +704,7 @@ const getActions = uri => {
           uri,
           _idevAffiliate
         );
-        // let response = null;
+
         // Send email confirmation
         let products = Object.values(cart.items);
         products = products.map((product, index) => {
@@ -761,7 +761,8 @@ const getActions = uri => {
 
         dispatch({
           type: actionTypes.PROCESS_ORDER,
-          ccResponse
+          ccResponse,
+          url: response
         });
       };
     },
@@ -843,39 +844,7 @@ const mutation = {
   `,
   processOrder: gql`
     mutation($content: String) {
-      processOrder(input: { content: $content }) {
-        _id
-        billAddress
-        billApartment
-        billCity
-        billCountry
-        billEmail
-        billFullName
-        billPhone
-        billPostalZip
-        billState
-        shipAddress
-        shipApartment
-        shipCity
-        shipCountry
-        shipEmail
-        shipFullName
-        shipPhone
-        shipPostalZip
-        shipState
-        shipCost
-        shipDetail
-        orderId
-        transactionId
-        productList
-        tax
-        provTax
-        provTaxType
-        currency
-        coupon
-        paymentMethod
-        paymentStatus
-      }
+      processOrder(input: { content: $content })
     }
   `,
   processPayment: gql`
@@ -994,7 +963,9 @@ let processOrder = async (orderDetails, res, uri, idevAffiliate) => {
     //   }
     // }
 
-    if (idevAffiliate != null) console.log(idevAffiliate);
+    if (idevAffiliate != null) {
+      _orderPost.profile = idevAffiliate;
+    }
 
     const link = new HttpLink({ uri, fetch: fetch });
     const operation = {
@@ -1002,13 +973,10 @@ let processOrder = async (orderDetails, res, uri, idevAffiliate) => {
       variables: { content: JSON.stringify(_orderPost) }
     };
 
-    resolve(
-      await makePromise(execute(link, operation))
-        .then(async data => {
-          return data.data.processOrder;
-        })
-        .catch(error => console.log(error))
-    );
+    let data = await makePromise(execute(link, operation));
+    let url = data.data.processOrder;
+    if (!url.includes("http")) url = "";
+    resolve(url);
   });
 };
 let processPayment = async (details, uri) => {

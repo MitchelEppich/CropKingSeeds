@@ -336,7 +336,7 @@ type Mutation {
   subscribeToNewsletter(email: String): String
 
   processPayment(input: PaymentInput): PaymentResponse
-  processOrder(input: OrderProcessInput): Order
+  processOrder(input: OrderProcessInput): String
 }
 
 `;

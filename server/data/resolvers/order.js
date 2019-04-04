@@ -269,6 +269,7 @@ const resolvers = {
       let orderAmount = _input.Order_Amt;
       let orderId = _input.Order_ID;
       let coupon = _input.Coupon;
+      let total = _input.Total;
 
       resolvers.Mutation.createOrder(null, {
         input: {
@@ -302,7 +303,7 @@ const resolvers = {
           coupon,
           ccPaidAmount: _input.credit_paid_amount,
           orderAmount,
-          total: _input.Total,
+          total,
           processor: _input.Payment_Method,
           ccType: _input.Typeofcard,
           orderDate: _input.Order_Date,
@@ -312,15 +313,13 @@ const resolvers = {
         }
       });
 
+      let affiliateUrl;
       if (profile != null) {
-        let affiliateUrl = `https://affiliates.cropkingseeds.com/sale.php?profile=${profile}&idev_saleamt=${orderAmount ||
+        affiliateUrl = `https://affiliates.cropkingseeds.com/sale.php?profile=${profile}&idev_saleamt=${total ||
           ""}&idev_ordernum=${orderId || ""}&coupon_code=${coupon || ""}`;
-
-        request.get(affiliateUrl);
       }
-      console.log(profile);
 
-      return "Order Processed.";
+      return affiliateUrl || "Order Processed.";
     }
   }
 };
