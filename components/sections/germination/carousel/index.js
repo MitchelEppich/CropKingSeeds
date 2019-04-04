@@ -102,15 +102,11 @@ const Carousel = props => {
           onClick={() => {
             props.changeStep({
               _incrOrDecr: -1,
-              _currentStep: currentStep,
+              _currentStep: currentStep != 0 ? currentStep : 5,
               _totalSteps: carousel.steps.length
             });
           }}
-          className={
-            currentStep > 0
-              ? "text-red-light w-10 p-2 font-bold slowish sm:bg-transparent sm:text-red-light hover:text-red-dark items-center flex"
-              : "cursor-not-allowed bg-transparent text-red-light hover:text-grey-lightest w-10 p-2 font-bold slowish"
-          }
+          className="text-red-light w-10 p-2 font-bold slowish sm:bg-transparent sm:text-red-light hover:text-red-dark items-center flex"
         >
           <FontAwesomeIcon
             icon={faAngleLeft}
@@ -123,15 +119,11 @@ const Carousel = props => {
           onClick={() => {
             props.changeStep({
               _incrOrDecr: 1,
-              _currentStep: currentStep,
+              _currentStep: currentStep != 4 ? currentStep : -1,
               _totalSteps: carousel.steps.length
             });
           }}
-          className={
-            currentStep < carousel.steps.length - 1
-              ? "text-red-light w-10 p-2 font-bold slowish sm:bg-transparent sm:text-red-light hover:text-red-dark items-center flex"
-              : "cursor-not-allowed bg-transparent text-grey-light hover:text-grey-lightest w-10 p-2 font-bold slowish"
-          }
+          className="text-red-light w-10 p-2 font-bold slowish sm:bg-transparent sm:text-red-light hover:text-red-dark items-center flex"
         >
           <FontAwesomeIcon
             icon={faAngleRight}
