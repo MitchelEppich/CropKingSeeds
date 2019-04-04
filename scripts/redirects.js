@@ -1,12 +1,16 @@
 const oldUrls = require("./redirectUrls");
 let categories = [
   "products-page",
-  "germination",
+  "germinat",
   "buy",
   "chart",
   "mix",
   "news",
-  "events"
+  "grow",
+  "events",
+  "seeds",
+  "sale",
+  "order"
 ];
 module.exports = strains => {
   let strainNames = strains.map((strain, index) => {
@@ -40,6 +44,16 @@ module.exports = strains => {
         if (urlPath.includes("white-widow") && urlPath.includes("auto")) {
           url.to = "/product/white-widow-autoflower";
         }
+        if (urlPath.includes("feminized-mix")) {
+          url.to = "/product/feminized-mixed";
+        }
+        if (
+          urlPath.includes("auto-feminized-mix") ||
+          (urlPath.includes("auto") && urlPath.includes("mix"))
+        ) {
+          url.to = "/product/autoflower-mixed";
+        }
+
         if (
           urlPath
             .toLowerCase()
@@ -68,13 +82,22 @@ module.exports = strains => {
     }
     for (categorie of categories) {
       if (urlPath.includes(categorie)) {
-        if (categorie == "products-page") {
-          url.to = "/shop";
+        if (categorie == "mix") {
+          if (urlPath.includes("auto")) {
+            url.to = "/product/autoflower-mixed";
+          } else {
+            url.to = "/product/feminized-mixed";
+          }
         }
-        if (categorie == "germination") {
+        if (categorie == "germinat") {
           url.to = "/germination";
         }
-        if (categorie == "buy") {
+        if (
+          categorie == "buy" ||
+          categorie == "sale" ||
+          categorie == "seeds" ||
+          categorie == "order"
+        ) {
           url.to = "/shop";
         }
         if (categorie == "chart") {
@@ -86,12 +109,8 @@ module.exports = strains => {
         if (categorie == "events") {
           url.to = "/news";
         }
-        if (categorie == "mix") {
-          if (urlPath.includes("auto")) {
-            url.to = "/product/autoflower-mixed";
-          } else {
-            url.to = "/product/feminized-mixed";
-          }
+        if (categorie == "products-page") {
+          url.to = "/shop";
         }
       }
       if (url.to != "/") {
@@ -101,6 +120,5 @@ module.exports = strains => {
     return url;
   });
   // return [{ from: "/adam", to: "/shop" }];
-
   return redirects;
 };
