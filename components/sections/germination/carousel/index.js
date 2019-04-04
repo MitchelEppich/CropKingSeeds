@@ -76,9 +76,9 @@ const Carousel = props => {
         <h2 className="px-4 sm:my-2 text-2xl bg-red-light text-white p-1 uppercase lg:my-2 xl:my-2 xxl:my-4 lg:text-left xl:text-left xxl:text-left text-center sm:bg-white md:bg-white sm:text-red-light md:text-red-light">
           Step {currentStep + 1}
         </h2>
-        <p className="w-full slow sm:px-4 sm:text-sm md:text-base text-base md:px-10 lg:px-2 xl:px-4 xxl:px-4 lg:text-base xl:text-base">
+        <div className="w-full slow sm:px-4 sm:text-sm md:text-base text-base md:px-10 lg:px-2 xl:px-4 xxl:px-4 lg:text-base xl:text-base">
           {paragraphs}
-        </p>
+        </div>
       </div>
       <div
         className="xxl:mt-10 lg:mt-16 md:mt-8"

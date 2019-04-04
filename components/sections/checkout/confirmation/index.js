@@ -315,43 +315,52 @@ const Confirmation = props => {
                     <p className="w-main mx-auto pt-4" />
                     <div className="text-center p-2 mt-4 text-xl">
                       {_ccr.status.toLowerCase() == "declined" ? (
-                        <p>
-                          <span className="uppercase font-bold text-xl text-red-dark p-1">
-                            Declined! We are unable to process your order!
-                          </span>
+                        <div className="w-main mx-auto">
+                          <p className="uppercase font-bold text-2xl text-red-dark p-1 text-center">
+                            Your Card was Declined <br />{" "}
+                            <span className="text-xl">
+                              We are unable to process your order!
+                            </span>
+                          </p>
                           <br />
-                          <span className="pt-1 text-base">
-                            Please call our customer support immediately (at +1
-                            (844) 276 - 7546) to resolve any issues.
-                          </span>
+                          <p className="pt-1 text-base text-center font-bold">
+                            Please call our customer support{" "}
+                            <span className="underline"> immediately</span> (at
+                            +1 (844) 276 - 7546) to resolve any issues.
+                          </p>
                           <br />
-                          <span className="pt-1 text-base">
+                          <p className="pt-1 text-base text-center font-bold">
                             Once your payment has been received we will ship
                             your order on the next applicable business day.
-                          </span>
-                        </p>
+                          </p>
+                        </div>
                       ) : _ccr.status == "" ? (
-                        <p>
-                          <span className="uppercase font-bold text-xl text-red-dark p-1">
-                            We are unable to process your large order!
-                          </span>
+                        <div className="w-main mx-auto">
+                          <p className="uppercase font-bold text-2xl text-red-dark p-1 text-center">
+                            Order too Large <br />{" "}
+                            <span className="text-xl">
+                              We are unable to process your large order this
+                              time.
+                            </span>
+                          </p>
                           <br />
-                          <span className="pt-1 text-base">
-                            Please call our customer support immediately (at +1
-                            (844) 276 - 7546) to resolve any issues.
-                            <br />
-                          </span>
-                          <span className="pt-1 text-base">
+                          <p className="pt-1 text-base text-center font-bold">
+                            Please call our customer support{" "}
+                            <span className="underline"> immediately</span> (at
+                            +1 (844) 276 - 7546) to resolve any issues.
+                          </p>
+                          <br />
+                          <p className="pt-1 text-base text-center font-bold">
                             Once your payment has been received we will ship
                             your order on the next applicable business day.
-                          </span>
-                        </p>
+                          </p>
+                        </div>
                       ) : (
-                        <span>
+                        <p>
                           Please allow some time for your payment to process,
                           once your payment has been received we will ship your
                           order on the next applicable business day.
-                        </span>
+                        </p>
                       )}
                     </div>
                     <p className="mt-4 p-2 text-center pb-4">

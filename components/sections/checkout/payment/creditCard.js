@@ -4,8 +4,6 @@ import { faCcVisa, faCcMastercard } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LoaderCheckout from "../loaderCheckout";
 
-import LoaderCheckout from "../loaderCheckout";
-
 import moment from "moment";
 
 import StringMask from "string-mask";
