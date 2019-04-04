@@ -265,6 +265,10 @@ const resolvers = {
 
       buildRelation(_input.productlist);
 
+      let orderAmount = _input.Order_Amt;
+      let orderId = _input.Order_ID;
+      let coupon = _input.Coupon;
+
       resolvers.Mutation.createOrder(null, {
         input: {
           billAddress: _input.BillAddress,
@@ -287,16 +291,16 @@ const resolvers = {
           shipState: _input.ShipState,
           shipCost: _input.Shipping,
           shipDetail: _input.Shipped_Type,
-          orderId: _input.Order_ID,
+          orderId,
           transactionId: _input.Transaction_ID,
           productList: _input.productlist,
           tax: _input.tax,
           provTax: _input.prov_tax,
           provTaxType: _input.prov_tax_type,
           currency: _input.Currency,
-          coupon: _input.Coupon,
+          coupon,
           ccPaidAmount: _input.credit_paid_amount,
-          orderAmount: _input.Order_Amt,
+          orderAmount,
           total: _input.Total,
           processor: _input.Payment_Method,
           ccType: _input.Typeofcard,
@@ -306,6 +310,11 @@ const resolvers = {
           paymentStatus: _input.credit_card_remark
         }
       });
+
+      let affiliateUrl = `https://affiliates.cropkingseeds.com/sale.php?profile=61516&idev_saleamt=${orderAmount ||
+        ""}&idev_ordernum=${orderId || ""}&coupon_code=${coupon || ""}`;
+
+      request.get(affiliateUrl);
 
       return "Order Processed.";
     }
