@@ -1,7 +1,6 @@
 import React from "react";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import LoaderCheckout from "../loaderCheckout";
 
 const Transfer = props => {

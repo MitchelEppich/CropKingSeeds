@@ -313,39 +313,56 @@ const Confirmation = props => {
                   </div>
                   <div className="bg-white shadow-md">
                     <p className="w-main mx-auto pt-4" />
-                    <p className="text-center p-2 mt-4 text-xl">
+                    <div className="text-center p-2 mt-4 text-xl">
                       {_ccr.status.toLowerCase() == "declined" ? (
-                        <span>
-                          <strong>
-                            Declined! We are unable to process your order!
-                          </strong>
+                        <div className="w-main mx-auto">
+                          <p className="uppercase font-bold text-2xl text-red-dark p-1 text-center">
+                            Your Card was Declined <br />{" "}
+                            <span className="text-xl">
+                              We are unable to process your order!
+                            </span>
+                          </p>
                           <br />
-                          Please call our customer support immediately (at +1
-                          (844) 276 - 7546) to resolve any issues.
+                          <p className="pt-1 text-base text-center font-bold">
+                            Please call our customer support{" "}
+                            <span className="underline"> immediately</span> (at
+                            +1 (844) 276 - 7546) to resolve any issues.
+                          </p>
                           <br />
-                          Once your payment has been received we will ship your
-                          order on the next applicable business day.
-                        </span>
+                          <p className="pt-1 text-base text-center font-bold">
+                            Once your payment has been received we will ship
+                            your order on the next applicable business day.
+                          </p>
+                        </div>
                       ) : _ccr.status == "" ? (
-                        <span>
-                          <strong>
-                            We are unable to process your large order!
-                          </strong>
+                        <div className="w-main mx-auto">
+                          <p className="uppercase font-bold text-2xl text-red-dark p-1 text-center">
+                            Order too Large <br />{" "}
+                            <span className="text-xl">
+                              We are unable to process your large order this
+                              time.
+                            </span>
+                          </p>
                           <br />
-                          Please call our customer support immediately (at +1
-                          (844) 276 - 7546) to resolve any issues.
+                          <p className="pt-1 text-base text-center font-bold">
+                            Please call our customer support{" "}
+                            <span className="underline"> immediately</span> (at
+                            +1 (844) 276 - 7546) to resolve any issues.
+                          </p>
                           <br />
-                          Once your payment has been received we will ship your
-                          order on the next applicable business day.
-                        </span>
+                          <p className="pt-1 text-base text-center font-bold">
+                            Once your payment has been received we will ship
+                            your order on the next applicable business day.
+                          </p>
+                        </div>
                       ) : (
-                        <span>
+                        <p>
                           Please allow some time for your payment to process,
                           once your payment has been received we will ship your
                           order on the next applicable business day.
-                        </span>
+                        </p>
                       )}
-                    </p>
+                    </div>
                     <p className="mt-4 p-2 text-center pb-4">
                       <strong>Important</strong>: The displayed order total may
                       vary depending on fluctuations in conversion rates and
@@ -375,10 +392,10 @@ const Confirmation = props => {
         <div className="w-full">{showProduct()}</div>
         <div className="inline-flex justify-end flex w-full mt-8 text-lg mb-4 xl:flex-col-reverse lg:flex-col-reverse md:flex-col-reverse sm:flex-col-reverse">
           <div className="w-full inline-flex text-lg sm:flex-col md:flex-col xxl:border-r-2 border-grey-lightest lg:mt-4 lg:pt-4 md:pt-4 md:mt-4 xl:pt-4 xl:mt-4 sm:mt-4 sm:pt-4 sm:border-t-2 md:border-t-2 lg:border-t-2 xl:border-t-2">
-            <div className="w-1/3 text-right justify-start flex p-2  sm:w-full md:w-full sm:justify-center md:justify-center sm:mr-0 md:mr-0">
-              <FontAwesomeIcon icon={faQuestionCircle} className="fa-7x" />
+            <div className="w-1/4 text-right justify-start flex p-2  sm:w-full md:w-full sm:justify-center md:justify-center sm:mr-0 md:mr-0 justify-center items-center">
+              <FontAwesomeIcon icon={faQuestionCircle} className="fa-4x" />
             </div>
-            <div className="w-2/3 text-left p-2 sm:w-full md:w-full sm:text-center md:text-center sm:ml-0 md:ml-0">
+            <div className="w-3/4 text-left p-2 sm:w-full md:w-full sm:text-center md:text-center sm:ml-0 md:ml-0">
               <p className="font-bold text-2xl">Need help?</p>
               <p className="font-bold">We are available to assist you 24/7.</p>
               <p>Canada: (604) 563-0291</p>

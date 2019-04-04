@@ -265,7 +265,7 @@ const Footer = props => {
               className="uppercase cursor-pointer text-white hover:text-grey font-bold flex justify-center items-center w-full text-lg"
             >
               <FontAwesomeIcon icon={faCog} className="mr-2 fa-lg" />
-              Animations {!props.misc.lowGPUMode ? "Off" : "On"}
+              Animations {props.misc.lowGPUMode ? "Off" : "On"}
             </p>
           </div>
           <div className="mt-2 text-white sm:text-center md:text-center lg:text-center text-center">

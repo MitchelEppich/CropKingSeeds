@@ -289,7 +289,7 @@ class Layout extends Component {
               </div>
               <div
                 id="tawkto"
-                className="pulse fixed z-40 w-20 h-16 bg-red-darker sm:mb-0 mb-16 pin-b pin-l text-white text-center text-lg pt-3 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item shadow-md"
+                className="pulse font-bold fixed z-40 w-20 h-16 bg-red-darker sm:mb-0 mb-16 pin-b pin-l text-white text-center text-lg pt-3 pr-3 rounded-tr-full rounded-br-full cursor-pointer hover:bg-red-dark scale-item shadow-md"
                 onClick={() => {
                   Tawk_API.toggle();
                 }}
@@ -297,7 +297,7 @@ class Layout extends Component {
                 CHAT
                 <FontAwesomeIcon
                   icon={faComments}
-                  className="ml-1 fa-lg cursor-pointer"
+                  className="pb-1 fa-lg cursor-pointer"
                 />
               </div>
               <div

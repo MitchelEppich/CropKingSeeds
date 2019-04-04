@@ -3,6 +3,8 @@ import { faCannabis } from "@fortawesome/free-solid-svg-icons";
 import {} from "@fortawesome/free-brands-svg-icons";
 
 const moreInfo = props => {
+  if (props.viewProduct.currentProduct == null) return null;
+  if (props.viewProduct.currentProduct.moreInfo == null) return null;
   let paragraphs = props.viewProduct.currentProduct.moreInfo.map(
     (paragraph, index) => {
       return (

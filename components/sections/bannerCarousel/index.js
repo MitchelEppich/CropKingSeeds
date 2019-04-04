@@ -23,6 +23,7 @@ const BannerCarousel = props => {
         index -
         props.misc.bannerSlidePositions.length;
     }
+
     return (
       <React.Fragment key={index}>
         <div className="w-16 text-grey hover:text-grey-light slowish opacity-25 hover:opacity-100 cursor-pointer ml-4 justify-start flex items-center absolute pin-y pin-l z-999 sm:w-10 sm:text-xs sm:ml-1 md:w-10 md:text-xs md:ml-1 sm:hidden">

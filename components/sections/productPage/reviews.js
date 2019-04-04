@@ -30,7 +30,6 @@ const reviews = props => {
       };
       return <Review {...props} {...review} index={index} key={index} />;
     });
-
   let showPages = () => {
     let arr = [];
     // Add Back Button
@@ -122,10 +121,13 @@ const reviews = props => {
             <ReviewStats {...props} />
           </div>
           <div className="w-3/4 sm:w-full md:w-full lg:w-full mt-5 mb-3 ml-2 sm:ml-0 rounded ">
-          {props.viewProduct.ratingFilter ? 
-            <p className="p-1 font-bold bg-grey-lighter opacity-25 text-grey text-center">
-              Showing {props.viewProduct.ratingFilter} {props.viewProduct.ratingFilter == "1" ? "crown" : "crowns"} reviews:
-            </p> : null }
+            {props.viewProduct.ratingFilter ? (
+              <p className="p-1 font-bold bg-grey-lighter opacity-25 text-grey text-center">
+                Showing {props.viewProduct.ratingFilter}{" "}
+                {props.viewProduct.ratingFilter == "1" ? "crown" : "crowns"}{" "}
+                reviews:
+              </p>
+            ) : null}
             <div className="bg-white w-full">
               {_reviews.length != 0 ? (
                 reviews

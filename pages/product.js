@@ -77,8 +77,8 @@ class Index extends Component {
                         className="inline-flex bg-red-light"
                         style={{
                           width: `${150 *
-                            (this.props.viewProduct.currentProduct.rating /
-                              5)}px`,
+                            (this.props.viewProduct.currentProduct.rating / 5) +
+                            8}px`,
                           height: "17px",
                           marginTop: "2px"
                         }}

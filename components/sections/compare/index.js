@@ -31,7 +31,7 @@ const Compare = props => {
           }
           className={`${
             props.shop.quickAddToCartQty[item._id] === index
-              ? " text-xs text-grey w-1/3 p-2 mr-1 flex flex-wrap text-center justify-center leading-normal uppercase font-bold border border-grey-lightest hover:bg-grey-light hover:text-white "
+              ? " text-xs bg-red-dark text-white w-1/3 p-2 mr-1 flex flex-wrap text-center justify-center leading-normal uppercase font-bold border border-grey-lightest hover:bg-grey-light hover:text-white "
               : "bg-white text-grey text-xs w-1/3 p-2 flex mr-1 flex-wrap text-center justify-center leading-normal uppercase font-bold border border-grey-lightest hover:bg-grey-light hover:text-white"
           } ${
             price == -1 ? "opacity-50 pointer-events-none unselectable" : ""
@@ -469,7 +469,7 @@ const Compare = props => {
           <p className="text-center mt-6 bg-grey-lightest p-3 my-4 mt-0 font-bold rounded text-base uppercase text-grey">
             Please, select at least{" "}
             <span className="font-bold underline">2</span> and max{" "}
-            <span className="font-bold underline">4</span> strains to compare.
+            <span className="font-bold underline">3</span> strains to compare.
           </p>
           {props.misc.compareStrains != null &&
           props.misc.compareStrains.length != 0 ? (
