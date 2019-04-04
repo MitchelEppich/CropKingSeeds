@@ -185,77 +185,94 @@ class Layout extends Component {
   render() {
     return this.props.misc.strains != null ? (
       <React.Fragment>
-        <Head>
-          {this.state.isClient &&
-          Router.asPath.includes("product") &&
-          this.props.viewProduct.currentProduct ? (
-            <React.Fragment>
-              <meta name="robots" content="index, follow" />
-              <meta
-                id="og-title"
-                property="og:title"
-                content={this.props.viewProduct.currentProduct.name}
-              />
-              <meta
-                id="og-url"
-                property="og:url"
-                content={window.location.href}
-              />
-              <meta id="og-locale" property="og:locale" content="en_US" />
-              <meta
-                id="og-description"
-                property="og:description"
-                content={this.props.viewProduct.currentProduct.description}
-              />
-              <meta
-                name="title"
-                content={this.props.viewProduct.currentProduct.name}
-              />
-              <meta
-                name="description"
-                content={this.props.viewProduct.currentProduct.description}
-              />
-              <meta
-                id="og-image"
-                property="og:image"
-                content={
-                  "http://dcfgweqx7od72.cloudfront.net" +
-                  this.props.viewProduct.currentProduct.images[0]
-                }
-              />
-            </React.Fragment>
-          ) : (
-            <React.Fragment>
-              <meta
-                property="og:title"
-                content="Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds"
-              />
-              <meta property="og:type" content="The type" />
-              <meta
-                property="og:url"
-                content={"http://cropkingseeds.com/" + Router.asPath}
-              />
-              <meta
-                id="og-description"
-                property="og:description"
-                content="Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
-              />
-              <meta
-                name="title"
-                content="Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds"
-              />
-              <meta
-                name="description"
-                content="Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
-              />
-              <meta
-                property="og:image"
-                content="http://dcfgweqx7od72.cloudfront.net/logos/cks-logo-header.png"
-              />{" "}
-              <meta name="robots" content="index, follow" />
-            </React.Fragment>
-          )}
-        </Head>
+        {this.state.isClient &&
+        Router.asPath.includes("product") &&
+        this.props.viewProduct.currentProduct ? (
+          <Head>
+            <title>
+              {this.props.viewProduct.currentProduct.name +
+                " - Crop King Seeds"}
+            </title>
+            <meta name="robots" content="index, follow" />
+            <meta
+              id="og-title"
+              property="og:title"
+              content={this.props.viewProduct.currentProduct.name}
+            />
+            <meta
+              id="og-url"
+              property="og:url"
+              content={window.location.href}
+            />
+            <meta id="og-locale" property="og:locale" content="en_US" />
+            <meta
+              id="og-description"
+              property="og:description"
+              content={this.props.viewProduct.currentProduct.description}
+            />
+            <meta
+              name="title"
+              key="title"
+              content={this.props.viewProduct.currentProduct.name}
+            />
+            <meta
+              name="description"
+              key="description"
+              content={this.props.viewProduct.currentProduct.description}
+            />
+            <meta
+              id="og-image"
+              property="og:image"
+              content={
+                "http://dcfgweqx7od72.cloudfront.net" +
+                this.props.viewProduct.currentProduct.images[0]
+              }
+            />
+          </Head>
+        ) : (
+          <Head>
+            <title>
+              {Router.asPath == "/"
+                ? "Buy Feminized & Autoflowering Cannabis Seeds - Crop King Seeds"
+                : Router.asPath.slice(1, 2).toUpperCase() +
+                  Router.asPath.slice(2) +
+                  " - Crop King Seeds"}
+            </title>
+            <meta
+              property="og:title"
+              content="Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds"
+            />
+            <meta property="og:type" content="The type" />
+            <meta
+              property="og:url"
+              content={"http://cropkingseeds.com/" + Router.asPath}
+            />
+            <meta
+              id="og-description"
+              property="og:description"
+              content="Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
+            />
+            <meta
+              name="title"
+              key="title"
+              content={
+                Router.asPath == "/"
+                  ? "Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds"
+                  : Router.asPath + " - Crop King Seeds"
+              }
+            />
+            <meta
+              name="description"
+              key="description"
+              content="Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
+            />
+            <meta
+              property="og:image"
+              content="http://dcfgweqx7od72.cloudfront.net/logos/cks-logo-header.png"
+            />{" "}
+            <meta name="robots" content="index, follow" />
+          </Head>
+        )}
         {this.props.viewProduct.currentProduct &&
         this.props.viewProduct.imageZoom ? (
           <ImageZoom {...this.props} />
@@ -393,7 +410,7 @@ class Layout extends Component {
   };
 
   recallSession = async () => {
-    this.props.recallGPUMode();
+    // this.props.recallGPUMode();
     let ageVerify = await this.props.recallAgeVerification();
     let cart = (await this.props.recallCart()) || {};
 

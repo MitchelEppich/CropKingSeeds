@@ -852,7 +852,6 @@ module.exports = [
   "https://www.cropkingseeds.com/wp-content/uploads/2014/11/dwaft",
   "https://www.cropkingseeds.com/knowing-the-different-types-of-marijuana-seeds/",
   "https://www.cropkingseeds.com/products-page/strains/cbdiesel/",
-  "https://www.cropkingseeds.com/cannabis-seeds-for-sale-in-vancouver/",
   "http://www.cropkingseeds.com/products-page/strains/dark-angel-feminized/",
   "https://www.cropkingseeds.com/making-your-own-feminized-marijuana-seeds/",
   "http://www.cropkingseeds.com/products-page/strains/super-silver-haze-feminized/",

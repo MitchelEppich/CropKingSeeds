@@ -1,12 +1,12 @@
 import calcFps from "../../../store/utilities/calcFps";
 
 const loader = props => {
-  var times = [];
-  var fps;
-  var fpsArr = [];
-  if (props.isClient && props.misc.lowGPUMode == null) {
-    calcFps(times, fps, fpsArr, props);
-  }
+  // var times = [];
+  // var fps;
+  // var fpsArr = [];
+  // if (props.isClient && props.misc.lowGPUMode == null) {
+  //   calcFps(times, fps, fpsArr, props);
+  // }
   return (
     <div className="loader h-150 mx-auto text-center">
       <div className="lds-ring">
