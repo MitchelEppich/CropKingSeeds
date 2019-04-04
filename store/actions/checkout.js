@@ -34,7 +34,8 @@ const actionTypes = {
   LOAD_LOCAL_PROFILE: "LOAD_LOCAL_PROFILE",
   PURGE_LOCAL_PROFILE: "PURGE_LOCAL_PROFILE",
   CLEAR_ORDER_DETAILS: "CLEAR_ORDER_DETAILS",
-  TOGGLE_PROCESSING: "TOGGLE_PROCESSING"
+  TOGGLE_PROCESSING: "TOGGLE_PROCESSING",
+  GET_COOKIE: "GET_COOKIE"
 };
 
 let statesCAUS = {
@@ -761,6 +762,24 @@ const getActions = uri => {
       return {
         type: actionTypes.TOGGLE_PROCESSING,
         processing: processing
+      };
+    },
+    getCookie: (cookie, name) => {
+      let value = "; " + cookie,
+        idev = null;
+      let parts = value.split("; " + name + "=");
+      if (parts.length == 2) {
+        idev = parts
+          .pop()
+          .split(";")
+          .shift();
+      }
+      if (idev != null) {
+        idev = idev.split("-")[0];
+      }
+      return {
+        type: actionTypes.GET_COOKIE,
+        idevCookie: idev
       };
     }
   };

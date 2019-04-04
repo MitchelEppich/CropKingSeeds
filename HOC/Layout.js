@@ -62,7 +62,9 @@ class Layout extends Component {
       fps: 0
     };
   }
+
   componentDidMount() {
+    this.props.getCookie(document.cookie, "idev");
     this.props.getDailyMessage().then(res => {
       if (
         this.props.misc.dailyMessage == null ||
@@ -494,7 +496,8 @@ const mapDispatchToProps = dispatch => {
     toggleHeaderMessage: input => dispatch(actions.toggleHeaderMessage(input)),
     getDailyMessage: () => dispatch(actions.getDailyMessage()),
     recallGPUMode: () => dispatch(actions.recallGPUMode()),
-    toggleMute: () => dispatch(actions.toggleMute())
+    toggleMute: () => dispatch(actions.toggleMute()),
+    getCookie: (cookie, name) => dispatch(actions.getCookie(cookie, name))
   };
 };
 

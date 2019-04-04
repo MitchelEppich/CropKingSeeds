@@ -17,7 +17,8 @@ const initialState = {
   ccResponse: null,
   foundProfiles: [],
   profileID: null,
-  processing: false
+  processing: false,
+  idevCookie: null
 };
 
 export default (state = initialState, action) => {
@@ -90,6 +91,8 @@ export default (state = initialState, action) => {
       return updateObject(state, { availableCurrency: action.input });
     case actionTypes.TOGGLE_PROCESSING:
       return updateObject(state, { processing: action.processing });
+    case actionTypes.GET_COOKIE:
+      return updateObject(state, { idevCookie: action.idevCookie });
     default:
       return state;
   }
