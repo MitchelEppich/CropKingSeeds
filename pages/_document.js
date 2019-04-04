@@ -15,23 +15,11 @@ export default class MyDocument extends Document {
       <html lang="en">
         <Head>
           <meta charSet="utf-8" />
-          <meta
-            name="title"
-            content="Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds"
-          />
-          <meta
-            name="description"
-            content="Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
-          />
           <meta name="theme-color" content="#ef5753" />
           <meta
             name="viewport"
             content="initial-scale=1.0, width=device-width, maximum-scale=6"
             key="viewport"
-          />
-          <meta
-            name="keywords"
-            content="crop king seeds, feminized seeds, autoflowering seeds, medical marijuana, marijuana seeds, marijuana seeds canada, cannabis, cannabis seeds"
           />
           <meta
             name="copyright"
