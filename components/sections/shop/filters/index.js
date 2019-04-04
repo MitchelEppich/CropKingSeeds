@@ -2,6 +2,8 @@ import Link from "next/link";
 import { faSlidersH } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import Router from "next/router";
+
 const filters = props => {
   let activeButton = "border buttonStyle p-2 m-1 font-bold slowish";
   let notActiveButton =
@@ -31,45 +33,82 @@ const filters = props => {
     })();
     for (let filter of filters) {
       arr.push(
-        <li key={filter}>
-          <button
-            onClick={() => {
-              if (["cbd", "thc"].includes(input)) {
-                props.setSort({
-                  value:
-                    props.shop.activeFilters[input] != filter
-                      ? `${input}${filter == "low" ? "R" : ""}`
-                      : ""
-                });
+        <a href={`/shop?${filter}`} onClick={e => e.preventDefault()}>
+          <li key={filter}>
+            <button
+              onClick={e => {
+                if (["cbd", "thc"].includes(input)) {
+                  props.setSort({
+                    value:
+                      props.shop.activeFilters[input] != filter
+                        ? `${input}${filter == "low" ? "R" : ""}`
+                        : ""
+                  });
+                }
+
+                props
+                  .toggleFilter({
+                    filter: props.shop.activeFilters,
+                    [input]: filter,
+                    multiple: multiple
+                  })
+                  .then(res => {
+                    let ext = (() => {
+                      let addFilter = (input, filter) => {
+                        if (["cbd", "thc"].includes(input)) {
+                          return input + filter;
+                        } else {
+                          return filter;
+                        }
+                      };
+
+                      let str = "";
+
+                      for (let $filter of Object.keys(res)) {
+                        let input = res[$filter];
+                        if (typeof input == "object") input = input.join("&");
+                        str +=
+                          (str.length != 0 ? "&" : "") +
+                          addFilter($filter, input);
+                      }
+
+                      return str;
+                    })();
+                    Router.push(
+                      "/shop",
+                      "/shop" +
+                        (ext != null && ext.length != 0 ? "?" + ext : ""),
+                      {
+                        shallow: true
+                      }
+                    );
+                  });
+              }}
+              style={buttonStyle}
+              className={
+                props.shop.activeFilters[input] == filter ||
+                (props.shop.activeFilters[input] != null &&
+                  props.shop.activeFilters[input].includes(filter))
+                  ? `${activeButton} bg-${color[filter]} text-white border-${
+                      color[filter]
+                    }`
+                  : `${notActiveButton} hover:bg-${
+                      color[filter]
+                    } hover:text-white`
               }
-              props.toggleFilter({
-                filter: props.shop.activeFilters,
-                [input]: filter,
-                multiple: multiple
-              });
-            }}
-            style={buttonStyle}
-            className={
-              props.shop.activeFilters[input] == filter ||
-              (props.shop.activeFilters[input] != null &&
-                props.shop.activeFilters[input].includes(filter))
-                ? `${activeButton} bg-${color[filter]} text-white border-${
-                    color[filter]
-                  }`
-                : `${notActiveButton} hover:bg-${
-                    color[filter]
-                  } hover:text-white`
-            }
-          >
-            {filter == "cbd"
-              ? "CBD"
-              : filter.charAt(0).toUpperCase() + filter.slice(1)}
-          </button>
-        </li>
+            >
+              {filter == "cbd"
+                ? "CBD"
+                : filter.charAt(0).toUpperCase() + filter.slice(1)}
+            </button>
+          </li>
+        </a>
       );
     }
     return arr;
   };
+
+  let _availableFilters = props.shop.availableFilters;
 
   return (
     <div
@@ -95,7 +134,7 @@ const filters = props => {
         className="leading-loose flex flex-wrap pl-4 pt-2"
       >
         <li className="text-red-dark font-bold w-full text-xl">Type</li>
-        {showFilter(["sativa", "indica", "hybrid"], "type")}
+        {showFilter(_availableFilters.type, "type")}
       </ul>
       <hr className="hr__filters" />
       <ul
@@ -107,11 +146,7 @@ const filters = props => {
         className="leading-loose flex flex-wrap pl-4"
       >
         <li className="text-red-dark font-bold w-full text-xl">Genetics</li>
-        {showFilter(
-          ["autoflower", "feminized", "regular", "cbd", "dwarf", "mix"],
-          "genetic",
-          true
-        )}
+        {showFilter(_availableFilters.genetic, "genetic", true)}
       </ul>
       <hr className="hr__filters" />
       <ul
@@ -125,7 +160,7 @@ const filters = props => {
         <li className="text-red-dark font-bold w-full text-xl">
           THC Percentage
         </li>
-        {showFilter(["low", "high"], "thc")}
+        {showFilter(_availableFilters.thc, "thc")}
       </ul>
       <hr className="hr__filters" />
       <ul
@@ -139,7 +174,7 @@ const filters = props => {
         <li className="text-red-dark font-bold w-full text-xl">
           CBD Percentage
         </li>
-        {showFilter(["low", "high"], "cbd")}
+        {showFilter(_availableFilters.cbd, "cbd")}
       </ul>
 
       <hr className="hr__filters" />

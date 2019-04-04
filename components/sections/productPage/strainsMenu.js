@@ -50,14 +50,16 @@ const strainsMenu = props => {
       let color = props.detail.geneColor[genetic.toLowerCase()];
       let text = category[genetic];
       return (
-        <p
-          key={arr}
-          className={`bg-${color} ${
-            Object.keys(category).indexOf(genetic) == 0 ? "mt-8 pt-5" : ""
-          } p-3 font-bold text-center text-white text-shadow uppercase w-full`}
-        >
-          {text}
-        </p>
+        <a href={`/shop?${genetic}`}>
+          <p
+            key={arr}
+            className={`bg-${color} ${
+              Object.keys(category).indexOf(genetic) == 0 ? "mt-8 pt-5" : ""
+            } p-3 font-bold text-center text-white text-shadow uppercase w-full`}
+          >
+            {text}
+          </p>
+        </a>
       );
     };
 
@@ -71,26 +73,35 @@ const strainsMenu = props => {
             .split(" ")
             .join("-")}`}
         >
-          <li
-            className={`text-black leading-loose cursor-pointer hover:bg-grey-lightest mt-1 w-full list-reset text-left pl-4 font-bold`}
-            onClick={e => {
-              let strains = props.misc.strains;
-              props.getStrain({ sotiId: strain.sotiId, strains }).then(res => {
-                props.setCurrentProduct({ product: res }).then(() => {
-                  let _index = 0;
-                  while (strain.price[_index] == -1) {
-                    _index++;
-                  }
-                  props.quickAddToCartQty(_index);
-                });
-              });
-              if (props.misc.mediaSize == "sm") {
-                props.toggleStrainsMenu(false);
-              }
-            }}
+          <a
+            href={`/product/${strain.name
+              .toLowerCase()
+              .split(" ")
+              .join("-")}`}
           >
-            {strain.name}
-          </li>
+            <li
+              className={`text-black leading-loose cursor-pointer hover:bg-grey-lightest mt-1 w-full list-reset text-left pl-4 font-bold`}
+              onClick={e => {
+                let strains = props.misc.strains;
+                props
+                  .getStrain({ sotiId: strain.sotiId, strains })
+                  .then(res => {
+                    props.setCurrentProduct({ product: res }).then(() => {
+                      let _index = 0;
+                      while (strain.price[_index] == -1) {
+                        _index++;
+                      }
+                      props.quickAddToCartQty(_index);
+                    });
+                  });
+                if (props.misc.mediaSize == "sm") {
+                  props.toggleStrainsMenu(false);
+                }
+              }}
+            >
+              {strain.name}
+            </li>
+          </a>
         </Link>
       );
     };

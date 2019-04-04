@@ -153,6 +153,39 @@ class Layout extends Component {
                 });
               });
           }
+        } else if (url.includes("shop?")) {
+          qr = url.slice("shop?".length);
+          if (qr) {
+            qr = qr.split("&");
+            let _availableFilters = this.props.shop.availableFilters;
+            for (let item of qr) {
+              item = item.toLowerCase();
+              let partial;
+              if (
+                (item != "cbd" && item.includes("cbd")) ||
+                (item != "thc" && item.includes("thc"))
+              ) {
+                partial = item.slice(3);
+                item = item.replace(partial, "");
+                this.props.toggleFilter({
+                  filter: this.props.shop.activeFilters,
+                  [item]: partial
+                });
+                continue;
+              } else {
+                for (let filter of Object.keys(_availableFilters)) {
+                  if (_availableFilters[filter].includes(item)) {
+                    this.props.toggleFilter({
+                      filter: this.props.shop.activeFilters,
+                      [filter]: item,
+                      multiple: filter == "genetic"
+                    });
+                    break;
+                  }
+                }
+              }
+            }
+          }
         }
       }
     });

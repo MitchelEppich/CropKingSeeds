@@ -2,6 +2,8 @@ import { faTimes, faSortAmountDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SortOptions from "./sortOptions";
 
+import Router from "next/router";
+
 const gridHeader = props => {
   let sortOptions = [
     // ["", "Select"],
@@ -32,11 +34,43 @@ const gridHeader = props => {
           <div
             key={index}
             onClick={() => {
-              props.toggleFilter({
-                filter: props.shop.activeFilters,
-                [filter]: value,
-                multiple: filter == "genetic" || filter == "text" ? true : false
-              });
+              props
+                .toggleFilter({
+                  filter: props.shop.activeFilters,
+                  [filter]: value,
+                  multiple:
+                    filter == "genetic" || filter == "text" ? true : false
+                })
+                .then(res => {
+                  let ext = (() => {
+                    let addFilter = (input, filter) => {
+                      if (["cbd", "thc"].includes(input)) {
+                        return input + filter;
+                      } else {
+                        return filter;
+                      }
+                    };
+
+                    let str = "";
+
+                    for (let $filter of Object.keys(res)) {
+                      let input = res[$filter];
+                      if (typeof input == "object") input = input.join("&");
+                      str +=
+                        (str.length != 0 ? "&" : "") +
+                        addFilter($filter, input);
+                    }
+
+                    return str;
+                  })();
+                  Router.push(
+                    "/shop",
+                    "/shop" + (ext != null && ext.length != 0 ? "?" + ext : ""),
+                    {
+                      shallow: true
+                    }
+                  );
+                });
             }}
             className="capitalize text-white border bg-red-light flex justify-center cursor-pointer hover:bg-red-dark hover:text-white items-center rounded-tl-lg rounded-br-lg border-grey-lightest p-2 m-1 font-bold"
           >

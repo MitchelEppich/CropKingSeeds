@@ -217,11 +217,14 @@ const menu = props => {
                 }
               >
                 <Link href="/">
-                  <img
-                    alt={props.misc.CFURL + "/logos/cks-logo-header.png"}
-                    src={props.misc.CFURL + "/logos/cks-logo-header.png"}
-                    className="z-999 cks-logo-header p-0 w-125 sm:w-85px scale-item cursor-pointer sm:-mt-2 sm:-ml-1 md:-mt-3"
-                  />
+                  <a href="/">
+                    <img
+                      alt={props.misc.CFURL + "/logos/cks-logo-header.png"}
+                      src={props.misc.CFURL + "/logos/cks-logo-header.png"}
+                      onClick={e => e.stopPropagation()}
+                      className="z-999 cks-logo-header p-0 w-125 sm:w-85px scale-item cursor-pointer sm:-mt-2 sm:-ml-1 md:-mt-3"
+                    />
+                  </a>
                 </Link>
               </div>
             </div>
@@ -233,44 +236,52 @@ const menu = props => {
                     <SearchBar {...props} />{" "}
                   </li>
                   <Link href="/">
-                    <li
-                      onClick={() => {
-                        props.toggleCartMenu(false);
-                      }}
-                      className="font-bold text-xl pt-3 p-2  ml-4 mr-2 cursor-pointer slowish hover:text-yellow-dark"
-                    >
-                      Home
-                    </li>
+                    <a href="/" className="text-white">
+                      <li
+                        onClick={() => {
+                          props.toggleCartMenu(false);
+                        }}
+                        className="font-bold text-xl pt-3 p-2  ml-4 mr-2 cursor-pointer slowish hover:text-yellow-dark"
+                      >
+                        Home
+                      </li>
+                    </a>
                   </Link>
                   <Link href="/shop">
-                    <li
-                      onClick={() => {
-                        props.toggleCartMenu(false);
-                      }}
-                      className="font-bold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark"
-                    >
-                      Shop
-                    </li>
+                    <a href="/shop" className="text-white">
+                      <li
+                        onClick={() => {
+                          props.toggleCartMenu(false);
+                        }}
+                        className="font-bold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark"
+                      >
+                        Shop
+                      </li>
+                    </a>
                   </Link>
                   <Link href="/germination">
-                    <li
-                      onClick={() => {
-                        props.toggleCartMenu(false);
-                      }}
-                      className="font-bold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark"
-                    >
-                      Germinate
-                    </li>
+                    <a href="/germination" className="text-white">
+                      <li
+                        onClick={() => {
+                          props.toggleCartMenu(false);
+                        }}
+                        className="font-bold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark"
+                      >
+                        Germinate
+                      </li>
+                    </a>
                   </Link>
                   <Link href="/contact">
-                    <li
-                      onClick={() => {
-                        props.toggleCartMenu(false);
-                      }}
-                      className="font-bold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark"
-                    >
-                      Contact
-                    </li>
+                    <a href="/contact" className="text-white">
+                      <li
+                        onClick={() => {
+                          props.toggleCartMenu(false);
+                        }}
+                        className="font-bold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark"
+                      >
+                        Contact
+                      </li>
+                    </a>
                   </Link>
                   <li
                     className={`font-bold text-2xl px-2 scale-item ${

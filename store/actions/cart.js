@@ -130,6 +130,8 @@ const getActions = uri => {
         };
       })();
 
+      if (_per == -1) return;
+
       let _coupon = input.coupon;
       let sale = (() => {
         if (_coupon == null) return undefined;
