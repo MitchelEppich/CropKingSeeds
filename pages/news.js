@@ -6,12 +6,14 @@ import React, { Component } from "react";
 import withData from "../lib/withData";
 import { connect } from "react-redux";
 import Head from "next/head";
+import Router from "next/router";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import About from "../components/sections/about";
 import Media from "../components/sections/media";
 import News from "../components/sections/news";
 import { initGA, logPageView } from "../scripts/ga";
+import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 
 class Index extends Component {
   componentDidMount() {
@@ -23,12 +25,16 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
-        {/* <Head>
-          <title>
-            Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
-          </title>
-          <meta name="robots" content="index, follow" />
-        </Head> */}
+        {typeof document !== "undefined" ? (
+          <Head>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify(generateBreadcrumbMarkup(Router.asPath))
+              }}
+            />
+          </Head>
+        ) : null}
         <div className="pt-0 min-h-500">
           <Media {...this.props} />
         </div>

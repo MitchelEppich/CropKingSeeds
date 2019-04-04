@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Head from "next/head";
+import Router from "next/router";
 // custom
 import withData from "../lib/withData";
 import actions from "../store/actions";
@@ -9,8 +10,9 @@ import Layout from "../HOC/Layout";
 import Filters from "../components/sections/shop/filters";
 import ProductGrid from "../components/sections/shop/productGrid";
 import Sidebar from "../components/sections/shop/sidebar";
-
 import generateSchemaMarkup from "../scripts/generateSchemaMarkup";
+import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
+
 import { initGA, logPageView } from "../scripts/ga";
 class Index extends Component {
   componentDidMount() {
@@ -46,6 +48,14 @@ class Index extends Component {
                 dangerouslySetInnerHTML={{
                   __html: JSON.stringify(
                     generateSchemaMarkup(this.props.misc.strains)
+                  )
+                }}
+              />{" "}
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify(
+                    generateBreadcrumbMarkup(Router.asPath)
                   )
                 }}
               />

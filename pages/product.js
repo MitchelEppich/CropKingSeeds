@@ -24,6 +24,7 @@ import Ratings from "../components/sections/productPage/ratings";
 import Router from "next/router";
 import { initGA, logPageView } from "../scripts/ga";
 import generateSchemaMarkup from "../scripts/generateSchemaMarkup";
+import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 
 let lowerImageCar;
 
@@ -59,6 +60,14 @@ class Index extends Component {
                     generateSchemaMarkup([
                       this.props.viewProduct.currentProduct
                     ])
+                  )
+                }}
+              />
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify(
+                    generateBreadcrumbMarkup(Router.asPath)
                   )
                 }}
               />

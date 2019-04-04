@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import withData from "../lib/withData";
 import Head from "next/head";
+import Router from "next/router";
 import { connect } from "react-redux";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import Germination from "../components/sections/germination";
 import { initGA, logPageView } from "../scripts/ga";
+import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 
 class Index extends Component {
   componentDidMount() {
@@ -15,13 +17,16 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
-        {/* <Head>
-          <title>
-            Germinate Feminized &amp; Autoflowering Cannabis Seeds - Crop King
-            Seeds
-          </title>
-          <meta name="robots" content="index, follow" />
-        </Head> */}
+        {typeof document !== "undefined" ? (
+          <Head>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify(generateBreadcrumbMarkup(Router.asPath))
+              }}
+            />
+          </Head>
+        ) : null}
         <div className="pt-0">
           <Germination {...this.props} />
         </div>
