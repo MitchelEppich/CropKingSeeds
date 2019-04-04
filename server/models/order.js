@@ -39,7 +39,8 @@ const OrderSchema = Schema({
   orderDate: String,
   paymentMethod: String,
   paymentStatus: String,
-  ip: String
+  ip: String,
+  archive: String
 });
 
 module.exports = OrderSchema;

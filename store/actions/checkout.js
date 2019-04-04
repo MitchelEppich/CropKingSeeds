@@ -633,7 +633,10 @@ const getActions = uri => {
 
         const link = new HttpLink({ uri, fetch: fetch });
         const operation = {
-          query: mutation.acquireOrderId
+          query: mutation.acquireOrderId,
+          variables: {
+            content: JSON.stringify(_orderDetails)
+          }
         };
 
         return await makePromise(execute(link, operation))
@@ -838,8 +841,8 @@ const query = {
 
 const mutation = {
   acquireOrderId: gql`
-    mutation {
-      acquireOrderId
+    mutation($content: String) {
+      acquireOrderId(input: { content: $content })
     }
   `,
   processOrder: gql`

@@ -227,10 +227,13 @@ const resolvers = {
         }
       );
     },
-    acquireOrderId: async (_, {}) => {
+    acquireOrderId: async (_, { input }) => {
+      let _content = input.content;
+
       let orderId = (await Order.find({})).slice(-1)[0].orderId + 1;
       let order = new Order({
-        orderId
+        orderId,
+        archive: _content
       });
       order.save();
       return orderId;

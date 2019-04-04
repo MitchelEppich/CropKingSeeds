@@ -317,6 +317,10 @@ input SotiInput {
   status: String
 }
 
+input ArchiveInput { 
+  content: String
+}
+
 type Mutation {
   createStrain(input: StrainInput): Strain
   updateStrain(input: StrainInput): Strain
@@ -330,7 +334,7 @@ type Mutation {
 
   createNewsEntry(input: NewsInput): News
 
-  acquireOrderId: Int
+  acquireOrderId(input: ArchiveInput): String
 
   sendEmail(input: EmailInput): String
   subscribeToNewsletter(email: String): String
