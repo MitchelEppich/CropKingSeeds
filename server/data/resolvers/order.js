@@ -312,10 +312,13 @@ const resolvers = {
         }
       });
 
-      let affiliateUrl = `https://affiliates.cropkingseeds.com/sale.php?profile=${profile}&idev_saleamt=${orderAmount ||
-        ""}&idev_ordernum=${orderId || ""}&coupon_code=${coupon || ""}`;
+      if (profile != null) {
+        let affiliateUrl = `https://affiliates.cropkingseeds.com/sale.php?profile=${profile}&idev_saleamt=${orderAmount ||
+          ""}&idev_ordernum=${orderId || ""}&coupon_code=${coupon || ""}`;
 
-      request.get(affiliateUrl);
+        request.get(affiliateUrl);
+      }
+      console.log(profile);
 
       return "Order Processed.";
     }

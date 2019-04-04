@@ -343,7 +343,7 @@ class Layout extends Component {
           </React.Fragment>
           {/* )} */}
         </div>
-        {this.props.viewProduct.currentProduct ? (
+        {/* {this.props.viewProduct.currentProduct ? (
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -352,7 +352,7 @@ class Layout extends Component {
               )
             }}
           />
-        ) : null}
+        ) : null} */}
       </React.Fragment>
     ) : (
       <React.Fragment>
