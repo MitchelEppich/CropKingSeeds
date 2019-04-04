@@ -777,6 +777,7 @@ const query = {
         ruderalis
         rating
         releaseDate
+        ratingQuantity
       }
     }
   `,

@@ -43,12 +43,6 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
-        {/* <Head>
-          <title>
-            Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
-          </title>
-          <meta name="robots" content="index, follow" />
-        </Head> */}
         {this.props.misc.strains != null && this.props.misc.banners != null ? (
           <React.Fragment>
             <BannerCarousel {...this.props} />

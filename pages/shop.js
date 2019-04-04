@@ -10,6 +10,7 @@ import Filters from "../components/sections/shop/filters";
 import ProductGrid from "../components/sections/shop/productGrid";
 import Sidebar from "../components/sections/shop/sidebar";
 
+import generateSchemaMarkup from "../scripts/generateSchemaMarkup";
 import { initGA, logPageView } from "../scripts/ga";
 class Index extends Component {
   componentDidMount() {
@@ -35,16 +36,20 @@ class Index extends Component {
     let mobile = ["sm", "md"].includes(this.props.misc.mediaSize);
     return (
       <Layout supportedBrowser={this.props.supportedBrowser}>
-        {/* <Head>
-          <title>
-            Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
-          </title>
-          <meta name="robots" content="index, follow" />
-        </Head> */}
         {this.props.misc.strains != null &&
         this.props.misc.featuredStrains != null &&
         this.props.misc.strains.length > 0 ? (
           <React.Fragment>
+            <Head>
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify(
+                    generateSchemaMarkup(this.props.misc.strains)
+                  )
+                }}
+              />
+            </Head>
             <div
               className={
                 this.props.misc.hoverId != null &&

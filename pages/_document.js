@@ -62,13 +62,38 @@ export default class MyDocument extends Document {
               __html: JSON.stringify({
                 "@context": "http://schema.org",
                 "@type": "Organization",
-                name: "Crop King Seeds",
-                url: "https://www.cropkingseeds.com",
+                legalName: "Crop King Seeds",
+                url: "https://www.cropkingseeds.com/",
                 sameAs: [
                   "https://www.instagram.com/cropkingseeds/",
                   "https://twitter.com/cropkingseeds",
                   "https://www.facebook.com/cropkingSeeds/"
-                ]
+                ],
+                contactPoint: [
+                  {
+                    "@type": "ContactPoint",
+                    telephone: "+1-844-276-7546",
+                    contactType: "customer service"
+                  }
+                ],
+                logo:
+                  "https://dcfgweqx7od72.cloudfront.net/logos/cks-logo-header.png"
+              })
+            }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "http://schema.org",
+                "@type": "WebSite",
+                name: "Crop King Seeds",
+                url: "https://www.cropkingseeds.com/"
+                // potentialAction: {
+                //   "@type": "SearchAction",
+                //   target: "https://www.cropkingseeds.com/?s={search_term}",
+                //   "query-input": "required name=search_term"
+                // }
               })
             }}
           />
