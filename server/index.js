@@ -151,10 +151,9 @@ app
     for (let i = 0; i < redirects.length; i++) {
       let url = redirects[i];
       if (url.from.includes("cannabis-seeds-for-sale-in-vancouver"))
-        console.log("Server", url);
-      server.get(url.from, (req, res) => {
-        res.redirect(301, url.to);
-      });
+        server.get(url.from, (req, res) => {
+          res.redirect(301, url.to);
+        });
     }
 
     server.get("*", (req, res) => {
