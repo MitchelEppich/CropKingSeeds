@@ -138,7 +138,10 @@ const PaymentReview = props => {
           {/* NAME */}
           <p className="p-1 pt-2 pl-3 bg-white capitalize">
             {_orderDetails.shipping != null ? (
-              <span>{_orderDetails.shipping.fullName.value}</span>
+              <span>
+                {_orderDetails.shipping.firstName.value}{" "}
+                {_orderDetails.shipping.lastName.value}
+              </span>
             ) : (
               "Not Defined"
             )}
@@ -214,7 +217,10 @@ const PaymentReview = props => {
           {/* NAME */}
           <p className="p-1 pt-2 pl-3 bg-white capitalize">
             {_orderDetails.billing != null ? (
-              <span>{_orderDetails.billing.fullName.value}</span>
+              <span>
+                {_orderDetails.billing.firstName.value}{" "}
+                {_orderDetails.billing.lastName.value}
+              </span>
             ) : (
               "Not Defined"
             )}

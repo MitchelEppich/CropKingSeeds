@@ -341,7 +341,7 @@ class Index extends Component {
   payBitcoin = (orderDetails, orderId) => {
     let _billing = { ...orderDetails.billing };
     let _payment = { ...orderDetails.payment };
-    let name = _billing.fullName.value.split(" ");
+    let name = [_billing.firstName.value, _billing.lastName.value];
 
     let fOrderId = [orderId.slice(0, 4), "-", orderId.slice(4), "-CKS"].join(
       ""

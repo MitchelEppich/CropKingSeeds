@@ -144,24 +144,24 @@ const BillingAddress = props => {
         }`}
       >
         <div className="w-full p-2 inline-flex sm:flex-col border-t-2 border-grey-lightest mt-2 pt-4">
-          <div className="w-1/2 sm:w-full sm:pl-0 sm:mt-4">
+          <div className="w-1/3 sm:w-full sm:pl-0 sm:mt-4">
             <input
-              aria-label="name"
+              aria-label="firstName"
               type="text"
-              name="name"
-              id="fullName"
-              autoComplete="name"
+              name="firstName"
+              id="firstName"
+              autoComplete="given-name"
               value={
                 _orderDetails[pageGroup] != null &&
-                _orderDetails[pageGroup].fullName != null
-                  ? _orderDetails[pageGroup].fullName.value || ""
+                _orderDetails[pageGroup].firstName != null
+                  ? _orderDetails[pageGroup].firstName.value || ""
                   : ""
               }
               onChange={e => {
                 let _target = e.target;
                 let _key = _target.id;
                 let _value = _target.value;
-                let _tag = "FirstName LastName";
+                let _tag = "FirstName";
 
                 props.modifyOrderDetails({
                   orderDetails: _orderDetails,
@@ -170,20 +170,47 @@ const BillingAddress = props => {
                   value: _value,
                   tag: _tag
                 });
-                e.target.setCustomValidity("");
               }}
-              onInvalid={e => {
-                e.target.setCustomValidity(
-                  "First and last name only, separated by a space."
-                );
-              }}
-              placeholder="Full Name"
+              placeholder="First Name"
               className="p-2 w-full"
               required
-              pattern="^\S+\s\S+$"
+              // pattern="^\S+\s\S+$"
             />
           </div>
-          <div className="w-1/2 pl-2 sm:w-full sm:pl-0 sm:mt-4 inline-flex">
+          <div className="w-1/3 sm:w-full pl-2 sm:mt-4">
+            <input
+              aria-label="name"
+              type="text"
+              name="name"
+              id="lastName"
+              autoComplete="family-name"
+              value={
+                _orderDetails[pageGroup] != null &&
+                _orderDetails[pageGroup].lastName != null
+                  ? _orderDetails[pageGroup].lastName.value || ""
+                  : ""
+              }
+              onChange={e => {
+                let _target = e.target;
+                let _key = _target.id;
+                let _value = _target.value;
+                let _tag = "LastName";
+
+                props.modifyOrderDetails({
+                  orderDetails: _orderDetails,
+                  group: pageGroup,
+                  key: _key,
+                  value: _value,
+                  tag: _tag
+                });
+              }}
+              placeholder="Last Name"
+              className="p-2 w-full"
+              required
+              // pattern="^\S+\s\S+$"
+            />
+          </div>
+          <div className="w-1/3 pl-2 sm:w-full sm:pl-0 sm:mt-4 inline-flex">
             <div
               className={`w-full ${
                 _orderDetails[pageGroup].noEmail

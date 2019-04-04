@@ -115,7 +115,11 @@ const Confirmation = props => {
           </div>
           <div className="w-1/3 p-2 text-left sm:w-full md:w-full lg:w-full lg:text-center sm:text-center md:text-center sm:border-b-2 lg:border-b-2 md:border-b-2 border-grey-lightest sm:py-6 md:py-6 lg:py-6">
             <p className="font-bold">Shipping Destination:</p>
-            <p>{_orderDetails.shipping.fullName.value}</p>
+            <p>
+              {_orderDetails.shipping.firstName.value +
+                " " +
+                _orderDetails.shipping.lastName.value}
+            </p>
             <p>
               {_orderDetails.shipping.address.value},{" "}
               {_orderDetails.shipping.apartment
@@ -163,7 +167,7 @@ const Confirmation = props => {
                       side the requested amount in applicable currency:
                     </p>
                     <p className="font-bold text-center p-2 mt-4 text-xl">
-                      In-Organics
+                      In-Organic Marketing
                       <br />
                       112 East 6th Ave
                       <br />

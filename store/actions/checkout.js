@@ -92,6 +92,8 @@ let fieldsForProfileSearch = [
   "address",
   "apartment",
   "email",
+  "firstName",
+  "lastName",
   "fullName",
   "phone"
 ];
@@ -292,6 +294,8 @@ const getActions = uri => {
         country: { ..._shipping.country },
         email: { ..._shipping.email },
         fullName: { ..._shipping.fullName },
+        firstName: { ..._shipping.firstName },
+        lastName: { ..._shipping.lastName },
         phone: { ..._shipping.phone },
         postalZip: { ..._shipping.postalZip },
         state: { ..._shipping.state }
@@ -324,6 +328,8 @@ const getActions = uri => {
             "city",
             "country",
             "email",
+            "firstName",
+            "lastName",
             "fullName",
             "phone",
             "postalZip",
@@ -724,7 +730,10 @@ const getActions = uri => {
           query: mutation.sendEmail,
           variables: {
             type: "confirmation",
-            name: _orderDetails.shipping.fullName.value,
+            name:
+              _orderDetails.shipping.firstName.value +
+              " " +
+              _orderDetails.shipping.lastName.value,
             email: _orderDetails.shipping.email.value,
             subject:
               "Crop King Seeds - Order Confirmation Order #" +

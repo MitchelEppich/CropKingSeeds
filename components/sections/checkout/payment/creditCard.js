@@ -128,16 +128,9 @@ const CreditCard = props => {
                   value: _value,
                   tag: _tag
                 });
-                e.target.setCustomValidity("");
               }}
               placeholder="Card Holder Name ..."
               className="p-2 w-full mt-2"
-              onInvalid={e => {
-                e.target.setCustomValidity(
-                  "First and last name only, separated by a space."
-                );
-              }}
-              pattern="^\S+\s\S+$"
             />
             {/* ) : null} */}
           </div>
