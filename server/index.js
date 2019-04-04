@@ -145,6 +145,9 @@ app
     server.get("/product/:_id", (req, res) => {
       app.render(req, res, "/product", {});
     });
+    server.get("/article/:_id", (req, res) => {
+      app.render(req, res, "/article", {});
+    });
     // 301 redirects
     let redirects = redirectUrls(sitemapStrains);
 

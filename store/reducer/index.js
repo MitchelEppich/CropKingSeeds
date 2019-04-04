@@ -19,7 +19,7 @@ import DetailReducer from "./detail";
 import AboutReducer from "./about";
 import GerminationReducer from "./germination";
 import FaqReducer from "./faq";
-import ArticleReducer from "./article";
+import ArticlesReducer from "./articles";
 import CmsReducer from "./cms";
 import WikiReducer from "./wiki";
 import CompareReducer from "./compare";
@@ -274,7 +274,7 @@ export default combineReducers({
   germination: GerminationReducer,
   about: AboutReducer,
   faq: FaqReducer,
-  article: ArticleReducer,
+  articles: ArticlesReducer,
   cms: CmsReducer,
   wiki: WikiReducer,
   compare: CompareReducer,

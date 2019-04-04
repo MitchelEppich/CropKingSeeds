@@ -6,7 +6,7 @@ const Charts = props => {
     <div>
       <div className="text-center w-full pb-8">
         <h1 className="mt-5 text-grey font-extrabold text-center text-3/5xl mx-auto w-full text-center">
-          Strains Charts
+          Strain Charts
         </h1>
       </div>
 

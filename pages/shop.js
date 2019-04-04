@@ -68,7 +68,7 @@ class Index extends Component {
                   : "relative"
               }
             >
-              <h3
+              <h1
                 className={
                   this.props.misc.hoverId != null &&
                   this.props.misc.mediaSize == "sm"
@@ -77,7 +77,7 @@ class Index extends Component {
                 }
               >
                 Shop Cannabis Seeds
-              </h3>
+              </h1>
               <div
                 className={
                   this.props.misc.hoverId != null &&

@@ -54,7 +54,8 @@ class Index extends Component {
           </Head>
         ) : null}
 
-        <div className="flex py-24 w-3/4 mx-auto min-h-screen">
+        <div className="flex flex-wrap py-24 w-3/4 mx-auto min-h-screen">
+          <h1 className="w-full text-center">Crop King Seeds Wiki</h1>
           <Menu {...this.props} />
           <Content {...this.props} />
         </div>

@@ -18,9 +18,9 @@ const Privacy = props => {
               />
             </div>
             <div>
-              <h3 className="pl-4 font-black text-3xl uppercase">
+              <h1 className="pl-4 font-black text-3xl uppercase">
                 Privacy Policy
-              </h3>
+              </h1>
             </div>
           </div>
           <div

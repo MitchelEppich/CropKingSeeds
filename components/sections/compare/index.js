@@ -466,11 +466,11 @@ const Compare = props => {
               <CompareFilters {...props} />
             </div>
           </div> */}
-          <p className="text-center mt-6 bg-grey-lightest p-3 my-4 mt-0 font-bold rounded text-base uppercase text-grey">
+          <h1 className="text-center mt-6 bg-grey-lightest p-3 my-4 mt-0 font-bold rounded text-base uppercase text-grey">
             Please, select at least{" "}
             <span className="font-bold underline">2</span> and max{" "}
             <span className="font-bold underline">4</span> strains to compare.
-          </p>
+          </h1>
           {props.misc.compareStrains != null &&
           props.misc.compareStrains.length != 0 ? (
             <div className="w-full flex justify-end my-4">
