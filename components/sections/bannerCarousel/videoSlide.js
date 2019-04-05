@@ -11,37 +11,38 @@ const videoSlide = props => {
   let strains = props.misc.strains;
   let packages = strains.slice(0, 6).map((strain, index) => {
     return (
-      <img
-        key={index}
-        onMouseEnter={() => {
-          if (props.sotiId == null) return;
-          props.getStrain({ sotiId: strain.sotiId, strains }).then(res => {
-            props.setCurrentProduct({ product: res }).then(() => {
-              let product = props.viewProduct.currentProduct;
-              let _index = 0;
-              if (product) {
-                while (product.price[_index] == -1) {
-                  _index++;
+      <Link
+        href="/product"
+        as={"/product/" + strain.name.toLowerCase().replace(/ /g, "-")}
+      >
+        <img
+          key={index}
+          onMouseEnter={() => {
+            if (props.sotiId == null) return;
+            props.getStrain({ sotiId: strain.sotiId, strains }).then(res => {
+              props.setCurrentProduct({ product: res }).then(() => {
+                let product = props.viewProduct.currentProduct;
+                let _index = 0;
+                if (product) {
+                  while (product.price[_index] == -1) {
+                    _index++;
+                  }
+                  props.quickAddToCartQty(_index);
                 }
-                props.quickAddToCartQty(_index);
-              }
+              });
             });
-          });
-        }}
-        onClick={e => {
-          e.stopPropagation();
-          Router.push(
-            "/product",
-            "/product/" + strain.name.toLowerCase().replace(/ /g, "-")
-          );
-        }}
-        className="xxl:h-40 xxl:mx-6 h-250 lg:h-200 my-2 scale-item cursor-pointer"
-        src={props.misc.CFURL + "/packages/" + strain.sotiId + ".png"}
-        style={{
-          zIndex: "30",
-          boxShadow: "1px 5px 13px rgba(35, 35, 35, 0.52)"
-        }}
-      />
+          }}
+          onClick={e => {
+            e.stopPropagation();
+          }}
+          className="xxl:h-40 xxl:mx-6 h-250 lg:h-200 my-2 scale-item cursor-pointer"
+          src={props.misc.CFURL + "/packages/" + strain.sotiId + ".png"}
+          style={{
+            zIndex: "30",
+            boxShadow: "1px 5px 13px rgba(35, 35, 35, 0.52)"
+          }}
+        />
+      </Link>
     );
   });
   if (props.type == "video") {

@@ -41,56 +41,59 @@ const index = props => {
         href="/product"
         as={"/product/" + product.name.toLowerCase().replace(/ /g, "-")}
       >
-        <div
-          onMouseEnter={() => {
-            if (isSmallMediumOrLargeDevice) {
-              return null;
-            }
-            props.setHoverId(product._id, true);
-            // let _index = 0;
-            // while (product.price[_index] == -1) {
-            //   _index++;
-            // }
-            // props.quickAddToCartQty(_index);
-            // props.modifyPotentialQuantity({
-            //   potentialQuantity: props.cart.potentialQuantity,
-            //   action: "SET",
-            //   quantity: 1
-            // });
-          }}
-          onMouseLeave={() => {
-            if (isSmallMediumOrLargeDevice) {
-              return null;
-            }
-            props.setHoverId(product._id, false);
-          }}
-          onClick={e => {
-            let strains = props.misc.strains;
-            props.getStrain({ sotiId: product.sotiId, strains }).then(res => {
-              props.setCurrentProduct({ product: res }).then(() => {
-                let product = props.viewProduct.currentProduct;
-                let _index = 0;
-                while (product.price[_index] == -1) {
-                  _index++;
-                }
-                props.quickAddToCartQty(_index);
+        <a>
+          <span
+            onMouseEnter={() => {
+              if (isSmallMediumOrLargeDevice) {
+                return null;
+              }
+              props.setHoverId(product._id, true);
+              // let _index = 0;
+              // while (product.price[_index] == -1) {
+              //   _index++;
+              // }
+              // props.quickAddToCartQty(_index);
+              // props.modifyPotentialQuantity({
+              //   potentialQuantity: props.cart.potentialQuantity,
+              //   action: "SET",
+              //   quantity: 1
+              // });
+            }}
+            onMouseLeave={() => {
+              if (isSmallMediumOrLargeDevice) {
+                return null;
+              }
+              props.setHoverId(product._id, false);
+            }}
+            onClick={e => {
+              let strains = props.misc.strains;
+              props.getStrain({ sotiId: product.sotiId, strains }).then(res => {
+                props.setCurrentProduct({ product: res }).then(() => {
+                  let product = props.viewProduct.currentProduct;
+                  let _index = 0;
+                  while (product.price[_index] == -1) {
+                    _index++;
+                  }
+                  props.quickAddToCartQty(_index);
+                });
               });
-            });
-          }}
-          className={
-            hoverId == product._id
-              ? "relative bg-white mx-4 xl:w-54 xl:mx-1 my-2 w-64 sm:w-48 h-350 md:w-48 col md:mx-4 col sm:mx-1 rounded overflow-hidden shadow-md slowish sm:h-300"
-              : "relative bg-white mx-4 xl:w-54 xl:mx-1 my-2 w-64 sm:w-48 h-350 md:w-48 col md:mx-4 col sm:mx-1 rounded overflow-hidden shadow-md slowish sm:h-300"
-          }
-        >
-          <FeaturedStrainThumbnail
-            isSmallMediumOrLargeDevice={isSmallMediumOrLargeDevice}
-            hoverId={hoverId}
-            index={index}
-            product={product}
-            {...props}
-          />
-        </div>
+            }}
+            className={
+              "block " +
+              (hoverId == product._id
+                ? "relative bg-white mx-4 xl:w-54 xl:mx-1 my-2 w-64 sm:w-48 h-350 md:w-48 col md:mx-4 col sm:mx-1 rounded overflow-hidden shadow-md slowish sm:h-300"
+                : "relative bg-white mx-4 xl:w-54 xl:mx-1 my-2 w-64 sm:w-48 h-350 md:w-48 col md:mx-4 col sm:mx-1 rounded overflow-hidden shadow-md slowish sm:h-300")
+            }
+          >
+            <FeaturedStrainThumbnail
+              isSmallMediumOrLargeDevice={isSmallMediumOrLargeDevice}
+              hoverId={hoverId}
+              index={index}
+              product={product}
+              {...props}
+            />
+          </span>
+        </a>
       </Link>
     );
   });

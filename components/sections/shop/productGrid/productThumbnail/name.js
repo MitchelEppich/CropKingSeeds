@@ -22,30 +22,32 @@ const name = props => {
       href="/product"
       as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}
     >
-      <div className="absolute w-full z-10">
-        <h3
-          onClick={() => {
-            props.setHoverId(null, false);
-            window.scrollTo(0, 0);
-          }}
-          className={
-            props.hover
-              ? "w-full mt-2 mb-2 text-black font-black text-center cursor-pointer strainTitle--hover " +
-                nameSize
-              : "text-center flex justify-center items-center sm:text-xs text-grey p-2 font-extrabold z-50 strainTitle " +
-                nameSizeHover +
-                titleColorBackground
-          }
-        >
-          {name}
-          {props.hover ? (
-            <FontAwesomeIcon
-              icon={faExternalLinkAlt}
-              className="cursor-pointer fa-xs text-grey-light absolute z-50 mt-1 ml-2 mr-3"
-            />
-          ) : null}
-        </h3>
-      </div>
+      <a>
+        <span className="absolute w-full z-10 block">
+          <h3
+            onClick={() => {
+              props.setHoverId(null, false);
+              window.scrollTo(0, 0);
+            }}
+            className={
+              props.hover
+                ? "w-full mt-2 mb-2 text-black font-black text-center cursor-pointer strainTitle--hover " +
+                  nameSize
+                : "text-center flex justify-center items-center sm:text-xs text-grey p-2 font-extrabold z-50 strainTitle " +
+                  nameSizeHover +
+                  titleColorBackground
+            }
+          >
+            {name}
+            {props.hover ? (
+              <FontAwesomeIcon
+                icon={faExternalLinkAlt}
+                className="cursor-pointer fa-xs text-grey-light absolute z-50 mt-1 ml-2 mr-3"
+              />
+            ) : null}
+          </h3>
+        </span>
+      </a>
     </Link>
     // </div>
   );

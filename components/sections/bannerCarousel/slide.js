@@ -24,34 +24,38 @@ const slide = props => {
   };
 
   let imageBanner = (
-    <div
-      onMouseEnter={() => {
-        if (props.sotiId == null) return;
-        let strains = props.misc.strains;
-        props.getStrain({ sotiId: props.sotiId, strains }).then(res => {
-          props.setCurrentProduct({ product: res }).then(() => {
-            let product = props.viewProduct.currentProduct;
-            let _index = 0;
-            if (product) {
-              while (product.price[_index] == -1) {
-                _index++;
-              }
-              props.quickAddToCartQty(_index);
-            }
-          });
-        });
-      }}
-      onClick={e => onClick(e)}
-      style={{
-        ...position,
-        ...props.style,
-        backgroundImage: "url(" + $url + ")",
-        backgroundPosition: "center"
-      }}
-      className={
-        "xxl:h-600 xl:h-400 lg:h-300 md:h-250 sm:h-175 bg-contain w-full z-0 absolute cursor-pointer"
-      }
-    />
+    <Link href="/product" as={props.url}>
+      <a href={props.url}>
+        <span
+          onMouseEnter={() => {
+            if (props.sotiId == null) return;
+            let strains = props.misc.strains;
+            props.getStrain({ sotiId: props.sotiId, strains }).then(res => {
+              props.setCurrentProduct({ product: res }).then(() => {
+                let product = props.viewProduct.currentProduct;
+                let _index = 0;
+                if (product) {
+                  while (product.price[_index] == -1) {
+                    _index++;
+                  }
+                  props.quickAddToCartQty(_index);
+                }
+              });
+            });
+          }}
+          onClick={e => onClick(e)}
+          style={{
+            ...position,
+            ...props.style,
+            backgroundImage: "url(" + $url + ")",
+            backgroundPosition: "center"
+          }}
+          className={
+            "xxl:h-600 xl:h-400 lg:h-300 md:h-250 sm:h-175 bg-contain w-full z-0 absolute cursor-pointer"
+          }
+        />
+      </a>
+    </Link>
   );
 
   return props.type == "image" ? (

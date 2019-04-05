@@ -37,29 +37,31 @@ const cartItem = props => {
               href="/product"
               as={"/product/" + _product.name.toLowerCase().replace(/ /g, "-")}
             >
-              <h3
-                onClick={() => {
-                  let strains = props.misc.strains;
-                  props
-                    .getStrain({ sotiId: _product.sotiId, strains })
-                    .then(res => {
-                      props.setCurrentProduct({ product: res }).then(() => {
-                        let product = props.viewProduct.currentProduct;
-                        let _index = 0;
-                        while (product.price[_index] == -1) {
-                          _index++;
-                        }
-                        props.quickAddToCartQty(_index);
+              <a>
+                <h3
+                  onClick={() => {
+                    let strains = props.misc.strains;
+                    props
+                      .getStrain({ sotiId: _product.sotiId, strains })
+                      .then(res => {
+                        props.setCurrentProduct({ product: res }).then(() => {
+                          let product = props.viewProduct.currentProduct;
+                          let _index = 0;
+                          while (product.price[_index] == -1) {
+                            _index++;
+                          }
+                          props.quickAddToCartQty(_index);
+                        });
                       });
-                    });
-                }}
-                className="cursor-pointer text-black text-xl w-300 sm:w-150 sm:text-base h-16 pr-3 mt-2 scale-item"
-              >
-                {_product.name}
-                <span className="text-base flex text-grey-light">
-                  ({_item.amount + " pack"})
-                </span>
-              </h3>
+                  }}
+                  className="cursor-pointer text-black text-xl w-300 sm:w-150 sm:text-base h-16 pr-3 mt-2 scale-item"
+                >
+                  {_product.name}
+                  <span className="text-base flex text-grey-light">
+                    ({_item.amount + " pack"})
+                  </span>
+                </h3>
+              </a>
             </Link>
             <div
               onClick={() => {
