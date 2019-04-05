@@ -27,6 +27,7 @@ import Confirmation from "../components/sections/checkout/confirmation";
 import FreeShippingNotify from "../components/sections/checkout/freeShippingNotify";
 import ErrorHandler from "../components/sections/checkout/errorHandler";
 import { initGA, logPageView } from "../scripts/ga";
+import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 
 class Index extends Component {
   componentDidMount() {
@@ -65,12 +66,16 @@ class Index extends Component {
 
     return (
       <Layout>
-        {/* <Head>
-          <title>
-            Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
-          </title>
-          <meta name="robots" content="index, follow" />
-        </Head> */}
+        {typeof document !== "undefined" ? (
+          <Head>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify(generateBreadcrumbMarkup(Router.asPath))
+              }}
+            />
+          </Head>
+        ) : null}
         <div className="text-center w-full pt-12 bg-white relative">
           <h1 className="text-4xl font-black text-black">
             {_stepsCheckout == 5 ? "Confirmation" : "Checkout Preview"}

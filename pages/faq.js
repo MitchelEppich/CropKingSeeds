@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Head from "next/head";
+import Router from "next/router";
 // custom
 import withData from "../lib/withData";
 import actions from "../store/actions";
@@ -11,6 +12,7 @@ import PaymentQuestions from "../components/sections/faq/paymentQuestions";
 import OtherQuestions from "../components/sections/faq/otherQuestions";
 import Heading from "../components/sections/faq/heading";
 import { initGA, logPageView } from "../scripts/ga";
+import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 
 class Index extends Component {
   componentDidMount() {
@@ -20,12 +22,16 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
-        {/* <Head>
-          <title>
-            Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
-          </title>
-          <meta name="robots" content="index, follow" />
-        </Head> */}
+        {typeof document !== "undefined" ? (
+          <Head>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify(generateBreadcrumbMarkup(Router.asPath))
+              }}
+            />
+          </Head>
+        ) : null}
         <Heading {...this.props} />
         {this.props.faq.questionsCount > 0 ||
         this.props.faq.questionsCount == null ? (

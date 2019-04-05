@@ -145,15 +145,17 @@ app
     server.get("/product/:_id", (req, res) => {
       app.render(req, res, "/product", {});
     });
+    server.get("/article/:_id", (req, res) => {
+      app.render(req, res, "/article", {});
+    });
     // 301 redirects
     let redirects = redirectUrls(sitemapStrains);
 
     for (let i = 0; i < redirects.length; i++) {
       let url = redirects[i];
-      if (url.from.includes("cannabis-seeds-for-sale-in-vancouver"))
-        server.get(url.from, (req, res) => {
-          res.redirect(301, url.to);
-        });
+      server.get(url.from, (req, res) => {
+        res.redirect(301, url.to);
+      });
     }
 
     server.get("*", (req, res) => {

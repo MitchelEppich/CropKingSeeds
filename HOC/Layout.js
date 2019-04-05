@@ -393,16 +393,6 @@ class Layout extends Component {
           </React.Fragment>
           {/* )} */}
         </div>
-        {/* {this.props.viewProduct.currentProduct ? (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(
-                generateSchemaMarkup(this.props.viewProduct.currentProduct)
-              )
-            }}
-          />
-        ) : null} */}
       </React.Fragment>
     ) : (
       <React.Fragment>

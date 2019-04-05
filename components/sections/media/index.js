@@ -15,7 +15,6 @@ import moment from "moment";
 
 const Media = props => {
   let news = props.misc.news;
-  // console.log(news);
 
   let group = "news";
 
@@ -190,9 +189,9 @@ const Media = props => {
     <div className="w-full mt-2">
       <div style={imageHeader} className="w-full h-350 text-center">
         <div className="w-full pt-12">
-          <h3 className="text-white text-shadow font-bold text-center text-3/5xl text-center p-3 items-center flex justify-center">
+          <h1 className="text-white text-shadow font-bold text-center text-3/5xl text-center p-3 items-center flex justify-center">
             News {" & "} Events
-          </h3>
+          </h1>
         </div>
       </div>
       {showCategories()}

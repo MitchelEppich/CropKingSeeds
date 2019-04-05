@@ -2,12 +2,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Head from "next/head";
+import Router from "next/router";
 //custom
 import withData from "../lib/withData";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import { Menu, Content } from "../components/sections/wiki";
 import { initGA, logPageView } from "../scripts/ga";
+import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 
 class Index extends Component {
   constructor(props) {
@@ -41,13 +43,19 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
-        {/* <Head>
-          <title>
-            Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
-          </title>
-          <meta name="robots" content="index, follow" />
-        </Head> */}
-        <div className="flex py-24 w-3/4 mx-auto min-h-screen">
+        {this.state.isClient ? (
+          <Head>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify(generateBreadcrumbMarkup(Router.asPath))
+              }}
+            />
+          </Head>
+        ) : null}
+
+        <div className="flex flex-wrap py-24 w-3/4 mx-auto min-h-screen">
+          <h1 className="w-full text-center">Crop King Seeds Wiki</h1>
           <Menu {...this.props} />
           <Content {...this.props} />
         </div>

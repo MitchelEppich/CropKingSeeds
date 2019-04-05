@@ -28,7 +28,7 @@ const menu = props => {
   return (
     <ul
       style={position}
-      className="w-300 h-700 bg-white p-4 list-reset leading-loose sticky z-30 overflow-auto pin-t"
+      className="w-1/3 h-700 bg-white p-4 list-reset leading-loose sticky z-30 overflow-auto pin-t"
     >
       <li className="my-4 pr-5">
         <input

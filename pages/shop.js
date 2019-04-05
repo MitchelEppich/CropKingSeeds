@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Head from "next/head";
+import Router from "next/router";
 // custom
 import withData from "../lib/withData";
 import actions from "../store/actions";
@@ -9,6 +10,8 @@ import Layout from "../HOC/Layout";
 import Filters from "../components/sections/shop/filters";
 import ProductGrid from "../components/sections/shop/productGrid";
 import Sidebar from "../components/sections/shop/sidebar";
+import generateSchemaMarkup from "../scripts/generateSchemaMarkup";
+import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 
 import { initGA, logPageView } from "../scripts/ga";
 class Index extends Component {
@@ -35,16 +38,28 @@ class Index extends Component {
     let mobile = ["sm", "md"].includes(this.props.misc.mediaSize);
     return (
       <Layout supportedBrowser={this.props.supportedBrowser}>
-        {/* <Head>
-          <title>
-            Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds
-          </title>
-          <meta name="robots" content="index, follow" />
-        </Head> */}
         {this.props.misc.strains != null &&
         this.props.misc.featuredStrains != null &&
         this.props.misc.strains.length > 0 ? (
           <React.Fragment>
+            <Head>
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify(
+                    generateSchemaMarkup(this.props.misc.strains)
+                  )
+                }}
+              />{" "}
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify(
+                    generateBreadcrumbMarkup(Router.asPath)
+                  )
+                }}
+              />
+            </Head>
             <div
               className={
                 this.props.misc.hoverId != null &&
@@ -53,7 +68,7 @@ class Index extends Component {
                   : "relative"
               }
             >
-              <h3
+              <h1
                 className={
                   this.props.misc.hoverId != null &&
                   this.props.misc.mediaSize == "sm"
@@ -62,7 +77,7 @@ class Index extends Component {
                 }
               >
                 Shop Cannabis Seeds
-              </h3>
+              </h1>
               <div
                 className={
                   this.props.misc.hoverId != null &&
