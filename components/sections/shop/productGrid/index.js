@@ -10,6 +10,7 @@ import actions from "../../../../store/actions";
 import withData from "../../../../lib/withData";
 import { filter } from "../../../../store/utilities/filter";
 import GridHeader from "./gridHeader";
+import ProductNoAnimation from "./productNoAnimation/";
 
 class Index extends Component {
   constructor(props) {
@@ -53,7 +54,11 @@ class Index extends Component {
             }
             this.props.setHoverId(this.props.misc.hoverId, false);
           }}
-          className="ml-10 md:ml-2 lg:ml-8 xl:ml-6 xxl:ml-12 sm:ml-0 flex flex-wrap pt-6 sm:justify-center md:justify-center lg:justify-start xl:justify-start xxl:justify-start sm:overflow-hidden sm:pb-4"
+          className={`md:ml-2 lg:ml-8 xl:ml-6 sm:ml-0 flex flex-wrap pt-6 sm:overflow-hidden sm:pb-4 ${
+            this.props.misc.lowGPUMode
+              ? "xxl:ml-4 ml-2 sm:justify-center md:justify-around lg:justify-center lg:flex-col sm:flex-col xl:justify-around xxl:justify-around"
+              : "xxl:ml-12 ml-10 sm:justify-center md:justify-center lg:justify-start xl:justify-start xxl:justify-start"
+          } `}
         >
           {this.mapProducts()}
         </div>
@@ -69,7 +74,37 @@ class Index extends Component {
       if ($filter.text == null) $filter.text = $search;
       else $filter.text = [...$filter.text, ...$search];
     }
-    let products = filter(this.props.misc.strains, $filter)
+
+    let filterOutput = filter(this.props.misc.strains, $filter);
+
+    if (this.props.misc.lowGPUMode) {
+      filterOutput.map(product => {
+        if (this.props.shop.quickAddToCartQty[product._id] == null) {
+          let _index = 0;
+          while (product.price[_index] == -1) {
+            _index++;
+          }
+
+          this.props.quickAddToCartQty(
+            _index,
+            this.props.shop.quickAddToCartQty,
+            product._id
+          );
+        }
+
+        if (this.props.cart.potentialQuantity[product._id] == null) {
+          this.props.modifyPotentialQuantity({
+            potentialQuantity: this.props.cart.potentialQuantity,
+            action: "SET",
+            tag: product._id,
+            max: this.props.cart.maxPerPackage,
+            quantity: 1
+          });
+        }
+      });
+    }
+
+    let products = filterOutput
       .sort(
         this.props.shop.sort != null
           ? sortingFunctions[this.props.shop.sort]
@@ -83,8 +118,7 @@ class Index extends Component {
             onMouseEnter={() => {
               if (
                 this.isSmallMediumOrLargeDevice ||
-                this.props.misc.lowGPUMode ||
-                window.innerHeight < 750
+                this.props.misc.lowGPUMode
               ) {
                 return null;
               }
@@ -95,10 +129,15 @@ class Index extends Component {
               while (product.price[_index] == -1) {
                 _index++;
               }
-              this.props.quickAddToCartQty(_index);
+              this.props.quickAddToCartQty(
+                _index,
+                this.props.shop.quickAddToCartQty,
+                product._id
+              );
               this.props.modifyPotentialQuantity({
                 potentialQuantity: this.props.cart.potentialQuantity,
                 action: "SET",
+                tag: product._id,
                 max: this.props.cart.maxPerPackage,
                 quantity: 1
               });
@@ -106,16 +145,30 @@ class Index extends Component {
             className={
               this.props.misc.hoverId == product._id
                 ? "w-64 h-64 sm:w-screen sm:h-screen sm:pin-t sm:mt-4 md:w-44 md:h-48 lg:h-48 lg:w-44 text-white relative sm:absolute z-50 slowishish lg:my-4 sm:my-0 md:my-2 lg:ml-2 xl:mx-2 xxl:my-4 xxl:mx-4"
+                : this.props.misc.lowGPUMode
+                ? "w-64 sm:cursor-pointer md:cursor-pointer md:w-48 sm:w-full sm:mt-4 lg:w-main lg:mx-auto text-white relative z-0 slowishish lg:my-4 xl:my-6 sm:my-2 md:my-2 lg:ml-2 xl:mx-2 xxl:my-4 xxl:mx-4 flex justify-center"
                 : "w-64 h-64 sm:cursor-pointer md:cursor-pointer sm:w-32 sm:mt-4 sm:h-48 md:w-44 md:h-48 lg:h-48 lg:w-44 text-white relative z-0 slowishish lg:my-4 sm:my-2 md:my-2 lg:ml-2 xl:mx-2 xxl:my-4 xxl:mx-4"
             }
           >
-            <ProductThumbnail
-              isSmallMediumOrLargeDevice={this.isSmallMediumOrLargeDevice}
-              hoverId={this.props.misc.hoverId}
-              index={index}
-              product={product}
-              {...this.props}
-            />
+            {!this.props.misc.lowGPUMode ? (
+              <ProductThumbnail
+                isSmallMediumOrLargeDevice={this.isSmallMediumOrLargeDevice}
+                hoverId={this.props.misc.hoverId}
+                index={index}
+                product={product}
+                {...this.props}
+              />
+            ) : (
+              <div>
+                <ProductNoAnimation
+                  isSmallMediumOrLargeDevice={this.isSmallMediumOrLargeDevice}
+                  hoverId={this.props.misc.hoverId}
+                  index={index}
+                  product={product}
+                  {...this.props}
+                />
+              </div>
+            )}
           </div>
         );
       });
@@ -127,7 +180,8 @@ class Index extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     setHoverId: (id, turnOn) => dispatch(actions.setHoverId(id, turnOn)),
-    quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
+    quickAddToCartQty: (index, quickAddToCartQty, tag) =>
+      dispatch(actions.quickAddToCartQty(index, quickAddToCartQty, tag)),
     expandProduct: id => dispatch(actions.expandProduct(id)),
     modifyCart: input => dispatch(actions.modifyCart(input)),
     setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),

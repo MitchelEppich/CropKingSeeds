@@ -73,12 +73,7 @@ const strainsMenu = props => {
             .split(" ")
             .join("-")}`}
         >
-          <a
-            href={`/product/${strain.name
-              .toLowerCase()
-              .split(" ")
-              .join("-")}`}
-          >
+          <a>
             <li
               className={`text-black leading-loose cursor-pointer hover:bg-grey-lightest mt-1 w-full list-reset text-left pl-4 font-bold`}
               onClick={e => {
@@ -91,7 +86,18 @@ const strainsMenu = props => {
                       while (strain.price[_index] == -1) {
                         _index++;
                       }
-                      props.quickAddToCartQty(_index);
+                      props.quickAddToCartQty(
+                        _index,
+                        props.shop.quickAddToCartQty,
+                        strain._id
+                      );
+                      props.modifyPotentialQuantity({
+                        potentialQuantity: props.cart.potentialQuantity,
+                        action: "SET",
+                        tag: strain._id,
+                        quantity: 1,
+                        max: props.cart.maxPerPackage
+                      });
                     });
                   });
                 if (props.misc.mediaSize == "sm") {

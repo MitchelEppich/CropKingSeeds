@@ -1,6 +1,8 @@
 const prices = props => {
   let currency = props.checkout.viewCurrency;
 
+  let _product = props.product;
+
   return (
     <div
       className={
@@ -17,9 +19,11 @@ const prices = props => {
           {currency != null
             ? `${currency.symbol}${(
                 currency.convert *
-                (props.product.price[props.shop.quickAddToCartQty] < 1
-                  ? props.product.price[1].toFixed(2)
-                  : props.product.price[props.shop.quickAddToCartQty])
+                (props.product.price[
+                  props.shop.quickAddToCartQty[_product._id]
+                ] < 1
+                  ? _product.price[1].toFixed(2)
+                  : _product.price[props.shop.quickAddToCartQty[_product._id]])
               ).toFixed(2)}`
             : ""}
         </p>
@@ -32,8 +36,8 @@ const prices = props => {
           {currency != null
             ? `${currency.symbol}${(
                 currency.convert *
-                props.product.price[props.shop.quickAddToCartQty] *
-                props.cart.potentialQuantity
+                _product.price[props.shop.quickAddToCartQty[_product._id]] *
+                props.cart.potentialQuantity[_product._id]
               ).toFixed(2)}`
             : ""}
         </p>

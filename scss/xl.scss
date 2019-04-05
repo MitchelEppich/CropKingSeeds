@@ -184,7 +184,7 @@
       -moz-transform: translateX(-60px) translateZ(0);
       -ms-transform: translateX(-60px) translateZ(0);
       -o-transform: translateX(-60px) translateZ(0);
-      height: 670px;
+      height: 625px;
       width: 145%;
       background-color: #fff;
       transition: 0.3s all ease;
@@ -292,6 +292,43 @@
       }
     }
   }
+
+  ////////////////////////
+  // NO ANIMATION SHOP
+
+  .packageClassNoAnimation {
+    height: 14rem;
+    width: 260px;
+    margin-top: 20px;
+    position: relative;
+    z-index: 10;
+    padding: 5.5rem 3rem 0.5rem 3rem;
+    text-align: right;
+  }
+
+  .plantClassNoAnimation {
+    height: 11rem;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    transform: translateX(-31px) translateY(45px) translateZ(0);
+    -webkit-transform: translateX(-31px) translateY(45px) translateZ(0);
+    -moz-transform: translateX(-31px) translateY(45px) translateZ(0);
+    -ms-transform: translateX(-31px) translateY(45px) translateZ(0);
+    -o-transform: translateX(-31px) translateY(45px) translateZ(0);
+  }
+
+  .overlayClassNoAnimation {
+    height: 510px;
+    width: 265px;
+    color: rgba(255, 255, 255, 0);
+    position: relative;
+    text-align: center;
+    padding: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(68, 66, 66, 0.25);
+  }
+
   // END SHOP PAGE
   ////////////////
 

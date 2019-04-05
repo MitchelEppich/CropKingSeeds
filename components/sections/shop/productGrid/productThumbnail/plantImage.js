@@ -1,6 +1,10 @@
 import Link from "next/link";
 const plantImage = props => {
-  let plantClass = props.hover ? "plantClass--hover" : "plantClass";
+  let plantClass = props.hover
+    ? "plantClass--hover"
+    : props.misc.lowGPUMode
+    ? "plantClassNoAnimation"
+    : "plantClass";
   return (
     <Link
       prefetch
@@ -23,10 +27,15 @@ const plantImage = props => {
               while (props.product.price[_index] == -1) {
                 _index++;
               }
-              props.quickAddToCartQty(_index);
+              props.quickAddToCartQty(
+                _index,
+                props.shop.quickAddToCartQty,
+                props.product._id
+              );
               props.modifyPotentialQuantity({
                 potentialQuantity: props.cart.potentialQuantity,
                 action: "SET",
+                tag: props.product._id,
                 max: props.cart.maxPerPackage,
                 quantity: 1
               });

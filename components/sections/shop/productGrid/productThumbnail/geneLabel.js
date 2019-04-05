@@ -1,10 +1,12 @@
 const geneLabel = props => {
   return (
-    <div className="text-center w-full pt-8">
+    <div className="text-center w-full">
       <p
         className={
           props.hover
-            ? "text-grey my-3 sm:my-0 slow font-extrabold text-sm"
+            ? "text-grey my-3 sm:my-0 slow font-bold text-sm"
+            : props.misc.lowGPUMode
+            ? "text-grey mt-3 font-bold text-sm"
             : "hidden slow"
         }
       >

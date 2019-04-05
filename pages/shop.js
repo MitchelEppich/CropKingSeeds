@@ -132,7 +132,8 @@ const mapDispatchToProps = dispatch => {
     toggleFilter: input => dispatch(actions.toggleFilter(input)),
     toggleShowFilters: input => dispatch(actions.toggleShowFilters(input)),
     clearFilters: () => dispatch(actions.clearFilters()),
-    quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
+    quickAddToCartQty: (index, quickAddToCartQty, tag) =>
+      dispatch(actions.quickAddToCartQty(index, quickAddToCartQty, tag)),
     modifyCart: input => dispatch(actions.modifyCart(input)),
     modifyPotentialQuantity: input =>
       dispatch(actions.modifyPotentialQuantity(input)),

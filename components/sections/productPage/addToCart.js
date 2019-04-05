@@ -28,7 +28,9 @@ const addToCart = props => {
               {currency != null
                 ? `${currency.symbol}${(
                     currency.convert *
-                    currentProduct.price[props.shop.quickAddToCartQty]
+                    currentProduct.price[
+                      props.shop.quickAddToCartQty[currentProduct._id]
+                    ]
                   ).toFixed(2)}`
                 : ""}
             </p>
@@ -46,8 +48,10 @@ const addToCart = props => {
               {currency != null
                 ? `${currency.symbol}${(
                     currency.convert *
-                    (currentProduct.price[props.shop.quickAddToCartQty] *
-                      props.cart.potentialQuantity)
+                    (currentProduct.price[
+                      props.shop.quickAddToCartQty[currentProduct._id]
+                    ] *
+                      props.cart.potentialQuantity[currentProduct._id])
                   ).toFixed(2)}`
                 : ""}
             </p>
@@ -72,14 +76,14 @@ const addToCart = props => {
               onClick={() => {
                 let _identifier =
                   currentProduct.sotiId +
-                  [5, 10, 25][props.shop.quickAddToCartQty];
+                  [5, 10, 25][props.shop.quickAddToCartQty[currentProduct._id]];
                 props.modifyCart({
                   items: props.cart.items,
                   action: "APPEND",
                   max: props.cart.maxPerPackage,
                   productIdentifier: _identifier,
                   product: currentProduct,
-                  quantity: props.cart.potentialQuantity,
+                  quantity: props.cart.potentialQuantity[currentProduct._id],
                   coupon: _coupon
                 });
                 props.toggleCartAnimation();
@@ -121,7 +125,7 @@ const addToCart = props => {
                     max: props.cart.maxPerPackage,
                     productIdentifier: _identifier,
                     product: currentProduct,
-                    quantity: props.cart.potentialQuantity,
+                    quantity: props.cart.potentialQuantity[currentProduct._id],
                     coupon: _coupon
                   });
                 }}

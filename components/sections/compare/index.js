@@ -31,8 +31,8 @@ const Compare = props => {
           }
           className={`${
             props.shop.quickAddToCartQty[item._id] === index
-              ? " text-xs bg-red-dark text-white w-1/3 p-2 mr-1 flex flex-wrap text-center justify-center leading-normal uppercase font-bold border border-grey-lightest hover:bg-grey-light hover:text-white "
-              : "bg-white text-grey text-xs w-1/3 p-2 flex mr-1 flex-wrap text-center justify-center leading-normal uppercase font-bold border border-grey-lightest hover:bg-grey-light hover:text-white"
+              ? "bg-grey-lightest text-grey w-1/3 h-10 mr-1 text-lg flex flex-wrap text-center justify-center leading-normal uppercase font-bold border border-grey-lightest hover:bg-grey-light hover:text-white"
+              : "bg-white text-grey w-1/3 h-10 flex mr-1 text-lg flex-wrap text-center justify-center leading-normal uppercase font-bold border border-grey-lightest hover:bg-grey-light hover:text-white"
           } ${
             price == -1 ? "opacity-50 pointer-events-none unselectable" : ""
           }`}
@@ -41,8 +41,8 @@ const Compare = props => {
           <div
             className={
               props.shop.quickAddToCartQty[item._id] === index
-                ? "text-xs h-2 ml-1 flex items-center "
-                : "text-xs h-2 ml-1 flex items-center "
+                ? "text-xs h-2 ml-1 flex items-center"
+                : "text-xs h-2 ml-1 flex items-center"
             }
           >
             seeds

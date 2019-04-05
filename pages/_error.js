@@ -24,41 +24,47 @@ class Error extends Component {
 
     return { styleKing, styleBackground, moveSpaceX, moveSpaceY };
   }
-  componentDidMount() {
-    if (typeof window !== "undefined") {
-      window.addEventListener("mousemove", e => {
-        let eyes = document.querySelector(".eyes");
 
-        let mX =
-          e.pageX - eyes.getBoundingClientRect().left - eyes.clientWidth / 2;
-        let mY =
-          e.pageY - eyes.getBoundingClientRect().top - eyes.clientHeight / 2;
+  eyeControl = e => {
+    let eyes = document.querySelector(".eyes");
 
-        let maxMouseX = window.innerWidth;
-        let maxMouseY = window.innerHeight;
+    let mX = e.pageX - eyes.getBoundingClientRect().left - eyes.clientWidth / 2;
+    let mY = e.pageY - eyes.getBoundingClientRect().top - eyes.clientHeight / 2;
 
-        let xF = mX / maxMouseX;
-        let yF = mY / maxMouseY;
+    let maxMouseX = window.innerWidth;
+    let maxMouseY = window.innerHeight;
 
-        let eye = document.querySelectorAll(".eye");
+    let xF = mX / maxMouseX;
+    let yF = mY / maxMouseY;
 
-        for (let item of eye) {
-          let iris = item.querySelector(".iris");
+    let eye = document.querySelectorAll(".eye");
 
-          if (!this.props.misc.eyesShouldMove) {
-            xF = 0.5;
-            yF = 0.3;
-          }
+    for (let item of eye) {
+      let iris = item.querySelector(".iris");
 
-          let left = this.props.moveSpaceX * xF + item.clientWidth / 2;
-          let top = this.props.moveSpaceY * yF + item.clientHeight / 2;
+      if (!this.props.misc.eyesShouldMove) {
+        xF = 0.5;
+        yF = 0.3;
+      }
 
-          iris.style.left = `${left}px`;
-          iris.style.top = `${top}px`;
-        }
-      });
+      let left = this.props.moveSpaceX * xF + item.clientWidth / 2;
+      let top = this.props.moveSpaceY * yF + item.clientHeight / 2;
+
+      iris.style.left = `${left}px`;
+      iris.style.top = `${top}px`;
     }
-    this.loop();
+  };
+
+  componentWillUnmount() {
+    // if (typeof window !== "undefined") {
+    //   window.removeEventListener("mousemove", e => this.eyeControl(e));
+    // }
+  }
+  componentDidMount() {
+    // if (typeof window !== "undefined") {
+    //   window.addEventListener("mousemove", e => this.eyeControl(e));
+    // }
+    // this.loop();
   }
   render() {
     return (

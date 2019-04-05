@@ -200,7 +200,7 @@
     overflow: visible;
     text-align: center;
     @include modifier("hover") {
-      height: 600px;
+      height: 615px;
       width: 276px;
       padding: 10px 10px;
       text-align: center;
@@ -315,6 +315,65 @@
       }
     }
   }
+  .strainTitleHover {
+    margin-left: 20px;
+    margin-right: auto;
+    margin-top: -40px;
+    height: 40px;
+    width: 240px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+    text-shadow: black 1px 1px 2px;
+    box-shadow: rgba(60, 58, 58, 0.45) 0px 2px 6px;
+    transition: 0.3s all ease;
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+  }
+
+  ////////////////////////
+  // NO ANIMATION SHOP
+
+  .packageClassNoAnimation {
+    height: 10rem;
+    width: 250px;
+    margin-top: 20px;
+    position: relative;
+    z-index: 10;
+    transform: translateX(-15px) translateZ(0);
+    -webkit-transform: translateX(-15px) translateZ(0);
+    -moz-transform: translateX(-15px) translateZ(0);
+    -ms-transform: translateX(-15px) translateZ(0);
+    -o-transform: translateX(-15px) translateZ(0);
+    padding: 5.5rem 4rem 0.5rem 4rem;
+    text-align: right;
+  }
+
+  .plantClassNoAnimation {
+    height: 8rem;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    transform: translateX(-31px) translateY(36px) translateZ(0);
+    -webkit-transform: translateX(-31px) translateY(36px) translateZ(0);
+    -moz-transform: translateX(-31px) translateY(36px) translateZ(0);
+    -ms-transform: translateX(-31px) translateY(36px) translateZ(0);
+    -o-transform: translateX(-31px) translateY(36px) translateZ(0);
+  }
+
+  .overlayClassNoAnimation {
+    height: 510px;
+    width: 90%;
+    color: rgba(255, 255, 255, 0);
+    position: relative;
+    text-align: center;
+    padding: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(68, 66, 66, 0.25);
+  }
+
   // END SHOP PAGE
   ////////////////
 

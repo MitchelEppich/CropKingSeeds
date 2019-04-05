@@ -7,7 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const addToCartModule = props => {
   let _coupon = props.checkout.orderDetails.coupon;
   let productIdentifier =
-    props.product.sotiId + [5, 10, 25][props.shop.quickAddToCartQty];
+    props.product.sotiId +
+    [5, 10, 25][props.shop.quickAddToCartQty[props.product._id]];
 
   return (
     <div
@@ -28,17 +29,26 @@ const addToCartModule = props => {
           <div className="w-full">
             <SeedSelectModule {...props} product={props.product} />
           </div>
-          <div className="w-full inline-flex sm:mt-0 mt-2">
+          <div
+            className={`w-full inline-flex sm:mt-0 mt-2 ${
+              props.misc.lowGPUMode ? "sm:flex-col md:flex-col" : ""
+            }`}
+          >
             <button
-              className="bg-red-dark mr-1 w-full text-center text-white h-10 px-2 py-2 hover:bg-red-light slowish"
+              className={`bg-red-dark w-full text-center text-white h-10 px-2 py-2 hover:bg-red-light slowish ${
+                props.misc.lowGPUMode
+                  ? "md:mr-0 md:mb-1 mr-1 sm:mr-0 sm:mb-1"
+                  : "mr-1"
+              }`}
               onClick={() => {
+                let _product = props.product;
                 props.modifyCart({
                   items: props.cart.items,
                   action: "APPEND",
                   max: props.cart.maxPerPackage,
                   productIdentifier: productIdentifier,
-                  product: props.product,
-                  quantity: props.cart.potentialQuantity,
+                  product: _product,
+                  quantity: props.cart.potentialQuantity[props.product._id],
                   coupon: _coupon
                 });
                 props.toggleCartAnimation();
@@ -69,7 +79,11 @@ const addToCartModule = props => {
             </button>
             <Link prefetch href="/checkout">
               <button
-                className="bg-grey-dark ml-1 w-full text-center text-white h-10 px-2 py-2 hover:bg-grey-light"
+                className={`bg-grey-dark w-full text-center text-white h-10 px-2 py-2 hover:bg-grey-light ${
+                  props.misc.lowGPUMode
+                    ? "md:ml-0 md:mb-1 ml-1 sm:ml-0 sm:mb-1"
+                    : "ml-1"
+                }`}
                 onClick={() => {
                   props.modifyCart({
                     items: props.cart.items,
@@ -77,7 +91,7 @@ const addToCartModule = props => {
                     max: props.cart.maxPerPackage,
                     productIdentifier: productIdentifier,
                     product: props.product,
-                    quantity: props.cart.potentialQuantity,
+                    quantity: props.cart.potentialQuantity[props.product._id],
                     coupon: _coupon
                   });
                 }}
