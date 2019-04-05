@@ -357,6 +357,17 @@ const Footer = props => {
         </div>
       </div>
       <div className="w-full xl:hidden xxl:hidden">
+        <div className="w-225 bg-red-darker p-1 flex justify-center mx-auto items-center mt-4">
+          <p
+            onClick={() => {
+              props.toggleLowGPUMode(!props.misc.lowGPUMode);
+            }}
+            className="uppercase cursor-pointer text-white hover:text-grey font-bold flex justify-center items-center w-full text-lg"
+          >
+            <FontAwesomeIcon icon={faCog} className="mr-2 fa-lg" />
+            Animations {props.misc.lowGPUMode ? "Off" : "On"}
+          </p>
+        </div>
         <p className="p-3 mt-4 w-full text-center text-white bg-grey-dark xl:hidden xxl:hidden md:mt-8 sm:mt-8">
           Copyright © 2019 Crop King Seeds
         </p>{" "}

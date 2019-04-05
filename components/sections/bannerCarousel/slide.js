@@ -36,7 +36,18 @@ const slide = props => {
               while (product.price[_index] == -1) {
                 _index++;
               }
-              props.quickAddToCartQty(_index);
+              props.quickAddToCartQty(
+                _index,
+                props.shop.quickAddToCartQty,
+                product._id
+              );
+              props.modifyPotentialQuantity({
+                potentialQuantity: props.cart.potentialQuantity,
+                action: "SET",
+                tag: product._id,
+                quantity: 1,
+                max: props.cart.maxPerPackage
+              });
             }
           });
         });

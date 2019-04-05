@@ -44,24 +44,30 @@ const index = props => {
           enableScroll();
           props.setCurrentProduct({ product: props.product });
         }}
-        className={hover ? "overflow-hidden w-full bg-white pt-4" : "relative"}
+        className={
+          hover
+            ? "overflow-hidden w-full bg-white pt-4 justify-center flex"
+            : "relative"
+        }
       >
-        <Details hover={hover} {...props} />
-        <AddToCartModule {...props} hover={hover} />
-        <Prices {...props} hover={hover} />
-        <div
-          className={
-            hover
-              ? "w-full mx-auto text-center p-1 flex justify-between"
-              : "hidden slow"
-          }
-        >
-          <span className="text-sm font-bold py-1 text-grey-light text-right ml-6">
-            * May vary
-          </span>
-          <span className="text-sm italic uppercase font-bold py-1 text-red-dark text-right mr-6">
-            {props.product.inStock ? "In Stock" : "Sold Out"}
-          </span>
+        <div>
+          <Details hover={hover} {...props} />
+          <AddToCartModule {...props} hover={hover} />
+          <Prices {...props} hover={hover} />
+          <div
+            className={
+              hover
+                ? "w-full mx-auto text-center p-1 flex justify-between"
+                : "hidden slow"
+            }
+          >
+            <span className="text-sm font-bold py-1 text-grey-light text-right ml-6">
+              * May vary
+            </span>
+            <span className="text-sm italic uppercase font-bold py-1 text-red-dark text-right mr-6">
+              {props.product.inStock ? "In Stock" : "Sold Out"}
+            </span>
+          </div>
         </div>
       </div>
     </div>

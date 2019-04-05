@@ -192,7 +192,8 @@ const mapDispatchToProps = dispatch => {
   return {
     setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
     setHoverId: (id, turnOn) => dispatch(actions.setHoverId(id, turnOn)),
-    quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
+    quickAddToCartQty: (index, quickAddToCartQty, tag) =>
+      dispatch(actions.quickAddToCartQty(index, quickAddToCartQty, tag)),
     modifyCart: input => dispatch(actions.modifyCart(input)),
     modifyPotentialQuantity: input =>
       dispatch(actions.modifyPotentialQuantity(input)),

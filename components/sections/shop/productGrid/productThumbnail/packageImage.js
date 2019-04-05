@@ -10,7 +10,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const packageImage = props => {
-  let packageClass = props.hover ? "packageClass--hover" : "packageClass";
+  let packageClass = props.hover
+    ? "packageClass--hover"
+    : props.misc.lowGPUMode
+    ? "packageClassNoAnimation"
+    : "packageClass";
   let packagePins = props.hover ? "package-pins--hover" : "package-pins";
   let rand = gen.create(name);
   return (
@@ -46,12 +50,18 @@ const packageImage = props => {
                 _index++;
               }
 
-              props.quickAddToCartQty(_index);
+              props.quickAddToCartQty(
+                _index,
+                props.shop.quickAddToCartQty,
+                props.product._id
+              );
+
               props.modifyPotentialQuantity({
                 potentialQuantity: props.cart.potentialQuantity,
                 action: "SET",
-                max: props.cart.maxPerPackage,
-                quantity: 1
+                tag: props.product._id,
+                quantity: 1,
+                max: props.cart.maxPerPackage
               });
             }
             window.scrollTo(0, 0);

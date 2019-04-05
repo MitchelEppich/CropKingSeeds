@@ -203,7 +203,6 @@ const getActions = uri => {
             _orderDetails[_group].country = {
               value: (() => {
                 for (let item of Object.keys(statesCAUS)) {
-                  console.log(item, statesCAUS);
                   if (statesCAUS[item].includes(_value)) return item;
                 }
               })(),

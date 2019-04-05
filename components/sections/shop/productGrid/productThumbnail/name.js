@@ -30,20 +30,25 @@ const name = props => {
           }}
           className={
             props.hover
-              ? "w-full mt-2 mb-2 text-black font-black text-center cursor-pointer strainTitle--hover " +
-                nameSize
+              ? "text-center flex justify-center items-center sm:text-xs text-grey p-2 font-extrabold z-50 strainTitleHover " +
+                nameSizeHover +
+                titleColorBackground
+              : props.misc.lowGPUMode
+              ? "text-center flex justify-center items-center sm:text-xs text-grey p-2 font-extrabold z-50 strainTitleNoAnimation " +
+                nameSizeHover +
+                titleColorBackground
               : "text-center flex justify-center items-center sm:text-xs text-grey p-2 font-extrabold z-50 strainTitle " +
                 nameSizeHover +
                 titleColorBackground
           }
         >
           {name}
-          {props.hover ? (
+          {/* {props.hover ? (
             <FontAwesomeIcon
               icon={faExternalLinkAlt}
               className="cursor-pointer fa-xs text-grey-light absolute z-50 mt-1 ml-2 mr-3"
             />
-          ) : null}
+          ) : null} */}
         </h3>
       </div>
     </Link>

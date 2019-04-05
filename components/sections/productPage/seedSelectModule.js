@@ -4,19 +4,26 @@ import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 library.add(faPlus, faMinus);
 
 const seedSelectModule = props => {
+  let _product = props.product || props.viewProduct.currentProduct;
+
   let showSeedAmounts = () => {
-    let _product = props.product || props.viewProduct.currentProduct;
     let _arr = _product.price;
     return _arr.map((price, index) => {
       return (
         <button
           name="seedPackSize"
           key={_product.sotiId + index}
-          onClick={() => props.quickAddToCartQty(index)}
+          onClick={() => {
+            props.quickAddToCartQty(
+              index,
+              props.shop.quickAddToCartQty,
+              _product._id
+            );
+          }}
           className={`${
-            props.shop.quickAddToCartQty === index
-              ? "bg-grey-lightest text-grey w-1/3 h-10 mr-1 text-lg flex flex-wrap text-center justify-center leading-normal uppercase font-bold border border-grey-lightest hover:bg-grey-light hover:text-white "
-              : "bg-white text-grey w-1/3 h-10 flex mr-1 text-lg flex-wrap text-center justify-center leading-normal uppercase font-bold border border-grey-lightest hover:bg-grey-light hover:text-white"
+            props.shop.quickAddToCartQty[_product._id] === index
+              ? "bg-grey-lightest text-grey w-1/3 md:h-16 h-10 mr-1 text-lg flex flex-wrap text-center justify-center leading-normal uppercase font-bold border border-grey-lightest hover:bg-grey-light hover:text-white  "
+              : "bg-white text-grey w-1/3 md:h-16 h-10 flex mr-1 text-lg flex-wrap text-center justify-center leading-normal uppercase font-bold border border-grey-lightest hover:bg-grey-light hover:text-white"
           } ${
             price == -1 ? "opacity-50 pointer-events-none unselectable" : ""
           }`}
@@ -46,6 +53,7 @@ const seedSelectModule = props => {
             props.modifyPotentialQuantity({
               potentialQuantity: props.cart.potentialQuantity,
               action: "MODIFY",
+              tag: _product._id,
               quantity: -1,
               max: props.cart.maxPerPackage
             })
@@ -65,6 +73,7 @@ const seedSelectModule = props => {
               props.modifyPotentialQuantity({
                 potentialQuantity: props.cart.potentialQuantity,
                 action: "SET",
+                tag: _product._id,
                 max: props.cart.maxPerPackage,
                 quantity: 1
               });
@@ -75,12 +84,13 @@ const seedSelectModule = props => {
             props.modifyPotentialQuantity({
               potentialQuantity: props.cart.potentialQuantity,
               action: "SET",
+              tag: _product._id,
               max: props.cart.maxPerPackage,
               quantity: parseInt(_value)
             });
           }}
-          value={props.cart.potentialQuantity || ""}
-          className="text-lg text-center w-48 border-0 font-bold pt-1 leading-none"
+          value={props.cart.potentialQuantity[_product._id] || ""}
+          className="text-lg text-center w-48 lg:w-32 md:w-24 sm:w-24 xl:w-32 border-0 font-bold pt-1 leading-none"
           type="number"
         />
         <button
@@ -89,6 +99,7 @@ const seedSelectModule = props => {
             props.modifyPotentialQuantity({
               potentialQuantity: props.cart.potentialQuantity,
               action: "MODIFY",
+              tag: _product._id,
               max: props.cart.maxPerPackage,
               quantity: 1
             })

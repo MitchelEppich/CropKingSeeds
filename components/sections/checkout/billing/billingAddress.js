@@ -211,13 +211,7 @@ const BillingAddress = props => {
             />
           </div>
           <div className="w-1/3 pl-2 sm:w-full sm:pl-0 sm:mt-4 inline-flex">
-            <div
-              className={`w-full ${
-                _orderDetails[pageGroup].noEmail
-                  ? "unselectable opacity-50 pointer-events-none"
-                  : ""
-              }`}
-            >
+            <div className={`w-full `}>
               <input
                 aria-label="email"
                 type="email"

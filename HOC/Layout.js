@@ -149,7 +149,20 @@ class Layout extends Component {
                   while (product.price[_index] == -1) {
                     _index++;
                   }
-                  this.props.quickAddToCartQty(_index);
+                  this.props.quickAddToCartQty(
+                    _index,
+                    this.props.shop.quickAddToCartQty,
+                    product._id
+                  );
+                  if (this.props.cart.potentialQuantity[res._id] == null) {
+                    this.props.modifyPotentialQuantity({
+                      potentialQuantity: this.props.cart.potentialQuantity,
+                      action: "SET",
+                      tag: product._id,
+                      quantity: 1,
+                      max: this.props.cart.maxPerPackage
+                    });
+                  }
                 });
               });
           }
@@ -489,7 +502,8 @@ const mapDispatchToProps = dispatch => {
     getFeaturedNews: () => dispatch(actions.getFeaturedNews()),
     recallAgeVerification: () => dispatch(actions.recallAgeVerification()),
     recallOrderDetails: input => dispatch(actions.recallOrderDetails(input)),
-    quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
+    quickAddToCartQty: (index, quickAddToCartQty, tag) =>
+      dispatch(actions.quickAddToCartQty(index, quickAddToCartQty, tag)),
     modifyOrderDetails: input => dispatch(actions.modifyOrderDetails(input)),
     setSearch: value => dispatch(actions.setSearch(value)),
     setSuggestions: suggestions =>
