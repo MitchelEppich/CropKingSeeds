@@ -33,8 +33,12 @@ const filters = props => {
     })();
     for (let filter of filters) {
       arr.push(
-        <a href={`/shop?${filter}`} onClick={e => e.preventDefault()}>
-          <li key={filter}>
+        <a
+          key={filter}
+          href={`/shop?${filter}`}
+          onClick={e => e.preventDefault()}
+        >
+          <li>
             <button
               onClick={e => {
                 if (["cbd", "thc"].includes(input)) {
