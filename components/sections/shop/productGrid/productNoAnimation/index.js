@@ -26,7 +26,6 @@ const ProductNoAnimation = props => {
         />
       </div>
       <div
-        className="cursor-pointer"
         onClick={() => {
           props.setCurrentProduct({ product: props.product });
           Router.push(
