@@ -334,7 +334,7 @@ type Mutation {
 
   createNewsEntry(input: NewsInput): News
 
-  acquireOrderId(input: ArchiveInput): String
+  acquireOrderId: String
 
   sendEmail(input: EmailInput): String
   subscribeToNewsletter(email: String): String

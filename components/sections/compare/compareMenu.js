@@ -52,7 +52,7 @@ const CompareMenu = props => {
       let color = props.detail.geneColor[genetic.toLowerCase()];
       let text = category[genetic];
       return (
-        <a href={`/shop?${genetic}`}>
+        <a href={`/shop?${genetic}`} target="_blank">
           <p
             key={text}
             className={`bg-${color} p-3 font-bold text-center text-white text-shadow uppercase w-full mt-1 cursor-pointer`}
@@ -69,54 +69,47 @@ const CompareMenu = props => {
           ? props.misc.compareStrains.indexOf(strain) > -1
           : false;
       return (
-        <a
-          href={`/product/${strain.name
-            .toLowerCase()
-            .split(" ")
-            .join("-")}`}
+        <div
+          key={arr}
+          className={`text-base p-2 font-bold text-left border-b-2 text-grey hover:bg-grey-lightest hover:text-grey border-grey-lightest pl-4 cursor-pointer ${
+            active ? "bg-grey-lightest" : "bg-white"
+          }`}
+          onClick={() => {
+            let _index = 0;
+            while (strain.price[_index] == -1) {
+              _index++;
+            }
+            props.quickAddToCartQty(
+              _index,
+              props.shop.quickAddToCartQty,
+              strain._id
+            );
+
+            props.modifyPotentialQuantity({
+              potentialQuantity: props.cart.potentialQuantity,
+              action: "SET",
+              tag: strain._id,
+              quantity: 1,
+              max: props.cart.maxPerPackage
+            });
+
+            props.compareStrain({
+              strain: strain,
+              compareStrains:
+                props.misc.compareStrains != null
+                  ? props.misc.compareStrains
+                  : [],
+              action: active ? "remove" : "add"
+            });
+          }}
         >
-          <span
-            key={arr}
-            className={`block text-base p-2 font-bold text-left border-b-2 text-grey hover:bg-grey-lightest hover:text-grey border-grey-lightest pl-4 cursor-pointer ${
-              active ? "bg-grey-lightest" : "bg-white"
-            }`}
-            onClick={() => {
-              let _index = 0;
-              while (strain.price[_index] == -1) {
-                _index++;
-              }
-              props.quickAddToCartQty(
-                _index,
-                props.shop.quickAddToCartQty,
-                strain._id
-              );
-
-              props.modifyPotentialQuantity({
-                potentialQuantity: props.cart.potentialQuantity,
-                action: "SET",
-                tag: strain._id,
-                quantity: 1,
-                max: props.cart.maxPerPackage
-              });
-
-              props.compareStrain({
-                strain: strain,
-                compareStrains:
-                  props.misc.compareStrains != null
-                    ? props.misc.compareStrains
-                    : [],
-                action: active ? "remove" : "add"
-              });
-            }}
-          >
-            {strain.name}{" "}
-            {active ? (
-              <div className="p-2 w-10 px-2 justify-center -mt-6 text-white items-center flex bg-grey-light absolute pin-r hover:bg-red-light">
-                <FontAwesomeIcon icon={faCheck} className="text-right" />
-              </div>
-            ) : null}
-          </span>
-        </a>
+          {strain.name}{" "}
+          {active ? (
+            <div className="p-2 w-10 px-2 justify-center -mt-6 text-white items-center flex bg-grey-light absolute pin-r hover:bg-red-light">
+              <FontAwesomeIcon icon={faCheck} className="text-right" />
+            </div>
+          ) : null}
+        </div>
       );
     };
 

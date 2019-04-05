@@ -245,6 +245,7 @@ const resolvers = {
       // let { pivotal, bambora } = await getProcessorUsage();
       let { pivotal } = await getProcessorUsage();
       let _amount = parseFloat(input.amount);
+      console.log(pivotal);
       let response;
 
       // if (

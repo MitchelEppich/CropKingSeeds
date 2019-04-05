@@ -470,7 +470,7 @@ const Compare = props => {
             Please, select at least{" "}
             <span className="font-bold underline">2</span> and max{" "}
             <span className="font-bold underline">3</span> strains to compare.
-          </p>
+          </h1>
           {props.misc.compareStrains != null &&
           props.misc.compareStrains.length != 0 ? (
             <div className="w-full flex justify-end my-4">
