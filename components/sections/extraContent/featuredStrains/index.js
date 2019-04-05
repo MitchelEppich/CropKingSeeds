@@ -25,10 +25,10 @@ const FeaturedStrains = props => {
       products = products.slice(0, 2);
     }
     if (["lg"].includes(props.misc.mediaSize)) {
-      products = products.slice(0, 4);
+      products = products.slice(0, 3);
     }
     if (["xl"].includes(props.misc.mediaSize)) {
-      products = products.slice(0, 5);
+      products = products.slice(0, 4);
     }
     for (let i = 0; i < products.length; i++) {
       let product = products[i];
@@ -41,44 +41,48 @@ const FeaturedStrains = props => {
           href="/product"
           as={"/product/" + product.name.toLowerCase().replace(/ /g, "-")}
         >
-          <div className="w-200 text-center mx-2 scale-item cursor-pointer mb-6 sm:mx-auto md:mx-auto">
-            <img
-              alt="featuredStrainPackage"
-              src={props.misc.CFURL + product.packageImg}
-              className="mt-4 shadow-md w-150"
-            />
-            <div
-              className={`py-3 ${titleColorBackground} strainHome absolute pin-x pin-b mb-12`}
-            >
-              <p className="font-bold text-base text-white text-shadow">
-                {product.name}
-              </p>
-            </div>
-            <div className="mt-4">
-              <div className="w-150 relative text-left justify-center flex mx-auto">
-                <div
-                  className="inline-flex bg-red-light"
-                  style={{
-                    width: `${150 * (product.rating / 5)}px`,
-                    height: "17px",
-                    // width: "100%",
-                    marginTop: "2px"
-                  }}
-                />
-                <div
-                  className="inline-flex"
-                  style={{
-                    width: `${150 * ((5 - product.rating) / 5)}px`,
-                    height: "17px",
-                    marginTop: "2px",
-                    background: "#cecece"
-                  }}
-                />
-                <div className="absolute pin-l inline-flex">{showRating()}</div>
-                <div className="absolute" />
+          <a>
+            <div className="w-200 text-center mx-2 scale-item cursor-pointer mb-6 sm:mx-auto md:mx-auto">
+              <img
+                alt="featuredStrainPackage"
+                src={props.misc.CFURL + product.packageImg}
+                className="mt-4 shadow-md w-150"
+              />
+              <div
+                className={`py-3 ${titleColorBackground} strainHome absolute pin-x pin-b mb-12`}
+              >
+                <p className="font-bold text-base text-white text-shadow">
+                  {product.name}
+                </p>
+              </div>
+              <div className="mt-4">
+                <div className="w-150 relative text-left justify-center flex mx-auto">
+                  <div
+                    className="inline-flex bg-red-light"
+                    style={{
+                      width: `${150 * (product.rating / 5)}px`,
+                      height: "17px",
+                      // width: "100%",
+                      marginTop: "2px"
+                    }}
+                  />
+                  <div
+                    className="inline-flex"
+                    style={{
+                      width: `${150 * ((5 - product.rating) / 5)}px`,
+                      height: "17px",
+                      marginTop: "2px",
+                      background: "#cecece"
+                    }}
+                  />
+                  <div className="absolute pin-l inline-flex">
+                    {showRating()}
+                  </div>
+                  <div className="absolute" />
+                </div>
               </div>
             </div>
-          </div>
+          </a>
         </Link>
       );
     }
@@ -97,9 +101,12 @@ const FeaturedStrains = props => {
       </div>
       <div className="flex justify-center items-center">
         <Link href="/shop">
-          <p className="p-2 w-250 text-center bg-red-dark text-white font-bold text-xl cursor-pointer hover:bg-red-light shadow-md uppercase scale-item">
-            See all products
-          </p>
+          <a>
+            {" "}
+            <p className="p-2 w-250 text-center bg-red-dark text-white font-bold text-xl cursor-pointer hover:bg-red-light shadow-md uppercase scale-item">
+              See all products
+            </p>
+          </a>
         </Link>
       </div>
     </div>

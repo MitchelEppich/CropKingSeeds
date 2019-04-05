@@ -54,10 +54,10 @@ class Index extends Component {
             }
             this.props.setHoverId(this.props.misc.hoverId, false);
           }}
-          className={`md:ml-2 lg:ml-8 xl:ml-6 sm:ml-0 flex flex-wrap pt-6 sm:overflow-hidden sm:pb-4 ${
+          className={`md:ml-2 lg:ml-8 xl:ml-6 sm:ml-0 flex flex-wrap pt-6 sm:overflow-hidden sm:pb-4   ${
             this.props.misc.lowGPUMode
               ? "xxl:ml-4 ml-2 sm:justify-center md:justify-around lg:justify-center lg:flex-col sm:flex-col xl:justify-around xxl:justify-around"
-              : "xxl:ml-12 ml-10 sm:justify-center md:justify-center lg:justify-start xl:justify-start xxl:justify-start"
+              : "xxl:ml-12 ml-10 sm:justify-around md:justify-around lg:justify-start xl:justify-start xxl:justify-start"
           } `}
         >
           {this.mapProducts()}
