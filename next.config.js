@@ -10,6 +10,32 @@ const ManifestPlugin = require("webpack-manifest-plugin");
 module.exports = withSass({
   cssModules: false,
   webpack(config, { isServer, buildId, dev }) {
+    config.module.rules.push(
+      {
+        test: /\.css$/,
+        use: ["css-loader"]
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg|gif|jpg)$/,
+        loader: "file-loader",
+        options: {
+          publicPath: "/_next/static/",
+          outputPath: "static/"
+        }
+      }
+    );
+    return config;
+    // module.exports = {
+    //   exportPathMap: function() {
+    //     return {
+    //       "/": { page: "/" },
+    //       "/product/1": { page: "/product", query: { id: "1" } },
+    //       "/product/2": { page: "/product", query: { id: "2" } },
+    //       "/product/3": { page: "/product", query: { id: "3" } }
+    //     };
+    //   }
+    // };
+
     // const workboxOptions = {
     //   clientsClaim: true,
     //   skipWaiting: true,
@@ -56,21 +82,5 @@ module.exports = withSass({
     //     })
     //   );
     // }
-
-    config.module.rules.push(
-      {
-        test: /\.css$/,
-        use: ["css-loader"]
-      },
-      {
-        test: /\.(png|woff|woff2|eot|ttf|svg|gif|jpg)$/,
-        loader: "file-loader",
-        options: {
-          publicPath: "/_next/static/",
-          outputPath: "static/"
-        }
-      }
-    );
-    return config;
   }
 });

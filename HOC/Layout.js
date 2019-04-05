@@ -235,7 +235,7 @@ class Layout extends Component {
         Router.asPath.includes("product") &&
         this.props.viewProduct.currentProduct ? (
           <Head>
-            <title>
+            <title key="titlePage">
               {this.props.viewProduct.currentProduct.name +
                 " - Crop King Seeds"}
             </title>
@@ -277,7 +277,7 @@ class Layout extends Component {
           </Head>
         ) : (
           <Head>
-            <title>
+            <title key="titlePage">
               {Router.asPath == "/"
                 ? "Buy Feminized & Autoflowering Cannabis Seeds - Crop King Seeds"
                 : Router.asPath.slice(1, 2).toUpperCase() +
