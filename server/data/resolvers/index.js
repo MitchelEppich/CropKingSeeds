@@ -16,7 +16,8 @@ const {
   BlockedZip,
   Banners,
   Tax,
-  DailyMessage
+  DailyMessage,
+  Order: _Order
 } = require("../../models");
 
 const Strain = StrainResolvers.Strain;
@@ -32,6 +33,52 @@ const resolvers = {
     ...OrderResolvers.Query,
     news: (_, { input }) => {
       return News.findOne(input);
+    },
+    getDailyStats: async (_, date) => {
+      let orders = (await _Order.find({
+        orderDate: {
+          $gte: moment()
+            .subtract(6, "day")
+            .startOf("day")
+            .format("YY-MM-DD HH:mm:ss"),
+          $lt: moment()
+            .subtract(6, "day")
+            .endOf("day")
+            .format("YY-MM-DD HH:mm:ss")
+        }
+      })).filter(a => {
+        if (JSON.stringify(a).includes("test")) return false;
+        return true;
+      });
+
+      let revenue = 0;
+      let productCount = {};
+      let methodCount = {};
+      let reg = new RegExp("^[0-9]+$");
+      orders.map(a => {
+        revenue += parseFloat(a.total);
+        if (methodCount[a.paymentMethod] == null)
+          methodCount[a.paymentMethod] = 1;
+        else methodCount[a.paymentMethod] += 1;
+
+        a.productList.split(",").map(b => {
+          let id = b.split("-")[0].trim();
+          if (productCount[id] == null) productCount[id] = 1;
+          else productCount[id] += 1;
+          id = id.replace(/[0-9]/g, "");
+          if (productCount[id] == null) productCount[id] = 1;
+          else productCount[id] += 1;
+        });
+      });
+      return {
+        revenue,
+        saleCount: orders.length,
+        productCount: [
+          `${Object.entries(productCount).sort((a, b) => b[1] - a[1])}`
+        ],
+        methodCount: [`${Object.entries(methodCount)}`]
+      };
+      // console.log(orders);
     },
     allNews: async _ => {
       let news = (await News.find({})).sort((a, b) => {
