@@ -40,6 +40,9 @@ const SearchBar = props => {
         setFilters();
       }}
       className="w-full z-50"
+      // onBlur={() => {
+      //   props.setSuggestions([]);
+      // }}
     >
       <div className="flex w-400 sm:w-full xl:w-225 lg:w-300 md:w-225 z-40 h-8 mt-1 bg-white border-0 text-grey rounded shadow-md sm:relative">
         <SearchSuggest

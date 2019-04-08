@@ -172,27 +172,30 @@ const query = {
         price
         strainImg
         packageImg
-        description
-        effect
+        inStock
         genetic
         yield
         flowerTime
-        difficulty
         type
-        og
         pthc
         pcbd
         pcbn
-        country
         sotiId
-        env
         sativa
         indica
         ruderalis
         rating
+        releaseDate
+        description
+        effect
+        difficulty
+        og
+        country
+        env
         reviews
         ratingQuantity
-        releaseDate
+        featured
+        moreInfo
       }
     }
   `

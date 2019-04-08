@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../../store/actions";
+import Router from "next/router";
 
 import { filter } from "../../../store/utilities/filter";
 
@@ -18,37 +19,17 @@ class SearchSuggest extends Component {
       }}
       onClick={() => {
         this.props
-          .setSearch(
-            this.props.misc.suggestions[index].strain.name.toLowerCase()
-          )
+          .fetchCurrentProduct({
+            name: suggestion.strain.name.toLowerCase()
+          })
           .then(res => {
-            this.props.clearSuggestions();
-            if (!this.props.router.asPath.includes("/shop")) {
-              this.props.router.push("/shop");
-            } else {
-              this.props.setFilters();
-            }
+            this.prepCurrentProduct(this.props);
+            Router.push(
+              "/product",
+              "/product/" +
+                suggestion.strain.name.toLowerCase().replace(/ /g, "-")
+            );
           });
-        // this.props
-        //   .getStrain({
-        //     sotiId: strains[index].sotiId,
-        //     strains
-        //   })
-        //   .then(res => {
-        //     this.props.setCurrentProduct({ product: res }).then(() => {
-        //       let product = this.props.viewProduct.currentProduct;
-        //       let _index = 0;
-        //       while (product.price[_index] == -1) {
-        //         _index++;
-        //       }
-        //       this.props.quickAddToCartQty(_index);
-        //     });
-        //   });
-        // this.props.router.push(
-        //   "/product",
-        //   "/product/" + props.product.name.toLowerCase().replace(/ /g, "-")
-        // );
-        // window.scrollTo(0, 0);
       }}
       className={
         this.props.misc.highlightedSuggestion == index
@@ -69,6 +50,25 @@ class SearchSuggest extends Component {
       </div>
     </div>
   );
+
+  prepCurrentProduct = props => {
+    let product = props.viewProduct.currentProduct;
+    let _index = 0;
+    while (product.price[_index] == -1) {
+      _index++;
+    }
+    props.quickAddToCartQty(_index, props.shop.quickAddToCartQty, product._id);
+    if (props.cart.potentialQuantity[product._id] == null) {
+      props.modifyPotentialQuantity({
+        potentialQuantity: props.cart.potentialQuantity,
+        action: "SET",
+        tag: product._id,
+        quantity: 1,
+        max: props.cart.maxPerPackage
+      });
+    }
+  };
+
   getSuggestions = value => {
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
@@ -146,14 +146,6 @@ class SearchSuggest extends Component {
               suggestions: this.props.misc.suggestions
             });
           }}
-          // onBlur={() => {
-          //   // this.props.setSearch(null);
-          //   this.props.setSuggestions([]);
-          //   this.props.setHighlightedSuggestion({
-          //     index: null,
-          //     suggestions: this.props.misc.suggestions
-          //   });
-          // }}
           value={
             (this.props.misc.suggestions[this.props.misc.highlightedSuggestion]
               ? this.props.misc.suggestions[
@@ -174,7 +166,9 @@ class SearchSuggest extends Component {
   }
 }
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    fetchCurrentProduct: name => dispatch(actions.fetchCurrentProduct(name))
+  };
 };
 
 export default connect(

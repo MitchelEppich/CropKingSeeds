@@ -33,31 +33,22 @@ class Index extends Component {
     if (typeof document === "undefined") return;
     let qr = this.props.router.asPath.split("/product/")[1];
     if (qr) {
-      this.props
-        .fetchCurrentProduct({
-          name: qr.replace(/-/g, " ").toLowerCase()
-        })
-        .then(res => {
-          let product = this.props.viewProduct.currentProduct;
-          let _index = 0;
-          while (product.price[_index] == -1) {
-            _index++;
-          }
-          this.props.quickAddToCartQty(
-            _index,
-            this.props.shop.quickAddToCartQty,
-            product._id
-          );
-          if (this.props.cart.potentialQuantity[product._id] == null) {
-            this.props.modifyPotentialQuantity({
-              potentialQuantity: this.props.cart.potentialQuantity,
-              action: "SET",
-              tag: product._id,
-              quantity: 1,
-              max: this.props.cart.maxPerPackage
-            });
-          }
-        });
+      if (
+        this.props.viewProduct.currentProduct &&
+        this.props.viewProduct.currentProduct.name.includes(
+          qr.replace(/-/g, " ").toLowerCase()
+        )
+      ) {
+        this.prepCurrentProduct(this.props);
+      } else {
+        this.props
+          .fetchCurrentProduct({
+            name: qr.replace(/-/g, " ").toLowerCase()
+          })
+          .then(res => {
+            this.prepCurrentProduct(this.props);
+          });
+      }
     } else {
       Router.push("/_error", "/404");
     }
@@ -234,6 +225,24 @@ class Index extends Component {
       </Layout>
     );
   }
+
+  prepCurrentProduct = props => {
+    let product = props.viewProduct.currentProduct;
+    let _index = 0;
+    while (product.price[_index] == -1) {
+      _index++;
+    }
+    props.quickAddToCartQty(_index, props.shop.quickAddToCartQty, product._id);
+    if (props.cart.potentialQuantity[product._id] == null) {
+      props.modifyPotentialQuantity({
+        potentialQuantity: props.cart.potentialQuantity,
+        action: "SET",
+        tag: product._id,
+        quantity: 1,
+        max: props.cart.maxPerPackage
+      });
+    }
+  };
 }
 
 const mapDispatchToProps = dispatch => {

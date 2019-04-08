@@ -14,7 +14,10 @@ import ExtraContent from "../components/sections/extraContent";
 import Carousel from "../components/sections/germination/carousel";
 import { initGA, logPageView } from "../scripts/ga";
 
+import generateSiteNavigationMarkup from "../scripts/generateSiteNavigationMarkup";
+import siteNavPages from "../scripts/siteNavPages";
 import registerServiceWorker from "../registerServiceWorker";
+
 class Index extends Component {
   componentWillMount() {
     this.props.getBanners();
@@ -44,6 +47,16 @@ class Index extends Component {
     return (
       <Layout {...this.props}>
         <React.Fragment>
+          <Head>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify(
+                  generateSiteNavigationMarkup(siteNavPages)
+                )
+              }}
+            />
+          </Head>
           <BannerCarousel {...this.props} />
           <GenePreview {...this.props} />
           <ExtraContent {...this.props} />

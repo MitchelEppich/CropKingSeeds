@@ -4,8 +4,6 @@ import { library } from "@fortawesome/fontawesome-svg-core"; // FONTAWESOME
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 // custom imports
-import generateSiteNavigationMarkup from "../scripts/generateSiteNavigationMarkup";
-import siteNavPages from "../scripts/siteNavPages";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -105,12 +103,6 @@ export default class MyDocument extends Document {
                 //   "query-input": "required name=search_term"
                 // }
               })
-            }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(generateSiteNavigationMarkup(siteNavPages))
             }}
           />
         </body>
