@@ -438,7 +438,9 @@ let buildProductList = items => {
 
     itemQuantity += item.quantity;
 
-    productList.push(`${_name} x ${item.quantity} x ${item.per}`);
+    productList.push(
+      `${_name} x ${item.quantity} x ${item.per * item.quantity}`
+    );
   }
 
   return { productList: productList.toString(), itemQuantity };

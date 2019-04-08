@@ -191,7 +191,10 @@ const filters = props => {
 
       <button
         style={{ width: "95%" }}
-        onClick={() => props.clearFilters()}
+        onClick={() => {
+          props.clearFilters();
+          Router.push("/shop", "/shop", { shallow: true });
+        }}
         className="text-white bg-red-dark p-2 m-2 mt-6 mx-auto block font-bold slowish hover:bg-grey hover:text-white text-lg rounded"
       >
         Clear Filters

@@ -118,7 +118,9 @@ const addToCart = props => {
                 onClick={() => {
                   let _identifier =
                     currentProduct.sotiId +
-                    [5, 10, 25][props.shop.quickAddToCartQty];
+                    [5, 10, 25][
+                      props.shop.quickAddToCartQty[currentProduct._id]
+                    ];
                   props.modifyCart({
                     items: props.cart.items,
                     action: "APPEND",

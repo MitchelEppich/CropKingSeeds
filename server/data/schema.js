@@ -14,6 +14,8 @@ type Query {
   allFeaturedNews: [News]!
   allBlockedZips: [String]!
   allBlockedIps: [String]!
+
+  getDailyStats(date: String): Stat
   
   isRepeatCustomer(input: OrderInput!): Boolean
   getBanners: [String]
@@ -30,6 +32,13 @@ type Query {
   getTrustPilotRating: Float
 
   getDailyMessage: String
+}
+
+type Stat {
+  revenue: String
+  saleCount: String
+  productCount: [String]
+  methodCount: [String]
 }
 
 input RelatedInput {
@@ -334,7 +343,7 @@ type Mutation {
 
   createNewsEntry(input: NewsInput): News
 
-  acquireOrderId(input: ArchiveInput): String
+  acquireOrderId: String
 
   sendEmail(input: EmailInput): String
   subscribeToNewsletter(email: String): String
