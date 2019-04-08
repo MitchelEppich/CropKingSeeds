@@ -1,4 +1,3 @@
-import Router from "next/router";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,10 +5,15 @@ import {
   faVolumeOff,
   faVolumeUp
 } from "@fortawesome/free-solid-svg-icons";
+import LoaderSmall from "../loader/loaderSmall";
 
 const videoSlide = props => {
   let strains = props.misc.strains;
+  if (strains == null) {
+    strains = [1, 2, 3, 4, 5, 6];
+  }
   let packages = strains.slice(0, 6).map((strain, index) => {
+    if (typeof strain == "number") return <LoaderSmall key={index} />;
     return (
       <Link
         key={index}

@@ -23,7 +23,7 @@ export default class MyDocument extends Document {
           </title>
           <meta
             name="description"
-            key="description"
+            key="desc"
             content="Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
           />
           <meta

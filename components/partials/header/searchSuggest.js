@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../../store/actions";
-import Router from "next/router";
 
 import { filter } from "../../../store/utilities/filter";
 
@@ -24,8 +23,8 @@ class SearchSuggest extends Component {
           )
           .then(res => {
             this.props.clearSuggestions();
-            if (!Router.asPath.includes("/shop")) {
-              Router.push("/shop");
+            if (!this.props.router.asPath.includes("/shop")) {
+              this.props.router.push("/shop");
             } else {
               this.props.setFilters();
             }
@@ -45,7 +44,7 @@ class SearchSuggest extends Component {
         //       this.props.quickAddToCartQty(_index);
         //     });
         //   });
-        // Router.push(
+        // this.props.router.push(
         //   "/product",
         //   "/product/" + props.product.name.toLowerCase().replace(/ /g, "-")
         // );
@@ -86,8 +85,8 @@ class SearchSuggest extends Component {
   };
   changeHighlightedSuggestion = e => {
     if (e.keyCode == 13) {
-      if (!Router.asPath.includes("/shop")) {
-        Router.push("/shop");
+      if (!this.props.router.asPath.includes("/shop")) {
+        this.props.router.push("/shop");
       }
       this.props.setSuggestions([]);
     }
@@ -138,9 +137,7 @@ class SearchSuggest extends Component {
           autoComplete="off"
           id="searchInput"
           className="react-autosuggest__input mb-2"
-          placeholder={
-            window.innerWidth > 1367 ? "What are you looking for?" : "Search..."
-          }
+          placeholder="Search..."
           onChange={e => {
             this.props.setSearch(e.target.value.toLowerCase());
             this.props.setSuggestions(this.getSuggestions(e.target.value));

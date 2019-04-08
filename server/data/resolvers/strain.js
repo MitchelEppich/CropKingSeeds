@@ -54,6 +54,10 @@ const resolvers = {
 
       return JSON.stringify(arr);
     },
+    fetchCurrentProduct: (_, { input }) => {
+      const nameRegExp = new RegExp("^" + input.name, "i");
+      return Strain.findOne({ name: nameRegExp });
+    },
     strain: (_, { input }) => {
       return Strain.findOne(input);
     },

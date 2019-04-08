@@ -1,4 +1,3 @@
-import Router from "next/router";
 import Link from "next/link";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,8 +23,7 @@ const strainsMenu = props => {
     Mix: "Mix and Match"
   };
   let _strains = props.misc.strains;
-
-  if (_strains == null) return <div />;
+  if (_strains == null) return null;
 
   _strains = [..._strains];
 

@@ -1,4 +1,4 @@
-import Router from "next/router";
+
 import FeaturedStrainThumbnail from "./featuredStrainThumbnail";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,7 +13,7 @@ const index = props => {
 
   if (products == null) return <div />;
 
-  let route = Router.asPath.slice(0);
+  let route = props.router.asPath.slice(0);
   let isSmallMediumOrLargeDevice = ["sm", "md", "lg"].includes(
     props.misc.mediaSize
   );

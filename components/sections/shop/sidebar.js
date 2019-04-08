@@ -2,9 +2,14 @@ import FeaturedStrains from "./featuredStrains";
 import Catalogue from "./catalogue";
 import ReviewBanner from "./reviewBanner";
 import SeedTracker from "./seedtracker";
+import LoaderSmall from "../loader/loaderSmall";
 
 const sidebar = props => {
   let mobile = ["sm", "md"].includes(props.misc.mediaSize);
+  let products =
+    props.page == "product"
+      ? props.misc.relatedStrains
+      : props.misc.featuredStrains;
   return (
     <div>
       {!mobile ? (
@@ -15,7 +20,7 @@ const sidebar = props => {
               className=""
             />
           </div>
-          <FeaturedStrains {...props} />
+          {products != null ? <FeaturedStrains {...props} /> : <LoaderSmall />}
           <SeedTracker {...props} />
           <Catalogue {...props} />
           <ReviewBanner {...props} />
@@ -57,12 +62,16 @@ const sidebar = props => {
           </div>
 
           <div className="">
-            <FeaturedStrains
-              page={"shop"}
-              specificMax={8}
-              initialCount={1}
-              {...props}
-            />
+            {products != null ? (
+              <FeaturedStrains
+                page={"shop"}
+                specificMax={8}
+                initialCount={1}
+                {...props}
+              />
+            ) : (
+              <LoaderSmall />
+            )}
           </div>
           <div className="w-full justify-center flex relative mt-2">
             <a

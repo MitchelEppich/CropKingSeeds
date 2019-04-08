@@ -43,18 +43,12 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
-        {this.props.misc.strains != null && this.props.misc.banners != null ? (
-          <React.Fragment>
-            <BannerCarousel {...this.props} />
-            <GenePreview {...this.props} />
-            <ExtraContent {...this.props} />
-            <News {...this.props} />
-          </React.Fragment>
-        ) : (
-          <p className="text-transparent text-4xl h-500 w-full py-32">
-            <span className="text-black">Loading...</span>
-          </p>
-        )}
+        <React.Fragment>
+          <BannerCarousel {...this.props} />
+          <GenePreview {...this.props} />
+          <ExtraContent {...this.props} />
+          <News {...this.props} />
+        </React.Fragment>
       </Layout>
     );
   }

@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Link from "next/link";
-import Router from "next/router";
 import {
   faAngleLeft,
   faAngleRight,
@@ -71,7 +70,7 @@ class Index extends Component {
             <script
               type="application/ld+json"
               dangerouslySetInnerHTML={{
-                __html: JSON.stringify(generateBreadcrumbMarkup(Router.asPath))
+                __html: JSON.stringify(generateBreadcrumbMarkup(this.props.router.asPath))
               }}
             />
           </Head>
@@ -145,7 +144,7 @@ class Index extends Component {
                 // Redirect to 404
                 const isClient = typeof document !== "undefined";
                 if (!isClient) return;
-                Router.push("/404");
+                this.props.router.push("/404");
               }
             } else {
               _stepsCheckout < 4

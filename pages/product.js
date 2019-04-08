@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import withData from "../lib/withData";
 import { connect } from "react-redux";
 import Head from "next/head";
+import Router from "next/router";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import FeaturedStrainThumbnails from "../components/sections/shop/featuredStrainThumbnails";
@@ -21,7 +22,6 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import Loader from "../components/sections/loader";
 import ImageCarousel from "../components/sections/productPage/imageCarousel";
 import Ratings from "../components/sections/productPage/ratings";
-import Router from "next/router";
 import { initGA, logPageView } from "../scripts/ga";
 import generateSchemaMarkup from "../scripts/generateSchemaMarkup";
 import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
@@ -30,6 +30,37 @@ let lowerImageCar;
 
 class Index extends Component {
   componentDidMount() {
+    if (typeof document === "undefined") return;
+    let qr = this.props.router.asPath.split("/product/")[1];
+    if (qr) {
+      this.props
+        .fetchCurrentProduct({
+          name: qr.replace(/-/g, " ").toLowerCase()
+        })
+        .then(res => {
+          let product = this.props.viewProduct.currentProduct;
+          let _index = 0;
+          while (product.price[_index] == -1) {
+            _index++;
+          }
+          this.props.quickAddToCartQty(
+            _index,
+            this.props.shop.quickAddToCartQty,
+            product._id
+          );
+          if (this.props.cart.potentialQuantity[product._id] == null) {
+            this.props.modifyPotentialQuantity({
+              potentialQuantity: this.props.cart.potentialQuantity,
+              action: "SET",
+              tag: product._id,
+              quantity: 1,
+              max: this.props.cart.maxPerPackage
+            });
+          }
+        });
+    } else {
+      Router.push("/_error", "/404");
+    }
     initGA();
     logPageView();
     lowerImageCar = ["sm", "md", "lg"].includes(this.props.misc.mediaSize);
@@ -48,8 +79,7 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
-        {this.props.misc.featuredStrains &&
-        this.props.viewProduct.currentProduct &&
+        {this.props.viewProduct.currentProduct &&
         this.props.viewProduct.currentProduct.reviews != null ? (
           <React.Fragment>
             <Head>
@@ -67,7 +97,7 @@ class Index extends Component {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
                   __html: JSON.stringify(
-                    generateBreadcrumbMarkup(Router.asPath)
+                    generateBreadcrumbMarkup(this.props.router.asPath)
                   )
                 }}
               />
@@ -170,12 +200,14 @@ class Index extends Component {
                   </h3>
                   <div className="px-0 w-full mt-2">
                     {/* <OtherProducts count={3} {...this.props} /> */}
-                    <FeaturedStrainThumbnails
-                      page={"product"}
-                      initialCount={4}
-                      specificMax={4}
-                      {...this.props}
-                    />
+                    {this.props.misc.featuredStrains != null ? (
+                      <FeaturedStrainThumbnails
+                        page={"product"}
+                        initialCount={4}
+                        specificMax={4}
+                        {...this.props}
+                      />
+                    ) : null}
                   </div>
                 </div>
               </div>
@@ -234,7 +266,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.toggleImageZoom(isImageZoomed)),
     toggleStrainsMenu: isStrainsMenuVisible =>
       dispatch(actions.toggleStrainsMenu(isStrainsMenuVisible)),
-    updateRecentAdded: input => dispatch(actions.updateRecentAdded(input))
+    updateRecentAdded: input => dispatch(actions.updateRecentAdded(input)),
+    fetchCurrentProduct: name => dispatch(actions.fetchCurrentProduct(name))
   };
 };
 
