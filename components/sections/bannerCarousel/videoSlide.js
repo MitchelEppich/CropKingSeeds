@@ -12,11 +12,11 @@ const videoSlide = props => {
   let packages = strains.slice(0, 6).map((strain, index) => {
     return (
       <Link
+        key={index}
         href="/product"
         as={"/product/" + strain.name.toLowerCase().replace(/ /g, "-")}
       >
         <img
-          key={index}
           onMouseEnter={() => {
             if (props.sotiId == null) return;
             props.getStrain({ sotiId: strain.sotiId, strains }).then(res => {

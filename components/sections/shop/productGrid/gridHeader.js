@@ -96,7 +96,10 @@ const gridHeader = props => {
           <div className="inline-flex w-full mb-2 pl-2 font-bold p-2 bg-red-light text-white uppercase w-full">
             <p className="text-left w-1/2">Active Filters:</p>
             <p
-              onClick={() => props.clearFilters()}
+              onClick={() => {
+                props.clearFilters();
+                Router.push("/shop", "/shop", { shallow: true });
+              }}
               className="text-right w-1/2 hover:text-red-darker flex items-center justify-end underline cursor-pointer"
             >
               Clear <FontAwesomeIcon icon={faTimes} className="ml-2 fa-lg" />

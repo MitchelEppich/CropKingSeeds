@@ -33,8 +33,12 @@ const filters = props => {
     })();
     for (let filter of filters) {
       arr.push(
-        <a href={`/shop?${filter}`} onClick={e => e.preventDefault()}>
-          <li key={filter}>
+        <a
+          key={filter}
+          href={`/shop?${filter}`}
+          onClick={e => e.preventDefault()}
+        >
+          <li>
             <button
               onClick={e => {
                 if (["cbd", "thc"].includes(input)) {
@@ -187,7 +191,10 @@ const filters = props => {
 
       <button
         style={{ width: "95%" }}
-        onClick={() => props.clearFilters()}
+        onClick={() => {
+          props.clearFilters();
+          Router.push("/shop", "/shop", { shallow: true });
+        }}
         className="text-white bg-red-dark p-2 m-2 mt-6 mx-auto block font-bold slowish hover:bg-grey hover:text-white text-lg rounded"
       >
         Clear Filters

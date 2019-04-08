@@ -31,13 +31,53 @@ class Index extends Component {
       );
       this.myTween.restart();
     }
+    this.refreshInputs(true);
   }
 
   componentDidUpdate(prevProps) {
     if (!this.props.lowGPUMode) {
       this.myTween.set(this.myElements, { autoAlpha: 1, y: -30 });
     }
+
+    this.refreshInputs();
   }
+
+  refreshInputs = updateAll => {
+    if (this.props.misc.lowGPUMode) {
+      let strains = this.props.misc.strains;
+      if (strains == null) return;
+      strains.map(product => {
+        if (
+          this.props.shop.quickAddToCartQty[product._id] == null ||
+          (this.props.shop.quickAddToCartQty[product._id] != 0 && updateAll)
+        ) {
+          let _index = 0;
+          while (product.price[_index] == -1) {
+            _index++;
+          }
+
+          this.props.quickAddToCartQty(
+            _index,
+            this.props.shop.quickAddToCartQty,
+            product._id
+          );
+        }
+
+        if (
+          this.props.cart.potentialQuantity[product._id] == null ||
+          this.props.cart.potentialQuantity[product._id] != 1
+        ) {
+          this.props.modifyPotentialQuantity({
+            potentialQuantity: this.props.cart.potentialQuantity,
+            action: "SET",
+            tag: product._id,
+            max: this.props.cart.maxPerPackage,
+            quantity: 1
+          });
+        }
+      });
+    }
+  };
 
   render() {
     return (
@@ -76,33 +116,6 @@ class Index extends Component {
     }
 
     let filterOutput = filter(this.props.misc.strains, $filter);
-
-    if (this.props.misc.lowGPUMode) {
-      filterOutput.map(product => {
-        if (this.props.shop.quickAddToCartQty[product._id] == null) {
-          let _index = 0;
-          while (product.price[_index] == -1) {
-            _index++;
-          }
-
-          this.props.quickAddToCartQty(
-            _index,
-            this.props.shop.quickAddToCartQty,
-            product._id
-          );
-        }
-
-        if (this.props.cart.potentialQuantity[product._id] == null) {
-          this.props.modifyPotentialQuantity({
-            potentialQuantity: this.props.cart.potentialQuantity,
-            action: "SET",
-            tag: product._id,
-            max: this.props.cart.maxPerPackage,
-            quantity: 1
-          });
-        }
-      });
-    }
 
     let products = filterOutput
       .sort(

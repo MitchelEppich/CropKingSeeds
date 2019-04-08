@@ -50,9 +50,8 @@ const strainsMenu = props => {
       let color = props.detail.geneColor[genetic.toLowerCase()];
       let text = category[genetic];
       return (
-        <a href={`/shop?${genetic}`}>
+        <a key={arr} href={`/shop?${genetic}`}>
           <p
-            key={arr}
             className={`bg-${color} ${
               Object.keys(category).indexOf(genetic) == 0 ? "mt-8 pt-5" : ""
             } p-3 font-bold text-center text-white text-shadow uppercase w-full`}
