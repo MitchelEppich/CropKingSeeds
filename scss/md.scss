@@ -356,16 +356,18 @@
     position: absolute;
     top: 0;
     z-index: 0;
-    transform: translateX(-31px) translateY(36px) translateZ(0);
-    -webkit-transform: translateX(-31px) translateY(36px) translateZ(0);
-    -moz-transform: translateX(-31px) translateY(36px) translateZ(0);
-    -ms-transform: translateX(-31px) translateY(36px) translateZ(0);
-    -o-transform: translateX(-31px) translateY(36px) translateZ(0);
+    transform: translateX(-40px) translateY(36px) translateZ(0);
+    -webkit-transform: translateX(-40px) translateY(36px) translateZ(0);
+    -moz-transform: translateX(-40px) translateY(36px) translateZ(0);
+    -ms-transform: translateX(-40px) translateY(36px) translateZ(0);
+    -o-transform: translateX(-40px) translateY(36px) translateZ(0);
   }
 
   .overlayClassNoAnimation {
     height: 510px;
-    width: 90%;
+    // width: 80%;
+    max-width: 70%;
+    min-width: 190px;
     color: rgba(255, 255, 255, 0);
     position: relative;
     text-align: center;

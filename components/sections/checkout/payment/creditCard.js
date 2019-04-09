@@ -57,7 +57,12 @@ const CreditCard = props => {
         className="h-10 inline-flex w-full cursor-pointer"
       >
         <div className="w-4/5 p-2 flex items-center">
-          <p className="">Pay with Credit Card</p>
+          <p className="font-bold">
+            Pay with Credit Card -{" "}
+            <span className="font-normal">
+              Additional Credit Card Fee - (10%){" "}
+            </span>
+          </p>
         </div>
         <div className="w-1/5 justify-end flex">
           <div className="h-10 w-10 text-center py-2 bg-semi-transparent ">
@@ -345,15 +350,21 @@ const CreditCard = props => {
               </div>
             </div>
           </div>
-          <div className="w-225 p-2 mx-auto mt-6 text-center">
+          <div className="w-95p p-2 mx-auto text-center">
             {!props.checkout.processing ? (
-              <button
-                name="creditPay"
-                type="submit"
-                className="w-full font-bold text-white text-center p-2 font-extrabold bg-red-dark text-white text-xl hover:bg-grey-light cursor-pointer rounded"
-              >
-                Pay Now
-              </button>
+              <div className="">
+                <p className="opacity-75 p-1 py-3">
+                  * An additional Credit Card Fee of 10% has been applied on
+                  your order total.
+                </p>
+                <button
+                  name="creditPay"
+                  type="submit"
+                  className="w-225 font-bold text-white text-center p-2 font-extrabold bg-red-dark text-white text-xl hover:bg-grey-light cursor-pointer rounded"
+                >
+                  Pay Now
+                </button>
+              </div>
             ) : (
               <div className="text-center">
                 <p className="p-1 uppercase font-bold pb-2">
