@@ -98,22 +98,91 @@ const resolvers = {
         })();
       }
 
-      let dailyTotal, hourlyTotal;
+      let dailyTotal,
+        hourlyTotal = {};
       // Daily total
-      dailyTotal = orders.map(a => a.total).reduce((a, b) => a + b);
+      dailyTotal = orders
+        .map(a => a.total)
+        .reduce((a, b) => a + b)
+        .toFixed(2);
       // Hourly total
-      if (showHourly)
-        hourlyTotal = hourlyOrders.map(a => {
-          if (a.orders.length == 0) return { time: a.time, total: 0 };
-          return {
-            time: a.time,
-            total: a.orders.map(a => a.total).reduce((a, b) => a + b)
-          };
-        });
+      if (showHourly) {
+        let upTillAmt = 0;
+        let currentDay = "";
+        for (let part of hourlyOrders) {
+          let time = moment(part.time).format("LT");
+          let day = moment(part.time).format("MMMM Do");
+
+          if (currentDay != day) {
+            upTillAmt = 0;
+            currentDay = day;
+          }
+
+          let timeAmt =
+            part.orders.length == 0
+              ? 0
+              : part.orders
+                  .map(a => a.total)
+                  .reduce((a, b) => a + b)
+                  .toFixed(2);
+
+          upTillAmt += parseFloat(timeAmt);
+
+          if (hourlyTotal[time] == null) {
+            hourlyTotal[time] = {
+              [day]: timeAmt,
+              [`${day} Day`]: timeAmt == 0 ? 0 : upTillAmt.toFixed(2)
+            };
+          } else {
+            let avgAmt = (() => {
+              let value = parseFloat(timeAmt);
+              let _keys = Object.keys(hourlyTotal[time]).filter(a => {
+                if (a.includes("Day")) return false;
+                return true;
+              });
+              for (let key of _keys) {
+                value += parseFloat(hourlyTotal[time][key]);
+              }
+              return value.toFixed(2);
+            })();
+            let avgAmtDaily = (() => {
+              let value = parseFloat(timeAmt);
+              let _keys = Object.keys(hourlyTotal[time]).filter(a => {
+                if (!a.includes("Day")) return false;
+                return true;
+              });
+              for (let key of _keys) {
+                value += parseFloat(hourlyTotal[time][key]);
+              }
+              return value.toFixed(2);
+            })();
+
+            delete hourlyTotal[time]["Average"];
+            hourlyTotal[time] = {
+              ...hourlyTotal[time],
+              [day]: timeAmt,
+              [`${day} Day`]: timeAmt == 0 ? 0 : upTillAmt.toFixed(2),
+              Average: avgAmt,
+              "Average Day": avgAmtDaily
+            };
+          }
+        }
+      }
+      // hourlyTotal = hourlyOrders.map(a => {
+      //   console.log(hourlyTotal);
+      //   if (a.orders.length == 0) return { time: a.time, total: 0 };
+      //   return {
+      //     time: a.time,
+      //     total: a.orders.map(a => a.total).reduce((a, b) => a + b)
+      //   };
+      // });
 
       // Daily Packages sold
       // Hourly Packages sold
       // Payment Methods
+
+      console.log(dailyTotal);
+      console.log(hourlyTotal);
 
       return {
         dailyTotal,
