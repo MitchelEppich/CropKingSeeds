@@ -755,7 +755,6 @@ const query = {
       }
     }
   `,
-
   allStrains: gql`
     query {
       allStrains {
