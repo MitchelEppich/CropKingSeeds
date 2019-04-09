@@ -4,7 +4,9 @@ import Images from "../productThumbnail/images";
 import Details from "../productThumbnail/details";
 import AddToCartModule from "../productThumbnail/addToCartModule";
 import Prices from "../productThumbnail/prices";
+
 import Router from "next/router";
+const isClient = typeof document !== "undefined";
 
 const ProductNoAnimation = props => {
   let hover = props.hoverId == props.product._id;
@@ -27,6 +29,7 @@ const ProductNoAnimation = props => {
       </div>
       <div
         onClick={() => {
+          if (!isClient) return;
           props.setCurrentProduct({ product: props.product });
           Router.push(
             "/product",

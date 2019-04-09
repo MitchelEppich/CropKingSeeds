@@ -27,11 +27,13 @@ import generateSchemaMarkup from "../scripts/generateSchemaMarkup";
 import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 
 import Router from "next/router";
+const isClient = typeof document !== "undefined";
 
 let lowerImageCar;
 
 class Index extends Component {
   componentDidMount() {
+    if (!isClient) return;
     if (typeof document === "undefined") return;
     let qr = this.props.router.asPath.split("/product/")[1];
     if (qr) {

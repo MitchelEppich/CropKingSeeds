@@ -1,4 +1,6 @@
 import Router from "next/router";
+const isClient = typeof document !== "undefined";
+
 import VideoSlide from "./videoSlide";
 import Link from "next/link";
 
@@ -14,6 +16,7 @@ const slide = props => {
   let $url = props.misc.CFURL + "/land_banner/" + num;
 
   let onClick = e => {
+    if (!isClient) return;
     if (props.url == null) return;
     if (protocol) {
       window.target = "_blank";

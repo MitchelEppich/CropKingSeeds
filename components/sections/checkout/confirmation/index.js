@@ -5,8 +5,6 @@ import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
 
 const Confirmation = props => {
-  let hrefPrefix = window.location.href.replace(props.router.asPath, "");
-
   let _orderDetails = props.checkout.orderDetails;
   if (_orderDetails.payment == null) return <div />;
   let orderId = _orderDetails.payment.orderId.value.toString();
@@ -32,18 +30,21 @@ const Confirmation = props => {
           </div> */}
           <div className="w-3/5">
             <div className="p-2 font-bold text-lg items-center md:text-left sm:text-left lg:text-left flex">
-              <a
-                aria-label={"view-" + _item.product.name}
-                className="cursor-pointer hover:text-red-light"
-                href={
-                  hrefPrefix +
+              <Link
+                href="/product"
+                as={
                   "/product/" +
                   _item.product.name.toLowerCase().replace(/ /g, "-")
                 }
-                target="_blank"
               >
-                {_item.product.name} - {_item.amount} Seeds
-              </a>
+                <a
+                  aria-label={"view-" + _item.product.name}
+                  className="cursor-pointer hover:text-red-light"
+                  target="_blank"
+                >
+                  {_item.product.name} - {_item.amount} Seeds
+                </a>
+              </Link>
             </div>
           </div>
           <div className="w-1/5 p-2 font-bold text-lg items-center justify-center flex">

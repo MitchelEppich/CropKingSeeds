@@ -4,6 +4,7 @@ import Link from "next/link";
 import SearchSuggest from "./searchSuggest";
 
 import Router from "next/router";
+const isClient = typeof document !== "undefined";
 
 const SearchBar = props => {
   let setFilters = () => {
@@ -36,6 +37,7 @@ const SearchBar = props => {
       autoComplete="off"
       onSubmit={e => {
         e.preventDefault();
+        if (!isClient) return;
         if (!props.router.asPath.includes("/shop")) {
           Router.push("/shop", "/shop?" + props.misc.searchValue);
         }
