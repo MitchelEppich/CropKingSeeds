@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import Router from "next/router";
 import SearchSuggest from "./searchSuggest";
 
 const SearchBar = props => {
@@ -35,7 +36,7 @@ const SearchBar = props => {
       onSubmit={e => {
         e.preventDefault();
         if (!props.router.asPath.includes("/shop")) {
-          props.router.push("/shop", "/shop?" + props.misc.searchValue);
+          Router.push("/shop", "/shop?" + props.misc.searchValue);
         }
         setFilters();
       }}

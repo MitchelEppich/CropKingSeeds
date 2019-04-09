@@ -142,6 +142,23 @@ class Layout extends Component {
   }
 
   render() {
+    let title =
+      this.props.router.asPath == "/"
+        ? "Buy Feminized & Autoflowering Cannabis Seeds - Crop King Seeds"
+        : this.props.router.asPath.slice(1, 2).toUpperCase() +
+          this.props.router.asPath.slice(2) +
+          " - Crop King Seeds";
+    if (this.props.router.asPath.indexOf("?") > 0) {
+      let titleWords = this.props.router.asPath
+        .replace(/\//g, "")
+        .split("?")
+        .map((word, index) => {
+          return word.slice(0, 1).toUpperCase() + word.slice(1);
+        });
+      title = titleWords.join(" - ");
+      title += " - Crop King Seeds";
+    }
+
     return (
       <React.Fragment>
         {this.state.isClient &&
@@ -192,23 +209,9 @@ class Layout extends Component {
           </Head>
         ) : (
           <Head>
-            <title key="titlePage">
-              {this.props.router.asPath == "/"
-                ? "Buy Feminized & Autoflowering Cannabis Seeds - Crop King Seeds"
-                : this.props.router.asPath.slice(1, 2).toUpperCase() +
-                  this.props.router.asPath.slice(2).replace("?", " - ") +
-                  " - Crop King Seeds"}
-            </title>
-            <meta
-              property="og:title"
-              content={
-                this.props.router.asPath == "/"
-                  ? "Buy Feminized & Autoflowering Cannabis Seeds - Crop King Seeds"
-                  : this.props.router.asPath.slice(1, 2).toUpperCase() +
-                    this.props.router.asPath.slice(2).replace("?", " - ") +
-                    " - Crop King Seeds"
-              }
-            />
+            <title key="titlePage">{title}</title>
+
+            <meta property="og:title" content={title} />
             <meta property="og:type" content="The type" />
             <meta
               property="og:url"
@@ -229,17 +232,7 @@ class Layout extends Component {
                   : "Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
               }
             />
-            <meta
-              name="title"
-              key="title"
-              content={
-                this.props.router.asPath == "/"
-                  ? "Buy Feminized & Autoflowering Cannabis Seeds - Crop King Seeds"
-                  : this.props.router.asPath.slice(1, 2).toUpperCase() +
-                    this.props.router.asPath.slice(2).replace("?", " - ") +
-                    " - Crop King Seeds"
-              }
-            />
+            <meta name="title" key="title" content={title} />
             <meta
               name="description"
               key="desc"

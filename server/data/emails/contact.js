@@ -1,14 +1,13 @@
 exports.contact = input => {
-  let recipient;
-  // recipient =
-  //   input.subject === "Advertisement"
-  //     ? "jenn@vancoastind.com"
-  //     : "info@cropkingseeds.com";
-  //      if (input.subject === "Event Sponsorship")
-  //           recipient = "vanessa@vancoastind.com";
+  let recipient =
+    input.subject === "Advertisement"
+      ? "jenn@vancoastind.com"
+      : "info@cropkingseeds.com";
+  if (["Event Sponsorship", "Wholesale Inquiry"].includes(input.subject))
+    recipient = "vanessa@vancoastind.com";
   return {
     from: input.email,
-    to: "jenn@vancoastind.com",
+    to: recipient,
     recipient,
     subject: "CropKingSeeds.com Contact Form: " + input.subject,
     html: `

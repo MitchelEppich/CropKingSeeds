@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
+import Router from "nextrouter";
 
 // custom imports
 import withData from "../lib/withData";
@@ -70,7 +71,9 @@ class Index extends Component {
             <script
               type="application/ld+json"
               dangerouslySetInnerHTML={{
-                __html: JSON.stringify(generateBreadcrumbMarkup(this.props.router.asPath))
+                __html: JSON.stringify(
+                  generateBreadcrumbMarkup(this.props.router.asPath)
+                )
               }}
             />
           </Head>
@@ -144,7 +147,7 @@ class Index extends Component {
                 // Redirect to 404
                 const isClient = typeof document !== "undefined";
                 if (!isClient) return;
-                this.props.router.push("/404");
+                Router.push("/404");
               }
             } else {
               _stepsCheckout < 4

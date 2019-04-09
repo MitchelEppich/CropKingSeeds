@@ -16,14 +16,14 @@ export default class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <meta name="theme-color" content="#ef5753" />
-          <title key="titlePage">
+          {/* <title key="titlePage">
             Buy Feminized & Autoflowering Cannabis Seeds - Crop King Seeds
           </title>
           <meta
             name="description"
             key="desc"
             content="Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
-          />
+          /> */}
           <meta
             name="viewport"
             content="initial-scale=1.0, width=device-width, maximum-scale=6"

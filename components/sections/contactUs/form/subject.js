@@ -7,6 +7,8 @@ const subject = props => {
     "Privacy / Security",
     "Advertisement",
     "Event Sponsorship",
+    "Partnership",
+    "Wholesale Inquiry",
     "Report a Bug / Issue",
     "Other"
   ];
