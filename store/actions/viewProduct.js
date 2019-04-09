@@ -24,6 +24,7 @@ const getActions = uri => {
     setCurrentProduct: input => {
       return async dispatch => {
         let _product = input.product;
+        console.log(_product);
         return await dispatch({
           type: actionTypes.SET_CURRENT_PRODUCT,
           input: {
@@ -196,6 +197,7 @@ const query = {
         ratingQuantity
         featured
         moreInfo
+        relationData
       }
     }
   `
