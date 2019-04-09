@@ -10,7 +10,6 @@ import { Menu, Content } from "../components/sections/wiki";
 import { initGA, logPageView } from "../scripts/ga";
 import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 
-const isClient = typeof document !== "undefined";
 import Router from "next/router";
 
 class Index extends Component {
@@ -43,7 +42,6 @@ class Index extends Component {
     }
   }
   render() {
-    if (!isClient) return <div />;
     return (
       <Layout {...this.props}>
         {this.state.isClient ? (
@@ -51,7 +49,9 @@ class Index extends Component {
             <script
               type="application/ld+json"
               dangerouslySetInnerHTML={{
-                __html: JSON.stringify(generateBreadcrumbMarkup(Router.asPath))
+                __html: JSON.stringify(
+                  generateBreadcrumbMarkup(this.props.router.asPath)
+                )
               }}
             />
           </Head>

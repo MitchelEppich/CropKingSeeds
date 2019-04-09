@@ -23,12 +23,10 @@ import Layout from "../HOC/Layout";
 import { initGA, logPageView } from "../scripts/ga";
 import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 
-const isClient = typeof document !== "undefined";
 import Router from "next/router";
 
 class Index extends Component {
   componentWillMount() {
-    if (!isClient) return;
     let $orderDetails = this.props.checkout.orderDetails;
     if ($orderDetails.payment == null) Router.push("/");
   }
@@ -41,8 +39,6 @@ class Index extends Component {
   }
 
   render() {
-    const isClient = typeof document !== "undefined";
-    if (!isClient) return <div />;
     let hrefPrefix = window.location.href.replace(Router.router.asPath, "");
 
     let _orderDetails = this.props.checkout.orderDetails;

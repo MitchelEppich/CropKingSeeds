@@ -3,7 +3,6 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import SearchSuggest from "./searchSuggest";
 
-const isClient = typeof document !== "undefined";
 import Router from "next/router";
 
 const SearchBar = props => {
@@ -32,14 +31,12 @@ const SearchBar = props => {
     });
   };
 
-  if (!isClient) return <div />;
-
   return (
     <form
       autoComplete="off"
       onSubmit={e => {
         e.preventDefault();
-        if (!Router.asPath.includes("/shop")) {
+        if (!props.router.asPath.includes("/shop")) {
           Router.push("/shop", "/shop?" + props.misc.searchValue);
         }
         setFilters();
@@ -60,7 +57,7 @@ const SearchBar = props => {
             type="submit"
             aria-label="submit-search"
             onClick={e => {
-              if (Router.asPath.includes("/shop")) e.preventDefault();
+              if (props.router.asPath.includes("/shop")) e.preventDefault();
               clearSuggestions();
               setFilters();
             }}

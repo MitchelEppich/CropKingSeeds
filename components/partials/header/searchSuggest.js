@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../../../store/actions";
 
-const isClient = typeof document !== "undefined";
 import Router from "next/router";
 
 import { filter } from "../../../store/utilities/filter";
@@ -86,9 +85,8 @@ class SearchSuggest extends Component {
         ).slice(0, 5);
   };
   changeHighlightedSuggestion = e => {
-    if (!isClient) return;
     if (e.keyCode == 13) {
-      if (!Router.asPath.includes("/shop")) {
+      if (!this.props.router.asPath.includes("/shop")) {
         Router.push("/shop");
       }
       this.props.setSuggestions([]);

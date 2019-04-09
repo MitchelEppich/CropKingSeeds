@@ -12,15 +12,13 @@ import Sidebar from "../components/sections/shop/sidebar";
 import generateSchemaMarkup from "../scripts/generateSchemaMarkup";
 import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 
-const isClient = typeof document !== "undefined";
 import Router from "next/router";
 
 import { initGA, logPageView } from "../scripts/ga";
 class Index extends Component {
   componentDidMount() {
-    if (!isClient) return;
     if (typeof document === "undefined") return;
-    let url = Router.asPath.slice(1);
+    let url = this.props.router.asPath.slice(1);
     if (url && url.length != 0) {
       let qr;
       if (url.includes("shop?")) {
@@ -77,7 +75,6 @@ class Index extends Component {
   }
 
   render() {
-    if (!isClient) return <div />;
     let mobile = ["sm", "md"].includes(this.props.misc.mediaSize);
     return (
       <Layout {...this.props} supportedBrowser={this.props.supportedBrowser}>
@@ -100,7 +97,9 @@ class Index extends Component {
             <script
               type="application/ld+json"
               dangerouslySetInnerHTML={{
-                __html: JSON.stringify(generateBreadcrumbMarkup(Router.asPath))
+                __html: JSON.stringify(
+                  generateBreadcrumbMarkup(this.props.router.asPath)
+                )
               }}
             />
           </Head>
