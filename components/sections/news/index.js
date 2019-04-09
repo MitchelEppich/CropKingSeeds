@@ -142,10 +142,12 @@ const news = props => {
       <div className="w-full">
         <div className="flex justify-end w-full">
           <Link href="/news">
-            <p className="p-2 bg-red-dark text-white font-bold px-6 mr-8 my-4 text-right inline-flex items-center uppercase cursor-pointer hover:bg-red-light hover:text-white justify-center md:w-full sm:w-full md:mr-0 sm:mr-0">
-              See More Event {"&"} News{" "}
-              <FontAwesomeIcon icon={faAngleRight} className="ml-2 fa-lg" />
-            </p>
+            <a>
+              <p className="p-2 bg-red-dark text-white font-bold px-6 mr-8 my-4 text-right inline-flex items-center uppercase cursor-pointer hover:bg-red-light hover:text-white justify-center md:w-full sm:w-full md:mr-0 sm:mr-0">
+                See More Event {"&"} News{" "}
+                <FontAwesomeIcon icon={faAngleRight} className="ml-2 fa-lg" />
+              </p>
+            </a>
           </Link>
         </div>
       </div>
