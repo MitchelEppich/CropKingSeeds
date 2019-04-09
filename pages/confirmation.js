@@ -638,7 +638,7 @@ class Index extends Component {
             </div>
             <div className="w-full">{showProduct()}</div>
             <div className="inline-flex justify-end flex w-full mt-8 text-lg mb-4 xl:flex-col-reverse lg:flex-col-reverse md:flex-col-reverse sm:flex-col-reverse">
-              <div className="w-full inline-flex text-lg sm:flex-col md:flex-col xxl:border-r-2 border-grey-lightest lg:mt-4 lg:pt-4 md:pt-4 md:mt-4 xl:pt-4 xl:mt-4 sm:mt-4 sm:pt-4 sm:border-t-2 md:border-t-2 lg:border-t-2 xl:border-t-2">
+              <div className="xxl:w-1/2 xl:w-full w-full md:w-full inline-flex text-lg sm:flex-col md:flex-col xxl:border-r-2 border-grey-lightest lg:mt-4 lg:pt-4 md:pt-4 md:mt-4 xl:pt-4 xl:mt-4 sm:mt-4 sm:pt-4 sm:border-t-2 md:border-t-2 lg:border-t-2 xl:border-t-2">
                 <div className="w-1/4 text-right justify-start flex p-2  sm:w-full md:w-full sm:justify-center md:justify-center sm:mr-0 md:mr-0 justify-center items-center">
                   <FontAwesomeIcon icon={faQuestionCircle} className="fa-4x" />
                 </div>
@@ -653,9 +653,9 @@ class Index extends Component {
                   <p>Email: info@cropkingseeds.com</p>
                 </div>
               </div>
-              <div className="w-2/5 text-right p-2 pl-6 sm:w-full md:w-full lg:w-full xl:w-full">
+              <div className="w-1/2 text-right p-2 pl-6 sm:pl-0 md:pl-0 sm:w-full md:w-full lg:w-full xl:w-full">
                 <div className="inline-flex w-500 xl:w-full sm:w-full md:w-full lg:w-full">
-                  <div className="w-2/5 sm:w-3/5 md:w-3/5 lg:w-3/5 xl:w-4/5 text-right">
+                  <div className="w-2/5 sm:w-1/2 sm:text-base md:w-1/2 lg:w-3/5 xl:w-3/5 text-right">
                     <p className="p-1">Subtotal:</p>
                     <p className="p-1">Shipping:</p>
                     <p className="p-1">
@@ -684,7 +684,7 @@ class Index extends Component {
                     </p>
                     <p className="font-bold p-1 text-xl">Total:</p>
                   </div>
-                  <div className="w-2/5 xl:w-1/5 xl:text-right text-left sm:text-right md:text-right lg:text-right lg:mr-2 xl:mr-8">
+                  <div className="w-2/5 sm:text-base sm:w-1/2 md:w-1/2 xl:w-2/5 xl:text-right text-left sm:text-right md:text-right lg:text-right lg:mr-2 xl:mr-8">
                     <p className="p-1">
                       {_orderDetails.payment == null
                         ? "NO SUBTOTAL"
