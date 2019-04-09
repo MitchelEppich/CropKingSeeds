@@ -3,6 +3,7 @@ import { faSlidersH } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Router from "next/router";
+const isClient = typeof document !== "undefined";
 
 const filters = props => {
   let activeButton = "border buttonStyle p-2 m-1 font-bold slowish";
@@ -41,6 +42,7 @@ const filters = props => {
           <li>
             <button
               onClick={e => {
+                if (!isClient) return;
                 if (["cbd", "thc"].includes(input)) {
                   props.setSort({
                     value:
@@ -192,6 +194,7 @@ const filters = props => {
       <button
         style={{ width: "95%" }}
         onClick={() => {
+          if (!isClient) return;
           props.clearFilters();
           Router.push("/shop", "/shop", { shallow: true });
         }}

@@ -4,7 +4,9 @@ import Images from "./images";
 import Details from "./details";
 import AddToCartModule from "./addToCartModule";
 import Prices from "./prices";
+
 import Router from "next/router";
+const isClient = typeof document !== "undefined";
 
 const index = props => {
   let hover = props.hoverId == props.product._id;
@@ -12,6 +14,7 @@ const index = props => {
   return (
     <div
       onClick={() => {
+        if (!isClient) return;
         if (props.misc.lowGPUMode || window.innerHeight < 750) {
           props.setCurrentProduct({ product: props.product });
           Router.push(

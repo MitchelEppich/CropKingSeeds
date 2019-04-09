@@ -283,7 +283,8 @@ const menu = props => {
                   </Link>
                   <li
                     className={`font-bold text-2xl px-2 scale-item ${
-                      props.router.asPath.includes("checkout")
+                      props.router.asPath.includes("checkout") ||
+                      props.router.asPath.includes("confirmation")
                         ? "opacity-50 cursor-not-allowed"
                         : "cursor-pointer scale-item"
                     }`}

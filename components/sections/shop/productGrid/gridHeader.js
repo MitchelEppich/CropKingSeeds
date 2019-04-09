@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SortOptions from "./sortOptions";
 
 import Router from "next/router";
+const isClient = typeof document !== "undefined";
 
 const gridHeader = props => {
   let sortOptions = [
@@ -34,6 +35,7 @@ const gridHeader = props => {
           <div
             key={index}
             onClick={() => {
+              if (!isClient) return;
               props
                 .toggleFilter({
                   filter: props.shop.activeFilters,
@@ -97,6 +99,7 @@ const gridHeader = props => {
             <p className="text-left w-1/2">Active Filters:</p>
             <p
               onClick={() => {
+                if (!isClient) return;
                 props.clearFilters();
                 Router.push("/shop", "/shop", { shallow: true });
               }}

@@ -24,9 +24,11 @@ import { initGA, logPageView } from "../scripts/ga";
 import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 
 import Router from "next/router";
+const isClient = typeof document !== "undefined";
 
 class Index extends Component {
   componentWillMount() {
+    if (!isClient) return;
     let $orderDetails = this.props.checkout.orderDetails;
     if ($orderDetails.payment == null) Router.push("/");
   }
@@ -39,8 +41,6 @@ class Index extends Component {
   }
 
   render() {
-    let hrefPrefix = window.location.href.replace(Router.router.asPath, "");
-
     let _orderDetails = this.props.checkout.orderDetails;
 
     console.log(_orderDetails);
@@ -73,18 +73,21 @@ class Index extends Component {
           </div> */}
             <div className="w-3/5">
               <div className="p-2 font-bold text-lg items-center md:text-left sm:text-left lg:text-left flex">
-                <a
-                  aria-label={"view-" + _item.product.name}
-                  className="cursor-pointer hover:text-red-light"
-                  href={
-                    hrefPrefix +
+                <Link
+                  href="/product"
+                  as={
                     "/product/" +
                     _item.product.name.toLowerCase().replace(/ /g, "-")
                   }
-                  target="_blank"
                 >
-                  {_item.product.name} - {_item.amount} Seeds
-                </a>
+                  <a
+                    aria-label={"view-" + _item.product.name}
+                    className="cursor-pointer hover:text-red-light"
+                    target="_blank"
+                  >
+                    {_item.product.name} - {_item.amount} Seeds
+                  </a>
+                </Link>
               </div>
             </div>
             <div className="w-1/5 p-2 font-bold text-lg items-center justify-center flex">

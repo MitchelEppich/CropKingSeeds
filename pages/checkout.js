@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
 
 import Router from "next/router";
+const isClient = typeof document !== "undefined";
 
 // custom imports
 import withData from "../lib/withData";
@@ -60,7 +61,7 @@ class Index extends Component {
     let itemsCart = Object.keys(this.props.cart.items);
 
     return (
-      <Layout>
+      <Layout {...this.props}>
         {typeof document !== "undefined" ? (
           <Head>
             <script
@@ -81,6 +82,7 @@ class Index extends Component {
         <form
           onSubmit={e => {
             e.preventDefault();
+            if (!isClient) return;
 
             if (this.props.checkout.processing && _stepsCheckout == 3) return;
 

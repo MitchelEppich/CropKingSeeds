@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import actions from "../../../store/actions";
 
 import Router from "next/router";
+const isClient = typeof document !== "undefined";
 
 import { filter } from "../../../store/utilities/filter";
 
@@ -19,6 +20,7 @@ class SearchSuggest extends Component {
         });
       }}
       onClick={() => {
+        if (!isClient) return;
         this.props
           .fetchCurrentProduct({
             name: suggestion.strain.name.toLowerCase()
@@ -85,6 +87,7 @@ class SearchSuggest extends Component {
         ).slice(0, 5);
   };
   changeHighlightedSuggestion = e => {
+    if (!isClient) return;
     if (e.keyCode == 13) {
       if (!this.props.router.asPath.includes("/shop")) {
         Router.push("/shop");
