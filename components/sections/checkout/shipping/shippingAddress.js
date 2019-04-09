@@ -156,6 +156,69 @@ const ShippingAddress = props => {
         Shipping Address
       </h2>
       <MinimumSeedsWarning {...props} />
+      <div className="w-full flex-col justify-start bg-white text-grey shadow rounded overflow-hidden">
+        <p className="font-bold p-2  uppercase w-full bg-red-light text-white text-center">
+          Would you like to save your Shipping / Billing information for your
+          next visit? *
+        </p>
+        <div className="inline-flex flex justify-center w-full mt-4">
+          <p className="p-2 font-bold uppercase flex items-center mr-10">
+            Save Details:
+          </p>
+
+          <button
+            className={`p-2 w-150 mx-2 font-bold uppercase justify-center flex items-center cursor-pointer ${
+              _orderDetails["details"].saveForLater
+                ? "bg-red-light text-white"
+                : "bg-smoke-grey"
+            }`}
+            type="submit"
+            id="saveForLater"
+            onClick={e => {
+              e.preventDefault();
+              let _target = e.target;
+              let _key = _target.id;
+
+              props.modifyOrderDetails({
+                orderDetails: _orderDetails,
+                group: "details",
+                key: _key,
+                value: true
+              });
+            }}
+          >
+            Yes
+          </button>
+
+          <button
+            className={`p-2 w-150 mx-2 font-bold uppercase justify-center flex items-center cursor-pointer ${
+              !_orderDetails["details"].saveForLater
+                ? "bg-red-light text-white"
+                : "bg-smoke-grey"
+            }`}
+            type="submit"
+            id="saveForLater"
+            onClick={e => {
+              e.preventDefault();
+              let _target = e.target;
+              let _key = _target.id;
+
+              props.modifyOrderDetails({
+                orderDetails: _orderDetails,
+                group: "details",
+                key: _key,
+                value: false
+              });
+            }}
+          >
+            No
+          </button>
+        </div>
+        <p className="font-bold p-2 text-center text-sm opacity-50">
+          * Your details are <span className="underline">ONLY</span> saved on
+          this computer (Uncheck if you are using a public computer).
+        </p>
+      </div>
 
       <div className={`w-full mt-4`}>
         <div className="w-full flex inline-flex">
@@ -218,35 +281,6 @@ const ShippingAddress = props => {
             ) : (
               <div />
             )}
-          </div>
-          <div className="w-full flex justify-end">
-            <label className="p-2 font-bold uppercase scale-item flex items-center cursor-pointer text-red-light">
-              <input
-                aria-label="save-data"
-                type="checkbox"
-                id="saveForLater"
-                checked={
-                  _orderDetails["details"] != null
-                    ? _orderDetails["details"].saveForLater
-                    : false
-                }
-                onChange={e => {
-                  let _target = e.target;
-                  let _key = _target.id;
-                  let _value = _target.checked;
-
-                  props.modifyOrderDetails({
-                    orderDetails: _orderDetails,
-                    group: "details",
-                    key: _key,
-                    value: _value
-                  });
-                }}
-                name=""
-                className="checkbox"
-              />
-              Save Details
-            </label>
           </div>
         </div>
         <div className="w-full p-2 inline-flex sm:flex-col border-t-2 border-grey-lightest mt-2 pt-4">

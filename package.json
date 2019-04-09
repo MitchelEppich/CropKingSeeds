@@ -21,6 +21,7 @@
     "babel-register": "^6.26.0",
     "beanstream-node": "^1.0.0-5-beta",
     "body-parser": "^1.18.3",
+    "chance": "^1.0.18",
     "compression": "^1.7.3",
     "cors": "^2.8.4",
     "cryptr": "^4.0.2",

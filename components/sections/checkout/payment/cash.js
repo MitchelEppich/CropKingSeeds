@@ -40,7 +40,7 @@ const Cash = props => {
         className="h-10 mb-2 inline-flex w-full cursor-pointer"
       >
         <div className="w-4/5 p-2 flex items-center">
-          <p className="">Pay with Cash</p>
+          <p className="font-bold">Pay with Cash</p>
         </div>
         <div className="w-1/5 justify-end flex">
           <div className="h-10 w-10 text-center py-2 bg-semi-transparent ">

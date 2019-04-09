@@ -241,12 +241,12 @@ const Confirmation = props => {
                 <div className="mt-10">
                   <div style={sectionTitle} className="bg-red-light p-2 mb-1">
                     <p className="font-bold uppercase text-center text-white p-1 text-lg">
-                      BitCoin Instructions
+                      Bitcoin Instructions
                     </p>
                   </div>
                   <div className="bg-white shadow-md">
                     <p className="w-main mx-auto py-4">
-                      To complete your payment with BitCoin, a new tab has been
+                      To complete your payment with Bitcoin, a new tab has been
                       opened in which you can proceed to finalize your payment.
                       {/* <br />
                       <br />
@@ -328,9 +328,8 @@ const Confirmation = props => {
                           </p>
                           <br />
                           <p className="pt-1 text-base text-center font-bold">
-                            Please call our customer support{" "}
-                            <span className="underline"> immediately</span> (at
-                            +1 (844) 276 - 7546) to resolve any issues.
+                            Please call our toll-free number (+1 (844) 276 -
+                            7546) for customer assistance.
                           </p>
                           <br />
                           <p className="pt-1 text-base text-center font-bold">
@@ -349,9 +348,8 @@ const Confirmation = props => {
                           </p>
                           <br />
                           <p className="pt-1 text-base text-center font-bold">
-                            Please call our customer support{" "}
-                            <span className="underline"> immediately</span> (at
-                            +1 (844) 276 - 7546) to resolve any issues.
+                            Please call our toll-free number (+1 (844) 276 -
+                            7546) for customer assistance.
                           </p>
                           <br />
                           <p className="pt-1 text-base text-center font-bold">

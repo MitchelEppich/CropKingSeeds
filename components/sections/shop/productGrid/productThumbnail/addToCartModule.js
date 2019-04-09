@@ -14,8 +14,8 @@ const addToCartModule = props => {
     <div
       className={
         props.hover
-          ? "flex justify-center px-4 items-center flex"
-          : "flex flex-wrap justify-center px-4 hidden"
+          ? "flex justify-center px-4 md:px-1 items-center flex"
+          : "flex flex-wrap justify-center px-4 md:px-1 hidden"
       }
     >
       {props.hover ? (

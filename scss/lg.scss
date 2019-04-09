@@ -174,8 +174,8 @@
     overflow: visible;
     text-align: center;
     @include modifier("hover") {
-      height: 630px;
-      width: 300px;
+      height: 590px;
+      width: 320px;
       padding: 10px 10px;
       text-align: center;
       background-color: #fff;
@@ -202,11 +202,11 @@
     @include modifier("hover") {
       height: 12rem;
       position: relative;
-      transform: translateX(-50px) translateY(10px);
-      -webkit-transform: translateX(-50px) translateY(10px);
-      -moz-transform: translateX(-50px) translateY(10px);
-      -ms-transform: translateX(-50px) translateY(10px);
-      -o-transform: translateX(-50px) translateY(10px);
+      transform: translateX(-25px) translateY(10px);
+      -webkit-transform: translateX(-25px) translateY(10px);
+      -moz-transform: translateX(-25px) translateY(10px);
+      -ms-transform: translateX(-25px) translateY(10px);
+      -o-transform: translateX(-25px) translateY(10px);
       z-index: 10;
       transition: 0.3s all ease-in-out;
       padding: 4.5rem 3.5rem 0.5rem 3rem;
@@ -239,11 +239,11 @@
     height: 10rem;
     position: absolute;
     z-index: 0;
-    transform: translateX(-120px) translateY(-11px);
-    -webkit-transform: translateX(-120px) translateY(-11px);
-    -moz-transform: translateX(-120px) translateY(-11px);
-    -ms-transform: translateX(-120px) translateY(-11px);
-    -o-transform: translateX(-120px) translateY(-11px);
+    transform: translateX(-110px) translateY(16px);
+    -webkit-transform: translateX(-110px) translateY(16px);
+    -moz-transform: translateX(-110px) translateY(16px);
+    -ms-transform: translateX(-110px) translateY(16px);
+    -o-transform: translateX(-110px) translateY(16px);
     transition: 0.3s all ease-in-out;
     cursor: pointer;
     @include modifier("hover") {
@@ -251,11 +251,11 @@
       position: absolute;
       z-index: 0;
       transition: 0.3s all ease-in-out;
-      transform: translateX(-40px) translateY(52px);
-      -webkit-transform: translateX(-40px) translateY(52px);
-      -moz-transform: translateX(-40px) translateY(52px);
-      -ms-transform: translateX(-40px) translateY(52px);
-      -o-transform: translateX(-40px) translateY(52px);
+      transform: translateX(-55px) translateY(30px);
+      -webkit-transform: translateX(-55px) translateY(30px);
+      -moz-transform: translateX(-55px) translateY(30px);
+      -ms-transform: translateX(-55px) translateY(30px);
+      -o-transform: translateX(-55px) translateY(30px);
       cursor: pointer;
     }
   }

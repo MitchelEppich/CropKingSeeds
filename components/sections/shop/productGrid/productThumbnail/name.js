@@ -31,19 +31,19 @@ const name = props => {
             }}
             className={
               props.hover
-                ? "text-center flex justify-center items-center sm:text-xs text-grey p-2 font-extrabold z-50 strainTitleHover " +
+                ? "text-center flex justify-center items-center md:text-sm sm:text-base text-grey p-2 font-extrabold z-50 strainTitleHover " +
                   nameSizeHover +
                   titleColorBackground
                 : props.misc.lowGPUMode
-                ? "text-center flex justify-center items-center sm:text-xs text-grey p-2 font-extrabold z-50 strainTitleNoAnimation " +
+                ? "text-center flex justify-center items-center md:text-sm sm:text-base text-grey p-2 font-extrabold z-50 strainTitleNoAnimation " +
                   nameSizeHover +
                   titleColorBackground
-                : "text-center flex justify-center items-center sm:text-xs text-grey p-2 font-extrabold z-50 strainTitle " +
+                : "text-center flex justify-center items-center md:text-sm sm:text-base text-grey p-2 font-extrabold z-50 strainTitle " +
                   nameSizeHover +
                   titleColorBackground
             }
           >
-            {name}
+            {props.misc.lowGPUMode ? `${name.substring(0, 16)}...` : name}
             {/* {props.hover ? (
             <FontAwesomeIcon
               icon={faExternalLinkAlt}

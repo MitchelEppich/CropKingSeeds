@@ -7,7 +7,7 @@ const prices = props => {
     <div
       className={
         props.hover
-          ? "w-full px-4 mt-3 text-red-dark font-extrabold text-center inline-flex"
+          ? "w-full px-4 md:px-1 mt-3 text-red-dark font-extrabold text-center inline-flex"
           : "hidden slow"
       }
     >

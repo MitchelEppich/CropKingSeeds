@@ -22,8 +22,8 @@ const seedSelectModule = props => {
           }}
           className={`${
             props.shop.quickAddToCartQty[_product._id] === index
-              ? "bg-grey-lightest text-grey w-1/3 md:h-16 h-10 mr-1 text-lg flex flex-wrap text-center justify-center leading-normal uppercase font-bold border border-grey-lightest hover:bg-grey-light hover:text-white  "
-              : "bg-white text-grey w-1/3 md:h-16 h-10 flex mr-1 text-lg flex-wrap text-center justify-center leading-normal uppercase font-bold border border-grey-lightest hover:bg-grey-light hover:text-white"
+              ? "bg-grey-lightest text-grey w-1/3 md:h-12 h-10 mr-1 text-lg flex flex-wrap text-center justify-center leading-normal uppercase md:flex-col md:justify-center md:items-center font-bold border border-grey-lightest hover:bg-grey-light hover:text-white  "
+              : "bg-white text-grey w-1/3 md:h-12 h-10 flex mr-1 text-lg flex-wrap text-center justify-center leading-normal uppercase md:flex-col md:justify-center md:items-center font-bold border border-grey-lightest hover:bg-grey-light hover:text-white"
           } ${
             price == -1 ? "opacity-50 pointer-events-none unselectable" : ""
           }`}
@@ -32,8 +32,8 @@ const seedSelectModule = props => {
           <span
             className={
               props.shop.quickAddToCartQty === index
-                ? "text-sm h-6 ml-1 flex items-center pt-1"
-                : "text-sm h-6 ml-1 flex items-center pt-1"
+                ? "text-sm ml-1 flex items-center md:pt-0 pt-1"
+                : "text-sm ml-1 flex items-center md:pt-0 pt-1"
             }
           >
             seeds
@@ -95,15 +95,15 @@ const seedSelectModule = props => {
         />
         <button
           name="increaseItem"
-          onClick={() =>
+          onClick={() => {
             props.modifyPotentialQuantity({
               potentialQuantity: props.cart.potentialQuantity,
               action: "MODIFY",
               tag: _product._id,
               max: props.cart.maxPerPackage,
               quantity: 1
-            })
-          }
+            });
+          }}
           className="w-8 bg-grey-light text-sm text-white rounded hover:bg-red-light"
         >
           <FontAwesomeIcon
