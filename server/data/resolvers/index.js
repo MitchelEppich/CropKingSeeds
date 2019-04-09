@@ -375,7 +375,7 @@ const resolvers = {
     },
     processPayment: async (_, { input }) => {
       // let { pivotal, bambora } = await getProcessorUsage();
-      let { pivotal } = await getProcessorUsage();
+      // let { pivotal } = await getProcessorUsage();
       let _amount = parseFloat(input.amount);
       let response;
 
