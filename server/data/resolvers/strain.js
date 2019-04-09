@@ -55,7 +55,11 @@ const resolvers = {
       return JSON.stringify(arr);
     },
     fetchCurrentProduct: (_, { input }) => {
-      const nameRegExp = new RegExp("^" + input.name, "i");
+      let name = input.name;
+      if (name.includes("mixed")) {
+        name = name.replace("mixed", "cannabis seeds mix");
+      }
+      const nameRegExp = new RegExp("^" + name, "i");
       return Strain.findOne({ name: nameRegExp });
     },
     strain: (_, { input }) => {
