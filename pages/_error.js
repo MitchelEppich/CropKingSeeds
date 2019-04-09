@@ -68,7 +68,7 @@ class Error extends Component {
   }
   render() {
     return (
-      <Layout>
+      <Layout {...this.props}>
         <div
           style={this.props.styleBackground}
           className="w-full inline-flex md:flex-col-reverse sm:flex-col-reverse"

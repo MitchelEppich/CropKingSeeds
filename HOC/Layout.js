@@ -49,8 +49,8 @@ import PopUpBanner from "../components/sections/popup";
 import HeaderMessage from "../components/partials/header/headerMessage";
 import generateSchemaMarkup from "../scripts/generateSchemaMarkup";
 import registerServiceWorker from "../registerServiceWorker";
-
 import Router from "next/router";
+const dev = process.env.NODE_ENV !== "production";
 const isClient = typeof document !== "undefined";
 
 class Layout extends Component {
@@ -137,6 +137,14 @@ class Layout extends Component {
     window.addEventListener("resize", () => {
       this.setMediaSize();
     });
+    if (dev) {
+      window.addEventListener("keypress", e => {
+        if (e.shiftKey && e.code === "KeyP") {
+          console.log(this.props);
+        }
+      });
+    }
+
     this.props.getExchangeRates();
   }
 
@@ -165,7 +173,6 @@ class Layout extends Component {
         filters.join(" | ");
       title += " - Crop King Seeds";
     }
-    // console.log(this.props.router);
     return (
       <React.Fragment>
         {this.state.isClient &&
