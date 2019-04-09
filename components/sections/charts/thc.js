@@ -7,11 +7,22 @@ import {
   faSortNumericUp
 } from "@fortawesome/free-solid-svg-icons";
 
+import LoaderSmall from "../loader/loaderSmall";
+
 const THCCharts = props => {
   // ADD TO STATE
   let tag = props.charts.chartTag ? props.charts.chartTag : "pthc";
   let isReversed = props.charts.isReverse;
   let allStrains = props.misc.strains;
+
+  if (allStrains == null)
+    return (
+      <div className="w-full">
+        <div className="xxl:h-600 overflow-hidden xl:h-400 lg:h-300 md:h-250 sm:h-175 w-full relative inline-flex">
+          <LoaderSmall />
+        </div>
+      </div>
+    );
 
   let category = ["Regular", "Feminized", "Autoflower", "Dwarf", "CBD"];
 
