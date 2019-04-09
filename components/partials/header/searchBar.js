@@ -63,7 +63,7 @@ const SearchBar = props => {
               clearSuggestions();
               setFilters();
             }}
-            className="bg-yellow-dark hover:bg-yellow slowish w-12 lg:w-50 sm:w-12 sm:pr-2 border-0 pl-1 leading-loose z-999 rounded sm:absolute sm:pin-r"
+            className="bg-yellow-dark hover:bg-yellow slowish w-12 md:ml-2 lg:w-50 sm:w-12 sm:pr-2 border-0 pl-1 leading-loose z-999 rounded sm:absolute sm:pin-r"
           >
             <FontAwesomeIcon
               icon={faSearch}
