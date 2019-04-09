@@ -117,7 +117,7 @@ const ShippingMethod = props => {
 
   return (
     <div
-      className={`w-full px-8 mt-8 mb-4 pb-4 ${
+      className={`w-full px-8 mt-8 mb-4 pb-4 sm:px-2 ${
         props.checkout.orderDetails.shipping.country == null ||
         (props.checkout.orderDetails.shipping.state == null &&
           ["Canada", "United States"].includes(

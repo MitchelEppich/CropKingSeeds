@@ -14,7 +14,7 @@ const Coupon = props => {
 
   return (
     <div
-      className={`w-full flex items-center inline-flex lg:flex-col md:flex-col sm:flex-col mt-4 lg:mt-0 md:mt-0 sm:mt-0 p-2 lg:px-6 px-8 xl:mb-${marginBottom *
+      className={`w-full flex items-center inline-flex lg:flex-col md:flex-col sm:flex-col mt-4 lg:mt-0 md:mt-0 sm:mt-0 p-2 sm:px-4 lg:px-6 px-8 xl:mb-${marginBottom *
         2} xxl:mb-${marginBottom * 2} mb-${marginBottom}`}
     >
       <form
@@ -32,7 +32,7 @@ const Coupon = props => {
             items: props.cart.items
           });
         }}
-        className="w-1/2 inline-flex lg:w-full md:w-full sm:w-full items-center flex"
+        className="w-1/2 inline-flex lg:w-full md:w-full sm:w-full sm:flex-col items-center flex"
       >
         <div className="w-1/2 lg:w-full md:w-full sm:w-full">
           <div className="w-full">
@@ -63,12 +63,12 @@ const Coupon = props => {
             />
           </div>
         </div>
-        <div className="w-1/2 lg:w-full md:w-1/3 sm:w-1/3 flex items-center">
+        <div className="w-1/2 lg:w-full md:w-1/3 sm:w-full sm:mt-4 flex items-center">
           <div className="w-200 xl:w-100 lg:w-full lg:ml-2 md:w-full md:ml-2 sm:w-full sm:ml-2 xl:ml-2 xxl:ml-2">
             <button
               type="submit"
               value="Submit"
-              className="p-2 px-16 sm:px-4 md:px-4 bg-grey-light text-white font-bold text-center text-lg cursor-pointer hover:bg-grey rounded"
+              className="p-2 px-16 sm:px-4 md:px-4 bg-grey-light text-white font-bold text-center sm:w-full text-lg cursor-pointer hover:bg-grey rounded"
             >
               Apply
             </button>

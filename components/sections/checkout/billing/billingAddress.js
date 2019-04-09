@@ -109,7 +109,7 @@ const BillingAddress = props => {
 
   return (
     <div className="w-full mt-6 px-8 sm:px-4">
-      <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-black">
+      <h2 className="text-3/5xl font-bold opacity-50 mt-8 sm:text-center mb-4 text-black">
         Billing Address
       </h2>
       <div className="pl-2 mt-6 flex items-center inline-flex">
@@ -177,7 +177,7 @@ const BillingAddress = props => {
               // pattern="^\S+\s\S+$"
             />
           </div>
-          <div className="w-1/3 sm:w-full pl-2 sm:mt-4">
+          <div className="w-1/3 sm:w-full pl-2 sm:pl-0 sm:mt-4">
             <input
               aria-label="name"
               type="text"
@@ -336,7 +336,7 @@ const BillingAddress = props => {
           />
         </div>
         <div className="w-full p-2 sm:flex-col inline-flex">
-          <div className="w-1/3 mr-2 sm:w-full sm:px-0 sm:mt-4">
+          <div className="w-1/3 mr-2 sm:w-full sm:px-0">
             <input
               aria-label="ship-city"
               type="text"
@@ -368,7 +368,7 @@ const BillingAddress = props => {
               required
             />
           </div>
-          <div className="w-1/3 sm:w-full sm:pl-0 mr-2">
+          <div className="w-1/3 sm:w-full sm:pl-0 sm:mt-4 mr-2">
             <select
               type="text"
               name="ship-state"

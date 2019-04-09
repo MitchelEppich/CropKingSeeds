@@ -41,9 +41,9 @@ const Payment = props => {
         <div style={titleBox}>
           <h2 className="text-xl">Confirmation</h2>
         </div>
-        <div className="p-4 bg-white border border-grey-lightest inline-flex w-full sm:flex-col">
+        <div className="p-4 bg-white border border-grey-lightest flex-col w-full sm:flex-col">
           <div className="w-main sm:w-full">
-            <label className="text-lg sm:text-sm cursor-pointer items-center flex">
+            <label className="text-lg sm:text-base cursor-pointer items-center flex">
               <input
                 aria-label="orderConfirmation"
                 type="checkbox"

@@ -54,7 +54,7 @@ const CreditCard = props => {
           background: "#ffffff",
           color: "#191919"
         }}
-        className="h-10 inline-flex w-full cursor-pointer"
+        className="h-10 sm:h-full md:h-full inline-flex w-full cursor-pointer"
       >
         <div className="w-4/5 p-2 flex items-center">
           <p className="font-bold">

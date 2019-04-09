@@ -390,10 +390,12 @@ class Layout extends Component {
         max: this.props.cart.maxPerPackage
       })
       .then(res => {
-        if (Object.keys(res).length != 0) {
-          this.props.isRepeatCustomer({
-            ip: res.details.ip ? res.details.ip.value : null
-          });
+        if (
+          Object.keys(res).length != 0 &&
+          res.details != null &&
+          res.details.ip != null
+        ) {
+          this.props.isRepeatCustomer({ ip: res.details.ip.value });
           return;
         }
         let browser = _browser != null ? _browser.name : "unknown";
