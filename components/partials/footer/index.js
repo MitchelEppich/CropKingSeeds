@@ -212,7 +212,7 @@ const Footer = props => {
                 props.subscribeToNewsletter({ email: formData.get("email") });
                 props.setEmail({ email: null });
               }}
-              className="inline-flex relative w-3/5 lg:w-2/3 lg:mx-auto rounded-tr rounded-br h-10 items-center mt-4 md:mb-6 sm:mb-6 overflow-hidden"
+              className="inline-flex relative sm:w-main w-3/5 lg:w-2/3 lg:mx-auto rounded-tr rounded-br h-10 items-center mt-4 md:mb-6 sm:mb-6 overflow-hidden"
             >
               <input
                 type="email"

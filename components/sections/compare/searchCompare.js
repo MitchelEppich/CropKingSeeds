@@ -13,7 +13,7 @@ const SearchCompare = props => {
           aria-label="comparePageSearch"
           type="text"
           className="p-2 w-full"
-          placeholder="Search here your strain..."
+          placeholder="Search..."
         />
       </div>
       <div className="w-12 p-2 bg-yellow-dark text-center absolute pin-r rounded">

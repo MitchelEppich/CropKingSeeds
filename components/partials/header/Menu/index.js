@@ -208,7 +208,7 @@ const menu = props => {
               <div
                 className={
                   props.misc.strains != null
-                    ? "opacity-1 slow flex shadow-md -mt-54px sm:-mt-10 sm:mx-0 fixed z-999 sm:w-100 sm:h-100 w-130 h-125 rounded-full bg-crimson justify-center content-center items-center xxl:ml-10 ml-10"
+                    ? "opacity-1 slow flex shadow-md -mt-54px sm:-mt-10 sm:mx-0 fixed z-999 sm:w-100 sm:h-100 md:w-100 md:-mt-6 md:h-100 w-130 h-125 rounded-full bg-crimson justify-center content-center items-center xxl:ml-10 ml-10"
                     : "opacity-0 slow flex shadow-md sm:mx-0 -mt-54px sm:-mt-6 md:-mt-6 fixed z-999 sm:w-80px sm:h-80px w-130 h-125 rounded-full bg-crimson justify-center content-center items-center ml-10"
                 }
               >
@@ -220,7 +220,7 @@ const menu = props => {
                       alt={"../static/cks-logo-header.png"}
                       src={"../static/cks-logo-header.png"}
                       onClick={e => e.stopPropagation()}
-                      className="z-999 cks-logo-header p-0 w-125 sm:w-85px scale-item cursor-pointer sm:-mt-2 sm:-ml-1 md:-mt-3"
+                      className="z-999 cks-logo-header p-0 w-125 sm:w-85px md:w-100 scale-item cursor-pointer sm:-mt-2 sm:-ml-1 md:-mt-3"
                     />
                   </a>
                 </Link>

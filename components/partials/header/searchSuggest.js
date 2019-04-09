@@ -36,8 +36,8 @@ class SearchSuggest extends Component {
       }}
       className={
         this.props.misc.highlightedSuggestion == index
-          ? "bg-red-light text-white font-bold h-10 sm:h-12 sm:w-full xxl:w-full lg:w-250 xl:h-16 xl:w-48 z-999 py-1 shadow-lg leading-normal text-sm"
-          : "bg-white text-grey font-bold h-10 sm:h-12 sm:w-full xxl:w-full lg:w-250 xl:h-16 xl:w-48 z-999 py-1 shadow-lg leading-normal text-sm"
+          ? "bg-red-light text-white font-bold sm:w-full md:w-full xxl:w-full lg:w-250 xl:h-16 xl:w-48 z-999 py-2 shadow-lg leading-normal flex items-center  text-sm"
+          : "bg-white text-grey font-bold sm:w-full md:w-full xxl:w-full lg:w-250 xl:h-16 xl:w-48 flex items-center z-999 py-2 shadow-lg leading-normal text-sm"
       }
     >
       <div className="inline-flex w-full">
@@ -123,7 +123,7 @@ class SearchSuggest extends Component {
   };
   render() {
     return (
-      <div className="bg-white rounded-lg flex flex-wrap justify-start lg:w-250 xxl:w-350">
+      <div className="bg-white rounded-lg flex flex-wrap justify-start md:w-175 lg:w-250 xxl:w-350">
         <input
           onKeyDown={e => {
             this.changeHighlightedSuggestion(e);
