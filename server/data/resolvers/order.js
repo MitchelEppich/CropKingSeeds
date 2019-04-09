@@ -227,24 +227,29 @@ const resolvers = {
         }
       );
     },
-    acquireOrderId: async (_, {}) => {
-      // let _content = input.content;
-
-      const sleep = milliseconds => {
-        return new Promise(resolve => setTimeout(resolve, milliseconds));
-      };
-
-      let orderId = (await Order.find({})).slice(-1)[0].orderId + 1;
-      while ((await Order.findOne({ orderId })) != null) {
-        await sleep(Math.random * 100).then(() => {
-          orderId++;
-        });
-      }
-      let order = new Order({
-        orderId
-      });
-
+    acquireOrderId: async _ => {
+      let order = new Order();
       await order.save();
+      let aggr = await Order.find({})
+        .sort({ _id: -1 })
+        .limit(20);
+      let orderId = null;
+      let found = false;
+      let from = 0;
+      for (let entry of aggr) {
+        if (found) from++;
+        if (entry.orderId != null && entry.orderId != entry._id) {
+          orderId = entry.orderId + from;
+          order.orderId = orderId;
+          order.save();
+          break;
+        }
+        if (entry._id.toString() == order._id.toString()) found = true;
+      }
+
+      if (orderId == null) {
+        return order._id;
+      }
 
       return orderId;
     },
@@ -267,8 +272,6 @@ const resolvers = {
     processOrder: async (_, { input }) => {
       let _input = JSON.parse(input.content);
       let profile = _input.profile;
-
-      console.log(_input);
 
       let res = (await axios({
         method: "post",

@@ -120,6 +120,12 @@ const getActions = uri => {
       let _productIdentifier = input.productIdentifier;
       let _product = input.product;
 
+      if (
+        _productIdentifier == null ||
+        _productIdentifier.includes("undefined")
+      )
+        return;
+
       let { _per, _amount } = (() => {
         if (_product == null) return {};
         let _amount = _productIdentifier.replace(/\D/g, "");

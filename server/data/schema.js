@@ -15,7 +15,7 @@ type Query {
   allBlockedZips: [String]!
   allBlockedIps: [String]!
 
-  getDailyStats(date: String): Stat
+  getDailyStats(input: StatInput): Stat
   
   isRepeatCustomer(input: OrderInput!): Boolean
   getBanners: [String]
@@ -34,11 +34,26 @@ type Query {
   getDailyMessage: String
 }
 
+input StatInput {
+  startDate: String
+  endDate: String
+  hourly: Boolean
+}
+
+type Data {
+  tag: String
+  total: String
+  partial: String
+}
+
+type TotalObject {
+  time: String
+  total: String
+}
+
 type Stat {
-  revenue: String
-  saleCount: String
-  productCount: [String]
-  methodCount: [String]
+  dailyTotal: String
+  hourlyTotal: [TotalObject]
 }
 
 input RelatedInput {

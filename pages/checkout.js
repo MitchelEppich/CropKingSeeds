@@ -38,7 +38,13 @@ class Index extends Component {
     this.props.getBlockedIps();
     this.props.getBlockedZips();
     window.onbeforeunload = () => {
-      if (this.props.misc.stepsCheckout >= 4) this.props.purgeCart();
+      console.log("hello");
+      if (this.props.misc.stepsCheckout >= 4) {
+        this.props.purgeCart();
+        this.props.purgeOrderDetails({
+          orderDetails: this.props.checkout.orderDetails
+        });
+      }
     };
   }
   componentDidUpdate(prevProps) {
@@ -52,7 +58,12 @@ class Index extends Component {
     }
   }
   componentWillUnmount() {
-    if (this.props.misc.stepsCheckout >= 4) this.props.purgeCart();
+    if (this.props.misc.stepsCheckout >= 4) {
+      this.props.purgeCart();
+      this.props.purgeOrderDetails({
+        orderDetails: this.props.checkout.orderDetails
+      });
+    }
   }
 
   render() {

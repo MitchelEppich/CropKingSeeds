@@ -34,50 +34,135 @@ const resolvers = {
     news: (_, { input }) => {
       return News.findOne(input);
     },
-    getDailyStats: async (_, date) => {
+    getDailyStats: async (_, { input }) => {
+      let _startDate = moment(input.startDate, "DD-MM-YYYY")
+        .startOf("day")
+        .format("YY-MM-DD HH:mm:ss");
+      let _endDate = moment(input.endDate, "DD-MM-YYYY")
+        .add(1, "day")
+        .startOf("day")
+        .format("YY-MM-DD HH:mm:ss");
+      let showHourly = input.hourly;
+
       let orders = (await _Order.find({
         orderDate: {
-          $gte: moment()
-            .subtract(6, "day")
-            .startOf("day")
-            .format("YY-MM-DD HH:mm:ss"),
-          $lt: moment()
-            .subtract(6, "day")
-            .endOf("day")
-            .format("YY-MM-DD HH:mm:ss")
+          $gte: _startDate,
+          $lt: _endDate
         }
-      })).filter(a => {
-        if (JSON.stringify(a).includes("test")) return false;
-        return true;
-      });
+      }))
+        .filter(a => {
+          if (JSON.stringify(a).includes("test")) return false;
+          return true;
+        })
+        .sort({ orderDate: -1 });
+      let hourlyOrders = {};
 
-      let revenue = 0;
-      let productCount = {};
-      let methodCount = {};
-      let reg = new RegExp("^[0-9]+$");
-      orders.map(a => {
-        revenue += parseFloat(a.total);
-        if (methodCount[a.paymentMethod] == null)
-          methodCount[a.paymentMethod] = 1;
-        else methodCount[a.paymentMethod] += 1;
+      if (showHourly) {
+        // Hourly total
+        let startTime = moment(_startDate, "YY-MM-DD HH:mm:ss");
+        let endTime = moment(startTime, "YY-MM-DD HH:mm:ss").add(1, "hour");
+        hourlyOrders = (() => {
+          let arr = [];
+          let _orders = { ...orders };
 
-        a.productList.split(",").map(b => {
-          let id = b.split("-")[0].trim();
-          if (productCount[id] == null) productCount[id] = 1;
-          else productCount[id] += 1;
-          id = id.replace(/[0-9]/g, "");
-          if (productCount[id] == null) productCount[id] = 1;
-          else productCount[id] += 1;
+          while (
+            moment(_endDate, "YY-MM-DD HH:mm:ss").diff(endTime, "hours") >= 0
+          ) {
+            let $arr = [];
+            let found = false;
+            for (let item of Object.keys(_orders)) {
+              if (
+                moment(_orders[item].orderDate, "YY-MM-DD HH:mm:ss").isBetween(
+                  startTime,
+                  endTime
+                )
+              ) {
+                $arr.push(_orders[item].toObject());
+                found = true;
+                delete _orders[item];
+              } else if (found) {
+                break;
+              }
+            }
+
+            arr.push({
+              time: moment(startTime, "YY-MM-DD HH:mm:ss").format("LLL"),
+              orders: [...$arr]
+            });
+
+            // Go to next hour
+            startTime = endTime;
+            endTime = moment(startTime, "YY-MM-DD HH:mm:ss").add(1, "hour");
+          }
+          return arr;
+        })();
+      }
+
+      let dailyTotal, hourlyTotal;
+      // Daily total
+      dailyTotal = orders.map(a => a.total).reduce((a, b) => a + b);
+      // Hourly total
+      if (showHourly)
+        hourlyTotal = hourlyOrders.map(a => {
+          if (a.orders.length == 0) return { time: a.time, total: 0 };
+          return {
+            time: a.time,
+            total: a.orders.map(a => a.total).reduce((a, b) => a + b)
+          };
         });
-      });
+
+      // Daily Packages sold
+      // Hourly Packages sold
+      // Payment Methods
+
       return {
-        revenue,
-        saleCount: orders.length,
-        productCount: [
-          `${Object.entries(productCount).sort((a, b) => b[1] - a[1])}`
-        ],
-        methodCount: [`${Object.entries(methodCount)}`]
+        dailyTotal,
+        hourlyTotal
       };
+
+      // let orders = (await _Order.find({
+      //   orderDate: {
+      //     $gte: moment()
+      //       .subtract(0, "days")
+      //       .startOf("day")
+      //       .format("YY-MM-DD HH:mm:ss"),
+      //     $lt: moment()
+      //       .subtract(0, "days")
+      //       .endOf("day")
+      //       .format("YY-MM-DD HH:mm:ss")
+      //   }
+      // })).filter(a => {
+      //   if (JSON.stringify(a).includes("test")) return false;
+      //   return true;
+      // });
+
+      // let revenue = 0;
+      // let productCount = {};
+      // let methodCount = {};
+      // let reg = new RegExp("^[0-9]+$");
+      // orders.map(a => {
+      //   revenue += parseFloat(a.total);
+      //   if (methodCount[a.paymentMethod] == null)
+      //     methodCount[a.paymentMethod] = 1;
+      //   else methodCount[a.paymentMethod] += 1;
+
+      //   a.productList.split(",").map(b => {
+      //     let id = b.split("-")[0].trim();
+      //     if (productCount[id] == null) productCount[id] = 1;
+      //     else productCount[id] += 1;
+      //     id = id.replace(/[0-9]/g, "");
+      //     if (productCount[id] == null) productCount[id] = 1;
+      //     else productCount[id] += 1;
+      //   });
+      // });
+      // return {
+      //   revenue,
+      //   saleCount: orders.length,
+      //   productCount: [
+      //     `${Object.entries(productCount).sort((a, b) => b[1] - a[1])}`
+      //   ],
+      //   methodCount: [`${Object.entries(methodCount)}`]
+      // };
       // console.log(orders);
     },
     allNews: async _ => {
@@ -292,7 +377,6 @@ const resolvers = {
       // let { pivotal, bambora } = await getProcessorUsage();
       let { pivotal } = await getProcessorUsage();
       let _amount = parseFloat(input.amount);
-      console.log(pivotal);
       let response;
 
       // if (
@@ -343,67 +427,72 @@ let processBambora = async input => {
 };
 
 let processPivotal = async input => {
-  let ORDERID = input.orderId;
-  let TERMINALID = "7366001";
-  let AMOUNT = input.amount;
-  let DATETIME = moment().format("DD-MM-YYYY:HH:mm:ss:000");
-  let CARDNUMBER = input.cardNumber;
-  let CARDTYPE = input.cardType;
-  let CARDEXPIRY = input.cardExpiry;
-  let CARDHOLDERNAME = input.cardHolderName;
-  let CVV = input.cvv;
-  let HASH = encodeMD5(TERMINALID + ORDERID + AMOUNT + DATETIME + "54775477");
-  let CURRENCY = "CAD";
-  let TERMINALTYPE = 2;
-  let TRANSACTIONTYPE = 7;
+  try {
+    let ORDERID = input.orderId;
+    let TERMINALID = "7366001";
+    let AMOUNT = input.amount;
+    let DATETIME = moment().format("DD-MM-YYYY:HH:mm:ss:000");
+    let CARDNUMBER = input.cardNumber;
+    let CARDTYPE = input.cardType;
+    let CARDEXPIRY = input.cardExpiry;
+    let CARDHOLDERNAME = input.cardHolderName;
+    let CVV = input.cvv;
+    let HASH = encodeMD5(TERMINALID + ORDERID + AMOUNT + DATETIME + "54775477");
+    let CURRENCY = "CAD";
+    let TERMINALTYPE = 2;
+    let TRANSACTIONTYPE = 7;
 
-  // Build content
-  let content = {
-    PAYMENT: {
-      ORDERID,
-      TERMINALID,
-      AMOUNT,
-      DATETIME,
-      CARDNUMBER,
-      CARDTYPE,
-      CARDEXPIRY,
-      CARDHOLDERNAME,
-      HASH,
-      CURRENCY,
-      TERMINALTYPE,
-      TRANSACTIONTYPE,
-      CVV
-    }
-  };
+    // Build content
+    let content = {
+      PAYMENT: {
+        ORDERID,
+        TERMINALID,
+        AMOUNT,
+        DATETIME,
+        CARDNUMBER,
+        CARDTYPE,
+        CARDEXPIRY,
+        CARDHOLDERNAME,
+        HASH,
+        CURRENCY,
+        TERMINALTYPE,
+        TRANSACTIONTYPE,
+        CVV
+      }
+    };
 
-  let $res = await axios({
-    method: "post",
-    headers: {
-      "Content-Type": "text/xml"
-    },
-    url: "https://payments.globalone.me/merchant/xmlpayment",
-    data: toXML(content)
-  });
+    let $res = await axios({
+      method: "post",
+      headers: {
+        "Content-Type": "text/xml"
+      },
+      url: "https://payments.globalone.me/merchant/xmlpayment",
+      data: toXML(content)
+    });
 
-  let res = JSON.parse(
-    convert.xml2json($res.data, { compact: true, spaces: 4 })
-  )["PAYMENTRESPONSE"];
+    let res = JSON.parse(
+      convert.xml2json($res.data, { compact: true, spaces: 4 })
+    )["PAYMENTRESPONSE"];
 
-  if (res == null)
     return {
-      status: "DECLINED",
+      transactionId: res.UNIQUEREF._text,
+      status: res.RESPONSECODE._text == "A" ? "APPROVED" : "DECLINED",
+      approvalCode: res.APPROVALCODE._text || "",
+      response: res.RESPONSETEXT._text,
       processor: "Pivotal 3 VT",
       descriptor: "King Merch"
     };
-
-  return {
-    transactionId: res.UNIQUEREF._text,
-    status: res.RESPONSECODE._text == "A" ? "APPROVED" : "DECLINED",
-    approvalCode: res.APPROVALCODE._text || "",
-    response: res.RESPONSETEXT._text,
-    processor: "Pivotal 3 VT",
-    descriptor: "King Merch"
-  };
+  } catch (e) {
+    console.log(e);
+    return {
+      transactionId: "ISSUE_CONTACTING_PROCESSOR",
+      status: "DECLINED",
+      processor: "Pivotal 3 VT",
+      response: "Issue contacting the processor",
+      approvalCode: "",
+      descriptor: "King Merch"
+    };
+  }
 };
 
 let getProcessorUsage = async () => {

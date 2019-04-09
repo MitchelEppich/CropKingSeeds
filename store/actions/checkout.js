@@ -452,7 +452,6 @@ const getActions = uri => {
     purgeOrderDetails: input => {
       let _orderDetails = { details: input.orderDetails.details };
       sessionStorage.setItem("orderDetails", JSON.stringify(_orderDetails));
-
       return {
         type: actionTypes.PURGE_ORDER_DETAILS,
         input: _orderDetails
