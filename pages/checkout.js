@@ -10,7 +10,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
-import Router from "nextrouter";
+
+const isClient = typeof document !== "undefined";
+import Router from "next/router";
 
 // custom imports
 import withData from "../lib/withData";
@@ -37,15 +39,6 @@ class Index extends Component {
     this.updateShippingMethod();
     this.props.getBlockedIps();
     this.props.getBlockedZips();
-    window.onbeforeunload = () => {
-      console.log("hello");
-      if (this.props.misc.stepsCheckout >= 4) {
-        this.props.purgeCart();
-        this.props.purgeOrderDetails({
-          orderDetails: this.props.checkout.orderDetails
-        });
-      }
-    };
   }
   componentDidUpdate(prevProps) {
     let error = ErrorHandler(this.props);
@@ -55,14 +48,6 @@ class Index extends Component {
     // Update if price has changed
     if (this.props.cart.price != prevProps.cart.price) {
       this.updateShippingMethod();
-    }
-  }
-  componentWillUnmount() {
-    if (this.props.misc.stepsCheckout >= 4) {
-      this.props.purgeCart();
-      this.props.purgeOrderDetails({
-        orderDetails: this.props.checkout.orderDetails
-      });
     }
   }
 
@@ -75,6 +60,8 @@ class Index extends Component {
 
     let itemsCart = Object.keys(this.props.cart.items);
 
+    if (!isClient) return <div />;
+
     return (
       <Layout>
         {typeof document !== "undefined" ? (
@@ -82,9 +69,7 @@ class Index extends Component {
             <script
               type="application/ld+json"
               dangerouslySetInnerHTML={{
-                __html: JSON.stringify(
-                  generateBreadcrumbMarkup(this.props.router.asPath)
-                )
+                __html: JSON.stringify(generateBreadcrumbMarkup(Router.asPath))
               }}
             />
           </Head>
@@ -144,9 +129,10 @@ class Index extends Component {
                         }
                       })
                       .then(res => {
-                        this.props.toggleStepsCheckout(_stepsCheckout + 1);
+                        // this.props.toggleStepsCheckout(_stepsCheckout + 1);
                         this.props.toggleProcessing(false);
                       });
+                    Router.push("/confirmation");
                   });
               } else {
                 // Purge the store.

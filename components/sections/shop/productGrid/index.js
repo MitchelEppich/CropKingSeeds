@@ -16,7 +16,8 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.isSmallMediumOrLargeDevice =
-      (props.checkout.orderDetails.details &&
+      (props.checkout.orderDetails.details != null &&
+        props.checkout.orderDetails.details.device != null &&
         props.checkout.orderDetails.details.device.value != "Desktop") ||
       ["sm"].includes(props.misc.mediaSize);
   }

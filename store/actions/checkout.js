@@ -226,7 +226,7 @@ const getActions = uri => {
           JSON.stringify(
             (() => {
               let o = { ..._orderDetails };
-              delete o.payment;
+              // delete o.payment;
               return o;
             })()
           )
@@ -648,6 +648,17 @@ const getActions = uri => {
               value: orderId,
               tag: "Order_ID"
             };
+
+            sessionStorage.setItem(
+              "orderDetails",
+              JSON.stringify(
+                (() => {
+                  let o = { ..._orderDetails };
+                  // delete o.payment;
+                  return o;
+                })()
+              )
+            );
 
             dispatch({
               type: actionTypes.ACQUIRE_ORDER_ID,

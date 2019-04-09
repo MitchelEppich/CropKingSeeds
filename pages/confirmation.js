@@ -25,13 +25,28 @@ import { initGA, logPageView } from "../scripts/ga";
 import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 
 class Index extends Component {
+  // componentDidMount() {
+  //   window.onbeforeunload = () => {
+  //     this.props.purgeCart();
+  //     this.props.purgeOrderDetails({
+  //       orderDetails: this.props.checkout.orderDetails
+  //     });
+  //   };
+  // }
+
+  // componentWillUnmount() {
+  //   this.props.purgeCart();
+  //   this.props.purgeOrderDetails({
+  //     orderDetails: this.props.checkout.orderDetails
+  //   });
+  // }
+
   render() {
     const isClient = typeof document !== "undefined";
     if (!isClient) return <div />;
     let hrefPrefix = window.location.href.replace(Router.router.asPath, "");
 
     let _orderDetails = this.props.checkout.orderDetails;
-    console.log(_orderDetails);
 
     let _orderId;
     _orderId =
@@ -92,10 +107,10 @@ class Index extends Component {
       return arr;
     };
 
+    console.log(this.props);
+
     let CreditCardStatusCondition =
-      _ccr == null ||
-      _ccr.status == "" ||
-      _ccr.status.toLowerCase() == "declined";
+      _ccr != null && _ccr.status.toLowerCase() != "approved";
 
     let sectionTitle = {
       borderTopLeftRadius: "5px",
@@ -104,6 +119,8 @@ class Index extends Component {
 
     let chance = require("chance").Chance(fOrderId);
     let generateName = chance.name({ nationality: "en" });
+
+    console.log(_orderDetails);
 
     return (
       <Layout {...this.props}>
@@ -128,7 +145,6 @@ class Index extends Component {
               ) : (
                 "Approved"
               )}
-              .
             </h4>
             <p className="text-grey font-bold text-xl">
               Please follow payment instructions below.
@@ -503,10 +519,10 @@ class Index extends Component {
                         <p className="w-main mx-auto pt-4" />
                         <div className="text-center p-2 mt-4 text-xl">
                           {_ccr.status.toLowerCase() == "declined" ? (
-                            <div className="my-6">
+                            <div className="mb-6">
                               <FontAwesomeIcon
                                 icon={faExclamationCircle}
-                                className="fa-6x text-grey-light opacity-25"
+                                className="fa-4x text-grey-light opacity-25"
                               />
                               <p className="font-bold text-2xl uppercase text-red-light p-4">
                                 Your Credit Card was Declined
@@ -642,17 +658,17 @@ class Index extends Component {
                   <div className="w-2/5 sm:w-3/5 md:w-3/5 lg:w-3/5 xl:w-4/5 text-right">
                     <p className="p-1">Subtotal:</p>
                     <p className="p-1">Shipping:</p>
-                    {_orderDetails.payment == null ? (
-                      "Credit Card Tax"
-                    ) : (
-                      // ) : _orderDetails.payment.creditFee.value != 0 ? (
-                      <p className="p-1">
-                        Credit Card Tax (
-                        {(_orderDetails.payment.creditTax * 100).toFixed(2)}%):
-                      </p>
-                    )
-                    // ) : null}
-                    }
+                    <p className="p-1">
+                      {_orderDetails.payment == null
+                        ? "Credit Card Tax:"
+                        : // ) : _orderDetails.payment.creditFee.value != 0 ? (
+                          `Credit Card Tax (
+                        ${(_orderDetails.payment.creditTax * 100).toFixed(
+                          2
+                        )}%):`
+                      // ) : null}
+                      }
+                    </p>
                     {_orderDetails.coupon != null &&
                     _orderDetails.coupon.code != null ? (
                       <p className="p-1 text-red-dark">
@@ -662,7 +678,7 @@ class Index extends Component {
                     <p className="p-1">
                       Tax (
                       {_orderDetails.payment == null
-                        ? "NO CUMTAX"
+                        ? "NO TAX"
                         : _orderDetails.payment.cumTax * 100}
                       %):
                     </p>
@@ -692,18 +708,18 @@ class Index extends Component {
                           : ""
                         : "FREE"}
                     </p>
-                    {_orderDetails.payment == null ? (
-                      "NO CREDIT FEE"
-                    ) : _orderDetails.payment.creditFee.value != 0 ? (
-                      <p className="p-1">
-                        {currency != null
+                    <p className="p-1">
+                      {_orderDetails.payment == null
+                        ? "NO CREDIT FEE"
+                        : _orderDetails.payment.creditFee.value != 0
+                        ? currency != null
                           ? `${currency.symbol}${(
                               currency.convert *
                               _orderDetails.payment.creditFee.value
                             ).toFixed(2)}`
-                          : ""}
-                      </p>
-                    ) : null}
+                          : ""
+                        : null}
+                    </p>
                     {_orderDetails.coupon != null &&
                     _orderDetails.coupon.code != null ? (
                       <p className="p-1 text-red-dark">

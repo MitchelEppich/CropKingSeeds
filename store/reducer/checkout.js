@@ -46,6 +46,7 @@ export default (state = initialState, action) => {
     case actionTypes.GET_BLOCKED_ZIPS:
       return updateObject(state, { noCreditZip: action.input });
     case actionTypes.ACQUIRE_ORDER_ID:
+      console.log("REDUCER", action);
       return updateObject(state, {
         orderDetails: action.input,
         profileID: null

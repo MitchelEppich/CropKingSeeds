@@ -10,12 +10,16 @@ import About from "../components/sections/about";
 import { initGA, logPageView } from "../scripts/ga";
 import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 
+const isClient = typeof document !== "undefined";
+import Router from "next/router";
+
 class Index extends Component {
   componentDidMount() {
     initGA();
     logPageView();
   }
   render() {
+    if (!isClient) return;
     return (
       <Layout {...this.props}>
         <div className="pt-0 min-h-500">
@@ -25,7 +29,7 @@ class Index extends Component {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
                   __html: JSON.stringify(
-                    generateBreadcrumbMarkup(this.props.router.asPath)
+                    generateBreadcrumbMarkup(Router.asPath)
                   )
                 }}
               />
