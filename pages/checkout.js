@@ -39,6 +39,7 @@ class Index extends Component {
     this.updateShippingMethod();
     this.props.getBlockedIps();
     this.props.getBlockedZips();
+    // this.props.getTaxes();
   }
   componentDidUpdate(prevProps) {
     let error = ErrorHandler(this.props);
@@ -53,6 +54,7 @@ class Index extends Component {
 
   render() {
     let _orderDetails = this.props.checkout.orderDetails;
+    console.log(_orderDetails);
     let _stepsCheckout = this.props.misc.stepsCheckout;
     let errors = { ...this.props.checkout.error };
     delete errors[105]; // This error is for checking if user confirms information, not for this section
@@ -407,6 +409,7 @@ const mapDispatchToProps = dispatch => {
     getBlockedZips: () => dispatch(actions.getBlockedZips()),
     clearCart: () => dispatch(actions.clearCart()),
     purgeCart: () => dispatch(actions.purgeCart()),
+    getTaxes: () => dispatch(actions.getTaxes()),
     purgeOrderDetails: input => dispatch(actions.purgeOrderDetails(input)),
     storeOrderDetails: input => dispatch(actions.storeOrderDetails(input)),
     loadLocalProfile: input => dispatch(actions.loadLocalProfile(input)),

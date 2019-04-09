@@ -251,7 +251,7 @@ const actions = {
       return await makePromise(execute(link, operation))
         .then(data => {
           let _taxes = data.data.getTaxes;
-
+          console.log(_taxes);
           if (_taxes != null) _taxes = JSON.parse(_taxes);
 
           dispatch({
