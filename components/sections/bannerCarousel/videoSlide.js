@@ -95,8 +95,13 @@ const videoSlide = props => {
           id={"video" + props.index}
           src={props.$url}
           playsInline
+          controls
+          controlsList="nodownload"
+          onContextMenu={e => {
+            e.preventDefault();
+          }}
         />
-        <div
+        {/* <div
           onClick={() => {
             props.toggleMute();
           }}
@@ -106,7 +111,7 @@ const videoSlide = props => {
             icon={props.misc.muted ? faVolumeMute : faVolumeUp}
             className="text-white text-shadow fa-2x pr-1 cursor-pointer"
           />
-        </div>
+        </div> */}
       </div>
       <div className="w-1/5 z-50 flex flex-wrap sm:hidden md:hidden lg:hidden xl:hidden mb-4 justify-around cursor-pointer pr-8">
         {packages.slice(3)}

@@ -472,9 +472,11 @@ class Index extends Component {
                               Amount:{" "}
                               <span className="font-bold">
                                 {_orderDetails.payment == null ||
-                                _orderDetails.payment.total == null
+                                _orderDetails.payment.orderTotal == null
                                   ? "ERROR"
-                                  : _orderDetails.payment.total.value}
+                                  : _orderDetails.payment.orderTotal.value.toFixed(
+                                      2
+                                    )}
                               </span>
                             </p>
                             <p>
