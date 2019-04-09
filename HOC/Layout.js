@@ -149,13 +149,16 @@ class Layout extends Component {
           this.props.router.asPath.slice(2) +
           " - Crop King Seeds";
     if (this.props.router.asPath.indexOf("?") > 0) {
-      let titleWords = this.props.router.asPath
-        .replace(/\//g, "")
-        .split("?")
-        .map((word, index) => {
-          return word.slice(0, 1).toUpperCase() + word.slice(1);
-        });
-      title = titleWords.join(" - ");
+      let url = this.props.router.asPath.replace(/\//g, "").split("?");
+
+      let filters = url[1].split("&").map((word, index) => {
+        return word.slice(0, 1).toUpperCase() + word.slice(1);
+      });
+      title =
+        url[0].slice(0, 1).toUpperCase() +
+        url[0].slice(1) +
+        " - " +
+        filters.join(" | ");
       title += " - Crop King Seeds";
     }
 
