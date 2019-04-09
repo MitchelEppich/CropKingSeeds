@@ -65,7 +65,6 @@ const index = props => {
             }}
             onClick={e => {
               let strains = props.misc.strains;
-              console.log(product);
               props.getStrain({ sotiId: product.sotiId, strains }).then(res => {
                 props.setCurrentProduct({ product: res }).then(() => {
                   let _index = 0;

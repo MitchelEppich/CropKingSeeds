@@ -152,20 +152,14 @@ class Index extends Component {
         email: formData.get("email"),
         subject: formData.get("subject"),
         response: this.refs.recaptchaRef.getValue(),
-        date: formData.get("date") !== null ? formData.get("date") : "",
-        company:
-          formData.get("company") !== null ? formData.get("company") : "",
-        cost:
-          formData.get("cost") !== null ? parseFloat(formData.get("cost")) : "",
-        mediaKit:
-          formData.get("mediaKit") !== null ? formData.get("mediaKit") : "",
-        phone: formData.get("phone") !== null ? formData.get("phone") : "",
-        location:
-          formData.get("location") !== null ? formData.get("location") : "",
-        website:
-          formData.get("website") !== null ? formData.get("website") : "",
-        eventName:
-          formData.get("eventName") !== null ? formData.get("eventName") : ""
+        date: formData.get("date"),
+        company: formData.get("company"),
+        cost: formData.get("cost"),
+        mediaKit: formData.get("mediaKit"),
+        phone: formData.get("phone"),
+        location: formData.get("location"),
+        website: formData.get("website"),
+        eventName: formData.get("eventName")
       });
       form.reset();
     } else {

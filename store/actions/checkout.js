@@ -746,15 +746,15 @@ const getActions = uri => {
           query: mutation.sendEmail,
           variables: {
             type: "confirmation",
+            email: _orderDetails.shipping.email.value,
+            body: null,
             name:
               _orderDetails.shipping.firstName.value +
               " " +
               _orderDetails.shipping.lastName.value,
-            email: _orderDetails.shipping.email.value,
             subject:
               "Crop King Seeds - Order Confirmation Order #" +
               _orderDetails.payment.orderId.value,
-            body: null,
             response: null,
             ccStatus: ccResponse ? ccResponse.status : null,
             ccDescriptor: ccResponse ? ccResponse.descriptor : null,
@@ -771,8 +771,9 @@ const getActions = uri => {
               _orderDetails.shipping.state.value +
               "&=>" +
               _orderDetails.shipping.country.value,
-            shippingType: _orderDetails.shipping.shippingDetail.value,
-            shippingTypeDescription: _orderDetails.shippingTypeDescription,
+            shippingType: _orderDetails.shipping.shippingDetail.tag,
+            shippingTypeDescription:
+              _orderDetails.shipping.shippingDetail.value,
             subtotal: _orderDetails.payment.cartTotal.value,
             total: _orderDetails.payment.orderTotal.value,
             tax: _orderDetails.payment.taxFee,
@@ -910,13 +911,14 @@ const mutation = {
   sendEmail: gql`
     mutation(
       $type: String
-      $email: String
-      $body: String
       $name: String
+      $email: String
       $subject: String
+      $body: String
       $response: String
       $ccStatus: String
       $ccDescriptor: String
+      $ccFee: Float
       $orderId: String
       $productList: String
       $paymentMethod: String
@@ -928,17 +930,25 @@ const mutation = {
       $tax: Float
       $shipping: Float
       $date: String
+      $company: String
+      $cost: Float
+      $mediaKit: String
+      $phone: String
+      $location: String
+      $website: String
+      $eventName: String
     ) {
       sendEmail(
         input: {
           type: $type
-          email: $email
-          body: $body
           name: $name
+          email: $email
           subject: $subject
+          body: $body
           response: $response
           ccStatus: $ccStatus
           ccDescriptor: $ccDescriptor
+          ccFee: $ccFee
           orderId: $orderId
           productList: $productList
           paymentMethod: $paymentMethod
@@ -950,6 +960,13 @@ const mutation = {
           tax: $tax
           shipping: $shipping
           date: $date
+          company: $company
+          cost: $cost
+          mediaKit: $mediaKit
+          phone: $phone
+          location: $location
+          website: $website
+          eventName: $eventName
         }
       )
     }

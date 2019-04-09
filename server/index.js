@@ -148,6 +148,9 @@ app
     server.get("/article/:_id", (req, res) => {
       app.render(req, res, "/article", {});
     });
+    server.get("/confirmation", (req, res) => {
+      res.redirect("/");
+    });
     // 301 redirects
     let redirects = redirectUrls(sitemapStrains);
 

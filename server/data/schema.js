@@ -294,6 +294,7 @@ input EmailInput {
   response: String
   ccStatus: String
   ccDescriptor: String
+  ccFee: Float
   orderId: String
   productList: String
   paymentMethod: String
@@ -312,6 +313,7 @@ input EmailInput {
   location: String
   website: String
   eventName: String
+
 }
 
 type News {
