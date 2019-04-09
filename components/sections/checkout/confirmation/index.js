@@ -2,14 +2,10 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 
-import Router from "next/router";
-
 import moment from "moment";
 
 const Confirmation = props => {
-  const isClient = typeof document !== "undefined";
-  if (!isClient) return;
-  let hrefPrefix = window.location.href.replace(Router.router.asPath, "");
+  let hrefPrefix = window.location.href.replace(props.router.asPath, "");
 
   let _orderDetails = props.checkout.orderDetails;
   if (_orderDetails.payment == null) return <div />;

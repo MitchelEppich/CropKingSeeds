@@ -15,7 +15,6 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import CartIcon from "./cartIcon";
 import SearchBar from "../searchBar";
-import Router from "next/router";
 import SearchSuggest from "../searchSuggest";
 import HeaderMessage from "../headerMessage";
 
@@ -23,9 +22,6 @@ const menu = props => {
   let menuStyle = {
     // backgroundImage: "url(../static/img/red.png)",
   };
-
-  const isClient = typeof document !== "undefined";
-  let route = isClient ? Router.route : "";
 
   let availableCurrency = props.checkout.availableCurrency;
   let currency = props.checkout.viewCurrency;
@@ -287,7 +283,7 @@ const menu = props => {
                   </Link>
                   <li
                     className={`font-bold text-2xl px-2 scale-item ${
-                      route.includes("checkout")
+                      props.router.asPath.includes("checkout")
                         ? "opacity-50 cursor-not-allowed"
                         : "cursor-pointer scale-item"
                     }`}
@@ -400,7 +396,7 @@ const menu = props => {
                       </li>
                     </Link>
                     <Link href="/contact">
-                      {/* route.includes("checkout") // ? "unselectable
+                      {/* props.router.asPath.includes("checkout") // ? "unselectable
                       opacity-50 pointer-events-none" // : "cursor-pointer
                       scale-item" */}
                       <li

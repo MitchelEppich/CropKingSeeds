@@ -11,7 +11,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
 
-const isClient = typeof document !== "undefined";
 import Router from "next/router";
 
 // custom imports
@@ -60,8 +59,6 @@ class Index extends Component {
 
     let itemsCart = Object.keys(this.props.cart.items);
 
-    if (!isClient) return <div />;
-
     return (
       <Layout>
         {typeof document !== "undefined" ? (
@@ -69,7 +66,9 @@ class Index extends Component {
             <script
               type="application/ld+json"
               dangerouslySetInnerHTML={{
-                __html: JSON.stringify(generateBreadcrumbMarkup(Router.asPath))
+                __html: JSON.stringify(
+                  generateBreadcrumbMarkup(this.props.router.asPath)
+                )
               }}
             />
           </Head>
@@ -142,8 +141,7 @@ class Index extends Component {
                 });
                 this.props.toggleProcessing(false);
                 // Redirect to 404
-                const isClient = typeof document !== "undefined";
-                if (!isClient) return;
+
                 Router.push("/404");
               }
             } else {

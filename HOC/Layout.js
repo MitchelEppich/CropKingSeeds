@@ -50,8 +50,8 @@ import HeaderMessage from "../components/partials/header/headerMessage";
 import generateSchemaMarkup from "../scripts/generateSchemaMarkup";
 import registerServiceWorker from "../registerServiceWorker";
 
-const isClient = typeof document !== "undefined";
 import Router from "next/router";
+const isClient = typeof document !== "undefined";
 
 class Layout extends Component {
   constructor(props) {
@@ -145,15 +145,15 @@ class Layout extends Component {
   }
 
   render() {
-    if (!isClient) return <div />;
+    if (!isClient) return null;
     let title =
-      Router.asPath == "/"
+      this.props.router.asPath == "/"
         ? "Buy Feminized & Autoflowering Cannabis Seeds - Crop King Seeds"
-        : Router.asPath.slice(1, 2).toUpperCase() +
-          Router.asPath.slice(2) +
+        : this.props.router.asPath.slice(1, 2).toUpperCase() +
+          this.props.router.asPath.slice(2) +
           " - Crop King Seeds";
-    if (Router.asPath.indexOf("?") > 0) {
-      let url = Router.asPath.replace(/\//g, "").split("?");
+    if (this.props.router.asPath.indexOf("?") > 0) {
+      let url = this.props.router.asPath.replace(/\//g, "").split("?");
 
       let filters = url[1].split("&").map((word, index) => {
         return word.slice(0, 1).toUpperCase() + word.slice(1);
@@ -165,11 +165,11 @@ class Layout extends Component {
         filters.join(" | ");
       title += " - Crop King Seeds";
     }
-
+    console.log(this.props.router);
     return (
       <React.Fragment>
         {this.state.isClient &&
-        Router.asPath.includes("product") &&
+        this.props.router.asPath.includes("product") &&
         this.props.viewProduct.currentProduct ? (
           <Head>
             <title key="titlePage">
@@ -185,7 +185,9 @@ class Layout extends Component {
             <meta
               id="og-url"
               property="og:url"
-              content={"https://www.cropkingseeds.com" + Router.asPath}
+              content={
+                "https://www.cropkingseeds.com" + this.props.router.asPath
+              }
             />
             <meta id="og-locale" property="og:locale" content="en_US" />
             <meta
@@ -220,17 +222,19 @@ class Layout extends Component {
             <meta property="og:type" content="The type" />
             <meta
               property="og:url"
-              content={"https://www.cropkingseeds.com" + Router.asPath}
+              content={
+                "https://www.cropkingseeds.com" + this.props.router.asPath
+              }
             />
             <meta
               id="og-description"
               property="og:description"
               content={
                 this.props.misc.metaDescriptions[
-                  Router.asPath.slice(1).toLowerCase()
+                  this.props.router.asPath.slice(1).toLowerCase()
                 ]
                   ? this.props.misc.metaDescriptions[
-                      Router.asPath.slice(1).toLowerCase()
+                      this.props.router.asPath.slice(1).toLowerCase()
                     ]
                   : "Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
               }
@@ -241,10 +245,10 @@ class Layout extends Component {
               key="desc"
               content={
                 this.props.misc.metaDescriptions[
-                  Router.asPath.slice(1).toLowerCase()
+                  this.props.router.asPath.slice(1).toLowerCase()
                 ]
                   ? this.props.misc.metaDescriptions[
-                      Router.asPath.slice(1).toLowerCase()
+                      this.props.router.asPath.slice(1).toLowerCase()
                     ]
                   : "Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
               }
@@ -312,7 +316,7 @@ class Layout extends Component {
                 {this.props.children}
               </div>
             </div>
-            {!Router.asPath.includes("shop") ? (
+            {!this.props.router.asPath.includes("shop") ? (
               <StrainsMenu {...this.props} />
             ) : null}
             <AnchorLink

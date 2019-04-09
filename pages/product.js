@@ -26,16 +26,14 @@ import { initGA, logPageView } from "../scripts/ga";
 import generateSchemaMarkup from "../scripts/generateSchemaMarkup";
 import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 
-const isClient = typeof document !== "undefined";
 import Router from "next/router";
 
 let lowerImageCar;
 
 class Index extends Component {
   componentDidMount() {
-    if (!isClient) return;
     if (typeof document === "undefined") return;
-    let qr = Router.asPath.split("/product/")[1];
+    let qr = this.props.router.asPath.split("/product/")[1];
     if (qr) {
       if (
         this.props.viewProduct.currentProduct &&
@@ -72,7 +70,6 @@ class Index extends Component {
   }
 
   render() {
-    if (!isClient) return <div />;
     return (
       <Layout {...this.props}>
         {this.props.viewProduct.currentProduct &&
@@ -93,7 +90,7 @@ class Index extends Component {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
                   __html: JSON.stringify(
-                    generateBreadcrumbMarkup(Router.asPath)
+                    generateBreadcrumbMarkup(this.props.router.asPath)
                   )
                 }}
               />
