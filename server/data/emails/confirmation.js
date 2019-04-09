@@ -13,6 +13,7 @@ exports.confirmation = input => {
     shipping = input.shipping,
     date = input.date;
 
+  console.log("email sent", orderId, input.orderId);
   return {
     from: "info@cropkingseeds.com",
     to: input.email,
@@ -181,7 +182,7 @@ exports.confirmation = input => {
                         )}</span></p>
                         <p style="text-align:right;"><span>Tax:</span> <span>$${tax.toFixed(
                           2
-                        )}</span></p>
+                        )}</span></p>                        
                         <p style="text-align:right;"><b>Total:</b> <b>$${total.toFixed(
                           2
                         )}</b></p>

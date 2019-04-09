@@ -132,7 +132,9 @@ const ShippingAddress = props => {
         _data = data.statesUS;
         break;
       default:
-        _data = [...data.statesUS, ...Object.keys(props.misc.taxes)];
+        _data = props.misc.taxes
+          ? [...data.statesUS, ...Object.keys(props.misc.taxes)]
+          : [];
     }
 
     let arr = [

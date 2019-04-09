@@ -72,7 +72,7 @@ class Index extends Component {
             <img src={_item.product.packageImg} className="h-32" />
           </div> */}
             <div className="w-3/5">
-              <div className="p-2 font-bold text-lg items-center md:text-left sm:text-left lg:text-left flex">
+              <div className="p-2 font-bold text-lg sm:text-base items-center md:text-left sm:text-left lg:text-left flex">
                 <Link
                   href="/product"
                   as={
@@ -90,10 +90,10 @@ class Index extends Component {
                 </Link>
               </div>
             </div>
-            <div className="w-1/5 p-2 font-bold text-lg items-center justify-center flex">
+            <div className="w-1/5 p-2 font-bold text-lg sm:text-base items-center justify-center flex">
               {_item.quantity}
             </div>
-            <div className="w-1/5 p-2 font-bold text-lg items-center justify-center flex">
+            <div className="w-1/5 p-2 font-bold text-lg sm:text-base items-center justify-center flex">
               {currency != null
                 ? `${currency.symbol}${(currency.convert * _item.price).toFixed(
                     2
@@ -145,7 +145,7 @@ class Index extends Component {
               Please follow payment instructions below.
             </p>
           </div>
-          <div className="xxl:w-container mx-auto pt-12 w-main">
+          <div className="xxl:w-container mx-auto pt-12 w-main sm:w-95p">
             <div className="bg-white shadow-md">
               <div
                 style={sectionTitle}
@@ -653,18 +653,16 @@ class Index extends Component {
               </div>
               <div className="w-1/2 text-right p-2 pl-6 sm:pl-0 md:pl-0 sm:w-full md:w-full lg:w-full xl:w-full">
                 <div className="inline-flex w-500 xl:w-full sm:w-full md:w-full lg:w-full">
-                  <div className="w-3/5 sm:w-1/2 sm:text-base md:w-1/2 lg:w-4/5 xl:w-4/5 text-right">
+                  <div className="w-3/5 sm:text-base md:w-1/2 lg:w-4/5 xl:w-4/5 text-right">
                     <p className="p-1">Subtotal:</p>
                     <p className="p-1">Shipping:</p>
                     {_orderDetails.payment == null ||
                     _orderDetails.payment.creditFee.value != 0 ? (
                       <p className="p-1">
                         {_orderDetails.payment == null
-                          ? "Credit Card Fee:"
-                          : `Credit Card Fee (
-                        ${_orderDetails.payment.creditTax * 100}%):`
-                        // ) : null}
-                        }
+                          ? "Credit C. Fee:"
+                          : `Credit C. Fee (${_orderDetails.payment.creditTax *
+                              100}%):`}
                       </p>
                     ) : null}
                     {_orderDetails.coupon != null &&
@@ -682,7 +680,7 @@ class Index extends Component {
                     </p>
                     <p className="font-bold p-1 text-xl">Total:</p>
                   </div>
-                  <div className="w-2/5 sm:text-base sm:w-1/2 md:w-1/2 lg:w-1/5 xl:w-1/5  text-left sm:text-right pl-10 md:ml-2 lg:ml-2 lg:pl-5 xl:pl-8">
+                  <div className="w-2/5 sm:text-base md:w-1/2 lg:w-1/5 xl:w-1/5  text-left sm:text-right pl-10 md:ml-2 lg:ml-2 lg:pl-5 xl:pl-8">
                     <p className="p-1">
                       {_orderDetails.payment == null
                         ? "NO SUBTOTAL"

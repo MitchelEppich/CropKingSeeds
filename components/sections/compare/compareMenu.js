@@ -52,7 +52,7 @@ const CompareMenu = props => {
       let color = props.detail.geneColor[genetic.toLowerCase()];
       let text = category[genetic];
       return (
-        <a href={`/shop?${genetic}`} target="_blank">
+        <a key={arr} href={`/shop?${genetic}`} target="_blank">
           <p
             key={text}
             className={`bg-${color} p-3 font-bold text-center text-white text-shadow uppercase w-full mt-1 cursor-pointer`}
