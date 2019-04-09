@@ -27,11 +27,7 @@ import Router from "next/router";
 const isClient = typeof document !== "undefined";
 
 class Index extends Component {
-  componentWillMount() {
-    //   if (!isClient) return;
-    //   let $orderDetails = this.props.checkout.orderDetails;
-    //   if ($orderDetails.payment == null) Router.push("/");
-  }
+  componentWillMount() {}
 
   componentWillUnmount() {
     this.props.purgeCart();
@@ -474,9 +470,11 @@ class Index extends Component {
                               Amount:{" "}
                               <span className="font-bold">
                                 {_orderDetails.payment == null ||
-                                _orderDetails.payment.total == null
+                                _orderDetails.payment.orderTotal == null
                                   ? "ERROR"
-                                  : _orderDetails.payment.total.value}
+                                  : _orderDetails.payment.orderTotal.value.toFixed(
+                                      2
+                                    )}
                               </span>
                             </p>
                             <p>

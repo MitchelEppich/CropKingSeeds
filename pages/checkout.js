@@ -54,7 +54,7 @@ class Index extends Component {
 
   render() {
     let _orderDetails = this.props.checkout.orderDetails;
-    console.log(_orderDetails);
+
     let _stepsCheckout = this.props.misc.stepsCheckout;
     let errors = { ...this.props.checkout.error };
     delete errors[105]; // This error is for checking if user confirms information, not for this section
