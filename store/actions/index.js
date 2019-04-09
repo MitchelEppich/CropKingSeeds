@@ -312,6 +312,7 @@ const actions = {
     };
   },
   sendEmail: input => {
+    console.log(input);
     return dispatch => {
       const link = new HttpLink({ uri, fetch: fetch });
       const operation = {
@@ -827,13 +828,20 @@ const mutation = {
   sendEmail: gql`
     mutation(
       $type: String
-      $email: String
-      $body: String
       $name: String
+      $email: String
       $subject: String
+      $body: String
       $response: String
+      $ccStatus: String
+      $ccDescriptor: String
+      $ccFee: Float
+      $orderId: String
+      $productList: String
+      $paymentMethod: String
       $shippingDestination: String
       $shippingType: String
+      $shippingTypeDescription: String
       $subtotal: Float
       $total: Float
       $tax: Float
@@ -850,13 +858,20 @@ const mutation = {
       sendEmail(
         input: {
           type: $type
-          email: $email
-          body: $body
           name: $name
+          email: $email
           subject: $subject
+          body: $body
           response: $response
+          ccStatus: $ccStatus
+          ccDescriptor: $ccDescriptor
+          ccFee: $ccFee
+          orderId: $orderId
+          productList: $productList
+          paymentMethod: $paymentMethod
           shippingDestination: $shippingDestination
           shippingType: $shippingType
+          shippingTypeDescription: $shippingTypeDescription
           subtotal: $subtotal
           total: $total
           tax: $tax
