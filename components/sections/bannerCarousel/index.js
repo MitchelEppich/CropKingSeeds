@@ -1,4 +1,5 @@
 import Slide from "./slide";
+import LoaderSmall from "../loader/loaderSmall";
 import Link from "next/link";
 import Carousel from "../germination/carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,7 +11,14 @@ import {
 
 const BannerCarousel = props => {
   let banners = props.misc.banners;
-  if (banners == null) return <div />;
+  if (banners == null)
+    return (
+      <div className="w-full">
+        <div className="xxl:h-600 overflow-hidden xl:h-400 lg:h-300 md:h-250 sm:h-175 w-full relative inline-flex">
+          <LoaderSmall />
+        </div>
+      </div>
+    );
 
   banners = banners.map((banner, index) => {
     let positionIndex = props.misc.activeBannerSlide + index;

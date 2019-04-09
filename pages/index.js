@@ -14,7 +14,10 @@ import ExtraContent from "../components/sections/extraContent";
 import Carousel from "../components/sections/germination/carousel";
 import { initGA, logPageView } from "../scripts/ga";
 
+import generateSiteNavigationMarkup from "../scripts/generateSiteNavigationMarkup";
+import siteNavPages from "../scripts/siteNavPages";
 import registerServiceWorker from "../registerServiceWorker";
+
 class Index extends Component {
   componentWillMount() {
     this.props.getBanners();
@@ -43,18 +46,22 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
-        {this.props.misc.strains != null && this.props.misc.banners != null ? (
-          <React.Fragment>
-            <BannerCarousel {...this.props} />
-            <GenePreview {...this.props} />
-            <ExtraContent {...this.props} />
-            <News {...this.props} />
-          </React.Fragment>
-        ) : (
-          <p className="text-transparent text-4xl h-500 w-full py-32">
-            <span className="text-black">Loading...</span>
-          </p>
-        )}
+        <React.Fragment>
+          <Head>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify(
+                  generateSiteNavigationMarkup(siteNavPages)
+                )
+              }}
+            />
+          </Head>
+          <BannerCarousel {...this.props} />
+          <GenePreview {...this.props} />
+          <ExtraContent {...this.props} />
+          <News {...this.props} />
+        </React.Fragment>
       </Layout>
     );
   }

@@ -1,7 +1,6 @@
 //lib
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { TimelineLite } from "gsap";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //custom
@@ -11,34 +10,21 @@ import withData from "../../../../lib/withData";
 import { filter } from "../../../../store/utilities/filter";
 import GridHeader from "./gridHeader";
 import ProductNoAnimation from "./productNoAnimation/";
+import LoaderSmall from "../../loader/loaderSmall";
 
 class Index extends Component {
   constructor(props) {
     super(props);
-    this.myTween = new TimelineLite({ paused: true });
-    this.myElements = [];
     this.isSmallMediumOrLargeDevice =
-      props.checkout.orderDetails.details.device.value != "Desktop" ||
+      (props.checkout.orderDetails.details &&
+        props.checkout.orderDetails.details.device.value != "Desktop") ||
       ["sm"].includes(props.misc.mediaSize);
   }
   componentDidMount() {
-    if (!this.props.lowGPUMode) {
-      this.myTween.staggerTo(
-        this.myElements,
-        0.5,
-        { autoAlpha: 1, y: -30 },
-        0.1
-      );
-      this.myTween.restart();
-    }
     this.refreshInputs(true);
   }
 
   componentDidUpdate(prevProps) {
-    if (!this.props.lowGPUMode) {
-      this.myTween.set(this.myElements, { autoAlpha: 1, y: -30 });
-    }
-
     this.refreshInputs();
   }
 
@@ -114,7 +100,9 @@ class Index extends Component {
       if ($filter.text == null) $filter.text = $search;
       else $filter.text = [...$filter.text, ...$search];
     }
-
+    if (this.props.misc.strains == null) {
+      return <LoaderSmall />;
+    }
     let filterOutput = filter(this.props.misc.strains, $filter);
 
     let products = filterOutput
@@ -127,7 +115,6 @@ class Index extends Component {
         return (
           <div
             key={index}
-            ref={div => (this.myElements[index] = div)}
             onMouseEnter={() => {
               if (
                 this.isSmallMediumOrLargeDevice ||

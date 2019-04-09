@@ -72,7 +72,39 @@ const initialState = {
   dailyMessageShown: false,
   dailyMessage: null,
   dailyMessageTimer: null,
-  muted: true
+  muted: true,
+  metaDescriptions: {
+    shop:
+      "Shop our various cannabis seed strains here at Crop King Seeds. We carry autoflower, feminized, regular and cbd seed types. Check out our high thc strains like Gelato Feminized (27% thc) or browse our high CBD's like CB Diesel (20% cbd).",
+    "shop?autoflower":
+      "Buy Auto Flowering Feminized Marijuana Seeds. Auto-flowering marijuana seeds are produced when a sativa, indica, or both are crossed to a ruderalis variety.",
+    "shop?regular":
+      "Buy Regular Marijuana Seeds - When marijuana seeds are classified as regular it means that the seeds when germinated can produce either male or female plants. It is expected that a batch of regular seeds can have about 50% male and 50% female so the tendency to have male together with female plants is about even. However, the sex of marijuana plants cannot be determined with certainty until they start to flower.",
+    "shop?feminized":
+      "Buy Feminized Marijuana Seeds - Feminized marijuana seeds are the result of a scientific process meant to produce only female seeds. The process involves forcing female plants to produce pollen sacs which are then used to pollinate other female marijuana plants. When a female plant is forced to produce pollen sacs, it can be expected that the pollen coming out of it will have female genes and when matched with another female, then it will have the natural tendency to produce only female seeds.",
+    "shop?cbd":
+      "Buy High CBD / Medical Marijuana Seeds - CBD, or cannabidiol, is the second most abundant active ingredient in cannabis after THC. It is a strong anti-oxidant, non-psychoactive and has a wide range of medical applications. CBDs have anti-psychotic and anti-tumor properties. They work to prolong the effects of THC while simultaneously providing relief from anxiety, muscle spasms and seizures.",
+    about:
+      "We are progressively growing both as a company and worldwide. With almost 40 strains available, 24 hour customer service, and our trusted satisfaction guarantee, Crop King Seeds continues to be a leader in the expanding cannabis industry.",
+    affiliates:
+      "GROW YOUR BUSINESS WITH CROP KING SEEDS - Are you ready to earn some money? Full affiliate support available so you can be apart of Crop King Seeds fast growth in the cannabis industry.",
+    contact:
+      "We provide full support worldwide to address any questions or comments you may have. Please view our FAQ Page to see if we have answered your question(s) already!",
+    faq:
+      "Can't find the answer to your question? Feel free to Contact Us, we are ready 24/7 Worldwide to assist you with any question you may have.",
+    germination:
+      "Learn how to germinate your cannabis seeds. By following these steps we guarantee a germination rate of over 80% on our marijuana seeds.",
+    news:
+      "These are the next events Crop King Seeds will be attending and or sponsoring. We hope to see you there!",
+    partners:
+      "Do you have a business or service that can help our valued growers? If your company has the same high standards as Crop King Seeds, then contact us to put your information in the list below.",
+    privacy:
+      "The following Privacy Policy governs how Crop King Seeds collects, uses, maintains and discloses (which we don’t) information collected from users (each, a “User”) of the www.cropkingseeds.com website (“Site”). The following privacy policy applies to the Site and all products offered by Crop King Seeds.",
+    wiki:
+      "Hello! Welcome to the new and improved Crop King Seeds.There are many new features and improvements that have been introduced to our site that we hope you’ll enjoy.These documents are meant as a reference guide for understanding and learning how to use the new site efficiently.",
+    checkout:
+      "Sorry, your cart is empty! Looks like you have no seeds in your shopping cart. Check back after more shopping for cannabis seeds. Go to the Shop Page and check out all our marijuana seeds."
+  }
 };
 
 const indexReducer = (state = initialState, action) => {

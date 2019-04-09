@@ -4,7 +4,6 @@ import withData from "../lib/withData";
 import { connect } from "react-redux";
 import actions from "../store/actions";
 import Head from "next/head";
-import Router from "next/router";
 // custom imports
 import Layout from "../HOC/Layout";
 import About from "../components/sections/about";
@@ -26,7 +25,7 @@ class Index extends Component {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
                   __html: JSON.stringify(
-                    generateBreadcrumbMarkup(Router.asPath)
+                    generateBreadcrumbMarkup(this.props.router.asPath)
                   )
                 }}
               />

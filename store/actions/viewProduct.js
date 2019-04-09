@@ -15,7 +15,8 @@ const actionTypes = {
   SET_REVIEW_CURSOR: "SET_REVIEW_CURSOR",
   SET_REVIEW_RATE_FILTER: "SET_REVIEW_RATE_FILTER",
   TOGGLE_IMAGE_ZOOM: "TOGGLE_IMAGE_ZOOM",
-  TOGGLE_STRAINS_MENU: "TOGGLE_STRAINS_MENU"
+  TOGGLE_STRAINS_MENU: "TOGGLE_STRAINS_MENU",
+  FETCH_CURRENT_PRODUCT: "FETCH_CURRENT_PRODUCT"
 };
 
 const getActions = uri => {
@@ -136,12 +137,69 @@ const getActions = uri => {
         type: actionTypes.TOGGLE_STRAINS_MENU,
         isStrainsMenuVisible: isStrainsMenuVisible
       };
+    },
+    fetchCurrentProduct: name => {
+      return async dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = {
+          query: query.fetchCurrentProduct,
+          variables: { ...name }
+        };
+
+        await makePromise(execute(link, operation))
+          .then(data => {
+            let _strain = data.data.fetchCurrentProduct;
+            dispatch(
+              objects.setCurrentProduct({
+                product: inferStrainData(_strain)
+              })
+            );
+          })
+          .catch(error => console.log(error));
+      };
     }
   };
 
   return { ...objects };
 };
-const query = {};
+
+const query = {
+  fetchCurrentProduct: gql`
+    query($name: String) {
+      fetchCurrentProduct(input: { name: $name }) {
+        _id
+        name
+        price
+        strainImg
+        packageImg
+        inStock
+        genetic
+        yield
+        flowerTime
+        type
+        pthc
+        pcbd
+        pcbn
+        sotiId
+        sativa
+        indica
+        ruderalis
+        rating
+        releaseDate
+        description
+        effect
+        difficulty
+        og
+        country
+        env
+        reviews
+        ratingQuantity
+        featured
+        moreInfo
+      }
+    }
+  `
+};
 
 const mutation = {
   updateStrain: gql`

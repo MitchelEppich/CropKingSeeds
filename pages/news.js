@@ -6,7 +6,6 @@ import React, { Component } from "react";
 import withData from "../lib/withData";
 import { connect } from "react-redux";
 import Head from "next/head";
-import Router from "next/router";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import About from "../components/sections/about";
@@ -30,7 +29,7 @@ class Index extends Component {
             <script
               type="application/ld+json"
               dangerouslySetInnerHTML={{
-                __html: JSON.stringify(generateBreadcrumbMarkup(Router.asPath))
+                __html: JSON.stringify(generateBreadcrumbMarkup(this.props.router.asPath))
               }}
             />
           </Head>

@@ -1,6 +1,9 @@
 const oldUrls = require("./redirectUrls");
 let categories = [
-  "products-page",
+  "feminized",
+  "auto",
+  "regular",
+  "cbd",
   "germinat",
   "buy",
   "chart",
@@ -10,7 +13,8 @@ let categories = [
   "events",
   "seeds",
   "sale",
-  "order"
+  "order",
+  "products-page"
 ];
 module.exports = strains => {
   let strainNames = strains.map((strain, index) => {
@@ -34,9 +38,15 @@ module.exports = strains => {
       to: null
     };
     url.to = "/";
-    let urlPath = oldUrl.replace("https://www.cropkingseeds.com", "").trim();
+    let urlPath = oldUrl
+      .replace("https://www.cropkingseeds.com", "")
+      .trim()
+      .toLowerCase();
     if (urlPath.includes("http://www.cropkingseeds.com")) {
-      urlPath = urlPath.replace("http://www.cropkingseeds.com", "").trim();
+      urlPath = urlPath
+        .replace("http://www.cropkingseeds.com", "")
+        .trim()
+        .toLowerCase();
     }
     url.from = urlPath;
     if (urlPath.includes("products-page")) {
@@ -81,44 +91,53 @@ module.exports = strains => {
       }
     }
     for (categorie of categories) {
-      if (urlPath.includes(categorie)) {
-        if (categorie == "mix") {
-          if (urlPath.includes("auto")) {
-            url.to = "/product/autoflower-mixed";
-          } else {
-            url.to = "/product/feminized-mixed";
-          }
-        }
-        if (categorie == "germinat") {
-          url.to = "/germination";
-        }
-        if (
-          categorie == "buy" ||
-          categorie == "sale" ||
-          categorie == "seeds" ||
-          categorie == "order"
-        ) {
-          url.to = "/shop";
-        }
-        if (categorie == "chart") {
-          url.to = "/charts";
-        }
-        if (categorie == "news") {
-          url.to = "/news";
-        }
-        if (categorie == "events") {
-          url.to = "/news";
-        }
-        if (categorie == "products-page") {
-          url.to = "/shop";
+      if (urlPath.includes(categorie.toLowerCase())) {
+        switch (categorie) {
+          case "mix":
+            if (urlPath.includes("auto")) {
+              url.to = "/product/autoflower-mixed";
+            } else {
+              url.to = "/product/feminized-mixed";
+            }
+            break;
+          case "regular":
+            url.to = "/shop?regular";
+            break;
+          case "auto":
+            url.to = "/shop?autoflower";
+            break;
+          case "feminized":
+            url.to = "/shop?feminized";
+            break;
+          case "cbd":
+            url.to = "/shop?cbd";
+            break;
+          case "germinat":
+            url.to = "/germination";
+            break;
+          case "chart":
+            url.to = "/charts";
+            break;
+          case "news" || "events":
+            url.to = "/news";
+            break;
+          case "products-page":
+            url.to = "/shop";
+            break;
+          case "buy" || "sale" || "seeds" || "order":
+            url.to = "/shop";
+            break;
+          default:
+            url.to = "/shop";
+            break;
         }
       }
+
       if (url.to != "/") {
         return url;
       }
     }
     return url;
   });
-  // return [{ from: "/adam", to: "/shop" }];
   return redirects;
 };

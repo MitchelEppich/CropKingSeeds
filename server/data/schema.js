@@ -6,6 +6,7 @@ type Query {
   exportAllStrains: String
   sendString: String
   strain(input: StrainInput!): Strain
+  fetchCurrentProduct(input: StrainNameInput!): Strain
   allStrains(filter: StrainFilter): [Strain]!
   order(input: OrderInput!): Order
   allOrders(filter: OrderFilter): [Order]!
@@ -173,6 +174,11 @@ input StrainInput {
   releaseDate: String
   moreInfo: [String]
 }
+
+input StrainNameInput {
+  name: String
+}
+
 
 type Order {
   _id: String

@@ -40,6 +40,7 @@ export default withRedux(makeStore)(
             <Component
               supportedBrowser={{ is: supportedBrowser, browser: browser.name }}
               {...pageProps}
+              router={router}
             />
           </Container>
         </Provider>

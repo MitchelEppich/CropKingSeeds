@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Head from "next/head";
-import Router from "next/router";
 // custom
 import withData from "../lib/withData";
 import actions from "../store/actions";
@@ -16,6 +15,45 @@ import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 import { initGA, logPageView } from "../scripts/ga";
 class Index extends Component {
   componentDidMount() {
+    if (typeof document === "undefined") return;
+    let url = this.props.router.asPath.slice(1);
+    if (url && url.length != 0) {
+      let qr;
+      if (url.includes("shop?")) {
+        qr = url.slice("shop?".length);
+        if (qr) {
+          qr = qr.split("&");
+          let _availableFilters = this.props.shop.availableFilters;
+          for (let item of qr) {
+            item = item.toLowerCase();
+            let partial;
+            if (
+              (item != "cbd" && item.includes("cbd")) ||
+              (item != "thc" && item.includes("thc"))
+            ) {
+              partial = item.slice(3);
+              item = item.replace(partial, "");
+              this.props.toggleFilter({
+                filter: this.props.shop.activeFilters,
+                [item]: partial
+              });
+              continue;
+            } else {
+              for (let filter of Object.keys(_availableFilters)) {
+                if (_availableFilters[filter].includes(item)) {
+                  this.props.toggleFilter({
+                    filter: this.props.shop.activeFilters,
+                    [filter]: item,
+                    multiple: filter == "genetic"
+                  });
+                  break;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
     initGA();
     logPageView();
     let searchValue = this.props.misc.searchValue;
@@ -37,12 +75,14 @@ class Index extends Component {
   render() {
     let mobile = ["sm", "md"].includes(this.props.misc.mediaSize);
     return (
-      <Layout supportedBrowser={this.props.supportedBrowser}>
-        {this.props.misc.strains != null &&
+      <Layout {...this.props} supportedBrowser={this.props.supportedBrowser}>
+        {/* {this.props.misc.strains != null &&
         this.props.misc.featuredStrains != null &&
-        this.props.misc.strains.length > 0 ? (
-          <React.Fragment>
-            <Head>
+        this.props.misc.strains.length > 0 ? ( */}
+        <React.Fragment>
+          <Head>
+            {this.props.misc.strains != null &&
+            this.props.misc.strains.length > 0 ? (
               <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
@@ -50,64 +90,65 @@ class Index extends Component {
                     generateSchemaMarkup(this.props.misc.strains)
                   )
                 }}
-              />{" "}
-              <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                  __html: JSON.stringify(
-                    generateBreadcrumbMarkup(Router.asPath)
-                  )
-                }}
               />
-            </Head>
+            ) : null}
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify(
+                  generateBreadcrumbMarkup(this.props.router.asPath)
+                )
+              }}
+            />
+          </Head>
+          <div
+            className={
+              this.props.misc.hoverId != null &&
+              this.props.misc.mediaSize == "sm"
+                ? "fixed"
+                : "relative"
+            }
+          >
+            <h1
+              className={
+                this.props.misc.hoverId != null &&
+                this.props.misc.mediaSize == "sm"
+                  ? "hidden"
+                  : "mt-5 text-grey font-extrabold text-center text-3/5xl mx-auto w-full text-center"
+              }
+            >
+              Shop Cannabis Seeds
+            </h1>
             <div
               className={
                 this.props.misc.hoverId != null &&
                 this.props.misc.mediaSize == "sm"
-                  ? "fixed"
-                  : "relative"
+                  ? " flex flex-wrap"
+                  : "flex flex-wrap relative"
               }
             >
-              <h1
-                className={
-                  this.props.misc.hoverId != null &&
-                  this.props.misc.mediaSize == "sm"
-                    ? "hidden"
-                    : "mt-5 text-grey font-extrabold text-center text-3/5xl mx-auto w-full text-center"
-                }
-              >
-                Shop Cannabis Seeds
-              </h1>
               <div
                 className={
                   this.props.misc.hoverId != null &&
                   this.props.misc.mediaSize == "sm"
-                    ? " flex flex-wrap"
-                    : "flex flex-wrap relative"
+                    ? "hidden"
+                    : "sm:w-full md:w-full lg:w-2/5 xl:w-1/3 xxl:w-1/4 slow relative mt-8 mb-12 sm:mb-6 md:mb-6"
                 }
               >
-                <div
-                  className={
-                    this.props.misc.hoverId != null &&
-                    this.props.misc.mediaSize == "sm"
-                      ? "hidden"
-                      : "sm:w-full md:w-full lg:w-2/5 xl:w-1/3 xxl:w-1/4 slow relative mt-8 mb-12 sm:mb-6 md:mb-6"
-                  }
-                >
-                  <div>
-                    <Filters {...this.props} />
-                  </div>
-                  {!mobile ? <Sidebar {...this.props} /> : null}
-                  {mobile ? <ProductGrid {...this.props} /> : null}
+                <div>
+                  <Filters {...this.props} />
                 </div>
-                {!mobile ? <ProductGrid {...this.props} /> : null}
-                {mobile ? <Sidebar {...this.props} /> : null}
+                {!mobile ? <Sidebar {...this.props} /> : null}
+                {mobile ? <ProductGrid {...this.props} /> : null}
               </div>
+              {!mobile ? <ProductGrid {...this.props} /> : null}
+              {mobile ? <Sidebar {...this.props} /> : null}
             </div>
-          </React.Fragment>
-        ) : (
+          </div>
+        </React.Fragment>
+        {/* ) : (
           <p>Loading...</p>
-        )}
+        )} */}
       </Layout>
     );
   }

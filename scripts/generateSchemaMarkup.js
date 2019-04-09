@@ -1,5 +1,7 @@
 module.exports = strains => {
+  let strainCount = strains.length;
   return strains.map((strain, index) => {
+    let priceCount = strain.price[0] > 0 ? 3 : 2;
     let reviews,
       reviewCount = 0;
     for (let i = 0; i < strain.ratingQuantity.length; i++) {
@@ -44,6 +46,7 @@ module.exports = strains => {
         offers: [
           {
             "@type": "Offer",
+            offerCount: strainCount > 1 ? strainCount : priceCount,
             url:
               "cropkingseeds.com/product/" +
               strain.name.toLowerCase().replace(/ /g, "-")

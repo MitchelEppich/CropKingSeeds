@@ -6,7 +6,6 @@ component has the navigation menu and footer.*/
 //lib
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Router from "next/router";
 import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -64,6 +63,11 @@ class Layout extends Component {
   }
 
   componentDidMount() {
+    this.props.getStrains().then(strains => {});
+    this.props.getFeaturedList({
+      limit: 6
+    });
+    this.props.getFeaturedNews();
     this.props.getCookie(document.cookie, "idev");
     this.props.getDailyMessage().then(res => {
       if (
@@ -84,7 +88,6 @@ class Layout extends Component {
 
     if (window.top !== window.self)
       window.top.location.replace(window.self.location.href);
-
     // registerServiceWorker();
     // iframe = document.createElement("iframe");
     // iframe.id = "iframe";
@@ -115,97 +118,7 @@ class Layout extends Component {
       } else this.state.showNewCustomerPopUp = false;
     }
     this.recallSession();
-    this.props.getFeaturedNews();
     this.props.getTaxes();
-    this.props.getStrains().then(strains => {
-      if (!this.state.isClient) return;
-      let url = Router.asPath.slice(1);
-      if (url && url.length != 0) {
-        let qr;
-        if (url.includes("product/")) {
-          qr = url.slice("product/".length);
-          if (qr) {
-            // Find product with name
-            let index = strains.findIndex(a => {
-              return (
-                a.name
-                  .toLowerCase()
-                  .split(" ")
-                  .join("-") == qr
-              );
-            });
-            if (index < 0) {
-              Router.push("/_error", "/404");
-            }
-            this.props
-              .getStrain({
-                sotiId: strains[index].sotiId,
-                strains
-              })
-              .then(res => {
-                this.props.setCurrentProduct({ product: res }).then(() => {
-                  let product = this.props.viewProduct.currentProduct;
-                  let _index = 0;
-                  while (product.price[_index] == -1) {
-                    _index++;
-                  }
-                  this.props.quickAddToCartQty(
-                    _index,
-                    this.props.shop.quickAddToCartQty,
-                    product._id
-                  );
-                  if (this.props.cart.potentialQuantity[res._id] == null) {
-                    this.props.modifyPotentialQuantity({
-                      potentialQuantity: this.props.cart.potentialQuantity,
-                      action: "SET",
-                      tag: product._id,
-                      quantity: 1,
-                      max: this.props.cart.maxPerPackage
-                    });
-                  }
-                });
-              });
-          }
-        } else if (url.includes("shop?")) {
-          qr = url.slice("shop?".length);
-          if (qr) {
-            qr = qr.split("&");
-            let _availableFilters = this.props.shop.availableFilters;
-            for (let item of qr) {
-              item = item.toLowerCase();
-              let partial;
-              if (
-                (item != "cbd" && item.includes("cbd")) ||
-                (item != "thc" && item.includes("thc"))
-              ) {
-                partial = item.slice(3);
-                item = item.replace(partial, "");
-                this.props.toggleFilter({
-                  filter: this.props.shop.activeFilters,
-                  [item]: partial
-                });
-                continue;
-              } else {
-                for (let filter of Object.keys(_availableFilters)) {
-                  if (_availableFilters[filter].includes(item)) {
-                    this.props.toggleFilter({
-                      filter: this.props.shop.activeFilters,
-                      [filter]: item,
-                      multiple: filter == "genetic"
-                    });
-                    break;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    });
-    this.props.getFeaturedList({
-      limit: 6
-    });
-
     if (this.props.checkout.viewCurrency == null)
       this.props.setCurrency({
         currency: {
@@ -229,13 +142,30 @@ class Layout extends Component {
   }
 
   render() {
-    return this.props.misc.strains != null ? (
+    let title =
+      this.props.router.asPath == "/"
+        ? "Buy Feminized & Autoflowering Cannabis Seeds - Crop King Seeds"
+        : this.props.router.asPath.slice(1, 2).toUpperCase() +
+          this.props.router.asPath.slice(2) +
+          " - Crop King Seeds";
+    if (this.props.router.asPath.indexOf("?") > 0) {
+      let titleWords = this.props.router.asPath
+        .replace(/\//g, "")
+        .split("?")
+        .map((word, index) => {
+          return word.slice(0, 1).toUpperCase() + word.slice(1);
+        });
+      title = titleWords.join(" - ");
+      title += " - Crop King Seeds";
+    }
+
+    return (
       <React.Fragment>
         {this.state.isClient &&
-        Router.asPath.includes("product") &&
+        this.props.router.asPath.includes("product") &&
         this.props.viewProduct.currentProduct ? (
           <Head>
-            <title>
+            <title key="titlePage">
               {this.props.viewProduct.currentProduct.name +
                 " - Crop King Seeds"}
             </title>
@@ -248,7 +178,9 @@ class Layout extends Component {
             <meta
               id="og-url"
               property="og:url"
-              content={window.location.href}
+              content={
+                "https://www.cropkingseeds.com" + this.props.router.asPath
+              }
             />
             <meta id="og-locale" property="og:locale" content="en_US" />
             <meta
@@ -277,48 +209,47 @@ class Layout extends Component {
           </Head>
         ) : (
           <Head>
-            <title>
-              {Router.asPath == "/"
-                ? "Buy Feminized & Autoflowering Cannabis Seeds - Crop King Seeds"
-                : Router.asPath.slice(1, 2).toUpperCase() +
-                  Router.asPath.slice(2) +
-                  " - Crop King Seeds"}
-            </title>
-            <meta
-              property="og:title"
-              content="Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds"
-            />
+            <title key="titlePage">{title}</title>
+
+            <meta property="og:title" content={title} />
             <meta property="og:type" content="The type" />
             <meta
               property="og:url"
-              content={"http://cropkingseeds.com/" + Router.asPath}
+              content={
+                "https://www.cropkingseeds.com" + this.props.router.asPath
+              }
             />
             <meta
               id="og-description"
               property="og:description"
-              content="Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
-            />
-            <meta
-              name="title"
-              key="title"
               content={
-                Router.asPath == "/"
-                  ? "Buy Feminized &amp; Autoflowering Cannabis Seeds - Crop King Seeds"
-                  : Router.asPath + " - Crop King Seeds"
+                this.props.misc.metaDescriptions[
+                  this.props.router.asPath.slice(1).toLowerCase()
+                ]
+                  ? this.props.misc.metaDescriptions[
+                      this.props.router.asPath.slice(1).toLowerCase()
+                    ]
+                  : "Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
               }
             />
+            <meta name="title" key="title" content={title} />
             <meta
               name="description"
-              key="description"
-              content="Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
+              key="desc"
+              content={
+                this.props.misc.metaDescriptions[
+                  this.props.router.asPath.slice(1).toLowerCase()
+                ]
+                  ? this.props.misc.metaDescriptions[
+                      this.props.router.asPath.slice(1).toLowerCase()
+                    ]
+                  : "Crop King Seeds has been perfecting the marijuana seeds industry for medical and commercial growers seeking maximum results in THC levels and harvest size."
+              }
             />
-            <meta
-              property="og:image"
-              content="http://dcfgweqx7od72.cloudfront.net/logos/cks-logo-header.png"
-            />{" "}
             <meta name="robots" content="index, follow" />
           </Head>
         )}
+
         {this.props.viewProduct.currentProduct &&
         this.props.viewProduct.imageZoom ? (
           <ImageZoom {...this.props} />
@@ -341,13 +272,14 @@ class Layout extends Component {
               <PopUpBanner {...this.props} />
             ) : null}
 
-            {/* {this.props.misc.hoverId == null ||
-              ["md", "lg", "xl", "xxl"].includes(this.props.misc.mediaSize) ? (
-                <SearchBar {...this.props} />
-              ) : null} */}
-
             <div className="pt-32">
-              <div className={window.innerHeight < 800 ? "hidden" : "relative"}>
+              <div
+                className={
+                  this.state.isClient && window.innerHeight < 800
+                    ? "hidden"
+                    : "relative"
+                }
+              >
                 <ShareButtons {...this.props} />
               </div>
               <div
@@ -374,16 +306,10 @@ class Layout extends Component {
                 }}
                 className="bg-white relative z-10 px-4 py-4 w-full xxl:w-1300 xl:w-900 lg:w-700 md:w-main mx-auto shadow-md"
               >
-                {this.props.misc.strains != null ? (
-                  this.props.children
-                ) : (
-                  <div className="h-screen w-full">
-                    <Loader {...this.props} />
-                  </div>
-                )}
+                {this.props.children}
               </div>
             </div>
-            {!Router.asPath.includes("shop") ? (
+            {!this.props.router.asPath.includes("shop") ? (
               <StrainsMenu {...this.props} />
             ) : null}
             <AnchorLink
@@ -405,12 +331,6 @@ class Layout extends Component {
             <Footer {...this.props} />
           </React.Fragment>
           {/* )} */}
-        </div>
-      </React.Fragment>
-    ) : (
-      <React.Fragment>
-        <div className="h-screen w-full noscriptpage">
-          <Loader isClient={this.state.isClient} {...this.props} />
         </div>
       </React.Fragment>
     );
