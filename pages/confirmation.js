@@ -28,9 +28,9 @@ const isClient = typeof document !== "undefined";
 
 class Index extends Component {
   componentWillMount() {
-    if (!isClient) return;
-    let $orderDetails = this.props.checkout.orderDetails;
-    if ($orderDetails.payment == null) Router.push("/");
+    //   if (!isClient) return;
+    //   let $orderDetails = this.props.checkout.orderDetails;
+    //   if ($orderDetails.payment == null) Router.push("/");
   }
 
   componentWillUnmount() {
@@ -620,18 +620,21 @@ class Index extends Component {
                   }
               }
             })()}
-
-            <div
-              style={sectionTitle}
-              className="w-full inline-flex mt-8 bg-red-light text-white font-bold p-1"
-            >
-              <div className="w-3/5 px-4 p-2 uppercase text-left font-bold text-lg">
-                Product
+            <div>
+              <div
+                style={sectionTitle}
+                className="w-full inline-flex mt-8 bg-red-light text-white font-bold p-1"
+              >
+                <div className="w-3/5 px-4 p-2 uppercase text-left font-bold text-lg">
+                  Product
+                </div>
+                <div className="w-1/5 p-2 uppercase font-bold text-lg">Qty</div>
+                <div className="w-1/5 p-2 uppercase font-bold text-lg">
+                  Price
+                </div>
               </div>
-              <div className="w-1/5 p-2 uppercase font-bold text-lg">Qty</div>
-              <div className="w-1/5 p-2 uppercase font-bold text-lg">Price</div>
+              <div className="w-full">{showProduct()}</div>
             </div>
-            <div className="w-full">{showProduct()}</div>
             <div className="inline-flex justify-end flex w-full mt-8 text-lg mb-4 xl:flex-col-reverse lg:flex-col-reverse md:flex-col-reverse sm:flex-col-reverse">
               <div className="xxl:w-1/2 xl:w-full w-full md:w-full inline-flex text-lg sm:flex-col md:flex-col xxl:border-r-2 border-grey-lightest lg:mt-4 lg:pt-4 md:pt-4 md:mt-4 xl:pt-4 xl:mt-4 sm:mt-4 sm:pt-4 sm:border-t-2 md:border-t-2 lg:border-t-2 xl:border-t-2">
                 <div className="w-1/4 text-right justify-start flex p-2  sm:w-full md:w-full sm:justify-center md:justify-center sm:mr-0 md:mr-0 justify-center items-center">
@@ -650,20 +653,20 @@ class Index extends Component {
               </div>
               <div className="w-1/2 text-right p-2 pl-6 sm:pl-0 md:pl-0 sm:w-full md:w-full lg:w-full xl:w-full">
                 <div className="inline-flex w-500 xl:w-full sm:w-full md:w-full lg:w-full">
-                  <div className="w-2/5 sm:w-1/2 sm:text-base md:w-1/2 lg:w-3/5 xl:w-3/5 text-right">
+                  <div className="w-3/5 sm:w-1/2 sm:text-base md:w-1/2 lg:w-4/5 xl:w-4/5 text-right">
                     <p className="p-1">Subtotal:</p>
                     <p className="p-1">Shipping:</p>
-                    <p className="p-1">
-                      {_orderDetails.payment == null
-                        ? "Credit Card Tax:"
-                        : // ) : _orderDetails.payment.creditFee.value != 0 ? (
-                          `Credit Card Tax (
-                        ${(_orderDetails.payment.creditTax * 100).toFixed(
-                          2
-                        )}%):`
-                      // ) : null}
-                      }
-                    </p>
+                    {_orderDetails.payment == null ||
+                    _orderDetails.payment.creditFee.value != 0 ? (
+                      <p className="p-1">
+                        {_orderDetails.payment == null
+                          ? "Credit Card Fee:"
+                          : `Credit Card Fee (
+                        ${_orderDetails.payment.creditTax * 100}%):`
+                        // ) : null}
+                        }
+                      </p>
+                    ) : null}
                     {_orderDetails.coupon != null &&
                     _orderDetails.coupon.code != null ? (
                       <p className="p-1 text-red-dark">
@@ -679,7 +682,7 @@ class Index extends Component {
                     </p>
                     <p className="font-bold p-1 text-xl">Total:</p>
                   </div>
-                  <div className="w-2/5 sm:text-base sm:w-1/2 md:w-1/2 xl:w-2/5 xl:text-right text-left sm:text-right md:text-right lg:text-right lg:mr-2 xl:mr-8">
+                  <div className="w-2/5 sm:text-base sm:w-1/2 md:w-1/2 lg:w-1/5 xl:w-1/5  text-left sm:text-right pl-10 md:ml-2 lg:ml-2 lg:pl-5 xl:pl-8">
                     <p className="p-1">
                       {_orderDetails.payment == null
                         ? "NO SUBTOTAL"
@@ -703,18 +706,21 @@ class Index extends Component {
                           : ""
                         : "FREE"}
                     </p>
-                    <p className="p-1">
-                      {_orderDetails.payment == null
-                        ? "NO CREDIT FEE"
-                        : _orderDetails.payment.creditFee.value != 0
-                        ? currency != null
-                          ? `${currency.symbol}${(
-                              currency.convert *
-                              _orderDetails.payment.creditFee.value
-                            ).toFixed(2)}`
-                          : ""
-                        : null}
-                    </p>
+                    {_orderDetails.payment == null ||
+                    _orderDetails.payment.creditFee.value != 0 ? (
+                      <p className="p-1">
+                        {_orderDetails.payment == null
+                          ? "NO CREDIT FEE"
+                          : _orderDetails.payment.creditFee.value != 0
+                          ? currency != null
+                            ? `${currency.symbol}${(
+                                currency.convert *
+                                _orderDetails.payment.creditFee.value
+                              ).toFixed(2)}`
+                            : ""
+                          : null}
+                      </p>
+                    ) : null}
                     {_orderDetails.coupon != null &&
                     _orderDetails.coupon.code != null ? (
                       <p className="p-1 text-red-dark">

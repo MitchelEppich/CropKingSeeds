@@ -71,6 +71,7 @@ class Layout extends Component {
       limit: 6
     });
     this.props.getFeaturedNews();
+    this.recallSession();
     this.props.getCookie(document.cookie, "idev");
     this.props.getDailyMessage().then(res => {
       if (
@@ -120,7 +121,6 @@ class Layout extends Component {
         this.state.showNewCustomerPopUp = true;
       } else this.state.showNewCustomerPopUp = false;
     }
-    this.recallSession();
     this.props.getTaxes();
     if (this.props.checkout.viewCurrency == null)
       this.props.setCurrency({
@@ -165,7 +165,7 @@ class Layout extends Component {
         filters.join(" | ");
       title += " - Crop King Seeds";
     }
-    console.log(this.props.router);
+    // console.log(this.props.router);
     return (
       <React.Fragment>
         {this.state.isClient &&
@@ -383,7 +383,11 @@ class Layout extends Component {
         max: this.props.cart.maxPerPackage
       })
       .then(res => {
-        if (Object.keys(res).length != 0) {
+        if (
+          Object.keys(res).length != 0 &&
+          res.details != null &&
+          res.details.ip != null
+        ) {
           this.props.isRepeatCustomer({ ip: res.details.ip.value });
           return;
         }

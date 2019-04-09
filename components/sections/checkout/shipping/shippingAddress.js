@@ -161,13 +161,13 @@ const ShippingAddress = props => {
           Would you like to save your Shipping / Billing information for your
           next visit? *
         </p>
-        <div className="inline-flex flex justify-center w-full mt-4">
-          <p className="p-2 font-bold uppercase flex items-center mr-10">
+        <div className="inline-flex flex justify-center w-full mt-4 sm:flex-col">
+          <p className="p-2 font-bold uppercase flex items-center mr-10 sm:mr-0 sm:justify-center">
             Save Details:
           </p>
 
           <button
-            className={`p-2 w-150 mx-2 font-bold uppercase justify-center flex items-center cursor-pointer ${
+            className={`p-2 w-150 mx-2 font-bold uppercase justify-center flex items-center sm:my-1 sm:mx-auto cursor-pointer ${
               _orderDetails["details"].saveForLater
                 ? "bg-red-light text-white"
                 : "bg-smoke-grey"
@@ -191,7 +191,7 @@ const ShippingAddress = props => {
           </button>
 
           <button
-            className={`p-2 w-150 mx-2 font-bold uppercase justify-center flex items-center cursor-pointer ${
+            className={`p-2 w-150 mx-2 font-bold uppercase justify-center flex items-center sm:my-1 sm:mx-auto cursor-pointer ${
               !_orderDetails["details"].saveForLater
                 ? "bg-red-light text-white"
                 : "bg-smoke-grey"
@@ -317,7 +317,7 @@ const ShippingAddress = props => {
               // pattern="^\S+\s\S+$"
             />
           </div>
-          <div className="w-1/3 sm:w-full pl-2 sm:mt-4">
+          <div className="w-1/3 sm:w-full pl-2 sm:pl-0 sm:mt-4">
             <input
               aria-label="name"
               type="text"
@@ -477,7 +477,7 @@ const ShippingAddress = props => {
           />
         </div>
         <div className="w-full p-2 sm:flex-col inline-flex">
-          <div className="w-1/3 pr-2 sm:w-full sm:px-0 sm:mt-4">
+          <div className="w-1/3 pr-2 sm:w-full sm:px-0 sm:mt-0">
             <input
               aria-label="ship-city"
               type="text"
@@ -509,7 +509,7 @@ const ShippingAddress = props => {
               required
             />
           </div>
-          <div className="w-1/3 sm:w-full sm:pl-0 mr-2">
+          <div className="w-1/3 sm:w-full sm:pl-0 mr-2 sm:mt-4">
             <select
               name="ship-state"
               autoComplete="shipping region"
