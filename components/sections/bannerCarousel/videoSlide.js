@@ -22,7 +22,7 @@ const videoSlide = props => {
       >
         <img
           onMouseEnter={() => {
-            if (props.sotiId == null) return;
+            if (props.sotiId == null || !strains) return;
             props.getStrain({ sotiId: strain.sotiId, strains }).then(res => {
               props.setCurrentProduct({ product: res }).then(() => {
                 let product = props.viewProduct.currentProduct;

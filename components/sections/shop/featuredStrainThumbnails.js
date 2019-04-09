@@ -65,27 +65,49 @@ const index = props => {
             }}
             onClick={e => {
               let strains = props.misc.strains;
+              console.log(product);
               props.getStrain({ sotiId: product.sotiId, strains }).then(res => {
                 props.setCurrentProduct({ product: res }).then(() => {
-                  let product = props.viewProduct.currentProduct;
                   let _index = 0;
-                  while (product.price[_index] == -1) {
+                  while (res.price[_index] == -1) {
                     _index++;
                   }
                   props.quickAddToCartQty(
                     _index,
                     props.shop.quickAddToCartQty,
-                    product._id
+                    res._id
                   );
                   props.modifyPotentialQuantity({
                     potentialQuantity: props.cart.potentialQuantity,
                     action: "SET",
-                    tag: product._id,
+                    tag: res._id,
                     quantity: 1,
                     max: props.cart.maxPerPackage
                   });
                 });
               });
+              // let strains = props.misc.strains;
+              // props.getStrain({ sotiId: product.sotiId, strains }).then(res => {
+              // props.setCurrentProduct({ product: product }).then(() => {
+              //   let product = props.viewProduct.currentProduct;
+              //   let _index = 0;
+              //   while (product.price[_index] == -1) {
+              //     _index++;
+              //   }
+              //   props.quickAddToCartQty(
+              //     _index,
+              //     props.shop.quickAddToCartQty,
+              //     product._id
+              //   );
+              //   props.modifyPotentialQuantity({
+              //     potentialQuantity: props.cart.potentialQuantity,
+              //     action: "SET",
+              //     tag: product._id,
+              //     quantity: 1,
+              //     max: props.cart.maxPerPackage
+              //   });
+              // });
+              // });
             }}
             className={
               "block " +

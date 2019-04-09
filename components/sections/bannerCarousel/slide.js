@@ -31,25 +31,25 @@ const slide = props => {
       <a href={props.url}>
         <span
           onMouseEnter={() => {
-            if (props.sotiId == null) return;
+            if (props.sotiId == null || !strains) return;
             let strains = props.misc.strains;
+            console.log("ban", props.sotiId);
             props.getStrain({ sotiId: props.sotiId, strains }).then(res => {
               props.setCurrentProduct({ product: res }).then(() => {
-                let product = props.viewProduct.currentProduct;
                 let _index = 0;
-                if (product) {
-                  while (product.price[_index] == -1) {
+                if (res) {
+                  while (res.price[_index] == -1) {
                     _index++;
                   }
                   props.quickAddToCartQty(
                     _index,
                     props.shop.quickAddToCartQty,
-                    product._id
+                    res._id
                   );
                   props.modifyPotentialQuantity({
                     potentialQuantity: props.cart.potentialQuantity,
                     action: "SET",
-                    tag: product._id,
+                    tag: res._id,
                     quantity: 1,
                     max: props.cart.maxPerPackage
                   });

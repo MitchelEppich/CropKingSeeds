@@ -49,8 +49,8 @@ import PopUpBanner from "../components/sections/popup";
 import HeaderMessage from "../components/partials/header/headerMessage";
 import generateSchemaMarkup from "../scripts/generateSchemaMarkup";
 import registerServiceWorker from "../registerServiceWorker";
-
 import Router from "next/router";
+const dev = process.env.NODE_ENV !== "production";
 const isClient = typeof document !== "undefined";
 
 class Layout extends Component {
@@ -71,6 +71,7 @@ class Layout extends Component {
       limit: 6
     });
     this.props.getFeaturedNews();
+    this.recallSession();
     this.props.getCookie(document.cookie, "idev");
     this.props.getDailyMessage().then(res => {
       if (
@@ -120,7 +121,6 @@ class Layout extends Component {
         this.state.showNewCustomerPopUp = true;
       } else this.state.showNewCustomerPopUp = false;
     }
-    this.recallSession();
     this.props.getTaxes();
     if (this.props.checkout.viewCurrency == null)
       this.props.setCurrency({
@@ -137,6 +137,14 @@ class Layout extends Component {
     window.addEventListener("resize", () => {
       this.setMediaSize();
     });
+    if (dev) {
+      window.addEventListener("keypress", e => {
+        if (e.shiftKey && e.code === "KeyP") {
+          console.log(this.props);
+        }
+      });
+    }
+
     this.props.getExchangeRates();
   }
 
@@ -165,7 +173,6 @@ class Layout extends Component {
         filters.join(" | ");
       title += " - Crop King Seeds";
     }
-    console.log(this.props.router);
     return (
       <React.Fragment>
         {this.state.isClient &&
@@ -384,7 +391,9 @@ class Layout extends Component {
       })
       .then(res => {
         if (Object.keys(res).length != 0) {
-          this.props.isRepeatCustomer({ ip: res.details.ip.value });
+          this.props.isRepeatCustomer({
+            ip: res.details.ip ? res.details.ip.value : null
+          });
           return;
         }
         let browser = _browser != null ? _browser.name : "unknown";
