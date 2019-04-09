@@ -165,11 +165,11 @@ html
 
         div(class="payment" style="") 
           div(class="heading-red") 
-            p(style="color:white; padding: 8px 10px; font-weight:bold;font-size: 16px;text-align:center;") Payment Instructions
+            p(style="color:white; padding: 8px 10px; font-weight:bold;font-size: 16px;text-align:center; text-transform: uppercase;") Payment Instructions
           div(style="padding: 0 20px") 
             if paymentMethod =="Cash"
               div(style="padding: 0 10px")
-                p(style="font-size: 14px;") To ensure that your cash order is successfully recieved please document your order number (
+                p(style="font-size: 14px;") To ensure that your cash order is successfully received please document your order number (
                   strong #{orderId} -CKS) on a piece of paper, along side the requested amount in applicable currency:
                 p(style="text-align:center")
                   b In-Organic Marketing
@@ -207,7 +207,7 @@ html
                     strong(style="margin-left: 3px;") green1
 
                   p(style="text-align:center; font-size: 14px;")
-                    strong Important: Interac E-Transfers may take a few hours to be approved. Once a payment is successfully recieved we will ship your order on the next applicable business day.
+                    strong Important: Interac E-Transfers may take a few hours to be approved. Once a payment is successfully received we will ship your order on the next applicable business day.
                     br 
                     span To ensure your order is shipped as soon as possible, please call us to confirm the transfer.
 
@@ -264,19 +264,19 @@ html
                 p
                   if ccStatus.toLowerCase() == "declined"  
                     span
-                     p(style="color: #bb1724; text-transform: uppercase;font-size: 17px; font-weight: bold") Your Card was Declined. 
+                     p(style="color: #ef5753; text-transform: uppercase;font-size: 17px; font-weight: bold; text-align: center;") Your Credit Card was Declined. 
                       br 
                       span We are unable to process your order!
                       br 
-                      span Please call our customer support immediately (at +1 (844) 276 - 7546) to resolve any issues.
+                      span(style="margin-top: 28px; color: black; font-size: 15px;") Please call our Customer Support at our toll-free number +1 (844) 276 - 7546.
                       br 
                       span Once your payment has been received we will ship your order on the next applicable business day.
                   else if ccStatus == ""
-                    p(style="color: #bb1724; text-transform: uppercase; font-size: 17px; font-weight: bold") Your Order is Too Large.                     
+                    p(style="color: #ef5753; text-transform: uppercase;font-size: 17px; font-weight: bold; text-align: center;") Your Order is Too Large.                     
                       br 
                       span We are unable to process your large order!
                       br 
-                      span Please call our customer support immediately (at +1 (844) 276 - 7546) to resolve any issues.
+                      p(style="margin-top: 28px; color: black; font-size: 15px;") Please call our Customer Support at our toll-free number +1 (844) 276 - 7546.
                       br 
                       span Once your payment has been received we will ship your order on the next applicable business day.
                   else
@@ -319,6 +319,9 @@ html
             p(style="text-align:right;") 
               span Shipping:
               span(style="margin: 0 0 0 5px;") $#{shipping.toFixed(2)}
+            p(style="text-align:right;") 
+              span Tax:
+              span(style="margin: 0 0 0 5px;") $#{tax.toFixed(2)}
             p(style="text-align:right;") 
               span Tax:
               span(style="margin: 0 0 0 5px;") $#{tax.toFixed(2)}

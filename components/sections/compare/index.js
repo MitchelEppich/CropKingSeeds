@@ -505,7 +505,7 @@ const Compare = props => {
                       Strain:
                     </h4>
                   </div>
-                  <div className="compareTableRows">
+                  <div className="compareTableRows w-125">
                     <div className="inline-flex w-full">
                       <div className="w-full">
                         <p className="p-2 font-bold uppercase">Status:</p>
