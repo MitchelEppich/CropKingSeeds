@@ -27,10 +27,8 @@ import Router from "next/router";
 const isClient = typeof document !== "undefined";
 
 class Index extends Component {
-  componentWillMount() {
-    //   if (!isClient) return;
-    //   let $orderDetails = this.props.checkout.orderDetails;
-    //   if ($orderDetails.payment == null) Router.push("/");
+  componentDidMount() {
+    window.scroll(0, 0);
   }
 
   componentWillUnmount() {
