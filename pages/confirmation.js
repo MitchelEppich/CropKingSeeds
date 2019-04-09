@@ -14,7 +14,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Router from "next/router";
 import moment from "moment";
 
 // custom imports
@@ -24,22 +23,22 @@ import Layout from "../HOC/Layout";
 import { initGA, logPageView } from "../scripts/ga";
 import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 
-class Index extends Component {
-  // componentDidMount() {
-  //   window.onbeforeunload = () => {
-  //     this.props.purgeCart();
-  //     this.props.purgeOrderDetails({
-  //       orderDetails: this.props.checkout.orderDetails
-  //     });
-  //   };
-  // }
+const isClient = typeof document !== "undefined";
+import Router from "next/router";
 
-  // componentWillUnmount() {
-  //   this.props.purgeCart();
-  //   this.props.purgeOrderDetails({
-  //     orderDetails: this.props.checkout.orderDetails
-  //   });
-  // }
+class Index extends Component {
+  componentWillMount() {
+    if (!isClient) return;
+    let $orderDetails = this.props.checkout.orderDetails;
+    if ($orderDetails.payment == null) Router.push("/");
+  }
+
+  componentWillUnmount() {
+    this.props.purgeCart();
+    this.props.purgeOrderDetails({
+      orderDetails: this.props.checkout.orderDetails
+    });
+  }
 
   render() {
     const isClient = typeof document !== "undefined";
@@ -48,6 +47,7 @@ class Index extends Component {
 
     let _orderDetails = this.props.checkout.orderDetails;
 
+    console.log(_orderDetails);
     let _orderId;
     _orderId =
       _orderDetails.payment == null ? null : _orderDetails.payment.orderId;
@@ -107,8 +107,6 @@ class Index extends Component {
       return arr;
     };
 
-    console.log(this.props);
-
     let CreditCardStatusCondition =
       _ccr != null && _ccr.status.toLowerCase() != "approved";
 
@@ -119,8 +117,6 @@ class Index extends Component {
 
     let chance = require("chance").Chance(fOrderId);
     let generateName = chance.name({ nationality: "en" });
-
-    console.log(_orderDetails);
 
     return (
       <Layout {...this.props}>

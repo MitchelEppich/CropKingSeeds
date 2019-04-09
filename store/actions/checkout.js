@@ -9,6 +9,11 @@ import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
 import Navigation from "./navigation";
 
+import Cryptr from "cryptr";
+let cryptr = new Cryptr(
+  "7T-f+!d8bvk&a2Em&xxwe?t3DFk!9f$FeSTYcNw8J4r-dz%D6qd*cv+CJhNdv2ZKvf$G-Zv?W&Dw^kFMVv_PssVRJxLScnEcnhv7FBXWPcVkVuR6$2N?AeVL$+A$wBv#"
+);
+
 import Cart from "./cart";
 
 import moment from "moment-timezone";
@@ -221,16 +226,16 @@ const getActions = uri => {
           );
         }
 
-        sessionStorage.setItem(
-          "orderDetails",
-          JSON.stringify(
-            (() => {
-              let o = { ..._orderDetails };
-              // delete o.payment;
-              return o;
-            })()
-          )
+        let $orderDetails = JSON.stringify(
+          (() => {
+            let o = { ..._orderDetails };
+            // delete o.payment;
+            return o;
+          })()
         );
+        const encryptedString = cryptr.encrypt($orderDetails);
+        sessionStorage.setItem("orderDetails", encryptedString);
+
         dispatch({
           type: actionTypes.MODIFY_ORDER_DETAILS,
           input: _orderDetails
@@ -265,16 +270,15 @@ const getActions = uri => {
           })
         );
 
-        sessionStorage.setItem(
-          "orderDetails",
-          JSON.stringify(
-            (() => {
-              let o = { ..._orderDetails };
-              delete o.payment;
-              return o;
-            })()
-          )
+        let $orderDetails = JSON.stringify(
+          (() => {
+            let o = { ..._orderDetails };
+            // delete o.payment;
+            return o;
+          })()
         );
+        const encryptedString = cryptr.encrypt($orderDetails);
+        sessionStorage.setItem("orderDetails", encryptedString);
 
         dispatch({
           type: actionTypes.LOAD_LOCAL_PROFILE,
@@ -382,16 +386,15 @@ const getActions = uri => {
 
       _orderDetails[_group] = {};
 
-      sessionStorage.setItem(
-        "orderDetails",
-        JSON.stringify(
-          (() => {
-            let o = { ..._orderDetails };
-            delete o.payment;
-            return o;
-          })()
-        )
+      let $orderDetails = JSON.stringify(
+        (() => {
+          let o = { ..._orderDetails };
+          // delete o.payment;
+          return o;
+        })()
       );
+      const encryptedString = cryptr.encrypt($orderDetails);
+      sessionStorage.setItem("orderDetails", encryptedString);
 
       return {
         type: actionTypes.CLEAR_ORDER_DETAILS,
@@ -451,7 +454,15 @@ const getActions = uri => {
     },
     purgeOrderDetails: input => {
       let _orderDetails = { details: input.orderDetails.details };
-      sessionStorage.setItem("orderDetails", JSON.stringify(_orderDetails));
+      let $orderDetails = JSON.stringify(
+        (() => {
+          let o = { ..._orderDetails };
+          // delete o.payment;
+          return o;
+        })()
+      );
+      const encryptedString = cryptr.encrypt($orderDetails);
+      sessionStorage.setItem("orderDetails", encryptedString);
       return {
         type: actionTypes.PURGE_ORDER_DETAILS,
         input: _orderDetails
@@ -463,7 +474,8 @@ const getActions = uri => {
           let recall = sessionStorage.getItem("orderDetails");
           let _obj = {};
           if (recall != null) {
-            _obj = JSON.parse(recall);
+            let decrypted = cryptr.decrypt(recall);
+            _obj = JSON.parse(decrypted);
           }
           resolve(_obj);
 
@@ -533,16 +545,15 @@ const getActions = uri => {
           })
         );
 
-        sessionStorage.setItem(
-          "orderDetails",
-          JSON.stringify(
-            (() => {
-              let o = { ..._orderDetails };
-              delete o.payment;
-              return o;
-            })()
-          )
+        let $orderDetails = JSON.stringify(
+          (() => {
+            let o = { ..._orderDetails };
+            // delete o.payment;
+            return o;
+          })()
         );
+        const encryptedString = cryptr.encrypt($orderDetails);
+        sessionStorage.setItem("orderDetails", encryptedString);
 
         dispatch({
           type: actionTypes.APPLY_COUPON,
@@ -649,16 +660,15 @@ const getActions = uri => {
               tag: "Order_ID"
             };
 
-            sessionStorage.setItem(
-              "orderDetails",
-              JSON.stringify(
-                (() => {
-                  let o = { ..._orderDetails };
-                  // delete o.payment;
-                  return o;
-                })()
-              )
+            let $orderDetails = JSON.stringify(
+              (() => {
+                let o = { ..._orderDetails };
+                // delete o.payment;
+                return o;
+              })()
             );
+            const encryptedString = cryptr.encrypt($orderDetails);
+            sessionStorage.setItem("orderDetails", encryptedString);
 
             dispatch({
               type: actionTypes.ACQUIRE_ORDER_ID,
