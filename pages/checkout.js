@@ -54,7 +54,6 @@ class Index extends Component {
 
   render() {
     let _orderDetails = this.props.checkout.orderDetails;
-
     let _stepsCheckout = this.props.misc.stepsCheckout;
     let errors = { ...this.props.checkout.error };
     delete errors[105]; // This error is for checking if user confirms information, not for this section
@@ -129,13 +128,14 @@ class Index extends Component {
                               );
                             }
                           ).description
-                        }
+                        },
+                        shippingMethods: this.props.checkout.shippingMethods
                       })
                       .then(res => {
                         // this.props.toggleStepsCheckout(_stepsCheckout + 1);
+                        Router.push("/confirmation");
                         this.props.toggleProcessing(false);
                       });
-                    Router.push("/confirmation");
                   });
               } else {
                 // Purge the store.

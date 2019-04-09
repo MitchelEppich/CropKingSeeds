@@ -298,8 +298,6 @@ html
               td(class="productInfoName") #{val.split("x")[0]} - #{val.split("x")[1]} seeds
               td(class="productInfo") #{val.split("x")[3]}
               td(class="productInfo") $#{val.split("x")[2]}
-          
-
 
         div(class="help")
           div
@@ -319,6 +317,10 @@ html
             p(style="text-align:right;") 
               span Shipping:
               span(style="margin: 0 0 0 5px;") $#{shipping.toFixed(2)}
+            if ccFee
+              p(style="text-align:right;") 
+                span Credit Card Fee (10%):
+                span(style="margin: 0 0 0 5px;") $#{ccFee.toFixed(2)}
             p(style="text-align:right;") 
               span Tax:
               span(style="margin: 0 0 0 5px;") $#{tax.toFixed(2)}

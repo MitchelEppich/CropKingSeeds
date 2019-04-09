@@ -730,6 +730,10 @@ const getActions = uri => {
           _idevAffiliate
         );
 
+        let shippingDescription = input.shippingMethods.find(a => {
+          return a.tag == _orderDetails.shipping.shippingDetail.value;
+        }).description;
+
         // Send email confirmation
         let products = Object.values(cart.items);
         products = products.map((product, index) => {
@@ -758,6 +762,7 @@ const getActions = uri => {
             response: null,
             ccStatus: ccResponse ? ccResponse.status : null,
             ccDescriptor: ccResponse ? ccResponse.descriptor : null,
+            ccFee: _orderDetails.payment.creditFee.value,
             orderId: _orderDetails.payment.orderId.value,
             productList: products,
             paymentMethod: _orderDetails.payment.method.value,
@@ -771,9 +776,8 @@ const getActions = uri => {
               _orderDetails.shipping.state.value +
               "&=>" +
               _orderDetails.shipping.country.value,
-            shippingType: _orderDetails.shipping.shippingDetail.tag,
-            shippingTypeDescription:
-              _orderDetails.shipping.shippingDetail.value,
+            shippingType: _orderDetails.shipping.shippingDetail.value,
+            shippingTypeDescription: shippingDescription,
             subtotal: _orderDetails.payment.cartTotal.value,
             total: _orderDetails.payment.orderTotal.value,
             tax: _orderDetails.payment.taxFee,

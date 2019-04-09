@@ -27,7 +27,9 @@ import Router from "next/router";
 const isClient = typeof document !== "undefined";
 
 class Index extends Component {
-  componentWillMount() {}
+  componentDidMount() {
+    window.scroll(0, 0);
+  }
 
   componentWillUnmount() {
     this.props.purgeCart();
