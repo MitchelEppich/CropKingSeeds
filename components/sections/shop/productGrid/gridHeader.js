@@ -111,14 +111,14 @@ const gridHeader = props => {
           {activeFilters}
         </div>
       ) : null}
-      <div className="z-50 flex absolute w-150 sm:relative sm:mt-4 sm:w-full flex pin-r justify-end">
+      <div className="z-50 flex absolute w-175 sm:relative sm:mt-4 sm:w-full flex pin-r justify-end">
         <div
           onClick={() => {
             props.setVisibleScreen({
               input: "showSortBy"
             });
           }}
-          className="font-bold flex relative items-center w-150 sm:w-150 p-2 bg-red-light justify-center z-50 rounded text-white cursor-pointer hover:bg-red-dark"
+          className="font-bold flex relative items-center w-175 sm:w-175 p-2 bg-red-light justify-center z-50 rounded text-white cursor-pointer hover:bg-red-dark"
         >
           {props.shop.sort == null || props.shop.sort == "" ? (
             <div className="text-base uppercase font-bold">

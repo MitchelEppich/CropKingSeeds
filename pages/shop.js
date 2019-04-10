@@ -15,6 +15,8 @@ import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 import Router from "next/router";
 
 import { initGA, logPageView } from "../scripts/ga";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCog } from "@fortawesome/free-solid-svg-icons";
 class Index extends Component {
   componentDidMount() {
     if (typeof document === "undefined") return null;
@@ -116,11 +118,22 @@ class Index extends Component {
                 this.props.misc.hoverId != null &&
                 this.props.misc.mediaSize == "sm"
                   ? "hidden"
-                  : "mt-5 text-grey font-extrabold text-center text-3/5xl mx-auto w-full text-center"
+                  : "mt-5 text-grey font-extrabold text-center sm:text-2xl text-3/5xl mx-auto w-full text-center"
               }
             >
               Shop Cannabis Seeds
             </h1>
+            <div
+              onClick={() => {
+                this.props.toggleLowGPUMode(!this.props.misc.lowGPUMode);
+              }}
+              className="uppercase cursor-pointer text-white font-bold flex justify-end sm:justify-center md:justify-center lg:justify-center items-center w-full text-base md:mt-4 lg:mt-4 sm:mt-4"
+            >
+              <div className="w-175 p-2 text-grey items-center flex bg-smoke-grey hover:bg-red-light rounded justify-center cursor-pointer">
+                <FontAwesomeIcon icon={faCog} className="mr-2 fa-lg" />
+                Animations {this.props.misc.lowGPUMode ? "Off" : "On"}
+              </div>
+            </div>
             <div
               className={
                 this.props.misc.hoverId != null &&
@@ -183,6 +196,8 @@ const mapDispatchToProps = dispatch => {
     clearCart: () => dispatch(actions.clearCart()),
     setSearch: value => dispatch(actions.setSearch(value)),
     setSort: input => dispatch(actions.setSort(input)),
+    toggleLowGPUMode: lowGpuMode =>
+      dispatch(actions.toggleLowGPUMode(lowGpuMode)),
     expandProduct: id => dispatch(actions.expandProduct(id)),
     getStrain: input => dispatch(actions.getStrain(input)),
     setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
