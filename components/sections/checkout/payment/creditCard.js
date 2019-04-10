@@ -370,11 +370,13 @@ const CreditCard = props => {
                 </button>
               </div>
             ) : (
-              <div className="text-center flex justify-center">
+              <div className="w-300 mx-auto text-center flex-col justify-center">
                 <p className="p-1 uppercase font-bold pb-2">
                   Please Do NOT Refresh
                 </p>
-                <LoaderCheckout {...props} />
+                <div className="flex justify-center mx-auto">
+                  <LoaderCheckout {...props} />
+                </div>
                 <p className="p-1 blink font-bold">Processing your order...</p>
               </div>
             )}

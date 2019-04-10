@@ -333,7 +333,7 @@ const PaymentReview = props => {
             <div className="w-full inline-flex bg-smoke-grey">
               <div className="w-3/5 pl-3">
                 <p className="p-1">
-                  Credit C. Tax ({_orderDetails[pageGroup].creditTax * 100}%):{" "}
+                  Credit C. Fee ({_orderDetails[pageGroup].creditTax * 100}%):{" "}
                 </p>
               </div>
               <div className="w-2/5 text-left">
