@@ -313,7 +313,7 @@ input EmailInput {
   location: String
   website: String
   eventName: String
-
+  moneyGramName: String
 }
 
 type News {
