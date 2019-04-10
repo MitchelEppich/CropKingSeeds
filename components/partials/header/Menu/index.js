@@ -291,6 +291,11 @@ const menu = props => {
                   >
                     <div
                       onClick={() => {
+                        if (
+                          props.router.asPath.includes("checkout") ||
+                          props.router.asPath.includes("confirmation")
+                        )
+                          return;
                         props.toggleCartMenu(!props.misc.showCartMenu);
                       }}
                       className="text-center mt-1 text-white"
