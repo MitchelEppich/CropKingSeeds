@@ -17,7 +17,7 @@ import Router from "next/router";
 import { initGA, logPageView } from "../scripts/ga";
 class Index extends Component {
   componentDidMount() {
-    if (typeof document === "undefined") return;
+    if (typeof document === "undefined") return null;
     let url = this.props.router.asPath.slice(1);
     if (url && url.length != 0) {
       let qr;

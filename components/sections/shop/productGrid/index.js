@@ -49,7 +49,6 @@ class Index extends Component {
             product._id
           );
         }
-        // console.log("Hello");
         if (
           this.props.cart.potentialQuantity[product._id] == null ||
           (this.props.cart.potentialQuantity[product._id] != 1 && updateAll)

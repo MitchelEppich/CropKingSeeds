@@ -11,6 +11,8 @@ import {
   faAngleRight
 } from "@fortawesome/free-solid-svg-icons";
 
+import LoaderSmall from "../loader/loaderSmall";
+
 import moment from "moment";
 
 const Media = props => {
@@ -194,7 +196,15 @@ const Media = props => {
           </h1>
         </div>
       </div>
-      {showCategories()}
+      {Object.keys(news).length == 0 ? (
+        <div className="w-full">
+          <div className="xxl:h-600 overflow-hidden xl:h-400 lg:h-300 md:h-250 sm:h-175 w-full relative inline-flex">
+            <LoaderSmall />
+          </div>
+        </div>
+      ) : (
+        showCategories()
+      )}
     </div>
   );
 };

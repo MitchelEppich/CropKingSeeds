@@ -14,6 +14,8 @@ import MinimumOrderWarning from "../other/minimumOrderWarning";
 const Payment = props => {
   let _orderDetails = props.checkout.orderDetails;
 
+  if (_orderDetails.billing == null) return null;
+
   let allowCC = !props.checkout.noCreditZip.includes(
     _orderDetails.billing.postalZip.value.toLowerCase().replace(/ /g, "")
   );
