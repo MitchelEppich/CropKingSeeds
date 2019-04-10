@@ -49,10 +49,10 @@ class Index extends Component {
             product._id
           );
         }
-
+        // console.log("Hello");
         if (
           this.props.cart.potentialQuantity[product._id] == null ||
-          this.props.cart.potentialQuantity[product._id] != 1
+          (this.props.cart.potentialQuantity[product._id] != 1 && updateAll)
         ) {
           this.props.modifyPotentialQuantity({
             potentialQuantity: this.props.cart.potentialQuantity,
