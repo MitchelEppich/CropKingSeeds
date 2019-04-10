@@ -853,6 +853,7 @@ const mutation = {
       $location: String
       $website: String
       $eventName: String
+      $moneyGramName: String
     ) {
       sendEmail(
         input: {
@@ -883,6 +884,7 @@ const mutation = {
           location: $location
           website: $website
           eventName: $eventName
+          moneyGramName: $moneyGramName
         }
       )
     }

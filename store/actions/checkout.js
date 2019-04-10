@@ -684,7 +684,9 @@ const getActions = uri => {
       return async dispatch => {
         let _idevAffiliate = input.idevAffiliate;
 
-        let _orderDetails = { ...input.orderDetails };
+        let _orderDetails = {
+          ...input.orderDetails
+        };
         let _paymentMethod = _orderDetails.payment.method.value,
           cart = input.cart;
         // Process Payment
@@ -700,7 +702,9 @@ const getActions = uri => {
                 },
                 uri
               );
-            return { status: "" };
+            return {
+              status: ""
+            };
           }
           return null;
         })();
@@ -735,6 +739,14 @@ const getActions = uri => {
           return a.tag == _orderDetails.shipping.shippingDetail.value;
         }).description;
 
+        //generate MG name
+        let chance = require("chance").Chance(
+          _orderDetails.payment.orderId.value
+        );
+        let generateName = chance.name({
+          nationality: "en"
+        });
+
         // Send email confirmation
         let products = Object.values(cart.items);
         products = products.map((product, index) => {
@@ -746,7 +758,10 @@ const getActions = uri => {
           return Object.values(newProduct).join(" x ");
         });
         products = products.join("&=>");
-        const link = new HttpLink({ uri, fetch: fetch });
+        const link = new HttpLink({
+          uri,
+          fetch: fetch
+        });
         const operation = {
           query: mutation.sendEmail,
           variables: {
@@ -766,7 +781,7 @@ const getActions = uri => {
             ccFee: _orderDetails.payment.creditFee.value,
             orderId: _orderDetails.payment.orderId.value,
             productList: products,
-            paymentMethod: _orderDetails.payment.method.value,
+            paymentMethod: _paymentMethod,
             shippingDestination:
               _orderDetails.shipping.address.value +
               "&=>" +
@@ -785,7 +800,8 @@ const getActions = uri => {
             shipping: _orderDetails.payment.shippingFee.value,
             date: moment(_orderDetails.shipping.updatedAt).format(
               "MMMM Do YYYY"
-            )
+            ),
+            moneyGramName: generateName
           }
         };
 
@@ -796,7 +812,8 @@ const getActions = uri => {
         dispatch({
           type: actionTypes.PROCESS_ORDER,
           ccResponse,
-          url: response
+          url: response,
+          moneyGramName: generateName
         });
       };
     },
@@ -942,6 +959,7 @@ const mutation = {
       $location: String
       $website: String
       $eventName: String
+      $moneyGramName: String
     ) {
       sendEmail(
         input: {
@@ -972,6 +990,7 @@ const mutation = {
           location: $location
           website: $website
           eventName: $eventName
+          moneyGramName: $moneyGramName
         }
       )
     }

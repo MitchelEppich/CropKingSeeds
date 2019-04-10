@@ -87,7 +87,8 @@ export default (state = initialState, action) => {
     case actionTypes.PROCESS_ORDER:
       return updateObject(state, {
         ccResponse: action.ccResponse,
-        affiliateUrl: action.url
+        affiliateUrl: action.url,
+        moneyGramName: action.moneyGramName
       });
     case actionTypes.SET_CURRENCY:
       return updateObject(state, { viewCurrency: action.input });

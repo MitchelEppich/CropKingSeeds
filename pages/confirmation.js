@@ -110,8 +110,9 @@ class Index extends Component {
       borderTopRightRadius: "5px"
     };
 
-    let chance = require("chance").Chance(fOrderId);
-    let generateName = chance.name({ nationality: "en" });
+    // let chance = require("chance").Chance(_orderId);
+    // let generateName = chance.name({ nationality: "en" });
+    let generateName = this.props.checkout.moneyGramName;
 
     return (
       <Layout {...this.props}>
