@@ -424,6 +424,7 @@ const getActions = uri => {
     storeOrderDetails: input => {
       let _orderDetails = { ...input.orderDetails };
       if (_orderDetails.payment != null) delete _orderDetails.payment;
+      if (_orderDetails.coupon != null) delete _orderDetails.coupon;
       if (_orderDetails.details.infoConfirmed != null)
         delete _orderDetails.details.infoConfirmed;
       for (let key of Object.keys(_orderDetails)) {

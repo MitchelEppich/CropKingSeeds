@@ -673,7 +673,7 @@ class Index extends Component {
                       Tax (
                       {_orderDetails.payment == null
                         ? "NO TAX"
-                        : _orderDetails.payment.cumTax * 100}
+                        : (_orderDetails.payment.cumTax * 100).toFixed(2)}
                       %):
                     </p>
                     <p className="font-bold p-1 text-xl">Total:</p>
