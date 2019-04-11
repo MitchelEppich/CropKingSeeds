@@ -8,6 +8,7 @@ exports.contact = input => {
   return {
     from: input.email,
     to: recipient,
+    replyTo: input.email,
     recipient,
     subject: "CropKingSeeds.com Contact Form: " + input.subject,
     html: `
