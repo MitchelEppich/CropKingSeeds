@@ -45,6 +45,11 @@ async function getVerify(req, res) {
       orderId
     }
   });
+
+  if (status.toLowerCase().includes("complete")) {
+    resolvers.Mutation.postToProcessOrder(null, { input: { orderId } });
+  }
+
   res.send("VERIFIED");
 }
 
