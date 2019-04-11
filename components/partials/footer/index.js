@@ -277,7 +277,7 @@ const Footer = props => {
                 aria-label="instagram"
                 className="text-white"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 href="https://www.instagram.com/cropkingseeds/?hl=en"
               >
                 <FontAwesomeIcon
@@ -289,7 +289,7 @@ const Footer = props => {
                 aria-label="facebook"
                 className="text-white"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 href="https://www.facebook.com/CropKingSeeds/"
               >
                 <FontAwesomeIcon
@@ -301,7 +301,7 @@ const Footer = props => {
                 aria-label="twitter"
                 className="text-white"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 href="https://twitter.com/CropKingSeed?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
               >
                 <FontAwesomeIcon
@@ -313,7 +313,7 @@ const Footer = props => {
                 aria-label="pinterest"
                 className="text-white"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 href="https://www.pinterest.ca/officialCKS/"
               >
                 <FontAwesomeIcon
@@ -340,15 +340,11 @@ const Footer = props => {
                 {props.misc.ageVerification != null &&
                 "United States" == props.misc.ageVerification.country ? (
                   <React.Fragment>
-                    <span>+1-844-CROP-KING</span>
-                    <span className="-ml-2 mr-2">/</span>
-                    <span>(276-7546)</span>
+                    <span>+1-844 (276-7546)</span>
                   </React.Fragment>
                 ) : (
                   <React.Fragment>
-                    <span>+1-844-CROP-KING</span>
-                    <span className="-ml-2 mr-2">/</span>
-                    <span>(276-7546)</span>
+                    <span>+1-844 (276-7546)</span>
                   </React.Fragment>
                 )}
               </p>

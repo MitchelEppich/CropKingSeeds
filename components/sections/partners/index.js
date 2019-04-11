@@ -17,14 +17,14 @@ const Partners = props => {
 
   return (
     <div className="w-full pb-8">
-      <div className="w-3/5 md:w-3/4 sm:w-3/4 xl:pl-4 xxl:pl-1 sm:mt-12 md:mt-8 lg:mt-10 mt-5 mx-auto font-bold text-center">
-        <h1 className="text-3/5xl sm:text-3/5xl md:text-3/5xl xl:text-3/5xl lg:text-3/5xl font-extrabold text-center">
+      <div className="w-3/5 md:w-3/4 sm:w-3/4 xl:pl-4 xxl:pl-1 sm:mt-4 md:mt-8 lg:mt-10 mt-5 mx-auto font-bold text-center">
+        <h1 className="text-3/5xl sm:text-3xl md:text-3/5xl xl:text-3/5xl lg:text-3/5xl font-extrabold text-center">
           Crop King's Trusted Partners
         </h1>
-        <p className="pl-1 mt-2 text-xl text-grey">
+        <p className="pl-1 mt-2 text-xl text-grey sm:my-6 sm:text-red-light">
           Do you have a business or service that can help our valued growers?
         </p>
-        <p className="pl-1 mt-2 mx-auto w-2/3 text-grey">
+        <p className="pl-1 mt-2 mx-auto w-2/3 sm:w-full text-grey">
           If your company has the same high standards as Crop King Seeds, then
           contact us to put your information in the list below.
         </p>

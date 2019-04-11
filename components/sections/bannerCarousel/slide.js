@@ -28,7 +28,7 @@ const slide = props => {
 
   let imageBanner = (
     <Link href="/product" as={props.url}>
-      <a href={props.url}>
+      <a aria-label={props.url} href={props.url}>
         <span
           onMouseEnter={() => {
             if (props.sotiId == null || !strains) return;

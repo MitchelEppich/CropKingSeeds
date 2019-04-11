@@ -4,6 +4,7 @@ const ratings = props => {
     arr.push(
       <img
         key={i}
+        alt="crown icon"
         src={props.misc.CFURL + "/icon/crownicon_inv.png"}
         className="w-8"
       />

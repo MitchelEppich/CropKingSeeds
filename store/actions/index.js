@@ -234,6 +234,7 @@ const actions = {
           let _new = [];
           for (let strain of _strains) {
             _new.push(inferStrainData(strain));
+            // console.log("here", _new[_new.length - 1]);
           }
           dispatch(actions.setStrains(_new));
           return Promise.resolve(_new);

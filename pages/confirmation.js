@@ -119,7 +119,11 @@ class Index extends Component {
         <div className="w-full mt-6 text-center">
           <div>
             {this.props.checkout.affiliateUrl != null ? (
-              <img hidden src={this.props.checkout.affiliateUrl} />
+              <img
+                alt="cks confirmation"
+                hidden
+                src={this.props.checkout.affiliateUrl}
+              />
             ) : null}
             <img
               alt={this.props.misc.CFURL + "/logos/cks-confirmation.png"}
@@ -130,13 +134,17 @@ class Index extends Component {
             <h1 className="text-3/5xl font-bold mt-4 mb-4 text-black">
               {CreditCardStatusCondition ? "Important:" : "Thank You!"}
             </h1>
+            {console.log(this.props.checkout.orderDetails.payment)}
             <h4 className="font-bold uppercase text-red-light p-2 text-2xl">
-              Your order has been{" "}
-              {CreditCardStatusCondition ? (
-                <span className="underline">Declined</span>
-              ) : (
-                "Approved"
-              )}
+              Your order has been
+              <span className="underline ml-2">
+                {CreditCardStatusCondition
+                  ? "Declined"
+                    ? this.props.checkout.orderDetails.payment.method.value ==
+                      "Bitcoin"
+                    : "Pending"
+                  : "Approved"}
+              </span>
             </h4>
             <p className="text-grey font-bold text-xl">
               Please follow payment instructions below.
@@ -435,39 +443,20 @@ class Index extends Component {
                             </p>
                             <p>
                               Street:{" "}
-                              <span className="font-bold">
-                                {_orderDetails.billing == null ||
-                                _orderDetails.billing.address == null
-                                  ? "ERROR"
-                                  : _orderDetails.billing.address.value}
-                              </span>
+                              <span className="font-bold">1394 Keith Road</span>
                             </p>
                             <p>
                               City:{" "}
                               <span className="font-bold">
-                                {_orderDetails.billing == null ||
-                                _orderDetails.billing.city == null
-                                  ? "ERROR"
-                                  : _orderDetails.billing.city.value}
+                                North Vancouver, B.C.
                               </span>
                             </p>
                             <p>
                               Postal/Zip Code:{" "}
-                              <span className="font-bold">
-                                {_orderDetails.billing == null ||
-                                _orderDetails.billing.postalZip == null
-                                  ? "ERROR"
-                                  : _orderDetails.billing.postalZip.value}
-                              </span>
+                              <span className="font-bold">V5T 2C1</span>
                             </p>
                             <p>
-                              Country:{" "}
-                              <span className="font-bold">
-                                {_orderDetails.billing == null ||
-                                _orderDetails.billing.country == null
-                                  ? "ERROR"
-                                  : _orderDetails.billing.country.value}
-                              </span>
+                              Country: <span className="font-bold">Canada</span>
                             </p>
                             <p>
                               Amount:{" "}

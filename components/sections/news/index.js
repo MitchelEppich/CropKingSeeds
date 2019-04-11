@@ -69,7 +69,7 @@ const news = props => {
         >
           <div className="w-3/4 sm:w-full md:w-full">
             <h3
-              className={`px-2 font-bold text-lg pl-12 ml-2 h-10 flex items-center`}
+              className={`px-2 font-bold text-lg pl-12 ml-2 h-10 flex items-center sm:h-full sm:min-h-10`}
             >
               {title}
             </h3>
@@ -93,7 +93,8 @@ const news = props => {
               aria-label="event-location"
               href={locationUrl}
               target="_blank"
-              rel="nofollow"
+              // rel="nofollow"
+              rel="noopener noreferrer"
               className="cursor-pointer sm:w-full md:w-full text-sm hover:text-grey-light pl-12 sm:pl-2 ml-2"
             >
               <FontAwesomeIcon icon={faMapMarkerAlt} className="opacity-50" />{" "}
@@ -107,7 +108,7 @@ const news = props => {
           className="font-bold ml-auto p-1 cursor-pointer text-grey hover:text-red-light text-sm sm:mr-2 md:mr-2 flex justify-end font-bold"
           href={url}
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
         >
           {" "}
           <span className="font-bold flex items-center">More Info</span>

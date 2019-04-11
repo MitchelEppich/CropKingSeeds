@@ -28,6 +28,7 @@ const imageCarousel = props => {
         >
           {image.includes("package") ? (
             <img
+              alt="pins cks"
               className="package-pins--product"
               src={`${props.misc.CFURL}/pins/${rand
                 .intBetween(1, 7)
@@ -57,6 +58,7 @@ const imageCarousel = props => {
         >
           <div className="relative">
             <img
+              alt="package cks"
               src={currentImage}
               onClick={() => {
                 if (props.misc.mediaSize == "sm") {
@@ -68,6 +70,7 @@ const imageCarousel = props => {
             />
             {currentImage.includes("package") ? (
               <img
+                alt="pins cks"
                 className="packagePinBig absolute"
                 src={`${props.misc.CFURL}/pins/${rand
                   .intBetween(1, 7)

@@ -35,6 +35,16 @@ export default class MyDocument extends Document {
           />
           {/* <link rel="manifest" href="/_next/static/manifest.json" /> */}
           <link
+            href="https://fonts.googleapis.com/css?family=Lato:400,700"
+            rel="stylesheet"
+          />
+          {/* <link
+            href="https://fonts.googleapis.com/css?family=Roboto:400,500,700"
+           rel="stylesheet"
+           
+          /> */}
+
+          <link
             rel="stylesheet"
             type="text/css"
             href="/_next/static/style.css"

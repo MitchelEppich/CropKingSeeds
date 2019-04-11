@@ -71,7 +71,7 @@ const Carousel = props => {
   );
 
   return (
-    <div className="xl:w-95p lg:w-95p md:w-95p sm:w-full w-main mx-auto mt-24 md:mt-24 sm:mt-24 shadow-md sm:pt-4 sm:h-450 md:h-450 lg:h-350 xl:h-300 xxl:h-400 xl:pt-4 xxl:pt-12 text-xl relative overflow-hidden mx-auto bg-white">
+    <div className="xl:w-95p lg:w-95p md:w-95p sm:w-full w-main mx-auto mt-24 md:mt-24 sm:mt-2 shadow-md sm:pt-4 sm:h-450 md:h-450 lg:h-350 xl:h-300 xxl:h-400 xl:pt-4 xxl:pt-12 text-xl relative overflow-hidden mx-auto bg-white">
       <div className="w-1/3 sm:mb-6 md:mb-12 sm:pin-b md:pin-b sm:h-200 md:h-48 sm:w-full md:w-full md:pt-4 lg:ml-12 xl:ml-12 xxl:ml-24 absolute z-0">
         <h2 className="px-4 sm:my-2 text-2xl bg-red-light text-white p-1 uppercase lg:my-2 xl:my-2 xxl:my-4 lg:text-left xl:text-left xxl:text-left text-center sm:bg-white md:bg-white sm:text-red-light md:text-red-light">
           Step {currentStep + 1}

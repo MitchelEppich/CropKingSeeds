@@ -234,6 +234,7 @@ const Compare = props => {
                     <p className="p-2 font-normal inline-flex">
                       {product.rating.toFixed(2)}
                       <img
+                        alt="crown icon"
                         src={props.misc.CFURL + "/icon/crownicon.svg"}
                         className="w-6 h-4 crown-icon"
                       />

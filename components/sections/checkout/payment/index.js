@@ -37,7 +37,7 @@ const Payment = props => {
       </div>
 
       <div className="font-bold py-2 my-4">
-        <h2 className="text-3/5xl font-extrabold opacity-50 mt-2 mb-4 text-black">
+        <h2 className="text-3/5xl sm:text-3xl sm:text-center font-extrabold opacity-50 mt-2 mb-4 text-black">
           Important
         </h2>
         <div style={titleBox}>
@@ -83,14 +83,14 @@ const Payment = props => {
         </div>
       </div>
       <div>
-        <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-black">
+        <h2 className="text-3/5xl sm:text-center sm:text-3xl font-bold opacity-50 mt-8 mb-4 text-black">
           Payment Review
         </h2>
         <PaymentReview {...props} />
       </div>
 
       <div>
-        <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-black">
+        <h2 className="text-3/5xl sm:text-center sm:text-3xl font-bold opacity-50 mt-8 mb-4 text-black">
           Payment Method
         </h2>
       </div>

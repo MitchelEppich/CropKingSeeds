@@ -1,15 +1,19 @@
 const emailSent = props => {
   return (
-    <p className="text-2xl font-bold w-2/3 text-left">
-      Thank you for your message! <br />A representative will reach out to you
-      shortly.
-      <span
+    <div className="w-2/3 text-center mt-4">
+      <p className="text-2xl font-bold text-center text-red-light">
+        Thank you for your message! <br />
+      </p>
+      <p className="mt-8 text-center font-bold">
+        A representative will reach out to you shortly.
+      </p>
+      <p
         onClick={() => props.refreshEmailForm()}
-        className="text-base absolute pin-b mb-4 ml-8 border p-3 px-3 rounded-tl-lg hover:bg-grey hover:text-white slow cursor-pointer rounded-br-lg border-grey-light"
+        className="text-base mt-8 mx-auto w-200 mb-8 p-3 px-3 rounded hover:bg-grey hover:text-white cursor-pointer bg-red-dark text-white "
       >
         Send New Message
-      </span>
-    </p>
+      </p>
+    </div>
   );
 };
 export default emailSent;

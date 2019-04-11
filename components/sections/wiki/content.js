@@ -40,6 +40,7 @@ const content = props => {
             contentWithImages.push(content.slice(lastIndex, i));
             contentWithImages.push(
               <img
+                alt="img options"
                 key={key({ key: option[1].images[imageIndex] })}
                 srcSet={`${option[1].images[imageIndex]}`}
                 className="my-3 block mx-auto"

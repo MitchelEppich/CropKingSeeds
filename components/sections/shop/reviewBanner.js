@@ -7,7 +7,11 @@ const reviewBanner = props => {
         aria-label="trustpilot"
         rel="nofollow"
       >
-        <img src={props.misc.CFURL + "/sidebar/reviewus_v1.gif"} className="" />
+        <img
+          alt="review us banner"
+          src={props.misc.CFURL + "/sidebar/reviewus_v1.gif"}
+          className=""
+        />
       </a>
     </div>
   );

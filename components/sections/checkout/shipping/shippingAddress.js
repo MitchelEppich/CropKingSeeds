@@ -154,7 +154,7 @@ const ShippingAddress = props => {
 
   return (
     <div className="w-full mt-6 px-8 sm:px-4">
-      <h2 className="text-3/5xl font-bold opacity-50 mt-8 mb-4 text-black">
+      <h2 className="text-3/5xl sm:text-center sm:text-3xl font-bold opacity-50 mt-8 mb-4 text-black">
         Shipping Address
       </h2>
       <MinimumSeedsWarning {...props} />

@@ -19,10 +19,6 @@ import SearchSuggest from "../searchSuggest";
 import HeaderMessage from "../headerMessage";
 
 const menu = props => {
-  let menuStyle = {
-    // backgroundImage: "url(../static/img/red.png)",
-  };
-
   let availableCurrency = props.checkout.availableCurrency;
   let currency = props.checkout.viewCurrency;
   let isMobileNavVisible = props.misc.visibleScreen.includes("showMobileNav");
@@ -51,6 +47,7 @@ const menu = props => {
           <div className="w-12 p-2 sm:w-8 sm:p-1 items-center flex justify-center">
             <p>
               <img
+                alt="currency country"
                 src={`../../static/img/currency/currency_${country}.png`}
                 className="w-10"
               />
@@ -234,52 +231,61 @@ const menu = props => {
                     <SearchBar {...props} />{" "}
                   </li>
                   <Link href="/">
-                    <a href="/" className="text-white">
-                      <li
-                        onClick={() => {
-                          props.toggleCartMenu(false);
-                        }}
-                        className="font-bold text-xl pt-3 p-2  ml-4 mr-2 cursor-pointer slowish hover:text-yellow-dark"
-                      >
+                    <li
+                      onClick={() => {
+                        props.toggleCartMenu(false);
+                      }}
+                      className="font-bold text-xl pt-3 p-2  ml-4 mr-2 cursor-pointer slowish"
+                    >
+                      <a href="/" className="text-white hover:text-yellow-dark">
                         Home
-                      </li>
-                    </a>
+                      </a>
+                    </li>
                   </Link>
                   <Link href="/shop">
-                    <a href="/shop" className="text-white">
-                      <li
-                        onClick={() => {
-                          props.toggleCartMenu(false);
-                        }}
-                        className="font-bold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark"
+                    <li
+                      onClick={() => {
+                        props.toggleCartMenu(false);
+                      }}
+                      className="font-bold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish"
+                    >
+                      <a
+                        href="/shop"
+                        className="text-white hover:text-yellow-dark"
                       >
                         Shop
-                      </li>
-                    </a>
+                      </a>
+                    </li>
                   </Link>
                   <Link href="/germination">
-                    <a href="/germination" className="text-white">
-                      <li
-                        onClick={() => {
-                          props.toggleCartMenu(false);
-                        }}
-                        className="font-bold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark"
+                    <li
+                      onClick={() => {
+                        props.toggleCartMenu(false);
+                      }}
+                      className="font-bold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish"
+                    >
+                      <a
+                        href="/germination"
+                        className="text-white hover:text-yellow-dark"
                       >
                         Germinate
-                      </li>
-                    </a>
+                      </a>
+                    </li>
                   </Link>
                   <Link href="/contact">
-                    <a href="/contact" className="text-white">
-                      <li
-                        onClick={() => {
-                          props.toggleCartMenu(false);
-                        }}
-                        className="font-bold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish hover:text-yellow-dark"
+                    <li
+                      onClick={() => {
+                        props.toggleCartMenu(false);
+                      }}
+                      className="font-bold text-xl pt-3 p-2  xl:mx-2 cursor-pointer slowish"
+                    >
+                      <a
+                        href="/contact"
+                        className="text-white hover:text-yellow-dark"
                       >
                         Contact
-                      </li>
-                    </a>
+                      </a>
+                    </li>
                   </Link>
                   <li
                     className={`font-bold text-2xl px-2 scale-item ${

@@ -53,6 +53,7 @@ const videoSlide = props => {
           }}
           className="xxl:h-40 xxl:mx-6 h-250 lg:h-200 my-2 scale-item cursor-pointer"
           src={props.misc.CFURL + "/packages/" + strain.sotiId + ".png"}
+          alt="video slide"
           style={{
             zIndex: "30",
             boxShadow: "1px 5px 13px rgba(35, 35, 35, 0.52)"
