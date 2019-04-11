@@ -34,11 +34,7 @@ export default class MyDocument extends Document {
             content="© 2005 - 2019 Crop King Seeds. All Rights Reserved."
           />
           {/* <link rel="manifest" href="/_next/static/manifest.json" /> */}
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com/"
-            crossOrigin="anonymous"
-          />
+          <link rel="preconnect" href="https://fonts.gstatic.com/" />
           <link
             href="https://fonts.googleapis.com/css?family=Lato:400,700"
             rel="stylesheet"
@@ -66,9 +62,7 @@ export default class MyDocument extends Document {
                   className="fa-2x "
                 />
               </div>
-              <h1 className="mt-10 title-message">
-                JavaScript is Required.
-              </h1>
+              <h1 className="mt-10 title-message">JavaScript is Required.</h1>
               <h3 className="mt-2 subtitle-message">
                 Enable JavaScript in your browser and try again.
               </h3>
@@ -117,6 +111,7 @@ export default class MyDocument extends Document {
               })
             }}
           />
+          
         </body>
       </html>
     );
