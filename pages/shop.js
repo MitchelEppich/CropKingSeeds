@@ -18,16 +18,17 @@ import { initGA, logPageView } from "../scripts/ga";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
 class Index extends Component {
-  componentDidMount() {
+  constructor(props) {
+    super(props);
     if (typeof document === "undefined") return null;
-    let url = this.props.router.asPath.slice(1);
+    let url = props.router.asPath.slice(1);
     if (url && url.length != 0) {
       let qr;
       if (url.includes("shop?")) {
         qr = url.slice("shop?".length);
         if (qr) {
           qr = qr.split("&");
-          let _availableFilters = this.props.shop.availableFilters;
+          let _availableFilters = props.shop.availableFilters;
           for (let item of qr) {
             item = item.toLowerCase();
             let partial;
@@ -37,16 +38,16 @@ class Index extends Component {
             ) {
               partial = item.slice(3);
               item = item.replace(partial, "");
-              this.props.toggleFilter({
-                filter: this.props.shop.activeFilters,
+              props.toggleFilter({
+                filter: props.shop.activeFilters,
                 [item]: partial
               });
               continue;
             } else {
               for (let filter of Object.keys(_availableFilters)) {
                 if (_availableFilters[filter].includes(item)) {
-                  this.props.toggleFilter({
-                    filter: this.props.shop.activeFilters,
+                  props.toggleFilter({
+                    filter: props.shop.activeFilters,
                     [filter]: item,
                     multiple: filter == "genetic"
                   });
@@ -58,18 +59,20 @@ class Index extends Component {
         }
       }
     }
-    initGA();
-    logPageView();
-    let searchValue = this.props.misc.searchValue;
+    let searchValue = props.misc.searchValue;
     if (searchValue != null) {
-      this.props.setSearch(null);
+      props.setSearch(null);
       let text = searchValue.split(",");
-      this.props.toggleFilter({
-        filter: this.props.shop.activeFilters,
+      props.toggleFilter({
+        filter: props.shop.activeFilters,
         text,
         multiple: false
       });
     }
+  }
+  componentDidMount() {
+    initGA();
+    logPageView();
   }
 
   componentWillUnmount() {
@@ -80,9 +83,6 @@ class Index extends Component {
     let mobile = ["sm", "md"].includes(this.props.misc.mediaSize);
     return (
       <Layout {...this.props} supportedBrowser={this.props.supportedBrowser}>
-        {/* {this.props.misc.strains != null &&
-        this.props.misc.featuredStrains != null &&
-        this.props.misc.strains.length > 0 ? ( */}
         <React.Fragment>
           <Head>
             {this.props.misc.strains != null &&
@@ -161,9 +161,6 @@ class Index extends Component {
             </div>
           </div>
         </React.Fragment>
-        {/* ) : (
-          <p>Loading...</p>
-        )} */}
       </Layout>
     );
   }

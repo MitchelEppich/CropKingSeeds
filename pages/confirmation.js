@@ -28,6 +28,8 @@ const isClient = typeof document !== "undefined";
 
 class Index extends Component {
   componentDidMount() {
+    initGA();
+    logPageView();
     window.scroll(0, 0);
   }
 

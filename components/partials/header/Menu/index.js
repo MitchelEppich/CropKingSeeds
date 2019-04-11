@@ -28,7 +28,6 @@ const menu = props => {
   let isMobileNavVisible = props.misc.visibleScreen.includes("showMobileNav");
   let viewCurrency, showMobileNav;
   let availableCurrencyLength = Object.keys(availableCurrency).length;
-
   let showCurrency = () => {
     let arr = [];
     for (let country of Object.keys(availableCurrency)) {
@@ -215,10 +214,8 @@ const menu = props => {
                 <Link href="/">
                   <a href="/">
                     <img
-                      // alt={props.misc.CFURL + "/logos/cks-logo-header.png"}
-                      // src={props.misc.CFURL + "/logos/cks-logo-header.png"}
-                      alt={"../static/cks-logo-header.png"}
-                      src={"../static/cks-logo-header.png"}
+                      alt={props.misc.CFURL + "/logos/cks-logo-header.png"}
+                      src={props.misc.CFURL + "/logos/cks-logo-header.png"}
                       onClick={e => e.stopPropagation()}
                       className="z-999 cks-logo-header p-0 w-125 sm:w-85px md:w-100 scale-item cursor-pointer sm:-mt-2 sm:-ml-1 md:-mt-3"
                     />

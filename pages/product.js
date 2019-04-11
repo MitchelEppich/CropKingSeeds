@@ -33,8 +33,6 @@ let lowerImageCar;
 
 class Index extends Component {
   componentDidMount() {
-    if (!isClient) return;
-    if (typeof document === "undefined") return;
     let qr = this.props.router.asPath.split("/product/")[1];
     if (qr) {
       if (
@@ -43,15 +41,21 @@ class Index extends Component {
           qr.replace(/-/g, " ").toLowerCase()
         )
       ) {
-        this.prepCurrentProduct(this.props);
+        let product = this.props.viewProduct.currentProduct;
+        this.prepCurrentProduct(this.props, product);
       } else {
-        this.props
-          .fetchCurrentProduct({
-            name: qr.replace(/-/g, " ").toLowerCase()
-          })
-          .then(res => {
-            this.prepCurrentProduct(this.props);
-          });
+        try {
+          this.props
+            .fetchCurrentProduct({
+              name: qr.replace(/-/g, " ").toLowerCase()
+            })
+            .then(res => {
+              let product = this.props.viewProduct.currentProduct;
+              this.prepCurrentProduct(this.props, product);
+            });
+        } catch (err) {
+          console.log(err);
+        }
       }
     } else {
       Router.push("/_error", "/404");
@@ -60,6 +64,7 @@ class Index extends Component {
     logPageView();
     lowerImageCar = ["sm", "md", "lg"].includes(this.props.misc.mediaSize);
   }
+
   componentDidUpdate(prevProps) {
     let product = this.props.viewProduct.currentProduct;
     if (product != null && this.props.misc.relatedStrains == null) {
@@ -230,8 +235,8 @@ class Index extends Component {
     );
   }
 
-  prepCurrentProduct = props => {
-    let product = props.viewProduct.currentProduct;
+  prepCurrentProduct = (props, res) => {
+    let product = res;
     let _index = 0;
     while (product.price[_index] == -1) {
       _index++;

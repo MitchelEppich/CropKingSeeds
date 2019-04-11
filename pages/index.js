@@ -19,13 +19,17 @@ import siteNavPages from "../scripts/siteNavPages";
 import registerServiceWorker from "../registerServiceWorker";
 
 class Index extends Component {
-  componentWillMount() {
-    this.props.getBanners();
-    this.props.getStrains();
-    // this.runLoop(5000, this.props.nextBannerSlide);
+  static async getInitialProps({ store }) {
+    await store.dispatch(actions.getBanners());
+    await store.dispatch(
+      actions.getFeaturedList({
+        limit: 6
+      })
+    );
+    await store.dispatch(actions.getFeaturedNews());
+    return {};
   }
   componentDidMount() {
-    // registerServiceWorker();
     initGA();
     logPageView();
     this.props.setCurrentEvent({
@@ -49,6 +53,7 @@ class Index extends Component {
         <React.Fragment>
           <Head>
             <script
+              async
               type="application/ld+json"
               dangerouslySetInnerHTML={{
                 __html: JSON.stringify(

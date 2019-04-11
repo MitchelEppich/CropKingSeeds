@@ -25,35 +25,35 @@ class Error extends Component {
     return { styleKing, styleBackground, moveSpaceX, moveSpaceY };
   }
 
-  eyeControl = e => {
-    let eyes = document.querySelector(".eyes");
+  // eyeControl = e => {
+  //   let eyes = document.querySelector(".eyes");
 
-    let mX = e.pageX - eyes.getBoundingClientRect().left - eyes.clientWidth / 2;
-    let mY = e.pageY - eyes.getBoundingClientRect().top - eyes.clientHeight / 2;
+  //   let mX = e.pageX - eyes.getBoundingClientRect().left - eyes.clientWidth / 2;
+  //   let mY = e.pageY - eyes.getBoundingClientRect().top - eyes.clientHeight / 2;
 
-    let maxMouseX = window.innerWidth;
-    let maxMouseY = window.innerHeight;
+  //   let maxMouseX = window.innerWidth;
+  //   let maxMouseY = window.innerHeight;
 
-    let xF = mX / maxMouseX;
-    let yF = mY / maxMouseY;
+  //   let xF = mX / maxMouseX;
+  //   let yF = mY / maxMouseY;
 
-    let eye = document.querySelectorAll(".eye");
+  //   let eye = document.querySelectorAll(".eye");
 
-    for (let item of eye) {
-      let iris = item.querySelector(".iris");
+  //   for (let item of eye) {
+  //     let iris = item.querySelector(".iris");
 
-      if (!this.props.misc.eyesShouldMove) {
-        xF = 0.5;
-        yF = 0.3;
-      }
+  //     if (!this.props.misc.eyesShouldMove) {
+  //       xF = 0.5;
+  //       yF = 0.3;
+  //     }
 
-      let left = this.props.moveSpaceX * xF + item.clientWidth / 2;
-      let top = this.props.moveSpaceY * yF + item.clientHeight / 2;
+  //     let left = this.props.moveSpaceX * xF + item.clientWidth / 2;
+  //     let top = this.props.moveSpaceY * yF + item.clientHeight / 2;
 
-      iris.style.left = `${left}px`;
-      iris.style.top = `${top}px`;
-    }
-  };
+  //     iris.style.left = `${left}px`;
+  //     iris.style.top = `${top}px`;
+  //   }
+  // };
 
   componentWillUnmount() {
     // if (typeof window !== "undefined") {
@@ -130,23 +130,23 @@ class Error extends Component {
   }
 
   // kings eyes animation
-  loop = () => {
-    let eyesShouldMove = this.props.misc.eyesShouldMove;
+  // loop = () => {
+  //   let eyesShouldMove = this.props.misc.eyesShouldMove;
 
-    let min = eyesShouldMove ? 4000 : 4000;
-    let max = eyesShouldMove ? 8000 : 15000;
+  //   let min = eyesShouldMove ? 4000 : 4000;
+  //   let max = eyesShouldMove ? 8000 : 15000;
 
-    let rand = Math.round(Math.random() * (max - min)) + min;
-    setTimeout(() => {
-      this.props.setEyesShouldMove({ value: !this.props.misc.eyesShouldMove });
-      this.loop();
-    }, rand);
-  };
+  //   let rand = Math.round(Math.random() * (max - min)) + min;
+  //   setTimeout(() => {
+  //     this.props.setEyesShouldMove({ value: !this.props.misc.eyesShouldMove });
+  //     this.loop();
+  //   }, rand);
+  // };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    setEyesShouldMove: input => dispatch(actions.setEyesShouldMove(input))
+    // setEyesShouldMove: input => dispatch(actions.setEyesShouldMove(input))
   };
 };
 
