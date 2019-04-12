@@ -30,9 +30,20 @@ type Query {
 
   getRandomWinnerBetweenDates(input: DateRangeInput!): Order
 
+  getUniqueMOProfile: MOProfile
+
   getTrustPilotRating: Float
 
   getDailyMessage: String
+}
+
+type MOProfile {
+  name: String
+  address: String
+  country: String
+  city: String
+  postal: String
+  province: String
 }
 
 input StatInput {

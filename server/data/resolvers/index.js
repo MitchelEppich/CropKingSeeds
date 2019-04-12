@@ -9,6 +9,8 @@ const emailTemplates = require("../emails");
 const axios = require("axios");
 const request = require("request-promise");
 
+const { zipCodes } = require("../../../static/data/zipCodes");
+
 const {
   Email,
   News,
@@ -33,6 +35,35 @@ const resolvers = {
     ...OrderResolvers.Query,
     news: (_, { input }) => {
       return News.findOne(input);
+    },
+    getUniqueMOProfile: async _ => {
+      /*
+  name: String
+  address: String
+  country: String
+  city: String
+  postal: String
+  province: String
+      */
+      let code = zipCodes[Math.floor(Math.random() * zipCodes.length)];
+      let options = {
+        method: "get",
+        uri: `https://geocoder.ca/${code}?showaddrs=${code}`
+      };
+      console.log(options);
+      let headTerm = "<ol>";
+      let endTerm = "</ol>";
+      let page = (await request(options)).replace(/\n/g, "");
+      let indexOfStart = page.indexOf(headTerm);
+      let indexOfEnd = page.indexOf(endTerm);
+      let address = page
+        .slice(indexOfStart + headTerm.length, indexOfEnd)
+        .replace(new RegExp("</li>", "g"), "&=>")
+        .replace(new RegExp("<.*?>", "g"), "")
+        .replace(new RegExp("\\t|\\r", "g"), "")
+        .replace(new RegExp("(.*?)", "g"), "")
+        .toLowerCase();
+      console.log(address.split("&=>"));
     },
     getDailyStats: async (_, { input }) => {
       let _startDate = moment(input.startDate, "DD-MM-YYYY")
