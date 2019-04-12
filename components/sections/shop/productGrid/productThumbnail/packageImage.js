@@ -30,7 +30,7 @@ const packageImage = props => {
               backgroundImage:
                 "url(" +
                 props.misc.CFURL +
-                "/packages/P_" +
+                "/packages/" +
                 props.product.sotiId +
                 ".png)",
               backgroundSize: "contain",

@@ -123,7 +123,7 @@ class SearchSuggest extends Component {
   };
   render() {
     return (
-      <div className="bg-white rounded-lg flex flex-wrap justify-start md:w-175 lg:w-250 xxl:w-350">
+      <div className="bg-white rounded-lg flex flex-wrap w-full justify-start md:w-175 lg:w-250 xxl:w-350">
         <input
           onKeyDown={e => {
             this.changeHighlightedSuggestion(e);

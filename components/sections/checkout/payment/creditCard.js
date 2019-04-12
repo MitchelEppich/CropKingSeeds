@@ -74,7 +74,11 @@ const CreditCard = props => {
         <div className="w-600 sm:w-full md:w-full lg:w-full mx-auto p-2">
           <div className="w-full mt-2 text-center opacity-75">
             <p className="text-sm p-2">Cards Accepted:</p>
-            <img src={props.misc.CFURL + "/logos/cards.png"} width="100px" />
+            <img
+              alt="cards accepted "
+              src={props.misc.CFURL + "/logos/cards.png"}
+              width="100px"
+            />
             <p className="opacity-75 p-1 py-3">
               * An additional Credit Card Fee of 10% has been applied on your
               order total.
@@ -195,6 +199,7 @@ const CreditCard = props => {
             </div>
             <div className="absolute pin-r text-grey-light opacity-75">
               <img
+                alt="cards"
                 src={`${props.misc.CFURL}/logos/cc${(() => {
                   let _type =
                     props.checkout.orderDetails[pageGroup].type != null &&

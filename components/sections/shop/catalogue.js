@@ -6,6 +6,7 @@ const catalogue = props => {
         aria-label="download-catalogue"
       >
         <img
+          alt="crown icon cks"
           src={props.misc.CFURL + "/sidebar/downloadcatalogue.png"}
           className=""
         />

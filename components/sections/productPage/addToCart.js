@@ -73,7 +73,8 @@ const addToCart = props => {
           <div className="w-1/2 mr-2 pt-2">
             <button
               className="bg-red-dark h-10 w-full text-center text-white mr-2 hover:bg-red-light px-4 font-bold"
-              onClick={() => {
+              onClick={e => {
+                e.stopPropagation();
                 let _identifier =
                   currentProduct.sotiId +
                   [5, 10, 25][props.shop.quickAddToCartQty[currentProduct._id]];
@@ -115,7 +116,8 @@ const addToCart = props => {
             <Link prefetch href="/checkout">
               <button
                 className="bg-grey-dark h-10 w-full text-center text-white hover:bg-grey-light px-4 font-bold"
-                onClick={() => {
+                onClick={e => {
+                  e.stopPropagation();
                   let _identifier =
                     currentProduct.sotiId +
                     [5, 10, 25][

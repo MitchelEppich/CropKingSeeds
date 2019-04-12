@@ -26,6 +26,7 @@ let inferStrainData = (strain, options = {}) => {
     name,
     yield: _yield,
     flowerTime
+    // packageImg
   } = strain;
 
   // Infer Country
@@ -155,6 +156,12 @@ let inferStrainData = (strain, options = {}) => {
   //     return `${flowerTime[0]} Weeks`;
   //   })();
   // }
+
+  // console.log(packageImg.includes(".png"));
+  // if (packageImg.includes(".png")) {
+  //   ret.packageImg = packageImg.replace(".png", ".jpg");
+  // }
+  // console.log(ret.packageImg);
   return {
     ...strain,
     ...ret

@@ -70,15 +70,28 @@ const Bitcoin = props => {
               className="mt-4 cursor-pointer"
             />
           </div>
-          <div className="w-200 p-2 mx-auto mt-6 text-center">
-            {/* <button
-              name="bitcoinPay"
-              type="submit"
-              className="w-full font-bold text-white text-center p-2 font-extrabold bg-red-dark text-white text-xl hover:bg-grey-light cursor-pointer rounded"
-            >
-              Pay Now
-            </button> */}
-            <p>Bitcoin Payment Services Are Temporarily Disabled</p>
+
+          <div className="w-225 p-2 mx-auto mt-6 text-center">
+            {!props.checkout.processing ? (
+              <div>
+                <button
+                  name="bitcoinPay"
+                  type="submit"
+                  className="w-full font-bold text-white text-center p-2 font-extrabold bg-red-dark text-white text-xl hover:bg-grey-light cursor-pointer rounded"
+                >
+                  Pay Now
+                </button>
+                {/* <p>Bitcoin Payment Services Are Temporarily Disabled</p> */}
+              </div>
+            ) : (
+              <div className="text-center">
+                <p className="p-1 uppercase font-bold pb-2">
+                  Please Do NOT Refresh
+                </p>
+                <LoaderCheckout {...props} />
+                <p className="p-1 blink font-bold">Processing your order...</p>
+              </div>
+            )}
           </div>
         </div>
       ) : null}

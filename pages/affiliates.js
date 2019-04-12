@@ -75,6 +75,7 @@ class Index extends Component {
             <div className="w-full sm:h-auto md:h-500 h-400 xl:h-250 lg:h-250 flex sm:flex-wrap sm:justify-center md:flex-wrap md:justify-center mx-auto justify-between bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="h-full sm:h-24 sm:w-24 sm:pt-6 md:h-16 w-1/3 text-center md:pt-8 pt-20 lg:pt-16">
                 <img
+                  alt="affiliate 4"
                   className="h-200 lg:h-100 xl:h-100 md:h-100 sm:h-20"
                   src="../static/icons/affiliate/4.png"
                 />
@@ -83,6 +84,7 @@ class Index extends Component {
                 <ul className="flex sm:list-reset sm:px-0 flex-wrap content-center h-full">
                   <li className="w-full my-4 font-bold text-xl xl:text-base lg:text-base sm:text-base sm:pr-2 md:pr-2 flex scale-item">
                     <img
+                      alt="checkmark affiliate"
                       className="w-8 h-8 xl:w-6 xl:h-6 lg:w-6 lg:h-6 sm:h-6 sm:w-6 mr-4 "
                       src="../static/icons/affiliate/checkmark.png"
                     />
@@ -93,6 +95,7 @@ class Index extends Component {
                   </li>
                   <li className="w-full my-4 font-bold text-xl xl:text-base lg:text-base sm:text-base sm:pr-2 md:pr-2 flex scale-item">
                     <img
+                      alt="checkmark affiliate"
                       className="w-8 h-8 xl:w-6 xl:h-6 lg:w-6 lg:h-6 sm:h-6 sm:w-6 mr-4 "
                       src="../static/icons/affiliate/checkmark.png"
                     />
@@ -103,6 +106,7 @@ class Index extends Component {
                   </li>
                   <li className="w-full my-4 font-bold text-xl xl:text-base lg:text-base sm:text-base sm:pr-2 md:pr-2 flex scale-item">
                     <img
+                      alt="checkmark affiliate"
                       className="w-8 h-8 xl:w-6 xl:h-6 lg:w-6 lg:h-6 sm:h-6 sm:w-6 mr-4 "
                       src="../static/icons/affiliate/checkmark.png"
                     />
@@ -112,6 +116,7 @@ class Index extends Component {
                   </li>
                   <li className="w-full my-4 font-bold text-xl xl:text-base lg:text-base sm:text-base sm:pr-2 md:pr-2 flex scale-item">
                     <img
+                      alt="checkmark affiliate"
                       className="w-8 h-8 xl:w-6 xl:h-6 lg:w-6 lg:h-6 sm:h-6 sm:w-6 mr-4 "
                       src="../static/icons/affiliate/checkmark.png"
                     />
@@ -149,7 +154,7 @@ class Index extends Component {
           </div>
           {/* <Graph {...this.props} /> */}
           <a
-            className="w-1/4 sm:w-2/3 md:w-2/3 lg:w-1/3 xl:w-1/2 xxl:w-1/3 xxl:mx-48 block uppercase text-center mx-auto px-12 py-3 text-lg uppercase font-bold rounded bg-red-dark text-white hover:bg-grey"
+            className="w-1/4 sm:w-full md:w-2/3 lg:w-1/3 xl:w-1/2 xxl:w-1/3 xxl:mx-48 block uppercase text-center mx-auto px-12 py-3 text-lg uppercase font-bold rounded bg-red-dark text-white hover:bg-grey"
             target="_blank"
             aria-label="affiliates-signup"
             rel="nofollow"

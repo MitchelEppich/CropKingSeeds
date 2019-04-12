@@ -25,6 +25,7 @@ class reviewForm extends Component {
         >
           <span>
             <img
+              alt="crown icon cks"
               src={this.props.misc.CFURL + "/icon/crownicon.svg"}
               className={`
           ${

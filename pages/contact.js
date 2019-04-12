@@ -66,7 +66,7 @@ class Index extends Component {
               >
                 <div className="w-full p-2">
                   <h2
-                    // onClick={this.getResponse}
+                    onClick={this.getResponse}
                     className="font-extrabold text-3xl md:text-2xl sm:text-2xl p-2 mt-4"
                   >
                     Send us a message

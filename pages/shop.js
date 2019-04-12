@@ -118,7 +118,7 @@ class Index extends Component {
                 this.props.misc.hoverId != null &&
                 this.props.misc.mediaSize == "sm"
                   ? "hidden"
-                  : "mt-5 text-grey font-extrabold text-center sm:text-2xl text-3/5xl mx-auto w-full text-center"
+                  : "mt-5 text-grey font-extrabold text-center sm:text-3xl text-3/5xl mx-auto w-full text-center"
               }
             >
               Shop Cannabis Seeds
@@ -129,7 +129,7 @@ class Index extends Component {
               }}
               className="uppercase cursor-pointer text-white font-bold flex justify-end sm:justify-center md:justify-center lg:justify-center items-center w-full text-base md:mt-4 lg:mt-4 sm:mt-4"
             >
-              <div className="w-175 p-2 text-grey items-center flex bg-smoke-grey hover:bg-red-light rounded justify-center cursor-pointer">
+              <div className="w-175 sm:w-full text-sm p-2 text-grey items-center flex bg-smoke-grey hover:bg-red-light hover:text-white rounded justify-center cursor-pointer">
                 <FontAwesomeIcon icon={faCog} className="mr-2 fa-lg" />
                 Animations {this.props.misc.lowGPUMode ? "Off" : "On"}
               </div>

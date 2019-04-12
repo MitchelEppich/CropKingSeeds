@@ -43,6 +43,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Lato:400,900"
             rel="stylesheet"
           />
+
           <link
             rel="stylesheet"
             type="text/css"
