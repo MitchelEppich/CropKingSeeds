@@ -138,7 +138,7 @@ class Index extends Component {
             </h1>
 
             <h4 className="font-bold uppercase text-red-light p-2 text-2xl">
-              Your order
+              Your order{" "}
               {CreditCardStatusCondition ? (
                 <span>
                   has been<span className="underline ml-2">Declined</span>
