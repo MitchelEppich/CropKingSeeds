@@ -36,7 +36,7 @@ export default class MyDocument extends Document {
           {/* <link rel="manifest" href="/_next/static/manifest.json" /> */}
           <link rel="preconnect" href="https://fonts.gstatic.com/" />
           <link
-            href="https://fonts.googleapis.com/css?family=Lato:400,700"
+            href="https://fonts.googleapis.com/css?family=Lato:400,900"
             rel="stylesheet"
           />
           <link
@@ -111,7 +111,6 @@ export default class MyDocument extends Document {
               })
             }}
           />
-          
         </body>
       </html>
     );
