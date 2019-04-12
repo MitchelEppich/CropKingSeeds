@@ -94,6 +94,12 @@ class Layout extends Component {
         2000
       );
     });
+    registerServiceWorker();
+    // iframe = document.createElement("iframe");
+    // iframe.id = "iframe";
+    // iframe.style.cssText = "display: none";
+    // iframe.sandbox = "allow-same-origin";
+    // document.body.appendChild(iframe);
 
     if (window.top !== window.self)
       window.top.location.replace(window.self.location.href);

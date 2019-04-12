@@ -14,11 +14,9 @@ export default function register() {
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
       const swUrl = path.resolve("../static/workbox/sw.js");
-      console.log(swUrl);
       navigator.serviceWorker.register(swUrl).then(registration => {
         registration.onupdatefound = () => {
           const installingWorker = registration.installing;
-          console.log("registered");
           installingWorker.onstatechange = () => {
             if (installingWorker.state === "installed") {
               if (navigator.serviceWorker.controller) {

@@ -37,7 +37,7 @@ export default class MyDocument extends Document {
           <link
             rel="preconnect"
             href="https://fonts.gstatic.com/"
-            crossorigin
+            crossOrigin="true"
           />
           <link
             href="https://fonts.googleapis.com/css?family=Lato:400,900"
@@ -74,7 +74,6 @@ export default class MyDocument extends Document {
             </div>
           </noscript>
           <script
-            async
             type="application/ld+json"
             dangerouslySetInnerHTML={{
               __html: JSON.stringify({
@@ -100,7 +99,6 @@ export default class MyDocument extends Document {
             }}
           />
           <script
-            async
             type="application/ld+json"
             dangerouslySetInnerHTML={{
               __html: JSON.stringify({

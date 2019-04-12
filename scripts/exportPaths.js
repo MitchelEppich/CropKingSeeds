@@ -14,7 +14,8 @@ module.exports = strains => {
       "articles.js",
       "cms.js",
       "germination.js",
-      "_error.js"
+      "_error.js",
+      "confirmation"
     ];
     files.forEach(file => {
       if (noMap.includes(file)) {
@@ -43,12 +44,16 @@ module.exports = strains => {
         const filePath = `${dir}${file}`;
         const fileStat = fs.statSync(filePath);
         for (let i = 0; i < strains.length; i++) {
+          let name = strains[i].name;
+          if (strains[i].name.toLowerCase().includes("cali")) {
+            name = strains[i].name.replace("&", "+");
+          }
           const fileName =
             filePath
               .substr(0, filePath.lastIndexOf("."))
               .replace("pages/", "") +
             "/" +
-            strains[i].name
+            name
               .toLowerCase()
               .split(" ")
               .join("-");
@@ -61,7 +66,7 @@ module.exports = strains => {
               "http://dcfgweqx7od72.cloudfront.net/packages/" +
               strains[i]._doc.sotiId +
               ".png",
-            name: strains[i].name + " Seeds"
+            name: name + " Seeds"
           };
         }
         return;
@@ -84,8 +89,8 @@ module.exports = strains => {
           lastModified: fileStat.mtime,
           changefreq: changefreq,
           priority: priority,
-          imageLoc: null,
-          name: null
+          imageLoc: "No Image",
+          name: "No Name"
         };
       }
     });
@@ -93,6 +98,5 @@ module.exports = strains => {
 
   // Start recursion to fill `fileObj`
   walkSync("pages/", strains);
-
   return fileObj;
 };

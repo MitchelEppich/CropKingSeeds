@@ -7,16 +7,15 @@ import Head from "next/head";
 import withData from "../lib/withData";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
+
 import BannerCarousel from "../components/sections/bannerCarousel";
 import GenePreview from "../components/sections/genePreview";
 import News from "../components/sections/news";
 import ExtraContent from "../components/sections/extraContent";
-import Carousel from "../components/sections/germination/carousel";
-import { initGA, logPageView } from "../scripts/ga";
 
+import { initGA, logPageView } from "../scripts/ga";
 import generateSiteNavigationMarkup from "../scripts/generateSiteNavigationMarkup";
 import siteNavPages from "../scripts/siteNavPages";
-import registerServiceWorker from "../registerServiceWorker";
 
 class Index extends Component {
   componentWillMount() {
@@ -47,7 +46,6 @@ class Index extends Component {
         <React.Fragment>
           <Head>
             <script
-              async
               type="application/ld+json"
               dangerouslySetInnerHTML={{
                 __html: JSON.stringify(

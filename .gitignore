@@ -7,6 +7,5 @@ static/fonts/manifesto/
 .data/*
 !.data/.gitkeep
 cks_static/
-static/workbox/
 static/sitemap.xml
 static/strainsSchemaData.js
