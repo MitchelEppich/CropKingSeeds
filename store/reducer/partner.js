@@ -69,7 +69,7 @@ const initialState = {
       imgUrl: "/partners/cannabis-training.jpg"
     },
     {
-      name: "Chronic Magazine",
+      name: "Cronic Magazine",
       tag: "Cannabis Media",
       imgUrl: "/partners/chronic-magazine.jpg"
     },

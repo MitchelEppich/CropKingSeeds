@@ -19,18 +19,8 @@ import siteNavPages from "../scripts/siteNavPages";
 import registerServiceWorker from "../registerServiceWorker";
 
 class Index extends Component {
-  static async getInitialProps({ store }) {
-    await store.dispatch(actions.getAllNews());
-    await store.dispatch(actions.getBanners());
-    await store.dispatch(
-      actions.getFeaturedList({
-        limit: 6
-      })
-    );
-    return {};
-  }
-
   componentWillMount() {
+    this.props.getBanners();
     this.props.getAllNews();
   }
 
