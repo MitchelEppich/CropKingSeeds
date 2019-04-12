@@ -1,5 +1,4 @@
 exports.contact = input => {
-  console.log(input.subject);
   let recipient =
     input.subject === "Advertisement"
       ? "jenn@vancoastind.com"
