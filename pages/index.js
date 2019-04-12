@@ -20,6 +20,7 @@ import registerServiceWorker from "../registerServiceWorker";
 
 class Index extends Component {
   static async getInitialProps({ store }) {
+    await store.dispatch(actions.getAllNews());
     await store.dispatch(actions.getBanners());
     await store.dispatch(
       actions.getFeaturedList({
@@ -28,6 +29,11 @@ class Index extends Component {
     );
     return {};
   }
+
+  componentWillMount() {
+    this.props.getAllNews();
+  }
+
   componentDidMount() {
     initGA();
     logPageView();
@@ -93,6 +99,7 @@ const mapDispatchToProps = dispatch => {
     changeStep: changeObj => dispatch(actions.changeStep(changeObj)),
     setCurrentEvent: input => dispatch(actions.setCurrentEvent(input)),
     getStrain: input => dispatch(actions.getStrain(input)),
+    getAllNews: () => dispatch(actions.getAllNews()),
     setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
     quickAddToCartQty: (index, quickAddToCartQty, tag) =>
       dispatch(actions.quickAddToCartQty(index, quickAddToCartQty, tag)),

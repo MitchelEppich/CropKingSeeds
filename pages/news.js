@@ -17,9 +17,13 @@ import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 import Router from "next/router";
 
 class Index extends Component {
-  static async getInitialProps({ store }) {
-    await store.dispatch(actions.getAllNews());
-    return {};
+  // static async getInitialProps({ store }) {
+  //   await store.dispatch(actions.getAllNews());
+  // return {};
+  // }
+
+  componentWillMount() {
+    this.props.getAllNews();
   }
 
   componentDidMount() {

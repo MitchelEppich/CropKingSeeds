@@ -67,6 +67,7 @@ class Layout extends Component {
   componentWillMount() {
     this.props.getStrains();
     this.props.getFeaturedNews();
+    this.props.getAllNews();
   }
   componentDidMount() {
     var evt = document.createEvent("Event");
@@ -486,6 +487,7 @@ const mapDispatchToProps = dispatch => {
     getExchangeRates: () => dispatch(actions.getExchangeRates()),
     recallCart: () => dispatch(actions.recallCart()),
     getFeaturedNews: () => dispatch(actions.getFeaturedNews()),
+    getAllNews: () => dispatch(actions.getAllNews()),
     recallAgeVerification: () => dispatch(actions.recallAgeVerification()),
     recallOrderDetails: input => dispatch(actions.recallOrderDetails(input)),
     quickAddToCartQty: (index, quickAddToCartQty, tag) =>
