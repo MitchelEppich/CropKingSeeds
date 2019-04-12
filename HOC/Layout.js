@@ -67,6 +67,9 @@ class Layout extends Component {
   componentWillMount() {
     this.props.getStrains();
     this.props.getFeaturedNews();
+    this.props.getFeaturedList({
+      limit: 6
+    });
   }
   componentDidMount() {
     var evt = document.createEvent("Event");

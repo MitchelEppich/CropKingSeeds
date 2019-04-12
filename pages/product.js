@@ -32,14 +32,6 @@ const isClient = typeof document !== "undefined";
 let lowerImageCar;
 
 class Index extends Component {
-  static async getInitialProps({ store }) {
-    await store.dispatch(
-      actions.getFeaturedList({
-        limit: 4
-      })
-    );
-    return {};
-  }
   componentDidMount() {
     let qr = this.props.router.asPath.split("/product/")[1];
     if (qr) {

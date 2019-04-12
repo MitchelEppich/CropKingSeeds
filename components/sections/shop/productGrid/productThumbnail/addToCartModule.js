@@ -40,7 +40,8 @@ const addToCartModule = props => {
                   ? "md:mr-0 md:mb-1 mr-1 sm:mr-0 sm:mb-1"
                   : "mr-1"
               }`}
-              onClick={() => {
+              onClick={e => {
+                e.stopPropagation();
                 let _product = props.product;
                 props.modifyCart({
                   items: props.cart.items,
@@ -84,7 +85,8 @@ const addToCartModule = props => {
                     ? "md:ml-0 md:mb-1 ml-1 sm:ml-0 sm:mb-1"
                     : "ml-1"
                 }`}
-                onClick={() => {
+                onClick={e => {
+                  e.stopPropagation();
                   props.modifyCart({
                     items: props.cart.items,
                     action: "APPEND",

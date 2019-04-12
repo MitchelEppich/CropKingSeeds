@@ -379,7 +379,8 @@ class Index extends Component {
         zip: _billing.postalZip.value,
         country: _billing.country.value.toUpperCase(),
         phone: _billing.phone.value,
-        currency: _payment.currency.value,
+        currency:
+          _billing.country.value.toLowerCase() == "canada" ? "CAD" : "USD",
         amountf: _payment.cartTotal.value,
         item_name: fOrderId,
         quantity: _payment.itemQuantity.value,
