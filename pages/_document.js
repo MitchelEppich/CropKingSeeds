@@ -34,6 +34,11 @@ export default class MyDocument extends Document {
             content="© 2005 - 2019 Crop King Seeds. All Rights Reserved."
           />
           {/* <link rel="manifest" href="/_next/static/manifest.json" /> */}
+          <link rel="preconnect" href="https://fonts.gstatic.com/" />
+          <link
+            href="https://fonts.googleapis.com/css?family=Lato:400,700"
+            rel="stylesheet"
+          />
           <link
             rel="stylesheet"
             type="text/css"
@@ -63,8 +68,8 @@ export default class MyDocument extends Document {
               </h3>
             </div>
           </noscript>
-          <script src="../static/scripts/functions.js" />
           <script
+            async
             type="application/ld+json"
             dangerouslySetInnerHTML={{
               __html: JSON.stringify({
@@ -90,6 +95,7 @@ export default class MyDocument extends Document {
             }}
           />
           <script
+            async
             type="application/ld+json"
             dangerouslySetInnerHTML={{
               __html: JSON.stringify({
@@ -105,6 +111,7 @@ export default class MyDocument extends Document {
               })
             }}
           />
+          
         </body>
       </html>
     );

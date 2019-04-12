@@ -32,14 +32,21 @@ import { initGA, logPageView } from "../scripts/ga";
 import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 
 class Index extends Component {
+  static async getInitialProps({ store }) {
+    await store.dispatch(actions.toggleStepsCheckout(0));
+    await store.dispatch(actions.getBlockedIps());
+    await store.dispatch(actions.getBlockedZips());
+    await store.dispatch(actions.getTaxes());
+    return {};
+  }
+  constructor(props) {
+    super(props);
+    this.updateShippingMethod();
+  }
+
   componentDidMount() {
     initGA();
     logPageView();
-    this.props.toggleStepsCheckout(0);
-    this.updateShippingMethod();
-    this.props.getBlockedIps();
-    this.props.getBlockedZips();
-    // this.props.getTaxes();
   }
   componentDidUpdate(prevProps) {
     let error = ErrorHandler(this.props);

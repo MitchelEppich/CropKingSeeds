@@ -17,10 +17,14 @@ import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 import Router from "next/router";
 
 class Index extends Component {
+  static async getInitialProps({ store }) {
+    await store.dispatch(actions.getAllNews());
+    return {};
+  }
+
   componentDidMount() {
     initGA();
     logPageView();
-    this.props.getAllNews();
   }
 
   render() {

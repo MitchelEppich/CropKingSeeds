@@ -16,7 +16,7 @@ class Index extends Component {
   componentDidMount() {
     initGA();
     logPageView();
-    this.props.getStrains({ verbose: true });
+    // this.props.getStrains({ verbose: true });
   }
   componentDidUpdate() {}
   componentWillUnmount() {

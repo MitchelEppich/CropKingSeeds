@@ -21,29 +21,29 @@
 }
 
 //EXAMPLE FONT FACE IMPORT WITH TWO WEIGHTS
-@font-face {
-  font-family: "proxima nova";
-  src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff2")
-    format("truetype");
-  font-weight: thin;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "proxima nova";
-  src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff2")
-    format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+// @font-face {
+//   font-family: "proxima nova";
+//   src: url("../static/fonts/proxima/fontsfree-net-proxima-nova-thin-webfont.woff2")
+//     format("truetype");
+//   font-weight: thin;
+//   font-style: normal;
+//   font-display: swap;
+// }
+// @font-face {
+//   font-family: "proxima nova";
+//   src: url("../static/fonts/proxima/fontsfree-net-proximanova-regular-webfont.woff2")
+//     format("truetype");
+//   font-weight: normal;
+//   font-style: normal;
+//   font-display: swap;
+// }
 
 ////////////////////////
 // UNIVERSAL
 //ELEMENTS
 body,
 html {
-  font-family: "proxima nova", arial, sans-serif;
+  font-family: "Lato", arial, sans-serif;
 }
 button:focus,
 input:focus,
