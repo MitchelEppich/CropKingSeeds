@@ -1,4 +1,4 @@
-import Menu from "./Menu";
+import Menu from "./menu";
 // import SearchBar from "./searchBar";
 import calcFps from "../../../store/utilities/calcFps";
 import HeaderMessage from "./headerMessage";
