@@ -26,7 +26,6 @@ class Index extends Component {
         limit: 6
       })
     );
-    await store.dispatch(actions.getFeaturedNews());
     return {};
   }
   componentDidMount() {

@@ -66,6 +66,7 @@ class Layout extends Component {
   }
   componentWillMount() {
     this.props.getStrains();
+    this.props.getFeaturedNews();
   }
   componentDidMount() {
     var evt = document.createEvent("Event");
