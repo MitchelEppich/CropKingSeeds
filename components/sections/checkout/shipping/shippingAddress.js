@@ -158,7 +158,13 @@ const ShippingAddress = props => {
         Shipping Address
       </h2>
       <MinimumSeedsWarning {...props} />
-      <div className="w-full flex-col justify-start bg-white text-grey shadow rounded overflow-hidden">
+      <div
+        className={`w-full flex-col justify-start bg-white text-grey shadow rounded overflow-hidden  ${
+          props.checkout.error[103] != null || props.checkout.error[104] != null
+            ? "mt-6"
+            : null
+        }`}
+      >
         <p className="font-bold p-2  uppercase w-full bg-red-light text-white text-center">
           Would you like to save your Shipping / Billing information for your
           next visit? *

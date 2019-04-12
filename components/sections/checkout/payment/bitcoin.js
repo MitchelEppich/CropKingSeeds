@@ -70,6 +70,9 @@ const Bitcoin = props => {
               className="mt-4 cursor-pointer"
             />
           </div>
+          {console.log(
+            props.checkout.orderDetails.payment.method.value === "Bitcoin"
+          )}
 
           <div className="w-225 p-2 mx-auto mt-6 text-center">
             {!props.checkout.processing ? (

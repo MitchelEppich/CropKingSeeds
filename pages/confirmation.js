@@ -134,16 +134,21 @@ class Index extends Component {
             <h1 className="text-3/5xl font-bold mt-4 mb-4 text-black">
               {CreditCardStatusCondition ? "Important:" : "Thank You!"}
             </h1>
-            {console.log(this.props.checkout.orderDetails.payment)}
+
             <h4 className="font-bold uppercase text-red-light p-2 text-2xl">
-              Your order has been
+              Your order
               <span className="underline ml-2">
                 {CreditCardStatusCondition
-                  ? "Declined"
-                    ? this.props.checkout.orderDetails.payment.method.value ==
-                      "Bitcoin"
-                    : "Pending"
-                  : "Approved"}
+                  ? "has been Declined"
+                  : (() => {
+                      let _method =
+                        _orderDetails.payment == null
+                          ? null
+                          : _orderDetails.payment.method;
+                      return _method == null ? null : _method.value;
+                    })() == "Bitcoin"
+                  ? "is Pending"
+                  : "has been Approved"}
               </span>
             </h4>
             <p className="text-grey font-bold text-xl">
@@ -364,7 +369,10 @@ class Index extends Component {
                         <p className="w-main mx-auto py-4">
                           To complete your payment with Bitcoin, a new tab has
                           been opened in which you can proceed to finalize your
-                          payment.
+                          payment. If you are unable to finalize the payment
+                          please call our Customer Support at our{" "}
+                          <span className="underline">toll-free</span> number +1
+                          (844) 276 - 7546.
                         </p>
                       </div>
                     </div>
