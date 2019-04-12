@@ -1,10 +1,19 @@
 exports.contact = input => {
   let recipient =
     input.subject === "Advertisement"
-      ? "jenn@vancoastind.com"
-      : "info@cropkingseeds.com";
+      ? "test@gmail.com"
+      : "adamsmith6300@gmail.com";
   if (["Event Sponsorship", "Wholesale Inquiry"].includes(input.subject))
-    recipient = "vanessa@vancoastind.com";
+    recipient = "adamsmithvci@gmail.com";
+  console.log(
+    ["Event Sponsorship", "Wholesale Inquiry"].includes(input.subject)
+  );
+  // let recipient =
+  //   input.subject === "Advertisement"
+  //     ? "jenn@vancoastind.com"
+  //     : "info@cropkingseeds.com";
+  // if (["Event Sponsorship", "Wholesale Inquiry"].includes(input.subject))
+  //   recipient = "vanessa@vancoastind.com";
   return {
     from: input.email,
     to: recipient,
