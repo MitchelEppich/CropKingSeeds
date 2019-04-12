@@ -410,7 +410,7 @@ const Confirmation = props => {
                 <p className="p-1">Shipping:</p>
                 {_orderDetails.payment.creditFee.value != 0 ? (
                   <p className="p-1">
-                    Credit Card Tax (
+                    Credit Card Fee (
                     {(_orderDetails.payment.creditTax * 100).toFixed(2)}%):
                   </p>
                 ) : null}

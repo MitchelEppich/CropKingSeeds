@@ -62,50 +62,47 @@ const strainsMenu = props => {
 
     let getStrain = (strain, index) => {
       return (
-        <Link
-          key={strain.sotiId}
-          href="/product"
-          as={`/product/${strain.name
-            .toLowerCase()
-            .split(" ")
-            .join("-")}`}
-        >
-          <a>
-            <li
-              className={`text-black leading-loose cursor-pointer hover:bg-grey-lightest mt-1 w-full list-reset text-left pl-4 font-bold`}
-              onClick={e => {
-                let strains = props.misc.strains;
-                props
-                  .getStrain({ sotiId: strain.sotiId, strains })
-                  .then(res => {
-                    props.setCurrentProduct({ product: res }).then(() => {
-                      let _index = 0;
-                      while (strain.price[_index] == -1) {
-                        _index++;
-                      }
-                      props.quickAddToCartQty(
-                        _index,
-                        props.shop.quickAddToCartQty,
-                        strain._id
-                      );
-                      props.modifyPotentialQuantity({
-                        potentialQuantity: props.cart.potentialQuantity,
-                        action: "SET",
-                        tag: strain._id,
-                        quantity: 1,
-                        max: props.cart.maxPerPackage
-                      });
-                    });
-                  });
-                if (props.misc.mediaSize == "sm") {
-                  props.toggleStrainsMenu(false);
+        <li
+          key={index}
+          className={`text-black leading-loose cursor-pointer hover:bg-grey-lightest mt-1 w-full list-reset text-left pl-4 font-bold`}
+          onClick={e => {
+            let strains = props.misc.strains;
+            props.getStrain({ sotiId: strain.sotiId, strains }).then(res => {
+              props.setCurrentProduct({ product: res }).then(() => {
+                let _index = 0;
+                while (strain.price[_index] == -1) {
+                  _index++;
                 }
-              }}
-            >
-              {strain.name}
-            </li>
-          </a>
-        </Link>
+                props.quickAddToCartQty(
+                  _index,
+                  props.shop.quickAddToCartQty,
+                  strain._id
+                );
+                props.modifyPotentialQuantity({
+                  potentialQuantity: props.cart.potentialQuantity,
+                  action: "SET",
+                  tag: strain._id,
+                  quantity: 1,
+                  max: props.cart.maxPerPackage
+                });
+              });
+            });
+            if (props.misc.mediaSize == "sm") {
+              props.toggleStrainsMenu(false);
+            }
+          }}
+        >
+          <Link
+            key={strain.sotiId}
+            href="/product"
+            as={`/product/${strain.name
+              .toLowerCase()
+              .split(" ")
+              .join("-")}`}
+          >
+            <a>{strain.name}</a>
+          </Link>
+        </li>
       );
     };
 
@@ -188,7 +185,7 @@ const strainsMenu = props => {
           All Strains
         </p>
         <div className="overflow-y-auto w-full h-full pb-4">
-          {showStrainsMenu()}
+          <ul className="p-0">{showStrainsMenu()}</ul>
         </div>
       </div>
     </div>

@@ -25,6 +25,7 @@ const imageZoom = props => {
         </div>
         <div className="w-600">
           <img
+            alt="package cks"
             className="h-600 lg:h-500 md:h-400 sm:h-200 flex mx-auto inline-block mt-8 unselectable"
             src={
               props.misc.CFURL +

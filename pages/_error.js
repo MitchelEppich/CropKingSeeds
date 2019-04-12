@@ -110,6 +110,7 @@ class Error extends Component {
           <div className="w-3/5 text-right md:hidden sm:hidden">
             <div>
               <img
+                alt="King_No_eyes 404"
                 src={this.props.misc.CFURL + "/banners/King_No_eyes.png"}
                 style={this.props.styleKing}
                 className="relative z-999"

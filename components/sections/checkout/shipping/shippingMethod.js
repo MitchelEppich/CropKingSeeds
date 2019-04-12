@@ -85,7 +85,7 @@ const ShippingMethod = props => {
                 <p className="mt-2 text-sm font-bold ml-10 sm:ml-2 leading-normal text-grey-light">
                   - {_method.description}
                 </p>
-                <p className="mt-6 text-red-dark w-full ml-8 text-sm font-bold opacity-75 text-center uppercase">{`${
+                <p className="mt-6 text-red-dark w-full ml-8 sm:ml-2 text-sm font-bold opacity-75 text-center uppercase">{`${
                   _method.note ? "** " + _method.note + " **" : ""
                 }`}</p>
               </div>
@@ -127,7 +127,7 @@ const ShippingMethod = props => {
           : ""
       }`}
     >
-      <h2 className="text-3/5xl font-extrabold opacity-50 mt-8 mb-4 text-black">
+      <h2 className="text-3/5xl sm:text-center sm:text-3xl font-bold opacity-50 mt-8 mb-4 text-black">
         Shipping Method
       </h2>
       {showMethods()}

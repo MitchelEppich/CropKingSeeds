@@ -51,6 +51,7 @@ const About = props => {
       >
         <img
           style={activeThumb}
+          alt="about image"
           src={props.misc.CFURL + val.imgSrc}
           className="w-full h-full about-img shadow-md"
         />
@@ -172,7 +173,7 @@ const About = props => {
           style={{ borderTop: "15px solid #e9e8e8" }}
           className="h-24 w-full items-center flex justify-center shadow bg-red-darker "
         >
-          <h3 className="w-full h-full font-bold pt-6 text-center mb-8 p-2 text-3xl text-white uppercase">
+          <h3 className="w-full h-full font-bold pt-6 sm:py-4 sm:mb-0 text-center mb-8 p-2 text-3xl text-white uppercase">
             Who We Are
           </h3>
         </div>

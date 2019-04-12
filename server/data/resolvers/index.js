@@ -381,19 +381,21 @@ const resolvers = {
               "content-type": "application/x-www-form-urlencoded"
             }
           };
-          request(options)
-            .then(function(parsedBody) {
-              // POST succeeded...
-              transporter.sendMail(mailOptions, (error, info) => {
-                if (error) {
-                  // Do nothing
-                }
-              });
-            })
-            .catch(function(err) {
-              // POST failed...
-              console.log(err);
-            });
+          transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+              // Do nothing
+              console.log(error);
+            }
+            console.log("sent");
+          });
+          // request(options)
+          //   .then(function(parsedBody) {
+          //     // POST succeeded...
+          //   })
+          //   .catch(function(err) {
+          //     // POST failed...
+          //     console.log(err);
+          //   });
           break;
         case "confirmation":
           const email = new Emailer({

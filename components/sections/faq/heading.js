@@ -4,7 +4,7 @@ import SearchBar from "./searchBar";
 const heading = props => {
   return (
     <div className="mt-5 xxl:w-1/2 w-4/5 mx-auto text-center font-black">
-      <h1 className="mt-4 text-grey font-bold text-center text-3/5xl mx-auto w-full text-center mb-8">
+      <h1 className="mt-4 text-grey font-bold text-center text-3/5xl sm:text-3xl  mx-auto w-full text-center mb-8">
         Frequently Asked Questions
       </h1>
       <SearchBar {...props} />

@@ -9,7 +9,7 @@ const message = props => {
         name="body"
         cols="20"
         row="500"
-        maxLength="150"
+        maxLength="350"
         className="p-2 my-1 w-full h-40"
       />
     </div>

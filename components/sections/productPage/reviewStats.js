@@ -42,6 +42,7 @@ const ReviewStats = props => {
             <span className="text-grey font-bold text-xs">{index}</span>
             <div>
               <img
+                alt="crown icon cks"
                 src={props.misc.CFURL + "/icon/crownicon.svg"}
                 className="ml-1 w-6 h-6 crown-icon items-center flex"
               />

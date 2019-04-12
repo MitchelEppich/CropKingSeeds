@@ -82,8 +82,8 @@ class Index extends Component {
             />
           </Head>
         ) : null}
-        <div className="text-center w-full pt-12 bg-white relative">
-          <h1 className="text-4xl font-black text-black">
+        <div className="text-center w-full pt-12 sm:pt-4 bg-white relative">
+          <h1 className="text-4xl font-black text-black sm:text-3xl">
             {_stepsCheckout == 5 ? "Confirmation" : "Checkout Preview"}
           </h1>
         </div>
@@ -180,16 +180,16 @@ class Index extends Component {
               borderTopRightRadius: "10px",
               overflow: "hidden"
             }}
-            className="w-main sm:w-full mx-auto mt-12"
+            className="w-main sm:w-full mx-auto mt-12 sm:mt-4"
           >
             <Checkout {...this.props} />
 
             {_stepsCheckout == 0 ? (
               <div>
                 <ProductPreview {...this.props} />
-                <div className="w-full flex justify-between sm:flex-col md:flex-col">
+                <div className="w-full flex sm:flex-col-reverse justify-between md:flex-col">
                   {itemsCart.length > 0 ? (
-                    <div className="justify-start flex">
+                    <div className="justify-start sm:justify-center flex sm:mt-4">
                       <div
                         onClick={() => {
                           this.props.purgeCart();
@@ -205,7 +205,7 @@ class Index extends Component {
                     </div>
                   ) : null}
                   <Link prefetch href="/shop">
-                    <p className="font-extrabold text-xl cursor-pointer scale-item text-red-light p-2 mr-6 items-center flex ml-8 sm:justify-end sm:mr-0 md:justify-end md:mr-0 hover:text-red-dark">
+                    <p className="font-bold text-xl sm:justify-center cursor-pointer scale-item text-red-light p-2 mr-6 items-center flex ml-8 sm:justify-end sm:mr-0 md:justify-end md:mr-0 hover:text-red-darker">
                       {itemsCart.length > 0
                         ? "Continue Shopping"
                         : "Go to Shop Page"}

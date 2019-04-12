@@ -26,9 +26,9 @@ import Compare from "./compare";
 
 import { inferStrainData } from "../utilities/strain";
 
-const uri = "http://127.0.0.1:3000/graphql";
+// const uri = "http://127.0.0.1:3000/graphql";
 // const uri = "https://142.93.159.223/graphql";
-// const uri = "https://www.cropkingseeds.com/graphql";
+const uri = "https://www.cropkingseeds.com/graphql";
 
 const imports = {
   ...Cart(uri),
@@ -234,6 +234,7 @@ const actions = {
           let _new = [];
           for (let strain of _strains) {
             _new.push(inferStrainData(strain));
+            // console.log("here", _new[_new.length - 1]);
           }
           dispatch(actions.setStrains(_new));
           return Promise.resolve(_new);

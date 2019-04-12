@@ -4,6 +4,7 @@ const Privacy = props => {
       <div className="w-full relative inline-flex md:flex-col lg:flex-col sm:flex-col">
         <div className="w-full">
           <img
+            alt="privacy banner"
             style={{ objectFit: "cover" }}
             src={props.misc.CFURL + "/banners/privacy.jpg"}
             className="h-150 w-full xl:h-full xxl:h-full"
@@ -13,6 +14,7 @@ const Privacy = props => {
           <div className="justify-center w-full mt-6 inline-flex items-center flex">
             <div className="">
               <img
+                alt="cks logo"
                 src={props.misc.CFURL + "/logos/cks-logo-header.png"}
                 className="w-24"
               />
@@ -73,6 +75,7 @@ const Privacy = props => {
               <ul className="pl-4">
                 <li className="my-2 flex">
                   <img
+                    alt="crown icon cks"
                     src={props.misc.CFURL + "/icon/crownicon_inv.png"}
                     className="h-4 bg-red-light mr-1"
                   />
@@ -84,6 +87,7 @@ const Privacy = props => {
                 </li>
                 <li className="my-2 flex">
                   <img
+                    alt="crown icon cks"
                     src={props.misc.CFURL + "/icon/crownicon_inv.png"}
                     className="h-4 bg-red-light mr-1"
                   />
@@ -96,6 +100,7 @@ const Privacy = props => {
                 </li>
                 <li className="my-2 flex">
                   <img
+                    alt="crown icon cks"
                     src={props.misc.CFURL + "/icon/crownicon_inv.png"}
                     className="h-4 bg-red-light mr-1"
                   />
@@ -107,6 +112,7 @@ const Privacy = props => {
                 </li>
                 <li className="my-2 flex">
                   <img
+                    alt="crown icon cks"
                     src={props.misc.CFURL + "/icon/crownicon_inv.png"}
                     className="h-4 bg-red-light mr-1"
                   />
@@ -120,6 +126,7 @@ const Privacy = props => {
                 </li>
                 <li className="my-2 flex">
                   <img
+                    alt="crown icon cks"
                     src={props.misc.CFURL + "/icon/crownicon_inv.png"}
                     className="h-4 bg-red-light mr-1"
                   />
@@ -134,6 +141,7 @@ const Privacy = props => {
                 </li>
                 <li className="my-2 flex">
                   <img
+                    alt="crown icon cks"
                     src={props.misc.CFURL + "/icon/crownicon_inv.png"}
                     className="h-4 bg-red-light mr-1"
                   />

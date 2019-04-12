@@ -16,7 +16,7 @@ const ShareButtons = props => {
           aria-label="instagram"
           className="text-white"
           target="_blank"
-          rel="nofollow"
+          rel="noopener noreferrer"
           href="https://www.instagram.com/cropkingseeds/?hl=en"
         >
           <FontAwesomeIcon
@@ -28,7 +28,7 @@ const ShareButtons = props => {
           aria-label="facebook"
           className="text-white"
           target="_blank"
-          rel="nofollow"
+          rel="noopener noreferrer"
           href="https://www.facebook.com/CropKingSeeds/"
         >
           <FontAwesomeIcon
@@ -40,7 +40,7 @@ const ShareButtons = props => {
           aria-label="twitter"
           className="text-white"
           target="_blank"
-          rel="nofollow"
+          rel="noopener noreferrer"
           href="https://twitter.com/CropKingSeed?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
         >
           <FontAwesomeIcon
@@ -52,7 +52,7 @@ const ShareButtons = props => {
           aria-label="pinterest"
           className="text-white"
           target="_blank"
-          rel="nofollow"
+          rel="noopener noreferrer"
           href="https://www.pinterest.ca/officialCKS/"
         >
           <FontAwesomeIcon

@@ -132,14 +132,17 @@ html
           if ccStatus
             if ccStatus.toLowerCase() == "declined" || ccStatus.toLowerCase() == ""
               h1 Important
-              p YOUR ORDER HAS BEEN DECLINED
+              p(style="color: #ef5753;font-weight: bold;text-transform: uppercase;") Your order has been declined
             else 
               h1 Thank you
-              p Your order has been approved!
+              p(style="color: #ef5753;font-weight: bold;text-transform: uppercase;") Your order has been approved
+          else if paymentMethod =="Bitcoin" 
+            h1 Important
+              p(style="color: #ef5753;font-weight: bold;text-transform: uppercase;") Your order is pending
           else 
             h1 Thank you
-            p Your order has been approved!
-          p(style="color:#ef5753") Please follow the instructions below.
+            p(style="color: #ef5753;font-weight: bold;text-transform: uppercase;") Your order has been approved!
+          p(style="color:#000; font-weight: bold") Please follow the instructions below.
 
         div(class="orderDetails", style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);")
           div(class="heading-red", style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);")
@@ -221,9 +224,11 @@ html
 
             else if paymentMethod =="Bitcoin"
               div
-                p To complete your payment with Bitcoin, a new tab has been opened in which you can proceed to finalize your payment.
-                 br 
-                 br 
+                p(style="font-size: 14px;") To complete your payment with Bitcoin, a new tab has been opened in which you can proceed to finalize your payment. If you are unable to finalize the payment please call our Customer Support at our
+                  span(style="text-decoration: underline; margin-left: 3px;") toll-free 
+                  span(style="margin-left: 3px;") number +1 (844) 276 - 7546.
+                br 
+                br 
             else if paymentMethod =="MoneyGram"
               div 
                 p(style="text-align:center; font-size: 14px;") The person you are sending the MoneyGram to is: 

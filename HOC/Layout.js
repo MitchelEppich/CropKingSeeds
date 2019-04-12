@@ -343,7 +343,11 @@ class Layout extends Component {
                 {this.props.children}
               </div>
             </div>
-            {!this.props.router.asPath.includes("shop") ? (
+            {!this.props.router.asPath.includes("shop") &&
+            !(
+              this.props.router.asPath.includes("checkout") &&
+              window.innerWidth < 500
+            ) ? (
               <StrainsMenu {...this.props} />
             ) : null}
             <AnchorLink

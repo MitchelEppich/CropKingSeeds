@@ -10,6 +10,7 @@ const FeaturedStrains = props => {
         arr.push(
           <div key={i}>
             <img
+              alt="crown icon"
               src={props.misc.CFURL + "/icon/crownicon_inv.png"}
               className="w-8"
             />

@@ -109,7 +109,7 @@ const BillingAddress = props => {
 
   return (
     <div className="w-full mt-6 px-8 sm:px-4">
-      <h2 className="text-3/5xl font-bold opacity-50 mt-8 sm:text-center mb-4 text-black">
+      <h2 className="text-3/5xl sm:text-center sm:text-3xl font-bold opacity-50 mt-8 sm:text-center mb-4 text-black">
         Billing Address
       </h2>
       <div className="pl-2 mt-6 flex items-center inline-flex">
