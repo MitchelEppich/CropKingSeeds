@@ -1,5 +1,5 @@
 module.exports = pages => {
-  let urlPath = "https://cropkingseeds.com/";
+  let urlPath = "https://www.cropkingseeds.com/";
   let listItems = pages.map((page, index) => {
     return {
       "@type": "SiteNavigationElement",

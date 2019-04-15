@@ -5,8 +5,6 @@ const redirectUrls = require("../scripts/redirects.js");
 const next = require("next");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const helmet = require("helmet");
-const frameguard = require("frameguard");
 const lowercasePaths = require("express-lowercase-paths");
 const { parse } = require("url");
 const compression = require("compression");
@@ -68,6 +66,11 @@ app
         maxAge: "365d"
       })
     );
+    server.use(
+      express.static(__dirname + "/static/", {
+        maxAge: "365d"
+      })
+    );
     //lowercase urls
     server.use(lowercasePaths());
     //ignore trailing slash
@@ -77,16 +80,6 @@ app
         res.redirect(301, req.url.slice(0, -1));
       else next();
     });
-    // redirect www
-    // server.get("*", function(req, res, next) {
-    //   if (req.headers.host.slice(0, 3) != "www" && !dev) {
-    //     res.redirect(301, "https://www." + req.headers.host + req.url);
-    //   } else if (!req.secure && !dev) {
-    //     res.redirect("https://" + req.headers.host + req.url);
-    //   } else {
-    //     next();
-    //   }
-    // });
     //sitemap
     let strains = await resolvers.Query.allStrains(null, { filter: null });
     let sitemapStrains = strains.map((strain, index) => {
@@ -160,7 +153,6 @@ app
         res.redirect(301, url.to);
       });
     }
-
     server.get("*", (req, res) => {
       return handle(req, res);
     });

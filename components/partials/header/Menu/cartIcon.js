@@ -3,49 +3,30 @@ import { connect } from "react-redux";
 import actions from "../../../../store/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { TimelineLite } from "gsap";
 
 class Index extends Component {
-  constructor(props) {
-    super(props);
-    this.myTween = null;
-    this.myElement = null;
-  }
-  componentDidMount() {
-    this.myTween = new TimelineLite({
-      onComplete: this.props.resetCartAnimation
-      // onUpdate: this.props.resetCartAnimation
-    });
-    this.myTween.pause();
-    this.myTween.add(
-      TweenLite.to(this.myElement, 0.2, { transform: "scale(1.3)" })
-    );
-    this.myTween.add(
-      TweenLite.to(this.myElement, 0.2, { transform: "scale(0.9)" })
-    );
-    this.myTween.add(
-      TweenLite.to(this.myElement, 0.2, { transform: "scale(1.2)" })
-    );
-    this.myTween.add(
-      TweenLite.to(this.myElement, 0.2, { transform: "scale(1)" })
-    );
-  }
-  componentDidUpdate(prevProps) {
-    // if (this.props.misc.hoverId == null) return;
-    if (this.props.cart.recentAdd.length != 0) {
-      if (this.props.shop.cartAnimation == true) {
-        this.myTween.restart();
-      }
-    }
-  }
+  componentDidMount() {}
+  // componentDidUpdate(prevProps) {
+  //   // if (this.props.misc.hoverId == null) return;
+  //   if (this.props.cart.recentAdd.length != 0) {
+  //     if (this.props.shop.cartAnimation == true) {
+  //       this.myTween.restart();
+  //     }
+  //   }
+  // }
   render() {
     return (
-      <div
-        ref={div => (this.myElement = div)}
-        className="text-center mt-1 text-white"
-      >
+      <div className="text-center mt-1 text-white">
         <div>
-          <FontAwesomeIcon icon={faShoppingCart} className="fa-lg pl-1" />
+          <FontAwesomeIcon
+            icon={faShoppingCart}
+            className={
+              this.props.cart.recentAdd.length != 0 &&
+              this.props.shop.cartAnimation
+                ? "bounce fa-lg pl-1"
+                : "fa-lg pl-1"
+            }
+          />
           <span
             style={{
               height: "28px",

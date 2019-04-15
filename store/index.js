@@ -9,16 +9,12 @@ import rootReducer from "./reducer";
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import middleware from "./middleware";
-import DevTools from "./DevTools";
 
 export const makeStore = initialState => {
   const store = createStore(
     rootReducer,
     initialState,
-    compose(
-      applyMiddleware(thunk, ...middleware),
-      DevTools.instrument()
-    )
+    compose(applyMiddleware(thunk, ...middleware))
   );
   if (module.hot) {
     module.hot.accept("./reducer", () => {

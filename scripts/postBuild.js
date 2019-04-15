@@ -8,10 +8,10 @@ module.exports = strains => {
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"> 
-        ${Object.keys(pathsObj).map(path =>
-          pathsObj[path].imageLoc != null
-            ? `<url>
-                <loc>https://cropkingseeds.com${path}</loc>
+        ${Object.keys(pathsObj).map(
+          path =>
+            `<url>
+                <loc>https://www.cropkingseeds.com${path}</loc>
                 <lastmod>${formatDate(
                   new Date(pathsObj[path].lastModified)
                 )}</lastmod>
@@ -22,14 +22,6 @@ module.exports = strains => {
                     <image:caption></image:caption>
                     <image:title>${pathsObj[path].name}</image:title>
                 </image:image >
-            </url>`
-            : `<url>
-                <loc>https://cropkingseeds.com${path}</loc>
-                <lastmod>${formatDate(
-                  new Date(pathsObj[path].lastModified)
-                )}</lastmod>
-                <changefreq>${pathsObj[path].changefreq}</changefreq>
-                <priority>${pathsObj[path].priority}</priority>
             </url>`
         )}
         </urlset>`;

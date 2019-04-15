@@ -94,6 +94,12 @@ class Layout extends Component {
         2000
       );
     });
+    registerServiceWorker();
+    // iframe = document.createElement("iframe");
+    // iframe.id = "iframe";
+    // iframe.style.cssText = "display: none";
+    // iframe.sandbox = "allow-same-origin";
+    // document.body.appendChild(iframe);
 
     if (window.top !== window.self)
       window.top.location.replace(window.self.location.href);
@@ -353,6 +359,22 @@ class Layout extends Component {
           </React.Fragment>
           {/* )} */}
         </div>
+        {this.props.misc.sotiError ? (
+          <div className="w-screen h-screen bg-white fixed pin-t pin-l z-999 pt-32 flex justify-center">
+            <p className="text-2xl sm:300 w-4/5 text-center h-200 mt-12">
+              Sorry, we are experiencing technical difficulties.
+              <br /> Please try again later.
+              <br />
+              <br />
+              <div class="lds-ellipsis">
+                <div />
+                <div />
+                <div />
+                <div />
+              </div>
+            </p>
+          </div>
+        ) : null}
       </React.Fragment>
     );
   }
