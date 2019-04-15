@@ -143,8 +143,12 @@ class Layout extends Component {
         }
       });
     }
-
-    this.props.getExchangeRates();
+    try {
+      this.props.getExchangeRates();
+    } catch (e) {
+      this.props.setSotiError({ value: true });
+      console.log("Failed to fetch exchange rate...");
+    }
   }
 
   componentWillUnmount() {
@@ -489,6 +493,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.toggleLowGPUMode(lowGpuMode)),
     toggleCartMenu: input => dispatch(actions.toggleCartMenu(input)),
     toggleHeaderMessage: input => dispatch(actions.toggleHeaderMessage(input)),
+    setSotiError: input => dispatch(actions.setSotiError(input)),
     getDailyMessage: () => dispatch(actions.getDailyMessage()),
     recallGPUMode: () => dispatch(actions.recallGPUMode()),
     toggleMute: () => dispatch(actions.toggleMute()),

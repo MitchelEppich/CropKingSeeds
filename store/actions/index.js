@@ -26,9 +26,9 @@ import Compare from "./compare";
 
 import { inferStrainData } from "../utilities/strain";
 
-// const uri = "http://127.0.0.1:3000/graphql";
+const uri = "http://127.0.0.1:3000/graphql";
 // const uri = "https://142.93.159.223/graphql";
-const uri = "https://www.cropkingseeds.com/graphql";
+// const uri = "https://www.cropkingseeds.com/graphql";
 
 const imports = {
   ...Cart(uri),
@@ -88,10 +88,17 @@ const actionTypes = {
   RECALL_GPU_MODE: "RECALL_GPU_MODE",
   TOGGLE_HEADER_MESSAGE: "TOGGLE_HEADER_MESSAGE",
   GET_DAILY_MESSAGE: "GET_DAILY_MESSAGE",
-  TOGGLE_MUTE: "TOGGLE_MUTE"
+  TOGGLE_MUTE: "TOGGLE_MUTE",
+  SET_SOTI_ERROR: "SET_SOTI_ERROR"
 };
 
 const actions = {
+  setSotiError: input => {
+    return {
+      type: actionTypes.SET_SOTI_ERROR,
+      input: input.value
+    };
+  },
   setEyesShouldMove: input => {
     return {
       type: actionTypes.SET_EYES_SHOULD_MOVE,
