@@ -46,7 +46,9 @@ const FeaturedStrains = props => {
             <div className="w-200 text-center mx-2 scale-item cursor-pointer mb-6 sm:mx-auto md:mx-auto">
               <img
                 alt="featuredStrainPackage"
-                src={props.misc.CFURL + product.packageImg}
+                src={
+                  props.misc.CFURL + "/packages/P_" + product.sotiId + ".png"
+                }
                 className="mt-4 shadow-md w-150"
               />
               <div
