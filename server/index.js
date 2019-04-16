@@ -66,11 +66,6 @@ app
         maxAge: "365d"
       })
     );
-    server.use(
-      express.static(__dirname + "/static/", {
-        maxAge: "365d"
-      })
-    );
     //lowercase urls
     server.use(lowercasePaths());
     //ignore trailing slash

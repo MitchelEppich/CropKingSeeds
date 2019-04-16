@@ -33,7 +33,7 @@ export default class MyDocument extends Document {
             name="copyright"
             content="© 2005 - 2019 Crop King Seeds. All Rights Reserved."
           />
-          {/* <link rel="manifest" href="/_next/static/manifest.json" /> */}
+          <link rel="manifest" href="/_next/static/manifest.json" />
           <link
             rel="preconnect"
             href="https://fonts.gstatic.com/"
