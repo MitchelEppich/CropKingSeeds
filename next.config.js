@@ -81,6 +81,16 @@ module.exports = withSass({
             }
           }
         },
+        {
+          urlPattern: new RegExp("^https://www.cropkingseeds.com/*"),
+          handler: "staleWhileRevalidate",
+          options: {
+            cacheName: "ga",
+            cacheableResponse: {
+              statuses: [200]
+            }
+          }
+        },
         // {
         //   urlPattern: /[^3]\/movie\//,
         //   handler: "networkFirst",

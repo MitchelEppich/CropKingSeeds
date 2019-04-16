@@ -33,7 +33,6 @@ export default class MyDocument extends Document {
             name="copyright"
             content="© 2005 - 2019 Crop King Seeds. All Rights Reserved."
           />
-          <link rel="manifest" href="/_next/static/manifest.json" />
           <link
             rel="preconnect"
             href="https://fonts.gstatic.com/"
@@ -41,7 +40,6 @@ export default class MyDocument extends Document {
           />
           <link
             rel="stylesheet"
-            // as="font"
             href="https://fonts.googleapis.com/css?family=Questrial"
             crossOrigin="anonymous"
           />

@@ -118,7 +118,10 @@ const news = props => {
     });
 
     return (
-      <div className="w-2col sm:w-full md:w-full bg-white shadow">
+      <div
+        key={index + category}
+        className="w-2col sm:w-full md:w-full bg-white shadow"
+      >
         <div className="bg-grey-lightest w-95p mx-auto text-grey opacity-25 text-center p-2 my-2">
           <p className="text-xl font-bold uppercase">{category}s</p>
         </div>

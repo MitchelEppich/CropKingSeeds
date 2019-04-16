@@ -75,7 +75,7 @@ class reviewForm extends Component {
             <input
               aria-label="reviewAuthorName"
               className="w-full h-12 my-2 pl-2"
-              placeholder="Name (optional)"
+              placeholder="Display Name (optional)"
               id="name"
               value={_review.name || ""}
               onChange={e => {
