@@ -64,10 +64,13 @@ const Moneygram = props => {
             /> */}
           </div>
           <div className="w-main p-2 mx-auto mt-6 text-center">
-            {/* {!props.checkout.processing ? (
+            {!props.checkout.processing ? (
               <button
                 name="moneygramPay"
                 type="submit"
+                // onClick={() => {
+                //   props.getMo();
+                // }}
                 className="w-full font-bold text-white text-center p-2 font-extrabold bg-red-dark text-white text-xl hover:bg-grey-light cursor-pointer rounded"
               >
                 Pay Now
@@ -80,10 +83,10 @@ const Moneygram = props => {
                 <LoaderCheckout {...props} />
                 <p className="p-1 blink font-bold">Processing your order...</p>
               </div>
-            )} */}
-            <p className="font-bold">
+            )}
+            {/* <p className="font-bold">
               Money Transfer Payment Services Are Temporarily Disabled
-            </p>
+            </p> */}
           </div>
         </div>
       ) : null}

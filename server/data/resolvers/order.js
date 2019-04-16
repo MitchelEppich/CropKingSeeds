@@ -24,7 +24,7 @@ const resolvers = {
       if (order == null) return false;
       return true;
     },
-    allOrders: (_, { filter }) => {
+    allOrders: async (_, { filter }) => {
       let query = filter ? { $or: orderFilters(filter) } : {};
       return Order.find(query);
     },
@@ -289,6 +289,8 @@ const resolvers = {
       let coupon = _input.Coupon;
       let total = _input.Total;
 
+      let $mo = await getMoProfileSoti(orderId);
+
       resolvers.Mutation.createOrder(null, {
         input: {
           billAddress: _input.BillAddress,
@@ -337,7 +339,10 @@ const resolvers = {
           ""}&idev_ordernum=${orderId || ""}&coupon_code=${coupon || ""}`;
       }
 
-      return affiliateUrl || "Order Processed.";
+      return {
+        affiliateUrl,
+        mo: JSON.stringify($mo)
+      };
     }
   }
 };
@@ -381,6 +386,50 @@ let buildRelation = list => {
     );
     strain.save();
   });
+};
+
+const getMoProfileSoti = async orderId => {
+  var options = {
+    method: "POST",
+    uri: "https://www.cksoti.com/posttoassignemgreceiver",
+    formData: {
+      ordernumber: orderId,
+      companyname: "cropkingseeds.com"
+    },
+    headers: {
+      "content-type": "multipart/form-data"
+    }
+  };
+  let res = await request(options);
+
+  let $res = JSON.parse(
+    convert.xml2json(
+      res
+        .replace("<?xml?>", "</Data>")
+        .replace(
+          '<?xml version="1.0" encoding="utf-8"?>',
+          '<?xml version="1.0" encoding="utf-8"?><Data>'
+        )
+        .replace("<ErrorCode>0<ErrorCode>", ""),
+      { compact: true, spaces: 4 }
+    )
+  )["Data"];
+
+  let _wa = $res.Address._text
+    .toLowerCase()
+    .replace("canada", "canada,")
+    .toUpperCase()
+    .split(",");
+
+  return {
+    name: $res.FullName._text,
+    phone: $res.PhoneNumber._text,
+    address: _wa[0].trim(),
+    city: _wa[1].trim(),
+    province: _wa[2].trim(),
+    country: _wa[3].trim(),
+    postal: _wa[4].trim()
+  };
 };
 
 const toUrlEncoded = obj =>

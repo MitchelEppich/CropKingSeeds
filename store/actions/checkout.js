@@ -40,7 +40,8 @@ const actionTypes = {
   PURGE_LOCAL_PROFILE: "PURGE_LOCAL_PROFILE",
   CLEAR_ORDER_DETAILS: "CLEAR_ORDER_DETAILS",
   TOGGLE_PROCESSING: "TOGGLE_PROCESSING",
-  GET_COOKIE: "GET_COOKIE"
+  GET_COOKIE: "GET_COOKIE",
+  DELETE_AFFILIATE_LINK: "DELETE_AFFILIATE_LINK"
 };
 
 let statesCAUS = {
@@ -107,6 +108,9 @@ const getActions = uri => {
   const objects = {
     setError: input => {
       return { type: actionTypes.SET_ERROR, input: input.value };
+    },
+    deleteAffiliateLink: () => {
+      return { type: actionTypes.DELETE_AFFILIATE_LINK };
     },
     setShippingMethods: input => {
       let _country = input.country;
@@ -801,7 +805,7 @@ const getActions = uri => {
             date: moment(_orderDetails.shipping.updatedAt).format(
               "MMMM Do YYYY"
             ),
-            moneyGramName: generateName
+            moneyGram: JSON.stringify(response.mo)
           }
         };
 
@@ -812,8 +816,8 @@ const getActions = uri => {
         dispatch({
           type: actionTypes.PROCESS_ORDER,
           ccResponse,
-          url: response,
-          moneyGramName: generateName
+          url: response.url,
+          moneyGram: response.mo
         });
       };
     },
@@ -895,7 +899,10 @@ const mutation = {
   `,
   processOrder: gql`
     mutation($content: String) {
-      processOrder(input: { content: $content })
+      processOrder(input: { content: $content }) {
+        affiliateUrl
+        mo
+      }
     }
   `,
   processPayment: gql`
@@ -959,7 +966,7 @@ const mutation = {
       $location: String
       $website: String
       $eventName: String
-      $moneyGramName: String
+      $moneyGram: String
     ) {
       sendEmail(
         input: {
@@ -990,7 +997,7 @@ const mutation = {
           location: $location
           website: $website
           eventName: $eventName
-          moneyGramName: $moneyGramName
+          moneyGram: $moneyGram
         }
       )
     }
@@ -1043,9 +1050,12 @@ let processOrder = async (orderDetails, res, uri, idevAffiliate) => {
     };
 
     let data = await makePromise(execute(link, operation));
-    let url = data.data.processOrder;
-    if (!url.includes("http")) url = "";
-    resolve(url);
+    let _data = data.data.processOrder;
+    let url = _data.affiliateUrl;
+    if (url == null || !url.includes("http")) url = "";
+    let mo = _data.mo;
+    if (mo != null) mo = JSON.parse(mo);
+    resolve({ url, mo });
   });
 };
 let processPayment = async (details, uri) => {

@@ -37,13 +37,22 @@ type Query {
   getDailyMessage: String
 }
 
+type Address {
+  value: String
+}
+
+input AddressInput {
+  value: String
+}
+
 type MOProfile {
-  name: String
-  address: String
-  country: String
-  city: String
-  postal: String
-  province: String
+        address:String
+        city:String
+        province:String
+        country:String
+        postal:String
+        name:String
+        phone:String
 }
 
 input StatInput {
@@ -324,7 +333,7 @@ input EmailInput {
   location: String
   website: String
   eventName: String
-  moneyGramName: String
+  moneyGram: String
 }
 
 type News {
@@ -364,11 +373,18 @@ input ArchiveInput {
   content: String
 }
 
+type OrderOutput {
+  affiliateUrl: String
+  mo: String
+}
+
 type Mutation {
   createStrain(input: StrainInput): Strain
   updateStrain(input: StrainInput): Strain
   updateStrainInfo: [Strain]
   typeToDom: [Strain]
+
+  appendAddress(input: AddressInput): String
 
   postToProcessOrder(input: SotiInput): String
   postToAddNoteToOrder(input: SotiInput): String
@@ -383,7 +399,7 @@ type Mutation {
   subscribeToNewsletter(email: String): String
 
   processPayment(input: PaymentInput): PaymentResponse
-  processOrder(input: OrderProcessInput): String
+  processOrder(input: OrderProcessInput): OrderOutput
 }
 
 `;

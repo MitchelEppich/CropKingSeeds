@@ -89,10 +89,30 @@ const actionTypes = {
   TOGGLE_HEADER_MESSAGE: "TOGGLE_HEADER_MESSAGE",
   GET_DAILY_MESSAGE: "GET_DAILY_MESSAGE",
   TOGGLE_MUTE: "TOGGLE_MUTE",
-  SET_SOTI_ERROR: "SET_SOTI_ERROR"
+  SET_SOTI_ERROR: "SET_SOTI_ERROR",
+  GET_MO: "GET_MO"
 };
 
 const actions = {
+  getMo: () => {
+    return dispatch => {
+      const link = new HttpLink({ uri, fetch: fetch });
+      const operation = {
+        query: query.getUniqueMOProfile
+      };
+
+      return makePromise(execute(link, operation))
+        .then(data => {
+          let mo = data.data.getUniqueMOProfile;
+          dispatch({
+            type: actionTypes.GET_MO,
+            input: mo
+          });
+          return Promise.resolve(mo);
+        })
+        .catch(error => console.log(error));
+    };
+  },
   setSotiError: input => {
     return {
       type: actionTypes.SET_SOTI_ERROR,
@@ -654,6 +674,19 @@ const query = {
   getDailyMessage: gql`
     {
       getDailyMessage
+    }
+  `,
+  getUniqueMOProfile: gql`
+    {
+      getUniqueMOProfile {
+        address
+        city
+        province
+        country
+        postal
+        name
+        phone
+      }
     }
   `,
   getTaxes: gql`
