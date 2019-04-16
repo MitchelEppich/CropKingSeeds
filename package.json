@@ -93,7 +93,7 @@
     "postexport": "node scripts/postBuild.js",
     "export": "next build && next export",
     "start": "node server",
-    "analyze": "cross-env ANALYZE=1 next build"
+    "analyze": "next build"
   },
   "author": "",
   "licence": "ISC",
