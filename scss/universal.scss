@@ -37,13 +37,21 @@
 //   font-style: normal;
 //   font-display: swap;
 // }
+// @font-face {
+//   font-family: "Questrial";
+//   src: url("../static/fonts/questrial/Questrial-Regular.woff2") format("woff2"),
+//     url("../static/fonts/questrial/Questrial-Regular.woff") format("woff");
+//   font-weight: normal;
+//   font-style: normal;
+//   font-display: swap;
+// }
 
 ////////////////////////
 // UNIVERSAL
 //ELEMENTS
 body,
 html {
-  font-family: "Lato", arial, sans-serif;
+  font-family: "Questrial", sans-serif;
   font-display: swap;
 }
 button:focus,
@@ -655,22 +663,22 @@ svg {
   text-align: right;
 }
 .ribbon span {
- font-size: 11px;
-    font-weight: bold;
-    color: #fff;
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 20px;
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    width: 100px;
-    display: block;
-     background: #a00000; 
-    background: linear-gradient(#d60804 0%, #bb1724 100%);
-    box-shadow: 0 3px 10px -5px black;
-    position: absolute;
-    top: 19px;
-    right: -21px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 100px;
+  display: block;
+  background: #a00000;
+  background: linear-gradient(#d60804 0%, #bb1724 100%);
+  box-shadow: 0 3px 10px -5px black;
+  position: absolute;
+  top: 19px;
+  right: -21px;
 }
 .ribbon span::before {
   content: "";

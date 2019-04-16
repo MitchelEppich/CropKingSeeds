@@ -300,6 +300,7 @@ const Compare = props => {
                   <div className="w-main mx-auto h-8 mt-1 flex justify-between border border-grey-lightest">
                     <button
                       name="decreaseItem"
+                      aria-label="Decrease Item"
                       onClick={() =>
                         props.modifyPotentialQuantity({
                           potentialQuantity: props.cart.potentialQuantity,
@@ -350,6 +351,7 @@ const Compare = props => {
                     />
                     <button
                       name="increaseItem"
+                      aria-label="Increase Item"
                       onClick={() =>
                         props.modifyPotentialQuantity({
                           potentialQuantity: props.cart.potentialQuantity,

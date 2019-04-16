@@ -31,6 +31,9 @@ const FeaturedStrains = props => {
     if (["xl"].includes(props.misc.mediaSize)) {
       products = products.slice(0, 4);
     }
+    if (["xxl"].includes(props.misc.mediaSize)) {
+      products = products.slice(0, 5);
+    }
     for (let i = 0; i < products.length; i++) {
       let product = products[i];
       let titleColorBackground =
@@ -105,7 +108,7 @@ const FeaturedStrains = props => {
           <a>
             {" "}
             <p className="p-2 w-250 text-center bg-red-dark text-white font-bold text-xl cursor-pointer hover:bg-red-light shadow-md uppercase scale-item">
-              See all products
+              Go to Shop Page
             </p>
           </a>
         </Link>

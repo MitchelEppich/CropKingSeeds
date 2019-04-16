@@ -8,7 +8,7 @@ const initialState = {
       imgSrc: "/about/1.jpg",
       content:
         "The idea for Crop King Seeds forms. Starting out with one employee shipping from an apartment, selling for a year. In 2005 operations are put on hold.",
-      date: "2014"
+      date: "2005"
     },
     {
       imgSrc: "/about/2.jpg",
@@ -76,7 +76,7 @@ const initialState = {
     {
       title: "Our Mission",
       content:
-        "Established in 2005, Crop King Seeds has been perfecting the genetics of the cannbis plant for medical and commerical growers seeking maximum results in THC levels and harvest size. From classic strains to new age hybrids, our seeds are ideal for beginners and advanced growers wanting the best from their crop.",
+        "Established in 2005, Crop King Seeds has been perfecting the genetics of the cannabis plant for medical and commercial growers seeking maximum results in THC levels and harvest size. From classic strains to new age hybrids, our seeds are ideal for beginners and advanced growers wanting the best from their crop.",
       src: "/about/who_3.jpg"
     }
   ]

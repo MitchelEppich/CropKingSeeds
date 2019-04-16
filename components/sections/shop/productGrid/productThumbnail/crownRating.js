@@ -21,7 +21,7 @@ const crownRating = props => {
   return (
     <div
       className={
-        props.hover ? "text-grey px-6 p-2 sm:pt-0 text-sm" : "hidden slow"
+        props.hover ? "text-grey px-6 p-1 sm:pt-0 text-sm" : "hidden slow"
       }
     >
       <Link
@@ -49,16 +49,6 @@ const crownRating = props => {
           <div className="absolute pin-l inline-flex ">{ratingInCrowns}</div>
           <div className="absolute" />
         </div>
-
-        {/* <div
-                        style={{ opacity: "50%" }}
-                        className="absolute pl-10 pin-l inline-flex"
-                        >
-                        <p className="inline-flex">{showRating()}</p>
-                        {/* <span className="ml-2 font-bold text-sm hover:text-grey-light items-center flex">
-                            {rating.toFixed(1)} Crowns ({totalReviews} reviews)
-                        </span> 
-                        </div> */}
       </Link>
     </div>
   );

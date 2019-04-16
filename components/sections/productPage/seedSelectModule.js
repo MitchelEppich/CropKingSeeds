@@ -49,6 +49,7 @@ const seedSelectModule = props => {
       <div className="w-full h-8 mt-1 flex justify-between border border-grey-lightest">
         <button
           name="decreaseItem"
+          aria-label="Decrease Item"
           onClick={() =>
             props.modifyPotentialQuantity({
               potentialQuantity: props.cart.potentialQuantity,
@@ -94,6 +95,7 @@ const seedSelectModule = props => {
           type="number"
         />
         <button
+          aria-label="Increase Item"
           name="increaseItem"
           onClick={() => {
             props.modifyPotentialQuantity({

@@ -123,7 +123,7 @@ class Index extends Component {
             >
               Shop Cannabis Seeds
             </h1>
-            <div className="uppercase cursor-pointer text-white font-bold flex justify-end sm:justify-center md:justify-center lg:justify-center items-center w-full text-base md:mt-4 lg:mt-4 sm:mt-4">
+            <div className="uppercase text-white font-bold flex justify-end sm:justify-center md:justify-center lg:justify-center items-center w-full text-base md:mt-4 lg:mt-4 sm:mt-4">
               <div
                 onClick={() => {
                   this.props.toggleLowGPUMode(!this.props.misc.lowGPUMode);
