@@ -40,8 +40,10 @@ export default class MyDocument extends Document {
             crossOrigin="true"
           />
           <link
-            href="https://fonts.googleapis.com/css?family=Lato:400,900"
             rel="stylesheet"
+            // as="font"
+            href="https://fonts.googleapis.com/css?family=Questrial"
+            crossOrigin="anonymous"
           />
 
           <link

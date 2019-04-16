@@ -17,7 +17,7 @@ const Confirmation = props => {
 
   let showProduct = () => {
     let arr = [];
-    let _items = props.cart.items;
+    let _items = { ...props.cart.items };
     for (let item of Object.keys(_items)) {
       let _item = _items[item];
       arr.push(

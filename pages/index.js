@@ -20,6 +20,7 @@ import siteNavPages from "../scripts/siteNavPages";
 class Index extends Component {
   componentWillMount() {
     this.props.getBanners();
+    this.props.getAllNews();
   }
 
   componentDidMount() {
@@ -86,6 +87,7 @@ const mapDispatchToProps = dispatch => {
     changeStep: changeObj => dispatch(actions.changeStep(changeObj)),
     setCurrentEvent: input => dispatch(actions.setCurrentEvent(input)),
     getStrain: input => dispatch(actions.getStrain(input)),
+    getAllNews: () => dispatch(actions.getAllNews()),
     setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
     quickAddToCartQty: (index, quickAddToCartQty, tag) =>
       dispatch(actions.quickAddToCartQty(index, quickAddToCartQty, tag)),

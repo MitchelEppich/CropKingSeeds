@@ -1,4 +1,5 @@
 exports.contact = input => {
+  console.log(input.subject);
   let recipient =
     input.subject === "Advertisement"
       ? "jenn@vancoastind.com"
@@ -84,9 +85,7 @@ exports.contact = input => {
     </p>
 
     <table style="background: #fff; border: 0" class="tg">
-     <tr>
-        <td style="width: 200px; text-size: 15px; margin: 10px 0;" class="tg-0lax bold">Hello, We've got a new email!</td>        
-      </tr>       
+       
       <tr style="margin-top: 20px; padding: 5px 0; background: #fff;">
         <td style="vertical-align: top; font-weight: bold; text-transform: uppercase; width: 130px" class="tg-0lax bold">Full Name:</td>
         <td class="tg-0lax">${input.name}</td>

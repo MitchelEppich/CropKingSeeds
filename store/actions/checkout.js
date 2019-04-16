@@ -743,6 +743,7 @@ const getActions = uri => {
         let chance = require("chance").Chance(
           _orderDetails.payment.orderId.value
         );
+
         let generateName = chance.name({
           nationality: "en"
         });

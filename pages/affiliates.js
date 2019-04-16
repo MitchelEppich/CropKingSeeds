@@ -160,7 +160,7 @@ class Index extends Component {
             rel="nofollow"
             href="https://affiliates.cropkingseeds.com/signup.php"
           >
-            join now!
+            join now
           </a>
         </div>
       </Layout>

@@ -350,8 +350,9 @@
       -moz-transform: translateX(-60px) translateZ(0);
       -ms-transform: translateX(-60px) translateZ(0);
       -o-transform: translateX(-60px) translateZ(0);
-      height: 640px;
-      width: 145%;
+      height: 610px;
+      overflow: hidden;
+      width: 125%;
       padding: 10px;
       background-color: #fff;
       transition: 0.4s all ease;

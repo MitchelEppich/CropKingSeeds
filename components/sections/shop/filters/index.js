@@ -34,12 +34,16 @@ const filters = props => {
     })();
     for (let filter of filters) {
       arr.push(
-        <a
+        <li
           key={filter}
           href={`/shop?${filter}`}
           onClick={e => e.preventDefault()}
         >
-          <li>
+          <a
+            key={filter}
+            href={`/shop?${filter}`}
+            onClick={e => e.preventDefault()}
+          >
             <button
               onClick={e => {
                 if (!isClient) return;
@@ -107,8 +111,8 @@ const filters = props => {
                 ? "CBD"
                 : filter.charAt(0).toUpperCase() + filter.slice(1)}
             </button>
-          </li>
-        </a>
+          </a>
+        </li>
       );
     }
     return arr;
@@ -131,7 +135,7 @@ const filters = props => {
         <span className="">Filters:</span>
         <FontAwesomeIcon className="fa-lg pl-1 -mt-1" icon={faSlidersH} />
       </p>
-      <ul
+      <div
         onClick={() => {
           if (props.misc.mediaSize == "sm") {
             props.toggleShowFilters(false);
@@ -139,9 +143,13 @@ const filters = props => {
         }}
         className="leading-loose flex flex-wrap pl-4 pt-2"
       >
-        <li className="text-red-dark font-bold w-full text-xl">Type</li>
-        {showFilter(_availableFilters.type, "type")}
-      </ul>
+        <ul className="p-0 w-full">
+          <li className="text-red-dark font-bold w-full text-xl">Type</li>
+          <ul className="flex flex-wrap p-0 w-full">
+            {showFilter(_availableFilters.type, "type")}
+          </ul>
+        </ul>
+      </div>
       <hr className="hr__filters" />
       <ul
         onClick={() => {
@@ -152,7 +160,9 @@ const filters = props => {
         className="leading-loose flex flex-wrap pl-4"
       >
         <li className="text-red-dark font-bold w-full text-xl">Genetics</li>
-        {showFilter(_availableFilters.genetic, "genetic", true)}
+        <ul className="flex flex-wrap p-0 w-full">
+          {showFilter(_availableFilters.genetic, "genetic", true)}
+        </ul>
       </ul>
       <hr className="hr__filters" />
       <ul
@@ -166,7 +176,9 @@ const filters = props => {
         <li className="text-red-dark font-bold w-full text-xl">
           THC Percentage
         </li>
-        {showFilter(_availableFilters.thc, "thc")}
+        <ul className="flex flex-wrap p-0 w-full">
+          {showFilter(_availableFilters.thc, "thc")}
+        </ul>
       </ul>
       <hr className="hr__filters" />
       <ul
@@ -180,7 +192,9 @@ const filters = props => {
         <li className="text-red-dark font-bold w-full text-xl">
           CBD Percentage
         </li>
-        {showFilter(_availableFilters.cbd, "cbd")}
+        <ul className="flex flex-wrap p-0 w-full">
+          {showFilter(_availableFilters.cbd, "cbd")}
+        </ul>
       </ul>
 
       <hr className="hr__filters" />

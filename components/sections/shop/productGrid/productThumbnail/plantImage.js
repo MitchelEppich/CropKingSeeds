@@ -12,6 +12,7 @@ const plantImage = props => {
       as={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}
     >
       <a
+        aria-label={props.product.name}
         href={"/product/" + props.product.name.toLowerCase().replace(/ /g, "-")}
       >
         <img
@@ -42,7 +43,7 @@ const plantImage = props => {
             }
             window.scrollTo(0, 0);
           }}
-          alt={props.product.name + "plant"}
+          alt={props.product.name + " Plant"}
         />
       </a>
     </Link>

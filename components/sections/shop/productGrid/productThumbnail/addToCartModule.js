@@ -30,7 +30,7 @@ const addToCartModule = props => {
             <SeedSelectModule {...props} product={props.product} />
           </div>
           <div
-            className={`w-full inline-flex sm:mt-0 mt-2 ${
+            className={`w-full inline-flex sm:mt-0 mt-0 ${
               props.misc.lowGPUMode ? "sm:flex-col md:flex-col" : ""
             }`}
           >

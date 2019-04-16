@@ -486,6 +486,7 @@ const mapDispatchToProps = dispatch => {
     getExchangeRates: () => dispatch(actions.getExchangeRates()),
     recallCart: () => dispatch(actions.recallCart()),
     getFeaturedNews: () => dispatch(actions.getFeaturedNews()),
+    getAllNews: () => dispatch(actions.getAllNews()),
     recallAgeVerification: () => dispatch(actions.recallAgeVerification()),
     recallOrderDetails: input => dispatch(actions.recallOrderDetails(input)),
     quickAddToCartQty: (index, quickAddToCartQty, tag) =>

@@ -22,6 +22,7 @@ const About = props => {
   let currentHistoryObj =
     props.about.historyObjs[props.about.currentHistoryObj];
   let content = currentHistoryObj.content;
+  let index = props.about.historyObjs.indexOf(currentHistoryObj);
 
   let currentItem = props.about.currentHistoryObj;
   let currentImgSrc = props.misc.CFURL + currentHistoryObj.imgSrc;
@@ -33,7 +34,7 @@ const About = props => {
     let activeThumb =
       currentItem == index
         ? {
-            transform: "scale(1.10)",
+            transform: "scale(1.0)",
             transition: "all .3s ease"
           }
         : {
@@ -41,20 +42,33 @@ const About = props => {
             transition: "all .3s ease"
           };
 
+    let numberImg = {
+      height: "25px",
+      width: "25px",
+      background: "white",
+      boxShadow: "1px 3px 8px #cecece",
+      color: "grey",
+      fontWeight: "bold",
+      padding: "4px 5px 0 8px",
+      position: "absolute"
+    };
     return (
       <div
         onClick={() => {
           props.setCurrentHistoryObj(index);
         }}
         key={index}
-        className="m-2 sm:m-2 md:w-16 sm:w-16 sm:h-16 md:h-16 w-1/4 h-20 xl:h-16 xl:m-2 cursor-pointer"
+        className="m-2 sm:m-2 md:w-16 sm:w-16 sm:h-16 md:h-16 w-1/4 h-20 xl:h-16 xl:m-2 cursor-pointer scale-item relative"
       >
         <img
           style={activeThumb}
           alt="about image"
           src={props.misc.CFURL + val.imgSrc}
-          className="w-full h-full about-img shadow-md"
+          className="w-full h-full about-img scale-item shadow-md"
         />
+        <span style={numberImg} className="pin-b pin-l">
+          {index + 1}
+        </span>
       </div>
     );
   });
@@ -105,7 +119,7 @@ const About = props => {
     return (
       <div
         key={index}
-        className="xxl:w-340 w-250 lg:w-200 md:w-main md:block md:text-center sm:w-main sm:block sm:text-center bg-white rounded-lg md:my-5 sm:my-5 flex flex-wrap justify-center content-start p-4 shadow-lg sm:shadow-md sm:rounded md:rounded md:shadow-md scale-item"
+        className="xxl:w-340 w-250 lg:w-200 md:w-main md:block md:text-center sm:w-main sm:block sm:text-center bg-white md:my-5 sm:my-5 flex flex-wrap justify-center content-start p-4 shadow-lg sm:shadow-md sm:rounded md:rounded md:shadow-md scale-item"
       >
         <img
           style={{ objectFit: "cover" }}
@@ -148,7 +162,9 @@ const About = props => {
                 {carouselImg}
               </div>
               <div className="w-1/3 text-lg ml-4 bg-white sm:w-full md:w-full sm:hidden md:hidden lg:hidden p-2 xxl:relative">
-                <p className="p-2 w-full text-left px-6 xl:px-2">{content}</p>
+                <p className="p-2 w-full text-left px-6 xl:px-2">
+                  {index + 1} - {content}
+                </p>
                 <p className="text-center font-bold text-xl mt-12 absolute pin-b pin-x mb-2">
                   {date}
                 </p>
@@ -171,7 +187,7 @@ const About = props => {
       <div className="w-full mt-48 lg:mt-64 relative md:h-full sm:h-full mb-4 xl:mb-4 md:mt-mobile-about sm:mt-400">
         <div
           style={{ borderTop: "15px solid #e9e8e8" }}
-          className="h-24 w-full items-center flex justify-center shadow bg-red-darker "
+          className="h-24 w-full items-center flex justify-center shadow bg-grey-light "
         >
           <h3 className="w-full h-full font-bold pt-6 sm:py-4 sm:mb-0 text-center mb-8 p-2 text-3xl text-white uppercase">
             Who We Are
