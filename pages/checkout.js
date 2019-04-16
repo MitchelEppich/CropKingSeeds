@@ -31,6 +31,8 @@ import ErrorHandler from "../components/sections/checkout/errorHandler";
 import { initGA, logPageView } from "../scripts/ga";
 import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 
+import { payBitcoin } from "../store/utilities/bitcoinPaymentWindow";
+
 class Index extends Component {
   static async getInitialProps({ store }) {
     await store.dispatch(actions.toggleStepsCheckout(0));
@@ -100,7 +102,7 @@ class Index extends Component {
               _orderDetails.payment.method != null &&
               _orderDetails.payment.method.value == "Bitcoin"
             ) {
-              this.payBitcoin(
+              payBitcoin(
                 _orderDetails,
                 _orderDetails.payment.orderId.value.toString()
               );
@@ -117,32 +119,37 @@ class Index extends Component {
                     let orderId = res.toString();
 
                     if (_orderDetails.payment.method.value == "Bitcoin") {
-                      this.payBitcoin(_orderDetails, orderId);
+                      payBitcoin(_orderDetails, orderId);
                     }
-                    this.props
-                      .processOrder({
-                        idevAffiliate: this.props.checkout.idevCookie,
-                        orderId,
-                        cart: this.props.cart,
-                        orderDetails: {
-                          ..._orderDetails,
-                          currency: this.props.checkout.availableCurrency,
-                          shippingTypeDescription: this.props.checkout.shippingMethods.find(
-                            a => {
-                              return (
-                                a.tag ==
-                                _orderDetails.shipping.shippingDetail.value
-                              );
-                            }
-                          ).description
-                        },
-                        shippingMethods: this.props.checkout.shippingMethods
-                      })
-                      .then(res => {
-                        // this.props.toggleStepsCheckout(_stepsCheckout + 1);
-                        Router.push("/confirmation");
-                        this.props.toggleProcessing(false);
-                      });
+                    try {
+                      this.props
+                        .processOrder({
+                          idevAffiliate: this.props.checkout.idevCookie,
+                          orderId,
+                          cart: this.props.cart,
+                          orderDetails: {
+                            ..._orderDetails,
+                            currency: this.props.checkout.availableCurrency,
+                            shippingTypeDescription: this.props.checkout.shippingMethods.find(
+                              a => {
+                                return (
+                                  a.tag ==
+                                  _orderDetails.shipping.shippingDetail.value
+                                );
+                              }
+                            ).description
+                          },
+                          shippingMethods: this.props.checkout.shippingMethods
+                        })
+                        .then(res => {
+                          // this.props.toggleStepsCheckout(_stepsCheckout + 1);
+                          Router.push("/confirmation");
+                          this.props.toggleProcessing(false);
+                        });
+                    } catch (e) {
+                      this.props.setSotiError({ value: true });
+                      console.log("Failed to post order...");
+                    }
                   });
               } else {
                 // Purge the store.
@@ -330,70 +337,6 @@ class Index extends Component {
       });
     }
   }
-
-  open = (verb, url, data, target) => {
-    let form = document.createElement("form");
-    form.action = url;
-    form.method = verb;
-    form.target = target || "_self";
-    if (data) {
-      for (let key in data) {
-        let input = document.createElement("textarea");
-        input.name = key;
-        input.value =
-          typeof data[key] === "object" ? JSON.stringify(data[key]) : data[key];
-        form.appendChild(input);
-      }
-    }
-    form.style.display = "none";
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
-  };
-
-  payBitcoin = (orderDetails, orderId) => {
-    let _billing = { ...orderDetails.billing };
-    let _payment = { ...orderDetails.payment };
-    let name = [_billing.firstName.value, _billing.lastName.value];
-
-    let fOrderId = [orderId.slice(0, 4), "-", orderId.slice(4), "-CKS"].join(
-      ""
-    );
-
-    this.open(
-      "POST",
-      "https://www.coinpayments.net/index.php",
-      {
-        cmd: "_pay",
-        reset: "1",
-        invoice: fOrderId,
-        custom: "",
-        merchant: "8c1706a0ba5ad9024ba30eb29b92563e",
-        first_name: name[0],
-        last_name: name[1],
-        email: _billing.email.value,
-        address1: _billing.address.value,
-        address2: _billing.apartment != null ? _billing.apartment.value : "",
-        city: _billing.city.value,
-        state: _billing.state.value,
-        zip: _billing.postalZip.value,
-        country: _billing.country.value.toUpperCase(),
-        phone: _billing.phone.value,
-        currency:
-          _billing.country.value.toLowerCase() == "canada" ? "CAD" : "USD",
-        amountf: _payment.cartTotal.value,
-        item_name: fOrderId,
-        quantity: _payment.itemQuantity.value,
-        allow_quantity: "0",
-        shippingf: _payment.shippingFee.value,
-        taxf: _payment.taxFee,
-        ipn_url: "https://cropkingseeds.com/api/coinpayments/verify",
-        success_url: "https://cropkingseeds.com/",
-        cancel_url: `https://cropkingseeds.com/api/coinpayments/cancel?orderId=${orderId}`
-      },
-      "_blank"
-    );
-  };
 }
 
 const mapDispatchToProps = dispatch => {
@@ -417,12 +360,14 @@ const mapDispatchToProps = dispatch => {
     getBlockedZips: () => dispatch(actions.getBlockedZips()),
     clearCart: () => dispatch(actions.clearCart()),
     purgeCart: () => dispatch(actions.purgeCart()),
+    getMo: () => dispatch(actions.getMo()),
     getTaxes: () => dispatch(actions.getTaxes()),
     purgeOrderDetails: input => dispatch(actions.purgeOrderDetails(input)),
     storeOrderDetails: input => dispatch(actions.storeOrderDetails(input)),
     loadLocalProfile: input => dispatch(actions.loadLocalProfile(input)),
     purgeLocalProfile: input => dispatch(actions.purgeLocalProfile(input)),
     clearOrderDetails: input => dispatch(actions.clearOrderDetails(input)),
+    setSotiError: input => dispatch(actions.setSotiError(input)),
     checkForLocalProfile: input =>
       dispatch(actions.checkForLocalProfile(input)),
     acquireOrderId: input => dispatch(actions.acquireOrderId(input)),

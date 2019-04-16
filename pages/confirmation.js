@@ -26,14 +26,20 @@ import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 import Router from "next/router";
 const isClient = typeof document !== "undefined";
 
+import { payBitcoin } from "../store/utilities/bitcoinPaymentWindow";
+
 class Index extends Component {
   componentDidMount() {
     initGA();
     logPageView();
     window.scroll(0, 0);
+    window.onbeforeunload = function() {
+      this.props.deleteAffiliateLink();
+    };
   }
 
   componentWillUnmount() {
+    this.props.deleteAffiliateLink();
     this.props.purgeCart();
     this.props.purgeOrderDetails({
       orderDetails: this.props.checkout.orderDetails
@@ -381,6 +387,15 @@ class Index extends Component {
                           please call our Customer Support at our{" "}
                           <span className="underline">toll-free</span> number +1
                           (844) 276 - 7546.
+                          <br />
+                          <br />
+                          <span
+                            className="cursor-pointer text-red-dark font-bold hover:text-red-light scale-item"
+                            onClick={() => payBitcoin(_orderDetails, orderId)}
+                          >
+                            Did the payment window not show? Click here to
+                            retry.
+                          </span>
                         </p>
                       </div>
                     </div>
@@ -412,16 +427,48 @@ class Index extends Component {
                             <div className="text-left flex-col w-500">
                               <div className="inline-flex w-full">
                                 <span className="text-left">
-                                  Name of Receiver: <b>{generateName}</b>
+                                  Name of Receiver:{" "}
+                                  <b>
+                                    {this.props.checkout.moneyGram != null
+                                      ? this.props.checkout.moneyGram.name
+                                      : "ERROR"}
+                                  </b>
                                   <br />
-                                  Street: <b>1394 Keith Road</b>
+                                  Street:{" "}
+                                  <b>
+                                    {this.props.checkout.moneyGram != null
+                                      ? this.props.checkout.moneyGram.address
+                                      : "ERROR"}
+                                  </b>
                                   <br />
-                                  City: <b>North Vancouver, B.C.</b>
+                                  City:{" "}
+                                  <b>
+                                    {this.props.checkout.moneyGram != null
+                                      ? this.props.checkout.moneyGram.city +
+                                        ", " +
+                                        this.props.checkout.moneyGram.province
+                                      : "ERROR"}
+                                  </b>
                                   <br />
-                                  Postal/Zip Code: <b>V5T 2C1</b>
+                                  Postal/Zip Code:{" "}
+                                  <b>
+                                    {this.props.checkout.moneyGram != null
+                                      ? this.props.checkout.moneyGram.postal
+                                      : "ERROR"}
+                                  </b>
                                   <br />
-                                  Country: <b>Canada</b>
-                                  <br /> Phone Number: <b>604-987-1803</b>
+                                  Country:{" "}
+                                  <b>
+                                    {this.props.checkout.moneyGram != null
+                                      ? this.props.checkout.moneyGram.country
+                                      : "ERROR"}
+                                  </b>
+                                  <br /> Phone Number:{" "}
+                                  <b>
+                                    {this.props.checkout.moneyGram != null
+                                      ? this.props.checkout.moneyGram.phone
+                                      : "ERROR"}
+                                  </b>
                                 </span>
                               </div>
                             </div>
@@ -444,35 +491,50 @@ class Index extends Component {
                             <p>
                               Name of Sender:{" "}
                               <span className="capitalize font-bold">
-                                {_orderDetails.billing == null ||
-                                _orderDetails.billing.firstName == null ||
-                                _orderDetails.billing.lastName == null
-                                  ? "ERROR"
-                                  : _orderDetails.billing.firstName.value +
-                                    " " +
-                                    _orderDetails.billing.lastName.value}
+                                Insert Your Sender Name
                               </span>
                             </p>
                             <p>
                               Payment Sent to:{" "}
-                              <span className="font-bold">{generateName}</span>
+                              <span className="font-bold">
+                                {this.props.checkout.moneyGram != null
+                                  ? this.props.checkout.moneyGram.name
+                                  : "ERROR"}
+                              </span>
                             </p>
                             <p>
                               Street:{" "}
-                              <span className="font-bold">1394 Keith Road</span>
+                              <span className="font-bold">
+                                {this.props.checkout.moneyGram != null
+                                  ? this.props.checkout.moneyGram.address
+                                  : "ERROR"}
+                              </span>
                             </p>
                             <p>
                               City:{" "}
                               <span className="font-bold">
-                                North Vancouver, B.C.
+                                {this.props.checkout.moneyGram != null
+                                  ? this.props.checkout.moneyGram.city +
+                                    ", " +
+                                    this.props.checkout.moneyGram.province
+                                  : "ERROR"}
                               </span>
                             </p>
                             <p>
                               Postal/Zip Code:{" "}
-                              <span className="font-bold">V5T 2C1</span>
+                              <span className="font-bold">
+                                {this.props.checkout.moneyGram != null
+                                  ? this.props.checkout.moneyGram.postal
+                                  : "ERROR"}
+                              </span>
                             </p>
                             <p>
-                              Country: <span className="font-bold">Canada</span>
+                              Country:{" "}
+                              <span className="font-bold">
+                                {this.props.checkout.moneyGram != null
+                                  ? this.props.checkout.moneyGram.country
+                                  : "ERROR"}
+                              </span>
                             </p>
                             <p>
                               Amount:{" "}
@@ -784,6 +846,7 @@ const mapDispatchToProps = dispatch => {
     getBlockedZips: () => dispatch(actions.getBlockedZips()),
     clearCart: () => dispatch(actions.clearCart()),
     purgeCart: () => dispatch(actions.purgeCart()),
+    deleteAffiliateLink: () => dispatch(actions.deleteAffiliateLink()),
     purgeOrderDetails: input => dispatch(actions.purgeOrderDetails(input)),
     storeOrderDetails: input => dispatch(actions.storeOrderDetails(input)),
     loadLocalProfile: input => dispatch(actions.loadLocalProfile(input)),

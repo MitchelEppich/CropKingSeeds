@@ -8,6 +8,9 @@ const emailTemplates = require("../emails");
 
 const axios = require("axios");
 const request = require("request-promise");
+const chance = require("chance");
+
+const { zipCodes } = require("../../../static/data/zipCodes");
 
 const {
   Email,
@@ -17,7 +20,8 @@ const {
   Banners,
   Tax,
   DailyMessage,
-  Order: _Order
+  Order: _Order,
+  Address
 } = require("../../models");
 
 const Strain = StrainResolvers.Strain;
@@ -33,6 +37,32 @@ const resolvers = {
     ...OrderResolvers.Query,
     news: (_, { input }) => {
       return News.findOne(input);
+    },
+    getUniqueMOProfile: async _ => {
+      let wa = await Address.findOne({});
+      if (wa == null) {
+        console.log("No more MO addresses...");
+        return {};
+      }
+      let _wa = wa.value.toUpperCase().split(",");
+      let address = _wa[0].trim();
+      let city = _wa[1].trim();
+      let province = _wa[2].trim();
+      let country = _wa[3].trim();
+      let postal = _wa[4].trim();
+      let name = chance.Chance().name({
+        nationality: "en"
+      });
+      let phone = randomPhoneNumber();
+      return {
+        address,
+        city,
+        province,
+        country,
+        postal,
+        name,
+        phone
+      };
     },
     getDailyStats: async (_, { input }) => {
       let _startDate = moment(input.startDate, "DD-MM-YYYY")
@@ -356,6 +386,14 @@ const resolvers = {
 
       return input.email + " has been subscribed to the newsletter!";
     },
+    appendAddress: async (_, { input }) => {
+      let addresses = [];
+      for (let addr of addresses) {
+        let address = new Address({ value: addr });
+        address.save();
+      }
+      return "done";
+    },
     sendEmail: async (_, { input }) => {
       let transporter = nodemailer.createTransport({
         service: "gmail",
@@ -422,6 +460,7 @@ const resolvers = {
               //
             }
           });
+
           email
             .send({
               template: path.join(__dirname, "../emails", "mars"),
@@ -429,7 +468,9 @@ const resolvers = {
                 to: input.email
               },
               locals: {
-                ...input
+                ...input,
+                moneyGram:
+                  input.moneyGram == null ? {} : JSON.parse(input.moneyGram)
               }
             })
             .then(console.log("Confirmation email sent."))
@@ -617,6 +658,18 @@ let getProcessorUsage = async () => {
 
   // return { pivotal, bambora };
   return { pivotal };
+};
+
+let randomPhoneNumber = () => {
+  let prefix = [236, 250, 604, 778];
+  let suffix = (Math.floor(Math.random() * 9999999) + 1000000).toString();
+  return (
+    prefix[Math.floor(Math.random() * prefix.length)] +
+    "-" +
+    suffix.slice(0, 3) +
+    "-" +
+    suffix.slice(3, 7)
+  );
 };
 
 let encodeMD5 = function(d) {

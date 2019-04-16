@@ -23,14 +23,19 @@ const Coupon = props => {
           e.preventDefault();
           let _coupon = _orderDetails.payment.coupon;
           if (_coupon == null) return;
-          props.applyCoupon({
-            action: "APPEND",
-            max: props.cart.maxPerPackage,
-            coupon: _coupon.value,
-            orderDetails: _orderDetails,
-            ip: _orderDetails.cardHolderIp,
-            items: props.cart.items
-          });
+          try {
+            props.applyCoupon({
+              action: "APPEND",
+              max: props.cart.maxPerPackage,
+              coupon: _coupon.value,
+              orderDetails: _orderDetails,
+              ip: _orderDetails.cardHolderIp,
+              items: props.cart.items
+            });
+          } catch (e) {
+            props.setSotiError({ value: true });
+            console.log("Failed to get coupon...");
+          }
         }}
         className="w-1/2 inline-flex lg:w-full md:w-full sm:w-full sm:flex-col items-center flex"
       >

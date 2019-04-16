@@ -104,7 +104,9 @@ const initialState = {
       "Hello! Welcome to the new and improved Crop King Seeds.There are many new features and improvements that have been introduced to our site that we hope you’ll enjoy.These documents are meant as a reference guide for understanding and learning how to use the new site efficiently.",
     checkout:
       "Sorry, your cart is empty! Looks like you have no seeds in your shopping cart. Check back after more shopping for cannabis seeds. Go to the Shop Page and check out all our marijuana seeds."
-  }
+  },
+  sotiError: false,
+  mo: null
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -149,6 +151,14 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.IS_REPEAT_CUSTOMER:
       return updateObject(state, {
         newCustomer: action.input
+      });
+    case actionTypes.GET_MO:
+      return updateObject(state, {
+        mo: action.input
+      });
+    case actionTypes.SET_SOTI_ERROR:
+      return updateObject(state, {
+        sotiError: action.input
       });
     case actionTypes.GET_DAILY_MESSAGE:
       return updateObject(state, {

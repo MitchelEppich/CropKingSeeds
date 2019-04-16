@@ -234,49 +234,50 @@ html
                 p(style="text-align:center; font-size: 14px;") The person you are sending the MoneyGram to is: 
                   br 
                   span Name of Receiver: 
-                  b #{moneyGramName}
+                  b #{moneyGram.name}
                   br 
                   span Street: 
-                  b 1394 Keith Road
+                  b #{moneyGram.address}
                   br 
                   span City: 
-                  b North Vancouver, B.C.
+                  b #{moneyGram.city + ", " + moneyGram.province}
                   br
                   span Postal/Zip Code: 
-                  b V5T 2C1
+                  b #{moneyGram.postal}
                   br 
                   span Country:
-                  b Canada
+                  b #{moneyGram.country}
                   br  
                   span Phone Number: 
-                  b 604-987-1803
+                  b #{moneyGram.phone}
                   br
                   span You are best to go to a retail MoneyGram location near you and pay cash in US dollars, as they will release the funds immediately.
                   br
                   span After sending the payment, please provide us with the following information so that we can claim the payment: 
                   br
                   span Name of Sender:
-                    b "Your Name"
+                    b "Insert Your Sender Name"
                   br
                   span Payment Sent to:
-                    b #{moneyGramName}
+                    b #{moneyGram.name}
                   br
                   span Street:  
-                    b 1394 Keith Road
+                    b #{moneyGram.address}
                   br
                   span City: 
-                    b North Vancouver, B.C.
+                    b #{moneyGram.city + ", " + moneyGram.province}
                   br
                   span Postal/Zip Code: 
-                    b V5T 2C1
+                    b #{moneyGram.postal}
                   br 
                   span Country: 
-                    b Canada
+                    b #{moneyGram.country}
                   br
                   span Amount:
                     b $#{total.toFixed(2)}
                   br 
                   span Reference #:
+                    b "Insert Your Reference Number"
                   br
                   span We will then process and ship your order within 48 hours.
             else 

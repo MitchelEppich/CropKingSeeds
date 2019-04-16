@@ -19,7 +19,8 @@ const initialState = {
   profileID: null,
   processing: false,
   idevCookie: null,
-  affiliateUrl: null
+  affiliateUrl: null,
+  moneyGram: null
 };
 
 export default (state = initialState, action) => {
@@ -31,6 +32,8 @@ export default (state = initialState, action) => {
       });
     case actionTypes.STORE_ORDER_DETAILS:
       return updateObject(state, {});
+    case actionTypes.DELETE_AFFILIATE_LINK:
+      return updateObject(state, { affiliateUrl: null });
     case actionTypes.PURGE_LOCAL_PROFILE:
       return updateObject(state, { profileID: null });
     case actionTypes.CHECK_FOR_LOCAL_PROFILE:
@@ -88,7 +91,7 @@ export default (state = initialState, action) => {
       return updateObject(state, {
         ccResponse: action.ccResponse,
         affiliateUrl: action.url,
-        moneyGramName: action.moneyGramName
+        moneyGram: action.moneyGram
       });
     case actionTypes.SET_CURRENCY:
       return updateObject(state, { viewCurrency: action.input });
