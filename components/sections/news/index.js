@@ -62,10 +62,12 @@ const news = props => {
           </div>
           <div className="w-full h-175 bg-white sm:w-full md:w-full lg:w-full xl:w-full relative lg:justify-center md:justify-center sm:justify-center items-center flex">
             <img
+              src={imageUrl}
+              data-src={imageUrl}
+              data-srcset={imageUrl}
               alt="eventImage"
               style={{ objectFit: category == "Article" ? "cover" : "contain" }}
-              src={`${imageUrl}`}
-              className="w-full h-175 xl:mt-4 xxl:mt-4 xl:w-full p-2"
+              className="lazy w-full h-175 xl:mt-4 xxl:mt-4 xl:w-full p-2"
             />
           </div>
           <div className="flex-col w-full relative mt-4">

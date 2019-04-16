@@ -1,8 +1,3 @@
-// window.addEventListener("load", function(event) {
-//   //do work
-
-// });
-
 document.addEventListener("DOMContentLoaded", function() {
   var Tawk_API = Tawk_API || {},
     Tawk_LoadStart = new Date();

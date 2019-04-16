@@ -114,7 +114,7 @@ export default class MyDocument extends Document {
               })
             }}
           />
-          <script defer src="../static/scripts/functions.js" />
+          <script async src="../static/scripts/functions.js" />
         </body>
       </html>
     );

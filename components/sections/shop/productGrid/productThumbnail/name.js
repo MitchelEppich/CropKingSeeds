@@ -4,11 +4,31 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const name = props => {
   let name = props.product.name;
-  let nameSizeHover = name.length < 14 ? "text-lg" : "text-base";
-  let nameSize = name.length < 14 ? "text-2xl" : "text-xl";
+  let nameSizeHover =
+    name.length < 20
+      ? " text-xl md:text-sm sm:text-base "
+      : " text-lg md:text-sm sm:text-sm ";
   let titleColorBackground =
     " bg-" + props.detail.geneColor[props.product.genetic.toLowerCase()];
-
+  let classes;
+  if (props.hover) {
+    classes =
+      "text-center flex justify-center items-center text-white p-2 font-extrabold z-50 strainTitleHover " +
+      nameSizeHover +
+      titleColorBackground;
+  } else {
+    if (props.misc.lowGPUMode) {
+      classes =
+        "text-center flex justify-center items-center text-white p-2 font-extrabold z-50 strainTitleNoAnimation " +
+        nameSizeHover +
+        titleColorBackground;
+    } else {
+      classes =
+        "text-center flex justify-center items-center text-white p-2 font-extrabold z-50 strainTitle " +
+        nameSizeHover +
+        titleColorBackground;
+    }
+  }
   return (
     // <div
     //   className={
@@ -29,19 +49,7 @@ const name = props => {
               props.setHoverId(null, false);
               window.scrollTo(0, 0);
             }}
-            className={
-              props.hover
-                ? "text-center flex justify-center items-center md:text-sm sm:text-base text-grey p-2 font-extrabold z-50 strainTitleHover " +
-                  nameSizeHover +
-                  titleColorBackground
-                : props.misc.lowGPUMode
-                ? "text-center flex justify-center items-center md:text-sm sm:text-base text-grey p-2 font-extrabold z-50 strainTitleNoAnimation " +
-                  nameSizeHover +
-                  titleColorBackground
-                : "text-center flex justify-center items-center md:text-sm sm:text-base text-grey p-2 font-extrabold z-50 strainTitle " +
-                  nameSizeHover +
-                  titleColorBackground
-            }
+            className={classes}
           >
             {props.misc.lowGPUMode ? `${name.substring(0, 16)}...` : name}
             {/* {props.hover ? (
