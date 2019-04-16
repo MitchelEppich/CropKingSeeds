@@ -13,7 +13,7 @@
 
 importScripts(
   "/static/workbox/workbox-v3.6.3/workbox-sw.js",
-  "/static/workbox/next-precache-manifest-90188670955f830b649f329ee1741895.js"
+  "/static/workbox/next-precache-manifest-24121f51298de1939c17c3adf2e70cc1.js"
 );
 
 workbox.skipWaiting();
@@ -55,27 +55,23 @@ self.__precacheManifest = [
   },
   {
     "url": "/_next/static/style.css",
-    "revision": "81bcbda289d912ee4957454c1d0abac4"
-  },
-  {
-    "url": "/_next/static/style.css.map",
-    "revision": "ebe0500485f094204c4d1c8766873c46"
+    "revision": "4f73f9ffe0cc5ec16f8dbaf8d4e2bd25"
   },
   {
     "url": "/_next/static/commons/main.js",
-    "revision": "5d1d9226ee14ffb380b4bc21a52405cb"
+    "revision": "cb92a16d6b4771d5c836e4cca7280481"
   },
   {
     "url": "/_next/static/commons/main.js.map",
-    "revision": "eeb240ce58311407087f58f86efaa12e"
+    "revision": "0d9cc99d5c2022485663ebe7e881bb98"
   },
   {
     "url": "/_next/static/commons/manifest.js",
-    "revision": "4a03072276c3d926b5219c063c7defdb"
+    "revision": "4cbb0d7b0521217f5b8f629eba7ccfcb"
   },
   {
     "url": "/_next/static/commons/manifest.js.map",
-    "revision": "3b1cbd0cce2a29d42a8ddfec01b87f73"
+    "revision": "ff3379834dff5a6fcf79dab8fd1b775f"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
