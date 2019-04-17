@@ -7,35 +7,24 @@ const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 module.exports = withSass({
   cssModules: false,
   webpack(config, { isServer, buildId, dev }) {
-    // config.module.rules.push(
-    //   {
-    //     test: /\.css$/,
-    //     use: ["css-loader"]
-    //   },
-    //   {
-    //     test: /\.(png|woff|woff2|eot|ttf|svg|gif|jpg)$/,
-    //     loader: "file-loader",
-    //     options: {
-    //       publicPath: "/_next/static/",
-    //       outputPath: "static/"
-    //     }
-    //   }
-    // );
+    config.module.rules.push(
+      {
+        test: /\.css$/,
+        use: ["css-loader"]
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg|gif|jpg)$/,
+        loader: "file-loader",
+        options: {
+          publicPath: "/_next/static/",
+          outputPath: "static/"
+        }
+      }
+    );
     // Fixes npm packages that depend on `fs` module
     config.node = {
       fs: "empty"
     };
-    //PURIFY CSS ---> CHANGE TO SASS
-    // if (!isServer) {
-    //   config.module.rules
-    //     .find(({ test }) => test.test("styles.css"))
-    //     .use.push({
-    //       loader: "css-purify-webpack-loader",
-    //       options: {
-    //         includes: ["./pages/*.js", "./components/*.js"]
-    //       }
-    //     });
-    // }
 
     const workboxOptions = {
       clientsClaim: true,
