@@ -52,25 +52,16 @@ const Moneygram = props => {
       props.misc.visibleScreen.includes("payment::" + paymentType) ? (
         <div className="w-full p-2">
           <div className="w-full mt-2 text-center">
-            {/* <p className="text-sm p-2">
-              Proceeding will take you to Money Transfer to log in to your
-              account.
-            </p> */}
-            {/* <img
-              alt={props.misc.CFURL + "/logos/moneygram_logo.png"}
-              src={props.misc.CFURL + "/logos/moneygram_logo.png"}
-              width="200px"
-              className="mt-4 cursor-pointer"
-            /> */}
+            <p className="text-sm p-2">
+              Proceeding will take you to the instructions on how to pay with
+              Money Transfer.
+            </p>
           </div>
-          <div className="w-main p-2 mx-auto mt-6 text-center">
+          <div className="w-225 p-2 mx-auto mt-6 text-center">
             {!props.checkout.processing ? (
               <button
                 name="moneygramPay"
                 type="submit"
-                // onClick={() => {
-                //   props.getMo();
-                // }}
                 className="w-full font-bold text-white text-center p-2 font-extrabold bg-red-dark text-white text-xl hover:bg-grey-light cursor-pointer rounded"
               >
                 Pay Now
@@ -84,9 +75,6 @@ const Moneygram = props => {
                 <p className="p-1 blink font-bold">Processing your order...</p>
               </div>
             )}
-            {/* <p className="font-bold">
-              Money Transfer Payment Services Are Temporarily Disabled
-            </p> */}
           </div>
         </div>
       ) : null}

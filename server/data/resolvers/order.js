@@ -422,7 +422,7 @@ const getMoProfileSoti = async orderId => {
     .split(",");
 
   return {
-    name: $res.FullName._text,
+    name: $res.FullName._text.toUpperCase(),
     phone: $res.PhoneNumber._text,
     address: _wa[0].trim(),
     city: _wa[1].trim(),
