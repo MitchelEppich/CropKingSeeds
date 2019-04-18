@@ -90,6 +90,7 @@ const cartItem = props => {
             <div className="w-100 flex justify-between h-6 items-center sm:mt-2">
               <div className="w-100 flex justify-between h-6 items-center">
                 <button
+                  aria-label="Decrease Item"
                   name="decreaseItem"
                   onClick={() =>
                     props.modifyCart({
@@ -147,7 +148,8 @@ const cartItem = props => {
                   type="number"
                 />
                 <button
-                  name="decreaseItem"
+                  name="increaseItem"
+                  aria-label="Increase Item"
                   onClick={() =>
                     props.modifyCart({
                       items: props.cart.items,

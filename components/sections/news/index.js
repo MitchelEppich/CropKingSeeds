@@ -107,7 +107,7 @@ const news = props => {
             className="font-bold ml-auto absolute pin-b pin-r p-1 cursor-pointer text-grey hover:text-red-light text-sm sm:mr-2 md:mr-2 flex justify-end font-bold"
             href={url}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             {" "}
             <span className="font-bold flex items-center">

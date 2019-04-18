@@ -14,7 +14,7 @@ class reviewForm extends Component {
       reviewIcons.push(
         <span
           key={i}
-          id="rating"
+          id={i}
           onClick={e => {
             let review = _review;
             let key = "rating";
@@ -133,6 +133,7 @@ class reviewForm extends Component {
         </div>
         <div className="w-full">
           <textarea
+            aria-label="Review Form"
             placeholder={
               "What did you think about " +
               this.props.viewProduct.currentProduct.name +
