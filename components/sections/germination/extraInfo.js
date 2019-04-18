@@ -107,7 +107,7 @@ const ExtraInfo = props => {
               Germinate Marijuana Seeds Successfully from one of our partners.
             </p>
             <a
-              rel="nofollow"
+              rel="noopener nofollow"
               href="https://www.marijuanaseeds.com/how-to-germinate-marijuana-seeds-successfully/"
               target="_blank"
               className="cursor-pointer"
