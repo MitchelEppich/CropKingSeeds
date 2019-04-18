@@ -102,7 +102,11 @@ const resolvers = {
       })();
 
       // Check if code is before date
-      if (startDate != null && moment().diff(startDate, "days") < 0)
+      if (
+        startDate != null &&
+        (moment().diff(startDate, "days") < 0 ||
+          moment().diff(startDate, "hours") < 0)
+      )
         return {
           error: "Coupon is valid on " + moment(startDate).format("LL")
         };
