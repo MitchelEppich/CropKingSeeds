@@ -20,8 +20,13 @@ const news = props => {
   let categories = Object.keys(props.misc.news);
 
   let showCategories = categories.map((category, index) => {
-    let items = props.misc.news[category];
-    // displaying the last 3
+    let items = props.misc.news[category].filter(_ => {
+      let date = moment(_.date, "LL");
+      if (date.diff(moment(), "days") > 5) return false;
+      return true;
+    });
+
+    // displaying the last 2
     let showContent = items.slice(0, 2).map((item, index) => {
       let {
         body,
@@ -66,7 +71,9 @@ const news = props => {
               data-src={imageUrl}
               data-srcset={imageUrl}
               alt="eventImage"
-              style={{ objectFit: category == "Article" ? "cover" : "contain" }}
+              style={{
+                objectFit: category == "Article" ? "cover" : "contain"
+              }}
               className="lazy w-full h-175 xl:mt-4 xxl:mt-4 xl:w-full p-2"
             />
           </div>
@@ -133,10 +140,6 @@ const news = props => {
       </div>
     );
   });
-
-  let newsIndex = props.misc.currentEventObj;
-  let newsEntry = props.misc.featuredNews[newsIndex];
-  let image = newsEntry != null ? newsEntry.imageUrl : "";
 
   return (
     <div className="lg:mt-12 w-full h-full ">

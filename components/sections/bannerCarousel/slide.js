@@ -17,7 +17,11 @@ const slide = props => {
 
   let onClick = e => {
     if (!isClient) return;
-    if (props.url == null) return;
+    console.log(props.url);
+    if (props.url == null) {
+      e.stopPropagation();
+      return;
+    }
     if (protocol) {
       window.target = "_blank";
       window.open(props.url);
@@ -33,7 +37,6 @@ const slide = props => {
           onMouseEnter={() => {
             if (props.sotiId == null || !strains) return;
             let strains = props.misc.strains;
-            console.log("ban", props.sotiId);
             props.getStrain({ sotiId: props.sotiId, strains }).then(res => {
               props.setCurrentProduct({ product: res }).then(() => {
                 let _index = 0;

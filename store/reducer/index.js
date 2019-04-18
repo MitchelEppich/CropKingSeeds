@@ -51,8 +51,6 @@ const initialState = {
   searchValue: null,
   suggestions: [],
   highlightedSuggestion: null,
-  currentEventObj: 0,
-  currentEventUpdatedAt: new Date(),
   featuredNews: [],
   news: {},
   featureCount: 1,
@@ -60,7 +58,6 @@ const initialState = {
   showHeaderMessage: null,
   showCartMenu: false,
   CFURL: "https://dcfgweqx7od72.cloudfront.net",
-  newsTimeout: null,
   newCustomer: null,
   eyesShouldMove: false,
   compareSearchValue: "",
@@ -188,10 +185,6 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         hoverId: action.turnOn ? action.id : null
       });
-    case actionTypes.SET_NEWS_STEPPER:
-      return updateObject(state, {
-        newsTimeout: action.input
-      });
     case actionTypes.GET_BANNERS:
       return updateObject(state, {
         banners: action.input,
@@ -204,11 +197,6 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.GET_ALL_NEWS:
       return updateObject(state, {
         news: action.input
-      });
-    case actionTypes.SET_CURRENT_EVENT:
-      return updateObject(state, {
-        currentEventObj: action.index,
-        currentEventUpdatedAt: new Date()
       });
     case actionTypes.SET_EMAIL:
       return updateObject(state, { newsletterEmail: action.input });

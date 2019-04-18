@@ -82,6 +82,7 @@ const resolvers = {
       }))
         .filter(a => {
           if (JSON.stringify(a).includes("test")) return false;
+          if (a.total > 1000) return false;
           return true;
         })
         .sort({ orderDate: -1 });

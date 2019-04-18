@@ -53,29 +53,44 @@ const resolvers = {
     },
     getCoupon: async (_, input) => {
       // Get coupon details
-      let res = (await axios({
-        method: "post",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        url: "https://www.cksoti.com/posttocheckpromocode",
-        data: toUrlEncoded(input)
-      })).data;
+      let coupon = input.coupon;
+      let currentDate = moment();
 
-      res = JSON.parse(
-        convert.xml2json(
-          res
-            .replace("<br/><?xml?>", "</Data>")
-            .replace(
-              '<?xml version="1.0" encoding="utf-8"?>',
-              '<?xml version="1.0" encoding="utf-8"?><Data>'
-            ),
-          { compact: true, spaces: 4 }
-        )
-      )["Data"];
+      let res;
 
-      // Check if code exists
-      if (res.NoCode._text == "1") return { error: "Invalid Code Entered" };
+      while (res == null) {
+        res = (await axios({
+          method: "post",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          url: "https://www.cksoti.com/posttocheckpromocode",
+          data: toUrlEncoded({ coupon })
+        })).data;
+
+        res = JSON.parse(
+          convert.xml2json(
+            res
+              .replace("<br/><?xml?>", "</Data>")
+              .replace(
+                '<?xml version="1.0" encoding="utf-8"?>',
+                '<?xml version="1.0" encoding="utf-8"?><Data>'
+              ),
+            { compact: true, spaces: 4 }
+          )
+        )["Data"];
+
+        // Check if code exists
+        if (res.NoCode._text == "1") {
+          if (coupon.includes("-")) {
+            res = null;
+            coupon = coupon.replace(/-/g, "");
+            continue;
+          }
+
+          return { error: "Invalid Code Entered" };
+        }
+      }
 
       let company = res.Company._text;
 
@@ -104,8 +119,8 @@ const resolvers = {
       // Check if code is before date
       if (
         startDate != null &&
-        (moment().diff(startDate, "days") < 0 ||
-          moment().diff(startDate, "hours") < 0)
+        (currentDate.diff(startDate, "days") < 0 ||
+          currentDate.diff(startDate, "hours") < 0)
       )
         return {
           error: "Coupon is valid on " + moment(startDate).format("LL")
@@ -115,7 +130,7 @@ const resolvers = {
       if (
         startDate != null &&
         endDate != null &&
-        !moment().isBetween(startDate, endDate)
+        !currentDate.isBetween(startDate, endDate)
       )
         return { error: "Coupon has Expired" };
 

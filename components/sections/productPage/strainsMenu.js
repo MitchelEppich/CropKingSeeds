@@ -66,55 +66,47 @@ const strainsMenu = props => {
 
     let getStrain = (strain, index) => {
       return (
-        <Link
-          key={strain.sotiId}
-          href="/product"
-          as={`/product/${strain.name
-            .toLowerCase()
-            .split(" ")
-            .join("-")}`}
-        >
-          <li
-            key={index}
-            className={`text-black leading-loose cursor-pointer hover:bg-grey-lightest mt-1 w-full list-reset text-left pl-4 font-bold`}
-            onClick={e => {
-              let strains = props.misc.strains;
-              props.getStrain({ sotiId: strain.sotiId, strains }).then(res => {
-                props.setCurrentProduct({ product: res }).then(() => {
-                  let _index = 0;
-                  while (strain.price[_index] == -1) {
-                    _index++;
-                  }
-                  props.quickAddToCartQty(
-                    _index,
-                    props.shop.quickAddToCartQty,
-                    strain._id
-                  );
-                  props.modifyPotentialQuantity({
-                    potentialQuantity: props.cart.potentialQuantity,
-                    action: "SET",
-                    tag: strain._id,
-                    quantity: 1,
-                    max: props.cart.maxPerPackage
-                  });
-                  // Router.push(
-                  //   "/product",
-                  //   `/product/${strain.name
-                  //     .toLowerCase()
-                  //     .split(" ")
-                  //     .join("-")}`,
-                  //   { shallow: true }
-                  // );
+        <li
+          key={index}
+          className={`w-full text-black leading-loose cursor-pointer hover:bg-grey-lightest mt-1 list-reset text-left font-bold`}
+          onClick={e => {
+            let strains = props.misc.strains;
+            props.getStrain({ sotiId: strain.sotiId, strains }).then(res => {
+              props.setCurrentProduct({ product: res }).then(() => {
+                let _index = 0;
+                while (strain.price[_index] == -1) {
+                  _index++;
+                }
+                props.quickAddToCartQty(
+                  _index,
+                  props.shop.quickAddToCartQty,
+                  strain._id
+                );
+                props.modifyPotentialQuantity({
+                  potentialQuantity: props.cart.potentialQuantity,
+                  action: "SET",
+                  tag: strain._id,
+                  quantity: 1,
+                  max: props.cart.maxPerPackage
                 });
               });
-              if (props.misc.mediaSize == "sm") {
-                props.toggleStrainsMenu(false);
-              }
-            }}
+            });
+            if (props.misc.mediaSize == "sm") {
+              props.toggleStrainsMenu(false);
+            }
+          }}
+        >
+          <Link
+            key={strain.sotiId}
+            href="/product"
+            as={`/product/${strain.name
+              .toLowerCase()
+              .split(" ")
+              .join("-")}`}
           >
-            <a>{strain.name}</a>
-          </li>
-        </Link>
+            <a className="w-full inline-block pl-4">{strain.name}</a>
+          </Link>
+        </li>
       );
     };
 
