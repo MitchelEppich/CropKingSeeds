@@ -27,15 +27,15 @@ class Index extends Component {
   componentDidMount() {
     initGA();
     logPageView();
-    this.props.setCurrentEvent({
-      index: 0,
-      currentEventObj: this.props.misc.currentEventObj,
-      events: this.props.misc.featuredNews
-    });
-    if (this.props.misc.newsTimeout == null) {
-      let timeout = setInterval(this.newsStepper, 1000);
-      this.props.setNewsStepper({ timeout });
-    }
+    // this.props.setCurrentEvent({
+    //   index: 0,
+    //   currentEventObj: this.props.misc.currentEventObj,
+    //   events: this.props.misc.featuredNews
+    // });
+    // if (this.props.misc.newsTimeout == null) {
+    //   let timeout = setInterval(this.newsStepper, 1000);
+    //   this.props.setNewsStepper({ timeout });
+    // }
   }
 
   componentWillUnmount() {
@@ -64,15 +64,15 @@ class Index extends Component {
       </Layout>
     );
   }
-  newsStepper = () => {
-    if (moment().diff(this.props.misc.currentEventUpdatedAt, "seconds") > 5) {
-      this.props.setCurrentEvent({
-        index: this.props.misc.currentEventObj + 1,
-        currentEventObj: this.props.misc.currentEventObj,
-        events: this.props.misc.featuredNews
-      });
-    }
-  };
+  // newsStepper = () => {
+  //   if (moment().diff(this.props.misc.currentEventUpdatedAt, "seconds") > 5) {
+  //     this.props.setCurrentEvent({
+  //       index: this.props.misc.currentEventObj + 1,
+  //       currentEventObj: this.props.misc.currentEventObj,
+  //       events: this.props.misc.featuredNews
+  //     });
+  //   }
+  // };
 }
 
 const mapDispatchToProps = dispatch => {
