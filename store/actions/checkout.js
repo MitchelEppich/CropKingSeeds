@@ -743,15 +743,6 @@ const getActions = uri => {
           return a.tag == _orderDetails.shipping.shippingDetail.value;
         }).description;
 
-        //generate MG name
-        let chance = require("chance").Chance(
-          _orderDetails.payment.orderId.value
-        );
-
-        let generateName = chance.name({
-          nationality: "en"
-        });
-
         // Send email confirmation
         let products = Object.values(cart.items);
         products = products.map((product, index) => {
@@ -1052,10 +1043,14 @@ let processOrder = async (orderDetails, res, uri, idevAffiliate) => {
 
     let data = await makePromise(execute(link, operation));
     let _data = data.data.processOrder;
-    let url = _data.affiliateUrl;
-    if (url == null || !url.includes("http")) url = "";
-    let mo = _data.mo;
-    if (mo != null) mo = JSON.parse(mo);
+    let url, mo;
+
+    if (_data != null) {
+      url = _data.affiliateUrl;
+      if (url == null || !url.includes("http")) url = "";
+      mo = _data.mo;
+      if (mo != null) mo = JSON.parse(mo);
+    }
     resolve({ url, mo });
   });
 };

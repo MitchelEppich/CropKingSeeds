@@ -118,15 +118,12 @@ class Index extends Component {
       borderTopRightRadius: "5px"
     };
 
-    // let chance = require("chance").Chance(_orderId);
-    // let generateName = chance.name({ nationality: "en" });
-    let generateName = this.props.checkout.moneyGramName;
-
     return (
       <Layout {...this.props}>
         <div className="w-full mt-6 text-center">
           <div>
-            {this.props.checkout.affiliateUrl != null ? (
+            {this.props.checkout != null &&
+            this.props.checkout.affiliateUrl != null ? (
               <img
                 alt="cks confirmation"
                 hidden

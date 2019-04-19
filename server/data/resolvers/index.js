@@ -487,18 +487,29 @@ const resolvers = {
       }
     },
     processPayment: async (_, { input }) => {
-      // let { pivotal, bambora } = await getProcessorUsage();
-      // let { pivotal } = await getProcessorUsage();
+      // let res = await getProcessorUsage();
+      let { bambora, pivotal } = await getProcessorUsage();
       let _amount = parseFloat(input.amount);
       let response;
 
-      // if (
-      //   input.country.toLowerCase() == "canada" &&
-      //   (bambora.limit == -1 || bambora.available - _amount > 0)
-      // )
-      //   response = await processBambora(input);
-      // else if (pivotal.limit == -1 || pivotal.available - _amount > 0)
-      response = await processPivotal(input);
+      if (
+        (input.country.toLowerCase() == "canada" &&
+          (bambora.cad.limit == -1 || bambora.cad.available - _amount > 0)) ||
+        (input.country.toLowerCase() == "united states" &&
+          (bambora.usd.limit == -1 || bambora.usd.available - _amount > 0))
+      )
+        response = await processBambora(input);
+      else if (pivotal.limit == -1 || pivotal.available - _amount > 0)
+        response = await processPivotal(input);
+      else
+        response = {
+          transactionId: "NO_AVAILABLE_PROCESSOR",
+          status: "DECLINED",
+          processor: "Credit Card",
+          response: "No available processor",
+          approvalCode: "",
+          descriptor: ""
+        };
 
       return response;
     }
@@ -506,37 +517,49 @@ const resolvers = {
 };
 
 let processBambora = async input => {
-  let content = {
-    merchant_id: "225812615",
-    order_number: input.orderId,
-    amount: parseFloat(input.amount),
-    payment_method: "card",
-    card: {
-      name: input.cardHolderName,
-      number: input.cardNumber,
-      expiry_month: input.cardExpiry.slice(0, 2),
-      expiry_year: input.cardExpiry.slice(2),
-      cvd: input.cvv
-    }
-  };
+  try {
+    let content = {
+      merchant_id: "225812615",
+      order_number: input.orderId,
+      amount: parseFloat(input.amount),
+      payment_method: "card",
+      card: {
+        name: input.cardHolderName,
+        number: input.cardNumber,
+        expiry_month: input.cardExpiry.slice(0, 2),
+        expiry_year: input.cardExpiry.slice(2),
+        cvd: input.cvv
+      }
+    };
 
-  let beanstream = require("beanstream-node")(
-    "225812615",
-    "32f630b674F24A73941Ee23b9237874A"
-  );
+    let beanstream = require("beanstream-node")(
+      "225812615",
+      "32f630b674F24A73941Ee23b9237874A"
+    );
 
-  let res = await beanstream.payments.makePayment(content).catch(error => {
-    return error;
-  });
+    let res = await beanstream.payments.makePayment(content).catch(error => {
+      return error;
+    });
 
-  return {
-    transactionId: res.reference,
-    status: res.message.toLowerCase() == "approved" ? "APPROVED" : "DECLINED",
-    approvalCode: res.code,
-    response: res.status,
-    processor: "Bambora FD",
-    descriptor: "Vancoast Seeds"
-  };
+    return {
+      transactionId: res.reference,
+      status: res.message.toLowerCase() == "approved" ? "APPROVED" : "DECLINED",
+      approvalCode: res.code,
+      response: res.status,
+      processor: "Bambora FD",
+      descriptor: "Vancoast Seeds"
+    };
+  } catch (e) {
+    console.log(e);
+    return {
+      transactionId: "ISSUE_CONTACTING_PROCESSOR",
+      status: "DECLINED",
+      processor: "Bambora FD",
+      response: "Issue contacting the processor",
+      approvalCode: "",
+      descriptor: "Vancoast Seeds"
+    };
+  }
 };
 
 let processPivotal = async input => {
@@ -609,56 +632,98 @@ let processPivotal = async input => {
 };
 
 let getProcessorUsage = async () => {
-  // Bambora
-  // let bambora = JSON.parse(
-  //   convert.xml2json(
-  //     (await request({
-  //       method: "GET",
-  //       uri: "https://www.cksoti.com/getprocessorusage/bambora"
-  //     }))
-  //       .toLowerCase()
-  //       .replace("<br/><?xml?>", "</Data>")
-  //       .replace(
-  //         '<?xml version="1.0" encoding="utf-8"?>',
-  //         '<?xml version="1.0" encoding="utf-8"?><Data>'
-  //       ),
-  //     { compact: true, spaces: 4 }
-  //   )
-  // )["Data"];
-  // bambora = {
-  //   current: parseFloat(bambora.currentamount._text.replace(/[,$]/g, "")) || -1,
-  //   available:
-  //     parseFloat(bambora.availableamount._text.replace(/[,$]/g, "")) || -1,
-  //   limit:
-  //     parseFloat(bambora.amountlimitperday._text.replace(/[,$]/g, "")) || -1
-  // };
+  let bambora = {};
+  try {
+    bambora.cad = JSON.parse(
+      convert.xml2json(
+        (await request({
+          method: "GET",
+          uri: "https://www.cksoti.com/getprocessorusage/bambora/cad"
+        }))
+          .toLowerCase()
+          .replace("<br/><?xml?>", "</Data>")
+          .replace(
+            '<?xml version="1.0" encoding="utf-8"?>',
+            '<?xml version="1.0" encoding="utf-8"?><Data>'
+          ),
+        { compact: true, spaces: 4 }
+      )
+    )["Data"];
+    bambora.cad = {
+      current:
+        parseFloat(bambora.cad.currentamount._text.replace(/[,$]/g, "")) || -1,
+      available:
+        parseFloat(bambora.cad.availableamount._text.replace(/[,$]/g, "")) ||
+        -1,
+      limit:
+        parseFloat(bambora.cad.amountlimitperday._text.replace(/[,$]/g, "")) ||
+        -1
+    };
+  } catch (e) {
+    bambora.cad = {};
+  }
+  try {
+    bambora.usd = JSON.parse(
+      convert.xml2json(
+        (await request({
+          method: "GET",
+          uri: "https://www.cksoti.com/getprocessorusage/bambora/usa"
+        }))
+          .toLowerCase()
+          .replace("<br/><?xml?>", "</Data>")
+          .replace(
+            '<?xml version="1.0" encoding="utf-8"?>',
+            '<?xml version="1.0" encoding="utf-8"?><Data>'
+          ),
+        { compact: true, spaces: 4 }
+      )
+    )["Data"];
+    bambora.usd = {
+      current:
+        parseFloat(bambora.usd.currentamount._text.replace(/[,$]/g, "")) || -1,
+      available:
+        parseFloat(bambora.usd.availableamount._text.replace(/[,$]/g, "")) ||
+        -1,
+      limit:
+        parseFloat(bambora.usd.amountlimitperday._text.replace(/[,$]/g, "")) ||
+        -1
+    };
+  } catch (e) {
+    bambora.usd = {};
+  }
 
-  // Pivotal
-  let pivotal = JSON.parse(
-    convert.xml2json(
-      (await request({
-        method: "GET",
-        uri: "https://www.cksoti.com/getprocessorusage/pivotalkingmerch"
-      }))
-        .toLowerCase()
-        .replace("<br/><?xml?>", "</Data>")
-        .replace(
-          '<?xml version="1.0" encoding="utf-8"?>',
-          '<?xml version="1.0" encoding="utf-8"?><Data>'
-        ),
-      { compact: true, spaces: 4 }
-    )
-  )["Data"];
-  pivotal = {
-    current: parseFloat(pivotal.currentamount._text.replace(/[,$]/g, "")) || -1,
-    available:
-      parseFloat(pivotal.availableamount._text.replace(/[,$]/g, "")) || -1,
-    limit:
-      parseFloat(pivotal.amountlimitperday._text.replace(/[,$]/g, "")) || -1
-  };
+  // // Pivotal
+  let pivotal;
+  try {
+    pivotal = JSON.parse(
+      convert.xml2json(
+        (await request({
+          method: "GET",
+          uri: "https://www.cksoti.com/getprocessorusage/pivotalkingmerch/all"
+        }))
+          .toLowerCase()
+          .replace("<br/><?xml?>", "</Data>")
+          .replace(
+            '<?xml version="1.0" encoding="utf-8"?>',
+            '<?xml version="1.0" encoding="utf-8"?><Data>'
+          ),
+        { compact: true, spaces: 4 }
+      )
+    )["Data"];
+    pivotal = {
+      current:
+        parseFloat(pivotal.currentamount._text.replace(/[,$]/g, "")) || -1,
+      available:
+        parseFloat(pivotal.availableamount._text.replace(/[,$]/g, "")) || -1,
+      limit:
+        parseFloat(pivotal.amountlimitperday._text.replace(/[,$]/g, "")) || -1
+    };
+  } catch (e) {
+    pivotal = {};
+  }
 
-  // return { pivotal, bambora };
-  return { pivotal };
+  return { bambora, pivotal };
+  // return { pivotal };
 };
 
 let randomPhoneNumber = () => {

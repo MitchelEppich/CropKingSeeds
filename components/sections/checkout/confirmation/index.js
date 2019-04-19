@@ -70,7 +70,7 @@ const Confirmation = props => {
   return (
     <div className="w-full mt-6 text-center">
       <div>
-        {props.checkout.affiliateUrl != null ? (
+        {props.checkout != null && props.checkout.affiliateUrl != null ? (
           <img hidden src={props.checkout.affiliateUrl} />
         ) : null}
         <img

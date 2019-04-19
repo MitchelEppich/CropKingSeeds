@@ -113,44 +113,49 @@ class Index extends Component {
                   _orderDetails.details.ip.value
                 )
               ) {
-                this.props
-                  .acquireOrderId({ orderDetails: _orderDetails })
-                  .then(res => {
-                    let orderId = res.toString();
+                try {
+                  this.props
+                    .acquireOrderId({ orderDetails: _orderDetails })
+                    .then(res => {
+                      let orderId = res.toString();
 
-                    if (_orderDetails.payment.method.value == "Bitcoin") {
-                      payBitcoin(_orderDetails, orderId);
-                    }
-                    try {
-                      this.props
-                        .processOrder({
-                          idevAffiliate: this.props.checkout.idevCookie,
-                          orderId,
-                          cart: this.props.cart,
-                          orderDetails: {
-                            ..._orderDetails,
-                            currency: this.props.checkout.availableCurrency,
-                            shippingTypeDescription: this.props.checkout.shippingMethods.find(
-                              a => {
-                                return (
-                                  a.tag ==
-                                  _orderDetails.shipping.shippingDetail.value
-                                );
-                              }
-                            ).description
-                          },
-                          shippingMethods: this.props.checkout.shippingMethods
-                        })
-                        .then(res => {
-                          // this.props.toggleStepsCheckout(_stepsCheckout + 1);
-                          Router.push("/confirmation");
-                          this.props.toggleProcessing(false);
-                        });
-                    } catch (e) {
-                      this.props.setSotiError({ value: true });
-                      console.log("Failed to post order...");
-                    }
-                  });
+                      if (_orderDetails.payment.method.value == "Bitcoin") {
+                        payBitcoin(_orderDetails, orderId);
+                      }
+                      try {
+                        this.props
+                          .processOrder({
+                            idevAffiliate: this.props.checkout.idevCookie,
+                            orderId,
+                            cart: this.props.cart,
+                            orderDetails: {
+                              ..._orderDetails,
+                              currency: this.props.checkout.availableCurrency,
+                              shippingTypeDescription: this.props.checkout.shippingMethods.find(
+                                a => {
+                                  return (
+                                    a.tag ==
+                                    _orderDetails.shipping.shippingDetail.value
+                                  );
+                                }
+                              ).description
+                            },
+                            shippingMethods: this.props.checkout.shippingMethods
+                          })
+                          .then(res => {
+                            // this.props.toggleStepsCheckout(_stepsCheckout + 1);
+                            Router.push("/confirmation");
+                            this.props.toggleProcessing(false);
+                          });
+                      } catch (e) {
+                        this.props.setSotiError({ value: true });
+                        console.log("Failed to post order...");
+                      }
+                    });
+                } catch (e) {
+                  this.props.setSotiError({ value: true });
+                  console.log("Failed to acquire order id...");
+                }
               } else {
                 // Purge the store.
                 this.props.purgeCart();
@@ -245,8 +250,6 @@ class Index extends Component {
             {_stepsCheckout == 2 ? <BillingAddress {...this.props} /> : null}
 
             {_stepsCheckout == 3 ? <Payment {...this.props} /> : null}
-
-            {_stepsCheckout == 4 ? <Confirmation {...this.props} /> : null}
           </div>
 
           <div className="w-main mx-auto">

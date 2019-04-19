@@ -308,7 +308,12 @@ const resolvers = {
       let coupon = _input.Coupon;
       let total = _input.Total;
 
-      let $mo = await getMoProfileSoti(orderId);
+      let paymentMethod = _input.Payment_Method;
+
+      let $mo;
+
+      if (paymentMethod.toLowerCase() == "moneygram")
+        $mo = await getMoProfileSoti(orderId);
 
       resolvers.Mutation.createOrder(null, {
         input: {
@@ -347,7 +352,7 @@ const resolvers = {
           ccType: _input.Typeofcard,
           orderDate: _input.Order_Date,
           ip: _input.CardHolderIp,
-          paymentMethod: _input.Payment_Method,
+          paymentMethod,
           paymentStatus: _input.credit_card_remark
         }
       });
