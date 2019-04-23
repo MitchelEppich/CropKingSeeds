@@ -27,19 +27,6 @@ class Index extends Component {
   componentDidMount() {
     initGA();
     logPageView();
-    // this.props.setCurrentEvent({
-    //   index: 0,
-    //   currentEventObj: this.props.misc.currentEventObj,
-    //   events: this.props.misc.featuredNews
-    // });
-    // if (this.props.misc.newsTimeout == null) {
-    //   let timeout = setInterval(this.newsStepper, 1000);
-    //   this.props.setNewsStepper({ timeout });
-    // }
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.props.misc.newsTimeout);
   }
 
   render() {
@@ -64,15 +51,6 @@ class Index extends Component {
       </Layout>
     );
   }
-  // newsStepper = () => {
-  //   if (moment().diff(this.props.misc.currentEventUpdatedAt, "seconds") > 5) {
-  //     this.props.setCurrentEvent({
-  //       index: this.props.misc.currentEventObj + 1,
-  //       currentEventObj: this.props.misc.currentEventObj,
-  //       events: this.props.misc.featuredNews
-  //     });
-  //   }
-  // };
 }
 
 const mapDispatchToProps = dispatch => {
@@ -84,9 +62,7 @@ const mapDispatchToProps = dispatch => {
     getStrains: () => dispatch(actions.getStrains()),
     getBanners: () => dispatch(actions.getBanners()),
     toggleFilter: input => dispatch(actions.toggleFilter(input)),
-    setNewsStepper: input => dispatch(actions.setNewsStepper(input)),
     changeStep: changeObj => dispatch(actions.changeStep(changeObj)),
-    setCurrentEvent: input => dispatch(actions.setCurrentEvent(input)),
     getStrain: input => dispatch(actions.getStrain(input)),
     getAllNews: () => dispatch(actions.getAllNews()),
     setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),

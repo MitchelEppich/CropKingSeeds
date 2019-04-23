@@ -66,7 +66,6 @@ const actionTypes = {
   SET_SEARCH: "SET_SEARCH",
   SET_SUGGESTIONS: "SET_SUGGESTIONS",
   SET_HIGHLIGHTED_SUGGESTION: "SET_HIGHLIGHTED_SUGGESTION",
-  SET_CURRENT_EVENT: "SET_CURRENT_EVENT",
   GET_ALL_NEWS: "GET_ALL_NEWS",
   GET_FEATURED_NEWS: "GET_FEATURED_NEWS",
   SHOW_MORE_FEATURES: "SHOW_MORE_FEATURES",
@@ -75,7 +74,6 @@ const actionTypes = {
   TOGGLE_CART_MENU: "TOGGLE_CART_MENU",
   GET_BANNERS: "GET_BANNERS",
   GET_RELATED_LIST: "GET_RELATED_LIST",
-  SET_NEWS_STEPPER: "SET_NEWS_STEPPER",
   IS_REPEAT_CUSTOMER: "IS_REPEAT_CUSTOMER",
   COMPARE_STRAIN: "COMPARE_STRAIN",
   SET_EYES_SHOULD_MOVE: "SET_EYES_SHOULD_MOVE",
@@ -125,27 +123,12 @@ const actions = {
       input: input.value
     };
   },
-  setNewsStepper: input => {
-    return {
-      type: actionTypes.SET_NEWS_STEPPER,
-      input: input.timeout
-    };
-  },
   setVisibleScreen: input => {
     return {
       type: actionTypes.SET_VISIBLE_SCREEN,
       input: input.input,
       group: input.group,
       clearAll: input.clearAll
-    };
-  },
-  setCurrentEvent: input => {
-    let total = input.events.length;
-    let index = Math.max(0, Math.min(input.index, total)) % total || 0;
-
-    return {
-      type: actionTypes.SET_CURRENT_EVENT,
-      index: index
     };
   },
   setMediaSize: input => {

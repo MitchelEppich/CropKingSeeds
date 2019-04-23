@@ -361,18 +361,26 @@ class Layout extends Component {
         </div>
         {this.props.misc.sotiError ? (
           <div className="w-screen h-screen bg-white fixed pin-t pin-l z-999 pt-32 flex justify-center">
-            <p className="text-2xl sm:300 w-4/5 text-center h-200 mt-12">
-              Sorry, we are experiencing technical difficulties.
-              <br /> Please try again later.
+            <div className="text-2xl sm:300 w-4/5 text-center h-200 mt-12">
+              <p>
+                Sorry, we are experiencing technical difficulties.
+                <br /> Please try again later.
+              </p>
               <br />
-              <br />
+
               <div class="lds-ellipsis">
                 <div />
                 <div />
                 <div />
                 <div />
               </div>
-            </p>
+              <br />
+              <br />
+              <p className="text-base">
+                If you have any concerns, Call our Customer Support toll-free at
+              </p>
+              <p className="text-base font-bold pt-2">+1-844 (276-7546)</p>
+            </div>
           </div>
         ) : null}
       </React.Fragment>
