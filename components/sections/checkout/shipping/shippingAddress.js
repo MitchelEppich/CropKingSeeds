@@ -717,17 +717,8 @@ const ShippingAddress = props => {
                   value: _value,
                   tag: _tag
                 });
-                e.target.setCustomValidity("");
               }}
-              onInvalid={e => {
-                e.target.setCustomValidity("Must be a valid phone number");
-              }}
-              maxLength="15"
-              pattern={
-                // props.checkout.orderDetails.shipping.noEmail ?
-                "^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$"
-                // : null
-              }
+              maxLength="30"
               placeholder="Phone"
               className="p-2 w-full"
             />
