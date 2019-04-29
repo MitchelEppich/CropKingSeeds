@@ -1118,7 +1118,8 @@ let getNewOrderId = async uri => {
 };
 
 let buildOrderPost = orderDetails => {
-  let _orderDetails = orderDetails;
+  let _orderDetails = { ...orderDetails };
+
   let orderPost = {
     Website_From: "cropkingseeds.com",
     Order_Date: moment()
@@ -1136,6 +1137,15 @@ let buildOrderPost = orderDetails => {
     // delete _orderDetails.payment.ccExpireYear;
   }
   delete _orderDetails.cardHolderIp;
+  delete _orderDetails.payment.coupon;
+
+  if (_orderDetails.coupon != null && _orderDetails.coupon.code != null) {
+    _orderDetails.payment.coupon = {
+      value: _orderDetails.coupon.code,
+      tag: "Coupon"
+    };
+  }
+
   for (let key of Object.keys(_orderDetails)) {
     if (key == "undefined" || key == "coupon" || key == "currency") continue;
     let prefix = (() => {
@@ -1181,6 +1191,7 @@ let buildOrderPost = orderDetails => {
       }
     }
   }
+
   return orderPost;
 };
 

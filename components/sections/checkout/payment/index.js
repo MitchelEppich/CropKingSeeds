@@ -16,9 +16,16 @@ const Payment = props => {
 
   if (_orderDetails.billing == null) return null;
 
-  let allowCC = !props.checkout.noCreditZip.includes(
-    _orderDetails.billing.postalZip.value.toLowerCase().replace(/ /g, "")
-  );
+  let allowCC =
+    !props.checkout.noCreditZip.includes(
+      _orderDetails.billing.postalZip.value.toLowerCase().replace(/ /g, "")
+    ) &&
+    !props.checkout.noCreditZip.includes(
+      _orderDetails.billing.postalZip.value
+        .toLowerCase()
+        .replace(/ /g, "")
+        .slice(0, 3)
+    );
 
   let titleBox = {
     borderBottom: "2px solid #505050",

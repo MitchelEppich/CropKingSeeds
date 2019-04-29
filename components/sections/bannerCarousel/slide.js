@@ -17,7 +17,6 @@ const slide = props => {
 
   let onClick = e => {
     if (!isClient) return;
-    console.log(props.url);
     if (props.url == null) {
       e.stopPropagation();
       return;

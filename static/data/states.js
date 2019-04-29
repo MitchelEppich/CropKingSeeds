@@ -45,7 +45,8 @@ exports.statesUS = [
   "Utah",
   "Vermont",
   "Virginia",
-  "Washington",
+  "Washington, DC",
+  "Washington State",
   "West Virginia",
   "Wisconsin",
   "Wyoming"

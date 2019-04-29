@@ -22,7 +22,7 @@ async function getCancel(req, res) {
 }
 async function getSuccess(req, res) {
   let _post = req.body;
-  console.log("SUCCESS", _post);
+
   res.send("SUCCESSED");
 }
 async function getVerify(req, res) {

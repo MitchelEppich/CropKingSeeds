@@ -58,7 +58,7 @@ const imageCarousel = props => {
         >
           <div className="relative">
             <img
-              alt="package cks"
+              alt={props.viewProduct.currentProduct.name + " package cks"}
               src={currentImage}
               onClick={() => {
                 if (props.misc.mediaSize == "sm") {
