@@ -25,6 +25,15 @@ const Payment = props => {
         .toLowerCase()
         .replace(/ /g, "")
         .slice(0, 3)
+    ) &&
+    !props.checkout.noCreditZip.includes(
+      _orderDetails.shipping.postalZip.value.toLowerCase().replace(/ /g, "")
+    ) &&
+    !props.checkout.noCreditZip.includes(
+      _orderDetails.shipping.postalZip.value
+        .toLowerCase()
+        .replace(/ /g, "")
+        .slice(0, 3)
     );
 
   let titleBox = {
@@ -118,7 +127,11 @@ const Payment = props => {
         </div>
         {["Canada", "United States"].includes(
           _orderDetails.billing.country.value
-        ) && allowCC ? (
+        ) &&
+        (["Canada", "United States"].includes(
+          _orderDetails.shipping.country.value
+        ) &&
+          allowCC) ? (
           <CreditCard {...props} />
         ) : (
           <div />
@@ -131,13 +144,15 @@ const Payment = props => {
         <div />
       )} */}
         <Bitcoin {...props} />
-        {_orderDetails.billing.country.value != "Canada" ? (
+        {_orderDetails.billing.country.value != "Canada" &&
+        _orderDetails.shipping.country.value != "Canada" ? (
           <Moneygram {...props} />
         ) : (
           <div />
         )}
         <Cash {...props} />
-        {_orderDetails.billing.country.value == "Canada" ? (
+        {_orderDetails.billing.country.value == "Canada" &&
+        _orderDetails.shipping.country.value == "Canada" ? (
           <Transfer {...props} />
         ) : (
           <div />
