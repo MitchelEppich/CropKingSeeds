@@ -155,7 +155,7 @@ const resolvers = {
         }
       };
       return request(options)
-        .then(function(parsedBody) {
+        .then(function (parsedBody) {
           // POST succeeded...
           if (input.review != null) {
             if (strain.reviews == null) strain.reviews = {};
@@ -214,7 +214,7 @@ const resolvers = {
           strain.save();
           return strain;
         })
-        .catch(function(err) {
+        .catch(function (err) {
           // POST failed...
           console.log(err);
         });

@@ -33,7 +33,6 @@ const handle = app.getRequestHandler();
 
 const subscriptionsPath = "/subscriptions";
 // const subscriptionsEndpoint = `ws://${url}:${port}${subscriptionsPath}`;
-// const subscriptionsEndpoint = `wss://142.93.159.223${subscriptionsPath}`;
 const subscriptionsEndpoint = `wss://www.cropkingseeds.com${subscriptionsPath}`;
 
 mongoose.Promise = global.Promise;
@@ -108,7 +107,7 @@ app
       app.serveStatic(req, res, path.resolve("./static/sitemap.xml"));
     });
     server.use(
-      "/graphql",
+      "/vlgzpjsbqsmtaqkvgokwkcldowhfwxaiqsxyfhuydyhtzxyrzjyihphbfsxwhjnp",
       bodyParser.json(),
       graphqlExpress((req, res) => {
         return {
@@ -125,7 +124,7 @@ app
       server.use(
         "/graphiql",
         graphiqlExpress({
-          endpointURL: "/graphql",
+          endpointURL: "/vlgzpjsbqsmtaqkvgokwkcldowhfwxaiqsxyfhuydyhtzxyrzjyihphbfsxwhjnp",
           subscriptionsEndpoint: subscriptionsEndpoint
         })
       );
