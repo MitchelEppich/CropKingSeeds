@@ -16,17 +16,10 @@ const request = require("request-promise");
 
 const resolvers = {
   Query: {
-    order: (_, { input }) => {
-      return Order.findOne(input);
-    },
     isRepeatCustomer: async (_, { input }) => {
       let order = await Order.findOne(input);
       if (order == null) return false;
       return true;
-    },
-    allOrders: async (_, { filter }) => {
-      let query = filter ? { $or: orderFilters(filter) } : {};
-      return Order.find(query);
     },
     getRandomWinnerBetweenDates: async (_, { input }) => {
       let _start =

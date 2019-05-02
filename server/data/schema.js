@@ -8,8 +8,8 @@ type Query {
   strain(input: StrainInput!): Strain
   fetchCurrentProduct(input: StrainNameInput!): Strain
   allStrains(filter: StrainFilter): [Strain]!
-  order(input: OrderInput!): Order
-  allOrders(filter: OrderFilter): [Order]!
+
+
   news(input: NewsInput!): News
   allNews: [News]!
   allFeaturedNews: [News]!

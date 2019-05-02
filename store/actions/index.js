@@ -26,8 +26,9 @@ import Compare from "./compare";
 
 import { inferStrainData } from "../utilities/strain";
 
-// const uri = "http://127.0.0.1:3000/vlgzpjsbqsmtaqkvgokwkcldowhfwxaiqsxyfhuydyhtzxyrzjyihphbfsxwhjnp";
-const uri = "https://www.cropkingseeds.com/vlgzpjsbqsmtaqkvgokwkcldowhfwxaiqsxyfhuydyhtzxyrzjyihphbfsxwhjnp";
+const uri =
+  "http://127.0.0.1:3000/vlgzpjsbqsmtaqkvgokwkcldowhfwxaiqsxyfhuydyhtzxyrzjyihphbfsxwhjnp";
+// const uri = "https://www.cropkingseeds.com/vlgzpjsbqsmtaqkvgokwkcldowhfwxaiqsxyfhuydyhtzxyrzjyihphbfsxwhjnp";
 
 const imports = {
   ...Cart(uri),
@@ -221,8 +222,8 @@ const actions = {
       input.direction > 0
         ? Math.max(0, Math.min(input.index, bannersLength)) % bannersLength || 0
         : input.index > 0
-          ? input.index
-          : bannersLength;
+        ? input.index
+        : bannersLength;
     return {
       type: actionTypes.CHANGE_BANNER_SLIDE,
       index: index
@@ -592,7 +593,7 @@ const actions = {
     };
   },
   calculateFpsAvg: fpsArr => {
-    let sum = fpsArr.reduce(function (a, b) {
+    let sum = fpsArr.reduce(function(a, b) {
       return a + b;
     });
     let avg = sum / fpsArr.length;
