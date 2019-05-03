@@ -38,7 +38,7 @@ const data = props => {
       ? {
           id: "Indica",
           label: "Indica",
-          value: _product.indica * 100,
+          value: Math.round(_product.indica * 100),
           color: "hsl(74, 70%, 50%)"
         }
       : null,
@@ -46,7 +46,7 @@ const data = props => {
       ? {
           id: "Sativa",
           label: "Sativa",
-          value: _product.sativa * 100,
+          value: Math.round(_product.sativa * 100),
           color: "hsl(147, 48%, 39%)"
         }
       : null,
@@ -56,7 +56,7 @@ const data = props => {
       ? {
           id: "Ruderalis",
           label: "Ruderalis",
-          value: _product.ruderalis * 100,
+          value: Math.round(_product.ruderalis * 100),
           color: "hsl(355, 86%, 55%)"
         }
       : null
