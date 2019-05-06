@@ -38,6 +38,17 @@ const resolvers = {
     news: (_, { input }) => {
       return News.findOne(input);
     },
+    // getEmails: async (_, { input }) => {
+    //   let news = (await Email.find({})).map(a => a.email);
+    //   let orders = (await _Order.find({})).map(a => {
+    //     return [a.shipEmail, a.billEmail];
+    //   });
+    //   return [...new Set([...news, ...[].concat.apply([], orders)])].filter(
+    //     a => {
+    //       return a != null && a.includes("@");
+    //     }
+    //   );
+    // },
     getUniqueMOProfile: async _ => {
       let wa = await Address.findOne({});
       if (wa == null) {

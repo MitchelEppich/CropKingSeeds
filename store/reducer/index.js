@@ -102,7 +102,7 @@ const initialState = {
     checkout:
       "Sorry, your cart is empty! Looks like you have no seeds in your shopping cart. Check back after more shopping for cannabis seeds. Go to the Shop Page and check out all our marijuana seeds."
   },
-  sotiError: false,
+  sotiError: null,
   mo: null
 };
 

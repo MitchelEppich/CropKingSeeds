@@ -92,96 +92,118 @@ class Index extends Component {
         <form
           onSubmit={e => {
             e.preventDefault();
-            if (!isClient) return;
+            try {
+              if (!isClient) return;
 
-            if (this.props.checkout.processing && _stepsCheckout == 3) return;
+              if (this.props.checkout.processing && _stepsCheckout == 3) return;
 
-            if (
-              _stepsCheckout == 4 &&
-              _orderDetails.payment != null &&
-              _orderDetails.payment.method != null &&
-              _orderDetails.payment.method.value == "Bitcoin"
-            ) {
-              payBitcoin(
-                _orderDetails,
-                _orderDetails.payment.orderId.value.toString()
-              );
-            } else if (_stepsCheckout == 3) {
-              this.props.toggleProcessing(true);
               if (
-                !this.props.checkout.blockedIps.includes(
-                  _orderDetails.details.ip.value
-                )
+                _stepsCheckout == 4 &&
+                _orderDetails.payment != null &&
+                _orderDetails.payment.method != null &&
+                _orderDetails.payment.method.value == "Bitcoin"
               ) {
+                payBitcoin(
+                  _orderDetails,
+                  _orderDetails.payment.orderId.value.toString()
+                );
+              } else if (_stepsCheckout == 3) {
                 try {
-                  this.props
-                    .acquireOrderId({ orderDetails: _orderDetails })
-                    .then(res => {
-                      let orderId = res.toString();
+                  this.props.toggleProcessing(true);
 
-                      if (_orderDetails.payment.method.value == "Bitcoin") {
-                        payBitcoin(_orderDetails, orderId);
-                      }
-                      try {
-                        this.props
-                          .processOrder({
-                            idevAffiliate: this.props.checkout.idevCookie,
-                            orderId,
-                            cart: this.props.cart,
-                            orderDetails: {
-                              ..._orderDetails,
-                              currency: this.props.checkout.availableCurrency,
-                              shippingTypeDescription: this.props.checkout.shippingMethods.find(
-                                a => {
-                                  return (
-                                    a.tag ==
-                                    _orderDetails.shipping.shippingDetail.value
-                                  );
-                                }
-                              ).description
-                            },
-                            shippingMethods: this.props.checkout.shippingMethods
-                          })
-                          .then(res => {
-                            // this.props.toggleStepsCheckout(_stepsCheckout + 1);
-                            Router.push("/confirmation");
-                            this.props.toggleProcessing(false);
-                          });
-                      } catch (e) {
-                        this.props.setSotiError({ value: true });
-                        console.log("Failed to post order...");
-                      }
+                  if (
+                    !this.props.checkout.blockedIps.includes(
+                      _orderDetails.details.ip.value
+                    )
+                  ) {
+                    try {
+                      this.props
+                        .acquireOrderId({ orderDetails: _orderDetails })
+                        .then(res => {
+                          let orderId = res.toString();
+
+                          if (_orderDetails.payment.method.value == "Bitcoin") {
+                            payBitcoin(_orderDetails, orderId);
+                          }
+                          try {
+                            this.props
+                              .processOrder({
+                                idevAffiliate: this.props.checkout.idevCookie,
+                                orderId,
+                                cart: this.props.cart,
+                                orderDetails: {
+                                  ..._orderDetails,
+                                  currency: this.props.checkout
+                                    .availableCurrency,
+                                  shippingTypeDescription: this.props.checkout.shippingMethods.find(
+                                    a => {
+                                      return (
+                                        a.tag ==
+                                        _orderDetails.shipping.shippingDetail
+                                          .value
+                                      );
+                                    }
+                                  ).description
+                                },
+                                shippingMethods: this.props.checkout
+                                  .shippingMethods
+                              })
+                              .then(res => {
+                                // this.props.toggleStepsCheckout(_stepsCheckout + 1);
+                                Router.push("/confirmation");
+                                this.props.toggleProcessing(false);
+                              });
+                          } catch (e) {
+                            this.props.setSotiError({
+                              value: "SYSTEM ERROR C-100"
+                            });
+                            console.log("Failed to post order...");
+                          }
+                        });
+                    } catch (e) {
+                      this.props.setSotiError({
+                        value: "SYSTEM ERROR C-101"
+                      });
+                      console.log("Failed to acquire order id...");
+                    }
+                  } else {
+                    // Purge the store.
+                    this.props.purgeCart();
+                    this.props.purgeOrderDetails({
+                      orderDetails: _orderDetails
                     });
+                    this.props.toggleProcessing(false);
+                    // Redirect to 404
+
+                    Router.push("/404");
+                  }
                 } catch (e) {
-                  this.props.setSotiError({ value: true });
-                  console.log("Failed to acquire order id...");
+                  this.props.setSotiError({
+                    value: "SYSTEM ERROR C-102"
+                  });
+                  console.log("Failed to acquire ip...");
                 }
               } else {
-                // Purge the store.
-                this.props.purgeCart();
-                this.props.purgeOrderDetails({
-                  orderDetails: _orderDetails
-                });
-                this.props.toggleProcessing(false);
-                // Redirect to 404
-
-                Router.push("/404");
+                _stepsCheckout < 4
+                  ? (() => {
+                      this.props.toggleStepsCheckout(_stepsCheckout + 1);
+                      if (
+                        _orderDetails.details != null &&
+                        _orderDetails.details.saveForLater &&
+                        _stepsCheckout == 2
+                      ) {
+                        this.props.storeOrderDetails({
+                          orderDetails: _orderDetails
+                        });
+                      }
+                    })()
+                  : null;
               }
-            } else {
-              _stepsCheckout < 4
-                ? (() => {
-                    this.props.toggleStepsCheckout(_stepsCheckout + 1);
-                    if (
-                      _orderDetails.details != null &&
-                      _orderDetails.details.saveForLater &&
-                      _stepsCheckout == 2
-                    ) {
-                      this.props.storeOrderDetails({
-                        orderDetails: _orderDetails
-                      });
-                    }
-                  })()
-                : null;
+            } catch (e) {
+              this.props.setSotiError({
+                value: "SYSTEM ERROR C-103"
+              });
+              console.log("Failed to submit order...");
             }
           }}
         >

@@ -33,7 +33,7 @@ const Coupon = props => {
               items: props.cart.items
             });
           } catch (e) {
-            props.setSotiError({ value: true });
+            props.setSotiError({ value: "SYSTEM ERROR C-100" });
             console.log("Failed to get coupon...");
           }
         }}

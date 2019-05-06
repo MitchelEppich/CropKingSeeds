@@ -34,6 +34,8 @@ type Query {
 
   getTrustPilotRating: Float
 
+  getEmails: [String]
+
   getDailyMessage: String
 }
 

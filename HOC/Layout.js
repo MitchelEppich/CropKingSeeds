@@ -94,7 +94,7 @@ class Layout extends Component {
         2000
       );
     });
-    registerServiceWorker();
+    // registerServiceWorker();
     // iframe = document.createElement("iframe");
     // iframe.id = "iframe";
     // iframe.style.cssText = "display: none";
@@ -152,7 +152,7 @@ class Layout extends Component {
     try {
       this.props.getExchangeRates();
     } catch (e) {
-      this.props.setSotiError({ value: true });
+      this.props.setSotiError({ value: "SYSTEM ERROR R-100" });
       console.log("Failed to fetch exchange rate...");
     }
   }
@@ -359,12 +359,16 @@ class Layout extends Component {
           </React.Fragment>
           {/* )} */}
         </div>
-        {this.props.misc.sotiError ? (
+        {this.props.misc.sotiError != null ? (
           <div className="w-screen h-screen bg-white fixed pin-t pin-l z-999 pt-32 flex justify-center">
             <div className="text-2xl sm:300 w-4/5 text-center h-200 mt-12">
               <p>
                 Sorry, we are experiencing technical difficulties.
                 <br /> Please try again later.
+                <br />{" "}
+                <p className="text-sm pt-2 font-bold">
+                  ( {this.props.misc.sotiError} )
+                </p>
               </p>
               <br />
 

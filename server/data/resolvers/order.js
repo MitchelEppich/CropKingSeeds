@@ -266,12 +266,21 @@ const resolvers = {
       return orderId;
     },
     createOrder: async (_, { input }) => {
+      let $ = { ...input };
       let order;
       // Check if orderId has already been acquired
-      order = (await Order.find({ orderId: input.orderId }))[0];
+      order = await Order.find({ orderId: input.orderId });
+
+      if (order != null) {
+        order = order.filter(a => {
+          return a.billFullName == null;
+        });
+
+        order = order[0];
+      }
 
       // If it exist, remove as it is just a placeholder
-      if (order != null) order.remove();
+      // if (order != null) order.remove();
 
       // Create a new object
       order = new Order({
