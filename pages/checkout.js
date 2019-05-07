@@ -55,8 +55,13 @@ class Index extends Component {
     if (JSON.stringify(error) != JSON.stringify(this.props.checkout.error)) {
       this.props.setError({ value: error });
     }
+
     // Update if price has changed
-    if (this.props.cart.price != prevProps.cart.price) {
+    if (
+      this.props.cart.price != prevProps.cart.price ||
+      this.props.checkout.shippingMethods == null ||
+      this.props.checkout.shippingMethods.length == 0
+    ) {
       this.updateShippingMethod();
     }
   }
@@ -111,11 +116,15 @@ class Index extends Component {
                 try {
                   this.props.toggleProcessing(true);
 
+                  let ip = "0.0.0.0";
                   if (
-                    !this.props.checkout.blockedIps.includes(
-                      _orderDetails.details.ip.value
-                    )
-                  ) {
+                    _orderDetails != null &&
+                    _orderDetails.details &&
+                    _orderDetails.details.ip != null &&
+                    _orderDetails.details.ip.value != null
+                  )
+                    ip = _orderDetails.details.ip.value;
+                  if (!this.props.checkout.blockedIps.includes(ip)) {
                     try {
                       this.props
                         .acquireOrderId({ orderDetails: _orderDetails })

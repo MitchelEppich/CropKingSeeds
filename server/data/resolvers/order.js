@@ -8,6 +8,8 @@ const StrainResolver = require("./strain");
 
 // const pubsub = new PubSub();
 
+const mongoose = require("mongoose");
+
 const axios = require("axios");
 const moment = require("moment");
 const convert = require("xml-js");
@@ -85,7 +87,7 @@ const resolvers = {
         }
       }
 
-      let company = res.Company._text;
+      let company = res != null && res.Company != null ? res.Company._text : "";
 
       // Check if code is for CKS
       if (company != "cropkingseeds.com")
@@ -267,28 +269,35 @@ const resolvers = {
     },
     createOrder: async (_, { input }) => {
       let $ = { ...input };
+      if ($.orderId == null) return;
       let order;
       // Check if orderId has already been acquired
-      order = await Order.find({ orderId: input.orderId });
+      order = await Order.find({ orderId: $.orderId });
 
       if (order != null) {
         order = order.filter(a => {
-          return a.billFullName == null;
+          return (
+            a.billFullName == null &&
+            a.billCity == null &&
+            a.billAddress == null &&
+            a.billCountry == null
+          );
         });
-
         order = order[0];
       }
 
-      // If it exist, remove as it is just a placeholder
-      // if (order != null) order.remove();
-
       // Create a new object
-      order = new Order({
-        ...input
-      });
+      let id =
+        order != null && order._id != null
+          ? order._id
+          : new mongoose.mongo.ObjectID();
+      order = await Order.findOneAndUpdate(
+        { _id: id },
+        { $set: { ...$ } },
+        { new: true, upsert: true }
+      );
 
-      order.save();
-      return order.toObject();
+      return order;
     },
     processOrder: async (_, { input }) => {
       let _input = JSON.parse(input.content);

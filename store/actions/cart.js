@@ -52,7 +52,11 @@ const getActions = uri => {
         let _coupon = input.coupon;
         let _max = input.max;
         for (let key of Object.keys(_items)) {
-          if (input.itemId == null || key.includes(input.itemId)) {
+          if (
+            input == null ||
+            input.itemId == null ||
+            key.includes(input.itemId)
+          ) {
             let _item = _items[key];
             dispatch(
               objects.modifyCart({

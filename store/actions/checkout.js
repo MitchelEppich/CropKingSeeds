@@ -233,7 +233,7 @@ const getActions = uri => {
         let $orderDetails = JSON.stringify(
           (() => {
             let o = { ..._orderDetails };
-            // delete o.payment;
+            delete o.payment;
             return o;
           })()
         );
@@ -277,7 +277,7 @@ const getActions = uri => {
         let $orderDetails = JSON.stringify(
           (() => {
             let o = { ..._orderDetails };
-            // delete o.payment;
+            delete o.payment;
             return o;
           })()
         );
@@ -393,7 +393,7 @@ const getActions = uri => {
       let $orderDetails = JSON.stringify(
         (() => {
           let o = { ..._orderDetails };
-          // delete o.payment;
+          delete o.payment;
           return o;
         })()
       );
@@ -462,7 +462,7 @@ const getActions = uri => {
       let $orderDetails = JSON.stringify(
         (() => {
           let o = { ..._orderDetails };
-          // delete o.payment;
+          delete o.payment;
           return o;
         })()
       );
@@ -529,14 +529,24 @@ const getActions = uri => {
               query: query.getCoupon,
               variables: { ...input }
             };
-            _coupon = (await makePromise(execute(link, operation))).data
-              .getCoupon;
+            try {
+              _coupon = (await makePromise(execute(link, operation))).data
+                .getCoupon;
+            } catch (e) {
+              console.log(e);
+              _coupon = { error: "Error Fetching Coupon" };
+            }
             _orderDetails.coupon = _coupon;
             break;
           case "REMOVE":
             delete _orderDetails.coupon;
             _coupon = input.coupon;
             break;
+        }
+
+        if (_coupon == null) {
+          _coupon = { error: "Error Fetching Coupon" };
+          _orderDetails.coupon = _coupon;
         }
 
         // Send Coupon to Cart for logic
@@ -553,7 +563,7 @@ const getActions = uri => {
         let $orderDetails = JSON.stringify(
           (() => {
             let o = { ..._orderDetails };
-            // delete o.payment;
+            delete o.payment;
             return o;
           })()
         );
@@ -668,7 +678,7 @@ const getActions = uri => {
             let $orderDetails = JSON.stringify(
               (() => {
                 let o = { ..._orderDetails };
-                // delete o.payment;
+                delete o.payment;
                 return o;
               })()
             );
