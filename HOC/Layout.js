@@ -372,7 +372,7 @@ class Layout extends Component {
               </p>
               <br />
 
-              <div class="lds-ellipsis">
+              <div className="lds-ellipsis">
                 <div />
                 <div />
                 <div />

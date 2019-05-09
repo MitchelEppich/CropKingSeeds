@@ -1,5 +1,5 @@
 import React from "react";
-import Caroulsel from "../germination/carousel/";
+import Carousel from "../germination/carousel/";
 import ExtraInfo from "./extraInfo";
 
 const Germination = props => {
@@ -16,7 +16,7 @@ const Germination = props => {
           </p>
 
           <div className="pt-1 w-full mb-16">
-            <Caroulsel {...props} />
+            <Carousel {...props} />
           </div>
           <div className="w-full mx-auto h-full">
             <ExtraInfo {...props} />
