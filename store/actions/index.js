@@ -26,9 +26,9 @@ import Compare from "./compare";
 
 import { inferStrainData } from "../utilities/strain";
 
+// const uri = "http://127.0.0.1:3000/vlgzpjsbqsmtaqkvgokwkcldowhfwxaiqsxyfhuydyhtzxyrzjyihphbfsxwhjnp";
 const uri =
-  "http://127.0.0.1:3000/vlgzpjsbqsmtaqkvgokwkcldowhfwxaiqsxyfhuydyhtzxyrzjyihphbfsxwhjnp";
-// const uri = "https://www.cropkingseeds.com/vlgzpjsbqsmtaqkvgokwkcldowhfwxaiqsxyfhuydyhtzxyrzjyihphbfsxwhjnp";
+  "https://www.cropkingseeds.com/vlgzpjsbqsmtaqkvgokwkcldowhfwxaiqsxyfhuydyhtzxyrzjyihphbfsxwhjnp";
 
 const imports = {
   ...Cart(uri),

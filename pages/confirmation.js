@@ -125,7 +125,6 @@ class Index extends Component {
       <Layout {...this.props}>
         <div className="w-full mt-6 text-center">
           <div>
-            {console.log("DRAWNB")}
             {this.props.checkout != null &&
             this.props.checkout.affiliateUrl != null ? (
               <img
