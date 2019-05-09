@@ -129,6 +129,7 @@ class Index extends Component {
                       this.props
                         .acquireOrderId({ orderDetails: _orderDetails })
                         .then(res => {
+                          console.log("ACQUIRE", res);
                           let orderId = res.toString();
 
                           if (_orderDetails.payment.method.value == "Bitcoin") {

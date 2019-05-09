@@ -20,11 +20,23 @@ const news = props => {
   let categories = Object.keys(props.misc.news);
 
   let showCategories = categories.map((category, index) => {
-    let items = props.misc.news[category].filter(_ => {
-      let date = moment(_.date, "LL");
-      if (date.diff(moment(), "days") > 5) return false;
-      return true;
-    });
+    let pastItems = [];
+    let futureItems = [];
+    for (let _ of props.misc.news[category]) {
+      if (moment(_.date, "LL").diff(moment(), "days") < 0) {
+        pastItems.push(_);
+        continue;
+      }
+      futureItems.push(_);
+    }
+
+    if (futureItems.length > 2) futureItems = futureItems.slice(-2);
+
+    while (futureItems.length < 2) {
+      futureItems.push(pastItems.shift());
+    }
+
+    let items = futureItems;
 
     // displaying the last 2
     let showContent = items.slice(0, 2).map((item, index) => {

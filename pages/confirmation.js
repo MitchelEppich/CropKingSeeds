@@ -48,6 +48,7 @@ class Index extends Component {
 
   render() {
     let _orderDetails = this.props.checkout.orderDetails;
+    console.log("CONFIRM", _orderDetails);
     let _orderId;
     _orderId =
       _orderDetails.payment == null ? null : _orderDetails.payment.orderId;
@@ -601,8 +602,7 @@ class Index extends Component {
                                 Order too Large
                               </p>
                               <p className="text-xl font-bold text-grey-light">
-                                We are unable to process your large order this
-                                time.
+                                We are unable to process your large order.
                               </p>
                               <p className="p-2 text-xl py-4 font-bold">
                                 Please call our Customer Support at our{" "}

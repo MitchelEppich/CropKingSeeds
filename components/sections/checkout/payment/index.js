@@ -14,7 +14,12 @@ import MinimumOrderWarning from "../other/minimumOrderWarning";
 const Payment = props => {
   let _orderDetails = props.checkout.orderDetails;
 
-  if (_orderDetails.billing == null) return null;
+  if (
+    _orderDetails == null ||
+    _orderDetails.shipping == null ||
+    _orderDetails.billing == null
+  )
+    return null;
 
   let allowCC =
     !props.checkout.noCreditZip.includes(

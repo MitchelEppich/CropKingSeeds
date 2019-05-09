@@ -339,8 +339,7 @@ const Confirmation = props => {
                           <p className="uppercase font-bold text-2xl text-red-dark p-1 text-center">
                             Order too Large <br />{" "}
                             <span className="text-xl">
-                              We are unable to process your large order this
-                              time.
+                              We are unable to process your large order.
                             </span>
                           </p>
                           <br />

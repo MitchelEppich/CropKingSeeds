@@ -233,7 +233,7 @@ const getActions = uri => {
         let $orderDetails = JSON.stringify(
           (() => {
             let o = { ..._orderDetails };
-            delete o.payment;
+            // delete o.payment;
             return o;
           })()
         );
@@ -277,7 +277,7 @@ const getActions = uri => {
         let $orderDetails = JSON.stringify(
           (() => {
             let o = { ..._orderDetails };
-            delete o.payment;
+            // delete o.payment;
             return o;
           })()
         );
@@ -393,7 +393,7 @@ const getActions = uri => {
       let $orderDetails = JSON.stringify(
         (() => {
           let o = { ..._orderDetails };
-          delete o.payment;
+          // delete o.payment;
           return o;
         })()
       );
@@ -462,7 +462,7 @@ const getActions = uri => {
       let $orderDetails = JSON.stringify(
         (() => {
           let o = { ..._orderDetails };
-          delete o.payment;
+          // delete o.payment;
           return o;
         })()
       );
@@ -563,7 +563,7 @@ const getActions = uri => {
         let $orderDetails = JSON.stringify(
           (() => {
             let o = { ..._orderDetails };
-            delete o.payment;
+            // delete o.payment;
             return o;
           })()
         );
@@ -678,7 +678,7 @@ const getActions = uri => {
             let $orderDetails = JSON.stringify(
               (() => {
                 let o = { ..._orderDetails };
-                delete o.payment;
+                // delete o.payment;
                 return o;
               })()
             );
