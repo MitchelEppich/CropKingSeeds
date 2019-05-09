@@ -383,44 +383,48 @@ const resolvers = {
 };
 
 let buildRelation = list => {
-  let _products = list.split(",").map(a => {
-    return {
-      id: a.substring(0, 3),
-      quantity: a.substring(3, 5).trim()
-    };
-  });
-  _products.map(async _strain => {
-    let strain = await Strain.findOne({ sotiId: _strain.id });
-    let _soldQuantity = [...strain.soldQuantity];
-    _soldQuantity[["5", "10", "25"].indexOf(_strain.quantity)] += 1;
-    strain.soldQuantity = [..._soldQuantity];
-    let relation;
-    if (strain.relationData.length == 0) relation = "";
-    else
-      relation = decompress(strain.relationData)
-        .trim()
-        .split(" ");
-    for (let _id of _products.map(a => a.id)) {
-      if (_id == _strain.id) continue;
-      let index = relation.findIndex(a => {
-        return a.includes(_id);
-      });
-      if (index == -1) relation.push(`${_id}!1`);
-      else {
-        let _ = relation[index].split("!")[1];
-        _ = parseInt(_) + 1;
-        relation[index] = `${_id}!${_}`;
+  try {
+    let _products = list.split(",").map(a => {
+      return {
+        id: a.substring(0, 3),
+        quantity: a.substring(3, 5).trim()
+      };
+    });
+    _products.map(async _strain => {
+      let strain = await Strain.findOne({ sotiId: _strain.id });
+      let _soldQuantity = [...strain.soldQuantity];
+      _soldQuantity[["5", "10", "25"].indexOf(_strain.quantity)] += 1;
+      strain.soldQuantity = [..._soldQuantity];
+      let relation;
+      if (strain.relationData.length == 0) relation = "";
+      else
+        relation = decompress(strain.relationData)
+          .trim()
+          .split(" ");
+      for (let _id of _products.map(a => a.id)) {
+        if (_id == _strain.id) continue;
+        let index = relation.findIndex(a => {
+          return a.includes(_id);
+        });
+        if (index == -1) relation.push(`${_id}!1`);
+        else {
+          let _ = relation[index].split("!")[1];
+          _ = parseInt(_) + 1;
+          relation[index] = `${_id}!${_}`;
+        }
       }
-    }
-    strain.relationData = compress(
-      relation
-        .sort((a, b) => {
-          return parseInt(b.slice(4)) - parseInt(a.slice(4));
-        })
-        .join(" ")
-    );
-    strain.save();
-  });
+      strain.relationData = compress(
+        relation
+          .sort((a, b) => {
+            return parseInt(b.slice(4)) - parseInt(a.slice(4));
+          })
+          .join(" ")
+      );
+      strain.save();
+    });
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 const getMoProfileSoti = async orderId => {

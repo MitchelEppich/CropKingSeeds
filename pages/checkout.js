@@ -129,7 +129,6 @@ class Index extends Component {
                       this.props
                         .acquireOrderId({ orderDetails: _orderDetails })
                         .then(res => {
-                          console.log("ACQUIRE", res);
                           let orderId = res.toString();
 
                           if (_orderDetails.payment.method.value == "Bitcoin") {
@@ -395,7 +394,6 @@ const mapDispatchToProps = dispatch => {
     getBlockedZips: () => dispatch(actions.getBlockedZips()),
     clearCart: () => dispatch(actions.clearCart()),
     purgeCart: () => dispatch(actions.purgeCart()),
-    getMo: () => dispatch(actions.getMo()),
     getTaxes: () => dispatch(actions.getTaxes()),
     purgeOrderDetails: input => dispatch(actions.purgeOrderDetails(input)),
     storeOrderDetails: input => dispatch(actions.storeOrderDetails(input)),

@@ -33,9 +33,12 @@ class Index extends Component {
     initGA();
     logPageView();
     window.scroll(0, 0);
-    window.onbeforeunload = function() {
+  }
+
+  componentDidUpdate() {
+    if (this.props.checkout.affiliateUrl != null) {
       this.props.deleteAffiliateLink();
-    };
+    }
   }
 
   componentWillUnmount() {
@@ -122,6 +125,7 @@ class Index extends Component {
       <Layout {...this.props}>
         <div className="w-full mt-6 text-center">
           <div>
+            {console.log("DRAWNB")}
             {this.props.checkout != null &&
             this.props.checkout.affiliateUrl != null ? (
               <img
