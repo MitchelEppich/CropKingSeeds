@@ -48,7 +48,6 @@ class Index extends Component {
 
   render() {
     let _orderDetails = this.props.checkout.orderDetails;
-    console.log("CONFIRM", _orderDetails);
     let _orderId;
     _orderId =
       _orderDetails.payment == null ? null : _orderDetails.payment.orderId;
