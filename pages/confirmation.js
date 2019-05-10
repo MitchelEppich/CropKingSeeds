@@ -43,14 +43,23 @@ class Index extends Component {
 
   componentWillUnmount() {
     this.props.deleteAffiliateLink();
-    this.props.purgeCart();
-    this.props.purgeOrderDetails({
-      orderDetails: this.props.checkout.orderDetails
-    });
+    // this.props.purgeCart();
+    // this.props.purgeOrderDetails({
+    //   orderDetails: this.props.checkout.orderDetails
+    // });
   }
 
   render() {
-    let _orderDetails = this.props.checkout.orderDetails;
+    let _orderDetails = this.props.checkout.orderConfirmed;
+    let _cart = this.props.checkout.cartConfirmed;
+
+    if (!isClient) return null;
+
+    if (_cart.items == null) {
+      Router.push("/");
+      return null;
+    }
+
     let _orderId;
     _orderId =
       _orderDetails.payment == null ? null : _orderDetails.payment.orderId;
@@ -62,12 +71,12 @@ class Index extends Component {
 
     let currency = this.props.checkout.viewCurrency;
 
-    let products = Object.keys(this.props.cart.items);
+    let products = Object.keys(_cart.items);
     let _ccr = this.props.checkout.ccResponse;
 
     let showProduct = () => {
       let arr = [];
-      let _items = this.props.cart.items;
+      let _items = _cart.items;
       for (let item of Object.keys(_items)) {
         let _item = _items[item];
         arr.push(

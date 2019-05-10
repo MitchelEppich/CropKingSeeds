@@ -702,7 +702,7 @@ const getActions = uri => {
           ...input.orderDetails
         };
         let _paymentMethod = _orderDetails.payment.method.value,
-          cart = input.cart;
+          cart = { ...input.cart };
         // Process Payment
         let ccResponse = await (async () => {
           if (_paymentMethod == "Credit Card") {
@@ -815,11 +815,17 @@ const getActions = uri => {
           console.log(error)
         );
 
+        let CartActions = Cart(uri);
+        dispatch(CartActions.purgeCart());
+        dispatch(objects.purgeOrderDetails({ orderDetails: _orderDetails }));
+
         dispatch({
           type: actionTypes.PROCESS_ORDER,
           ccResponse,
           url: response.url,
-          moneyGram: response.mo
+          moneyGram: response.mo,
+          orderConfirmed: _orderDetails,
+          cartConfirmed: cart
         });
       };
     },

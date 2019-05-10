@@ -58,9 +58,10 @@ class Index extends Component {
 
     // Update if price has changed
     if (
-      this.props.cart.price != prevProps.cart.price ||
-      this.props.checkout.shippingMethods == null ||
-      this.props.checkout.shippingMethods.length == 0
+      (this.props.cart.price != prevProps.cart.price ||
+        this.props.checkout.shippingMethods == null ||
+        this.props.checkout.shippingMethods.length == 0) &&
+      this.props.misc.stepsCheckout < 2
     ) {
       this.updateShippingMethod();
     }

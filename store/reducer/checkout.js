@@ -5,6 +5,8 @@ const initialState = {
   orderDetails: {},
   bitcoinData: {},
   orderOutput: {},
+  orderConfirmed: {},
+  cartConfirmed: {},
   availableCurrency: {
     usd: { convert: 1, symbol: "$" }
   },
@@ -91,7 +93,9 @@ export default (state = initialState, action) => {
       return updateObject(state, {
         ccResponse: action.ccResponse,
         affiliateUrl: action.url,
-        moneyGram: action.moneyGram
+        moneyGram: action.moneyGram,
+        orderConfirmed: action.orderConfirmed,
+        cartConfirmed: action.cartConfirmed
       });
     case actionTypes.SET_CURRENCY:
       return updateObject(state, { viewCurrency: action.input });

@@ -47,7 +47,7 @@ const PaymentReview = props => {
         : 0;
     let cumTax = tax + provTax;
     let shippingFee = _orderDetails.shipping.shippingCost.value;
-    let taxFee = (cartTotal + shippingFee) * cumTax;
+    let taxFee = cartTotal * cumTax;
     let creditFee = (cartTotal + shippingFee + taxFee) * creditTax;
 
     // Discount
