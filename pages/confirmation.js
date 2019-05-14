@@ -240,6 +240,12 @@ class Index extends Component {
                       : _orderDetails.shipping.city.value}
                     ,{" "}
                     {_orderDetails.shipping == null ||
+                    _orderDetails.shipping.state == null
+                      ? "NO STATE"
+                      : _orderDetails.shipping.state.value}
+                  </p>
+                  <p>
+                    {_orderDetails.shipping == null ||
                     _orderDetails.shipping.country == null
                       ? "NO COUNTRY"
                       : _orderDetails.shipping.country.value}
