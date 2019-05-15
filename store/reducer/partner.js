@@ -122,6 +122,11 @@ const initialState = {
       name: "Weed Hire",
       tag: "Cannabis Jobs",
       imgUrl: "/partners/weedhire.jpg"
+    },
+    {
+      name: "Signature",
+      tag: "Cannabis Retail by Liberty Leaf",
+      imgUrl: "/partners/libertyleaf.jpg"
     }
   ]
 };
