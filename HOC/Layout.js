@@ -225,7 +225,7 @@ class Layout extends Component {
               id="og-image"
               property="og:image"
               content={
-                "http://dcfgweqx7od72.cloudfront.net" +
+                "https://dcfgweqx7od72.cloudfront.net" +
                 this.props.viewProduct.currentProduct.images[0]
               }
             />

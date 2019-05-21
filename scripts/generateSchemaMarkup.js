@@ -32,7 +32,7 @@ module.exports = strains => {
       "@type": "Product",
       name: strain.name,
       description: strain.description,
-      image: "http://dcfgweqx7od72.cloudfront.net" + strain.packageImg,
+      image: "https://dcfgweqx7od72.cloudfront.net" + strain.packageImg,
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: strain.rating != null ? strain.rating : null,

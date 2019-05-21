@@ -35,7 +35,7 @@ module.exports = strains => {
           changefreq: "weekly",
           priority: 1,
           imageLoc:
-            "http://dcfgweqx7od72.cloudfront.net/logos/cks-logo-header.png",
+            "https://dcfgweqx7od72.cloudfront.net/logos/cks-logo-header.png",
           name: "Crop King Seeds"
         };
         return;
@@ -63,7 +63,7 @@ module.exports = strains => {
             changefreq: "monthly",
             priority: 0.7,
             imageLoc:
-              "http://dcfgweqx7od72.cloudfront.net/packages/" +
+              "https://dcfgweqx7od72.cloudfront.net/packages/" +
               strains[i]._doc.sotiId +
               ".png",
             name: name + " Seeds"

@@ -39,7 +39,7 @@ class Index extends Component {
             <div className="affiliatesBanner sm:mb-0 lg:mb-6 ">
               <div className="w-1/3 sm:w-full md:w-4/5 lg:w-2/3 xl:w-1/2 sm:pr-0 pr-12 md:pr-0 flex flex-wrap md:justify-start lg:justify-start justify-between text-white">
                 <h1 className="w-full sm:text-2xl font-black text-shadow uppercase">
-                  Grow your business with Crop King Seeds
+                  Marijuana Seeds Affiliate Program by Crop King
                 </h1>
                 <p className="w-full my-4 mb-6 leading-normal text-shadow">
                   Are you ready to earn some money? Full affiliate support

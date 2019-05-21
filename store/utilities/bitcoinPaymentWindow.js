@@ -48,7 +48,7 @@ let payBitcoin = (orderDetails, orderId) => {
         _billing.country.value.toLowerCase() == "canada" ? "CAD" : "USD",
       amountf: _payment.cartTotal.value,
       item_name: fOrderId,
-      quantity: _payment.itemQuantity.value,
+      quantity: 1,
       allow_quantity: "0",
       shippingf: _payment.shippingFee.value,
       taxf: _payment.taxFee,
