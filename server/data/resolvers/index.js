@@ -21,7 +21,8 @@ const {
   Tax,
   DailyMessage,
   Order: _Order,
-  Address
+  Address,
+  Partner
 } = require("../../models");
 
 const Strain = StrainResolvers.Strain;
@@ -374,6 +375,9 @@ const resolvers = {
       let temp = await DailyMessage.find({});
       if (temp.length != 0) return temp[0].message;
       return null;
+    },
+    getPartners: async _ => {
+      return Partner.find({});
     }
   },
   Strain,

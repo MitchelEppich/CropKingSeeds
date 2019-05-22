@@ -16,6 +16,10 @@ import generateBreadcrumbMarkup from "../scripts/generateBreadcrumbMarkup";
 import Router from "next/router";
 
 class Index extends Component {
+  componentWillMount() {
+    this.props.getPartners();
+  }
+
   componentDidMount() {
     initGA();
     logPageView();
@@ -55,7 +59,8 @@ class Index extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input))
+    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+    getPartners: input => dispatch(actions.getPartners(input))
   };
 };
 

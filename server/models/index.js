@@ -10,6 +10,7 @@ const BannersSchema = require("./banners");
 const TaxSchema = require("./tax");
 const DailyMessageSchema = require("./dailyMessage");
 const AddressSchema = require("./address");
+const PartnerSchema = require("./partner");
 
 const Strain = mongoose.model("Strain", StrainSchema);
 const Order = mongoose.model("Order", OrderSchema);
@@ -21,6 +22,7 @@ const Banners = mongoose.model("Banners", BannersSchema);
 const Tax = mongoose.model("Tax", TaxSchema);
 const DailyMessage = mongoose.model("DailyMessage", DailyMessageSchema);
 const Address = mongoose.model("Address", AddressSchema);
+const Partner = mongoose.model("Partner", PartnerSchema);
 
 exports.Strain = Strain;
 exports.Order = Order;
@@ -32,3 +34,4 @@ exports.Banners = Banners;
 exports.Tax = Tax;
 exports.DailyMessage = DailyMessage;
 exports.Address = Address;
+exports.Partner = Partner;

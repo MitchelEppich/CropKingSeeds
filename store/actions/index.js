@@ -23,11 +23,12 @@ import Cms from "./cms";
 import Wiki from "./wiki";
 import Charts from "./charts";
 import Compare from "./compare";
+import Partner from "./partner";
 
 import { inferStrainData } from "../utilities/strain";
 
 // const uri =
-//   "http://127.0.0.1:3000/vlgzpjsbqsmtaqkvgokwkcldowhfwxaiqsxyfhuydyhtzxyrzjyihphbfsxwhjnp";
+// "http://127.0.0.1:3000/vlgzpjsbqsmtaqkvgokwkcldowhfwxaiqsxyfhuydyhtzxyrzjyihphbfsxwhjnp";
 const uri =
   "https://www.cropkingseeds.com/vlgzpjsbqsmtaqkvgokwkcldowhfwxaiqsxyfhuydyhtzxyrzjyihphbfsxwhjnp";
 
@@ -43,7 +44,8 @@ const imports = {
   ...Cms(uri),
   ...Wiki(uri),
   ...Charts(uri),
-  ...Compare(uri)
+  ...Compare(uri),
+  ...Partner(uri)
 };
 
 const actionTypes = {

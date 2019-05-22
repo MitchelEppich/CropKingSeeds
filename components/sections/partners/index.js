@@ -1,19 +1,27 @@
 import PartnerCard from "./partnerCard";
 import Link from "next/link";
 
+import LoaderSmall from "../loader/loaderSmall";
+
 const Partners = props => {
-  let partners = props.partner.partners.map((partner, index) => {
-    return (
-      <PartnerCard
-        key={index}
-        {...props}
-        name={partner.name}
-        tag={partner.tag}
-        imgUrl={props.misc.CFURL + partner.imgUrl}
-        description={partner.description}
-      />
-    );
-  });
+  let partners = props.partner.partners;
+
+  partners =
+    partners == null
+      ? []
+      : partners.map((partner, index) => {
+          return (
+            <PartnerCard
+              key={index}
+              {...props}
+              url={partner.url}
+              name={partner.name}
+              tag={partner.tag}
+              imgUrl={props.misc.CFURL + partner.imgUrl}
+              description={partner.description}
+            />
+          );
+        });
 
   return (
     <div className="w-full pb-8">
@@ -35,7 +43,15 @@ const Partners = props => {
         </div>
       </div>
       <div className="flex flex-wrap justify-center sm:w-full w-5/6 md:w-full lg:w-full mx-auto mt-8">
-        {partners}
+        {partners == null ? (
+          <div className="w-full">
+            <div className="xxl:h-600 overflow-hidden xl:h-400 lg:h-300 md:h-250 sm:h-175 w-full relative inline-flex">
+              <LoaderSmall />
+            </div>
+          </div>
+        ) : (
+          partners
+        )}
       </div>
     </div>
   );

@@ -36,6 +36,7 @@ type Query {
 
   getEmails: [String]
 
+  getPartners: [Partner]
   getDailyMessage: String
 }
 
@@ -67,6 +68,12 @@ type Data {
   tag: String
   total: String
   partial: String
+}
+type Partner {
+  name: String
+  tag: String
+  imgUrl: String
+  url: String
 }
 
 type TotalObject {
