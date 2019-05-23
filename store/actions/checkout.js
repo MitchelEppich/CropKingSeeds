@@ -73,7 +73,7 @@ let shippingMethods = [
     type: "Express Registered (With Tracking / Guaranteed Insurance Delivery)",
     tag: "Express Registered with Tracking",
     description:
-      "Approx. 7 to 14 business days within North America and up to 21 days overseas.",
+      "Approx. 3 to 7 business days within North America and up to 21 days overseas.",
     note:
       "This option guarantees Delivery with a Reshipment if your order is redirected.",
     price: 30
@@ -748,6 +748,8 @@ const getActions = uri => {
           uri,
           _idevAffiliate
         );
+
+        _orderDetails.payment.method.value = _paymentMethod;
 
         let shippingDescription = input.shippingMethods.find(a => {
           return a.tag == _orderDetails.shipping.shippingDetail.value;

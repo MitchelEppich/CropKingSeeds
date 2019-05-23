@@ -27,10 +27,10 @@ import Partner from "./partner";
 
 import { inferStrainData } from "../utilities/strain";
 
-// const uri =
-// "http://127.0.0.1:3000/vlgzpjsbqsmtaqkvgokwkcldowhfwxaiqsxyfhuydyhtzxyrzjyihphbfsxwhjnp";
 const uri =
-  "https://www.cropkingseeds.com/vlgzpjsbqsmtaqkvgokwkcldowhfwxaiqsxyfhuydyhtzxyrzjyihphbfsxwhjnp";
+  "http://127.0.0.1:3000/vlgzpjsbqsmtaqkvgokwkcldowhfwxaiqsxyfhuydyhtzxyrzjyihphbfsxwhjnp";
+// const uri =
+//   "https://www.cropkingseeds.com/vlgzpjsbqsmtaqkvgokwkcldowhfwxaiqsxyfhuydyhtzxyrzjyihphbfsxwhjnp";
 
 const imports = {
   ...Cart(uri),

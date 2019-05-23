@@ -32,8 +32,8 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const subscriptionsPath = "/subscriptions";
-// const subscriptionsEndpoint = `ws://${url}:${port}${subscriptionsPath}`;
-const subscriptionsEndpoint = `wss://www.cropkingseeds.com${subscriptionsPath}`;
+const subscriptionsEndpoint = `ws://${url}:${port}${subscriptionsPath}`;
+// const subscriptionsEndpoint = `wss://www.cropkingseeds.com${subscriptionsPath}`;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.M_URL, { useNewUrlParser: true });
