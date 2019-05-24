@@ -48,18 +48,6 @@ const ShareButtons = props => {
             className="fa-2x  px-1 hover:text-red-light scale-item cursor-pointer"
           />
         </a>
-        <a
-          aria-label="pinterest"
-          className="text-white"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.pinterest.ca/officialCKS/"
-        >
-          <FontAwesomeIcon
-            icon={faPinterest}
-            className="fa-2x  px-1 hover:text-red-light scale-item cursor-pointer"
-          />
-        </a>
         {/* <a
                     aria-label="googlePlus"
                     className="text-white"

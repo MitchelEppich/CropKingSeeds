@@ -507,15 +507,14 @@ const resolvers = {
       let _amount = parseFloat(input.amount);
       let response;
 
-      // if (
-      //   (input.country.toLowerCase() == "canada" &&
-      //     (bambora.cad.limit == -1 || bambora.cad.available - _amount > 0)) ||
-      //   (input.country.toLowerCase() == "united states" &&
-      //     (bambora.usd.limit == -1 || bambora.usd.available - _amount > 0))
-      // )
-      //   response = await processBambora(input);
-      // else
-      if (pivotal.limit == -1 || pivotal.available - _amount > 0)
+      if (
+        (input.country.toLowerCase() == "canada" &&
+          (bambora.cad.limit == -1 || bambora.cad.available - _amount > 0)) ||
+        (input.country.toLowerCase() == "united states" &&
+          (bambora.usd.limit == -1 || bambora.usd.available - _amount > 0))
+      )
+        response = await processBambora(input);
+      else if (pivotal.limit == -1 || pivotal.available - _amount > 0)
         response = await processPivotal(input);
       else
         response = {
