@@ -9,7 +9,7 @@ const moreInfo = props => {
     (paragraph, index) => {
       return (
         <React.Fragment key={index}>
-          <p>{paragraph}</p>
+          <p className="whitespace-normal">{paragraph}</p>
           <br />
         </React.Fragment>
       );

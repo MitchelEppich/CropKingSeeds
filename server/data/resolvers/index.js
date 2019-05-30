@@ -507,6 +507,7 @@ const resolvers = {
       let _amount = parseFloat(input.amount);
       let response;
 
+      // BAMBORA PROCESSOR
       if (
         (input.country.toLowerCase() == "canada" &&
           (bambora.cad.limit == -1 || bambora.cad.available - _amount > 0)) ||
@@ -514,6 +515,7 @@ const resolvers = {
           (bambora.usd.limit == -1 || bambora.usd.available - _amount > 0))
       )
         response = await processBambora(input);
+      // PIVOTAL PROCESSOR
       else if (pivotal.limit == -1 || pivotal.available - _amount > 0)
         response = await processPivotal(input);
       else
