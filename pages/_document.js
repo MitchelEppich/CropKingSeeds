@@ -30,6 +30,10 @@ export default class MyDocument extends Document {
             key="viewport"
           />
           <meta
+            name="google-site-verification"
+            content="BpK25Y-bfkOl1qTQROZuk2dx1kAiHBZyQS46EMJ9hcc"
+          />
+          <meta
             name="copyright"
             content="© 2005 - 2019 Crop King Seeds. All Rights Reserved."
           />
@@ -82,7 +86,7 @@ export default class MyDocument extends Document {
                 legalName: "Crop King Seeds",
                 url: "https://www.cropkingseeds.com/",
                 sameAs: [
-                  "https://www.instagram.com/cropkingseeds/",
+                  "https://www.instagram.com/cropkingofficial/",
                   "https://twitter.com/cropkingseeds",
                   "https://www.facebook.com/cropkingSeeds/"
                 ],

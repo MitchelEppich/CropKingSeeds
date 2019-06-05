@@ -9,12 +9,14 @@ type Query {
   fetchCurrentProduct(input: StrainNameInput!): Strain
   allStrains(filter: StrainFilter): [Strain]!
 
+  article(filter: ArticleFilter, limit: Int, cursor: Int): [Article]!
 
   news(input: NewsInput!): News
   allNews: [News]!
   allFeaturedNews: [News]!
   allBlockedZips: [String]!
   allBlockedIps: [String]!
+  allProcessors: [Processor]!
 
   getDailyStats(input: StatInput): Stat
   
@@ -138,6 +140,30 @@ input StrainFilter {
   OR: [StrainFilter!]
   genetic: Int
   nameContains: String
+}
+
+input ArticleFilter {
+  OR: [ArticleFilter!]
+  bodyContains: String
+  titleContains: String
+  subtitleContains: String
+  relatedStrainsContains: String
+  relatedArticlesContains: String
+  authorContains: String
+  categoryContains: String
+  tagsContains: String
+}
+
+type Article {
+  body: [String]
+  title: String
+  subtitle: String
+  relatedStrains: [String]
+  relatedArticles: [String]
+  author: String
+  createdAt: String
+  category: String
+  tags: [String]
 }
 
 type Strain {
@@ -385,6 +411,11 @@ input ArchiveInput {
 type OrderOutput {
   affiliateUrl: String
   mo: String
+}
+
+type Processor {
+  name: String,
+  active: Boolean
 }
 
 type Mutation {

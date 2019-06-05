@@ -39,6 +39,7 @@ class Index extends Component {
     await store.dispatch(actions.getBlockedIps());
     await store.dispatch(actions.getBlockedZips());
     await store.dispatch(actions.getTaxes());
+    await store.dispatch(actions.getProcessors());
     return {};
   }
   constructor(props) {
@@ -406,7 +407,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.checkForLocalProfile(input)),
     acquireOrderId: input => dispatch(actions.acquireOrderId(input)),
     toggleProcessing: processing =>
-      dispatch(actions.toggleProcessing(processing))
+      dispatch(actions.toggleProcessing(processing)),
+    getProcessors: () => dispatch(actions.getProcessors())
   }; // setCheckoutScreen: input => dispatch(actions.setCheckoutScreen(input)),
 };
 

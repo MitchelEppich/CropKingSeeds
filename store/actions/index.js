@@ -91,7 +91,8 @@ const actionTypes = {
   GET_DAILY_MESSAGE: "GET_DAILY_MESSAGE",
   TOGGLE_MUTE: "TOGGLE_MUTE",
   SET_SOTI_ERROR: "SET_SOTI_ERROR",
-  GET_MO: "GET_MO"
+  GET_MO: "GET_MO",
+  GET_PROCESSORS: "GET_PROCESSORS"
 };
 
 const actions = {
@@ -273,6 +274,32 @@ const actions = {
           });
 
           return Promise.resolve(_taxes);
+        })
+        .catch(error => console.log(error));
+    };
+  },
+  getProcessors: input => {
+    return async dispatch => {
+      const link = new HttpLink({ uri, fetch: fetch });
+      const operation = {
+        query: query.getAllProcessors
+      };
+
+      return await makePromise(execute(link, operation))
+        .then(data => {
+          let _processors = data.data.allProcessors;
+
+          let processors = {};
+          for (let i of _processors) {
+            processors[i.name] = i.active;
+          }
+
+          dispatch({
+            type: actionTypes.GET_PROCESSORS,
+            input: processors
+          });
+
+          return Promise.resolve(_processors);
         })
         .catch(error => console.log(error));
     };
@@ -704,6 +731,14 @@ const query = {
         ruderalis
         rating
         releaseDate
+      }
+    }
+  `,
+  getAllProcessors: gql`
+    query {
+      allProcessors {
+        name
+        active
       }
     }
   `,

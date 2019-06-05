@@ -17,6 +17,53 @@ const strainFilters = ({ OR = [], genetic, nameContains }) => {
   return filters;
 };
 
+// Article filters
+const articleFilters = ({
+  OR = [],
+  bodyContains,
+  titleContains,
+  subtitleContains,
+  relatedStrainsContains,
+  relatedArticlesContains,
+  authorContains,
+  categoryContains,
+  tagsContains
+}) => {
+  const filter = genetic || nameContains ? {} : null;
+
+  if (bodyContains) {
+    filter.body = { $regex: `.*(?i)${bodyContains}.*` };
+  }
+  if (titleContains) {
+    filter.title = { $regex: `.*(?i)${titleContains}.*` };
+  }
+  if (subtitleContains) {
+    filter.subtitle = { $regex: `.*(?i)${subtitleContains}.*` };
+  }
+  if (relatedStrainsContains) {
+    filter.relatedStrains = { $regex: `.*(?i)${relatedStrainsContains}.*` };
+  }
+  if (relatedArticlesContains) {
+    filter.relatedArticles = { $regex: `.*(?i)${relatedArticlesContains}.*` };
+  }
+  if (authorContains) {
+    filter.author = { $regex: `.*(?i)${authorContains}.*` };
+  }
+  if (categoryContains) {
+    filter.category = { $regex: `.*(?i)${categoryContains}.*` };
+  }
+  if (tagsContains) {
+    filter.tags = { $regex: `.*(?i)${tagsContains}.*` };
+  }
+
+  let filters = filter ? [filter] : [];
+  for (let i = 0; i < OR.length; i++) {
+    filters = filters.concat(strainFilters(OR[i]));
+  }
+
+  return filters;
+};
+
 // Order filters
 const orderFilters = ({ OR = [], coupon, ip }) => {
   const filter = coupon || ip ? {} : null;

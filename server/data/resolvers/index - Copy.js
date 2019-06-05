@@ -508,29 +508,17 @@ const resolvers = {
       let response;
 
       // BAMBORA PROCESSOR
-      // if (
-      //   (input.country.toLowerCase() == "canada" &&
-      //     (bambora.cad.limit == -1 || bambora.cad.available - _amount > 0)) ||
-      //   (input.country.toLowerCase() == "united states" &&
-      //     (bambora.usd.limit == -1 || bambora.usd.available - _amount > 0))
-      // )
-      //   response = await processBambora(input);
-      // // PIVOTAL PROCESSOR
-      // else if (pivotal.limit == -1 || pivotal.available - _amount > 0)
-      //   response = await processPivotal(input);
-      // else
-      //   response = {
-      //     transactionId: "NO_AVAILABLE_PROCESSOR",
-      //     status: "DECLINED",
-      //     processor: "Credit Card",
-      //     response: "No available processor",
-      //     approvalCode: "",
-      //     descriptor: ""
-      //   };
-
-      try {
+      if (
+        (input.country.toLowerCase() == "canada" &&
+          (bambora.cad.limit == -1 || bambora.cad.available - _amount > 0)) ||
+        (input.country.toLowerCase() == "united states" &&
+          (bambora.usd.limit == -1 || bambora.usd.available - _amount > 0))
+      )
         response = await processBambora(input);
-      } catch (e) {
+      // PIVOTAL PROCESSOR
+      else if (pivotal.limit == -1 || pivotal.available - _amount > 0)
+        response = await processPivotal(input);
+      else
         response = {
           transactionId: "NO_AVAILABLE_PROCESSOR",
           status: "DECLINED",
@@ -539,7 +527,6 @@ const resolvers = {
           approvalCode: "",
           descriptor: ""
         };
-      }
 
       return response;
     }
