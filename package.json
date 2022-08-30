@@ -45,7 +45,7 @@
     "isomorphic-unfetch": "^2.1.1",
     "jstoxml": "^1.4.4",
     "lru-cache": "^5.1.1",
-    "moment-timezone": "^0.5.23",
+    "moment-timezone": "^0.5.35",
     "momentjs": "^2.0.0",
     "mongoose": "^5.2.10",
     "next": "^6.1.1",
