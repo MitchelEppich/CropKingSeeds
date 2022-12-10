@@ -33,7 +33,7 @@
     "dotenv": "^6.0.0",
     "email-templates": "^5.0.4",
     "emit-file-loader": "^0.0.2",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "express-lowercase-paths": "^1.0.0",
     "file-loader": "^3.0.1",
     "fs": "^0.0.1-security",
